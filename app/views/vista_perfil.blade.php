@@ -1,0 +1,891 @@
+ @extends('admin_base')
+@section('mi_css')
+ <style>
+     .image-portada{
+         background:url(packages/images/videoFondo.jpg);
+     }
+ </style>
+ {{HTML::style('/packages/css/curiosity/alert.css')}}
+ {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
+ {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
+ {{HTML::style('/packages/css/curiosity/alert.css')}}
+ {{HTML::style("/packages/cropper/cropper.min.css")}}
+ {{HTML::style('/packages/css/curiosity/perfil.css')}}
+@stop
+@section('title')
+  Perfil | {{Auth::user()->username}}
+@stop
+
+@section('titulo_contenido')
+
+@stop
+
+@section('titulo_small')
+@stop
+
+@section('panel_opcion')
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal  fade" id="modalPrueba" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" id="modal-header-juego">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h1 class="title-modal">Cambiar y/o Recortar imagen</h1>
+              </div>
+              <div class="modal-body">
+                 {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
+                  {{HTML::Image('packages/images/perfil/original/'.$perfil->foto_perfil,'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
+                  <input  name="image" class="btn btn-default" id="inImage"  type="file">
+                  <input type="hidden" name="x"/>
+                  <input type="hidden" name="y"/>
+                  <input type="hidden" name="width"/>
+                  <input type="hidden" name="height"/>
+                 {{Form::close()}}
+              </div>
+              <div class="modal-footer" id="modal-footer-juego">
+                <div class="row">
+                  <div class="col-md-12">
+                    <center>
+                      <div class="actividadBotones">
+                        <button type="button" class="btn btn-success btnRecortar">
+                          <span class="fa fa-cut"></span>&nbsp;
+                          <b>Recortar y/o cambiar imagen</b>
+                        </button>
+                      </div>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        <div class="row">
+            <div class="col-md-3">
+
+              <!-- Profile Image -->
+              <div class="box box-primary">
+                <div class="box-body box-profile">
+                  <div class="image-portada">
+                        <img style="cursor:pointer;" class="profile-user-img  img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
+                        <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>Nombre de usuario: <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
+
+                  </div>
+
+                 <!--
+                  /.Menu-Item-Profile
+
+                  En esta sección se agregarán el
+                  menú según el rol logueado
+                 -->
+                  <ul class="list-group list-group-unbordered" id="menu-item-profile">
+                        <li class="list-group-item">
+                          <b>Juegos</b> <a class="pull-right">7</a>
+                        </li>
+
+                        <li class="list-group-item">
+                          <b>Mayor puntaje</b> <a class="pull-right" id="user_esp">1,322</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Calificación general</b> <a class="pull-right" id="user_ext">9.0</a>
+                        </li>
+
+                  </ul>
+                  <!-- /.Fin de Menú-Item-Profile -->
+
+                    <a href="#" class="btn btn-primary btn-block"><b><i class="fa fa-bar-chart"></i> Estadisticas </b></a>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+
+              <!-- About Me Box -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Sobre mi</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <strong><i class="fa fa-book margin-r-5"></i>  Email</strong>
+                  <p class="text-muted">
+                    @if(Auth::User()->hasRole('padre'))
+                      {{$padre->email}}
+                    @endif
+                  </p>
+
+                  <hr>
+
+
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                    <p>HEY!! {{Auth::user()->username}}, bienvenido al mundo <b>Curiosity</b> !!! </p>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+            <div class="col-md-9">
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                 <li class="active"><a href="#activity" data-toggle="tab">Buzón de quejas</a></li>
+                 <li><a href="#settings" data-toggle="tab">Modificar mi Perfil</a></li>
+                 @if(Auth::User()->hasRole('padre'))
+                   <li><a href="#reg-hijos" data-toggle="tab">Registro de hijos</a></li>
+                 @endif
+                </ul>
+                <div class="tab-content">
+                   <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                        <div class="post">
+                          <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="/packages/images/perfil/{{$perfil->foto_perfil}}"  alt="user image">
+                            <span class='username'>
+                              <a href="javascript::void(0)">{{Auth::user()->username}}</a>
+                            </span>
+                          </div><!-- /.user-block -->
+                          <form class='form-horizontal' id="frm_post">
+                            <div class='form-group margin-bottom-none'>
+                              <div class='col-sm-9'>
+                                <textarea class="form-control" rows="10"  placeholder="Publicar queja" name="content" id="content"></textarea>
+                              </div>
+                              <div class='col-sm-3'>
+                                <button class='btn btn-primary pull-right btn-block btn-sm' type="button" id="pub_post">Publicar</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div><!-- /.post -->
+                        <hr>
+                    <div id="posters"></div>
+
+                    </div>
+
+
+
+                  <div class="tab-pane" id="settings">
+                    <form class="form-horizontal" id="frm_user">
+                      <div id="wizard1">
+                        <h2>Datos de Usuario</h2>
+                        <section>
+                          <div class="form-group">
+                           <label for="username_padre"><h4 class="title-input"><b>Nombre de usuario</b></h4></label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna  class="fa fa-user"></spna>
+                              </span>
+                              <input type="text"  name="username_persona" id="username_persona" value="{{Auth::user()->username}}" class="form-control form-custom" placeholder="Nombre de Usuario">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-lock"></spna>
+                              </span>
+                              <input type="password" name="password_persona" id="password_persona" value="" class="form-control form-custom" placeholder="Contraseña Actual">
+                            </div>
+                          </div>
+
+                           <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-lock"></spna>
+                              </span>
+                              <input type="password" name="password_new" id="password_new" value="" class="form-control form-custom" placeholder="Contraseña Nueva">
+                            </div>
+                          </div>
+
+                           <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-lock"></spna>
+                              </span>
+                              <input type="password" name="cpassword_new" id="cpassword_new" value="" class="form-control form-custom" placeholder="Confirmar nueva contraseña">
+                            </div>
+                          </div>
+                        @if(!Auth::User()->hasRole('hijo'))
+                           <div class="form-group">
+                             <label for="telefono"><h4 class="title-input"><b>Número Telefónico</b></h4></label>
+                             <div class="input-group">
+                               <span class="input-group-addon">
+                                <span class="fa fa-phone"></span>
+                               </span>
+                               <input type="tel" class="form-control form-custom" value="{{Auth::user()->persona()->first()->telefono}}" name="telefono" id="telefono">
+                             </div>
+                           </div>
+                        @endif
+                        </section>
+
+                        <h2>Datos Personales</h2>
+                        <section>
+                          <div class="form-group">
+                            <label for="username_persona"><h4 class="title-input"><b>Nombre(s) y Apellidos</b></h4></label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-user"></spna>
+                              </span>
+                              <input type="text" name="nombre_persona" id="nombre_persona" value="{{Auth::user()->persona()->first()->nombre}}" class="form-control" placeholder="Nombre(s)">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-chevron-right"></spna>
+                              </span>
+                              <input type="text" name="apellido_paterno_persona" id="apellido_paterno_persona" value="{{Auth::user()->persona()->first()->apellido_paterno}}" class="form-control" placeholder="Apellido Paterno">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <spna class="fa fa-chevron-right"></spna>
+                              </span>
+                              <input type="text" name="apellido_materno_persona" id="apellido_materno_persona" value="{{Auth::user()->persona()->first()->apellido_materno}}" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="sexo"><h4 class="title-input"><b>Sexo</b></h4></label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-venus-mars"></span>
+                              </span>
+                              <select class="form-control form-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
+                                <option value="m">Masculino</option>
+                                <option value="f">Femenino</option>
+                              </select>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                           <label for="fecha_nacimiento"><h4 class="title-input"><b>Fecha de Nacimiento</b></h4></label>
+                           <div class="input-group">
+                             <span class="input-group-addon">
+                              <span class="fa fa-calendar"></span>
+                             </span>
+                             <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control form-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
+                           </div>
+                         </div>
+                        </section>
+                        @if(Auth::User()->hasRole('padre'))
+                        <h2>Direccion</h2>
+                        <section>
+                         <div class="form-group">
+                          <label for=""><h4 class="title-input"><b>Estado y ciudad</b></h4></label>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-home"></i>
+                            </span>
+                             <select class="form-control  form-custom" id="estado" name="estado" data-placeholder="Estado">
+                               <option value="">Estado</option>
+                               @foreach($estados as $estado)
+                                <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                               @endforeach
+                             </select>
+                           </div>
+                         </div>
+
+                         <div class="form-group">
+                          <div class="input-group">
+                             <span class='input-group-addon'>
+                              <i class="fa fa-home"></i>
+                             </span>
+                             <select class="form-control  form-custom" id="ciudad_id" name="ciudad_id">
+                               <option value="{{Auth::user()->persona()->first()->padre->first()->direccion()->first()->ciudad_id}}">{{Auth::user()->persona()->first()->padre()->first()->direccion()->first()->ciudad()->first()->nombre}}</option>
+                               <option>Ciudad</option>
+                             </select>
+                           </div>
+                         </div>
+                         <div class="form-group">
+                          <label for=""><h4 class="title-input"><b>Colonia y Calle</b></h4></label>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class='fa fa-home'></i>
+                            </span>
+                            <input type="text" value="{{Auth::user()->persona()->first()->padre()->first()->direccion()->first()->colonia}}"  name="colonia" id="colonia" class="form-control form-custom" placeholder="Colonia"/>
+                          </div>
+                         </div>
+                         <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-home"></i>
+                            </span>
+                            <input type="text" value="{{Auth::user()->persona()->first()->padre()->first()->direccion()->first()->calle}}" name="calle" id="calle" class="form-control form-custom" placeholder="Calle"/>
+                          </div>
+                         </div>
+                         <div class="form-group">
+                          <label for=""><h4 class="title-input"><b>Numero de casa y Código postal</b></h4></label>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-home"></i>
+                            </span>
+                            <input type="text" value="{{Auth::user()->persona()->first()->padre()->first()->direccion()->first()->numero}}" class="form-control form-custom" name="numero" id="numero" placeholder="Numero de casa"/>
+                          </div>
+                         </div>
+                         <div class="form-group">
+                           <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class='fa fa-home'></i>
+                            </span>
+                            <input type="number" name="codigo_postal" id="codigo_postal" value="{{Auth::user()->persona()->first()->padre()->first()->direccion()->first()->codigo_postal}}" id="codigo_postal" placeholder="Codigo Postal" class="form-control form-custom">
+                           </div>
+                         </div>
+                        </section>
+                        @endif
+                      </div>
+                    </form>
+                  </div><!-- /.tab-pane -->
+
+                     <div class="tab-pane"  id="reg-hijos">
+                    <!-- Registro de hijos -->
+                       <!-- <div class="row">
+                          <div class="col-md-12 first-part">
+                            <h3>¿Cuántos hijos deseas registrar?<h3>
+                            <ul class="list-hijos">
+                              <li class="active">
+                                <div class="user-block">
+                                   <h1 class="num num1">1</h1>
+                                </div>
+                              </li>
+                               <li class="">
+                                <div class="user-block">
+                                  <h1 class="num num2">2</h1>
+                                </div>
+                              </li>
+                               <li class="">
+                                <div class="user-block">
+                                   <h1 class="num num3">3</h1>
+                                </div>
+                              </li>
+                               <li class="">
+                                <div class="user-block">
+                                   <h1 class="num num4">4</h1>
+                                </div>
+                              </li>
+                               <li class="e">
+                                <div class="user-block">
+                                   <h1 class="num num5">5</h1>
+                                </div>
+                              </li>
+                               <li class="">
+                                <div class="user-block">
+                                   <h1 class="num num6">6</h1>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row" style="padding-right:10%;">
+                          <button class="btn btn-info btn-lg pull-right btn-next">Siguiente</button>
+                        </div>-->
+                        <div class="row" style="padding-right:1%; padding-left:1%">
+                          <form class="form-horizontal" id="frm-reg-hijos">
+                            <div id="wizard">
+                              <h2>Datos generales</h2>
+                              <section>
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <spna  class="fa fa-user"></spna>
+                                    </span>
+                                    <input type="text"  name="nombre" id="nombre" value="" class="form-control form-custom" placeholder="Nombre del niño/a">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <spna class="fa fa-chevron-right"></spna>
+                                    </span>
+                                    <input type="text" name="apellido_paterno" id="apellido_paterno" value="" class="form-control form-custom" placeholder="Apellido paterno">
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <spna class="fa fa-chevron-right"></spna>
+                                    </span>
+                                    <input type="text" name="apellido_materno" id="apellido_materno" value="" class="form-control form-custom" placeholder="Apellido materno">
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <spna class="fa fa-calendar"></spna>
+                                    </span>
+                                    <input type="text" name="fecha_nacimiento" id="fecha_nacimiento" value="" class="form-control datepicker_hijo" placeholder="Fecha de nacimiento">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sexo"><h4 class="title-input"><b>Sexo</b></h4></label>
+                                    <div class="input-group">
+                                      <span class="input-group-addon">
+                                        <span class="fa fa-venus-mars"></span>
+                                      </span>
+                                      <select class="form-control form-custom" name="sexo" id="sexo">
+                                        <option value="m">Masculino</option>
+                                        <option value="f">Femenino</option>
+                                      </select>
+                                    </div>
+                                 </div>
+                           </section>
+                           <h2>Datos escolares</h2>
+                           <section>
+                              <div class="form-group">
+                                <label for="sexo"><h4 class="title-input"><b>Nombre de la Escuela</b></h4></label>
+                                <div class="input-group">
+                                  <span  class="input-group-addon tooltipShow">
+                                    <spna id="return-fa-normal" class="fa fa-chevron-right"></spna>
+                                    <span title="ver escuelas" style="color:blue; font-weight:bold"  id="return-select-school" class="fa fa-remove hidden"></span>
+                                  </span>
+                                  <select name="escuela_id" id="escuela_id"  class="form-control">
+                                    @foreach($escuelas  as $escuela)
+                                      <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
+                                    @endforeach
+                                    <option value="NULL">Otra</option>
+                                  </select>
+                                  <input type="text" nombre="esc_alt" id="esc_alt" placeholder="nombre de la escuela" value="" class="form-control hidden"/>
+                                </div>
+                             </div>
+                             <div class="form-group">
+                                <label for="sexo"><h4 class="title-input"><b>Promedio escolar</b></h4></label>
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <spna class="fa fa-chevron-right"></spna>
+                                  </span>
+                                  <input type="text" name="promedio" id="promedio" value="" class="form-control" placeholder="Promedio de su hijo">
+                                </div>
+                             </div>
+                           </section>
+                           <h2>Datos de usuario</h2>
+                           <section>
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <spna  class="fa fa-user"></spna>
+                                  </span>
+                                  <input type="text"  name="username_hijo" id="username_hijo" value="" class="form-control form-custom" placeholder="Nombre de Usuario para el niño/a">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <spna class="fa fa-lock"></spna>
+                                  </span>
+                                  <input type="password" name="password" id="password" value="" class="form-control form-custom" placeholder="Contraseña">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <spna class="fa fa-lock"></spna>
+                                  </span>
+                                  <input type="password" name="cpassword" id="cpassword" value="" class="form-control form-custom" placeholder="Confirmar Contraseña">
+                                </div>
+                              </div>
+                           </section>
+                          </form>
+                        </div>
+                    </div><!-- /. fin tab registro de hijos-->
+                </div><!-- /.tab-content -->
+              </div><!-- /.nav-tabs-custom -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+@stop
+
+@section('mi_js')
+{{HTML::script("/packages/js/libs/validation/jquery.validate.min.js")}}
+{{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
+{{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
+{{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
+{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
+{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
+{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
+{{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+{{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
+{{HTML::script('/packages/js/curiosity/alert.js')}}
+{{HTML::script('/packages/cropper/cropper.min.js')}}
+{{HTML::script('/packages/js/curiosity/perfil.js')}}
+<script>
+  $(function ()
+  {
+
+    $("#wizard1").steps({
+        headerTag: "h2",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus:true,
+        next:"Siguiente",
+        finish:"Finalizar",
+        previous:"Anterior",
+        onFinishing: function (event, currentIndex) {
+            if($("#frm-reg-hijos").valid()){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        labels: {
+          cancel: "Cancelar",
+          //  current: "current step:",
+          pagination: "Paginación",
+          finish: "Actualizar",
+          next: "Siguiente",
+          previous: "Anterior",
+          loading: "Actualizando ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+          if(newIndex>currentIndex){
+           if($(".current input").valid()){
+               return true;
+           }else return false;
+         }else return true;
+        },
+
+  });
+
+    $("#wizard").steps({
+        headerTag: "h2",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus:true,
+        next:"Siguiente",
+        finish:"Finalizar",
+        previous:"Anterior",
+        onFinishing: function (event, currentIndex) {
+            if($("#frm-reg-hijos").valid()){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        labels: {
+          cancel: "Cancelar",
+          //  current: "current step:",
+          pagination: "Paginación",
+          finish: "Finalizar",
+          next: "Siguiente",
+          previous: "Anterior",
+          loading: "Cargando ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+          if(newIndex>currentIndex){
+           if($(".current input").valid()){
+               return true;
+           }else return false;
+         }else return true;
+        },
+
+  });
+  @if(!Auth::User()->hasRole('hijo'))
+   var dateNow = new Date();
+    dateNow.setMonth(dateNow.getMonth()-216);//restar 19 años a la fecha actual
+    $('.datepicker').datepicker({
+        "language":"es",
+        "format" : "yyyy-mm-dd",
+        "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
+       "autoclose": true,
+       "todayHighlight" : true
+      });
+    @else
+    var dateNow = new Date();
+    dateNow.setMonth(dateNow.getMonth()-48);//restar 19 años a la fecha actual
+    $('.datepicker').datepicker({
+        "language":"es",
+        "format" : "yyyy-mm-dd",
+        "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
+       "autoclose": true,
+       "todayHighlight" : true
+      });
+  @endif
+   var dateNow = new Date();
+    dateNow.setMonth(dateNow.getMonth()-48);//restar 19 años a la fecha actual
+    $('.datepicker_hijo').datepicker({
+        "language":"es",
+        "format" : "yyyy-mm-dd",
+        "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
+       "autoclose": true,
+       "todayHighlight" : true
+      });
+  $("#telefono").mask('(000) 000-0000',{placeholder:"(999) 999-9999"});
+    $("#codigo_postal").mask("00000");
+    $("#numero").mask("ABCDE",{translation:{
+                                                    A:{pattern:/^[0-9]/},
+                                                    B:{pattern:/([0-9])?/},
+                                                    C:{pattern:/([0-9])?/},
+                                                    D:{pattern:/([0-9])?/},
+                                                    E:{pattern:/([A-Za-z]{1})?$/}
+    }});
+    $("#frm_user").validate({
+        rules:{
+            telefono:{required:true,telephone:true,maxlength:14,minlength:14},
+            username_persona:{maxlength:50,required:true,remote:{
+                url:"/remote-username-update",
+                type:"post",
+                username:function(){
+                    return $("input[name='username']").val();
+                }
+            }},
+            password_new:{maxlength:100,minlength:8},
+            cpassword_new:{equalTo:function(){
+                return $("input[name='password_new']");
+            }},
+            nombre_persona:{required:true,maxlength:50,alpha:true},
+            apellido_paterno_persona:{required:true,maxlength:30,alpha:true},
+            apellido_materno_persona:{required:true,maxlength:30,alpha:true},
+            sexo_persona:{required:true,maxlength:1},
+            fecha_nacimiento_persona:{required:true,date:true},
+            @if(Auth::User()->hasRole('padre'))
+            colonia:{maxlength:50},
+            calle:{maxlength:50},
+            numero:{maxlength:5,numero_casa:true},
+            codigo_postal:{number:true,minlength:5,maxlength:5}
+            @endif
+
+        },
+        messages:{
+            cpassword_new:{equalTo:"La contraseña no coincide"},
+            username_persona:{
+                        required:"No puedes dejaar en blanco este campo",
+                        remote:"Este nombre de usuario se encuentra en uso"
+            },
+            telefono:{required:"No puedes dejar en blanco este campo"},
+            password_now:{remote:"La contraseña es incorrecta"}
+
+        },
+         errorPlacement: function (error, element) {
+            error.appendTo(element.parent().parent());
+         }
+    });
+   $("#frm_user").on("click","a[href='#finish']",function(){
+        if($("#frm_user input").valid()){
+            $btn =$(this)
+            var text_temp = $(this).text();
+            $(this).addClass("striped-alert");
+            $(this).text("Actualizando...");
+            $(this).prop("disabled",true);
+            if($("input[name='password_new']").val()!==""){
+                var datos={
+                    username_persona:$("input[name='username_persona']").val(),
+                    password_persona:$("input[name='password_persona']").val(),
+                    password_new:$("input[name='password_new']").val(),
+                    cpassword_new:$("input[name='cpassword_new']").val(),
+                    @if(!Auth::User()->hasRole('hijo'))
+                    telefono:$("input[name='telefono']").val(),
+                    @endif
+                    @if(Auth::User()->hasRole('padre'))
+                    ciudad_id:$("select[name='ciudad_id']").val(),
+                    colonia:$("input[name='colonia']").val(),
+                    calle:$("input[name='calle']").val(),
+                    numero:$("input[name='numero']").val(),
+                    codigo_postal:$("input[name='codigo_postal']").val(),
+                    @endif
+                    nombre_persona:$("input[name='nombre_persona']").val(),
+                    apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
+                    apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
+                    sexo_persona:$("select[name='sexo_persona']").val(),
+                    fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val()
+
+                }
+                $.ajax({
+                    url:"/updatePerfil",
+                    type:"post",
+                    data:{data:datos},
+                    beforeSend: function(){
+                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
+                    after = noty({
+                                layout: 'bottomRight',
+                                theme: 'defaultTheme', // or 'relax'
+                                type: 'information',
+                                text: message,
+                                animation: {
+                                    open: {height: 'toggle'}, // jQuery animate function property object
+                                    close: {height: 'toggle'}, // jQuery animate function property object
+                                    easing: 'swing', // easing
+                                    speed: 300 // opening & closing animation speed
+                                }
+                            });
+                    }
+                })
+                .done(function(r){
+                    console.log(r);
+                    if($.isPlainObject(r)){
+                        alerta.errorOnInputs(r);
+                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
+                    }else if(r == "contraseña incorrecta"){
+                        //alerta.show("Contraseña incorreca","","warning-alert striped");
+                        $curiosity.noty("Contraseña incorreca","warning");
+                    }
+                    else if(r =="bien"){
+                        $("input[name='password_persona']").val('');
+                        $("input[name='password_new']").val('');
+                        $("input[name='cpassword_new']").val('');
+                        $curiosity.noty("Los datos se han actualizado correctamente, su contraseña ha sido cambiada con exito!!","success");
+                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
+                        $("span#username-profile").text(datos.username_persona);
+                        $("label.error").remove();
+                        $("#wizard1-t-0").trigger("click");
+                    }
+                }).always(function(){
+                    $btn.text(text_temp);
+                    $btn.removeClass("striped-alert");
+                    $btn.prop("disabled",false);
+                    after.close();
+                });
+            }else{
+                var datos = {
+                     username_persona:$("input[name='username_persona']").val(),
+                     @if(!Auth::User()->hasRole('hijo'))
+                     telefono:$("input[name='telefono']").val(),
+                     @endif
+                     @if(Auth::User()->hasRole('padre'))
+                     ciudad_id:$("select[name='ciudad_id']").val(),
+                     colonia:$("input[name='colonia']").val(),
+                     calle:$("input[name='calle']").val(),
+                     numero:$("input[name='numero']").val(),
+                     codigo_postal:$("input[name='codigo_postal']").val(),
+                     @endif
+                     nombre_persona:$("input[name='nombre_persona']").val(),
+                     apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
+                     apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
+                     sexo_persona:$("select[name='sexo_persona']").val(),
+                     fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val()
+                }
+                $.ajax({
+                    url:"/updatePerfilUser",
+                    type:"post",
+                    data:{data:datos},
+                    beforeSend: function(){
+                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
+                    after = noty({
+                                layout: 'bottomRight',
+                                theme: 'defaultTheme', // or 'relax'
+                                type: 'information',
+                                text: message,
+                                animation: {
+                                    open: {height: 'toggle'}, // jQuery animate function property object
+                                    close: {height: 'toggle'}, // jQuery animate function property object
+                                    easing: 'swing', // easing
+                                    speed: 300 // opening & closing animation speed
+                                }
+                            });
+                    }
+                }).done(function(r){
+                    console.log(r);
+                    if($.isPlainObject(r)){
+                        alerta.errorOnInputs(r);
+                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
+                    }else if(r == "bien"){
+                        $curiosity.noty("Los datos se han actualizado correctamente","success");
+                        $("label.error").remove();
+                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
+                        $("span#username-profile").text(datos.username_persona);
+                        $("#wizard1-t-0").trigger("click");
+                    }
+                }).always(function(r){
+                    $btn.text(text_temp);
+                    $btn.removeClass("striped-alert");
+                    $btn.prop("disabled",false);
+                    after.close();
+                });
+            }
+        }else {
+
+        }
+       /* $.ajax({
+            url:"/updatePerfil",
+            type:"post",
+            data:{
+                data:datos
+            }
+        }).done(function(r){
+            console.log(r);
+        });*/
+    });
+    $('#image').cropper({
+    aspectRatio: 1/1,
+    responsive: true,
+    autoCropArea:1,
+    preview:".img-preview",
+    dragMode:'move',
+    crop: function(e) {
+      // Output the result data for cropping image.
+      $("input[name='x']").val(e.x);
+      $("input[name='y']").val(e.y);
+      $("input[name='width']").val(e.width);
+      $("input[name='height']").val(e.height);
+
+    }
+    });
+    $("img[data-target='#modalPrueba']").click(function(){
+
+
+    });
+     $(".btnRecortar").click(function(){
+         var formData = new FormData(document.getElementById('frm-change-image'));
+          $.ajax({
+            url:$("#frm-change-image").attr("action"),
+            type:$("#frm-change-image").attr("method"),
+            data:formData,
+            cache:false,
+            contentType:false,
+            processData:false,
+            beforeSend: function(){
+                message = "Espera.. La imagen se esta recortando...";
+                after = noty({
+                            layout: 'topRight',
+                            theme: 'defaultTheme', // or 'relax'
+                            type: 'information',
+                            text: message,
+                            animation: {
+                                open: {height: 'toggle'}, // jQuery animate function property object
+                                close: {height: 'toggle'}, // jQuery animate function property object
+                                easing: 'swing', // easing
+                                speed: 300 // opening & closing animation speed
+                            }
+                        });
+                }
+
+         }).done(function(){
+            $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
+            $("button[data-dismiss='modal']").trigger("click");
+            document.location="/perfil";
+         }).fail(function(){
+
+         }).always(function(){
+          after.close();
+       });
+     });
+        var $inputImage = $('#inImage');
+        var URL = window.URL || window.webkitURL;
+        var blobURL;
+        var $image = $('#image');
+
+            $inputImage.change(function () {
+              var files = this.files;
+              var file;
+
+              if (!$image.data('cropper')) {
+                return;
+              }
+
+              if (files && files.length) {
+                file = files[0];
+                if (/^image\/\w+$/.test(file.type)) {
+                    blobURL = URL.createObjectURL(file);
+                    $image.one('built.cropper', function () {
+
+
+                    URL.revokeObjectURL(blobURL);
+                  }).cropper('reset').cropper('replace', blobURL);
+
+                } else {
+                  window.alert('Please choose an image file.');
+                }
+              }
+      });
+});
+</script>
+@stop
