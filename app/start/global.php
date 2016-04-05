@@ -86,6 +86,6 @@ App::missing(function($exception)
 });
 
 //---Estea linea solo es en produccion por la estructura del servidor 
-App::bind('path.public', function() {
-    return '/home/curiosityweb12/public_html';
-});
+// App::bind('path.public', function() {
+//     return '/home/curiosityweb12/public_html';
+// });
