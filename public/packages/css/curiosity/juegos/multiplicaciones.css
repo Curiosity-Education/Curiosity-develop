@@ -1,0 +1,176 @@
+body{
+  font-family: calibri;
+  color: rgb(71, 71, 71);
+}
+
+#temp-count{
+  font-size: 3em;
+}
+
+.btn{
+  outline: none !important;
+}
+
+#icono{
+  font-size: 15em;
+}
+
+.cal-titulo{
+  margin-top: 15px;
+}
+
+.cal-titulo > h3{
+  margin-top: -5px;
+  font-size: 1.2em;
+  letter-spacing: 0.8px;
+}
+
+.cal-titulo > h1{
+  font-size: 1.8em;
+  margin-top: -5px;
+}
+
+#max-pts{
+  border-right: solid 10px;
+}
+
+#btn-comenzar{
+  margin-top: 25px;
+  width: 100%;
+  max-width: 300px;
+  background-color: rgb(84, 149, 235);
+  border: solid 3px rgb(255, 255, 255);
+}
+
+#btn-comenzar:hover{
+  background-color: rgb(41, 127, 241);
+  transition: .4s;
+}
+
+#objetivo{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+#objetivo > p{
+  font-size: 1.2em;
+}
+
+#zona-obj{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.zona-juego{
+  color: white;
+  background-color: rgb(25, 132, 179);
+  background-image: url(/packages/images/fondos/fondo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -10px;
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 5px;
+}
+
+#act-reglas{
+  font-size: 1.1em;
+}
+
+.temp > h3{
+  margin-top: -8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.valor-resp{
+  margin-top: 20px;
+}
+
+#resp-1{
+  font-size: 5em;
+  font-weight: bold;
+  padding-top: 45px;
+  padding-left: 25px;
+  background-color: rgb(119, 2, 223);
+}
+
+#resp-1:hover{
+  background-color: rgb(91, 1, 171);
+  transition: .4s;
+}
+
+#resp-igual{
+  font-size: 10em;
+  font-weight: bold;
+  padding-left: 60px;
+  background-color: rgb(233, 98, 0);
+  /*color: black;*/
+}
+
+#resp-igual:hover{
+  background-color: rgb(215, 71, 0);
+  transition: .4s;
+}
+
+#resp-2{
+  font-size: 5em;
+  font-weight: bold;
+  padding-top: 45px;
+  padding-left: 25px;
+  background-color: rgb(184, 1, 238);
+}
+
+#resp-2:hover{
+  background-color: rgb(156, 1, 203);
+  transition: .4s;
+}
+
+.valor-resp > div{
+  width: 200px;
+  height: 200px;
+  margin-left: 18%;
+  border-radius: 100%;
+  border: solid 5px white;
+}
+
+.valor-resp > div:hover{
+  cursor: pointer;
+}
+
+.actividadBotones{
+  margin-top: 20px;
+}
+
+.error-shadow{
+  box-shadow: 0px 0px 15px 5px rgba(190, 0, 0, 0.85);
+  transition: 0.3s;
+}
+
+@media (max-width: 991px) {
+  #max-pts{
+    border-right: none;
+    border-bottom: solid 5px rgba(255, 255, 255, 0.4);
+    margin-bottom: 25px;
+  }
+}
+
+
+
+@keyframes combo
+{
+	45%{transform: scale(1) translateY(-50px) skew(8deg);opacity: 1}
+	100%{transform: scale(5) translateY(100px) ;opacity: 0}
+
+}
+
+.combo
+{
+     width:0;
+     height:0;
+	text-align: left;
+	font-weight: bold;
+	font-size: 6em;
+}

@@ -1,0 +1,227 @@
+html, body{
+	height: 100%;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	font-family: calibri;
+	font-size: 1.3em;
+	background-color: rgb(255, 255, 255);
+	background-image: url(/packages/images/fondos/fondo2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*/ Barra de desplazamiento /*/
+::-webkit-scrollbar {
+      width: 15px;
+}
+::-webkit-scrollbar-track {
+      background-color: rgba(60, 141, 187, 1);
+}
+::-webkit-scrollbar-thumb {
+      background-color: rgba(8, 115, 167, 1);
+
+}
+::-webkit-scrollbar-button {
+      background-color: rgba(60, 141, 187, 1);
+}
+::-webkit-scrollbar-corner {
+      background-color: transparent;
+}
+
+/* estilo general */
+.pantalla-total{
+	height: 100%;
+}
+
+.make-circle{
+	background: red;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	color: rgb(255, 255, 255);
+	padding-top: 25px;
+}
+
+.input-group-addon{
+	min-width: 45px;
+	max-width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+input[type="text"], .form-custom, input[type="password"]{
+  height: 45px;
+  border-radius: 10px;
+  font-size: 1.3em;
+}
+.wizard > .steps > ul > li {
+    width: 22%!important;
+}
+select.error{
+   background: rgb(251, 227, 228);
+    border: 1px solid #fbc2c4;
+    color: #8a1f11;
+
+}
+.valid{
+    background: rgba(244, 255, 242, 0.97);
+    box-shadow: 1px 2px 1px rgba(211, 255, 218, 0.88);
+    color: #000;
+}
+label.error{
+    background: #000;
+    border-top:.4em solid red;
+     color:#fff!important;
+    display: inline-block;
+    padding: 5px!important;
+    margin-left: 0!important;
+    border-radius: 10px;
+    position: relative;
+    top: 4%;
+}
+label.error:before
+{
+    content: "";
+    position: absolute;
+    background: transparent;
+    width: 0;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #f31c1c transparent;
+    transform: rotate(-180deg);
+    top: -15px;
+}
+.wizard > .steps > ul > li:before, .wizard > .steps > ul > li:after
+{
+z-index: -1;
+position: absolute;
+content: "";
+bottom: 15px;
+left: 10px;
+width: 50%;
+top: 80%;
+max-width:300px;
+background: #777;
+-webkit-box-shadow: 0 15px 10px #777;
+-moz-box-shadow: 0 15px 10px #777;
+box-shadow: 0 15px 10px #777;
+-webkit-transform: rotate(-3deg);
+-moz-transform: rotate(-3deg);
+-o-transform: rotate(-3deg);
+-ms-transform: rotate(-3deg);
+transform: rotate(-3deg);
+}
+.wizard > .steps > ul > li:after
+{
+-webkit-transform: rotate(3deg);
+-moz-transform: rotate(3deg);
+-o-transform: rotate(3deg);
+-ms-transform: rotate(3deg);
+transform: rotate(3deg);
+right: 10px;
+left: auto;
+}
+.btn{
+	border: none;
+}
+
+.bg-blue{
+	background-color: rgba(60, 141, 187, 1);
+}
+
+.bg-pink{
+	background-color: rgb(228, 42, 187);
+}
+
+.bg-yellow{
+	background-color: rgb(175, 208, 18);
+}
+
+.bg-purple{
+	background-color: rgb(136, 18, 185);
+}
+
+.bg-green, .btn-primary{
+	background-color: rgb(0, 163, 100) !important;
+}
+
+.bg-orange, .btn-warning{
+	background-color: rgb(241, 99, 0) !important;
+}
+
+.btn-warning:hover{
+	background-color: rgb(212, 87, 0) !important;
+	transition: .4s;
+}
+
+.addon-green{
+	border-color: rgb(2, 133, 82);
+}
+
+.addon-purple{
+	border-color: rgb(94, 2, 133);
+}
+
+.addon-orange{
+	border-color: rgb(173, 73, 3);
+}
+
+.btn-primary:hover{
+	background-color: rgb(1, 136, 84) !important;
+	transition: .4s;
+}
+
+.bg-transparent{
+	background-color: transparent;
+}
+
+/* Navbar Menu*/
+.navbar{
+	padding-right: 10px;
+	padding-left: 10px;
+	border: none;
+}
+
+ul.nav > li > a{
+	color: rgba(255, 255, 255, 1) !important;
+	/*font-weight: bold;*/
+	letter-spacing: 0.5px;
+}
+
+.navbar-brand{
+	color: rgba(255, 255, 255, 1) !important;
+	font-weight: bold;
+	font-size: 1.7em;
+	letter-spacing: 0px;
+}
+
+.navbar-brand small{
+	opacity: .85;
+	font-weight: lighter;
+}
+
+/**/
+
+#registro{
+  margin-top: 70px;
+}
+
+#registro-well{
+  background-color: rgb(224, 224, 224);
+  border: solid 2px rgba(116, 116, 116, 0.2);
+}
+
+.color-sec{
+	background-color: red;
+}
+
+.title-input{
+	color: rgba(0, 0, 0, 0.5);
+	margin-left: 15px;
+}

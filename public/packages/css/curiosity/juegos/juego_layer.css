@@ -1,0 +1,154 @@
+#zona-obj{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.zona-juego{
+  color: white;  
+  margin-top: -10px;
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 5px;
+}
+
+.btn{
+  outline: none !important;
+}
+
+.cal-titulo{
+  margin-top: 15px;
+}
+
+.cal-titulo > h3{
+  margin-top: -5px;
+  font-size: 1.2em;
+  letter-spacing: 0.8px;
+}
+
+.cal-titulo > h1{
+  font-size: 1.8em;
+  margin-top: -5px;
+}
+
+#max-pts{
+  border-right: solid 10px;
+}
+
+#btn-comenzar{
+  margin-top: 25px;
+  width: 100%;
+  max-width: 300px;
+  background-color: rgb(84, 149, 235);
+  border: solid 3px rgb(255, 255, 255);
+}
+
+#btn-comenzar:hover{
+  background-color: rgb(41, 127, 241);
+  transition: .4s;
+}
+
+#objetivo{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+#objetivo > p{
+  font-size: 1.2em;
+}
+
+/*------------------------------------------*/
+
+.modal-content {
+  border-radius: 10px;
+}
+
+#modal-body-juego{
+  background-color: rgba(212, 212, 212, 0.4);
+  border-top: solid 2px rgba(140, 140, 140, 0.2);
+  border-bottom: solid 2px rgba(140, 140, 140, 0.2);
+}
+
+#modal-header-juego{
+  background-image: url(/packages/images/cups/fondo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 10px;
+}
+
+#modal-header-juego > button{
+  background-color: black;
+  opacity: 1;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: 50%;
+  border: solid 4px white;
+  margin-right: -25px;
+  margin-top: -25px !important;
+  outline: none;
+}
+
+#modal-header-juego > button:hover{
+  opacity: 1;
+  color: white;
+  background-color: rgb(173, 0, 0);
+  transition: .4s;
+  outline: none;
+}
+
+#modal-footer-juego > div > div > h4{
+  font-size: 1.6em !important;
+}
+
+#modal-puntos{
+  margin-top: -15px;
+  font-size: 1.5em;
+  color: rgb(214, 0, 0);
+}
+
+.actividadBotones > button, .actividadBotones > a{
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  font-size: 1.3em;
+  padding: 5px;
+  background-color: rgb(235, 235, 235);
+  color: rgb(71, 71, 71);
+  border: solid 2px rgba(179, 179, 179, 0.3);
+}
+
+.actividadBotones > button:hover, .actividadBotones > a:hover{
+  background-color: rgb(217, 217, 217);
+  border: solid 2px rgba(179, 179, 179, 0.3);
+  transition: 0.4s;
+}
+
+.btnVideo{
+  background-color: rgb(235, 11, 11) !important;
+  color: white !important;
+  border-color: rgba(138, 0, 0, 0.6) !important;
+}
+
+.btnVideo:hover{
+  background-color: rgba(172, 5, 5, 1) !important;
+  transition: .4s;
+}
+
+.btnDownloadPDF{
+  background-color: rgb(7, 139, 95) !important;
+  color: white !important;
+  border-color: rgba(0, 82, 54, 0.4) !important;
+}
+
+.btnDownloadPDF:hover{
+  background-color: rgb(2, 108, 74) !important;
+  transition: 0.4s;
+}
+
+.actividadBotones{
+  margin-top: 20px;
+}

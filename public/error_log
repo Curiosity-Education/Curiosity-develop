@@ -1,0 +1,103 @@
+[26-Mar-2016 16:05:23 America/Mexico_City] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in /home/curiosityweb12/laravel/app/models/User.php on line 57
+[26-Mar-2016 16:05:24 America/Mexico_City] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in /home/curiosityweb12/laravel/app/models/User.php on line 57
+[26-Mar-2016 16:06:04 America/Mexico_City] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in /home/curiosityweb12/laravel/app/models/User.php on line 57
+[26-Mar-2016 16:11:30 America/Mexico_City] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in /home/curiosityweb12/laravel/app/models/User.php on line 57
+[27-Mar-2016 11:57:20 America/Mexico_City] PHP Fatal error:  Class 'Perfil' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[27-Mar-2016 12:17:48 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[27-Mar-2016 13:39:08 America/Mexico_City] PHP Fatal error:  Class 'inteligencia' not found in /home/curiosityweb12/laravel/app/controllers/temaController.php on line 26
+[27-Mar-2016 13:45:03 America/Mexico_City] PHP Fatal error:  Class 'Inteligencia' not found in /home/curiosityweb12/laravel/app/controllers/inteligenciaController.php on line 19
+[27-Mar-2016 13:49:46 America/Mexico_City] PHP Fatal error:  Class 'Inteligencia' not found in /home/curiosityweb12/laravel/app/controllers/inteligenciaController.php on line 19
+[27-Mar-2016 14:03:33 America/Mexico_City] PHP Fatal error:  Class 'Inteligencia' not found in /home/curiosityweb12/laravel/app/controllers/bloqueController.php on line 14
+[27-Mar-2016 14:05:13 America/Mexico_City] PHP Fatal error:  Class 'Nivel' not found in /home/curiosityweb12/laravel/app/controllers/bloqueController.php on line 29
+[27-Mar-2016 14:06:57 America/Mexico_City] PHP Fatal error:  Class 'Nivel' not found in /home/curiosityweb12/laravel/app/controllers/temaController.php on line 28
+[27-Mar-2016 14:08:01 America/Mexico_City] PHP Fatal error:  Class 'Nivel' not found in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 30
+[27-Mar-2016 14:11:24 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:29 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:41 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:42 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:42 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:43 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 14:11:43 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[27-Mar-2016 15:22:04 America/Mexico_City] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /home/curiosityweb12/laravel/app/controllers/escuelaController.php on line 11
+[27-Mar-2016 23:18:26 America/Mexico_City] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';' in /home/curiosityweb12/laravel/app/models/archivo.php on line 13
+[28-Mar-2016 01:23:25 America/Mexico_City] PHP Fatal error:  Call to undefined method Illuminate\Database\Eloquent\Collection::limit() in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 301
+[28-Mar-2016 02:41:17 America/Mexico_City] PHP Fatal error:  Class 'Nivel' not found in /home/curiosityweb12/laravel/app/controllers/inteligenciaController.php on line 182
+[28-Mar-2016 02:42:36 America/Mexico_City] PHP Fatal error:  Class 'Nivel' not found in /home/curiosityweb12/laravel/app/controllers/inteligenciaController.php on line 182
+[28-Mar-2016 12:31:49 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[28-Mar-2016 12:39:41 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 12:44:28 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 13:01:55 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 16:16:00 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[28-Mar-2016 16:20:48 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[28-Mar-2016 16:42:07 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 84
+[28-Mar-2016 16:43:28 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 84
+[28-Mar-2016 16:46:59 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 84
+[28-Mar-2016 16:48:37 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 84
+[28-Mar-2016 16:50:00 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 84
+[28-Mar-2016 16:53:19 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 85
+[28-Mar-2016 20:12:18 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:21:50 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:23:30 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:29:37 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:32:17 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:43:31 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[28-Mar-2016 20:46:50 America/Mexico_City] PHP Fatal error:  Class 'Padre' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 733
+[29-Mar-2016 17:42:29 America/Mexico_City] PHP Fatal error:  Class 'escuela' not found in /home/curiosityweb12/laravel/app/controllers/principalController.php on line 11
+[29-Mar-2016 17:42:37 America/Mexico_City] PHP Fatal error:  Class 'escuela' not found in /home/curiosityweb12/laravel/app/controllers/principalController.php on line 11
+[29-Mar-2016 17:42:40 America/Mexico_City] PHP Fatal error:  Class 'escuela' not found in /home/curiosityweb12/laravel/app/controllers/principalController.php on line 11
+[29-Mar-2016 17:42:42 America/Mexico_City] PHP Fatal error:  Class 'escuela' not found in /home/curiosityweb12/laravel/app/controllers/principalController.php on line 11
+[29-Mar-2016 17:55:19 America/Mexico_City] PHP Fatal error:  Class 'inteligencia' not found in /home/curiosityweb12/laravel/app/controllers/bloqueController.php on line 14
+[29-Mar-2016 18:13:18 America/Mexico_City] PHP Fatal error:  Class 'nivel' not found in /home/curiosityweb12/laravel/app/controllers/nivelController.php on line 12
+[31-Mar-2016 12:43:20 America/Mexico_City] PHP Warning:  Uncaught exception 'ErrorException' with message 'Undefined variable: direccion' in /home/curiosityweb12/laravel/app/controllers/padreController.php:102
+Stack trace:
+#0 /home/curiosityweb12/laravel/app/controllers/padreController.php(102): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', '/home/curiosity...', 102, Array)
+#1 [internal function]: padreController->addPadre()
+#2 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#3 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(93): Illuminate\Routing\Controller->callAction('addPadre', Array)
+#4 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(62): Illuminate\Routing\ControllerDispatcher->call(Object(padreController), Object(Illuminate\Routing\Route), 'addPadre')
+#5 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(967):  in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 12:43:20 America/Mexico_City] PHP Fatal error:  Call to a member function delete() on a non-object in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 12:43:23 America/Mexico_City] PHP Warning:  Uncaught exception 'ErrorException' with message 'Undefined variable: direccion' in /home/curiosityweb12/laravel/app/controllers/padreController.php:102
+Stack trace:
+#0 /home/curiosityweb12/laravel/app/controllers/padreController.php(102): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', '/home/curiosity...', 102, Array)
+#1 [internal function]: padreController->addPadre()
+#2 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#3 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(93): Illuminate\Routing\Controller->callAction('addPadre', Array)
+#4 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(62): Illuminate\Routing\ControllerDispatcher->call(Object(padreController), Object(Illuminate\Routing\Route), 'addPadre')
+#5 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(967):  in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 12:43:23 America/Mexico_City] PHP Fatal error:  Call to a member function delete() on a non-object in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 12:44:40 America/Mexico_City] PHP Warning:  Uncaught exception 'ErrorException' with message 'Undefined variable: direccion' in /home/curiosityweb12/laravel/app/controllers/padreController.php:102
+Stack trace:
+#0 /home/curiosityweb12/laravel/app/controllers/padreController.php(102): Illuminate\Exception\Handler->handleError(8, 'Undefined varia...', '/home/curiosity...', 102, Array)
+#1 [internal function]: padreController->addPadre()
+#2 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#3 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(93): Illuminate\Routing\Controller->callAction('addPadre', Array)
+#4 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(62): Illuminate\Routing\ControllerDispatcher->call(Object(padreController), Object(Illuminate\Routing\Route), 'addPadre')
+#5 /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php(967):  in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 12:44:40 America/Mexico_City] PHP Fatal error:  Call to a member function delete() on a non-object in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 102
+[31-Mar-2016 18:45:33 America/Mexico_City] PHP Fatal error:  Class 'Persona' not found in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 76
+[31-Mar-2016 18:46:00 America/Mexico_City] PHP Fatal error:  Class 'Persona' not found in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 76
+[31-Mar-2016 18:46:35 America/Mexico_City] PHP Fatal error:  Class 'Persona' not found in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 76
+[31-Mar-2016 18:53:52 America/Mexico_City] PHP Fatal error:  Class 'user' not found in /home/curiosityweb12/laravel/app/controllers/padreController.php on line 69
+[01-Apr-2016 16:42:31 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[02-Apr-2016 19:57:52 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[02-Apr-2016 19:57:55 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[02-Apr-2016 19:58:17 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83
+[02-Apr-2016 21:57:36 America/Mexico_City] PHP Fatal error:  Class 'Membresia' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 792
+[02-Apr-2016 21:58:44 America/Mexico_City] PHP Fatal error:  Class 'Membresia' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 792
+[04-Apr-2016 16:14:25 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:14:32 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:14:35 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:14:35 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:15:12 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:15:25 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:16:25 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:17:32 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:17:47 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[04-Apr-2016 16:17:49 America/Mexico_City] PHP Fatal error:  Class 'Intervention\Image\ImageServiceProvider' not found in /home/curiosityweb12/laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 157
+[05-Apr-2016 07:01:42 America/Mexico_City] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 14000 bytes) in /home/curiosityweb12/laravel/vendor/intervention/image/src/Intervention/Image/Image.php on line 283
+[05-Apr-2016 07:03:30 America/Mexico_City] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 16000 bytes) in /home/curiosityweb12/laravel/vendor/intervention/image/src/Intervention/Image/Image.php on line 1920
+[05-Apr-2016 07:05:11 America/Mexico_City] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 16000 bytes) in /home/curiosityweb12/laravel/vendor/intervention/image/src/Intervention/Image/Image.php on line 1920
+[05-Apr-2016 07:10:01 America/Mexico_City] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 16000 bytes) in /home/curiosityweb12/laravel/vendor/intervention/image/src/Intervention/Image/Image.php on line 1920
+[05-Apr-2016 07:10:59 America/Mexico_City] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 16000 bytes) in /home/curiosityweb12/laravel/vendor/intervention/image/src/Intervention/Image/Image.php on line 1920
+[05-Apr-2016 10:45:00 America/Mexico_City] PHP Fatal error:  Call to a member function move() on a non-object in /home/curiosityweb12/laravel/app/controllers/actividadController.php on line 83

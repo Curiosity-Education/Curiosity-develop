@@ -1,0 +1,79 @@
+body{
+  background-color: white;
+  background-image: url(/packages/images/fondos/fondo2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*html, body{
+  height: auto !important;
+}*/
+
+.login-box{
+  background-color: rgb(221, 221, 221);
+  border: solid 2px rgba(92, 92, 92, 0.3);
+  border-radius: 7px;
+  padding: 25px;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+.login-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.login-txt{
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+#login-icon-user{
+  background-color: rgba(60, 141, 187, 1);
+  border-color: rgba(35, 118, 164, 1);
+}
+
+#login-icon-pass{
+  background-color: rgba(60, 141, 187, 1);
+  border-color: rgba(35, 118, 164, 1);
+}
+
+button{
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-size: 1.3em !important;
+}
+
+#login-next{
+  background-color: rgba(60, 141, 187, 1) !important;
+}
+
+#login-next:hover{
+  background-color: rgba(35, 118, 164, 1) !important;
+  transition: 0.4s;
+}
+
+#login-int{
+  background-color: rgba(60, 141, 187, 1);
+}
+
+#login-int:hover{
+  background-color: rgba(35, 118, 164, 1);
+  transition: 0.4s;
+}
+
+#login-back{
+  background-color: rgb(236, 45, 45);
+}
+
+#login-back:hover{
+  background-color: rgb(200, 17, 17);
+  transition: 0.4s;
+}
+
+.login-forgot{
+  margin-top: 10px;
+  letter-spacing: 1.1px;
+  font-size: 1.3em;
+}

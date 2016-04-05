@@ -1,0 +1,138 @@
+.cont-alerts
+{
+    position: fixed;
+    z-index: 9999;
+    height: auto;
+    width: 24%;
+    top: 8%;
+    right: 0;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.alert{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    position: relative;
+    background: #d0d0d0;
+    bottom: 0;
+    z-index: 10000;
+    padding-top: 0;
+    transition: .8s;
+
+}
+.alert>img {
+	position: relative;
+    top: 0;
+    left: 0;
+    display: inline;
+    width: 15%;
+    height: 15%;
+
+}
+.alert>h4{
+    color: white;
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+}
+.alert>p{
+	text-align: justify;
+    color: black;
+    font-weight: bold;
+}
+.alert>i {
+	position: relative;
+  float: right;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+.alert>i:hover {
+	color: red;
+    transform: scale(1.1);
+    transition: .9s;
+}
+@-webkit-keyframes animate-stripes {
+   0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+@-moz-keyframes aimate-stripes {
+   0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+@keyframes in-progress
+{
+    from{width: 0%}
+    to{width: 100%}
+}
+.info-alert{
+     background: rgba(43, 209, 209, 0.88);
+}
+.warning-alert{
+    background: rgba(247, 199, 41, 0.88);
+}
+.danger-alert{
+    background: rgba(237, 61, 14, 0.9);
+}
+.success-alert{
+    background: rgba(74, 224, 69, 0.9);
+}
+.striped-alert {
+     -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+-webkit-animation: animate-stripes 3s linear infinite;
+   -moz-animation: animate-stripes 3s linear infinite;
+
+}
+.striped{
+   -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+}
