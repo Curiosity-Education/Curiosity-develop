@@ -39,25 +39,7 @@ var $curiosity = {
                 throw new Exception("El paramentro data debe ser un Objeto plano");
             }
         }
-    }
-  },
-  notyConfirm : function($funcion){
-    swal({
-      title: "¿Seguro que desea remover?",
-      text: "¡El elemento puede ser recuperado al registrarse con el mismo nombre!",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#c9371a",
-      confirmButtonText: "Sí, Remover!",
-      closeOnConfirm: false
     },
-    function(){
-      $funcion();
-      swal("Removido!", "Removido Correctamente", "success");
-      document.getElementById('notyAudio').play();
-    });
-  },
-  call : {
     getEstandarte : function($idJuego, $idHijo, $selectorIMG, $selectorIMG_alerta){
       var datos = {
         'actividad_id' : $idJuego,
@@ -78,6 +60,22 @@ var $curiosity = {
         console.log(error);
       });
     }
+  },
+  notyConfirm : function($funcion){
+    swal({
+      title: "¿Seguro que desea remover?",
+      text: "¡El elemento puede ser recuperado al registrarse con el mismo nombre!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#c9371a",
+      confirmButtonText: "Sí, Remover!",
+      closeOnConfirm: false
+    },
+    function(){
+      $funcion();
+      swal("Removido!", "Removido Correctamente", "success");
+      document.getElementById('notyAudio').play();
+    });
   }
 
 };
