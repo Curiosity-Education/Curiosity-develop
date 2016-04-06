@@ -30,6 +30,7 @@ Route::post('/remote-email','padreController@remoteEmail');
 Route::group(array('before' => 'auth'), function(){
     /*Rutas para subir y ver juego*/
     Route::get('/juego/{idActividad}/{nombre}','actividadController@getViewJuego');
+    Route::post('/actividad/setdata','actividadController@setDataActivity');
     Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
     Route::group(array('before' => 'only_session'), function(){
         // salir (cerrar sesion)

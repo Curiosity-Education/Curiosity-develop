@@ -17,6 +17,30 @@ var $curiosity = {
      });
      document.getElementById('notyAudio').play();
   },
+  call:{
+    setData:{
+        juego:function(data){
+            if($.isPlainObject(data)){
+                $.ajax({
+                    url:'actividad/setdata',
+                    method:"POST",
+                    dataType:"JSON",
+                    data:data
+                }).done(function(response){
+                    if(response.estado == "200")
+                        $curiosity.noty(response.message,"success");
+                    else
+                        $curiosity.noty(response.message,"warning");
+                }).fail(function(error,status,statusText){
+                    $curiosity.noty(error,"error");
+                });
+            }
+            else{
+                throw new Exception("El paramentro data debe ser un Objeto plano");
+            }
+        }
+    }
+  },
   notyConfirm : function($funcion){
     swal({
       title: "¿Seguro que desea remover?",
