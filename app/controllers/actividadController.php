@@ -826,6 +826,18 @@ class actividadController extends BaseController
 
     }
 
+    public function setDataActivity(){
+        try{
+            $activida_hijo = new hijo_realiza_actividad(Input::all());
+            $activida_hijo->hijo_id = Auth::user()->persona->hijo->first()->pluck('id');
+            $activida_hijo->actividad_id = Session::get('idActividad');
+            $activida_hijo->save();
+            return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
+        }
+        catch(Excetion $ex){
+            return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
+        }
+    }
 }
 
 
