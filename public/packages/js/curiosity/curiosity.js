@@ -22,11 +22,11 @@ var $curiosity = {
         juego:function(data){
             if($.isPlainObject(data)){
                 $.ajax({
-                    url:'actividad/setdata',
-                    method:"POST",
-                    dataType:"JSON",
+                    url:'/actividad/setdata',
+                    method:"POST",                    
                     data:data
                 }).done(function(response){
+                    console.log(response);
                     if(response.estado == "200")
                         $curiosity.noty(response.message,"success");
                     else

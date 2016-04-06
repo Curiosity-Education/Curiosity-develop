@@ -340,7 +340,7 @@ class actividadController extends BaseController
       return Response::json(array(0=>'success', 1=>$file->getClientOriginalName()));
     }
   }
-    public function hasGame(){
+    public function hasGame(){      
         return archivo::where('ext','=','php')->where('active','=','1')->select('id','actividad_id','nombre')->get();
     }
     /*-----------------------------------
@@ -826,10 +826,10 @@ class actividadController extends BaseController
 
     }
 
-    public function setDataActivity(){
+    public function setDataActivity(){              
         try{
-            $activida_hijo = new hijo_realiza_actividad(Input::all());
-            $activida_hijo->hijo_id = Auth::user()->persona->hijo->first()->pluck('id');
+            $activida_hijo = new hijoRealizaActividad(Input::all());
+            $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->first()->pluck('id');
             $activida_hijo->actividad_id = Session::get('idActividad');
             $activida_hijo->save();
             return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));

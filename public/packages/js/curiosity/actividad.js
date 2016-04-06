@@ -6,7 +6,7 @@ $(document).on('ready',function(){
                  url:'/hasgame',
                  method:'POST',
                  dataType:'JSON'
-              }).done(function(response){
+              }).done(function(response){                
                   $("#actividades").children('div').each(function(i,objeto){
                        console.log(objeto);
                         $.each(response,function(index,value){
