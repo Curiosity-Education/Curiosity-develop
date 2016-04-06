@@ -558,85 +558,85 @@ $(document).ready(function() {
             uploadMultiple:false,
             maxFiles:10,
             maxFilesize:100000,//MB
-            // accept: function(file, done) {
-            //     if (file.type != "application/zip")
-            //     {
-            //         done("Error! El tipo de archivo no es aceptado");
-            //     }
-            //     else { done(); }
-            // },
             success: function(file, response){
                 $("#archivos").empty();
-                $.each(response.archivos,function(i,archivo){
-                    var $img = $("<img/>");
-                    $img.attr({'title':archivo.nombre,
-                               'style':'width:70px; height:70px;'});
-                    switch(archivo.tipo){
-                        case 'css':
-                            $img.attr({
-                                'src':'packages/images/icon-css.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'js':
-                            $img.attr({
-                                'src':'packages/images/icon-js.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'php':
-                            $img.attr({
-                                'src':'packages/images/page_php.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'png':
-                            $img.attr({
-                                'src':'packages/images/png_icons.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'gif':
-                            $img.attr({
-                                'src':'packages/images/gif_icons.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'mp3':
-                            $img.attr({
-                                'src':'packages/images/mp3_icons.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'jpeg':
-                            $img.attr({
-                                'src':'packages/images/jpeg_icons.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                        case 'jpg':
-                            $img.attr({
-                                'src':'packages/images/jpeg_icons.png',
-                                'rel':archivo.ruta,
-                                'title':archivo.name
-                            });
-                            break;
-                    }
-                    var $title = $('<label/>');
-                    var div = $("<div/>").addClass("col-md-4");
-                    div.append($img);
-                    div.append("<br>");
-                    div.append($title.text(archivo.nombre).css("word-wrap","break-word"));
-                    $("#archivos").append(div);
-                    $("#archivosUpload").removeClass('hide');
-                });
+                console.log(response);
+                if(response.archivos != null || response.archivos != undefined){
+                    $.each(response.archivos,function(i,archivo){
+                        var $img = $("<img/>");
+                        $img.attr({'title':archivo.nombre,
+                                   'style':'width:70px; height:70px;'});
+                        switch(archivo.tipo){
+                            case 'css':
+                                $img.attr({
+                                    'src':'packages/images/icon-css.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'js':
+                                $img.attr({
+                                    'src':'packages/images/icon-js.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'php':
+                                $img.attr({
+                                    'src':'packages/images/page_php.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'png':
+                                $img.attr({
+                                    'src':'packages/images/png_icons.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'gif':
+                                $img.attr({
+                                    'src':'packages/images/gif_icons.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'mp3':
+                                $img.attr({
+                                    'src':'packages/images/mp3_icons.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'jpeg':
+                                $img.attr({
+                                    'src':'packages/images/jpeg_icons.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                            case 'jpg':
+                                $img.attr({
+                                    'src':'packages/images/jpeg_icons.png',
+                                    'rel':archivo.ruta,
+                                    'title':archivo.name
+                                });
+                                break;
+                        }
+                        var $title = $('<label/>');
+                        var div = $("<div/>").addClass("col-md-4");
+                        div.append($img);
+                        div.append("<br>");
+                        div.append($title.text(archivo.nombre).css("word-wrap","break-word"));
+                        $("#archivos").append(div);
+                        $("#archivosUpload").removeClass('hide');
+                    });
+                    $curiosity.noty("El juego "+file.name+" se subio con exito","success");
+                }
+                else{
+                    $curiosity.noty(response.message,"warning");
+                }
             },
 
             init:function(){
@@ -677,8 +677,8 @@ $(document).ready(function() {
                     actividad.hasGame();
                     $("#subirJuego").prop('disabled',false);
                     $("#bytesSent").text("");
-                    $("#progress").text("El juego se subio con exito");
-                    $curiosity.noty("El juego "+file.name+" se subio con exito","success");
+                    $("#progress").text("");
+
                 });
 
                 this.on('sending',function(files,response){
