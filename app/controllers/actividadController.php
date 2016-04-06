@@ -356,7 +356,7 @@ class actividadController extends BaseController
                 return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->nombre));
             }
             catch(Exception $ex){
-                return Redirect::To('/cursosAdmin');
+                return Redirect::back();
             }
     }
     public function subirJuego($idActividad){
