@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  $curiosity.menu.setPaginaId("#menuAdminProfesor");
+
   $.ajax({
    url:'/getProfeInfo',
    method:'POST'
@@ -40,6 +42,7 @@ $(document).ready(function(){
       $("#ape_m").val('');
       $("#email").val('');
       $("#gustos").val('');
+      $("#foto").val('');
       var option = $("#escuela > option");
       $.each(option, function(){
         if($(this).val() == ''){
@@ -51,7 +54,7 @@ $(document).ready(function(){
     registro : {
       guardarAdd : function(){
         $("#enviarEnv").attr('disabled', 'disabled');
-        $("#enviarEnv").text('Cargando...');
+        $("#enviarEnv").text('Guardando...');
         var formData = new FormData($("#foto_profe")[0]);
         formData.append('nombre', $("#nombre").val());
         formData.append('apellido_paterno', $("#ape_p").val());
@@ -75,8 +78,6 @@ $(document).ready(function(){
                 $curiosity.noty(message, 'warning');
               });
             });
-            $("#enviarEnv").removeAttr('disabled');
-            $("#enviarEnv").text('Guardar');
           }
           else if(response[0] == 'success'){
             $("#cancelarEnv").removeAttr('disabled');
@@ -84,13 +85,17 @@ $(document).ready(function(){
             window.location.href='/adminProfesor';
           }
         })
+        .always(function(){
+          $("#enviarEnv").removeAttr('disabled');
+          $("#enviarEnv").html("<i class='fa fa-check'></i> Guardar");
+        })
         .fail(function(error) {
           console.log(error);
         });
       },
       guardarUpdate : function($id){
         $("#enviarEnv").attr('disabled', 'disabled');
-        $("#enviarEnv").text('Cargando...');
+        $("#enviarEnv").text('Guardando...');
         var formData = new FormData($("#foto_profe")[0]);
         formData.append('nombre', $("#nombre").val());
         formData.append('apellido_paterno', $("#ape_p").val());
@@ -119,6 +124,10 @@ $(document).ready(function(){
             $curiosity.noty("Modificado Exitosamente", "success");
             window.location.href='/adminProfesor';
           }
+        })
+        .always(function(){
+          $("#enviarEnv").removeAttr('disabled');
+          $("#enviarEnv").html("<i class='fa fa-check'></i> Guardar");
         })
         .fail(function(error) {
           console.log(error);

@@ -101,7 +101,7 @@
       </div>
     </form>
     <div class="form-group text-right">
-      <button type="button" class="btn btn-danger" id="cancelarEnv">
+      <button type="button" class="btn btn-warning" id="cancelarEnv">
         <i class="fa fa-remove"></i>
         Cancelar
       </button>
@@ -110,7 +110,7 @@
         data-inteligencia={{$obj_inteligencia[0]['id']}} id="enviarEnv"
         data-bloque={{$obj_bloque[0]['id']}}>
         <i class="fa fa-check"></i>
-        Enviar
+        Guardar
       </button>
     </div>
   </div>

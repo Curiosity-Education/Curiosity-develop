@@ -19,9 +19,20 @@ class escuelaController extends BaseController
         'nombre' => 'required',
         'logotipo' => 'required'
       );
-      $messages = array(
-        'required' => 'El :attribute es requerido'
-      );
+      $messages = [
+             "required"    =>  "Este campo :attribute es requerido",
+             "alpha"       =>  "Solo puedes ingresar letras",
+             "date"        =>  "Formato de fecha invalido",
+             "numeric"     =>  "Solo se permiten digitos",
+             "email"       =>  "Ingresa un formato de correo valido",
+             "unique"      =>  "Este usuario ya existe",
+             "integer"     =>  "Solo se permiten numeros enteros",
+             "exists"      =>  "El campo :attribute no existe en el sistema",
+             "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+             "integer"     =>  "Solo puedes ingresar numeros enteros",
+             "same"        =>  "Las contraseñas no coinciden",
+             "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+       ];
       $validar = Validator::make($formulario, $rules, $messages);
       if($validar->fails()){
         return $validar->messages();
@@ -63,9 +74,20 @@ class escuelaController extends BaseController
     $rules = array(
       'nombre' => 'required'
     );
-    $messages = array(
-      'required' => 'El :attribute es requerido'
-    );
+    $messages = [
+           "required"    =>  "Este campo :attribute es requerido",
+           "alpha"       =>  "Solo puedes ingresar letras",           
+           "date"        =>  "Formato de fecha invalido",
+           "numeric"     =>  "Solo se permiten digitos",
+           "email"       =>  "Ingresa un formato de correo valido",
+           "unique"      =>  "Este usuario ya existe",
+           "integer"     =>  "Solo se permiten numeros enteros",
+           "exists"      =>  "El campo :attribute no existe en el sistema",
+           "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+           "integer"     =>  "Solo puedes ingresar numeros enteros",
+           "same"        =>  "Las contraseñas no coinciden",
+           "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+     ];
     $validar = Validator::make($formulario, $rules, $messages);
     if($validar->fails()){
       return $validar->messages();
@@ -99,7 +121,7 @@ class escuelaController extends BaseController
       }
       else if($activo === 1){
         if($nombreEsc == $formulario['nombre']){
-          escuela::where('id', '=', $formulario['idUpdate'])->update(array(            
+          escuela::where('id', '=', $formulario['idUpdate'])->update(array(
             'logotipo' => $logo,
             'web' => $formulario['web']
           ));

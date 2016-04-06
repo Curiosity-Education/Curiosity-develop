@@ -92,13 +92,13 @@
       </div>
     </form>
     <div class="form-group text-right">
-      <button type="button" class="btn btn-danger" id="cancelarEnv">
+      <button type="button" class="btn btn-warning" id="cancelarEnv">
         <i class="fa fa-remove"></i>
         Cancelar
       </button>
       <button type="button" class="btn btn-primary" id="enviarEnv">
         <i class="fa fa-check"></i>
-        Enviar
+        Guardar
       </button>
     </div>
   </div>

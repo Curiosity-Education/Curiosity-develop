@@ -41,21 +41,21 @@ class padreController extends BaseController
             "fecha_expiracion"  =>"required|date_format:Y-m-d|after:$hoy"
 
         ];
-       $messages = [
-              "required"    =>  "Este campo es necesario",
-              "alpha"       =>  "Solo puedes ingresar letras",
-              "before"      =>  "la fecha que ingresaste tiene que ser menor al $date_min",
-              "date"        =>  "Formato de fecha invalido",
-              "numeric"     =>  "solo se permiten digitos",
-              "email"       =>  "ingresa un formato de correo valido",
-              "unique"      =>  "este usuario ya existe",
-              "integer"     =>  "solo se permiten numeros enteros",
-              "exists"      =>  "este campo no existe en el sistema",
-              "unique"      =>  "Este campo no esta disponible intente con otro valor",
-              "integer"     =>  "Solo puedes ingresar numeros enteros",
-              "same"        =>  "Las contraseñas no coinciden",
-              "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
-        ];
+        $messages = [
+               "required"    =>  "Este campo :attribute es requerido",
+               "alpha"       =>  "Solo puedes ingresar letras",
+               "before"      =>  "La fecha que ingresaste tiene que ser menor al $date_min",
+               "date"        =>  "Formato de fecha invalido",
+               "numeric"     =>  "Solo se permiten digitos",
+               "email"       =>  "Ingresa un formato de correo valido",
+               "unique"      =>  "Este usuario ya existe",
+               "integer"     =>  "Solo se permiten numeros enteros",
+               "exists"      =>  "El campo :attribute no existe en el sistema",
+               "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+               "integer"     =>  "Solo puedes ingresar numeros enteros",
+               "same"        =>  "Las contraseñas no coinciden",
+               "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+         ];
         try {
          $validator = Validator::make($datos,$rules,$messages);
         } catch (Exception $e) {

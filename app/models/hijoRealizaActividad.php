@@ -2,7 +2,7 @@
 /**
  *
  */
-class hijo_realiza_actividad extends Eloquent
+class hijoRealizaActividad extends Eloquent
 {
     protected $table ='hijo_realiza_actividades';
     protected $fillable =['puntaje','eficiencia','intervalo','promedio','fecha_hora'];

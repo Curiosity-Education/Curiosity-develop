@@ -70,7 +70,7 @@ $(document).ready(function() {
       guardarAdd : function(boton, direccion){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
         var color = Math.floor(Math.random()*7);
         var datos = {
           nombre : $("#nombre").val(),
@@ -86,7 +86,7 @@ $(document).ready(function() {
         })
         .done(function(response) {
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
           if($.isPlainObject(response)){
             $.each(response,function(index,value){
               $.each(value,function(i, message){
@@ -110,7 +110,7 @@ $(document).ready(function() {
       guardarUpdate : function(boton, direccion, id, estatusNow){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
         var color = Math.floor(Math.random()*7);
         var datos = {
           idUpdate : id,
@@ -125,7 +125,7 @@ $(document).ready(function() {
         })
         .done(function(response) {
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
           if($.isPlainObject(response)){
             $.each(response,function(index,value){
               $.each(value,function(i, message){

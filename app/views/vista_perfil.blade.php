@@ -1,10 +1,5 @@
  @extends('admin_base')
 @section('mi_css')
- <style>
-     .image-portada{
-         background:url(packages/images/videoFondo.jpg);
-     }
- </style>
  {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
  {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
@@ -71,8 +66,9 @@
               <div class="box box-primary">
                 <div class="box-body box-profile">
                   <div class="image-portada">
-                        <img style="cursor:pointer;" class="profile-user-img  img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
-                        <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>Nombre de usuario: <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
+                        <img style="cursor:pointer;" class="profile-user-img tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
+                        <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>
+                          <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
 
                   </div>
 
@@ -82,22 +78,20 @@
                   En esta sección se agregarán el
                   menú según el rol logueado
                  -->
-                  <ul class="list-group list-group-unbordered" id="menu-item-profile">
-                        <li class="list-group-item">
-                          <b>Juegos</b> <a class="pull-right">7</a>
-                        </li>
-
-                        <li class="list-group-item">
-                          <b>Mayor puntaje</b> <a class="pull-right" id="user_esp">1,322</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Calificación general</b> <a class="pull-right" id="user_ext">9.0</a>
-                        </li>
-
-                  </ul>
-                  <!-- /.Fin de Menú-Item-Profile -->
-
-                    <a href="#" class="btn btn-primary btn-block"><b><i class="fa fa-bar-chart"></i> Estadisticas </b></a>
+                 @if(Auth::user()->hasRole('padre'))
+                   <ul class="list-group list-group-unbordered" id="menu-item-profile">
+                     <li class="list-group-item">
+                       <b>Estatus</b>
+                       <a class="pull-right">
+                         <i class="fa fa-circle"></i>
+                       </a>
+                     </li>
+                   </ul>
+                   <!-- /.Fin de Menú-Item-Profile -->
+                   <a href="#" class="btn btn-primary btn-block">
+                   <b><i class="fa fa-credit-card-alt"></i> Información de Pago</b>
+                   </a>
+                 @endif
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
@@ -107,58 +101,64 @@
                   <h3 class="box-title">Sobre mi</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Email</strong>
-                  <p class="text-muted">
-                    @if(Auth::User()->hasRole('padre'))
-                      {{$padre->email}}
-                    @endif
-                  </p>
-
-                  <hr>
-
-
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                    <p>HEY!! {{Auth::user()->username}}, bienvenido al mundo <b>Curiosity</b> !!! </p>
+                  @if(Auth::user()->hasRole('padre'))
+                   <strong><i class="fa fa-user margin-r-5"></i>  E-mail</strong>
+                   <p class="text-muted">
+                     <h6><samll>{{Auth::user()->persona()->first()->padre()->first()->email}}</samll></h6>
+                   </p>
+                   <hr>
+                 @endif
+                 <!-- <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                 <p>HEY!! {{Auth::user()->username}}, bienvenido al mundo <b>Curiosity</b> !!! </p> -->
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                 <li class="active"><a href="#activity" data-toggle="tab">Buzón de quejas</a></li>
-                 <li><a href="#settings" data-toggle="tab">Modificar mi Perfil</a></li>
+                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                   <li class="active">
+                     <a href="#hijosPerfil" data-toggle="tab">
+                       <i class="fa fa-group"></i>
+                       Mis Hijos
+                    </a>
+                  </li>
+                 @endif
+                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                  <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
+                    <a href="#alerta" data-toggle="tab">
+                      <i class="fa fa"></i>
+                      Alertas
+                    </a>
+                  </li>
+                  @endif
+                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                   <li id="data">
+                     <a href="#graficas" data-toggle="tab">
+                       <i class="fa fa-bar-chart"></i>
+                       Puntajes
+                     </a>
+                   </li>
+                   @endif
+                  @if(Auth::user()->hasRole('hijo'))
+                    <li class="active">
+                      <a href="#bestPuntajes" data-toggle="tab">
+                        <i class="fa fa-star"></i>
+                        Mejores Puntajes
+                      </a>
+                    </li>
+                  @endif
                  @if(Auth::User()->hasRole('padre'))
                    <li><a href="#reg-hijos" data-toggle="tab">Registro de hijos</a></li>
                  @endif
+                 <li><a href="#settings" data-toggle="tab">Modificar mi Perfil</a></li>
                 </ul>
                 <div class="tab-content">
-                   <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                        <div class="post">
-                          <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="/packages/images/perfil/{{$perfil->foto_perfil}}"  alt="user image">
-                            <span class='username'>
-                              <a href="javascript::void(0)">{{Auth::user()->username}}</a>
-                            </span>
-                          </div><!-- /.user-block -->
-                          <form class='form-horizontal' id="frm_post">
-                            <div class='form-group margin-bottom-none'>
-                              <div class='col-sm-9'>
-                                <textarea class="form-control" rows="10"  placeholder="Publicar queja" name="content" id="content"></textarea>
-                              </div>
-                              <div class='col-sm-3'>
-                                <button class='btn btn-primary pull-right btn-block btn-sm' type="button" id="pub_post">Publicar</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div><!-- /.post -->
-                        <hr>
-                    <div id="posters"></div>
+                  @if(Auth::user()->hasRole('hijo'))
+                  <div class="active tab-pane" id="bestPuntajes">
 
-                    </div>
-
-
-
+                  </div>
+                  @endif
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" id="frm_user">
                       <div id="wizard1">
@@ -490,9 +490,87 @@
                         </div>
                     </div><!-- /. fin tab registro de hijos-->
                 </div><!-- /.tab-content -->
+                @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+              <section class="active tab-pane" id="hijosPerfil">
+                <div class="container-fluid">
+                  <div class="row">
+                    <br>
+                    @foreach($datosHijos as $hijo)
+                      <div class="col-xs-4 col-md-3">
+                        <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
+                        class="img-responsive img-circle tooltipShow"
+                        title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
+                        <center><h4>{{$hijo->username}}</h4></center>
+                        <br>
+                      </div>
+                    @endforeach
+                    <br><br>
+                  </div>
+                </div>
+              </section>
+              @endif
+
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+              <section class="tab-pane" id="alerta">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="helperTextAlerta text-justify">
+                        <br>
+                        <h4><b>Bienvenido a la zona de Alertas.</b></h4>
+                        En esta zona se mostrarán todos tus hijos que se encuentren con un puntaje por debajo del promedio dependiendo de las actividades que haya realizado.<br><br>
+                        Curiosity te brinda a ti como padre, un archivo y un video que te servirán como ayuda para que, si así lo deseas puedas guiar a tu hijo en el tema que esta presentando dificultades especificamente.
+                      </div>
+                      <div class="alertaBox">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              @endif
+
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+              <section class="tab-pane" id="graficas">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="helperTextAlerta text-justify">
+                        <br>
+                        <h4><b>Bienvenido a la zona de Puntajes.</b></h4>
+                        En esta sección usted como padre, podra observar un par de gráficas en las cuales se despliega el puntaje máximo y mínimo obtenido de cada uno de sus hijos durante todo el tiempo de uso de la plataforma.
+                        <br><br>
+                      </div>
+                      <div class="grafContent">
+                        <center>
+                          <div class="grafMax"></div>
+                          <div class="grafMin"></div>
+                        </center
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              @endif
               </div><!-- /.nav-tabs-custom -->
             </div><!-- /.col -->
           </div><!-- /.row -->
+
+          <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="">Video de Estudio</h4>
+                </div>
+                <div class="modal-body">
+                  <!-- <iframe src="/packages/video/videoComputadorcita.mp4" controls id="videoApoyo" class="img-responsive" preload></iframe> -->
+                  <video  controls class="img-responsive" id="setVideo"></video>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
 @stop
 
 @section('mi_js')
@@ -505,9 +583,20 @@
 {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
+{{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
 {{HTML::script('/packages/js/curiosity/alert.js')}}
 {{HTML::script('/packages/cropper/cropper.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
+@if(Auth::user()->hasRole('padre'))
+  {{HTML::script("/packages/js/curiosity/perfilEstadisticas.js")}}
+@endif
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $curiosity.call.getEstandarte(1, 1);
+  });
+</script>
+
 <script>
   $(function ()
   {

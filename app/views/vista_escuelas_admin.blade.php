@@ -84,7 +84,7 @@
       </button>
       <button type="button" class="btn btn-primary" id="enviarEnv">
         <i class="fa fa-check"></i>
-        Enviar
+        Guardar
       </button>
     </div>
   </div>

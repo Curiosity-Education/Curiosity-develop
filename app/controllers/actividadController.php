@@ -47,10 +47,29 @@ class actividadController extends BaseController
       $formulario = Input::all();
       // creamos las reglas de validacion
       $reglas = array(
-        'nombre' => 'required'
+        'nombre' => 'required',
+        'objetivo' => 'required',
+        'code_embed' => 'required',
+        'archivoPDF' => 'required',
+        'profesores_id' => 'required'
       );
+
+      $messages = [
+             "required"    =>  "Este campo :attribute es requerido",
+             "alpha"       =>  "Solo puedes ingresar letras",
+             "date"        =>  "Formato de fecha invalido",
+             "numeric"     =>  "Solo se permiten digitos",
+             "email"       =>  "Ingresa un formato de correo valido",
+             "unique"      =>  "Este usuario ya existe",
+             "integer"     =>  "Solo se permiten numeros enteros",
+             "exists"      =>  "El campo :attribute no existe en el sistema",
+             "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+             "integer"     =>  "Solo puedes ingresar numeros enteros",
+             "same"        =>  "Las contraseñas no coinciden",
+             "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+       ];
       // validamos el formulario segun las reglas establecidas
-      $validar = Validator::make($formulario, $reglas);
+      $validar = Validator::make($formulario, $reglas, $messages);
       // verificamos que los datos del formulario cumplan las reglas
       // de validacion
       if($validar->fails()){
@@ -84,7 +103,7 @@ class actividadController extends BaseController
 
           $objeto = new actividad($formulario);
           $objeto->imagen = "default.png";
-          $objeto->pdf = is_null($formulario['archivoPDF']) ? null : $formulario['archivoPDF']->getClientOriginalName();
+          $objeto->pdf = $file->getClientOriginalName();
           $objeto->save();
           $video = new video($formulario);
           $video->actividad_id = $objeto->id;
@@ -163,8 +182,23 @@ class actividadController extends BaseController
     $reglas = array(
       'nombre' => 'required'
     );
+
+    $messages = [
+           "required"    =>  "Este campo :attribute es requerido",
+           "alpha"       =>  "Solo puedes ingresar letras",
+           "date"        =>  "Formato de fecha invalido",
+           "numeric"     =>  "Solo se permiten digitos",
+           "email"       =>  "Ingresa un formato de correo valido",
+           "unique"      =>  "Este usuario ya existe",
+           "integer"     =>  "Solo se permiten numeros enteros",
+           "exists"      =>  "El campo :attribute no existe en el sistema",
+           "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+           "integer"     =>  "Solo puedes ingresar numeros enteros",
+           "same"        =>  "Las contraseñas no coinciden",
+           "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+     ];
     // validamos el formulario segun las reglas
-    $validar = Validator::make($formulario, $reglas);
+    $validar = Validator::make($formulario, $reglas, $messages);
     // verificamos si el formualrio ha sido validado
     if($validar->fails()){
       return $validar->messages();
@@ -332,7 +366,7 @@ class actividadController extends BaseController
         }
         else{
               try{
-                        
+
                         //---Guardamos el id de la actividad en una session para usarla luego
                         Session::put('idActividad',$idActividad);
                         //Validamos que el input no este vacio
@@ -518,6 +552,280 @@ class actividadController extends BaseController
         else
             return Response::json(array('message'=>'error'));
     }
+
+    function getEstadisticasHijo(){
+    $formulario = Input::get('data');
+
+    $ids = padre::join('hijos', 'hijos.padre_id', '=' ,'padres.id')
+    ->join('personas', 'personas.id', '=', 'hijos.persona_id')
+    ->join('users', 'users.id', '=', 'personas.user_id')
+    ->where('padres.id', '=', $formulario['id'])
+    ->where('users.active', '=', 1)
+    ->select('hijos.id')->get();
+
+    $rel_hijo_act = array();
+    $idHijo_idAct = array();
+    $promedios = array();
+    $alertas = array();
+
+    foreach ($ids as $id => $valor) {
+      $actividades = hijoRealizaActividad::join('actividades', 'actividades.id', '=', 'hijo_realiza_actividades.actividad_id')
+      ->where('hijo_id', '=', $valor['id'])
+      ->select('hijo_realiza_actividades.actividad_id', 'actividades.nombre', 'hijo_realiza_actividades.hijo_id')
+      ->get();
+      array_push($rel_hijo_act, $actividades);
+    }
+
+    foreach ($rel_hijo_act as $key => $value) {
+      foreach ($value as $key2 => $value2) {
+        $flag = true;
+        $cont = 0;
+        foreach ($idHijo_idAct as $key3 => $value3) {
+          $cont++;
+        }
+        if($cont > 0){
+          foreach ($idHijo_idAct as $key4 => $value4) {
+            if($value2['hijo_id'] === $value4['hijo_id'] && $value2['actividad_id'] === $value4['actividad_id']){
+              $flag = false;
+            }
+          }
+        }
+
+        if($flag === true){
+          array_push($idHijo_idAct, array('hijo_id' => $value2['hijo_id'], 'actividad_id' => $value2['actividad_id']));
+        }
+      }
+    }
+
+    foreach ($idHijo_idAct as $key => $value) {
+      $datos = hijoRealizaActividad::where('actividad_id', '=', $value['actividad_id'])
+      ->where('hijo_id', '=', $value['hijo_id'])->get();
+
+      $sp = 0; // sumatoria de promedios del juego
+      $cp = 0; // cantidad de promedios del juego
+      foreach ($datos as $dato => $value) {
+        // Sumamos uno mas a la cantidad por cada iteración
+        $cp++;
+        // Sumamos el promedio obtenido a la sumatoria
+        // de promedios general para el calculo
+        $sp = $sp + $value['promedio'];
+      }
+      // Calculamos la media dividiendo
+      // la suma total de promedios entre
+      // la cantidad de promedios registrados
+      // en el juego
+      $m = round($sp/$cp);
+
+      $usernameHijo = hijo::join('personas', 'personas.id', '=', 'hijos.persona_id')
+      ->join('users', 'users.id', '=', 'personas.user_id')
+      ->where('hijos.id', '=', $value['hijo_id'])
+      ->pluck('username');
+
+      $actividadNombre = actividad::where('id', '=', $value['actividad_id'])->pluck('nombre');
+
+      // añadimos la desviacion estandar calculada
+      // al arreglo de promedios por juego segun
+      // el hijo
+      array_push($promedios, array(
+        'usernameHijo' => $usernameHijo,
+        'actividadNombre' => $actividadNombre,
+        'promedioGral' => $m,
+        'actividad_id' => $value['actividad_id'],
+        'hijo_id' => $value['hijo_id']
+      ));
+    }
+
+    foreach ($promedios as $key => $value) {
+      $datos = hijoRealizaActividad::where('actividad_id', '=', $value['actividad_id'])->get();
+      $sp = 0; // sumatoria de promedios del juego
+      $cp = 0; // cantidad de promedios del juego
+      foreach ($datos as $dato => $value2) {
+        // Sumamos uno mas a la cantidad por cada iteración
+        $cp++;
+        // Sumamos el promedio obtenido a la sumatoria
+        // de promedios general para el calculo
+        $sp = $sp + $value2['promedio'];
+      }
+      // Calculamos la media dividiendo
+      // la suma total de promedios entre
+      // la cantidad de promedios registrados
+      // en el juego
+      $m = round($sp/$cp);
+      $dpmTotal = 0; // total de diferencias al cuadrado
+      foreach ($datos as $dato => $value2) {
+        // calculamos la diferencia del promedio
+        // a la media por cada promedio del juego
+        $dpm = $value2['promedio'] - $m;
+        // sumamos al total de distancias de promedios
+        // a la media el resultado anterior elevado al
+        // cuadrado
+        $dpmTotal = $dpmTotal + (pow($dpm, 2));
+      }
+      // calculamos la media de la suma total de las diferencias
+      // de los promedios a la media elevados al cuadrado (Varianza)
+      $varianza = $dpmTotal / $cp;
+      // Calculamos la desviacion estandar que se
+      // calcula sacando la raiz cuadrada de la
+      // varianza calculada
+      $desvEst = round(Sqrt($varianza));
+      if($value['promedioGral'] < ($m - $desvEst)){
+        // selecccionamos los archivos que serviran
+        // ayuda para el padre cuando su hijo se
+        // encuentre debajo de la desviacion estandar
+        // en la actividad
+        $ayudaPadre = tema::join('actividades', 'actividades.tema_id', '=', 'temas.id')
+        ->join('videos', 'videos.actividad_id', '=', 'actividades.id')
+        ->where('actividades.id', '=', $value['actividad_id'])
+        ->select('actividades.nombre as actividad_nombre', 'pdf', 'code_embed', 'temas.nombre as tema_nombre')
+        ->get();
+        // añadimos la información de la ayuda al arreglo
+        // de ayudas
+        array_push($alertas, array(
+          'ayuda' => $ayudaPadre,
+          'usernameHijo' => $value['usernameHijo'],
+          'actividadNombre' => $value['actividadNombre']
+        ));
+      }
+    }
+    return $promedios;
+    // verificamos si el arreglo de ayuda se encuentra
+    // vacio, esto lo hacemos recorriendolo
+    $contAlerta = 0;
+    foreach ($alertas as $key) {
+      $contAlerta++;
+    }
+
+    // si el arreglo se encuentra lleno entonces
+    // regresamos el arreglo con las alertas
+    if($contAlerta > 0){
+      return $alertas;
+    }
+    // Si el arreglo se encuentra vacio entonces
+    // retornamos un objeto JSON con un Succes
+    // indicando que todo esta bien
+    else{
+      return Response::json(array(0=>"success"));
+    }
+  }
+
+  function getEstandarte(){
+      $formulario = Input::get('data');
+      $datos = hijoRealizaActividad::where('actividad_id', '=', $formulario['actividad_id'])
+      ->where('hijo_id', '=', $formulario['hijo_id'])->get();
+      $sp = 0; // sumatoria de promedios del juego
+      $cp = 0; // cantidad de promedios del juego
+      foreach ($datos as $dato => $value) {
+        // Sumamos uno mas a la cantidad por cada iteración
+        $cp++;
+        // Sumamos el promedio obtenido a la sumatoria
+        // de promedios general para el calculo
+        $sp = $sp + $value['promedio'];
+      }
+      // Calculamos la media dividiendo
+      // la suma total de promedios entre
+      // la cantidad de promedios registrados
+      // en el juego
+      $mediaHijo = round($sp/$cp); // Media (promedio del juego)
+      // --------------------------------------------------------
+      $datos = hijoRealizaActividad::where('actividad_id', '=', $formulario['actividad_id'])->get();
+
+      $sp = 0; // sumatoria de promedios del juego
+      $cp = 0; // cantidad de promedios del juego
+      foreach ($datos as $dato => $value) {
+        // Sumamos uno mas a la cantidad por cada iteración
+        $cp++;
+        // Sumamos el promedio obtenido a la sumatoria
+        // de promedios general para el calculo
+        $sp = $sp + $value['promedio'];
+      }
+      // Calculamos la media dividiendo
+      // la suma total de promedios entre
+      // la cantidad de promedios registrados
+      // en el juego
+      $mediaJugo = round($sp/$cp);
+      $dpmTotal = 0; // total de diferencias al cuadrado
+      foreach ($datos as $dato => $value) {
+        // calculamos la diferencia del promedio
+        // a la media por cada promedio del juego
+        $dpm = $value['promedio'] - $mediaJugo;
+        // sumamos al total de distancias de promedios
+        // a la media el resultado anterior elevado al
+        // cuadrado
+        $dpmTotal = $dpmTotal + (pow($dpm, 2));
+      }
+      // calculamos la media de la suma total de las diferencias
+      // de los promedios a la media elevados al cuadrado (Varianza)
+      $varianza = $dpmTotal / $cp;
+      // Calculamos la desviacion estandar que se
+      // calcula sacando la raiz cuadrada de la
+      // varianza calculada
+      $desviacion = round(Sqrt($varianza));
+
+      // Verificamos si el promedio del juego del niño se
+      // encuentra dentro de la desviacion estandar,
+      // por debajo o bien sobre ella
+      $rangoAbajo = ($desviacion - $mediaJugo);
+      $rangoArriba = ($desviacion + $mediaJugo);
+      if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
+        return Response::json(array(0=>"plata"));
+      }
+      else if($mediaHijo < $rangoAbajo){
+        return Response::json(array(0=>"bronce"));
+      }
+      else{
+        return Response::json(array(0=>"oro"));
+      }
+    }
+
+    function grafPuntajes(){
+      $formulario = Input::get('data');
+
+      $ids = padre::join('hijos', 'hijos.padre_id', '=' ,'padres.id')
+      ->join('personas', 'personas.id', '=', 'hijos.persona_id')
+      ->join('users', 'users.id', '=', 'personas.user_id')
+      ->where('padres.id', '=', $formulario['id'])
+      ->where('users.active', '=', 1)
+      ->select('hijos.id')->get();
+
+      // $rel_hijo_act = array();
+      // $idHijo_idAct = array();
+      //
+      // foreach ($ids as $id => $valor) {
+      //   $actividades = hijoRealizaActividad::join('actividades', 'actividades.id', '=', 'hijo_realiza_actividades.actividad_id')
+      //   ->where('hijo_id', '=', $valor['id'])
+      //   ->select('hijo_realiza_actividades.actividad_id', 'actividades.nombre', 'hijo_realiza_actividades.hijo_id')
+      //   ->get();
+      //   array_push($rel_hijo_act, $actividades);
+      // }
+      $puntajes = array();
+      foreach ($ids as $obj => $id) {
+        $max = hijoRealizaActividad::where('hijo_id', '=', $id['id'])->max('promedio');
+        $min = hijoRealizaActividad::where('hijo_id', '=', $id['id'])->min('promedio');
+        $actMax = actividad::join('hijo_realiza_actividades', 'hijo_realiza_actividades.actividad_id', '=',       'actividades.id')
+                ->where('hijo_realiza_actividades.hijo_id', '=', $id['id'])
+                ->where('hijo_realiza_actividades.promedio', '=', $max)
+                ->pluck('actividades.nombre');
+        $actMin = actividad::join('hijo_realiza_actividades', 'hijo_realiza_actividades.actividad_id', '=',       'actividades.id')
+                ->where('hijo_realiza_actividades.hijo_id', '=', $id['id'])
+                ->where('hijo_realiza_actividades.promedio', '=', $min)
+                ->pluck('actividades.nombre');
+        $hijo = hijo::join('personas', 'personas.id', '=', 'hijos.persona_id')
+                ->where('hijos.id', '=', $id['id'])
+                ->select('personas.nombre', 'personas.apellido_paterno', 'personas.apellido_materno')
+                ->get();
+        array_push($puntajes, array(
+          'hijo' => $hijo[0]['nombre']." ".$hijo[0]['apellido_paterno'],
+          'maximo' => $max,
+          'minimo' => $min,
+          'actMax' => $actMax,
+          'actMin' => $actMin
+        ));
+      }
+
+      return $puntajes;
+
+    }
+
 }
 
 

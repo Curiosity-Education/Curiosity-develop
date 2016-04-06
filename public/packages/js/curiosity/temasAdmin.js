@@ -90,7 +90,7 @@ $(document).ready(function() {
       guardarAdd : function(boton, direccion, bloque){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
         var color = Math.floor(Math.random()*7);
         var datos = {
           nombre : $("#nombre").val(),
@@ -132,7 +132,7 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // actualiza un objeto enviando como parametros
@@ -143,7 +143,7 @@ $(document).ready(function() {
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
         var datos = {
           idUpdate : id,
           nombre : $("#nombre").val(),
@@ -183,7 +183,7 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // elimina el objeto seleccionado enviando el id del

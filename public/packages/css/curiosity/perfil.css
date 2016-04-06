@@ -11,7 +11,7 @@ label.error:before
 	font-family: tahoma;
     font-weight: bold;
     font-size: 1.3em;
-    
+
 }
 
 button[data-dismiss="modal"]{
@@ -30,7 +30,7 @@ button[data-dismiss="modal"]{
 
 #image{
    max-height: 300px;
-    
+
 }
 .modal-body>img {
 	width: 100%!important;
@@ -191,4 +191,55 @@ background: -o-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 
 background: -ms-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
 background: linear-gradient(135deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+}
+
+/*-------------------------------------*/
+.graf{
+  background-color: rgba(164, 164, 164, 0.5);
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.graficaBox{
+  margin-top: 20px;
+}
+
+.felicitacionHijos, .alertaHijo{
+  background-image: url(/packages/images/fondos/fondo2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 30px;
+  border: solid 2px rgba(0, 0, 0, 0.35);
+  font-weight: normal !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.guiapdf, .guiavideo{
+  width: 150px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.helperTextAlerta{
+  font-weight: normal;
+  padding: 10px;
+}
+
+.grafContent{
+  background-image: url(/packages/images/fondos/fondo2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: solid 2px rgba(201, 201, 201, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.grafMin{
+  margin-top: 30px;
+  /*margin-bottom: 30px;*/
 }

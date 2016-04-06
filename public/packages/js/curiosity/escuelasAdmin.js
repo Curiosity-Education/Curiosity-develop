@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $curiosity.menu.setPaginaId("#menuAdminNivel");
+  $curiosity.menu.setPaginaId("#menuAdminEscuela");
 
 // creamos el objeto general en el que
 // se declararan las funciones a utilizar
@@ -49,7 +49,7 @@ $(document).ready(function() {
       guardarAdd : function(boton){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Cargando...');
+        $btnEnviar.text('Guardando...');
         var formData = new FormData($("#formLogo")[0]);
         formData.append('nombre', $("#nombre").val());
         formData.append('web', $("#web").val());
@@ -89,7 +89,7 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // actualiza un objeto enviando como parametros
@@ -100,7 +100,7 @@ $(document).ready(function() {
       guardarUpdate : function(boton, id){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Cargando...');
+        $btnEnviar.text('Guardando...');
         var formData = new FormData($("#formLogo")[0]);
         formData.append('nombre', $("#nombre").val());
         formData.append('web', $("#web").val());
@@ -140,39 +140,41 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
       remove : function(miId){
-        var datos = {
-          id : miId
-        };
-        $.ajax({
-          url: '/removeEscuela',
-          type: 'POST',
-          data: {data: datos}
-        })
-        .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
+        var funcionRemover = function(){
+          var datos = {
+            id : miId
+          };
+          $.ajax({
+            url: '/removeEscuela',
+            type: 'POST',
+            data: {data: datos}
+          })
+          .done(function(response) {
+            if($.isPlainObject(response)){
+              $.each(response,function(index,value){
+                $.each(value,function(i, message){
+                  $curiosity.noty(message, 'warning');
+                });
               });
-            });
-          }
-          else if(response[0] == 'success'){
-            $("#"+miId).hide('slow', function() {
-              $(this).remove();
-            });
-            escuela.hideAdmin();
-            $curiosity.noty("Eliminado Correctamente", "success");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        });
+            }
+            else if(response[0] == 'success'){
+              $("#"+miId).hide('slow', function() {
+                $(this).remove();
+              });
+              escuela.hideAdmin();
+            }
+          })
+          .fail(function(error) {
+            console.log(error);
+          });
+        }
+        $curiosity.notyConfirm(funcionRemover);
       }
     }
   };

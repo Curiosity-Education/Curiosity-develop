@@ -130,7 +130,7 @@
     </form>
     <br>
     <div class="form-group text-right">
-      <button type="button" class="btn btn-danger" id="cancelarEnv">
+      <button type="button" class="btn btn-warning" id="cancelarEnv">
         <i class="fa fa-remove"></i>
         Cancelar
       </button>
@@ -140,7 +140,7 @@
         data-bloque={{$obj_bloque[0]['id']}}
         data-tema={{$obj_tema[0]['id']}}>
         <i class="fa fa-check"></i>
-        Enviar
+        Guardar
       </button>
     </div>
   </div>

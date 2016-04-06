@@ -46,8 +46,23 @@ class temaController extends BaseController
       $reglas = array(
         'nombre' => 'required'
       );
+
+      $messages = [
+             "required"    =>  "Este campo :attribute es requerido",
+             "alpha"       =>  "Solo puedes ingresar letras",
+             "date"        =>  "Formato de fecha invalido",
+             "numeric"     =>  "Solo se permiten digitos",
+             "email"       =>  "Ingresa un formato de correo valido",
+             "unique"      =>  "Este usuario ya existe",
+             "integer"     =>  "Solo se permiten numeros enteros",
+             "exists"      =>  "El campo :attribute no existe en el sistema",
+             "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+             "integer"     =>  "Solo puedes ingresar numeros enteros",
+             "same"        =>  "Las contraseñas no coinciden",
+             "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+       ];
       // validamos el formulario segun las reglas establecidas
-      $validar = Validator::make($formulario, $reglas);
+      $validar = Validator::make($formulario, $reglas, $messages);
       // verificamos que los datos del formulario cumplan las reglas
       // de validacion
       if($validar->fails()){
@@ -127,8 +142,23 @@ class temaController extends BaseController
     $reglas = array(
       'nombre' => 'required'
     );
+
+    $messages = [
+           "required"    =>  "Este campo :attribute es requerido",
+           "alpha"       =>  "Solo puedes ingresar letras",           
+           "date"        =>  "Formato de fecha invalido",
+           "numeric"     =>  "Solo se permiten digitos",
+           "email"       =>  "Ingresa un formato de correo valido",
+           "unique"      =>  "Este usuario ya existe",
+           "integer"     =>  "Solo se permiten numeros enteros",
+           "exists"      =>  "El campo :attribute no existe en el sistema",
+           "unique"      =>  "El campo :attribute no esta disponible intente con otro valor",
+           "integer"     =>  "Solo puedes ingresar numeros enteros",
+           "same"        =>  "Las contraseñas no coinciden",
+           "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
+     ];
     // validamos el formulario segun las reglas
-    $validar = Validator::make($formulario, $reglas);
+    $validar = Validator::make($formulario, $reglas, $messages);
     // verificamos si el formualrio ha sido validado
     if($validar->fails()){
       return $validar->messages();

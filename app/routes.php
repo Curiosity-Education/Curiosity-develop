@@ -47,7 +47,7 @@ Route::group(array('before' => 'auth'), function(){
 	Route::post('/remote-username-hijo','userController@remoteUsernameHijo');
         Route::post('/regHijo','hijoController@addHijo');
         Route::post('/foto','perfilController@cutImage');
-        
+
         Route::group(array('before' => 'realizar_actividades'),function(){
           Route::get('/nivel', 'nivelController@verPaginaInWeb');
           Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
@@ -106,33 +106,10 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/removeProfesor', 'profesorController@remove');
         Route::post('/getProfeInfo', 'profesorController@getProfeInfo');
 
-
-        Route::get('/operaciones', function(){
-          $idAuth = Auth::user()->id;
-          $perfil = User::find($idAuth)->perfil;
-          $persona = User::find($idAuth)->persona;
-          return View::make('juegos.operaciones_aritmeticas')->with(array('perfil' => $perfil, 'persona' => $persona));
-        });
-        Route::get('/menor-mayor', function(){
-          $idAuth = Auth::user()->id;
-          $perfil = User::find($idAuth)->perfil;
-          $persona = User::find($idAuth)->persona;
-          return View::make('juegos.de-menor-a-mayor')->with(array('perfil' => $perfil, 'persona' => $persona));
-        });
-        Route::get('/multiplicaciones', function(){
-          $idAuth = Auth::user()->id;
-          $perfil = User::find($idAuth)->perfil;
-          $persona = User::find($idAuth)->persona;
-          return View::make('juegos.multiplicaciones')->with(array('perfil' => $perfil, 'persona' => $persona));
-        });
-        Route::get('/sumas-restas', function(){
-          $idAuth = Auth::user()->id;
-          $perfil = User::find($idAuth)->perfil;
-          $persona = User::find($idAuth)->persona;
-          return View::make('juegos.sumas-restas')->with(array('perfil' => $perfil, 'persona' => $persona));
-        });
-
-
+        // Estadisticas
+        Route::post('/grafPuntajes', 'actividadController@grafPuntajes');
+        Route::post('/getEstandarte', 'actividadController@getEstandarte');
+        Route::post('/getEstadisticasHijo', 'actividadController@getEstadisticasHijo');
 
     });
 

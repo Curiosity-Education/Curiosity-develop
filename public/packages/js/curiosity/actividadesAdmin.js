@@ -60,11 +60,12 @@ $(document).ready(function() {
       $("#nombre").val("");
       $("#descripcion").val("");
       $("#video").val("");
+      $("#archivoPDF").val("");
       $.each($('#profesores > option'), function(index, obj){
       if($(this).val() == ""){
-        $(this).attr('selected', 'selected');
-      }
-    });
+          $(this).attr('selected', 'selected');
+        }
+      });
     },
     // funcion para mostrar el formulario
     // de administracion y ocultar los cuadros
@@ -133,7 +134,7 @@ $(document).ready(function() {
       guardarAdd : function(boton, direccion, tema){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
         var color = Math.floor(Math.random()*7);
         var formData = new FormData($("#formPDF")[0]);
         formData.append('nombre', $("#nombre").val());
@@ -179,7 +180,7 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // actualiza un objeto enviando como parametros
@@ -190,7 +191,7 @@ $(document).ready(function() {
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Enviando...');
+        $btnEnviar.text('Guardando...');
 
         var formData = new FormData($("#formPDF")[0]);
         formData.append('nombre', $("#nombre").val());
@@ -236,39 +237,41 @@ $(document).ready(function() {
         })
         .always(function(){
           $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Enviar");
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
       remove : function(miId){
-        var datos = {
-          id : miId
-        };
-        $.ajax({
-          url: '/removeActividad',
-          type: 'POST',
-          data: {data: datos}
-        })
-        .done(function(response) {
-          console.log(response);
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
+        var funcionRemover = function(){
+          var datos = {
+            id : miId
+          };
+          $.ajax({
+            url: '/removeActividad',
+            type: 'POST',
+            data: {data: datos}
+          })
+          .done(function(response) {
+            console.log(response);
+            if($.isPlainObject(response)){
+              $.each(response,function(index,value){
+                $.each(value,function(i, message){
+                  $curiosity.noty(message, 'warning');
+                });
               });
-            });
-          }
-          else if(response[0] == 'success'){
-            $("[data-id-remove="+miId+"]").hide('slow', function() {
-              $(this).remove();
-            });
-            $curiosity.noty("Eliminado Correctamente", "success");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        });
+            }
+            else if(response[0] == 'success'){
+              $("[data-id-remove="+miId+"]").hide('slow', function() {
+                $(this).remove();
+              });
+            }
+          })
+          .fail(function(error) {
+            console.log(error);
+          });
+        }
+        $curiosity.notyConfirm(funcionRemover);
       },
       changeImagen : function(id){
         var formData = new FormData($("#imagenForm")[0]);
@@ -426,7 +429,7 @@ $(document).ready(function() {
   $("#viewSection").on('click', '.objeto > .box > .box-footer > .row > div > .btnIn',function(event) {
     if($(this).attr('data-location-game') != undefined)
        window.location.href=$(this).attr('data-location-game');
-    else 
+    else
        $curiosity.noty("Actividad sin juego aun","warning");
   });
 
@@ -534,7 +537,7 @@ $(document).ready(function() {
                                         $curiosity.noty("Se ha eliminado el juego con exito","success");
                                         desplegable=false;
                                         $("#actividades").children('div').each(function(i,objeto){
-                                            
+
                                             $(objeto).removeAttr('data-has-game');
                                             $(objeto).removeAttr('title');
                                         });
@@ -650,11 +653,11 @@ $(document).ready(function() {
                         urls='/asignar/juego/'+$("#subir_juego").attr('data-id-actividad');
                         this.options.url = urls;
                         fileAdded=file;
-                        //Evento al agregar un archivo 
-                        var toload = $("#toload").text(); 
+                        //Evento al agregar un archivo
+                        var toload = $("#toload").text();
                         var total = parseFloat(toload) + 1;
                         $("#toload").text(total);
-                   
+
                         $("#removeFile").attr('disabled',false);
                 });
                 this.on('complete',function(file){
@@ -664,9 +667,9 @@ $(document).ready(function() {
                     $("#toload").text(0);
                     $("#subirJuego").empty();
                     $("#subirJuego").append("<i class='fa fa-upload'></i> Subir Juego");
-                    
+
                 });
-                    
+
                 this.on("maxfilesexceeded",function(file){
                     $curiosity.noty("Demasiado grande","warning");
                 });
@@ -677,13 +680,13 @@ $(document).ready(function() {
                     $("#progress").text("El juego se subio con exito");
                     $curiosity.noty("El juego "+file.name+" se subio con exito","success");
                 });
-                
+
                 this.on('sending',function(files,response){
                     $("#subirJuego").prop('disabled',true);
                     $("#removeFile").attr('disabled',true);
                     $("#subirJuego").text('Subiendo archivo...');
                 });
-                
+
             },
             uploadprogress: function(file, progress, bytesSent) {
                 // Display the progress
