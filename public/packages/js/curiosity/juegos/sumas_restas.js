@@ -1,4 +1,4 @@
-﻿$(document).ready(function() {
+$(document).ready(function() {
 
   var objetivo = "Decide qué círculo tiene el resultado más alto y selecciónalo. Si los resultados son iguales, toca el botón con el signo de igual. Este juego ayuda a desarrollar tu habilidad aritmética y pone a prueba tu capacidad para realizar cálculos básicos. Recuerda siempre intentar hacer una puntuación por encima de la anterior.";
 
@@ -204,6 +204,11 @@ function calcOperacion_2(){
         $juego.setPuntosMaxInicio(puntosMaximos);
         $juego.setEficienciaMaxInicio(eficienciaNow);
       }
+      //mandar datos al server
+        $curiosity.call.setData.juego({eficiencia:eficienciaNow,
+                                       puntaje:puntajeNow,
+                                       promedio:(puntajeNow*eficienciaNow)/100
+                                      });
       // // mostramos alerta en pantalla
       $juego.modal.puntuacion.mostrar(puntosMaximos, eficienciaMax, puntajeNow, eficienciaNow);
       // ocultamos la pantalla de juego
