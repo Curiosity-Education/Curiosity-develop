@@ -1,4 +1,4 @@
-﻿$(document).ready(function() {
+$(document).ready(function() {
 
   var objetivo = "Decide qué círculo tiene el resultado más alto y selecciónalo. Si los resultados son iguales, toca el botón con el signo de igual. Este juego ayuda a desarrollar tu habilidad aritmética y pone a prueba tu capacidad para realizar cálculos básicos. Recuerda siempre intentar hacer una puntuación por encima de la anterior.";
 
@@ -19,7 +19,7 @@
   // Guardamos el puntaje maximo del usuario en una variable para uso global
   var puntosMaximos = 0;
   // Establece la cantidad de segundos de inicio
-  var cantTemp = 60;
+  var cantTemp = 6;
   // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)
   var $tiempo;
   // Declaramos la variable para uso de puntaje
@@ -204,6 +204,11 @@ function calcOperacion_2(){
         $juego.setPuntosMaxInicio(puntosMaximos);
         $juego.setEficienciaMaxInicio(eficienciaNow);
       }
+      //mandar datos al server
+        $curiosity.call.setData.juego({eficiencia:eficienciaNow,
+                                       puntaje:puntajeNow,
+                                       promedio:(puntajeNow*eficienciaNow)/100
+                                      });
       // // mostramos alerta en pantalla
       $juego.modal.puntuacion.mostrar(puntosMaximos, eficienciaMax, puntajeNow, eficienciaNow);
       // ocultamos la pantalla de juego

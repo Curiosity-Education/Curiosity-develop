@@ -558,13 +558,13 @@ $(document).ready(function() {
             uploadMultiple:false,
             maxFiles:10,
             maxFilesize:100000,//MB
-            accept: function(file, done) {
-                if (file.type != "application/zip")
-                {
-                    done("Error! El tipo de archivo no es aceptado");
-                }
-                else { done(); }
-            },
+            // accept: function(file, done) {
+            //     if (file.type != "application/zip")
+            //     {
+            //         done("Error! El tipo de archivo no es aceptado");
+            //     }
+            //     else { done(); }
+            // },
             success: function(file, response){
                 $("#archivos").empty();
                 $.each(response.archivos,function(i,archivo){
