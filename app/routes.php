@@ -21,7 +21,7 @@ Route::group(array('before' => 'unauth'), function(){
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
 });
 Route::get('/confirmar/{token}','padreController@confirmar');
-Route::match(array('GET','POST'),'/subscripcion','subscripcionController@subscripcion');
+Route::match(array('GET','POST'),'/suscripcion','suscripcionController@suscripcion');
 Route::match((array('GET','POST')),'/regPadre','padreController@addPadre');
 Route::get('/getCiudades','ciudadController@getCiudades');
 Route::post('/remote-username','userController@remoteUsername');
