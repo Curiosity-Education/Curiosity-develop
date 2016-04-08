@@ -106,7 +106,7 @@
               <!-- <li id="menuNivel">
                 <a href="/nivel">
                   <i class="fa fa-graduation-cap"></i>
-                  <span>Grado Escolar</span>
+                  <span>Actividades</span>
                 </a>
               </li> -->
             @endif

@@ -3,14 +3,14 @@ $(document).ready(function() {
   var objetivo = "Decide qué círculo tiene el resultado más alto y selecciónalo. Si los resultados son iguales, toca el botón con el signo de igual. Este juego ayuda a desarrollar tu habilidad aritmética y pone a prueba tu capacidad para realizar cálculos básicos. Recuerda siempre intentar hacer una puntuación por encima de la anterior.";
 
   $curiosity.menu.setPaginaId("#li-sumas-restas");
-  $juego.setTitulo("Sumando y Restando");
-  $juego.setObjetivo(objetivo);
+  // $juego.setTitulo("Sumando y Restando");
+  // $juego.setObjetivo(objetivo);
   $juego.setBackgroundColor("rgb(25, 132, 179)");
   $juego.setBackgroundImg("/packages/images/fondos/fondo.jpg");
   $juego.setNivelUsuarioIMG("/packages/images/cups/medalla1.png");
-  $juego.boton.archivoPDF.setDireccion('/packages/docs/pruebaPDF.pdf');
-  $juego.boton.archivoPDF.setNombreDescarga('Guia Sumas Restas');
-  $juego.boton.video.setVideo('/packages/video/Restas.mp4');
+  // $juego.boton.archivoPDF.setDireccion('/packages/docs/pruebaPDF.pdf');
+  // $juego.boton.archivoPDF.setNombreDescarga('Guia Sumas Restas');
+  // $juego.boton.video.setVideo('/packages/video/Restas.mp4');
   $juego.boton.comenzar.setFuncion(funcionComenzar);
 
 // ----------------------------------------------------------------------------

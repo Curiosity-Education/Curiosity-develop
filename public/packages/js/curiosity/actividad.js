@@ -1,4 +1,6 @@
 $(document).on('ready',function(){
+  $curiosity.menu.setPaginaId('#menuNivel');
+
     var actividad = {
         //--hasGame se encarga de ver que actividades tienen juegos
         hasGame:function(){
@@ -16,7 +18,7 @@ $(document).on('ready',function(){
                                   if($(objeto).children('div').attr('data-id') == value.actividad_id){
                                       
                                       $(objeto).attr('data-has-game',value.id);
-                                      $(objeto).attr('title','Juego: '+value.nombre.replace(".blade.php",""));
+                                      // $(objeto).attr('title','Juego: '+value.nombre.replace(".blade.php",""));
                                       $(objeto).attr('data-location-game','/juego/'+value.actividad_id+'/'+value.nombre.replace(".blade.php",""))
                                   }
                             });
