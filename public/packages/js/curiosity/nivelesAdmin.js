@@ -209,7 +209,6 @@ $(document).ready(function() {
   var tituloNivel = $("#nombre").val();
   var descripcionNivel = $("#descripcion").val();
   var estatus;
-
   $("#enviarEnv").click(function(event) {
     switch ($(this).data('tipo')) {
       case 'add':
