@@ -52,7 +52,7 @@ $(document).ready(function() {
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
-              "<img class='img-circle' src='/packages/images/inteligencias/"+imagen+"' data-id-img="+id+">"+
+              "<img class='img-circle tooltipShow' title='Cambiar imagen' src='/packages/images/inteligencias/"+imagen+"' data-id-img="+id+">"+
             "</div>"+
             "<div class='box-footer'>"+
               "<div class='row'>"+

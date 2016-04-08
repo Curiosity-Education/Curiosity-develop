@@ -97,6 +97,9 @@ function __init(){
           }
           else{
             $curiosity.noty("Ingrese un nombre de usuario",'warning');
+            $botonEnviar.removeAttr('disabled');
+            $botonEnviar.text('Siguiente');
+            $botonCanel.removeAttr('disabled');
           }
         }
 

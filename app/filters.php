@@ -75,7 +75,7 @@ Route::filter('only_session',function(){
 */
 Route::filter('unauth',function(){
    if(!Auth::guest()){
-      return Redirect::To('/sumas-restas');
+      return Redirect::To('/perfil');
    }
 });
 

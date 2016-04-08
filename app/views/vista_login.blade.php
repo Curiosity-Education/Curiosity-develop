@@ -12,7 +12,7 @@
   <title>Curiosity | login</title>
 </head>
 <body>
-<audio src="/packages/notificaciones/music.ogg" id="notyAudio"></audio>
+<audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
 <!-- Navbar menu -->
 <div class="navbar navbar-default navbar-fixed-top bg-blue" role="navigation">
   <div class="container-fluid">

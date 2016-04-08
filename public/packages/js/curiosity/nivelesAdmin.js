@@ -36,7 +36,7 @@ $(document).ready(function() {
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
-              "<img class='img-circle' src='/packages/images/niveles/"+imagen+"' data-id = "+id+">"+
+              "<img class='img-circle img-effect tooltipShow' title='Cambiar imagen' src='/packages/images/niveles/"+imagen+"' data-id = "+id+">"+
             "</div>"+
             "<div class='box-footer'>"+
               "<div class='row'>"+
@@ -209,7 +209,6 @@ $(document).ready(function() {
   var tituloNivel = $("#nombre").val();
   var descripcionNivel = $("#descripcion").val();
   var estatus;
-
   $("#enviarEnv").click(function(event) {
     switch ($(this).data('tipo')) {
       case 'add':

@@ -79,7 +79,9 @@ var $curiosity = {
   }
 
 };
-
+ $("form").submit(function(e){
+   e.preventDefault();
+  });
 //
 // function nobackbutton(){
 //   window.location.hash="no-back-button";
