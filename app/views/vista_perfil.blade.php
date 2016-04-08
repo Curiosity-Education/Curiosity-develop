@@ -102,28 +102,28 @@
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
+              @if(Auth::user()->hasRole('padre'))
               <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Sobre mi</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                  @if(Auth::user()->hasRole('padre'))
-                   <strong><i class="fa fa-user margin-r-5"></i>  E-mail</strong>
-                   <p class="text-muted">
-                     <h6><samll>{{Auth::user()->persona()->first()->padre()->first()->email}}</samll></h6>
-                   </p>
-                   <hr>
-                 @endif
+                <div class="box-body">                  
+                <strong><i class="fa fa-user margin-r-5"></i>  E-mail</strong>
+                <p class="text-muted">
+                  <h6><samll>{{Auth::user()->persona()->first()->padre()->first()->email}}</samll></h6>
+                </p>
+                <hr>                
                  <!-- <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
                  <p>HEY!! {{Auth::user()->username}}, bienvenido al mundo <b>Curiosity</b> !!! </p> -->
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
+              @endif
             </div><!-- /.col -->
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                  @if(Auth::user()->hasRole('padre'))
                    <li class="active">
                      <a href="#hijosPerfil" data-toggle="tab">
                        <i class="fa fa-group"></i>
@@ -131,7 +131,7 @@
                     </a>
                   </li>
                  @endif
-                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                 @if(Auth::user()->hasRole('padre'))
                   <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
                     <a href="#alerta" data-toggle="tab">
                       <i class="fa fa-warning"></i>
@@ -139,7 +139,7 @@
                     </a>
                   </li>
                   @endif
-                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root'))
+                  @if(Auth::user()->hasRole('padre'))
                    <li id="data">
                      <a href="#graficas" data-toggle="tab">
                        <i class="fa fa-bar-chart"></i>

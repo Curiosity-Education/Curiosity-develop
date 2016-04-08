@@ -18,7 +18,7 @@
     <title>Curiosity | @yield('title')</title>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
-    <audio src="/packages/notificaciones/music.ogg" id="notyAudio"></audio>
+    <audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
     <div class="wrapper">
 
       <header class="main-header">
@@ -103,12 +103,12 @@
               </a>
             </li>
             @if(Entrust::can('realizar_actividades'))
-              <li id="menuNivel">
+              <!-- <li id="menuNivel">
                 <a href="/nivel">
                   <i class="fa fa-graduation-cap"></i>
                   <span>Grado Escolar</span>
                 </a>
-              </li>
+              </li> -->
             @endif
 
             @if(Entrust::can('gestionar_niveles'))

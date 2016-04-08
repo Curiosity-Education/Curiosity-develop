@@ -37,7 +37,7 @@ $(document).ready(function() {
         var nuevo = "<div class='col-xs-4 col-sm-3 col-md-2' id='"+id+"'>"+
           "<div class='boxEscuela boxEscuelaLog' data-escuela-id='"+id+"'"+
           "data-escuela-web='"+web+"' data-escuela-nombre='"+nombre+"'>"+
-            "<img src='/packages/images/escuelas/"+logotipo+"' class='img-responsive'>"+
+            "<img src='/packages/images/escuelas/"+logotipo+"' class='img-responsive tooltipShow' title='Click para gestionar'>"+
           "</div>"+
         "</div>";
         $("#viewSection").append(nuevo);
