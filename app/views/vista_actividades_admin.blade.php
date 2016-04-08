@@ -54,11 +54,8 @@
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
-<<<<<<< HEAD
+
         <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
-=======
-        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
->>>>>>> abbdba3dafbf5c5e2c1a500a6ee15feb85537b8e
       </div>
       <div class='box-footer'>
         <div class='row'>

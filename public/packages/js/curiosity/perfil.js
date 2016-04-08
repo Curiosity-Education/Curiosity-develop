@@ -53,8 +53,8 @@ $(document).ready(function(){
                 $btn.text(text);
                 $btn.removeClass('striped-alert');
                 $btn.prop("disabled",false);
-            }).fail(function(){
-
+            }).fail(function(error){
+                $curiosity.noty(error.message,"error");
             });
         }
     });

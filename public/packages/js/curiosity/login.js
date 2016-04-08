@@ -87,6 +87,7 @@ function __init(){
               }
             })
             .fail(function(error) {
+                $curiosity.noty(error.message,"warning")
               console.log(error);
             })
             .always(function(){
