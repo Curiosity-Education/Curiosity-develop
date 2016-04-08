@@ -557,7 +557,7 @@ $(document).ready(function() {
             autoProcessQueue : false,
             uploadMultiple:false,
             maxFiles:10,
-            maxFilesize:100000,//MB
+            maxFilesize:10000000,//MB
             success: function(file, response){
                 $("#archivos").empty();
                 console.log(response);
