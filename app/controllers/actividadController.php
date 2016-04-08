@@ -423,7 +423,7 @@ class actividadController extends BaseController
             $enzipado = new ZipArchive();
 
         //Abrimos el archivo a descomprimir
-            $enzipado->open($rutaZIP);
+          $enzipado->open($rutaZIP);
 
             if(!file_exists(public_path().'/packages/juegosZIP/Descomprimidos/'))
                 $Zipdescompress = mkdir(public_path().'/packages/juegosZIP/Descomprimidos/');

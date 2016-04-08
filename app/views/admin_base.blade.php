@@ -41,13 +41,13 @@
               <!-- Menu de cuenta de usuario -->
               <li class="dropdown user user-menu hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'user-image'))}}
+                  {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'user-image img-profile'))}}
                   <span class="hidden-xs">{{Auth::user()->persona()->first()->nombre}} {{Auth::user()->persona()->first()->apellido_paterno}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="user-header">
                     <!-- Ìmagen de perfil de la parte superior derecha -->
-                    {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'img-circle'))}}
+                    {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'img-circle img-profile'))}}
                     <p>
                       <b>
                       <small><b>¡ Soy Curiosity !</b></small>
@@ -84,7 +84,7 @@
           <div class="user-panel">
             <div class="pull-left image">
             <!-- Imagen de Perfil de la parte del menú -->
-            {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'img-circle'))}}
+            {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'img-circle img-profile'))}}
             </div>
             <div class="pull-left info">
               <p>{{Auth::user()->username}}</p>

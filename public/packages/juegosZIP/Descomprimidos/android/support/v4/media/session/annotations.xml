@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item name="android.support.v4.media.session.MediaSessionCompat void setFlags(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat void setRatingType(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImpl void setFlags(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImpl void setRatingType(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplApi21 void setFlags(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplApi21 void setRatingType(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase mFlags">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase mRatingType">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase void setFlags(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase void setRatingType(int) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase.MediaSessionStub int getRatingType()">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.RatingCompat.RATING_NONE, android.support.v4.media.RatingCompat.RATING_HEART, android.support.v4.media.RatingCompat.RATING_THUMB_UP_DOWN, android.support.v4.media.RatingCompat.RATING_3_STARS, android.support.v4.media.RatingCompat.RATING_4_STARS, android.support.v4.media.RatingCompat.RATING_5_STARS, android.support.v4.media.RatingCompat.RATING_PERCENTAGE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.MediaSessionCompat.MediaSessionImplBase.MediaSessionStub long getFlags()">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS, android.support.v4.media.session.MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.PlaybackStateCompat int getState()">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.session.PlaybackStateCompat.STATE_NONE, android.support.v4.media.session.PlaybackStateCompat.STATE_STOPPED, android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED, android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING, android.support.v4.media.session.PlaybackStateCompat.STATE_FAST_FORWARDING, android.support.v4.media.session.PlaybackStateCompat.STATE_REWINDING, android.support.v4.media.session.PlaybackStateCompat.STATE_BUFFERING, android.support.v4.media.session.PlaybackStateCompat.STATE_ERROR, android.support.v4.media.session.PlaybackStateCompat.STATE_CONNECTING, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_NEXT, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_QUEUE_ITEM}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.PlaybackStateCompat long getActions()">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.PlaybackStateCompat.ACTION_STOP, android.support.v4.media.session.PlaybackStateCompat.ACTION_PAUSE, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY, android.support.v4.media.session.PlaybackStateCompat.ACTION_REWIND, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_NEXT, android.support.v4.media.session.PlaybackStateCompat.ACTION_FAST_FORWARD, android.support.v4.media.session.PlaybackStateCompat.ACTION_SET_RATING, android.support.v4.media.session.PlaybackStateCompat.ACTION_SEEK_TO, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_PAUSE, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_QUEUE_ITEM, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_URI}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.PlaybackStateCompat.Builder android.support.v4.media.session.PlaybackStateCompat.Builder setActions(long) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.media.session.PlaybackStateCompat.ACTION_STOP, android.support.v4.media.session.PlaybackStateCompat.ACTION_PAUSE, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY, android.support.v4.media.session.PlaybackStateCompat.ACTION_REWIND, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_NEXT, android.support.v4.media.session.PlaybackStateCompat.ACTION_FAST_FORWARD, android.support.v4.media.session.PlaybackStateCompat.ACTION_SET_RATING, android.support.v4.media.session.PlaybackStateCompat.ACTION_SEEK_TO, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_PAUSE, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH, android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_QUEUE_ITEM, android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_FROM_URI}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.PlaybackStateCompat.Builder android.support.v4.media.session.PlaybackStateCompat.Builder setState(int, long, float) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.session.PlaybackStateCompat.STATE_NONE, android.support.v4.media.session.PlaybackStateCompat.STATE_STOPPED, android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED, android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING, android.support.v4.media.session.PlaybackStateCompat.STATE_FAST_FORWARDING, android.support.v4.media.session.PlaybackStateCompat.STATE_REWINDING, android.support.v4.media.session.PlaybackStateCompat.STATE_BUFFERING, android.support.v4.media.session.PlaybackStateCompat.STATE_ERROR, android.support.v4.media.session.PlaybackStateCompat.STATE_CONNECTING, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_NEXT, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_QUEUE_ITEM}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.media.session.PlaybackStateCompat.Builder android.support.v4.media.session.PlaybackStateCompat.Builder setState(int, long, float, long) 0">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.media.session.PlaybackStateCompat.STATE_NONE, android.support.v4.media.session.PlaybackStateCompat.STATE_STOPPED, android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED, android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING, android.support.v4.media.session.PlaybackStateCompat.STATE_FAST_FORWARDING, android.support.v4.media.session.PlaybackStateCompat.STATE_REWINDING, android.support.v4.media.session.PlaybackStateCompat.STATE_BUFFERING, android.support.v4.media.session.PlaybackStateCompat.STATE_ERROR, android.support.v4.media.session.PlaybackStateCompat.STATE_CONNECTING, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_NEXT, android.support.v4.media.session.PlaybackStateCompat.STATE_SKIPPING_TO_QUEUE_ITEM}" />
+    </annotation>
+  </item>
+</root>
+
