@@ -1,7 +1,7 @@
 <?php
-class subscripcionController extends BaseController{
+class suscripcionController extends BaseController{
 
-    public function subscripcion(){
+    public function suscripcion(){
         if(Request::method() == 'GET'){
           $datos=[
             "estados"     =>$estados = estado::all(),
