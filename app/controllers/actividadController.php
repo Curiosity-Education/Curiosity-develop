@@ -498,9 +498,7 @@ class actividadController extends BaseController
                            Session::push('archivos',array('nombre'=>$file,'ruta'=>'/packages/images/games/'.$file,'tipo'=>'gif'));
                         break;
                        default:
-                           archivoController::moveFile($ruta.$file,app_path().'/views/juegos/'.$file);
-                           Session::push('archivos',array('nombre'=>$file,'ruta'=>'/views/juegos/'.$file,'tipo'=>'php'));
-                           $this->regJuego();
+                           unlink($ruta.$file);
                         break;
                    }
                 }
@@ -687,7 +685,6 @@ class actividadController extends BaseController
         ));
       }
     }
-    return $promedios;
     // verificamos si el arreglo de ayuda se encuentra
     // vacio, esto lo hacemos recorriendolo
     $contAlerta = 0;
