@@ -144,7 +144,7 @@
       </button>
     </div>
   </div>
-
+@if(Entrust::can('subir_juego'))
   <!------Menu desplegable para subir juegos -->
   <div id="menu" class="menu hide">
         <ul class="menu-ul">
@@ -200,7 +200,7 @@
         </div>
       </div>
     </div>
-
+ @endif
 @stop
 
 @section('mi_js')
