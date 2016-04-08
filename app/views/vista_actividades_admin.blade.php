@@ -29,6 +29,7 @@
 <!-- Sección General -->
 
 <div id="viewSection">
+  @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
   <div class='col-md-4'>
     <div class='box box-widget widget-title' id="addNew">
       <div class='widget-title-header'></div>
@@ -39,6 +40,7 @@
       <div class='box-footer'></div>
     </div>
   </div>
+  @endif
 
   <form id="imagenForm" class="form-horizontal">
     <input type="file" class="hidden" id="up-image" accept="image/jpeg,image/png" name="up-image">
@@ -52,10 +54,11 @@
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
-        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
+        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>        
       </div>
       <div class='box-footer'>
         <div class='row'>
+        @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
           <div class='col-xs-4 border-right'>
             <div class='description-block btnUpdate'
               data-id = {{ $actividad->id }}
@@ -75,6 +78,7 @@
               <span class='description-text'>Eliminar</span>
             </div>
           </div>
+          @endif
           <div class='col-xs-4'>
             <div class='description-block btnIn' id="entrar-juego"
               data-id-actividad={{$actividad->id}}
@@ -145,7 +149,8 @@
     </div>
   </div>
 
-  <!------Menu desplegable para subir juegos -->
+  @if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
+  <!-- Menu desplegable para subir juegos -->
   <div id="menu" class="menu hide">
         <ul class="menu-ul">
             <li class="menu-ul-li" id="asignar_juego"><i class="fa fa-gamepad fa-2x"></i> Asignar juego</li>
@@ -188,7 +193,7 @@
                         <form action="/subirZIP" enctype="multipart/form-data" id="frm_subir_juego">
                             <input type="file" class="fallback"  accept="application/x-zip-compressed" name="juego_zip" id="juego_zip">
                         </form>
-                    </section>--->
+                    </section> -->
                     <h3 class="hide text-center" id="archivosUpload">Archivos que se subieron</h3>
                     <div id="archivos" class="col-md-12">
 
@@ -200,6 +205,7 @@
         </div>
       </div>
     </div>
+    @endif
 
 @stop
 

@@ -25,6 +25,7 @@
 <!-- Sección General -->
 
 <div id="viewSection">
+  @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
   <div class='col-md-4'>
     <div class='box box-widget widget-title' id="addNew">
       <div class='widget-title-header'></div>
@@ -35,6 +36,7 @@
       <div class='box-footer'></div>
     </div>
   </div>
+  @endif
 
   <form id="imagenForm" class="form-horizontal">
     <input type="file" class="hidden" id="up-image" accept="image/jpeg,image/png" name="up-image">
@@ -52,6 +54,7 @@
       </div>
       <div class='box-footer'>
         <div class='row'>
+        @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
           <div class='col-xs-4 border-right'>
             <div class='description-block btnUpdate' data-id = {{ $tema->id }}>
               <span class='fa fa-refresh fa-3x' title="Actualizar" ></span>
@@ -66,6 +69,7 @@
               <span class='description-text'>Eliminar</span>
             </div>
           </div>
+          @endif
           <div class='col-xs-4'>
             <div class='description-block btnIn'
               data-id-tema={{$tema->id}}
