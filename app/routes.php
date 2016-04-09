@@ -21,7 +21,7 @@ Route::group(array('before' => 'unauth'), function(){
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
 });
 Route::get('/confirmar/{token}','padreController@confirmar');
-Route::match(array('GET','POST'),'/subscripcion','subscripcionController@subscripcion');
+Route::match(array('GET','POST'),'/suscripcion','suscripcionController@suscripcion');
 Route::match((array('GET','POST')),'/regPadre','padreController@addPadre');
 Route::get('/getCiudades','ciudadController@getCiudades');
 Route::post('/remote-username','userController@remoteUsername');
@@ -48,10 +48,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/checkPassword','perfilController@checkPassword');
         Route::post('/remote-username-update','userController@remoteUsernameUpdate');
         Route::post('/remote-password-update','userController@remotePasswordUpdate');
-	Route::post('/remote-username-hijo','userController@remoteUsernameHijo');
+      	Route::post('/remote-username-hijo','userController@remoteUsernameHijo');
+        Route::post('/remote-username-admin','userController@remoteUsernameAdmin');
         Route::post('/regHijo','hijoController@addHijo');
         Route::post('/foto','perfilController@cutImage');
-
+        Route::post('/regAdmin','userController@saveAdmin');
         Route::group(array('before' => 'realizar_actividades'),function(){
           Route::get('/nivel', 'nivelController@verPaginaInWeb');
           Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
@@ -113,7 +114,6 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/grafPuntajes', 'actividadController@grafPuntajes');
         Route::post('/getEstandarte', 'actividadController@getEstandarte');
         Route::post('/getEstadisticasHijo', 'actividadController@getEstadisticasHijo');
-
     });
 
 

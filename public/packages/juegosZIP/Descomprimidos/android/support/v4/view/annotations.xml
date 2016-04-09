@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item name="android.support.v4.view.ViewCompat int getAccessibilityLiveRegion(android.view.View)">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_NONE, android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE, android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_ASSERTIVE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat int getImportantForAccessibility(android.view.View)">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_AUTO, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat int getLayerType(android.view.View)">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.LAYER_TYPE_NONE, android.support.v4.view.ViewCompat.LAYER_TYPE_SOFTWARE, android.support.v4.view.ViewCompat.LAYER_TYPE_HARDWARE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat int getLayoutDirection(android.view.View)">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_LTR, android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_RTL}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat int getOverScrollMode(android.view.View)">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.OVER_SCROLL_ALWAYS, android.support.v4.view.ViewCompat.OVER_SCROLL_IF_CONTENT_SCROLLS, android.support.v4.view.ViewCompat.OVER_SCROLL_NEVER}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setAccessibilityLiveRegion(android.view.View, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_NONE, android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE, android.support.v4.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_ASSERTIVE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setImportantForAccessibility(android.view.View, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_AUTO, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO, android.support.v4.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setLayerType(android.view.View, int, android.graphics.Paint) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.LAYER_TYPE_NONE, android.support.v4.view.ViewCompat.LAYER_TYPE_SOFTWARE, android.support.v4.view.ViewCompat.LAYER_TYPE_HARDWARE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setLayoutDirection(android.view.View, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_LTR, android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_RTL, android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_INHERIT, android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_LOCALE}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setOverScrollMode(android.view.View, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="value" val="{android.support.v4.view.ViewCompat.OVER_SCROLL_ALWAYS, android.support.v4.view.ViewCompat.OVER_SCROLL_IF_CONTENT_SCROLLS, android.support.v4.view.ViewCompat.OVER_SCROLL_NEVER}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setScrollIndicators(android.view.View, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.view.ViewCompat.SCROLL_INDICATOR_TOP, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_BOTTOM, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_LEFT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_RIGHT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_START, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_END}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setScrollIndicators(android.view.View, int, int) 1">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.view.ViewCompat.SCROLL_INDICATOR_TOP, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_BOTTOM, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_LEFT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_RIGHT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_START, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_END}" />
+    </annotation>
+  </item>
+  <item name="android.support.v4.view.ViewCompat void setScrollIndicators(android.view.View, int, int) 2">
+    <annotation name="android.support.annotation.IntDef">
+      <val name="flag" val="true" />
+      <val name="value" val="{android.support.v4.view.ViewCompat.SCROLL_INDICATOR_TOP, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_BOTTOM, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_LEFT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_RIGHT, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_START, android.support.v4.view.ViewCompat.SCROLL_INDICATOR_END}" />
+    </annotation>
+  </item>
+</root>
+

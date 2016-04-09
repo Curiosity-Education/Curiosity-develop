@@ -30,6 +30,8 @@
                 <h1 class="title-modal">Cambiar y/o Recortar imagen</h1>
               </div>
               <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-10">
                  {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
                   {{HTML::Image('packages/images/perfil/original/'.$perfil->foto_perfil,'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
                   <input  name="image" class="btn btn-default" id="inImage"  type="file">
@@ -38,6 +40,12 @@
                   <input type="hidden" name="width"/>
                   <input type="hidden" name="height"/>
                  {{Form::close()}}
+                 </div>
+                 <div class="col-md-2">
+                 <div class="preview" style="width:120%;height:120%;border-radius:100%;overflow:hidden;border:3px solid #777;">
+                 </div>
+                </div>
+              </div>
               </div>
               <div class="modal-footer" id="modal-footer-juego">
                 <div class="row">
@@ -66,10 +74,9 @@
               <div class="box box-primary">
                 <div class="box-body box-profile">
                   <div class="image-portada">
-                        <img style="cursor:pointer;" class="profile-user-img tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
+                        <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
                         <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>
-                          <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
-
+                        <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
                   </div>
 
                  <!--
@@ -127,7 +134,7 @@
                  @if(Auth::user()->hasRole('padre'))
                   <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
                     <a href="#alerta" data-toggle="tab">
-                      <i class="fa fa"></i>
+                      <i class="fa fa-warning"></i>
                       Alertas
                     </a>
                   </li>
@@ -148,16 +155,137 @@
                       </a>
                     </li>
                   @endif
-                 @if(Auth::User()->hasRole('padre'))
-                   <li><a href="#reg-hijos" data-toggle="tab">Registro de hijos</a></li>
+                 @if(Auth::user()->hasRole('padre'))
+                   <li>
+                    <a href="#reg-hijos" data-toggle="tab">
+                      <i class="fa fa-child"></i>
+                      Registro de hijos
+                    </a>
+                  </li>
                  @endif
-                 <li><a href="#settings" data-toggle="tab">Modificar mi Perfil</a></li>
+                 @if(Auth::user()->hasRole('root') || Auth::user()->hasRole('content manager'))
+                  <li>
+                    <a href="#reg-admins" data-toggle="tab">
+                      <i class="fa fa-gears"></i>
+                      Agregar administrativos
+                    </a>
+                  </li>
+                 @endif
+                  <li>
+                    <a href="#settings" data-toggle="tab">
+                      <i class="fa fa-user"></i>
+                      Modificar mi Perfil
+                    </a>
+                  </li>
                 </ul>
                 <div class="tab-content">
                   @if(Auth::user()->hasRole('hijo'))
                   <div class="active tab-pane" id="bestPuntajes">
 
                   </div>
+                  @endif
+                  @if(Auth::User()->hasRole('root') || Auth::User()->hasRole('content manager'))
+                  <div class="tab-pane" id="reg-admins">
+                    <form class="form-horizontal" id="frm-reg-admins">
+                      <div id="wizard-admin">
+                        <h4>Datos de Usuario</h4>
+                        <section>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-user"></span>
+                              </span>
+                              <input type="text" name="username_admin" id="username_admin" class="form-control" placeholder="nombre de usuario">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-lock"></span>
+                              </span>
+                              <input type="password" name="password_admin" id="password_admin" class="form-control" placeholder="contraseña">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-lock"></span>
+                              </span>
+                              <input type="password" name="cpassword_admin" id="cpassword_admin" class="form-control" placeholder="Confirmar contraseña">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="rol_admin"><h5 class="title-input"><b>Rol de usuario</b></h5></label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-gear"></span>
+                              </span>
+                              <select name="role_admin" id="role_admin" class="form-control">
+                                @foreach(Role::all() as $role)
+                                  @if($role->name!='hijo' && $role->name!='padre')
+                                    @if($role->name=='root')
+                                      @if(Auth::User()->hasRole('root'))
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                      @endif
+                                    @else
+                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endif
+                                  @endif
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                        </section>
+                        <h4>Datos personales</h4>
+                        <section>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-chevron-right"></span>
+                              </span>
+                              <input type="text" name="nombre_admin" id="nombre-admin" class="form-control" placeholder="Nombre(s)">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-chevron-right"></span>
+                              </span>
+                              <input type="text" name="apellido_paterno_admin" id="apellido_paterno_admin" class="form-control" placeholder="Apellido paterno">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-chevron-right"></span>
+                              </span>
+                              <input type="text" name="apellido_materno_admin" id="apellido_materno_admin" class="form-control" placeholder="Apellido materno">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="sexo_admin"><h5 class="title-input"><b>Sexo</b></h5></label>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-chevron-right"></span>
+                              </span>
+                              <select name="sexo_admin" id="sexo_admin" class="form-control">
+                                  <option value="m">Masculino</option>
+                                  <option value="f">Femenino</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <span class="fa fa-chevron-right"></span>
+                              </span>
+                              <input type="text" name="fecha_nacimiento_admin"  id="fecha_nacimiento_admin" class="form-control datepicker" placeholder="fecha de nacimiento">
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </form>
+                  </div> 
                   @endif
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" id="frm_user">
@@ -600,15 +728,45 @@
 <script>
   $(function ()
   {
+    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('root'))
+      $("a[href='#reg-admins']").trigger("click");
 
+    @endif
+    $("#wizard-admin").steps({
+      headerTag: "h4",
+      bodyTag: "section",
+      transitionEffect:"slideLeft",
+      autoFocus:true,
+      cancel:true,
+      onFinishing: function (event, currentIndex) {
+            if($("#frm-reg-admins").valid()){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+          if(newIndex>currentIndex){
+           if($(".current input,.current select").valid()){
+               return true;
+           }else return false;
+         }else return true;
+        },
+        labels: {
+          cancel: "Cancelar",
+          //  current: "current step:",
+          pagination: "Paginación",
+          finish: "Registar",
+          next: "Siguiente",
+          previous: "Anterior",
+          loading: "Registrando ..."
+        },
+    });
     $("#wizard1").steps({
         headerTag: "h2",
         bodyTag: "section",
         transitionEffect: "slideLeft",
         autoFocus:true,
-        next:"Siguiente",
-        finish:"Finalizar",
-        previous:"Anterior",
         onFinishing: function (event, currentIndex) {
             if($("#frm-reg-hijos").valid()){
                 return true;
@@ -897,7 +1055,7 @@
     aspectRatio: 1/1,
     responsive: true,
     autoCropArea:1,
-    preview:".img-preview",
+    preview:".preview",
     dragMode:'move',
     crop: function(e) {
       // Output the result data for cropping image.
@@ -937,10 +1095,11 @@
                         });
                 }
 
-         }).done(function(){
+         }).done(function(r){
+            console.log(r);
+            $(".img-profile").attr("src",r);
             $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
             $("button[data-dismiss='modal']").trigger("click");
-            document.location="/perfil";
          }).fail(function(){
 
          }).always(function(){

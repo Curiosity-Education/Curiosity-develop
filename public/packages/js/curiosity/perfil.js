@@ -8,7 +8,56 @@ $(document).ready(function(){
     }});
     var username = $("input[name='username']").val();
     var telefono = $("input[name='telefono']").val();
+    $("#frm-reg-admins").on("click","a[href='#finish']",function(){
+        $btn = $(this);
+        var text = $btn.text();
+        $btn.text("Almacenando ...");
+        $btn.addClass('striped-alert');
+        $btn.prop('disabled',true);
+        if($('#frm-reg-admins').valid()){
+            $.ajax({
+                url:"/regAdmin",
+                type:"post",
+                data:$('#frm-reg-admins').serialize(),
+                beforeSend: function(){
+                    message = "Espera.. Los datos se estan Almacenando... Verificando información";
+                    after = noty({
+                                layout: 'bottomRight',
+                                theme: 'defaultTheme', // or 'relax'
+                                type: 'information',
+                                text: message,
+                                animation: {
+                                    open: {height: 'toggle'}, // jQuery animate function property object
+                                    close: {height: 'toggle'}, // jQuery animate function property object
+                                    easing: 'swing', // easing
+                                    speed: 300 // opening & closing animation speed
+                                }
+                            });
+                    }
+            }).done(function(r){
+                after.close();
+                console.log(r);
+                if(r.estado==200){
+                    $curiosity.noty(r.message,"success");
+                    $("#wizard-admin-t-0").trigger("click");
+                    document.getElementById('frm-reg-admins').reset();
+                }else if(r.estado==500){
+                    $curiosity.noty(r.message,"warning");
 
+                }else if($.isPlainObject(r)){
+                   alerta.errorOnInputs(r);
+                   $curiosity.noty("Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos", 'warning');
+               }
+            }).always(function(){
+                after.close();
+                $btn.text(text);
+                $btn.removeClass('striped-alert');
+                $btn.prop("disabled",false);
+            }).fail(function(){
+
+            });
+        }
+    });
     $("#frm_user").on("change","select[name='estado']",function(){
         if($(this).val()!==""){
             $("select[name='ciudad_id']").prop("disabled",true);
@@ -70,7 +119,38 @@ $(document).ready(function(){
         $("input[name='telefono']").val(telefono);
     });
     //mandar los datos ha actualizar por el usuario
-   
+    $("#frm-reg-admins").validate({
+        rules:{
+            username_admin:{required:true,maxlength:50,remote:{
+                url:"/remote-username-admin",
+                type:"post",
+                username:function(){
+                  return $("input[name='username_admin']").val();
+                }
+             }},
+           //  nombre_admin:{required:true,maxlength:50,alpha:true},
+             apellido_paterno_admin:{required:true,maxlength:30,alpha:true},
+             apellido_materno_admin:{required:true,maxlength:30,alpha:true},
+             sexo_admin:{required:true,maxlength:1},
+             role:{required:true,maxlength:1,numeric:true}, 
+             fecha_nacimiento_admin:{required:true,date:true},
+             password_admin:{required:true,minlength:8,maxlength:100},
+             cpassword_admin:{required:true,equalTo:function(){
+               return $("input[name='password_admin']");
+             }},
+         },
+      messages:{
+           cpassword_admin:{equalTo:"Las contraseñas no coinciden"},
+           username_admin:{remote:"EL nombre de usuario que ingreso ya  esta en uso, intente con otro nombre."},
+           nombre_admin:{alpha:"Nombre invalido,solo puedes agregar letras."},
+           apellido_paterno_admin:{alpha:"Apellido invalido,solo puedes agregar letras."},
+           apellido_materno_admin:{alpha:"Apellido invalido,solo puedes agregar letras."}
+       },
+        errorPlacement: function (error, element) {
+            error.appendTo(element.parent().parent());
+         }
+
+    });
     $("#frm-reg-hijos").validate({
         rules:{
              nombre:{required:true,maxlength:50,alpha:true},
@@ -82,10 +162,10 @@ $(document).ready(function(){
              promedio:{required:true,promedio:true},
              fecha_nacimiento:{required:true,date:true},
              password:{required:true,minlength:8,maxlength:100},
-             esc_alt:{maxlength:200},
              cpassword:{required:true,equalTo:function(){
                return $("input[name='password']");
              }},
+             esc_alt:{maxlength:200},
              username_hijo:{required:true,maxlength:50,remote:{
                 url:"/remote-username-hijo",
                 type:"post",
