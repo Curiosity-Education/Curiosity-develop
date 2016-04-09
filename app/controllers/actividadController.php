@@ -350,15 +350,27 @@ class actividadController extends BaseController
     -------------------------------------*/
     public function getViewJuego($idActividad,$nombre){
        //---Seleccionamos el nombre de la vista que nos mando por la URI
-        $vista = archivo::where('nombre','=',$nombre.'.blade.php')->where('actividad_id','=',$idActividad)->where('ext','=','php')->select('nombre')->get();
+        $vista = archivo::join('actividades', 'archivos.actividad_id', '=', 'actividades.id')
+        ->join('videos', 'actividades.id', '=', 'videos.actividad_id')
+        ->where('archivos.nombre','=',$nombre.'.blade.php')
+        ->where('archivos.actividad_id','=',$idActividad)
+        ->where('ext','=','php')
+        ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
+        ->get();
+        
+        $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
+        ->where('actividad_id', '=', $idActividad)
+        ->max('promedio');        
+        
             try{
                 //----Retornamos la vista del juego
-                return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->nombre));
+                return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
             }
             catch(Exception $ex){
                 return Redirect::back();
             }
     }
+
     public function subirJuego($idActividad){
         if(Request::method() == 'GET'){
             //---Vista para subir el juego

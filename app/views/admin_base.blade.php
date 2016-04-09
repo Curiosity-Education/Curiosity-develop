@@ -103,12 +103,12 @@
               </a>
             </li>
             @if(Entrust::can('realizar_actividades'))
-              <!-- <li id="menuNivel">
+              <li id="menuNivel">
                 <a href="/nivel">
                   <i class="fa fa-graduation-cap"></i>
-                  <span>Grado Escolar</span>
+                  <span>Actividades</span>
                 </a>
-              </li> -->
+              </li>
             @endif
 
             @if(Entrust::can('gestionar_niveles'))

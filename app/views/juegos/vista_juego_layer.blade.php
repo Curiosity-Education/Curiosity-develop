@@ -6,7 +6,7 @@
 @stop
 
 @section('titulo_contenido')
-  <label id="juego-titulo"></label>
+  <label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>
 @stop
 
 @section('panel_opcion')
@@ -72,8 +72,7 @@
           <h4 class="modal-title" id="">Video de Estudio</h4>
         </div>
         <div class="modal-body">
-          <!-- <iframe src="/packages/video/videoComputadorcita.mp4" controls id="videoApoyo" class="img-responsive" preload></iframe> -->
-          <video src="/packages/video/videoComputadorcita.mp4" controls id="videoApoyo" class="img-responsive" ></video>
+          <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
         </div>
@@ -92,19 +91,17 @@
                         <img src="" class="img-responsive" width="60%" id="imgNivel"/>
                       </center>
                       <div class="row">
-                        <div class="col-md-6 cal-titulo">
+                        <div class="col-md-12 text-center cal-titulo">
                           <h3>Máxima Puntuación</h3>
-                          <h1><b id="num-max-pts"></b></h1>
-                        </div>
-                        <div class="col-md-6 cal-titulo">
-                          <h3>Eficiencia de Juego</h3>
-                          <h1><b id="num-max-efic"></b></h1>
-                        </div>
+                          <h1><b id="num-max-pts">{{ $maxProm }}</b></h1>
+                        </div>                        
                       </div>
                     </div>
                     <div class='col-md-7' id='objetivo'>
                       <h2>Objetivo de la actividad</h2>
-                      <p id="juego-objetivo" class="text-justify"></p>
+                      <p id="juego-objetivo" class="text-justify">
+                        {{ $datos[0]->objetivo }}
+                      </p>
                       <div class="text-right boton-comezar">
                         <button type="button" class="btn btn-info btn-lg" id="btn-comenzar">
                           Comenzar Actividad
@@ -121,16 +118,16 @@
   <!-- SECCION FINAL DONDE SE COLOCA LA PUNTUACION POR ESTRELLAS Y LOS BOTONES DE DESCARGA Y VIDEO -->
   <div class="row">
     <div class="col-md-4">
-      <h3><b>Califica la Actividad</b></h3>
+      <!-- <h3><b>Califica la Actividad</b></h3>
       <span class="fa fa-star-o fa-2x"></span>
       <span class="fa fa-star-o fa-2x"></span>
       <span class="fa fa-star-o fa-2x"></span>
       <span class="fa fa-star-o fa-2x"></span>
-      <span class="fa fa-star-o fa-2x"></span>
+      <span class="fa fa-star-o fa-2x"></span> -->
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
-        <a target="_blank" class="btn btn-default btnDownloadPDF" disabled>
+        <a target="_blank" class="btn btn-default btnDownloadPDF" href="/packages/docs/{{ $datos[0]->pdf }}">
           <span class="fa fa-download"></span>&nbsp;
           <b>Guía de estudio PDF</b>
         </a>
