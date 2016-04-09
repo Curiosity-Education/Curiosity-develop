@@ -44,7 +44,7 @@
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
-        <img class='img-circle' src='/packages/images/inteligencias/{{$objeto->imagen}}' data-id-img={{$objeto->id}}>
+        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/inteligencias/{{$objeto->imagen}}' data-id-img={{$objeto->id}}>
       </div>
       <div class='box-footer'>
         <div class='row'>

@@ -14,7 +14,7 @@ var $curiosity = {
         layout      : 'bottomRight',
         theme       : 'defaultTheme',
         maxVisible  : 10
-     });
+     });     
      document.getElementById('notyAudio').play();
   },
   call:{
