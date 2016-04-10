@@ -200,7 +200,7 @@
 </section>
 
 <!-- Computadorcita -->
-<section id="computadorcita" >
+<section id="computadorcita" class="hidden-xs ">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
