@@ -354,10 +354,10 @@
 			<div class="col-xs-6 col-md-2">
 				<h5><b>ACERCA DE NOSOTROS</b></h5>
 				<ul class="lista-footer">
-					<li><a href="javascript:void(0)">Nuestra Misión</a></li>
-					<li><a href="javascript:void(0)">Nuestra Visión</a></li>
-					<li><a href="javascript:void(0)">Nuestros Valores</a></li>
-					<li><a href="javascript:void(0)">Nuestro Equipo</a></li>
+					<li><a href="/nosotros#parte1">Nuestra Misión</a></li>
+					<li><a href="/nosotros#parte2">Nuestra Visión</a></li>
+					<li><a href="/nosotros#parte3">Nuestros Valores</a></li>
+					<li><a href="">Nuestro Equipo</a></li>
 				</ul>
 			</div>
 			<div class="col-xs-6 col-md-2">

@@ -164,9 +164,9 @@ class perfilController extends BaseController{
                 $image = Input::file('image');
                 $imagen = Image::make($image->getRealPath());
                 //guardar imagen original
-                $imagen->save("packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
+                $imagen->save("/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
                 $imagen->crop($width,$height,$x,$y);
-                $imageSave ="packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
+                $imageSave ="/packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
 
                 $imagen->save($imageSave);
 
@@ -175,9 +175,9 @@ class perfilController extends BaseController{
                 $perfil->save();
                 return asset($imageSave.'?'.$v=rand());
              }else{
-                $imagen = Image::make('packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
+                $imagen = Image::make('/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
                 $imagen->crop($width,$height,$x,$y);
-                $path= 'packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
+                $path= '/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
                 $imagen->save($path);
                 return asset($path.'?'.$v=rand());
              }

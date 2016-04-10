@@ -2,6 +2,10 @@ $(document).ready(function() {
 
   $curiosity.menu.setPaginaId("#menuAdminNivel");
 
+  // Funcion para validar formato de archivo
+  // en input file
+  $tiposFile = new Array('.pdf', '.doc', '.docx');
+
 // arreglo con los colores preestablecidos
 // en el css estandar del sistema curiosity
   var colores = Array(
@@ -132,56 +136,60 @@ $(document).ready(function() {
       // hará la funcion de registrar y la inteligencia al que este
       // pertenece.
       guardarAdd : function(boton, direccion, tema){
-        var $btnEnviar = boton;
-        $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Guardando...');
-        var color = Math.floor(Math.random()*7);
-        var formData = new FormData($("#formPDF")[0]);
-        formData.append('nombre', $("#nombre").val());
-        formData.append('estatus', 'lock');
-        formData.append('active', 1);
-        formData.append('objetivo', $("#descripcion").val());
-        formData.append('bg_color', colores[Math.floor(Math.random()*7)]);
-        formData.append('tema_id', tema);
-        formData.append('code_embed', $("#video").val());
-        formData.append('profesores_id', $("#profesores").val());
-        $.ajax({
-          url: direccion,
-          type: 'POST',
-          data: formData,
-          cache: false,
-          contentType: false,
-          processData: false
-        })
-        .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
+
+        $tipos = new Array('.pdf', '.docx');
+        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos)){
+          var $btnEnviar = boton;
+          $btnEnviar.attr('disabled', 'disabled');
+          $btnEnviar.text('Guardando...');
+          var color = Math.floor(Math.random()*7);
+          var formData = new FormData($("#formPDF")[0]);
+          formData.append('nombre', $("#nombre").val());
+          formData.append('estatus', 'lock');
+          formData.append('active', 1);
+          formData.append('objetivo', $("#descripcion").val());
+          formData.append('bg_color', colores[Math.floor(Math.random()*7)]);
+          formData.append('tema_id', tema);
+          formData.append('code_embed', $("#video").val());
+          formData.append('profesores_id', $("#profesores").val());
+          $.ajax({
+            url: direccion,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+          })
+          .done(function(response) {
+            if($.isPlainObject(response)){
+              $.each(response,function(index,value){
+                $.each(value,function(i, message){
+                  $curiosity.noty(message, 'warning');
+                });
               });
-            });
-          }
-          else if(response[0] == 'success'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-            $curiosity.noty("Registrado Correctamente", "success");
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'success_exist'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-            $curiosity.noty("Se ha habilitado nuevamente", "success");
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'same'){
-            $curiosity.noty("El nombre ingresado ya existe", "warning");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        })
-        .always(function(){
-          $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-        });
+            }
+            else if(response[0] == 'success'){
+              actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+              $curiosity.noty("Registrado Correctamente", "success");
+              actividad.hideAdmin();
+            }
+            else if(response[0] == 'success_exist'){
+              actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+              $curiosity.noty("Se ha habilitado nuevamente", "success");
+              actividad.hideAdmin();
+            }
+            else if(response[0] == 'same'){
+              $curiosity.noty("El nombre ingresado ya existe", "warning");
+            }
+          })
+          .fail(function(error) {
+            console.log(error);
+          })
+          .always(function(){
+            $btnEnviar.removeAttr('disabled');
+            $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+          });
+        }
       },
       // actualiza un objeto enviando como parametros
       // el boton al que se le da clic, la direccion donde
