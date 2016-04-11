@@ -357,7 +357,7 @@ class actividadController extends BaseController
         ->where('ext','=','php')
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
-        
+        Session::put("idActivity",$idActividad);
         $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
         ->where('actividad_id', '=', $idActividad)
         ->max('promedio');        
@@ -385,6 +385,7 @@ class actividadController extends BaseController
                         if(Input::file('juego_zip') != null){
                             //Realizamos la validación para ver si es un archivo .ZIP
                             if(Input::file('juego_zip')->getClientOriginalExtension() == 'zip'){
+                    
                                 //Guardamos el nombre del archivo en la var $log
                                 $log = Input::file('juego_zip')->getClientOriginalName();
                                 //Preguntamos en una condicional si la carpeta juegosZIP existe
@@ -807,7 +808,7 @@ class actividadController extends BaseController
       //   array_push($rel_hijo_act, $actividades);
       // }
       $puntajes = array();
-      foreach ($ids as $obj => $id) {
+      foreach ($ids as $obj => $id){
         $max = hijoRealizaActividad::where('hijo_id', '=', $id['id'])->max('promedio');
         $min = hijoRealizaActividad::where('hijo_id', '=', $id['id'])->min('promedio');
         $actMax = actividad::join('hijo_realiza_actividades', 'hijo_realiza_actividades.actividad_id', '=',       'actividades.id')
@@ -839,7 +840,7 @@ class actividadController extends BaseController
         try{
             $activida_hijo = new hijoRealizaActividad(Input::all());
             $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->first()->pluck('id');
-            $activida_hijo->actividad_id = Session::get('idActividad');
+            $activida_hijo->actividad_id = Session::get('idActivity');
             $activida_hijo->save();
             return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
         }
@@ -849,6 +850,3 @@ class actividadController extends BaseController
     }
 }
 
-
-
- ?>
