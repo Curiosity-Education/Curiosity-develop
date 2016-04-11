@@ -155,10 +155,10 @@ class perfilController extends BaseController{
         }
     }
     public function cutImage(){
-            $x = round(Input::get("x"), 0, PHP_ROUND_HALF_DOWN);
-            $y = round(Input::get("y"), 0, PHP_ROUND_HALF_DOWN);
-            $width = round(Input::get("width"), 0, PHP_ROUND_HALF_DOWN);
-            $height = round(Input::get("height"), 0, PHP_ROUND_HALF_DOWN);
+            $x =   (integer)Input::get("x");
+            $y = (integer)Input::get("y");
+            $width = (integer)Input::get("width");
+            $height = (integer)Input::get("height");
 
              if(Input::hasFile('image')){// si se establecio una imagen para recortar
                 $image = Input::file('image');

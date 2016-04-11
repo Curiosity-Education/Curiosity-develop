@@ -2,6 +2,7 @@
 
 @section('mi_css')
   {{ HTML::style('/packages/css/curiosity/juegos/juego_layer.css') }}
+  {{ HTML::style('/packages/css/libs/jquery-ui/jquery-ui.min.css') }}
   @yield('juego_css')
 @stop
 
@@ -32,14 +33,11 @@
               </div>
               <div class="modal-body" id="modal-body-juego">
                 <div class="row">
-                  <div class="col-md-6">
-                    <h4 id="modal-puntos-max"></h4>
-                    <h4 id="modal-eficiencia-max"></h4>
-                  </div>
+                  <div class="col-md-3"></div>
                   <div class="col-md-6">
                     <h4 id="modal-puntos-now"></h4>
-                    <h4 id="modal-eficiencia-now"></h4>
                   </div>
+                  <div class="col-md-3"></div>
                 </div>
               </div>
               <div class="modal-footer" id="modal-footer-juego">
@@ -93,7 +91,7 @@
                       <div class="row">
                         <div class="col-md-12 text-center cal-titulo">
                           <h3>Máxima Puntuación</h3>
-                          <h1><b id="num-max-pts">{{ $maxProm }}</b></h1>
+                          <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
                         </div>                        
                       </div>
                     </div>
@@ -143,5 +141,10 @@
 
 @section('mi_js')
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
+  {{ HTML::script('/packages/js/libs/jquery-ui/jquery-ui.min.js') }}
+  {{ HTML::script('/packages/js/libs/jquery-ui/jquery.ui.touch-punch.min.js') }}
+  <script type="text/javascript">
+    $juego.setPuntuacion({{$maxProm}});
+  </script>
   @yield('juego_js')
 @stop

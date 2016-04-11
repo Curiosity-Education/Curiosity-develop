@@ -3,8 +3,8 @@
  {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
  {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
+ {{HTML::style("/packages/css/libs/cropper/cropper.min.css")}}
  {{HTML::style('/packages/css/curiosity/alert.css')}}
- {{HTML::style("/packages/cropper/cropper.min.css")}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
 @stop
 @section('title')
@@ -713,7 +713,7 @@
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
 {{HTML::script('/packages/js/curiosity/alert.js')}}
-{{HTML::script('/packages/cropper/cropper.min.js')}}
+{{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
 @if(Auth::user()->hasRole('padre'))
   {{HTML::script("/packages/js/curiosity/perfilEstadisticas.js")}}
