@@ -480,3 +480,66 @@ footer div hr{
 .logo-construccion:hover {
 	transform: scale(1) rotate(-15deg) ;
 }
+
+/*------*/
+
+@media (max-width: 1024px) {
+	#fondoVideo{
+		padding: 110px;
+		margin-bottom: 50px;
+	}
+
+	.logo-inicio{
+		width: 100% !important;
+		padding-left: 0% !important;
+	}
+
+	.boton-inicio{
+		margin-bottom: -30px;
+	}
+}
+
+@media (max-width: 768px) {
+	#fondoVideo{
+		padding: 210px;
+		margin-top: -39px;
+		margin-bottom: -100px;
+	}
+
+	#videoDesc{
+		margin-bottom: 45px;
+	}
+}
+/*
+@media (min-width: 778px) {
+	.logo-inicio{
+		width: 70%;
+		padding-left: 30%;
+	}
+
+	.boton-inicio{
+		margin-bottom: -30px;
+	}
+}*/
+
+@media (min-width: 773px) {
+	.logo-inicio{
+		width: 70%;
+		padding-left: 30%;
+	}
+
+	.boton-inicio{
+		margin-bottom: -30px;
+	}
+}
+
+@media (max-width: 736px) {
+	.logo-inicio{
+		width: 70%;
+		padding-left: 30%;
+	}
+
+	.boton-inicio{
+		margin-bottom: -30px;
+	}
+}

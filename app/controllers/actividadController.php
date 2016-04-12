@@ -29,7 +29,9 @@ class actividadController extends BaseController
         ->select('id', 'nombre')->get(),
         'obj_nivel' => nivel::where('id', '=', $idNivel)
         ->select('id', 'nombre')->get(),
-        'obj_profesores' => profesor::select('id', 'nombre', 'apellido_paterno', 'apellido_materno')->get()
+        'obj_profesores' => profesor::where('active', '=', 1)
+        ->select('id', 'nombre', 'apellido_paterno', 'apellido_materno')
+        ->get()
         );
         // regresamos la vista junto con el arreglo recien creado
         return View::make('vista_actividades_admin', $obj_actividades);
@@ -340,7 +342,7 @@ class actividadController extends BaseController
       return Response::json(array(0=>'success', 1=>$file->getClientOriginalName()));
     }
   }
-    public function hasGame(){      
+    public function hasGame(){
         return archivo::where('ext','=','php')->where('active','=','1')->select('id','actividad_id','nombre')->get();
     }
     /*-----------------------------------
@@ -357,11 +359,12 @@ class actividadController extends BaseController
         ->where('ext','=','php')
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
+
         Session::put("idActivity",$idActividad);
         $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
         ->where('actividad_id', '=', $idActividad)
-        ->max('promedio');        
-        
+        ->max('promedio');
+
             try{
                 //----Retornamos la vista del juego
                 return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
@@ -836,7 +839,7 @@ class actividadController extends BaseController
 
     }
 
-    public function setDataActivity(){              
+    public function setDataActivity(){
         try{
             $activida_hijo = new hijoRealizaActividad(Input::all());
             $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->first()->pluck('id');
