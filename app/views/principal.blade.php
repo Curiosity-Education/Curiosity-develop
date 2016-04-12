@@ -78,7 +78,7 @@
       <div class="col-xs-12 visible-xs visible-sm">
         <br><br>
         <div class="col-md-12 text-center">
-          <a href="javascript:void(0)" class="btn btn-primary btn-lg cel-boton-inicio bg-green">
+          <a href="/login" class="btn btn-primary btn-lg cel-boton-inicio bg-green">
             <span class="fa fa-mortar-board"></span>
             Iniciar Sesión
           </a>

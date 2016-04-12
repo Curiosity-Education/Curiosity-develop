@@ -519,7 +519,7 @@ footer div hr{
 	}
 }*/
 
-@media (min-width: 773px) {
+@media (max-width: 773px) {
 	.logo-inicio{
 		width: 70%;
 		padding-left: 30%;
