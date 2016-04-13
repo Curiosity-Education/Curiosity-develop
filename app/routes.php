@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'principalController@verPagina');
+Route::get('/nosotros', 'principalController@verNosotros');
 
 /* ------------------------------------------------- */
 
@@ -54,11 +55,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/foto','perfilController@cutImage');
         Route::post('/regAdmin','userController@saveAdmin');
         Route::group(array('before' => 'realizar_actividades'),function(){
-          Route::get('/nivel', 'nivelController@verPaginaInWeb');
-          Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
-          Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
-          Route::get('/tema{id}', 'temaController@verPaginaInWeb');
-          Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
+        Route::get('/nivel', 'nivelController@verPaginaInWeb');
+        Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
+        Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
+        Route::get('/tema{id}', 'temaController@verPaginaInWeb');
+        Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
         });
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
@@ -94,7 +95,7 @@ Route::group(array('before' => 'auth'), function(){
           Route::match(array('GET', 'POST'), '/adminActividad{id}_{bloque}_{inteligencia}_{nivel}', 'actividadController@verPagina');
           Route::post('/updateActividad', 'actividadController@update');
           Route::post('/removeActividad', 'actividadController@remove');
-          Route::post('/changeImageActividad{id}', 'actividadController@changeImage');          
+          Route::post('/changeImageActividad{id}', 'actividadController@changeImage');
           Route::post('/move/game','actividadController@moveGame');
           Route::post('/delete/game','actividadController@disabledGame');
         });

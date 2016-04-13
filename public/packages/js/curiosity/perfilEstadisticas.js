@@ -10,7 +10,6 @@ $(document).ready(function(){
     data: {data : datos}
   })
   .done(function(response){
-    console.log(response);
     if(response[0] == 'success'){
       $setHtml = "<div class='felicitacionHijos text-center'>"+
                     "<h1>¡Felicidades Papá!</h1>"+
@@ -46,7 +45,7 @@ $(document).ready(function(){
   });
 
   $(".alertaBox").on('click', '.alertaHijo > .guiavideo', function(){
-    $("#setVideo").attr('src', $(this).data('embed'));
+    $("#videoAyuda").attr('src', $(this).data('embed'));
     $("#modalVideo").modal('show');
   });
 

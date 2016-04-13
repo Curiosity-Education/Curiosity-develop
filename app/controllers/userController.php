@@ -7,7 +7,12 @@ class userController extends BaseController{
             $persona = Auth::User()->persona()->first();
             $padre=$persona->padre()->first();
             $estados = estado::all();
-            $escuelas = escuela::all();
+            $escuelas = escuela::where('active', '=', '1')->get();
+            $idAuth = Auth::user()->id;
+            $rol = User::join('assigned_roles', 'users.id', '=', 'assigned_roles.user_id')
+            ->join('roles', 'assigned_roles.role_id', '=', 'roles.id')
+            ->where('users.id', '=', Auth::user()->id)
+            ->pluck('name');
             if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root')){
                 $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
                 $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
@@ -18,10 +23,10 @@ class userController extends BaseController{
                 ->where('hijos.padre_id', '=', $idPadre)
                 ->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();                
                 return View::make('vista_perfil')
-                ->with(array('perfil' => $perfil, 'persona' => $persona, 'datosHijos' => $datosHijos, 'escuelas'=>$escuelas,"padre"=>$padre,"estados"=>$estados));
+                ->with(array('perfil' => $perfil, 'persona' => $persona, 'datosHijos' => $datosHijos, 'escuelas'=>$escuelas,"padre"=>$padre,"estados"=>$estados, 'rol'=>$rol));
             }
             else{
-                return View::make('vista_perfil')->with(array('perfil' => $perfil, 'persona' => $persona, 'escuelas'=>$escuelas,"padre"=>$padre,"estados"=>$estados));
+                return View::make('vista_perfil')->with(array('perfil' => $perfil, 'persona' => $persona, 'escuelas'=>$escuelas,"padre"=>$padre,"estados"=>$estados, 'rol'=>$rol));
             }
         }
     }

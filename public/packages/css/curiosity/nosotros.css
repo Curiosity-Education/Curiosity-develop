@@ -1,0 +1,82 @@
+#parte1{
+    width: 100%;
+    height: auto;
+    background: white;
+    background-image: url(/packages/images/fondos/fondo2.jpg);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#parte3{
+    width: 100%;
+    height: auto;
+    background: white;
+    background-image: url(/packages/images/fondos/fondo2.jpg);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#parte2{
+    width: 100%;
+    height: auto;
+    background: RGB(0,100,180);
+    background-image: url(/packages/images/fondos/fondo.jpg);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#parte2 > h1{
+  color: rgb(255, 255, 255);
+}
+
+h3{
+  margin-top: 10px !important;
+  margin-bottom: 3px !important;
+}
+
+.valor{
+  margin-bottom: 60px;
+}
+
+.texto{
+    font-size: 150%;
+}
+.titulo{
+    font-size: 400%;
+}
+.textoblanco{
+    color: white;
+}
+.circulo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    max-width: 100px;
+    max-height: 100px;
+    padding-left: 30px;
+    padding-top: 20px;
+    color: white;
+}
+.azul{
+    background: rgb(54, 142, 184);
+}
+.amarillo{
+    background: yellow;
+}
+.rojo{
+    background: red;
+}
+.verde{
+    background: green;
+}
+.morado{
+    background: purple;
+}
+.derechita{
+    display: inline-block !important;
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+    max-height: 100px;
+    max-width: 100px;
+}

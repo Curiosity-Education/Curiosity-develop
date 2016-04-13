@@ -23,14 +23,15 @@ var $curiosity = {
             if($.isPlainObject(data)){
                 $.ajax({
                     url:'/actividad/setdata',
-                    method:"POST",                    
+                    method:"POST",
                     data:data
                 }).done(function(response){
-                    console.log(response);
-                    if(response.estado == "200")
-                        $curiosity.noty(response.message,"success");
-                    else
-                        $curiosity.noty(response.message,"warning");
+                    if(response.estado == "200"){
+                        // $curiosity.noty(response.message,"success");
+                    }
+                    else{
+                      $curiosity.noty(response.message,"warning");
+                    }
                 }).fail(function(error,status,statusText){
                     $curiosity.noty(error,"error");
                 });
@@ -76,7 +77,35 @@ var $curiosity = {
       swal("Removido!", "Removido Correctamente", "success");
       document.getElementById('notyAudio').play();
     });
-  }
+  },
+  comprobarFile : function (archivo, tipos) {
+   extensiones_permitidas = tipos;
+   mierror = "";
+   if (!archivo) {
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario
+        $curiosity.noty('No se ha seleccionado ningun archivo', 'warning');
+   }else{
+      //recupero la extensión de este nombre de archivo
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
+      //compruebo si la extensión está entre las permitidas
+      permitida = false;
+      for (var i = 0; i < extensiones_permitidas.length; i++) {
+         if (extensiones_permitidas[i] == extension) {
+         permitida = true;
+         break;
+         }
+      }
+      if (!permitida) {
+        // Si la extension no se encuentra entre
+        // las permitidas se muestra el sig. mensaje
+         $curiosity.noty("Comprueba la extensión del archivo a subir. \nSólo se pueden subir archivos con extensiones de tipo: "+extensiones_permitidas.join(), 'warning');
+      	}else{
+         return true;
+      	}
+       }
+       //si estoy aqui es que no se ha podido submitir
+       return false;
+    }
 
 };
  $("form").submit(function(e){
