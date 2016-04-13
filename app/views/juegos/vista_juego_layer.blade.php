@@ -2,6 +2,7 @@
 
 @section('mi_css')
   {{ HTML::style('/packages/css/curiosity/juegos/juego_layer.css') }}
+  {{ HTML::style('/packages/css/libs/jquery-ui/jquery-ui.min.css') }}
   @yield('juego_css')
 @stop
 
@@ -21,7 +22,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row">
                   <div class="col-md-4 col-md-offset-4">
-                    <img src="/packages/images/cups/win1.png" alt="" class="img-responsive">
+                    <img alt="" class="img-responsive" id="medallaAlerta">
                   </div>
                 </div>
                 <div class="row">
@@ -32,14 +33,11 @@
               </div>
               <div class="modal-body" id="modal-body-juego">
                 <div class="row">
-                  <div class="col-md-6">
-                    <h4 id="modal-puntos-max"></h4>
-                    <h4 id="modal-eficiencia-max"></h4>
-                  </div>
+                  <div class="col-md-3"></div>
                   <div class="col-md-6">
                     <h4 id="modal-puntos-now"></h4>
-                    <h4 id="modal-eficiencia-now"></h4>
                   </div>
+                  <div class="col-md-3"></div>
                 </div>
               </div>
               <div class="modal-footer" id="modal-footer-juego">
@@ -93,8 +91,13 @@
                       <div class="row">
                         <div class="col-md-12 text-center cal-titulo">
                           <h3>Máxima Puntuación</h3>
+<<<<<<< HEAD
                           <h1><b id="num-max-pts">{{ $maxProm }}</b></h1>
                         </div>
+=======
+                          <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
+                        </div>
+>>>>>>> 8831ff9d2204dd15bb4ed03ef89a0f21a29383b0
                       </div>
                     </div>
                     <div class='col-md-7' id='objetivo'>
@@ -143,5 +146,10 @@
 
 @section('mi_js')
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
+  {{ HTML::script('/packages/js/libs/jquery-ui/jquery-ui.min.js') }}
+  {{ HTML::script('/packages/js/libs/jquery-ui/jquery.ui.touch-punch.min.js') }}
+  <script type="text/javascript">
+    $juego.setPuntuacion({{$maxProm}});
+  </script>
   @yield('juego_js')
 @stop
