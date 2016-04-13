@@ -31,22 +31,22 @@
         <li class="hidden-xs hidden-sm"><a href="javascript:void(0)" id="link-ofrecemos">¿Qué es Curiosity?</a></li>
 				<li><a href="javascript:void(0)" id="link-pagos">Formas de Pago</a></li>
         <li><a href="javascript:void(0)" id="link-escuelas">Escuelas Asociadas</a></li>
-				<li><a href="javascript:void(0)" class="wow pulse" data-wow-iteration="infinite" data-wow-duration="2s">Registrarme</a></li>
+				<li><a href="javascript:void(0)">Registrarme</a></li>
         <li><a href="/login">Iniciar Sesión</a></li>
       </ul>
     </div>
   </div>
 </div>
-{{HTML::image('/packages/images/construccion.png', 'alt', array('class'=> 'img-responsive logo-construccion wow bounceIn'))}}
+
 <!-- / inicio / -->
   <section class="container-fluid pantalla-total" id="inicio">
     <div class="row">
 
       <div class="col-md-6 col-md-offset-3 hidden-xs hidden-sm text-center">
-        {{HTML::image('/packages/images/pg-curiosity.png', 'alt', array('class' => 'img-responsive logo-inicio wow bounceIn'))}}
+        {{HTML::image('/packages/images/pg-curiosity_beta.png', 'alt', array('class' => 'img-responsive logo-inicio wow bounceIn'))}}
       </div>
       <div class="col-xs-12 visible-xs visible-sm cel-logo-principal">
-				{{HTML::image('/packages/images/pg-curiosity.png', 'alt', array('class' => 'img-responsive logo-inicio wow bounceIn'))}}
+				{{HTML::image('/packages/images/pg-curiosity_beta.png', 'alt', array('class' => 'img-responsive logo-inicio wow bounceIn'))}}
       </div>
 
     </div>
@@ -78,7 +78,7 @@
       <div class="col-xs-12 visible-xs visible-sm">
         <br><br>
         <div class="col-md-12 text-center">
-          <a href="javascript:void(0)" class="btn btn-primary btn-lg cel-boton-inicio bg-green">
+          <a href="/login" class="btn btn-primary btn-lg cel-boton-inicio bg-green">
             <span class="fa fa-mortar-board"></span>
             Iniciar Sesión
           </a>

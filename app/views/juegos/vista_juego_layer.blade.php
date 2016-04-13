@@ -22,7 +22,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <div class="row">
                   <div class="col-md-4 col-md-offset-4">
-                    <img src="/packages/images/cups/win1.png" alt="" class="img-responsive">
+                    <img alt="" class="img-responsive" id="medallaAlerta">
                   </div>
                 </div>
                 <div class="row">

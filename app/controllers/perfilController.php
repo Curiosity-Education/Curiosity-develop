@@ -155,32 +155,60 @@ class perfilController extends BaseController{
         }
     }
     public function cutImage(){
-            $x =   (integer)Input::get("x");
-            $y = (integer)Input::get("y");
-            $width = (integer)Input::get("width");
-            $height = (integer)Input::get("height");
+        $x =   (integer)Input::get("x");
+        $y = (integer)Input::get("y");
+        $width = (integer)Input::get("width");
+        $height = (integer)Input::get("height");        
 
-             if(Input::hasFile('image')){// si se establecio una imagen para recortar
-                $image = Input::file('image');
-                $imagen = Image::make($image->getRealPath());
-                //guardar imagen original
-                $imagen->save("/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
-                $imagen->crop($width,$height,$x,$y);
-                $imageSave ="/packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
+         if(Input::hasFile('image')){// si se establecio una imagen para recortar
+            $image = Input::file('image');
+            $imagen = Image::make($image->getRealPath());
 
-                $imagen->save($imageSave);
+            $alto = $imagen->height;
+            $ancho = $imagen->width;
 
-                $perfil =Auth::user()->perfil()->first();
-                $perfil->foto_perfil=Auth::user()->username.".".$image->getClientOriginalExtension();
-                $perfil->save();
-                return asset($imageSave.'?'.$v=rand());
-             }else{
-                $imagen = Image::make('/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
-                $imagen->crop($width,$height,$x,$y);
-                $path= '/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
-                $imagen->save($path);
-                return asset($path.'?'.$v=rand());
-             }
+            if($ancho > 3000){
+                $max = 3000;
+                $extra = ($ancho - $max);
+                $porcent = (integer)(($extra * 100) / $max);
+                $imagen->width = $max;
+
+                $dif = (($porcent * $alto) / 100);
+                $alturaNew = $alto - $dif;
+                $imagen->height = $alturaNew;
+                $imagen->resize($imagen->width, $imagen->height);
+            }
+
+            if($alto > 2000){
+                $max = 2000;
+                $extra = ($alto - $max);
+                $porcent = (integer)(($extra * 100) / $max);
+                $imagen->height = $max;
+
+                $dif = (($porcent * $ancho) / 100);
+                $anchoNew = $ancho - $dif;
+                $imagen->width = $anchoNew;
+                $imagen->resize($imagen->width, $imagen->height);
+            }            
+
+            //guardar imagen original
+            $imagen->save("/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
+            $imagen->crop($width,$height,$x,$y);
+            $imageSave ="/packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
+
+            $imagen->save($imageSave);
+
+            $perfil =Auth::user()->perfil()->first();
+            $perfil->foto_perfil=Auth::user()->username.".".$image->getClientOriginalExtension();
+            $perfil->save();
+            return asset($imageSave.'?'.$v=rand());
+         }else{
+            $imagen = Image::make('/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
+            $imagen->crop($width,$height,$x,$y);
+            $path= '/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
+            $imagen->save($path);
+            return asset($path.'?'.$v=rand());
+         }
     }
 
 }
