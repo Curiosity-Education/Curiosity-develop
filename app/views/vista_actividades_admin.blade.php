@@ -150,13 +150,8 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-@if(Entrust::can('subir_juego'))
-  <!------Menu desplegable para subir juegos -->
-=======
-  @if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
+@if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
   <!-- Menu desplegable para subir juegos -->
->>>>>>> abbdba3dafbf5c5e2c1a500a6ee15feb85537b8e
   <div id="menu" class="menu hide">
         <ul class="menu-ul">
             <li class="menu-ul-li" id="asignar_juego"><i class="fa fa-gamepad fa-2x"></i> Asignar juego</li>
@@ -213,10 +208,6 @@
     </div>
 <<<<<<< HEAD
  @endif
-=======
-    @endif
-
->>>>>>> abbdba3dafbf5c5e2c1a500a6ee15feb85537b8e
 @stop
 
 @section('mi_js')

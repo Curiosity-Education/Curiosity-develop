@@ -8,12 +8,12 @@ $(document).on('ready',function(){
                  url:'/hasgame',
                  method:'POST',
                  dataType:'JSON'
-              }).done(function(response){                
+              }).done(function(response){
+                  $('#actividades .activity').removeAttr('data-has-game');
+                  $('#actividades .activity').removeAttr('title');
                   $("#actividades").children('div').each(function(i,objeto){
                        console.log(objeto);
                         $.each(response,function(index,value){
-                                  $(objeto).removeAttr('data-has-game');
-                                  $(objeto).removeAttr('title');
 
                                   if($(objeto).children('div').attr('data-id') == value.actividad_id){
                                       

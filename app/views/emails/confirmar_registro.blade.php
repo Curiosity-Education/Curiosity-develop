@@ -107,7 +107,7 @@
       <br>
       Atentamente: {{$name}}.
       <hr>
-      <a href="http://www.curiosity.git.com/confirmar/{{$token}}">www.curiosity.com</a>
+      <a href="http://www.curiosity.com.mx/confirmar/{{$token}}">www.curiosity.com.mx</a>
     </div>
   </td></tr></tbody></table>
 </td></tr></tbody></table>

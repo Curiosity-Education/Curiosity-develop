@@ -130,7 +130,11 @@ $(document).ready(function(){
           $("#enviarEnv").html("<i class='fa fa-check'></i> Guardar");
         })
         .fail(function(error) {
-          console.log(error);
+            var messageServer = jQuery.parseJSON(error.responseText);
+            var messageError = messageServer.error;
+            console.log(messageError);
+            var message = messageError.message;
+            $curiosity.noty(message,"error");
         });
       },
       remove : function($id){
