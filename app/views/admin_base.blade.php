@@ -57,7 +57,7 @@
                   <!-- Footer Menu -->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-primary">
+                      <a href="/perfil" class="btn btn-primary">
                         <span class="fa fa-gear"></span>
                         Editar Perfil
                       </a>
@@ -88,7 +88,7 @@
             </div>
             <div class="pull-left info">
               <p>{{Auth::user()->username}}</p>
-              Tel: {{Auth::user()->persona()->first()->telefono}}
+              <small></small>
             </div>
           </div>
 
@@ -139,7 +139,7 @@
             @endif
 
             <li class="visible-xs">
-              <a href="/">
+              <a href="/logout">
                 <i class="fa fa-arrow-circle-right"></i>
                 <span>Salir</span>
               </a>

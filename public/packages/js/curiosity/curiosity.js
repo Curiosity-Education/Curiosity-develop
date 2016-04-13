@@ -25,12 +25,13 @@ var $curiosity = {
                     url:'/actividad/setdata',
                     method:"POST",
                     data:data
-                }).done(function(response){
-                    console.log(response);
-                    if(response.estado == "200")
-                        $curiosity.noty(response.message,"success");
-                    else
-                        $curiosity.noty(response.message,"warning");
+                }).done(function(response){                    
+                    if(response.estado == "200"){                    
+                        // $curiosity.noty(response.message,"success");
+                    }
+                    else{
+                      $curiosity.noty(response.message,"warning");
+                    }
                 }).fail(function(error,status,statusText){
                     $curiosity.noty(error,"error");
                 });

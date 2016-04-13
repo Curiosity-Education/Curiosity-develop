@@ -86,18 +86,18 @@
                   menú según el rol logueado
                  -->
                  @if(Auth::user()->hasRole('padre'))
-                   <ul class="list-group list-group-unbordered" id="menu-item-profile">
+                   <!-- <ul class="list-group list-group-unbordered" id="menu-item-profile">
                      <li class="list-group-item">
                        <b>Estatus</b>
                        <a class="pull-right">
                          <i class="fa fa-circle"></i>
                        </a>
                      </li>
-                   </ul>
+                   </ul> -->
                    <!-- /.Fin de Menú-Item-Profile -->
-                   <a href="#" class="btn btn-primary btn-block">
+                   <!-- <a href="#" class="btn btn-primary btn-block">
                    <b><i class="fa fa-credit-card-alt"></i> Información de Pago</b>
-                   </a>
+                   </a> -->
                  @endif
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -148,12 +148,12 @@
                    </li>
                    @endif
                   @if(Auth::user()->hasRole('hijo'))
-                    <li class="active">
+                    <!-- <li class="active">
                       <a href="#bestPuntajes" data-toggle="tab">
                         <i class="fa fa-star"></i>
                         Mejores Puntajes
                       </a>
-                    </li>
+                    </li> -->
                   @endif
                  @if(Auth::user()->hasRole('padre'))
                    <li>
@@ -647,6 +647,7 @@
                         <br>
                         <h4><b>Bienvenido a la zona de Alertas.</b></h4>
                         En esta zona se mostrarán todos tus hijos que se encuentren con un puntaje por debajo del promedio dependiendo de las actividades que haya realizado.<br><br>
+                        <b>Nota: </b> Las estadisticas presentadas son en base a las estadisticas generadas por la misma plataforma Curiosity y sus usuarios.<br><br>
                         Curiosity te brinda a ti como padre, un archivo y un video que te servirán como ayuda para que, si así lo deseas puedas guiar a tu hijo en el tema que esta presentando dificultades especificamente.
                       </div>
                       <div class="alertaBox">
@@ -691,8 +692,7 @@
                   <h4 class="modal-title" id="">Video de Estudio</h4>
                 </div>
                 <div class="modal-body">
-                  <!-- <iframe src="/packages/video/videoComputadorcita.mp4" controls id="videoApoyo" class="img-responsive" preload></iframe> -->
-                  <video  controls class="img-responsive" id="setVideo"></video>
+                  <iframe width="100%" height="350" id="videoAyuda" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="modal-footer">
                 </div>

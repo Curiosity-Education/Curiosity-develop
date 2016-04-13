@@ -1,10 +1,7 @@
 $(document).ready(function(){
   $juego.setBackgroundColor("rgb(25, 132, 179)");
   $juego.setBackgroundImg("/packages/images/fondos/fondo.jpg");
-  $juego.setNivelUsuarioIMG("/packages/images/cups/medalla1.png");
-  $juego.boton.archivoPDF.setDireccion('/packages/docs/pruebaPDF.pdf');
-  $juego.boton.archivoPDF.setNombreDescarga('Guia Sumas Restas');
-  $juego.boton.video.setVideo('/packages/video/Restas.mp4');
+  $juego.setNivelUsuarioIMG();
   $juego.boton.comenzar.setFuncion(function(){
       $("#zona-play").show();
       $("#zona-obj").hide();
@@ -125,13 +122,14 @@ $(document).ready(function(){
              var data = {"puntaje":game.puntajeNow,
                         "eficiencia":game.eficiencia,
                         "promedio":(game.puntajeNow*game.eficiencia)/100};
-             if(data.promedio>game.puntosMaximos){
-                 game.puntosMaximos=data.promedio;
-                $juego.setPuntosMaxInicio(data.promedio);
-             }
+            if(data.promedio>game.puntosMaximos){
+              game.puntosMaximos=data.promedio;
+              $juego.setPuntosMaxInicio(data.promedio);
+            }
+            $curiosity.call.setData.juego(data);
+            $juego.setNivelUsuarioIMG();
             $juego.modal.puntuacion.mostrar(data.promedio);
-            console.log(data);
-             $curiosity.call.setData.juego(data);
+            // console.log(data);             
              $("#zona-play").hide();
              $("#zona-obj").show();
              game.intentos=0;

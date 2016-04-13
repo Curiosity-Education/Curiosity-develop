@@ -628,7 +628,7 @@ class actividadController extends BaseController
       // la suma total de promedios entre
       // la cantidad de promedios registrados
       // en el juego
-      $m = round($sp/$cp);
+      $m = ($sp/$cp);
 
       $usernameHijo = hijo::join('personas', 'personas.id', '=', 'hijos.persona_id')
       ->join('users', 'users.id', '=', 'personas.user_id')
@@ -647,7 +647,7 @@ class actividadController extends BaseController
         'actividad_id' => $value['actividad_id'],
         'hijo_id' => $value['hijo_id']
       ));
-    }
+    }    
 
     foreach ($promedios as $key => $value) {
       $datos = hijoRealizaActividad::where('actividad_id', '=', $value['actividad_id'])->get();
@@ -664,7 +664,7 @@ class actividadController extends BaseController
       // la suma total de promedios entre
       // la cantidad de promedios registrados
       // en el juego
-      $m = round($sp/$cp);
+      $m = ($sp/$cp);
       $dpmTotal = 0; // total de diferencias al cuadrado
       foreach ($datos as $dato => $value2) {
         // calculamos la diferencia del promedio
@@ -677,11 +677,11 @@ class actividadController extends BaseController
       }
       // calculamos la media de la suma total de las diferencias
       // de los promedios a la media elevados al cuadrado (Varianza)
-      $varianza = $dpmTotal / $cp;
+      $varianza = $dpmTotal / ($cp);
       // Calculamos la desviacion estandar que se
       // calcula sacando la raiz cuadrada de la
       // varianza calculada
-      $desvEst = round(Sqrt($varianza));
+      $desvEst = (Sqrt($varianza));      
       if($value['promedioGral'] < ($m - $desvEst)){
         // selecccionamos los archivos que serviran
         // ayuda para el padre cuando su hijo se
@@ -721,10 +721,9 @@ class actividadController extends BaseController
     }
   }
 
-  function getEstandarte(){
-      $formulario = Input::get('data');
-      $datos = hijoRealizaActividad::where('actividad_id', '=', $formulario['actividad_id'])
-      ->where('hijo_id', '=', $formulario['hijo_id'])->get();
+  function getEstandarte(){    
+      $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))
+      ->where('hijo_id', '=', Auth::user()->persona()->first()->hijo()->pluck('id'))->get();
       $sp = 0; // sumatoria de promedios del juego
       $cp = 0; // cantidad de promedios del juego
       foreach ($datos as $dato => $value) {
@@ -738,9 +737,9 @@ class actividadController extends BaseController
       // la suma total de promedios entre
       // la cantidad de promedios registrados
       // en el juego
-      $mediaHijo = round($sp/$cp); // Media (promedio del juego)
+      $mediaHijo = ($sp/$cp); // Media (promedio del juego)
       // --------------------------------------------------------
-      $datos = hijoRealizaActividad::where('actividad_id', '=', $formulario['actividad_id'])->get();
+      $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))->get();
 
       $sp = 0; // sumatoria de promedios del juego
       $cp = 0; // cantidad de promedios del juego
@@ -755,7 +754,7 @@ class actividadController extends BaseController
       // la suma total de promedios entre
       // la cantidad de promedios registrados
       // en el juego
-      $mediaJugo = round($sp/$cp);
+      $mediaJugo = ($sp/$cp);
       $dpmTotal = 0; // total de diferencias al cuadrado
       foreach ($datos as $dato => $value) {
         // calculamos la diferencia del promedio
@@ -772,13 +771,13 @@ class actividadController extends BaseController
       // Calculamos la desviacion estandar que se
       // calcula sacando la raiz cuadrada de la
       // varianza calculada
-      $desviacion = round(Sqrt($varianza));
+      $desviacion = (Sqrt($varianza));
 
       // Verificamos si el promedio del juego del niño se
       // encuentra dentro de la desviacion estandar,
       // por debajo o bien sobre ella
       $rangoAbajo = ($desviacion - $mediaJugo);
-      $rangoArriba = ($desviacion + $mediaJugo);
+      $rangoArriba = ($desviacion + $mediaJugo);      
       if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
         return Response::json(array(0=>"plata"));
       }
@@ -839,13 +838,15 @@ class actividadController extends BaseController
 
     }
 
-    public function setDataActivity(){
+    public function setDataActivity(){      
         try{
+          if(Auth::user()->hasRole('hijo')){
             $activida_hijo = new hijoRealizaActividad(Input::all());
-            $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->first()->pluck('id');
+            $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->pluck('id');
             $activida_hijo->actividad_id = Session::get('idActivity');
-            $activida_hijo->save();
-            return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
+            $activida_hijo->save();            
+          }
+          return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
         }
         catch(Excetion $ex){
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));

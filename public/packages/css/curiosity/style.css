@@ -75,7 +75,7 @@ button{
 }
 
 .bg-blue{
-	background-color: rgba(60, 141, 187, 1);
+	background-color: rgb(54, 142, 184);;
 }
 
 .bg-pink{
@@ -87,7 +87,7 @@ button{
 }
 
 .bg-purple{
-	background-color: rgb(136, 18, 185);
+	background-color: rgb(136, 18, 185) !important;
 }
 
 .bg-green, .btn-primary{
@@ -428,7 +428,7 @@ section div div h3{
 	height: 50px;
 	font-size: 2em;
 	font-weight: bold;
-	background-color: rgba(60, 141, 187, 1) !important;
+	background-color: rgb(54, 142, 184) !important;
 }
 
 /*/ Pie de la pagina /*/
