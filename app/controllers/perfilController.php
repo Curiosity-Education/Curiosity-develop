@@ -192,9 +192,9 @@ class perfilController extends BaseController{
             }
 
             //guardar imagen original
-            $imagen->save("/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
+            $imagen->save(public_path()."/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());
             $imagen->crop($width,$height,$x,$y);
-            $imageSave ="/packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
+            $imageSave =public_path()."/packages/images/perfil/".Auth::user()->username.".".$image->getClientOriginalExtension();
 
             $imagen->save($imageSave);
 
@@ -205,7 +205,7 @@ class perfilController extends BaseController{
          }else{
             $imagen = Image::make('/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
             $imagen->crop($width,$height,$x,$y);
-            $path= '/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
+            $path= public_path().'/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
             $imagen->save($path);
             return asset($path.'?'.$v=rand());
          }
