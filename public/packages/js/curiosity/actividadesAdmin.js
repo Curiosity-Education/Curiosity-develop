@@ -369,6 +369,7 @@ $(document).ready(function() {
     $("#descripcion").val($("#"+idSelected).data('descrip'));
     $("#video").val($(this).data('code-embed'));
     var idFromProfe = $(this).data('prof-id');
+    
     $.each($('#profesores > option'), function(index, obj){
       if($(this).val() == idFromProfe){
         $(this).attr('selected', 'selected');
@@ -698,8 +699,10 @@ $(document).ready(function() {
             },
             uploadprogress: function(file, progress, bytesSent) {
                 // Display the progress
-                $("#bytesSent").text(bytesSent+"KB");
-                $("#progress").text(progress+"%");
+                var progresAlt = parseFloat(progress).toFixed(2);
+                var bytesAlt = parseFloat(bytesSent).toFixed(2);
+                $("#bytesSent").text(bytesAlt+"KB");
+                $("#progress").text(progresAlt+"%");
             }
 
         }
