@@ -361,18 +361,22 @@ class actividadController extends BaseController
         ->get();
 
 
-        Session::put("idActivity",$idActividad);
-        $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
-        ->where('actividad_id', '=', $idActividad)
-        ->max('promedio');
-
-            try{
-                //----Retornamos la vista del juego
-                return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
-            }
-            catch(Exception $ex){
-                return Redirect::back();
-            }
+        Session::put("idActivity",$idActividad);        
+        if(Auth::user()->hasRole('hijo')){
+          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)          
+          ->where('actividad_id', '=', $idActividad)
+          ->max('promedio');
+        }
+        else{
+          $maxProm = 0;
+        }
+        try{
+            //----Retornamos la vista del juego              
+            return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
+        }
+        catch(Exception $ex){
+            return Redirect::back();
+        }
     }
 
     public function subirJuego($idActividad){
@@ -778,8 +782,8 @@ class actividadController extends BaseController
         // Verificamos si el promedio del juego del niño se
         // encuentra dentro de la desviacion estandar,
         // por debajo o bien sobre ella
-        $rangoAbajo = ($desviacion - $mediaJugo);
-        $rangoArriba = ($desviacion + $mediaJugo);      
+        $rangoAbajo = ($mediaJugo - $desviacion);
+        $rangoArriba = ($mediaJugo + $desviacion);      
         if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
           return Response::json(array(0=>"plata"));
         }
