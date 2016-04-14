@@ -54,7 +54,8 @@
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
-        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>        
+
+        <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
       </div>
       <div class='box-footer'>
         <div class='row'>
@@ -149,7 +150,7 @@
     </div>
   </div>
 
-  @if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
+@if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
   <!-- Menu desplegable para subir juegos -->
   <div id="menu" class="menu hide">
         <ul class="menu-ul">
@@ -205,8 +206,8 @@
         </div>
       </div>
     </div>
-    @endif
-
+<<<<<<< HEAD
+ @endif
 @stop
 
 @section('mi_js')

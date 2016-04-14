@@ -103,12 +103,12 @@
               </a>
             </li>
             @if(Entrust::can('realizar_actividades'))
-              <li id="menuNivel">
+              <!-- <li id="menuNivel">
                 <a href="/nivel">
                   <i class="fa fa-graduation-cap"></i>
                   <span>Actividades</span>
                 </a>
-              </li>
+              </li> -->
             @endif
 
             @if(Entrust::can('gestionar_niveles'))
@@ -188,6 +188,7 @@
   {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
   {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
   {{HTML::script('/packages/js/app.min.js')}}
+  {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
   {{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
   {{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
   {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}

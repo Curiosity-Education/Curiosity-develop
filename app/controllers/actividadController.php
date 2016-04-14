@@ -360,7 +360,10 @@ class actividadController extends BaseController
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
 
+<<<<<<< HEAD
+=======
         Session::put("idActivity",$idActividad);
+>>>>>>> 8831ff9d2204dd15bb4ed03ef89a0f21a29383b0
         $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
         ->where('actividad_id', '=', $idActividad)
         ->max('promedio');
@@ -388,7 +391,7 @@ class actividadController extends BaseController
                         if(Input::file('juego_zip') != null){
                             //Realizamos la validación para ver si es un archivo .ZIP
                             if(Input::file('juego_zip')->getClientOriginalExtension() == 'zip'){
-                    
+
                                 //Guardamos el nombre del archivo en la var $log
                                 $log = Input::file('juego_zip')->getClientOriginalName();
                                 //Preguntamos en una condicional si la carpeta juegosZIP existe
@@ -647,7 +650,7 @@ class actividadController extends BaseController
         'actividad_id' => $value['actividad_id'],
         'hijo_id' => $value['hijo_id']
       ));
-    }    
+    }
 
     foreach ($promedios as $key => $value) {
       $datos = hijoRealizaActividad::where('actividad_id', '=', $value['actividad_id'])->get();
@@ -681,7 +684,7 @@ class actividadController extends BaseController
       // Calculamos la desviacion estandar que se
       // calcula sacando la raiz cuadrada de la
       // varianza calculada
-      $desvEst = (Sqrt($varianza));      
+      $desvEst = (Sqrt($varianza));
       if($value['promedioGral'] < ($m - $desvEst)){
         // selecccionamos los archivos que serviran
         // ayuda para el padre cuando su hijo se
@@ -721,7 +724,7 @@ class actividadController extends BaseController
     }
   }
 
-  function getEstandarte(){    
+  function getEstandarte(){
       $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))
       ->where('hijo_id', '=', Auth::user()->persona()->first()->hijo()->pluck('id'))->get();
       $sp = 0; // sumatoria de promedios del juego
@@ -777,7 +780,7 @@ class actividadController extends BaseController
       // encuentra dentro de la desviacion estandar,
       // por debajo o bien sobre ella
       $rangoAbajo = ($desviacion - $mediaJugo);
-      $rangoArriba = ($desviacion + $mediaJugo);      
+      $rangoArriba = ($desviacion + $mediaJugo);
       if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
         return Response::json(array(0=>"plata"));
       }
@@ -838,13 +841,13 @@ class actividadController extends BaseController
 
     }
 
-    public function setDataActivity(){      
+    public function setDataActivity(){
         try{
           if(Auth::user()->hasRole('hijo')){
             $activida_hijo = new hijoRealizaActividad(Input::all());
             $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->pluck('id');
             $activida_hijo->actividad_id = Session::get('idActivity');
-            $activida_hijo->save();            
+            $activida_hijo->save();
           }
           return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
         }

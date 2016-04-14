@@ -129,7 +129,7 @@ $(document).ready(function(){
             $curiosity.call.setData.juego(data);
             $juego.setNivelUsuarioIMG();
             $juego.modal.puntuacion.mostrar(data.promedio);
-            // console.log(data);             
+            // console.log(data);
              $("#zona-play").hide();
              $("#zona-obj").show();
              game.intentos=0;
