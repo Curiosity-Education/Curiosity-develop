@@ -188,6 +188,7 @@
   {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
   {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
   {{HTML::script('/packages/js/app.min.js')}}
+  {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
   {{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
   {{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
   {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
