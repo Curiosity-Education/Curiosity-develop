@@ -122,14 +122,16 @@
              var data = {"puntaje":game.puntajeNow,
                         "eficiencia":game.eficiencia,
                         "promedio":(game.puntajeNow*game.eficiencia)/100};
-             if(data.promedio>game.puntosMaximos){
-                 game.puntosMaximos=data.promedio;
-                $juego.setPuntosMaxInicio(data.promedio);
-             }
-             $curiosity.call.setData.juego(data);
-             $juego.setNivelUsuarioIMG();
-             $juego.modal.puntuacion.mostrar(data.promedio);
-             console.log(data);
+
+            if(data.promedio>game.puntosMaximos){
+              game.puntosMaximos=data.promedio;
+              $juego.setPuntosMaxInicio(data.promedio);
+            }
+            $curiosity.call.setData.juego(data);
+            $juego.setNivelUsuarioIMG();
+            $juego.modal.puntuacion.mostrar(data.promedio);
+            // console.log(data);
+
              $("#zona-play").hide();
              $("#zona-obj").show();
              game.intentos=0;

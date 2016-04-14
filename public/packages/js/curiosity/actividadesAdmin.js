@@ -38,12 +38,10 @@ $(document).ready(function() {
          method:'POST',
          dataType:'JSON'
       }).done(function(response){
-          console.log(response);
+          $('#actividades .activity').removeAttr('data-has-game');
+          $('#actividades .activity').removeAttr('title');
           $("#actividades").children('div').each(function(i,objeto){
                 $.each(response,function(index,value){
-                          $(objeto).removeAttr('data-has-game');
-                          $(objeto).removeAttr('title');
-
                           if($(objeto).attr('data-id') == value.actividad_id){
                               $(objeto).attr('data-has-game',value.id);
                               $(objeto).attr('title','Juego: '+value.nombre.replace(".blade.php",""));

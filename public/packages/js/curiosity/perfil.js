@@ -53,8 +53,8 @@ $(document).ready(function(){
                 $btn.text(text);
                 $btn.removeClass('striped-alert');
                 $btn.prop("disabled",false);
-            }).fail(function(){
-
+            }).fail(function(error){
+                $curiosity.noty(error.message,"error");
             });
         }
     });
@@ -211,7 +211,7 @@ $(document).ready(function(){
       }else return false;
     }
     function promedio(value,element,param){
-        var er = /^[0-9]{1}(\.[0-9]{1}||0{1})?$/;
+        var er = /^([0-9]{1}(\.[0-9]{1})?|10{1})$/;
         if(er.test(value)){
             return true;
         }else return false;
