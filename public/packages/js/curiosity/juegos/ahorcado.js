@@ -112,6 +112,7 @@
              clearInterval(game.interval);
              game.cantTemp=90;
              operacion.posRes=2;
+             ahorcado.errores = 1;
             // Store the current transformation matrix
             ahorcado.eliminarCirculo();
             // Use the identity matrix while clearing the canvas
@@ -124,7 +125,7 @@
                         "promedio":(game.puntajeNow*game.eficiencia)/100};
 
             if(data.promedio>game.puntosMaximos){
-              game.puntosMaximos=data.promedio;
+              game.puntosMaximos=data.promedio;              
               $juego.setPuntosMaxInicio(data.promedio);
             }
             $curiosity.call.setData.juego(data);
