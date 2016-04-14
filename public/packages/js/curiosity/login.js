@@ -164,7 +164,7 @@ function __init(){
           });
         }
         else if(response == 'success'){
-          $curiosity.noty('Bienvenido a Curiosity!!', 'success');
+          $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
           window.location.href = '/perfil';
         }
         else{
