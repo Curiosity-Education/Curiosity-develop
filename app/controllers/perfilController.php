@@ -201,13 +201,13 @@ class perfilController extends BaseController{
             $perfil =Auth::user()->perfil()->first();
             $perfil->foto_perfil=Auth::user()->username.".".$image->getClientOriginalExtension();
             $perfil->save();
-            return asset($imageSave.'?'.$v=rand());
+            return asset(str_replace(public_path(),"",$imageSave).'?'.$v=rand());
          }else{
-            $imagen = Image::make('/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
+            $imagen = Image::make(public_path().'/packages/images/perfil/original/'.Auth::user()->perfil()->first()->foto_perfil);
             $imagen->crop($width,$height,$x,$y);
             $path= public_path().'/packages/images/perfil/'.Auth::user()->perfil()->first()->foto_perfil;
             $imagen->save($path);
-            return asset($path.'?'.$v=rand());
+            return asset(str_replace(public_path(),"",$path).'?'.$v=rand());
          }
     }
 
