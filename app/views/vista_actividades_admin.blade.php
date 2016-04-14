@@ -206,7 +206,7 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
+
  @endif
 @stop
 

@@ -360,10 +360,8 @@ class actividadController extends BaseController
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
 
-<<<<<<< HEAD
-=======
+
         Session::put("idActivity",$idActividad);
->>>>>>> 8831ff9d2204dd15bb4ed03ef89a0f21a29383b0
         $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
         ->where('actividad_id', '=', $idActividad)
         ->max('promedio');
