@@ -139,4 +139,12 @@ class padreController extends BaseController
         }else return Redirect::to("/");
 
     }
+    public function gethijos(){
+
+        return DB::select("Select hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
+         from padres inner join hijos on hijos.padre_id = padres.id
+        inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
+        inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
+        inner join personas on hijos.persona_id = personas.id where padres.id = '37'");
+    }
 }
