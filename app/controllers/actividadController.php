@@ -733,60 +733,65 @@ class actividadController extends BaseController
         // Sumamos el promedio obtenido a la sumatoria
         // de promedios general para el calculo
         $sp = $sp + $value['promedio'];
-      }
-      // Calculamos la media dividiendo
-      // la suma total de promedios entre
-      // la cantidad de promedios registrados
-      // en el juego
-      $mediaHijo = ($sp/$cp); // Media (promedio del juego)
-      // --------------------------------------------------------
-      $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))->get();
+      }      
+      if($cp > 0){
+        // Calculamos la media dividiendo
+        // la suma total de promedios entre
+        // la cantidad de promedios registrados
+        // en el juego
+        $mediaHijo = ($sp/$cp); // Media (promedio del juego)
+        // --------------------------------------------------------
+        $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))->get();
 
-      $sp = 0; // sumatoria de promedios del juego
-      $cp = 0; // cantidad de promedios del juego
-      foreach ($datos as $dato => $value) {
-        // Sumamos uno mas a la cantidad por cada iteración
-        $cp++;
-        // Sumamos el promedio obtenido a la sumatoria
-        // de promedios general para el calculo
-        $sp = $sp + $value['promedio'];
-      }
-      // Calculamos la media dividiendo
-      // la suma total de promedios entre
-      // la cantidad de promedios registrados
-      // en el juego
-      $mediaJugo = ($sp/$cp);
-      $dpmTotal = 0; // total de diferencias al cuadrado
-      foreach ($datos as $dato => $value) {
-        // calculamos la diferencia del promedio
-        // a la media por cada promedio del juego
-        $dpm = $value['promedio'] - $mediaJugo;
-        // sumamos al total de distancias de promedios
-        // a la media el resultado anterior elevado al
-        // cuadrado
-        $dpmTotal = $dpmTotal + (pow($dpm, 2));
-      }
-      // calculamos la media de la suma total de las diferencias
-      // de los promedios a la media elevados al cuadrado (Varianza)
-      $varianza = $dpmTotal / $cp;
-      // Calculamos la desviacion estandar que se
-      // calcula sacando la raiz cuadrada de la
-      // varianza calculada
-      $desviacion = (Sqrt($varianza));
+        $sp = 0; // sumatoria de promedios del juego
+        $cp = 0; // cantidad de promedios del juego
+        foreach ($datos as $dato => $value) {
+          // Sumamos uno mas a la cantidad por cada iteración
+          $cp++;
+          // Sumamos el promedio obtenido a la sumatoria
+          // de promedios general para el calculo
+          $sp = $sp + $value['promedio'];
+        }
+        // Calculamos la media dividiendo
+        // la suma total de promedios entre
+        // la cantidad de promedios registrados
+        // en el juego
+        $mediaJugo = ($sp/$cp);
+        $dpmTotal = 0; // total de diferencias al cuadrado
+        foreach ($datos as $dato => $value) {
+          // calculamos la diferencia del promedio
+          // a la media por cada promedio del juego
+          $dpm = $value['promedio'] - $mediaJugo;
+          // sumamos al total de distancias de promedios
+          // a la media el resultado anterior elevado al
+          // cuadrado
+          $dpmTotal = $dpmTotal + (pow($dpm, 2));
+        }
+        // calculamos la media de la suma total de las diferencias
+        // de los promedios a la media elevados al cuadrado (Varianza)
+        $varianza = $dpmTotal / $cp;
+        // Calculamos la desviacion estandar que se
+        // calcula sacando la raiz cuadrada de la
+        // varianza calculada
+        $desviacion = (Sqrt($varianza));
 
-      // Verificamos si el promedio del juego del niño se
-      // encuentra dentro de la desviacion estandar,
-      // por debajo o bien sobre ella
-      $rangoAbajo = ($desviacion - $mediaJugo);
-      $rangoArriba = ($desviacion + $mediaJugo);
-      if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
-        return Response::json(array(0=>"plata"));
-      }
-      else if($mediaHijo < $rangoAbajo){
-        return Response::json(array(0=>"bronce"));
+        // Verificamos si el promedio del juego del niño se
+        // encuentra dentro de la desviacion estandar,
+        // por debajo o bien sobre ella
+        $rangoAbajo = ($desviacion - $mediaJugo);
+        $rangoArriba = ($desviacion + $mediaJugo);      
+        if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
+          return Response::json(array(0=>"plata"));
+        }
+        else if($mediaHijo < $rangoAbajo){
+          return Response::json(array(0=>"bronce"));
+        }
+        else{
+          return Response::json(array(0=>"oro"));
+        }
       }
       else{
-        return Response::json(array(0=>"oro"));
+        return Response::json(array(0=>"bronce"));
       }
     }
 
