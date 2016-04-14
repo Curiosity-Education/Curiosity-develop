@@ -9,7 +9,7 @@ $(document).ready(function(){
     type: "post",
     data: {data : datos}
   })
-  .done(function(response){    
+  .done(function(response){
     if(response[0] == 'success'){
       $setHtml = "<div class='felicitacionHijos text-center'>"+
                     "<h1>¡Felicidades Papá!</h1>"+
@@ -54,7 +54,7 @@ $(document).ready(function(){
     type: "post",
     data: {data : datos}
   })
-  .done(function(response){    
+  .done(function(response){
     var datos = [];
     var datosMin = [];
     $.each(response, function(index, obj){

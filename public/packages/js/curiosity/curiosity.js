@@ -4,17 +4,65 @@ var $curiosity = {
       $(id).addClass('active');
     }
   },
-  noty : function(mensaje, tipo){
-    var n = noty({
-        text        : mensaje,
-        type        : tipo,
-        dismissQueue: true,
-        timeout     : 3000,
-        closeWith   : ['click'],
-        layout      : 'bottomRight',
-        theme       : 'defaultTheme',
-        maxVisible  : 10
-     });
+  createNotifications:function(message,titulo,image){
+      // Let's check if the browser supports notifications
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification, please ... you change browser");
+      }
+
+      // Let's check whether notification permissions have already been granted
+      else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        titulo = (titulo == undefined) ? "Notification" : titulo;
+        var notification = new Notification(titulo,
+                                            {body:message,
+                                             icon:(image == undefined) ? "/packages/images/Curiosity.png" : image
+                                            });
+      }
+
+      // Otherwise, we need to ask the user for permission
+      else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function (permission) {
+          // If the user accepts, let's create a notification
+          if (permission === "granted") {
+            var notification = new Notification("Hi there!");
+          }
+        });
+      }
+  },
+  noty:function(mensaje, tipo,titulo,image){
+
+        if(notify.permissionLevel() == notify.PERMISSION_DEFAULT)
+            notify.requestPermission();
+        else if(notify.permissionLevel() == notify.PERMISSION_GRANTED){
+            if(tipo == "message")
+                this.createNotifications(mensaje,titulo,image);
+            else
+                var n = noty({
+                    text        : mensaje,
+                    type        : tipo,
+                    dismissQueue: true,
+                    timeout     : 3000,
+                    closeWith   : ['click'],
+                    layout      : 'bottomRight',
+                    theme       : 'defaultTheme',
+                    maxVisible  : 10
+                 });
+        }
+        else{
+            var n = noty({
+                text        : mensaje,
+                type        : tipo,
+                dismissQueue: true,
+                timeout     : 3000,
+                closeWith   : ['click'],
+                layout      : 'bottomRight',
+                theme       : 'defaultTheme',
+                maxVisible  : 10
+             });
+        }
+      //notifyMe();
+
      document.getElementById('notyAudio').play();
   },
   call:{
@@ -25,8 +73,8 @@ var $curiosity = {
                     url:'/actividad/setdata',
                     method:"POST",
                     data:data
-                }).done(function(response){                    
-                    if(response.estado == "200"){                    
+                }).done(function(response){
+                    if(response.estado == "200"){
                         // $curiosity.noty(response.message,"success");
                     }
                     else{
