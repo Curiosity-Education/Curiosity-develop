@@ -30,11 +30,11 @@ var $juego = {
     setEficienciaMaxInicio : function(eficiencia){
       $("#num-max-efic").text(eficiencia + "%");
     },
-    setNivelUsuarioIMG : function(){
+    setNivelUsuarioIMG : function(){      
       $.ajax({
         url:'/getEstandarte',
         method:"POST"
-      }).done(function(response){
+      }).done(function(response){        
         if(response == "bronce"){
           $("img#medallaAlerta").attr("src", "/packages/images/cups/winBronce.png");
           $("img#imgNivel").attr("src", "/packages/images/cups/medallaBronce.png");
