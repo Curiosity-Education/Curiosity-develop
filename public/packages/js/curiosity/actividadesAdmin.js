@@ -195,56 +195,59 @@ $(document).ready(function() {
       // al que se le ha dado clic y el estatus es decir
       // si se encuentra bloqueado o desbloqueado
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
-        var $btnEnviar = boton;
-        $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Guardando...');
+        $tipos = new Array('.pdf', '.docx');
+        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos)){
+          var $btnEnviar = boton;
+          $btnEnviar.attr('disabled', 'disabled');
+          $btnEnviar.text('Guardando...');
 
-        var formData = new FormData($("#formPDF")[0]);
-        formData.append('nombre', $("#nombre").val());
-        formData.append('objetivo', $("#descripcion").val());
-        formData.append('code_embed', $("#video").val());
-        formData.append('profesores_id', $("#profesores").val());
-        formData.append('estatus', estatusNow);
-        formData.append('procedenciaID', idProcedencia);
-        formData.append('idUpdate', id);
-        $.ajax({
-          url: direccion,
-          type: 'POST',
-          data: formData,
-          cache: false,
-          contentType: false,
-          processData: false
-        })
-        .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
+          var formData = new FormData($("#formPDF")[0]);
+          formData.append('nombre', $("#nombre").val());
+          formData.append('objetivo', $("#descripcion").val());
+          formData.append('code_embed', $("#video").val());
+          formData.append('profesores_id', $("#profesores").val());
+          formData.append('estatus', estatusNow);
+          formData.append('procedenciaID', idProcedencia);
+          formData.append('idUpdate', id);
+          $.ajax({
+            url: direccion,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+          })
+          .done(function(response) {
+            if($.isPlainObject(response)){
+              $.each(response,function(index,value){
+                $.each(value,function(i, message){
+                  $curiosity.noty(message, 'warning');
+                });
               });
-            });
-          }
-          else if(response[0] == 'success'){
-            $curiosity.noty("Actualizado Correctamente", "success");
-            $("#"+id).text($("#nombre").val());
-            $("#"+id).data('descrip', $("#descripcion").val());
-            $("#"+id).data('estatus', estatusNow);
-            $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'same'){
-            $curiosity.noty("El nombre ya existe", "warning");
-          }
-          else if(response[0] == 'same_exist'){
-            $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        })
-        .always(function(){
-          $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-        });
+            }
+            else if(response[0] == 'success'){
+              $curiosity.noty("Actualizado Correctamente", "success");
+              $("#"+id).text($("#nombre").val());
+              $("#"+id).data('descrip', $("#descripcion").val());
+              $("#"+id).data('estatus', estatusNow);
+              $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
+              actividad.hideAdmin();
+            }
+            else if(response[0] == 'same'){
+              $curiosity.noty("El nombre ya existe", "warning");
+            }
+            else if(response[0] == 'same_exist'){
+              $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
+            }
+          })
+          .fail(function(error) {
+            console.log(error);
+          })
+          .always(function(){
+            $btnEnviar.removeAttr('disabled');
+            $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+          });
+        }
       },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
