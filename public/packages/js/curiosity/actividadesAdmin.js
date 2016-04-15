@@ -196,7 +196,7 @@ $(document).ready(function() {
       // si se encuentra bloqueado o desbloqueado
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         $tipos = new Array('.pdf', '.docx');
-        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos)){
+        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false || $curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == true){
           var $btnEnviar = boton;
           $btnEnviar.attr('disabled', 'disabled');
           $btnEnviar.text('Guardando...');
