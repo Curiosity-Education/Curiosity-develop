@@ -90,16 +90,13 @@ $(document).ready(function(){
         }
     });
     $("#frm-reg-hijos").on("change","#escuela_id",function(){
-        if($(this).val()==="NULL"){
+        if($(this).val()==="0"){
             $(this).hide();
             $("#return-fa-normal").hide();
             $("#esc_alt").removeClass('hidden');
             $("#return-select-school").removeClass("hidden");
             $("#return-select-school").show();
             $("#esc_alt").show();
-            $("#escuela_id").val('NULL');
-
-
         }
     });
     $("#frm-reg-hijos").on("click","#return-select-school",function(){

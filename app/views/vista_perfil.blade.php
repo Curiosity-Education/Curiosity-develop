@@ -568,9 +568,11 @@
                                   </span>
                                   <select name="escuela_id" id="escuela_id"  class="form-control">
                                     @foreach($escuelas  as $escuela)
-                                      <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
+                                      @if($escuela->id!=0)
+                                        <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
+                                      @endif
                                     @endforeach
-                                    <option value="NULL">Otra</option>
+                                      <option value="0">otra</option>
                                   </select>
                                   <input type="text" nombre="esc_alt" id="esc_alt" placeholder="nombre de la escuela" value="" class="form-control hidden"/>
                                 </div>
