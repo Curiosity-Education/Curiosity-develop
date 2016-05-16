@@ -13,7 +13,7 @@ class userController extends BaseController{
             ->join('roles', 'assigned_roles.role_id', '=', 'roles.id')
             ->where('users.id', '=', Auth::user()->id)
             ->pluck('name');
-            if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root')){
+            if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('demo_padre')){
                 $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
                 $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
                 ->join('personas', 'personas.id', '=', 'hijos.persona_id')

@@ -158,7 +158,7 @@ class perfilController extends BaseController{
         $x =   (integer)Input::get("x");
         $y = (integer)Input::get("y");
         $width = (integer)Input::get("width");
-        $height = (integer)Input::get("height");
+        $height = (integer)Input::get("height");        
 
          if(Input::hasFile('image')){// si se establecio una imagen para recortar
             $image = Input::file('image');
@@ -189,7 +189,7 @@ class perfilController extends BaseController{
                 $anchoNew = $ancho - $dif;
                 $imagen->width = $anchoNew;
                 $imagen->resize($imagen->width, $imagen->height);
-            }
+            }            
 
             //guardar imagen original
             $imagen->save(public_path()."/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());

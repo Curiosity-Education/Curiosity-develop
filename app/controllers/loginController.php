@@ -55,6 +55,7 @@ class loginController extends BaseController
               }
           }
           else{
+              
               //---Este else responderá a Android 
               $validarAuth = array(
                     'username'  =>  Input::get('username'),
@@ -64,21 +65,30 @@ class loginController extends BaseController
                /*Vemos si las credenciales son correctas*/
                   if(Auth::attempt($validarAuth)){
                     //Ingresamos un id de session
+                    if(Auth::user()->hasRole('padre')){
+                    try{
+              
                     $idSession = $this->generaidSession();
                     User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                     Session::put('sessionId',$idSession);
-                    $persona = Auth::User()->persona()->first();
+                    $persona = Auth::user()->persona()->first();
+                    $idpadre =Auth::user()->persona()->first()->padre()->first()->id;
                     $email = Auth::User()->persona()->first()->padre()->pluck('email') == null ? "Sin email" : Auth::User()->persona()->first()->padre()->pluck('email');
                     $nombre_completo = $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno;
                     return Response::json(array("estado"=>"200",
                                                 "message"=>"success",
                                                 "email"=>  $email,
                                                 "username"=>Auth::user()->username,
-                                                "nombre_completo"=>$nombre_completo
+                                                "nombre_completo"=>$nombre_completo,
+                                                "padre_id"=>$idpadre
+                                                
                                         ));
+                            }catch(Exception $e){return $e;}
+                    }else return Response::json(array("estado"=>"404","message"=>"No eres padre"));
+                    
                   }
                   else{
-                    return Response::json(array("estado"=>"404","message"=>"No se encontro el usuario"));;
+                    return Response::json(array("estado"=>"404","message"=>"No se encontro el usuario"));
                   }
           }
         }
