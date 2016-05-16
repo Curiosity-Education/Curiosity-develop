@@ -92,7 +92,7 @@
                         <div class="col-md-12 text-center cal-titulo">
                           <h3>Máxima Puntuación</h3>
                           <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
-                        </div>
+                        </div>                        
                       </div>
                     </div>
                     <div class='col-md-7' id='objetivo'>

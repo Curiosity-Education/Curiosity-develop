@@ -108,12 +108,12 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Sobre mi</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body">                  
                 <strong><i class="fa fa-user margin-r-5"></i>  E-mail</strong>
                 <p class="text-muted">
                   <h6><samll>{{Auth::user()->persona()->first()->padre()->first()->email}}</samll></h6>
                 </p>
-                <hr>
+                <hr>                
                  <!-- <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
                  <p>HEY!! {{Auth::user()->username}}, bienvenido al mundo <b>Curiosity</b> !!! </p> -->
                 </div><!-- /.box-body -->
@@ -568,11 +568,9 @@
                                   </span>
                                   <select name="escuela_id" id="escuela_id"  class="form-control">
                                     @foreach($escuelas  as $escuela)
-                                      @if($escuela->id!=0)
-                                        <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
-                                      @endif
+                                      <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
                                     @endforeach
-                                      <option value="0">otra</option>
+                                    <option value="NULL">Otra</option>
                                   </select>
                                   <input type="text" nombre="esc_alt" id="esc_alt" placeholder="nombre de la escuela" value="" class="form-control hidden"/>
                                 </div>

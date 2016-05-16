@@ -202,6 +202,27 @@
         position : 'bottom',
         touchDevices: true
       });
+      var source;
+      if (window.EventSource) {
+         var source = new EventSource('/recordatorio');
+            source.onopen = function (e) {
+              //console.log(e);
+            };
+
+            source.onerror = function (e) {
+              //console.log(e);
+            };
+          
+           source.addEventListener('message',function(e){
+               var data = JSON.parse(e.data);
+               $.each(data,function(i,array){
+                   $curiosity.noty(array.mensaje,"message","Papa dice: ","packages/images/perfil/"+array.foto_perfil);
+               });
+           },false);
+
+      }
+        
+    
     });
   </script>
 

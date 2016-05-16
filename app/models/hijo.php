@@ -4,7 +4,7 @@
  */
 class hijo extends Eloquent{
     protected $table = 'hijos';
-    protected $fillable =['esc_alt','promedio',"escuela_id"];
+    protected $fillable =['esc_alt','promedio'];
 
   /*
   *
