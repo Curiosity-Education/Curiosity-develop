@@ -252,3 +252,5 @@ class inteligenciaController extends BaseController
 
 }
 
+
+ ?>
