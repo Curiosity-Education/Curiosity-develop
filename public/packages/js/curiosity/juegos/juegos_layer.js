@@ -110,7 +110,8 @@ var $juego = {
             $juego.game.continuo = 0;
             $juego.game.intentos++;
             if($juego.game.puntajeActual>puntosMenos){
-              $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);
+              if(/^[0-9]*$/.test(puntosMenos))
+                $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);
             }
             // Regresamos el valor de los puntos por acirto a 100
             $juego.game.valorPuntos = 100;
@@ -162,11 +163,18 @@ var $juego = {
         pausa:false,
         inverso:false,
         start:function(duracion,inverso){
-            $juego.cronometro.interval = setInterval($juego.cronometro.contar,1000);
-            $juego.cronometro.duracion=duracion;
-            $juego.cronometro.tiempo=duracion;
-            $juego.cronometro.drawCircleTemp();
-            $juego.cronometro.pausa=false;
+
+            if(!/^[0-9]*$/.test(duracion)){
+                console.error("El paramentro duración debe ser entero");
+            }else if(!/true|false/.test(inverso)){
+                console.error("El parametro inverso debe ser un booleano");
+            }else{
+                $juego.cronometro.interval = setInterval($juego.cronometro.contar,1000);
+                $juego.cronometro.duracion=duracion;
+                $juego.cronometro.tiempo=duracion;
+                $juego.cronometro.drawCircleTemp();
+                $juego.cronometro.pausa=false;
+            }
         },
         contar:function(){
             if(!$juego.cronometro.pausa){          
@@ -181,6 +189,9 @@ var $juego = {
                 }else{
                     $juego.game.finish();
                 }
+            }
+            else{
+                $("#game").trigger('pause');
             }
         },
         drawCircleTemp:function(){
@@ -234,15 +245,19 @@ var $juego = {
            mycanvas.width=mycanvas.width;
         },
         showCronometro:function(minutos,segundos){
-            if(minutos>9 && segundos>9){
-                $("#temp-count").text(minutos+":"+segundos);
-            }else if(minutos>9 && segundos<10){
-                $("#temp-count").text(minutos+":0"+segundos);
-            }else if(minutos<10 && segundos>9){
-                $("#temp-count").text("0"+minutos+":"+segundos);
+            if(!/^[0-9]*$/.test(minutos) || !/^[0-9]*$/.test(segundos)){
+                console.error("Los paramentro seg y min deben ser enteros");
             }else{
-                $("#temp-count").text("0"+minutos+":0"+segundos);
-            } 
+                if(minutos>9 && segundos>9){
+                    $("#temp-count").text(minutos+":"+segundos);
+                }else if(minutos>9 && segundos<10){
+                    $("#temp-count").text(minutos+":0"+segundos);
+                }else if(minutos<10 && segundos>9){
+                    $("#temp-count").text("0"+minutos+":"+segundos);
+                }else{
+                    $("#temp-count").text("0"+minutos+":0"+segundos);
+                }
+            }
         },
         stop:function(){
             clearInterval($juego.cronometro.interval);
@@ -253,7 +268,10 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
-          $juego.cronometro.pausa=bool;
+            if(!/true|false/.test(inverso)){
+                console.error("El parametro inverso debe ser un booleano");
+            }else
+                $juego.cronometro.pausa=bool;
         }
     },
     modal : {
@@ -272,7 +290,10 @@ var $juego = {
     boton : {
         comenzar : {
             setFuncion : function(funcion){
-                $("#btn-comenzar").click(funcion);
+                if($.isFunction(funcion))
+                    $("#btn-comenzar").click(funcion);
+                else
+                    console.error("El parametro setFuncion debe ser una función");
             }
         },
         archivoPDF : {
@@ -289,19 +310,23 @@ var $juego = {
         },
         video : {
             setVideo : function(embedCode){
-              $("#videoApoyo").attr('src', embedCode);
+                if(/^www\.youtube\.com\/embed\/\S*$/.test(embedCode))
+                    $("#videoApoyo").attr('src', embedCode);
             }
         }
 
     },
     setObjetivo : function(objetivo){
-      $("#juego-objetivo").text(objetivo);
+        if(/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/.test(objetivo))
+            $("#juego-objetivo").text(objetivo);
     },
     setPuntosMaxInicio : function(puntos){
-      $("#num-max-pts").text(puntos + " Pts");
+        if(/^[0-9]*$/.test(puntos))
+            $("#num-max-pts").text(puntos + " Pts");
     },
     setEficienciaMaxInicio : function(eficiencia){
-      $("#num-max-efic").text(eficiencia + "%");
+        if(/^[0-9]*$/.test(eficiencia))
+            $("#num-max-efic").text(eficiencia + "%");
     },
     setNivelUsuarioIMG : function(){
       $.ajax({
@@ -333,12 +358,18 @@ var $juego = {
       });
     },
     setBackgroundColor : function(color){
-      $(".zona-juego").css({
-        "background-color" : color
-      });
+        if(/^#[0-9][a-fA-F]{6}$/.test(color) || /^rgb\([0-9]{1,3}\,[0-9]{1,3}\,[0-9]{1,3}\)$/.test(color)){
+            $(".zona-juego").css({
+                "background-color" : color
+            });
+        }
+        else{
+            console.error("El parametro de la funcion setBackgroundColor debe ser hexadecimal o rgb");
+        }
     },
     setTitulo : function(titulo){
-      $("#juego-titulo").text(titulo);
+        if(/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/.test(titulo))
+            $("#juego-titulo").text(titulo);
     }
 };
 $("#pausa").click(function(){
