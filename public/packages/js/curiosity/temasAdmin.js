@@ -2,18 +2,6 @@ $(document).ready(function() {
 
   $curiosity.menu.setPaginaId("#menuAdminNivel");
 
-// arreglo con los colores preestablecidos
-// en el css estandar del sistema curiosity
-  var colores = Array(
-    'bg-blue',
-    'bg-green',
-    'bg-red',
-    'bg-purple',
-    'bg-maroon',
-    'bg-teal-active',
-    'bg-yellow-active'
-  );
-
 // creamos el objeto general en el que
 // se declararan las funciones a utilizar
   var tema = {
@@ -47,8 +35,8 @@ $(document).ready(function() {
       sincronizar : function(titulo, color, id, descrip, estatusArg, imagen, idbloque, idnivel, idintell){
         var nuevo = "<div class='col-md-4 objeto' data-id="+id+" data-id-remove="+id+">"+
           "<div class='box box-widget widget-title'>"+
-            "<div class='widget-title-header "+color+"'>"+
-              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
+            "<div class='widget-title-header' style='background-color: "+color+"'>"+
+              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-color='"+color+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
@@ -91,13 +79,12 @@ $(document).ready(function() {
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
         $btnEnviar.text('Guardando...');
-        var color = Math.floor(Math.random()*7);
         var datos = {
           nombre : $("#nombre").val(),
           estatus : "lock",
           active : 1,
           descripcion : $("#descripcion").val(),
-          bg_color : colores[Math.floor(Math.random()*7)],
+          bg_color : $("#color").val(),
           bloque_id : bloque
         };
         $.ajax({
@@ -149,6 +136,7 @@ $(document).ready(function() {
           nombre : $("#nombre").val(),
           estatus : estatusNow,
           descripcion : $("#descripcion").val(),
+          color : $("#color").val(),
           procedenciaID : idProcedencia
         };
         $.ajax({
@@ -169,6 +157,8 @@ $(document).ready(function() {
             $("#"+id).text($("#nombre").val());
             $("#"+id).data('descrip', $("#descripcion").val());
             $("#"+id).data('estatus', estatusNow);
+            $("#"+id).data('color', $("#color").val());
+            $("#"+id).parent().css('background',$("#color").val());
             tema.hideAdmin();
           }
           else if(response[0] == 'same'){
@@ -285,6 +275,7 @@ $(document).ready(function() {
   // de registro en caso de ser presionado
   $('#addNew').click(function(event) {
     $("#enviarEnv").data('tipo', 'add');
+    $("#color").val("#000000");
     tema.showAdmin();
   });
 
@@ -303,6 +294,7 @@ $(document).ready(function() {
     // se ponde el nombre y la descripcion del cuadro seleccionado
     // en los inputs correspondientes
     $("#nombre").val($("#"+idSelected).text());
+    $("#color").val($("#"+idSelected).data('color'));
     $("#descripcion").val($("#"+idSelected).data('descrip'));
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');

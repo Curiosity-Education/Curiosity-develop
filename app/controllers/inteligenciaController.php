@@ -106,7 +106,8 @@ class inteligenciaController extends BaseController
             ->update(array(
               'active' => 1,
               'imagen' => 'default.png',
-              'descripcion' => $formulario['descripcion']
+              'descripcion' => $formulario['descripcion'],
+              'bg_color' => $formulario['bg_color']
               ));
             $inteligencia = inteligencia::where('nombre', '=', $formulario['nombre'])->first();
             return  Response::json(array(0=>"success", 1=>$inteligencia));
@@ -131,7 +132,7 @@ class inteligenciaController extends BaseController
 
     $messages = [
            "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",           
+           "alpha"       =>  "Solo puedes ingresar letras",
            "date"        =>  "Formato de fecha invalido",
            "numeric"     =>  "Solo se permiten digitos",
            "email"       =>  "Ingresa un formato de correo valido",
@@ -159,7 +160,8 @@ class inteligenciaController extends BaseController
         // unicamente la descripcion y el estatus del mismo
         inteligencia::where('id', '=', $formulario['idUpdate'])->update(array(
           'descripcion' => $formulario['descripcion'],
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
         return Response::json(array(0=>"success"));
       }
@@ -180,7 +182,8 @@ class inteligenciaController extends BaseController
           inteligencia::where('id', '=', $formulario['idUpdate'])->update(array(
             'nombre' => $formulario['nombre'],
             'descripcion' => $formulario['descripcion'],
-            'estatus' => $formulario['estatus']
+            'estatus' => $formulario['estatus'],
+            'bg_color' => $formulario['color']
           ));
           return Response::json(array(0=>"success"));
         }
@@ -249,3 +252,5 @@ class inteligenciaController extends BaseController
 
 }
 
+
+ ?>

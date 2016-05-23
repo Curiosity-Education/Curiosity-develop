@@ -14,9 +14,7 @@ var $juego = {
             $("#zona-play").show();
             $("#zona-obj").hide();
             $("#countPuntaje").text($juego.game.puntajeActual);
-        },
-        finished:function(){
-            //this function is called when gam was finished and this function could be replaced for other function that you want ejecut when game is finish
+            $("#game").trigger('start');
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
@@ -42,7 +40,7 @@ var $juego = {
             $juego.game.puntajeActual=0;
             $juego.game.intentos=0;
             $juego.cronometro.stop();
-            $juego.game.finished();
+            $("#game").trigger("finish");
         },
         restart:function(){
             $juego.aciertos=0;
@@ -52,6 +50,7 @@ var $juego = {
             $juego.game.puntajeActual=0;
             $juego.cronometro.stop();
             $("#btn-comenzar").trigger("click");
+            $("#game").trigger('restart');
         },
         save:function(){
               data={
@@ -74,6 +73,7 @@ var $juego = {
                 }).fail(function(error,status,statusText){
                     $curiosity.noty(error,"error");
                 });
+            $("#game").trigger('save');
         },
         salir:function(){
             $juego.aciertos=0;
@@ -82,6 +82,7 @@ var $juego = {
             $("#zona-obj").show();//aparecer zona del objetivo
             $juego.game.puntajeActual=0;
             $juego.cronometro.stop();
+            $("#game").trigger('exit');
         },
         setCombo:function(valorCombo){
             $cbo = $("<div/>",{class:"combo"}).text("+"+combo+"");
@@ -291,6 +292,7 @@ var $juego = {
               $("#videoApoyo").attr('src', embedCode);
             }
         }
+
     },
     setObjetivo : function(objetivo){
       $("#juego-objetivo").text(objetivo);
@@ -301,8 +303,26 @@ var $juego = {
     setEficienciaMaxInicio : function(eficiencia){
       $("#num-max-efic").text(eficiencia + "%");
     },
-    setNivelUsuarioIMG : function(dirIMG){
-      $("img#imgNivel").attr("src", dirIMG);
+    setNivelUsuarioIMG : function(){
+      $.ajax({
+        url:'/getEstandarte',
+        method:"POST"
+      }).done(function(response){
+        if(response == "bronce"){
+          $("img#medallaAlerta").attr("src", "/packages/images/cups/winBronce.png");
+          $("img#imgNivel").attr("src", "/packages/images/cups/medallaBronce.png");
+        }
+        else if(response == "plata"){
+          $("img#medallaAlerta").attr("src", "/packages/images/cups/winPlata.png");
+          $("img#imgNivel").attr("src", "/packages/images/cups/medallaPlata.png");
+        }
+        else{
+          $("img#medallaAlerta").attr("src", "/packages/images/cups/winOro.png");
+          $("img#imgNivel").attr("src", "/packages/images/cups/medallaOro.png");
+        }
+      }).fail(function(error){
+        console.log(error);
+      });
     },
     setBackgroundImg : function(dirIMG){
       $(".zona-juego").css({

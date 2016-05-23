@@ -59,7 +59,7 @@ class profesorController extends BaseController
     );
     $messages = [
            "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",           
+           "alpha"       =>  "Solo puedes ingresar letras",
            "date"        =>  "Formato de fecha invalido",
            "numeric"     =>  "Solo se permiten digitos",
            "email"       =>  "Ingresa un formato de correo valido",

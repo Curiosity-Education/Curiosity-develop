@@ -41,8 +41,8 @@
 @foreach($objetos as $objeto)
   <div class='col-md-4 objeto' data-id = {{ $objeto->id }} data-id-remove = {{$objeto->id}}>
     <div class='box box-widget widget-title'>
-      <div class="widget-title-header {{ $objeto->bg_color }}">
-        <h3 class='widget-title-set text-center' data-descrip='{{$objeto->descripcion}}' data-estatus='{{$objeto->estatus}}' id={{$objeto->id}}>{{$objeto->nombre}}</h3>
+      <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">
+        <h3 class='widget-title-set text-center' data-descrip='{{$objeto->descripcion}}' data-color="{{$objeto->bg_color}}" data-estatus='{{$objeto->estatus}}' id={{$objeto->id}}>{{$objeto->nombre}}</h3>
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
@@ -92,6 +92,11 @@
       <div class="form-group">
         <label for="descripcion">Descripción</label>
         <textarea name="descripcion" class="form-control" id="descripcion" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="color">Seleccionar Color:</label>
+        &nbsp;&nbsp;
+        <input type="color" name="color" id="color">
       </div>
       <div class="form-group" hidden="hidden" id="botonEstatus">
         <label>Click para bloquear/desbloquear</label><br>

@@ -40,8 +40,8 @@
 @foreach($niveles as $nivel)
   <div class='col-md-4 objeto' data-id = {{ $nivel->id }}>
     <div class='box box-widget widget-title'>
-      <div class="widget-title-header {{ $nivel->bg_color }}">
-        <h3 class='widget-title-set text-center' data-descrip='{{$nivel->descripcion}}' data-estatus='{{$nivel->estatus}}' id={{$nivel->id}}>{{$nivel->nombre}}</h3>
+      <div class="widget-title-header" style="background-color: {{$nivel->bg_color}}">
+        <h3 class='widget-title-set text-center' data-descrip='{{$nivel->descripcion}}' data-color="{{$nivel->bg_color}}" data-estatus='{{$nivel->estatus}}' id={{$nivel->id}}>{{$nivel->nombre}}</h3>
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
@@ -89,6 +89,11 @@
       <div class="form-group">
         <label for="descripcion">Descripción</label>
         <textarea name="descripcion" class="form-control" id="descripcion" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="color">Seleccionar Color:</label>
+        &nbsp;&nbsp;
+        <input type="color" name="color" id="color">
       </div>
       <div class="form-group" hidden="hidden" id="botonEstatus">
         <label>Click para bloquear/desbloquear</label><br>

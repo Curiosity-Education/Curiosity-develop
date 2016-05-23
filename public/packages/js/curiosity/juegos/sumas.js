@@ -10,7 +10,7 @@ $(document).ready(function(){
 // ---------------------------------------------------------------------------
   // Guardamos el puntaje maximo del usuario en una variable para uso global
   var puntosMaximos = $juego.getPuntuacion();
-  
+
   // Establece la cantidad de segundos de inicio
   var cantTemp = 60;
   // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)
