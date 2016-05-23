@@ -141,10 +141,30 @@ class padreController extends BaseController
     }
     public function gethijos(){
 
+<<<<<<< HEAD
         return DB::select("Select hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
          from padres inner join hijos on hijos.padre_id = padres.id
         inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
         inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
         inner join personas on hijos.persona_id = personas.id where padres.id = '37'");
+=======
+        return DB::select("Select users.username, hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
+         from padres inner join hijos on hijos.padre_id = padres.id
+        inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
+        inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
+        inner join personas on hijos.persona_id = personas.id
+        inner join users on users.id = personas.user_id where padres.id = '37'");
+    }
+    public function sendMensaje(){
+    try{
+        $mensaje = new recordatorioHijo();
+         $mensaje->hijo_recuerda=User::where('username','=',Input::get('hijo_recuerda'))->join('personas','personas.user_id','=','users.id')->join('hijos','hijos.persona_id','=','personas.id')->select('hijos.id')->get()[0]->id;
+        $mensaje->mensaje=Input::get('mensaje');
+        $mensaje->is_read = 0;
+        $mensaje->padre_avisa=Input::get('padre_avisa');
+        $mensaje->save();
+        return Response::json(array("message"=>"El mensaje se envio al hijo","estado"=>"200"));
+        }catch(Exception $e){return $e;}
+>>>>>>> 168120b32a18f53719929eb884c9e8d71090400e
     }
 }

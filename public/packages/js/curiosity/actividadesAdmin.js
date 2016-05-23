@@ -6,17 +6,6 @@ $(document).ready(function() {
   // en input file
   $tiposFile = new Array('.pdf', '.doc', '.docx');
 
-// arreglo con los colores preestablecidos
-// en el css estandar del sistema curiosity
-  var colores = Array(
-    'bg-blue',
-    'bg-green',
-    'bg-red',
-    'bg-purple',
-    'bg-maroon',
-    'bg-teal-active',
-    'bg-yellow-active'
-  );
 //---Variables para el menu-desplegable
  var idActividad;
             var activity;
@@ -93,8 +82,8 @@ $(document).ready(function() {
       sincronizar : function(titulo, color, id, descrip, estatusArg, imagen, idtema, idbloque, idnivel, idintell, video_id, code_embed, pdf, profe){
         var nuevo = "<div class='col-md-4 objeto' data-id="+id+" data-id-remove="+id+">"+
           "<div class='box box-widget widget-title'>"+
-            "<div class='widget-title-header "+color+"'>"+
-              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
+            "<div class='widget-title-header'style='background-color: "+color+"'>"+
+              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-color='"+color+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
@@ -140,13 +129,12 @@ $(document).ready(function() {
           var $btnEnviar = boton;
           $btnEnviar.attr('disabled', 'disabled');
           $btnEnviar.text('Guardando...');
-          var color = Math.floor(Math.random()*7);
           var formData = new FormData($("#formPDF")[0]);
           formData.append('nombre', $("#nombre").val());
           formData.append('estatus', 'lock');
           formData.append('active', 1);
           formData.append('objetivo', $("#descripcion").val());
-          formData.append('bg_color', colores[Math.floor(Math.random()*7)]);
+          formData.append('bg_color', $("#color").val());
           formData.append('tema_id', tema);
           formData.append('code_embed', $("#video").val());
           formData.append('profesores_id', $("#profesores").val());
@@ -195,56 +183,62 @@ $(document).ready(function() {
       // al que se le ha dado clic y el estatus es decir
       // si se encuentra bloqueado o desbloqueado
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
-        var $btnEnviar = boton;
-        $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Guardando...');
+        $tipos = new Array('.pdf', '.docx');
+        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false || $curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == true){
+          var $btnEnviar = boton;
+          $btnEnviar.attr('disabled', 'disabled');
+          $btnEnviar.text('Guardando...');
 
-        var formData = new FormData($("#formPDF")[0]);
-        formData.append('nombre', $("#nombre").val());
-        formData.append('objetivo', $("#descripcion").val());
-        formData.append('code_embed', $("#video").val());
-        formData.append('profesores_id', $("#profesores").val());
-        formData.append('estatus', estatusNow);
-        formData.append('procedenciaID', idProcedencia);
-        formData.append('idUpdate', id);
-        $.ajax({
-          url: direccion,
-          type: 'POST',
-          data: formData,
-          cache: false,
-          contentType: false,
-          processData: false
-        })
-        .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
+          var formData = new FormData($("#formPDF")[0]);
+          formData.append('nombre', $("#nombre").val());
+          formData.append('objetivo', $("#descripcion").val());
+          formData.append('code_embed', $("#video").val());
+          formData.append('profesores_id', $("#profesores").val());
+          formData.append('estatus', estatusNow);
+          formData.append('procedenciaID', idProcedencia);
+          formData.append('color', $("#color").val());
+          formData.append('idUpdate', id);
+          $.ajax({
+            url: direccion,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+          })
+          .done(function(response) {
+            if($.isPlainObject(response)){
+              $.each(response,function(index,value){
+                $.each(value,function(i, message){
+                  $curiosity.noty(message, 'warning');
+                });
               });
-            });
-          }
-          else if(response[0] == 'success'){
-            $curiosity.noty("Actualizado Correctamente", "success");
-            $("#"+id).text($("#nombre").val());
-            $("#"+id).data('descrip', $("#descripcion").val());
-            $("#"+id).data('estatus', estatusNow);
-            $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'same'){
-            $curiosity.noty("El nombre ya existe", "warning");
-          }
-          else if(response[0] == 'same_exist'){
-            $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        })
-        .always(function(){
-          $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-        });
+            }
+            else if(response[0] == 'success'){
+              $curiosity.noty("Actualizado Correctamente", "success");
+              $("#"+id).text($("#nombre").val());
+              $("#"+id).data('descrip', $("#descripcion").val());
+              $("#"+id).data('estatus', estatusNow);
+              $("#"+id).data('color', $("#color").val());
+              $("#"+id).parent().css('background',$("#color").val());
+              $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
+              actividad.hideAdmin();
+            }
+            else if(response[0] == 'same'){
+              $curiosity.noty("El nombre ya existe", "warning");
+            }
+            else if(response[0] == 'same_exist'){
+              $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
+            }
+          })
+          .fail(function(error) {
+            console.log(error);
+          })
+          .always(function(){
+            $btnEnviar.removeAttr('disabled');
+            $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+          });
+        }
       },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
@@ -346,6 +340,7 @@ $(document).ready(function() {
   // de registro en caso de ser presionado
   $('#addNew').click(function(event) {
     $("#enviarEnv").data('tipo', 'add');
+    $("#color").val("#000000");
     actividad.showAdmin();
   });
 
@@ -365,8 +360,10 @@ $(document).ready(function() {
     // en los inputs correspondientes
     $("#nombre").val($("#"+idSelected).text());
     $("#descripcion").val($("#"+idSelected).data('descrip'));
+    $("#color").val($("#"+idSelected).data('color'));
     $("#video").val($(this).data('code-embed'));
     var idFromProfe = $(this).data('prof-id');
+
     $.each($('#profesores > option'), function(index, obj){
       if($(this).val() == idFromProfe){
         $(this).attr('selected', 'selected');
@@ -696,8 +693,10 @@ $(document).ready(function() {
             },
             uploadprogress: function(file, progress, bytesSent) {
                 // Display the progress
-                $("#bytesSent").text(bytesSent+"KB");
-                $("#progress").text(progress+"%");
+                var progresAlt = parseFloat(progress).toFixed(2);
+                var bytesAlt = parseFloat(bytesSent).toFixed(2);
+                $("#bytesSent").text(bytesAlt+"KB");
+                $("#progress").text(progresAlt+"%");
             }
 
         }

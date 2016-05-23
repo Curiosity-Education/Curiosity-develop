@@ -63,7 +63,8 @@ class nivelController extends BaseController
           // objeto en base a la informacion nueva (activamos nuevamente)
           nivel::where('nombre', '=', $formulario['nombre'])->update(array(
             'active' => 1,
-            'descripcion' => $formulario['descripcion']
+            'descripcion' => $formulario['descripcion'],
+            'bg_color' => $formulario['bg_color']
           ));
           // obtenemos el objeto en base a el nombre ya existente
           $nivel = nivel::where('nombre', '=', $formulario['nombre'])->get();
@@ -90,7 +91,7 @@ class nivelController extends BaseController
 
     $messages = [
            "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",           
+           "alpha"       =>  "Solo puedes ingresar letras",
            "date"        =>  "Formato de fecha invalido",
            "numeric"     =>  "Solo se permiten digitos",
            "email"       =>  "Ingresa un formato de correo valido",
@@ -111,7 +112,8 @@ class nivelController extends BaseController
       if($nombre === $formulario['nombre']){
         nivel::where('id', '=', $formulario['idUpdate'])->update(array(
           'descripcion' => $formulario['descripcion'],
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
       }
       else{
@@ -122,7 +124,8 @@ class nivelController extends BaseController
         nivel::where('id', '=', $formulario['idUpdate'])->update(array(
           'nombre' => $formulario['nombre'],
           'descripcion' => $formulario['descripcion'],
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
       }
       return Response::json(array(0=>"success"));

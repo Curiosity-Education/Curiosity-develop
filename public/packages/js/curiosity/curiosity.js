@@ -101,9 +101,9 @@ var $curiosity = {
         data: {data : datos}
       })
       .done(function(response){
-        console.log(response);
-        $selectorIMG.attr('src', '/packages/images/cups/medalla1.png');
-        $selectorIMG_alerta.attr('src', '/packages/images/cups/win1.png');
+        // console.log(response);
+        // $selectorIMG.attr('src', '/packages/images/cups/medalla1.png');
+        // $selectorIMG_alerta.attr('src', '/packages/images/cups/win1.png');
       })
       .fail(function(error){
         console.log(error);

@@ -47,19 +47,19 @@
           <form action="" method="post">
             <div class="form-group" id="input-user">
               <div class="input-group">
-                <span class="input-group-addon" id="login-icon-user">
+                <span for="username" class="input-group-addon" id="login-icon-user">
                   <span class="fa fa-user"></span>
                 </span>
-                <input type="text" class="form-control" placeholder="Nombre de Usuario" name="username" id="username">
+                <input type="text" class="form-control"  style="-webkit-user-select: text;" placeholder="Nombre de Usuario" name="username" id="username"/>
               </div>
             </div>
 
             <div class="form-group" id="input-pass" hidden="hidden">
               <div class="input-group">
-                <span class="input-group-addon" id="login-icon-pass">
+                <span for="password" class="input-group-addon" id="login-icon-pass">
                   <span class="fa fa-lock"></span>
                 </span>
-                <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
+                <input type="password" class="form-control" placeholder="Contraseña" style="-webkit-user-select: text;" name="password" id="password">
               </div>
             </div>
           </form>
@@ -98,5 +98,8 @@
 {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
 {{HTML::script('/packages/js/curiosity/curiosity.js')}}
 {{HTML::script('/packages/js/curiosity/login.js')}}
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

@@ -90,16 +90,13 @@ $(document).ready(function(){
         }
     });
     $("#frm-reg-hijos").on("change","#escuela_id",function(){
-        if($(this).val()==="NULL"){
+        if($(this).val()==="0"){
             $(this).hide();
             $("#return-fa-normal").hide();
             $("#esc_alt").removeClass('hidden');
             $("#return-select-school").removeClass("hidden");
             $("#return-select-school").show();
             $("#esc_alt").show();
-            $("#escuela_id").val('NULL');
-
-
         }
     });
     $("#frm-reg-hijos").on("click","#return-select-school",function(){
@@ -211,7 +208,7 @@ $(document).ready(function(){
       }else return false;
     }
     function promedio(value,element,param){
-        var er = /^[0-9]{1}(\.[0-9]{1})?$/;
+        var er = /^([0-9]{1}(\.[0-9]{1})?|10{1})$/;
         if(er.test(value)){
             return true;
         }else return false;

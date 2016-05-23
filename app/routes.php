@@ -28,6 +28,10 @@ Route::get('/getCiudades','ciudadController@getCiudades');
 Route::post('/remote-username','userController@remoteUsername');
 Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/gethijos','padreController@gethijos');
+<<<<<<< HEAD
+=======
+Route::post('/sendMensaje','padreController@sendMensaje');
+>>>>>>> 168120b32a18f53719929eb884c9e8d71090400e
 
 Route::group(array('before' => 'auth'), function(){
     /*Rutas para subir y ver juego*/

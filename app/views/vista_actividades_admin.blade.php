@@ -49,12 +49,11 @@
 @foreach($obj_actividades as $actividad)
   <div class='col-md-4 activity objeto' data-object="activity" data-id = {{ $actividad->id }} data-id-remove = {{$actividad->id}}>
     <div class='box box-widget widget-title'>
-      <div class="widget-title-header {{ $actividad->bg_color }}">
-        <h3 class='widget-title-set text-center' data-descrip='{{$actividad->objetivo}}' data-estatus='{{$actividad->estatus}}' id={{$actividad->id}}>{{$actividad->nombre}}</h3>
+      <div class="widget-title-header" style="background-color: {{$actividad->bg_color}}">
+        <h3 class='widget-title-set text-center' data-descrip='{{$actividad->objetivo}}' data-color="{{$actividad->bg_color}}" data-estatus='{{$actividad->estatus}}' id={{$actividad->id}}>{{$actividad->nombre}}</h3>
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
-
         <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
       </div>
       <div class='box-footer'>
@@ -124,6 +123,11 @@
           @endforeach
         </select>
       </div>
+      <div class="form-group">
+        <label for="color">Seleccionar Color:</label>
+        &nbsp;&nbsp;
+        <input type="color" name="color" id="color">
+      </div>
       <div class="form-group" hidden="hidden" id="botonEstatus">
         <label>Click para bloquear/desbloquear</label><br>
         <i class="fa fa-lock fa-4x" id="btnLock"></i>
@@ -150,7 +154,7 @@
     </div>
   </div>
 
-@if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
+  @if(Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
   <!-- Menu desplegable para subir juegos -->
   <div id="menu" class="menu hide">
         <ul class="menu-ul">
@@ -206,8 +210,8 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
- @endif
+    @endif
+
 @stop
 
 @section('mi_js')

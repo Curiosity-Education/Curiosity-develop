@@ -91,13 +91,8 @@
                       <div class="row">
                         <div class="col-md-12 text-center cal-titulo">
                           <h3>Máxima Puntuación</h3>
-<<<<<<< HEAD
-                          <h1><b id="num-max-pts">{{ $maxProm }}</b></h1>
-                        </div>
-=======
                           <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
                         </div>
->>>>>>> 8831ff9d2204dd15bb4ed03ef89a0f21a29383b0
                       </div>
                     </div>
                     <div class='col-md-7' id='objetivo'>

@@ -74,4 +74,18 @@ class hijoController extends BaseController{
 
         }
 	}
+    public function recordatorio(){
+        header('Content-Type: text/event-stream');
+        header('Cache-Control: no-cache');
+        $id=User::where('username','=',Auth::user()->username)->join('personas','personas.user_id','=','users.id')->join('hijos','hijos.persona_id','=','personas.id')->select('hijos.id')->get()[0]->id;
+        $data = DB::select("Select r_h.id, r_h.mensaje,perfiles.foto_perfil from recordatorios_hijos as r_h
+inner join padres on padres.id = r_h.padre_avisa inner join personas on
+personas.id = padres.persona_id inner join users on personas.user_id = users.id
+inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = ".$id." and r_h.is_read=0");
+
+        recordatorioHijo::where('hijo_recuerda','=',$id)->update(array('is_read'=>'1'));
+        echo "data: ".json_encode($data)."\n\n";
+
+        flush();
+    }
 }

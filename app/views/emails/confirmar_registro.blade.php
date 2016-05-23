@@ -1,7 +1,7 @@
 <!doctype html>
  <html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+
   <meta name="viewport" content="initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no" />
   <title></title>
@@ -107,7 +107,7 @@
       <br>
       Atentamente: {{$name}}.
       <hr>
-      <a href="http://www.curiosity.com.mx/confirmar/{{$token}}">www.curiosity.com.mx</a>
+      <a href="http://www.curiosity.com.mx/confirmar/{{$token}}">www.curiosity.com</a>
     </div>
   </td></tr></tbody></table>
 </td></tr></tbody></table>
