@@ -133,10 +133,10 @@ class actividadController extends BaseController
             $archivo;
 
             if($formulario['archivoPDF'] != null){
-              $archivo = $formulario['archivoPDF']->getClientOriginalName();
+              $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();
               $destinoPath = public_path()."/packages/docs/";
               $file = $formulario['archivoPDF'];
-              $file->move($destinoPath, $file->getClientOriginalName());
+              $file->move($destinoPath, $archivo);
             }
             else{
               $archivo = actividad::where('nombre', '=', $formulario['nombre'])->pluck('pdf');
@@ -149,7 +149,8 @@ class actividadController extends BaseController
                 'imagen' => 'default.png',
                 'objetivo' => $formulario['objetivo'],
                 'pdf' => $archivo,
-                'estatus' => 'lock'
+                'estatus' => 'lock',
+                'bg_color' => $formulario['bg_color']
               ));
 
             video::where('actividad_id', '=', $idAct)->update(array(
@@ -215,10 +216,10 @@ class actividadController extends BaseController
         // unicamente la descripcion y el estatus del mismo
         $archivo;
         if($formulario['archivoPDF'] != null){
-          $archivo = $formulario['archivoPDF']->getClientOriginalName();
+          $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();
           $destinoPath = public_path()."/packages/docs/";
           $file = $formulario['archivoPDF'];
-          $file->move($destinoPath, $file->getClientOriginalName());
+          $file->move($destinoPath, $archivo);
         }
         else{
           $archivo = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf');
@@ -227,7 +228,8 @@ class actividadController extends BaseController
         actividad::where('id', '=', $formulario['idUpdate'])->update(array(
           'objetivo' => $formulario['objetivo'],
           'pdf' => $archivo,
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
 
         video::where('actividad_id', '=', $formulario['idUpdate'])->update(array(
@@ -252,10 +254,10 @@ class actividadController extends BaseController
         if($existe === 'no'){
           $archivo;
           if($formulario['archivoPDF'] != null){
-            $archivo = $formulario['archivoPDF']->getClientOriginalName();
+            $archivo = $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();;
             $destinoPath = public_path()."/packages/docs/";
             $file = $formulario['archivoPDF'];
-            $file->move($destinoPath, $file->getClientOriginalName());
+            $file->move($destinoPath, $archivo);
           }
           else{
             $archivo = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf');
@@ -265,7 +267,8 @@ class actividadController extends BaseController
             'nombre' => $formulario['nombre'],
             'objetivo' => $formulario['objetivo'],
             'pdf' => $archivo,
-            'estatus' => $formulario['estatus']
+            'estatus' => $formulario['estatus'],
+            'bg_color' => $formulario['color']
           ));
 
           video::where('actividad_id', '=', $formulario['idUpdate'])->update(array(
@@ -360,21 +363,23 @@ class actividadController extends BaseController
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
 
-<<<<<<< HEAD
-=======
-        Session::put("idActivity",$idActividad);
->>>>>>> 8831ff9d2204dd15bb4ed03ef89a0f21a29383b0
-        $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->pluck('id'))
-        ->where('actividad_id', '=', $idActividad)
-        ->max('promedio');
 
-            try{
-                //----Retornamos la vista del juego
-                return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
-            }
-            catch(Exception $ex){
-                return Redirect::back();
-            }
+        Session::put("idActivity",$idActividad);
+        if(Auth::user()->hasRole('hijo')){
+          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)
+          ->where('actividad_id', '=', $idActividad)
+          ->max('promedio');
+        }
+        else{
+          $maxProm = 0;
+        }
+        try{
+            //----Retornamos la vista del juego
+            return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
+        }
+        catch(Exception $ex){
+            return Redirect::back();
+        }
     }
 
     public function subirJuego($idActividad){
@@ -736,59 +741,64 @@ class actividadController extends BaseController
         // de promedios general para el calculo
         $sp = $sp + $value['promedio'];
       }
-      // Calculamos la media dividiendo
-      // la suma total de promedios entre
-      // la cantidad de promedios registrados
-      // en el juego
-      $mediaHijo = ($sp/$cp); // Media (promedio del juego)
-      // --------------------------------------------------------
-      $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))->get();
+      if($cp > 0){
+        // Calculamos la media dividiendo
+        // la suma total de promedios entre
+        // la cantidad de promedios registrados
+        // en el juego
+        $mediaHijo = ($sp/$cp); // Media (promedio del juego)
+        // --------------------------------------------------------
+        $datos = hijoRealizaActividad::where('actividad_id', '=', Session::get('idActivity'))->get();
 
-      $sp = 0; // sumatoria de promedios del juego
-      $cp = 0; // cantidad de promedios del juego
-      foreach ($datos as $dato => $value) {
-        // Sumamos uno mas a la cantidad por cada iteración
-        $cp++;
-        // Sumamos el promedio obtenido a la sumatoria
-        // de promedios general para el calculo
-        $sp = $sp + $value['promedio'];
-      }
-      // Calculamos la media dividiendo
-      // la suma total de promedios entre
-      // la cantidad de promedios registrados
-      // en el juego
-      $mediaJugo = ($sp/$cp);
-      $dpmTotal = 0; // total de diferencias al cuadrado
-      foreach ($datos as $dato => $value) {
-        // calculamos la diferencia del promedio
-        // a la media por cada promedio del juego
-        $dpm = $value['promedio'] - $mediaJugo;
-        // sumamos al total de distancias de promedios
-        // a la media el resultado anterior elevado al
-        // cuadrado
-        $dpmTotal = $dpmTotal + (pow($dpm, 2));
-      }
-      // calculamos la media de la suma total de las diferencias
-      // de los promedios a la media elevados al cuadrado (Varianza)
-      $varianza = $dpmTotal / $cp;
-      // Calculamos la desviacion estandar que se
-      // calcula sacando la raiz cuadrada de la
-      // varianza calculada
-      $desviacion = (Sqrt($varianza));
+        $sp = 0; // sumatoria de promedios del juego
+        $cp = 0; // cantidad de promedios del juego
+        foreach ($datos as $dato => $value) {
+          // Sumamos uno mas a la cantidad por cada iteración
+          $cp++;
+          // Sumamos el promedio obtenido a la sumatoria
+          // de promedios general para el calculo
+          $sp = $sp + $value['promedio'];
+        }
+        // Calculamos la media dividiendo
+        // la suma total de promedios entre
+        // la cantidad de promedios registrados
+        // en el juego
+        $mediaJugo = ($sp/$cp);
+        $dpmTotal = 0; // total de diferencias al cuadrado
+        foreach ($datos as $dato => $value) {
+          // calculamos la diferencia del promedio
+          // a la media por cada promedio del juego
+          $dpm = $value['promedio'] - $mediaJugo;
+          // sumamos al total de distancias de promedios
+          // a la media el resultado anterior elevado al
+          // cuadrado
+          $dpmTotal = $dpmTotal + (pow($dpm, 2));
+        }
+        // calculamos la media de la suma total de las diferencias
+        // de los promedios a la media elevados al cuadrado (Varianza)
+        $varianza = $dpmTotal / $cp;
+        // Calculamos la desviacion estandar que se
+        // calcula sacando la raiz cuadrada de la
+        // varianza calculada
+        $desviacion = (Sqrt($varianza));
 
-      // Verificamos si el promedio del juego del niño se
-      // encuentra dentro de la desviacion estandar,
-      // por debajo o bien sobre ella
-      $rangoAbajo = ($desviacion - $mediaJugo);
-      $rangoArriba = ($desviacion + $mediaJugo);
-      if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
-        return Response::json(array(0=>"plata"));
-      }
-      else if($mediaHijo < $rangoAbajo){
-        return Response::json(array(0=>"bronce"));
+        // Verificamos si el promedio del juego del niño se
+        // encuentra dentro de la desviacion estandar,
+        // por debajo o bien sobre ella
+        $rangoAbajo = ($mediaJugo - $desviacion);
+        $rangoArriba = ($mediaJugo + $desviacion);
+        if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
+          return Response::json(array(0=>"plata"));
+        }
+        else if($mediaHijo < $rangoAbajo){
+          return Response::json(array(0=>"bronce"));
+        }
+        else{
+          return Response::json(array(0=>"oro"));
+        }
       }
       else{
-        return Response::json(array(0=>"oro"));
+        return Response::json(array(0=>"bronce"));
       }
     }
 
@@ -856,4 +866,3 @@ class actividadController extends BaseController
         }
     }
 }
-
