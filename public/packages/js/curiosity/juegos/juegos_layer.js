@@ -17,12 +17,14 @@ var $juego = {
     getPuntuacion:function(){
       return $juego.puntuacion;
     },
-    boton : {
-        comenzar : {
-            setFuncion : function(funcion){
-                $("#btn-comenzar").click(funcion);
-            }
-        }
+    start:function(callback){
+        $("#btn-comenzar").click(callback);
+    },
+    pause:function(callback){
+
+    },
+    finish:function(callback){
+
     },
     setPuntosMaxInicio : function(puntos){
       $("#num-max-pts").text(puntos + " Pts");
@@ -30,11 +32,11 @@ var $juego = {
     setEficienciaMaxInicio : function(eficiencia){
       $("#num-max-efic").text(eficiencia + "%");
     },
-    setNivelUsuarioIMG : function(){      
+    setNivelUsuarioIMG : function(){
       $.ajax({
         url:'/getEstandarte',
         method:"POST"
-      }).done(function(response){        
+      }).done(function(response){
         if(response == "bronce"){
           $("img#medallaAlerta").attr("src", "/packages/images/cups/winBronce.png");
           $("img#imgNivel").attr("src", "/packages/images/cups/medallaBronce.png");

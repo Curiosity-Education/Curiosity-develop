@@ -27,6 +27,11 @@ Route::match((array('GET','POST')),'/regPadre','padreController@addPadre');
 Route::get('/getCiudades','ciudadController@getCiudades');
 Route::post('/remote-username','userController@remoteUsername');
 Route::post('/remote-email','padreController@remoteEmail');
+Route::get('/gethijos','padreController@gethijos');
+<<<<<<< HEAD
+=======
+Route::post('/sendMensaje','padreController@sendMensaje');
+>>>>>>> 168120b32a18f53719929eb884c9e8d71090400e
 
 Route::group(array('before' => 'auth'), function(){
     /*Rutas para subir y ver juego*/
@@ -39,7 +44,7 @@ Route::group(array('before' => 'auth'), function(){
 
         // Acceder a juego
         Route::post('/hasgame','actividadController@hasGame');
-
+        Route::get('/recordatorio','hijoController@recordatorio');
         Route::get('/cursos', 'cursoController@verPagina');
         Route::get('/cursosAdmin', 'cursoController@verPaginaAdmin');
         Route::get('/bloques', 'bloqueController@verPagina');

@@ -9,7 +9,11 @@ html, body{
 	-webkit-user-select: none;
 	-moz-user-select: none;
 }
-
+input,textarea,select{
+	 user-select: text;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+}
 body{
 	font-family: calibri;
 	font-size: 1.3em;

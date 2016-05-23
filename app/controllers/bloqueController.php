@@ -115,7 +115,8 @@ class bloqueController extends BaseController
             ->update(array(
               'active' => 1,
               'imagen' => 'default.png',
-              'descripcion' => $formulario['descripcion']
+              'descripcion' => $formulario['descripcion'],
+              'bg_color' => $formulario['bg_color']
               ));
             $bloque = bloque::where('bloques.nombre', '=', $formulario['nombre'])
             ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
@@ -144,7 +145,7 @@ class bloqueController extends BaseController
 
     $messages = [
            "required"    =>  "Este campo :attribute es requerido",
-           "alpha"       =>  "Solo puedes ingresar letras",           
+           "alpha"       =>  "Solo puedes ingresar letras",
            "date"        =>  "Formato de fecha invalido",
            "numeric"     =>  "Solo se permiten digitos",
            "email"       =>  "Ingresa un formato de correo valido",
@@ -172,7 +173,8 @@ class bloqueController extends BaseController
         // unicamente la descripcion y el estatus del mismo
         bloque::where('id', '=', $formulario['idUpdate'])->update(array(
           'descripcion' => $formulario['descripcion'],
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
         return Response::json(array(0=>"success"));
       }
@@ -193,7 +195,8 @@ class bloqueController extends BaseController
           bloque::where('id', '=', $formulario['idUpdate'])->update(array(
             'nombre' => $formulario['nombre'],
             'descripcion' => $formulario['descripcion'],
-            'estatus' => $formulario['estatus']
+            'estatus' => $formulario['estatus'],
+            'bg_color' => $formulario['color']
           ));
           return Response::json(array(0=>"success"));
         }
