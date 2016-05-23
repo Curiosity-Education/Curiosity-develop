@@ -17,12 +17,14 @@ var $juego = {
     getPuntuacion:function(){
       return $juego.puntuacion;
     },
-    boton : {
-        comenzar : {
-            setFuncion : function(funcion){
-                $("#btn-comenzar").click(funcion);
-            }
-        }
+    start:function(callback){
+        $("#btn-comenzar").click(callback);
+    },
+    pause:function(callback){
+
+    },
+    finish:function(callback){
+
     },
     setPuntosMaxInicio : function(puntos){
       $("#num-max-pts").text(puntos + " Pts");
