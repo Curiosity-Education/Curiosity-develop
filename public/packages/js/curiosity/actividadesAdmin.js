@@ -6,17 +6,6 @@ $(document).ready(function() {
   // en input file
   $tiposFile = new Array('.pdf', '.doc', '.docx');
 
-// arreglo con los colores preestablecidos
-// en el css estandar del sistema curiosity
-  var colores = Array(
-    'bg-blue',
-    'bg-green',
-    'bg-red',
-    'bg-purple',
-    'bg-maroon',
-    'bg-teal-active',
-    'bg-yellow-active'
-  );
 //---Variables para el menu-desplegable
  var idActividad;
             var activity;
@@ -93,8 +82,8 @@ $(document).ready(function() {
       sincronizar : function(titulo, color, id, descrip, estatusArg, imagen, idtema, idbloque, idnivel, idintell, video_id, code_embed, pdf, profe){
         var nuevo = "<div class='col-md-4 objeto' data-id="+id+" data-id-remove="+id+">"+
           "<div class='box box-widget widget-title'>"+
-            "<div class='widget-title-header "+color+"'>"+
-              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
+            "<div class='widget-title-header'style='background-color: "+color+"'>"+
+              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-color='"+color+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
@@ -140,13 +129,12 @@ $(document).ready(function() {
           var $btnEnviar = boton;
           $btnEnviar.attr('disabled', 'disabled');
           $btnEnviar.text('Guardando...');
-          var color = Math.floor(Math.random()*7);
           var formData = new FormData($("#formPDF")[0]);
           formData.append('nombre', $("#nombre").val());
           formData.append('estatus', 'lock');
           formData.append('active', 1);
           formData.append('objetivo', $("#descripcion").val());
-          formData.append('bg_color', colores[Math.floor(Math.random()*7)]);
+          formData.append('bg_color', $("#color").val());
           formData.append('tema_id', tema);
           formData.append('code_embed', $("#video").val());
           formData.append('profesores_id', $("#profesores").val());
@@ -208,6 +196,7 @@ $(document).ready(function() {
           formData.append('profesores_id', $("#profesores").val());
           formData.append('estatus', estatusNow);
           formData.append('procedenciaID', idProcedencia);
+          formData.append('color', $("#color").val());
           formData.append('idUpdate', id);
           $.ajax({
             url: direccion,
@@ -230,6 +219,8 @@ $(document).ready(function() {
               $("#"+id).text($("#nombre").val());
               $("#"+id).data('descrip', $("#descripcion").val());
               $("#"+id).data('estatus', estatusNow);
+              $("#"+id).data('color', $("#color").val());
+              $("#"+id).parent().css('background',$("#color").val());
               $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
               actividad.hideAdmin();
             }
@@ -349,6 +340,7 @@ $(document).ready(function() {
   // de registro en caso de ser presionado
   $('#addNew').click(function(event) {
     $("#enviarEnv").data('tipo', 'add');
+    $("#color").val("#000000");
     actividad.showAdmin();
   });
 
@@ -368,9 +360,10 @@ $(document).ready(function() {
     // en los inputs correspondientes
     $("#nombre").val($("#"+idSelected).text());
     $("#descripcion").val($("#"+idSelected).data('descrip'));
+    $("#color").val($("#"+idSelected).data('color'));
     $("#video").val($(this).data('code-embed'));
     var idFromProfe = $(this).data('prof-id');
-    
+
     $.each($('#profesores > option'), function(index, obj){
       if($(this).val() == idFromProfe){
         $(this).attr('selected', 'selected');

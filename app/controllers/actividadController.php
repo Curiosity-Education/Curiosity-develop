@@ -149,7 +149,8 @@ class actividadController extends BaseController
                 'imagen' => 'default.png',
                 'objetivo' => $formulario['objetivo'],
                 'pdf' => $archivo,
-                'estatus' => 'lock'
+                'estatus' => 'lock',
+                'bg_color' => $formulario['bg_color']
               ));
 
             video::where('actividad_id', '=', $idAct)->update(array(
@@ -227,7 +228,8 @@ class actividadController extends BaseController
         actividad::where('id', '=', $formulario['idUpdate'])->update(array(
           'objetivo' => $formulario['objetivo'],
           'pdf' => $archivo,
-          'estatus' => $formulario['estatus']
+          'estatus' => $formulario['estatus'],
+          'bg_color' => $formulario['color']
         ));
 
         video::where('actividad_id', '=', $formulario['idUpdate'])->update(array(
@@ -265,7 +267,8 @@ class actividadController extends BaseController
             'nombre' => $formulario['nombre'],
             'objetivo' => $formulario['objetivo'],
             'pdf' => $archivo,
-            'estatus' => $formulario['estatus']
+            'estatus' => $formulario['estatus'],
+            'bg_color' => $formulario['color']
           ));
 
           video::where('actividad_id', '=', $formulario['idUpdate'])->update(array(
@@ -361,9 +364,9 @@ class actividadController extends BaseController
         ->get();
 
 
-        Session::put("idActivity",$idActividad);        
+        Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo')){
-          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)          
+          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)
           ->where('actividad_id', '=', $idActividad)
           ->max('promedio');
         }
@@ -371,7 +374,7 @@ class actividadController extends BaseController
           $maxProm = 0;
         }
         try{
-            //----Retornamos la vista del juego              
+            //----Retornamos la vista del juego
             return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
         }
         catch(Exception $ex){
@@ -737,7 +740,7 @@ class actividadController extends BaseController
         // Sumamos el promedio obtenido a la sumatoria
         // de promedios general para el calculo
         $sp = $sp + $value['promedio'];
-      }      
+      }
       if($cp > 0){
         // Calculamos la media dividiendo
         // la suma total de promedios entre
@@ -783,7 +786,7 @@ class actividadController extends BaseController
         // encuentra dentro de la desviacion estandar,
         // por debajo o bien sobre ella
         $rangoAbajo = ($mediaJugo - $desviacion);
-        $rangoArriba = ($mediaJugo + $desviacion);      
+        $rangoArriba = ($mediaJugo + $desviacion);
         if($mediaHijo >= $rangoAbajo && $mediaHijo <= $rangoArriba){
           return Response::json(array(0=>"plata"));
         }
@@ -863,4 +866,3 @@ class actividadController extends BaseController
         }
     }
 }
-

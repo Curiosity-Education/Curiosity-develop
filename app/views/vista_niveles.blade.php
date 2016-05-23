@@ -20,13 +20,14 @@
   @foreach($niveles as $nivel)
     <div class='col-md-4 objeto'>
       <div class='box box-widget widget-title objetoPointer' data-estatus={{$nivel->estatus}} data-id = {{ $nivel->id }}>
-        <div class="widget-title-header {{ $nivel->bg_color }}">
+        <div class="widget-title-header" style="background-color: {{$nivel->bg_color}}">
           <h3 class='widget-title-set text-center'> {{$nivel->nombre}} </h3>
           <h5 class='widget-title-desc'></h5>
         </div>
         @if($nivel->estatus == "lock")
-          <div class="butonEstatus text-center {{$nivel->bg_color}}">
-            <span class='fa fa-lock fa-2x fa-estatus-color' title="Estatus" ></span>
+          <div class="butonEstatus text-center" style="background-color: {{$nivel->bg_color}}">
+            <span class='fa fa-clock-o fa-estatus-color'></span>&nbsp;
+            Próximamente
           </div>
         @endif
         <div class='widget-title-image'>
@@ -39,9 +40,11 @@
               </div>
             </div>
             <div class='col-xs-4 border-right'>
-              <div class='description-block'>
-                <span class='fa fa-star fa-star-color fa-4x tooltipShow' title='{{$nivel->descripcion}}'></span>
-              </div>
+              @if($nivel->estatus != "lock")
+                <div class='description-block'>
+                  <span class='fa fa-star fa-star-color fa-4x tooltipShow' title='{{$nivel->descripcion}}'></span>
+                </div>
+              @endif
             </div>
             <div class='col-xs-4'>
               <div class='description-block btnIn'>

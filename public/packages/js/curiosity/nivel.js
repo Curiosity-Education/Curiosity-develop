@@ -7,7 +7,7 @@ $(document).ready(function() {
       window.location.href="/inteligencia"+$(this).data('id');
     }
     else{
-      $curiosity.noty("El elemento se encuentra bloqueado", "warning");
+      $curiosity.noty("Disponible próximamente", "warning");
     }
   });
 });

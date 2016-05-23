@@ -14,6 +14,7 @@
     {{ HTML::style('/packages/css/curiosity/vistaEstandar.css') }}
     {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
     {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
+    {{ HTML::style('/packages/css/libs/colorpicker/colorpicker.css') }}
     @yield('mi_css')
     <title>Curiosity | @yield('title')</title>
   </head>
@@ -195,9 +196,11 @@
   {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
   {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
+  {{HTML::script('/packages/js/libs/colorpicker/colorpicker.js')}}
 
   <script type="text/javascript">
     $(document).ready(function(){
+
       $(".tooltipShow").tooltipster({
         position : 'bottom',
         touchDevices: true
@@ -212,7 +215,7 @@
             source.onerror = function (e) {
               //console.log(e);
             };
-          
+
            source.addEventListener('message',function(e){
                var data = JSON.parse(e.data);
                $.each(data,function(i,array){
@@ -221,11 +224,10 @@
            },false);
 
       }
-        
-    
+
+
     });
   </script>
-
   @yield('mi_js')
   </body>
 </html>
