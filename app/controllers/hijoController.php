@@ -39,6 +39,9 @@ class hijoController extends BaseController{
         }else{
 
 
+            if($datos["escuela_id"]=="" || $datos["escuela_id"]=="NULL"){
+                unset($datos["escuela_id"]);
+            }
             $membresia_plan = new membresiaPlan();
             $user = new User();
             $user->username=$datos["username_hijo"];
