@@ -7,7 +7,7 @@
 
   {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
   {{HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
-  {{HTML::style('/packages/css/curiosity/userStyle.css')}}  
+  {{HTML::style('/packages/css/curiosity/userStyle.css')}}
   <title>Curiosity | ERROR 404</title>
 </head>
 <body>
