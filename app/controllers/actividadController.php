@@ -99,6 +99,7 @@ class actividadController extends BaseController
         if($existe === false){
           // creamos un objeto y lo guardamos en la base de datos
           // al final enviamos una respuesta y el objeto creado
+          $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();
           $destinoPath = public_path()."/packages/docs/";
           $file = $formulario['archivoPDF'];
           $file->move($destinoPath, $file->getClientOriginalName());
