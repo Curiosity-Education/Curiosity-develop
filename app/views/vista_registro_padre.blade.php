@@ -325,9 +325,9 @@
 
     /* Events */
    /* onStepChanging: function (event, currentIndex, newIndex) { return true; },
-    onStepChanged: function (event, currentIndex, priorIndex) { }}, 
+    onStepChanged: function (event, currentIndex, priorIndex) { }},
     onCanceled: function (event) { },
-    onFinishing: function (event, currentIndex) { return true; }, 
+    onFinishing: function (event, currentIndex) { return true; },
     onFinished: function (event, currentIndex) { },
 
     /* Labels */

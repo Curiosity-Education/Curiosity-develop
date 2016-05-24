@@ -141,13 +141,6 @@ class padreController extends BaseController
     }
     public function gethijos(){
 
-<<<<<<< HEAD
-        return DB::select("Select hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
-         from padres inner join hijos on hijos.padre_id = padres.id
-        inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
-        inner join actividades on hijo_realiza_actividades.actividad_id = actividades.id
-        inner join personas on hijos.persona_id = personas.id where padres.id = '37'");
-=======
         return DB::select("Select users.username, hijos.id,concat(personas.nombre,' ',personas.apellido_paterno) as 'nombre_completo', max(hijo_realiza_actividades.promedio) 'max_promedio' , actividades.nombre as 'actividad'
          from padres inner join hijos on hijos.padre_id = padres.id
         inner join hijo_realiza_actividades on hijos.id = hijo_realiza_actividades.hijo_id
@@ -165,6 +158,5 @@ class padreController extends BaseController
         $mensaje->save();
         return Response::json(array("message"=>"El mensaje se envio al hijo","estado"=>"200"));
         }catch(Exception $e){return $e;}
->>>>>>> 168120b32a18f53719929eb884c9e8d71090400e
     }
 }
