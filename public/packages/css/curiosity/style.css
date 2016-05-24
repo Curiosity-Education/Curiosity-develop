@@ -547,7 +547,6 @@ footer div hr{
 		margin-bottom: -30px;
 	}
 }
-=======
 html, body{
 	height: 100%;
 }
@@ -564,6 +563,7 @@ input,textarea,select{
 	-webkit-user-select: text;
 	-moz-user-select: text;
 }
+>>>>>>> c61cbfa080a74a41a41dc0192ab57425e9134676
 body{
 	font-family: calibri;
 	font-size: 1.3em;
