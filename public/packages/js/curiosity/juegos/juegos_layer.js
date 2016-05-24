@@ -166,7 +166,7 @@ var $juego = {
 
             if(!/^[0-9]*$/.test(duracion)){
                 console.error("El paramentro duración debe ser entero");
-            }else if(!/true|false/.test(inverso)){
+            }else if(!/^true|false/.test(inverso)){
                 console.error("El parametro inverso debe ser un booleano");
             }else{
                 $juego.cronometro.interval = setInterval($juego.cronometro.contar,1000);
@@ -268,9 +268,9 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
-            if(!/true|false/.test(inverso)){
+            if(!/^true|false/.test(bool))
                 console.error("El parametro inverso debe ser un booleano");
-            }else
+            else
                 $juego.cronometro.pausa=bool;
         }
     },
