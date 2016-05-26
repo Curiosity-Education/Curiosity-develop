@@ -222,7 +222,7 @@
                               </span>
                               <select name="role_admin" id="role_admin" class="form-control">
                                 @foreach(Role::all() as $role)
-                                  @if($role->name!='hijo' && $role->name!='padre')
+                                  @if($role->name!='hijo' && $role->name!='padre' && $role->name!='padre_free' && $role->name!='hijo_free')
                                     @if($role->name=='root')
                                       @if(Auth::User()->hasRole('root'))
                                         <option value="{{$role->id}}">{{$role->name}}</option>
@@ -285,7 +285,7 @@
                         </section>
                       </div>
                     </form>
-                  </div> 
+                  </div>
                   @endif
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" id="frm_user">
