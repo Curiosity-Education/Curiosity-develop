@@ -10,6 +10,7 @@ $(document).ready(function() {
     restablecerForm : function(){
       $("#nombre").val("");
       $("#descripcion").val("");
+      $("#isPremium").val($("#isPremium").children().first().val());
     },
     // funcion para mostrar el formulario
     // de administracion y ocultar los cuadros
@@ -32,11 +33,11 @@ $(document).ready(function() {
       // sincroniza el DOM en tiempo de ejecucion agregando
       // un nuevo cuadro con la informacion del objeto
       // recien creado al momento de ser registrado
-      sincronizar : function(titulo, color, id, descrip, estatusArg, imagen, idbloque, idnivel, idintell){
+      sincronizar : function(titulo, color, id, descrip, estatusArg, imagen, idbloque, idnivel, idintell, isPremium){
         var nuevo = "<div class='col-md-4 objeto' data-id="+id+" data-id-remove="+id+">"+
           "<div class='box box-widget widget-title'>"+
             "<div class='widget-title-header' style='background-color: "+color+"'>"+
-              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-color='"+color+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
+              "<h3 class='widget-title-set text-center' data-descrip='"+descrip+"' data-prem='"+isPremium+"' data-color='"+color+"' data-estatus="+estatusArg+" id="+id+">"+titulo+"</h3>"+
               "<h5 class='widget-title-desc'></h5>"+
             "</div>"+
             "<div class='widget-title-image'>"+
@@ -85,7 +86,8 @@ $(document).ready(function() {
           active : 1,
           descripcion : $("#descripcion").val(),
           bg_color : $("#color").val(),
-          bloque_id : bloque
+          bloque_id : bloque,
+          isPremium : $("#isPremium").val()
         };
         $.ajax({
           url: direccion,
@@ -101,12 +103,12 @@ $(document).ready(function() {
             });
           }
           else if(response[0] == 'success'){
-            tema.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen,response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id);
+            tema.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen,response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].isPremium);
             $curiosity.noty("Registrado Correctamente", "success");
             tema.hideAdmin();
           }
           else if(response[0] == 'success_exist'){
-            tema.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id);
+            tema.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].isPremium);
             $curiosity.noty("Se ha habilitado nuevamente", "success");
             tema.hideAdmin();
           }
@@ -137,7 +139,8 @@ $(document).ready(function() {
           estatus : estatusNow,
           descripcion : $("#descripcion").val(),
           color : $("#color").val(),
-          procedenciaID : idProcedencia
+          procedenciaID : idProcedencia,
+          isPremium : $("#isPremium").val()
         };
         $.ajax({
           url: direccion,
@@ -159,6 +162,7 @@ $(document).ready(function() {
             $("#"+id).data('estatus', estatusNow);
             $("#"+id).data('color', $("#color").val());
             $("#"+id).parent().css('background',$("#color").val());
+            $("#"+id).data('prem', $("#isPremium").val());
             tema.hideAdmin();
           }
           else if(response[0] == 'same'){
@@ -306,6 +310,27 @@ $(document).ready(function() {
       $("#btnLock").removeClass('fa-lock');
       $("#btnLock").addClass('fa-unlock');
     }
+
+    // PRIMERA FORMA PARA SELECCIONAR UN OPTION DE UN SELECT
+    // $.each($("#isPremium > option"), function(index, obj){
+    //   if($("#"+idSelected).data('prem') == $(this).val()){
+    //     $(this).attr('selected', 'selected');
+    //   }
+    //   if($("#"+idSelected).data('prem') != $(this).val()){
+    //     $(this).removeAttr('selected');
+    //   }
+    // });
+    // SEGUNDA FORMA PARA SELECCIONAR UN OPTION DE UN SELECT
+    // var tipoCont = $("#"+idSelected).data('prem');
+    // if(tipoCont == 1){
+    //   $("#isPremium > option[value='1']").attr('selected', 'selected');
+    // }
+    // else{
+    //   $("#isPremium > option[value='0']").attr('selected', 'selected');
+    // }
+    // TERCERA FORMA PARA SELECCIONAR UN OPTION DE UN SELECT
+    $("#isPremium").val($("#"+idSelected).data('prem'));
+
     // se musestra el icono del candadito en el
     // formulario de la administracion
     $("#botonEstatus").show();

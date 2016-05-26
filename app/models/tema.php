@@ -5,7 +5,7 @@
 class tema extends Eloquent
 {
     protected $table='temas';
-    protected $fillable=['nombre','estatus','active','descripcion', 'bloque_id', 'bg_color'];
+    protected $fillable=['nombre','estatus','active','descripcion', 'bloque_id', 'bg_color', 'isPremium'];
   /*
   *
   ## un tema puede tener muchas actividades

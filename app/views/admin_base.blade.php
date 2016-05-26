@@ -14,7 +14,6 @@
     {{ HTML::style('/packages/css/curiosity/vistaEstandar.css') }}
     {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
     {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
-    {{ HTML::style('/packages/css/libs/colorpicker/colorpicker.css') }}
     @yield('mi_css')
     <title>Curiosity | @yield('title')</title>
   </head>
@@ -195,8 +194,7 @@
   {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
   {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
-  {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
-  {{HTML::script('/packages/js/libs/colorpicker/colorpicker.js')}}
+  {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}  
 
   <script type="text/javascript">
     $(document).ready(function(){

@@ -19,7 +19,7 @@ class temaController extends BaseController
         // pertenece toda la informacion que se va a mostrar al usuario
         $obj_temas= array('obj_temas' => tema::where('active', '=', '1')
         ->where('bloque_id', '=', $id)
-        ->select('id', 'nombre', 'descripcion', 'estatus', 'bg_color', 'bloque_id', 'imagen')
+        ->select('id', 'nombre', 'descripcion', 'estatus', 'bg_color', 'bloque_id', 'imagen', 'isPremium')
         ->get(),
         'obj_bloque' => bloque::where('id', '=', $id)
         ->select('id', 'nombre')->get(),
@@ -97,7 +97,7 @@ class temaController extends BaseController
             ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
             ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
             ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-            ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.bg_color', 'temas.active', 'temas.estatus', 'temas.imagen', 'temas.bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id')
+            ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.bg_color', 'temas.active', 'temas.estatus', 'temas.imagen', 'temas.bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'isPremium')
             ->get();
           return Response::json(array(0=>"success", 1=>$tema));
         }
@@ -122,7 +122,7 @@ class temaController extends BaseController
             ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
             ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
             ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-            ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.bg_color', 'temas.active', 'temas.estatus', 'temas.imagen', 'temas.bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id')
+            ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.bg_color', 'temas.active', 'temas.estatus', 'temas.imagen', 'temas.bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'isPremium')
             ->get();
             return  Response::json(array(0=>"success_exist", 1=>$tema));
           }
@@ -175,7 +175,8 @@ class temaController extends BaseController
         tema::where('id', '=', $formulario['idUpdate'])->update(array(
           'descripcion' => $formulario['descripcion'],
           'estatus' => $formulario['estatus'],
-          'bg_color' => $formulario['color']
+          'bg_color' => $formulario['color'],
+          'isPremium' => $formulario['isPremium']
         ));
         return Response::json(array(0=>"success"));
       }
@@ -197,7 +198,8 @@ class temaController extends BaseController
             'nombre' => $formulario['nombre'],
             'descripcion' => $formulario['descripcion'],
             'estatus' => $formulario['estatus'],
-            'bg_color' => $formulario['color']
+            'bg_color' => $formulario['color'],
+            'isPremium' => $formulario['isPremium']
           ));
           return Response::json(array(0=>"success"));
         }
@@ -234,9 +236,10 @@ class temaController extends BaseController
       ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
       ->where('bloques.id', '=', $id)
       ->where('temas.active', '=', 1)
-      ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.estatus', 'temas.bg_color', 'temas.imagen', 'inteligencias.id as inteligencia_id', 'inteligencias.nombre as inteligencia_nombre', 'niveles.id as nivel_id', 'niveles.nombre as nivel_nombre', 'bloques.id as bloque_id', 'bloques.nombre as bloque_nombre')
-      ->get()
-    );
+      ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.estatus', 'temas.bg_color', 'temas.imagen', 'inteligencias.id as inteligencia_id', 'inteligencias.nombre as inteligencia_nombre', 'niveles.id as nivel_id', 'niveles.nombre as nivel_nombre', 'bloques.id as bloque_id', 'bloques.nombre as bloque_nombre', 'isPremium')
+      ->get(),
+      'rol' => Auth::user()->roles[0]->name
+    );    
 
     $objectBelive = bloque::where('id', '=', $id)->pluck('estatus');
 
