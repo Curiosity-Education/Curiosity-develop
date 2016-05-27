@@ -1,6 +1,12 @@
 
 var $juego = {
-    
+    setSrcVideo:function(json){
+      console.log(json);
+      $("#modal-instrucciones #titulo-juego").text(json.titulo);
+      $("#modal-instrucciones video").attr("src",json.ruta);
+      $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
+      $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
+    },
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,

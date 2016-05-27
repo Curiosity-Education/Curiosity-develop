@@ -121,7 +121,7 @@
                               </li>
                             </ul>
                             <!-- INICIO DE MODAL SUMAS Y RESTAS --> 
-                              <div class="modal fade" id="modal_instrucciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal fade" id="modal-instrucciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -167,8 +167,8 @@
                       <div class="row">
                         <div class="col-md-5">
                           <div class="text-right boton-instrucciones">
-                            <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal_instrucciones">
-                              <i class="fa fa-book"></i> Instricciones 
+                            <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal-instrucciones">
+                              <i class="fa fa-book"></i> Instrucciones 
                             </button>
                           </div>
                         </div> 

@@ -15,7 +15,7 @@
 }
 
 .zona-juego{
-  color: white;
+  color: white;  
   margin-top: -10px;
   padding-top: 5px;
   padding-left: 25px;
@@ -461,17 +461,19 @@ li.slide-current{
 .slider-controls li.active{
   background: #00c5b9;
 }
-.modal-dialog{
+#modal-instrucciones .modal-dialog{
   background-color: rgb(54,142,184);
   padding: 5px;
   border-radius: 5px;
 }
-
-.modal-title{
-  font-family: fantasy;
+#myModalLabel{
   color: black;
 }
-hr{
+#modal-instrucciones .modal-title{
+  font-family: fantasy;
+  color: black!important;
+}
+#modal-instrucciones hr{
   height: 2px;
   background-color: grey;
   border-radius: 50%;
@@ -508,7 +510,7 @@ video{
   padding: 15px;
 }
 
-p{
+#modal-instrucciones p{
   font-family: "Comic Sans MS";
   font-size: 1.5em;
   color: black;
