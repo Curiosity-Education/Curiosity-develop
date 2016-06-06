@@ -1,6 +1,6 @@
-
 var $juego = {
     setSrcVideo:function(json){
+<<<<<<< HEAD
       $("#modal-instrucciones #titulo-juego").text(json.titulo);
       $("#modal-instrucciones video").attr("src",json.ruta);
       $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
@@ -12,11 +12,26 @@ var $juego = {
           $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);  
           $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);  
         }
+=======
+      console.log(json);
+      if($.isPlainObject(json)){
+          $("#modal-instrucciones #titulo-juego").text(json.titulo);
+          $("#modal-instrucciones video").attr("src",json.ruta);
+          $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
+          $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
+      }
+      else{
+          console.error("El parametro de la funcion setSrcVideo debe ser un objeto Plano");
+      }
+>>>>>>> 6f83f26f34898a7744a457b4e5f0ce9976f27e3e
     },
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
         intentos:0,
+        aciertosIntento:0,
+        aciertosCapacidad:0,
+        erroresItem:0,
         valorPuntos:100,
         puntajeActual:0,
         puntajeMaximo:0,
@@ -31,6 +46,25 @@ var $juego = {
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
+        },
+        changeItem:function(change){
+          /*---./ Esta función estara atenta de los sucesos en los items
+            o ejercicios que se estan realizando en cada una de las partidas
+            en cada cambio de item el estará a la escucha de este y todo se
+            reiniciará
+          ./---*/
+            if(change){
+                if($juego.game.erroresItem >= 1)
+                    $juego.game.aciertosIntento+=1;
+                else
+                    $juego.game.aciertosCapacidad+=1;
+
+                $juego.game.erroresItem=0;
+            }
+            else
+                $juego.game.erroresItem+=1;
+            $("#game").trigger('changeItem');
+
         },
         finish:function(){
             $juego.aciertos=0;
@@ -117,6 +151,7 @@ var $juego = {
             $(".verific").empty();
             // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
+            $juego.game.changeItem(true);
         },
         setError:function(puntosMenos){
             // regresamos la cantidad de aciertos continuos a cero
@@ -140,6 +175,7 @@ var $juego = {
               $(".verific").empty();
               // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
+            $juego.game.changeItem(false);
         },
         determinarCombo:function(){
             if($juego.game.continuo !== 0){
@@ -208,16 +244,16 @@ var $juego = {
                     $juego.game.finish();
                 }
             }
-            else{
-                $("#game").trigger('pause');
-            }
         },
         drawCircleTemp:function(){
           var mycanvas = document.getElementById('mycanvas');
+          var mycanvas1 = $('#mycanvas');
+          var circleTime = $('.temp').position();
+          console.log(circleTime);
           var ctx = mycanvas.getContext('2d');
           $juego.cronometro.interval_canvas = setInterval(drawCircle,1000);
           ctx.lineWidth=9;
-          
+          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;
@@ -286,10 +322,21 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
+<<<<<<< HEAD
             if(!/true|false/.test(bool)){
                 console.error("El parametro inverso debe ser un booleano");
             }else
+=======
+            if(!/^true|false/.test(bool)){
+                console.error("El parametro inverso debe ser un booleano");
+            }else{
+                if(bool)
+                    $("#game").trigger('pause');
+                else
+                    $("#game").trigger('continue');
+>>>>>>> 6f83f26f34898a7744a457b4e5f0ce9976f27e3e
                 $juego.cronometro.pausa=bool;
+            }
         }
     },
     modal : {
@@ -376,7 +423,7 @@ var $juego = {
       });
     },
     setBackgroundColor : function(color){
-        if(/^#[0-9][a-fA-F]{6}$/.test(color) || /^rgb\([0-9]{1,3}\,[0-9]{1,3}\,[0-9]{1,3}\)$/.test(color)){
+        if(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(color) || /^rgb\(([0-9]{1,3}), ([0-9]{1,3}), ([0-9]{1,3})\)$/.test(color)){
             $(".zona-juego").css({
                 "background-color" : color
             });
@@ -436,6 +483,11 @@ $("#btn-comenzar").click(function(){
 });*/
 
 $(document).ready(function(){
+ $(window).resize(function(){
+    var mycanvas1 = $('#mycanvas');
+    var circleTime = $('.temp').position();
+    mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
+ });
  (function ($) {
     // Detect touch support
     $.support.touch = 'ontouchend' in document;

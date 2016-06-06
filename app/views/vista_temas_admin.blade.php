@@ -46,7 +46,7 @@
   <div class='col-md-4 objeto' data-id = {{ $tema->id }} data-id-remove = {{$tema->id}}>
     <div class='box box-widget widget-title'>
       <div class="widget-title-header" style="background-color: {{$tema->bg_color}}">
-        <h3 class='widget-title-set text-center' data-descrip='{{$tema->descripcion}}' data-color="{{$tema->bg_color}}" data-estatus='{{$tema->estatus}}' id={{$tema->id}}>{{$tema->nombre}}</h3>
+        <h3 class='widget-title-set text-center' data-descrip='{{$tema->descripcion}}' data-prem='{{$tema->isPremium}}' data-color="{{$tema->bg_color}}" data-estatus='{{$tema->estatus}}' id={{$tema->id}}>{{$tema->nombre}}</h3>
         <h5 class='widget-title-desc'></h5>
       </div>
       <div class='widget-title-image'>
@@ -91,6 +91,13 @@
 <!-- Sección de Administración -->
   <div class="col-md-12" id="adminSection" hidden="hidden">
     <form  method="POST" class="form-horizontal" id="formulario">
+      <div class="form-group">
+        <label for="isPremium">Tipo de contenido</label>
+        <select name="isPremium" id="isPremium" class="form-control">
+          <option value="0">Gratuito</option>
+          <option value="1">Premium</option>
+        </select>
+      </div>
       <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre">

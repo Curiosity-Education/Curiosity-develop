@@ -43,12 +43,13 @@ $(document).ready(function(){
       $("#email").val('');
       $("#gustos").val('');
       $("#foto").val('');
-      var option = $("#escuela > option");
-      $.each(option, function(){
-        if($(this).val() == ''){
-          $(this).attr('selected', 'true');
-        }
-      });
+      // var option = $("#escuela > option");
+      // $.each(option, function(){
+      //   if($(this).val() == ''){
+      //     $(this).attr('selected', 'true');
+      //   }
+      // });
+      $("#escuela").val($("#escuela").children().first().val());
       $("#zonaData").show('slow');
     },
     registro : {
@@ -180,12 +181,13 @@ $(document).ready(function(){
       $("#ape_m").val($tabla.bootstrapTable('getSelections')[0].apellido_materno);
       $("#email").val($tabla.bootstrapTable('getSelections')[0].email);
       $("#gustos").val($tabla.bootstrapTable('getSelections')[0].gustos);
-      var option = $("#escuela > option");
-      $.each(option, function(){
-        if($(this).val() == $tabla.bootstrapTable('getSelections')[0].escuela_id){
-          $(this).attr('selected', 'true');
-        }
-      });
+      // var option = $("#escuela > option");
+      // $.each(option, function(){
+      //   if($(this).val() == $tabla.bootstrapTable('getSelections')[0].escuela_id){
+      //     $(this).attr('selected', 'true');
+      //   }
+      // });
+      $("#escuela").val($tabla.bootstrapTable('getSelections')[0].escuela_id);
       profesor.showAdmin();
     }
   });

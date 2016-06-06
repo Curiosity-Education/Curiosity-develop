@@ -13,6 +13,14 @@
   color: rgb(255, 255, 255) !important;
 }
 
+.user-footer{
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 45px !important;  
+}
+
 .widget-title-header{
   color: rgb(255, 255, 255) !important;
 }

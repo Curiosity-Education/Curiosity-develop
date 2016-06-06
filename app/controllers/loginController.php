@@ -66,8 +66,7 @@ class loginController extends BaseController
                   if(Auth::attempt($validarAuth)){
                     //Ingresamos un id de session
                     if(Auth::user()->hasRole('padre')){
-                    try{
-
+                        try{
                             $idSession = $this->generaidSession();
                             User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                             Session::put('sessionId',$idSession);
@@ -83,11 +82,8 @@ class loginController extends BaseController
                                                         "padre_id"=>$idpadre
 
                                                 ));
-                        }catch(Exception $e){
-                            return $e;
-                        }
-                    }else
-                        return Response::json(array("estado"=>"404","message"=>"No eres padre"));
+                        }catch(Exception $e){return $e;}
+                    }else return Response::json(array("estado"=>"404","message"=>"No eres padre"));
 
                   }
                   else{

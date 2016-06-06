@@ -5,6 +5,20 @@
 @stop
 
 @section('mi_css')
+<style media="screen">
+  .isPremium{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 10px;
+    color: rgba(255, 255, 255, .9) !important;
+    font-size: 1.7em;
+    padding-left: 10px;
+    padding-top: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .6);
+  }
+</style>
 @stop
 
 @section('titulo_contenido')
@@ -24,7 +38,11 @@
 @section('panel_opcion')
   @foreach($objetos as $objeto)
   <div class='col-md-4 objeto'>
-    <div class='box box-widget widget-title objetoPointer' data-estatus={{ $objeto->estatus }} data-id = {{ $objeto->id }}>
+    <div class='box box-widget widget-title objetoPointer' data-rol='{{$rol}}'' data-prem='{{ $objeto->isPremium }}' data-estatus={{$objeto->estatus}} data-id = {{ $objeto->id }}>
+      @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') && $objeto->isPremium == 1 )
+      <!-- <img src="/packages/images/premium.png" class="img-responsive isPremium"/> -->
+      <span class="fa fa-lock isPremium" style="background-color: {{$objeto->bg_color}}"></span>
+      @endif
       <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">
         <h3 class='widget-title-set text-center'> {{$objeto->nombre}} </h3>
         <h5 class='widget-title-desc'></h5>
