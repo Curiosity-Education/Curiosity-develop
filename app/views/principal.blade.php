@@ -4,6 +4,10 @@
 	<meta charset="utf-8">
 	<link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="keywords" content="Curiosity Educación,Curiosity,Eduación, educacion, gamification, juegos educativos, ¿Cómo ayudo a mi hijo en la escuela?,
+	Cómo ayudo a mi hijo en la escuela, como ayudo a mi hijo en la escuela, mi hijo no le interesa el estudio, educacion primaria, plataforma eduactiva
+	, educacion equitativa, educación divertida, retroalimentación, curiosity games, curiosity, CURIOSITY, startup educativa, educaion en linea, educacion online,
+	primaria educacion">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
   {{HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
@@ -66,7 +70,7 @@
           </a>
         </div>
         <div class="col-md-6 text-left">
-          <a href="/subscripcion" class="btn btn-warning btn-lg boton-inicio bg-orange wow pulse" data-wow-iteration="infinite" data-wow-duration="4s">
+          <a href="javascript:void(0)" class="btn btn-warning btn-lg boton-inicio bg-orange wow pulse" data-wow-iteration="infinite" data-wow-duration="4s">
             <span class="fa fa-plus-circle"></span>
             Regístrate
           </a>
@@ -331,13 +335,13 @@
         <h3>Escuelas Asociadas</h3>
       </div>
 
-			@foreach($escuelas as $escuela)
+    @foreach($escuelas as $escuela)
       <div class='col-xs-6 col-md-3'>
         <div class='escuelas-panel text-center wow flipInX' data-wow-duration="2s">
 					{{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-responsive escuelas-img-hover'))}}
         </div>
       </div>
-      @endforeach
+    @endforeach
 
     </div>
 		<br><br><br><br><br>
