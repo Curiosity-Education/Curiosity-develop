@@ -253,12 +253,12 @@
     </div> -->
 
     <div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
+			<div class="col-md-1 col-lg-1"></div>
+			<div class="col-md-10 col-lg-10">
 				<img src="/packages/images/price_curiosity.png" id="imgPrice" class="img-responsive">
-				<a href="/suscripcion" id="btnPriceSuscripcion"></a>
+				<!-- <a href="/suscripcion" id="btnPriceSuscripcion"></a> -->
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-lg-1"></div>
       <!-- <div class="col-md-4">
         <div class="pagos-panel text-center wow fadeInDown"
 				data-wow-delay="0.2s"
