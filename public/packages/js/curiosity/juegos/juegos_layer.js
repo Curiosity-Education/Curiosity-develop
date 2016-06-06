@@ -1,6 +1,5 @@
 var $juego = {
     setSrcVideo:function(json){
-<<<<<<< HEAD
       $("#modal-instrucciones #titulo-juego").text(json.titulo);
       $("#modal-instrucciones video").attr("src",json.ruta);
       $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
@@ -12,18 +11,6 @@ var $juego = {
           $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);  
           $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);  
         }
-=======
-      console.log(json);
-      if($.isPlainObject(json)){
-          $("#modal-instrucciones #titulo-juego").text(json.titulo);
-          $("#modal-instrucciones video").attr("src",json.ruta);
-          $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
-          $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
-      }
-      else{
-          console.error("El parametro de la funcion setSrcVideo debe ser un objeto Plano");
-      }
->>>>>>> 6f83f26f34898a7744a457b4e5f0ce9976f27e3e
     },
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
