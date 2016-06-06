@@ -16,7 +16,7 @@ $(document).on('ready',function(){
                         $.each(response,function(index,value){
 
                                   if($(objeto).children('div').attr('data-id') == value.actividad_id){
-                                      
+
                                       $(objeto).attr('data-has-game',value.id);
                                       // $(objeto).attr('title','Juego: '+value.nombre.replace(".blade.php",""));
                                       $(objeto).attr('data-location-game','/juego/'+value.actividad_id+'/'+value.nombre.replace(".blade.php",""))
@@ -30,12 +30,19 @@ $(document).on('ready',function(){
               });
         }
     }
-    
+
+    // Validar si el objeto esta bloqueado
+    $(".objetoPointer").click(function(event) {
+      if($(this).data('estatus') != "unlock"){
+        $curiosity.noty("Disponible próximamente", "warning");
+      }      
+    });
+
     // Boton ingresar
   $(".objeto").click(function(event) {
     if($(this).attr('data-location-game') != undefined)
        window.location.href=$(this).attr('data-location-game');
-    else 
+    else
        $curiosity.noty("Actividad sin juego aun","warning");
   });
   actividad.hasGame();

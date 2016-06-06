@@ -19,7 +19,7 @@ class actividadController extends BaseController
         $obj_actividades= array('obj_actividades' => actividad::where('actividades.active', '=', '1')
         ->where('actividades.tema_id', '=', $id)
         ->join('videos', 'videos.actividad_id', '=', 'actividades.id')
-        ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.estatus', 'actividades.bg_color', 'actividades.tema_id', 'actividades.imagen', 'actividades.pdf', 'videos.profesores_id', 'videos.code_embed', 'videos.id as video_id')
+        ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.estatus', 'actividades.bg_color', 'actividades.tema_id', 'actividades.imagen', 'actividades.pdf_real_name as pdf', 'videos.profesores_id', 'videos.code_embed', 'videos.id as video_id')
         ->get(),
         'obj_tema' => tema::where('id', '=', $id)
         ->select('id', 'nombre')->get(),
@@ -102,11 +102,12 @@ class actividadController extends BaseController
           $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();
           $destinoPath = public_path()."/packages/docs/";
           $file = $formulario['archivoPDF'];
-          $file->move($destinoPath, $file->getClientOriginalName());
+          $file->move($destinoPath, $archivo);
 
           $objeto = new actividad($formulario);
           $objeto->imagen = "default.png";
-          $objeto->pdf = $file->getClientOriginalName();
+          $objeto->pdf = $archivo;
+          $objeto->pdf_real_name = $formulario['archivoPDF']->getClientOriginalName();
           $objeto->save();
           $video = new video($formulario);
           $video->actividad_id = $objeto->id;
@@ -117,7 +118,7 @@ class actividadController extends BaseController
             ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
             ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
             ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-            ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.bg_color', 'actividades.active', 'actividades.estatus', 'actividades.imagen', 'actividades.tema_id', 'temas.id as tema_id', 'bloques.id as bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'videos.code_embed as code_embed', 'actividades.pdf', 'videos.profesores_id', 'videos.id as video_id')
+            ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.bg_color', 'actividades.active', 'actividades.estatus', 'actividades.imagen', 'actividades.tema_id', 'temas.id as tema_id', 'bloques.id as bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'videos.code_embed as code_embed', 'actividades.pdf_real_name as pdf', 'videos.profesores_id', 'videos.id as video_id')
             ->get();
           return Response::json(array(0=>"success", 1=>$actividad));
         }
@@ -150,6 +151,7 @@ class actividadController extends BaseController
                 'imagen' => 'default.png',
                 'objetivo' => $formulario['objetivo'],
                 'pdf' => $archivo,
+                'pdf_real_name' => $formulario['archivoPDF']->getClientOriginalName(),
                 'estatus' => 'lock',
                 'bg_color' => $formulario['bg_color']
               ));
@@ -165,7 +167,7 @@ class actividadController extends BaseController
               ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
               ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
               ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-              ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.bg_color', 'actividades.active', 'actividades.estatus', 'actividades.imagen', 'actividades.tema_id', 'temas.id as tema_id', 'bloques.id as bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'videos.code_embed as code_embed', 'actividades.pdf', 'videos.profesores_id', 'videos.id as video_id')
+              ->select('actividades.id', 'actividades.nombre', 'actividades.objetivo', 'actividades.bg_color', 'actividades.active', 'actividades.estatus', 'actividades.imagen', 'actividades.tema_id', 'temas.id as tema_id', 'bloques.id as bloque_id', 'niveles.id as nivel_id', 'inteligencias.id as inteligencia_id', 'videos.code_embed as code_embed', 'actividades.pdf_real_name as pdf', 'videos.profesores_id', 'videos.id as video_id')
               ->get();
             return  Response::json(array(0=>"success_exist", 1=>$actividad));
           }
@@ -221,14 +223,17 @@ class actividadController extends BaseController
           $destinoPath = public_path()."/packages/docs/";
           $file = $formulario['archivoPDF'];
           $file->move($destinoPath, $archivo);
+          $realName = $formulario['archivoPDF']->getClientOriginalName();
         }
         else{
           $archivo = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf');
+          $realName = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf_real_name');
         }
 
         actividad::where('id', '=', $formulario['idUpdate'])->update(array(
           'objetivo' => $formulario['objetivo'],
           'pdf' => $archivo,
+          'pdf_real_name' => $realName,
           'estatus' => $formulario['estatus'],
           'bg_color' => $formulario['color']
         ));
@@ -257,17 +262,20 @@ class actividadController extends BaseController
           if($formulario['archivoPDF'] != null){
             $archivo = $archivo = $formulario['nombre'].'_'.md5($formulario['archivoPDF']->getClientOriginalName()).'.'.$formulario['archivoPDF']->getClientOriginalExtension();;
             $destinoPath = public_path()."/packages/docs/";
+            $realName = $formulario['archivoPDF']->getClientOriginalName();
             $file = $formulario['archivoPDF'];
             $file->move($destinoPath, $archivo);
           }
           else{
             $archivo = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf');
+            $realName = actividad::where('id', '=', $formulario['idUpdate'])->pluck('pdf');
           }
 
           actividad::where('id', '=', $formulario['idUpdate'])->update(array(
             'nombre' => $formulario['nombre'],
             'objetivo' => $formulario['objetivo'],
             'pdf' => $archivo,
+            'pdf_real_name' => $realName,
             'estatus' => $formulario['estatus'],
             'bg_color' => $formulario['color']
           ));

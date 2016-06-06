@@ -16,8 +16,7 @@ class profesorController extends BaseController
       $rules = array(
         'nombre' => 'required',
         'apellido_paterno' => 'required',
-        'escuela_id' => 'required',
-        'foto' => 'required'
+        'escuela_id' => 'required'
       );
       $messages = [
              "required"    =>  "Este campo :attribute es requerido",
@@ -38,12 +37,17 @@ class profesorController extends BaseController
         return $validar->messages();
       }
       else{
-        $destinoPath = public_path()."/packages/images/profesores/";
-        $file = $formulario['foto'];
-        $file->move($destinoPath, $file->getClientOriginalName());
-
+        if($formulario['foto'] != null){
+          $destinoPath = public_path()."/packages/images/profesores/";
+          $file = $formulario['foto'];
+          $file->move($destinoPath, $file->getClientOriginalName());
+          $thePhoto = $formulario['foto']->getClientOriginalName();
+        }
+        else{
+          $thePhoto = 'prof-default.jpg';
+        }
         $profesor = new profesor($formulario);
-        $profesor->foto = $formulario['foto']->getClientOriginalName();
+        $profesor->foto = $thePhoto;
         $profesor->save();
         return Response::json(array(0=>"success"));
       }

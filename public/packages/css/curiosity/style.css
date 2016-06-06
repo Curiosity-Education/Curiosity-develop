@@ -356,6 +356,17 @@ section div div h3{
 }
 
 /*/ formas de pago /*/
+
+#btnPriceSuscripcion {
+  border: solid 2px red;
+  width: 243px !important;
+  height: 45px !important;
+  position: absolute;
+  margin-left: 480px;
+  margin-top: -125px;
+  border-radius: 5px;
+}
+
 #pagos{
 	background-color: rgb(255, 255, 255);
 	background-image: url(/packages/images/fondos/fondo2.jpg);
@@ -363,8 +374,8 @@ section div div h3{
 	background-size: cover;
 	padding-bottom: 50px;
 	color: white !important;
-	padding-top: 150px;
-	padding-bottom: 100px;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
 }
 
 #pagos > .container > .row > div > h3{

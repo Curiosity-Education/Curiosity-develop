@@ -242,15 +242,20 @@
 
 <!-- formas de pago -->
 <section id="pagos" class="bg-blue">
-  <div class="container">
-    <div class="row">
+  <div class="container-fluid">
+    <!-- <div class="row">
       <div class="col-xs-12 text-center">
-        <!-- <h3>Formas de Pago y Registro</h3> -->
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
-      <div class="col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<img src="/packages/images/price_curiosity.png" id="imgPrice" class="img-responsive">
+				<a href="/suscripcion" id="btnPriceSuscripcion"></a>
+			</div>
+			<div class="col-md-1"></div>
+      <!-- <div class="col-md-4">
         <div class="pagos-panel text-center wow fadeInDown"
 				data-wow-delay="0.2s"
 				data-wow-duration="1s"
@@ -312,7 +317,7 @@
 						Registrarme
 					</button>
 				</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

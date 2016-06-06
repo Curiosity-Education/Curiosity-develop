@@ -7,6 +7,31 @@
 @section('mi_css')
     {{HTML::style('/packages/css/curiosity/menu.css')}}
      {{HTML::style('packages/css/libs/dropzone/dropzone.css')}}
+     <style media="screen">
+     .fixForm {
+        margin-left: -16px !important;
+        margin-top: 30px !important;
+        margin-right: -15px !important;
+      }
+      .updateFile{
+        width: 150px;
+        height: 165px;
+      }
+      #filePrev{
+        width: 100px;
+        height: 115px;
+        cursor: pointer;
+      }
+      .filePrev{
+        width: 100px;
+        height: auto;
+        display: inline-table;
+        margin: 10px;
+      }
+      .fileArrow, #appendUpdateFile{
+        display: inline-table;
+      }
+     </style>
 @stop
 
 @section('titulo_contenido')
@@ -61,6 +86,7 @@
         @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
           <div class='col-xs-4 border-right'>
             <div class='description-block btnUpdate'
+              id = "act{{ $actividad->id }}"
               data-id = {{ $actividad->id }}
               data-id-video={{$actividad->video_id}}
               data-code-embed='{{$actividad->code_embed}}'
@@ -133,10 +159,17 @@
         <i class="fa fa-lock fa-4x" id="btnLock"></i>
       </div>
     </form>
-    <h5><b>Seleccionar PDF</b></h5>
-    <form id="formPDF" class="form-horizontal">
-      <input type="file" class="form-control" id="archivoPDF" name="archivoPDF">
-    </form>
+    <div class="fixForm">
+      <label>Seleccionar PDF</label>
+      <form id="formPDF" class="form-horizontal">
+        <input type="file" class="form-control hidden" id="archivoPDF" name="archivoPDF">
+      </form>
+      <div class="filePrev tooltipShow" title="Click para seleccionar nuevo">
+        <img src="/packages/images/pdf_icon_o.png" id="filePrev" /><br>
+        <center><label id="docTitle">Sin Documento</label></center>
+      </div>
+      <div id="appendUpdateFile"></div>
+    </div>
     <br>
     <div class="form-group text-right">
       <button type="button" class="btn btn-warning" id="cancelarEnv">

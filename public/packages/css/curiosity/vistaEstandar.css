@@ -1,3 +1,49 @@
+/*-------------------------------*/
+
+.searchTema{
+  width: 400px;
+  margin: auto;
+  margin-left: 50px;
+  position: absolute;
+  margin-top: -57px;
+  z-index: 99999999999999999999999999999;
+}
+
+#iconSearch{
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.4);;
+  border: solid 2px rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7); !important;
+  cursor: pointer;
+}
+
+#iconSearch:hover{
+  background-color: rgba(210, 214, 222, 0.2);
+}
+
+#searchTema{
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#searchTema::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.4); } /* WebKit */
+#searchTema:-moz-placeholder { color: rgba(255, 255, 255, 0.4); } /* Firefox 18- */
+#searchTema::-moz-placeholder { color: rgba(255, 255, 255, 0.4); } /* Firefox 19+ */
+#searchTema:-ms-input-placeholder { color: rgba(255, 255, 255, 0.4); } /* IE 10+ */
+
+/*-------------------------------*/
+
+/*#iconInputSearch > span{
+  color: rgba(210, 214, 222, 0.24);
+}*/
+
 .butonEstatus{
   position: absolute;
   width: 88%;
@@ -18,7 +64,7 @@
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 45px !important;  
+  padding-bottom: 45px !important;
 }
 
 .widget-title-header{

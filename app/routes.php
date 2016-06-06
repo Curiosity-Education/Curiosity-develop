@@ -35,6 +35,12 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('/actividad/setdata','actividadController@setDataActivity');
     Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
     Route::group(array('before' => 'only_session'), function(){
+
+      Route::post('/buscarTema', 'temaController@temasFound');
+
+        // padres
+        Route::post('/cotarhijos','padreController@getCountHijos');
+
         // salir (cerrar sesion)
         Route::get('/logout', 'loginController@salir');
 
@@ -56,11 +62,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/foto','perfilController@cutImage');
         Route::post('/regAdmin','userController@saveAdmin');
         Route::group(array('before' => 'realizar_actividades'),function(){
-        Route::get('/nivel', 'nivelController@verPaginaInWeb');
-        Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
-        Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
-        Route::get('/tema{id}', 'temaController@verPaginaInWeb');
-        Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
+          Route::get('/nivel', 'nivelController@verPaginaInWeb');
+          Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
+          Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
+          Route::get('/tema{id}', 'temaController@verPaginaInWeb');
+          Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
         });
 
         Route::group(array('before' => 'gestionar_niveles'),function(){

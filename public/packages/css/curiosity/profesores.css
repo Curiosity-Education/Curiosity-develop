@@ -1,8 +1,10 @@
 #tabla-head-profesores{
   background-color: rgba(210, 210, 210, 0.7);
-<<<<<<< HEAD
   color: rgb(60, 60, 60);
-=======
-  color: rgb(60, 60, 60);
->>>>>>> origin/master
+}
+
+#prevFotoProfesor, .prevFotoProfesor{
+  width: 100px !important;
+  height: 100px !important;
+  cursor: pointer;
 }
