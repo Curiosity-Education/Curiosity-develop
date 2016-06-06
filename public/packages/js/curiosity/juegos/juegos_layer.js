@@ -1,6 +1,5 @@
 var $juego = {
     setSrcVideo:function(json){
-<<<<<<< HEAD
       $("#modal-instrucciones #titulo-juego").text(json.titulo);
       $("#modal-instrucciones video").attr("src",json.ruta);
       $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
@@ -8,22 +7,10 @@ var $juego = {
     },
     slider:{
         changeImages:function(json){
-          $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);  
-          $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);  
-          $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);  
+          $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);
+          $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);
+          $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);
         }
-=======
-      console.log(json);
-      if($.isPlainObject(json)){
-          $("#modal-instrucciones #titulo-juego").text(json.titulo);
-          $("#modal-instrucciones video").attr("src",json.ruta);
-          $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
-          $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
-      }
-      else{
-          console.error("El parametro de la funcion setSrcVideo debe ser un objeto Plano");
-      }
->>>>>>> 6f83f26f34898a7744a457b4e5f0ce9976f27e3e
     },
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
@@ -201,7 +188,7 @@ var $juego = {
                 }
             }
         }
-    }, 
+    },
     cronometro:{
         interval:"",
         interval_canvas:"",
@@ -231,7 +218,7 @@ var $juego = {
             }
         },
         contar:function(){
-            if(!$juego.cronometro.pausa){          
+            if(!$juego.cronometro.pausa){
                 if($juego.cronometro.tiempo>=0){
                     $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
                     $juego.cronometro.segundero++;
@@ -257,7 +244,7 @@ var $juego = {
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;
-          var gradian1  = ctx.createLinearGradient(120,0,220,0); 
+          var gradian1  = ctx.createLinearGradient(120,0,220,0);
           gradian1.addColorStop(0,'rgb(242,221,72)');
           gradian1.addColorStop(1,'rgb(54,142,184)'); // rojo
           gradian2 = ctx.createLinearGradient(100,90,420,0);
@@ -271,18 +258,18 @@ var $juego = {
                    ctx.strokeStyle=gradian1;
                    var radianes = (Math.PI/180)*grados;
                    ctx.arc(65,65,61,(Math.PI/180)*270,radianes,false);
-                   ctx.stroke();  
+                   ctx.stroke();
                    ctx.closePath();
                }else if(contadorGrados<=360){
                  ctx.beginPath();
                  ctx.strokeStyle=gradian2;
                  var radianes = (Math.PI/180)*grados;
                  ctx.arc(65,65,61,(Math.PI/180)*180,radianes,false);
-                 ctx.stroke();  
+                 ctx.stroke();
                  ctx.closePath();
                }else{
                  $juego.cronometro.endCanvasCronometro();
-                 return; 
+                 return;
                }
                grados=grados+(360/$juego.cronometro.duracion);
                contadorGrados+=(360/$juego.cronometro.duracion);
@@ -294,7 +281,7 @@ var $juego = {
         },
         endCanvasCronometro:function(){
            clearInterval($juego.cronometro.interval_canvas);
-           grados= 270; 
+           grados= 270;
            contadorGrados=0;
            mycanvas.width=mycanvas.width;
         },
@@ -322,11 +309,6 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
-<<<<<<< HEAD
-            if(!/true|false/.test(bool)){
-                console.error("El parametro inverso debe ser un booleano");
-            }else
-=======
             if(!/^true|false/.test(bool)){
                 console.error("El parametro inverso debe ser un booleano");
             }else{
@@ -334,7 +316,6 @@ var $juego = {
                     $("#game").trigger('pause');
                 else
                     $("#game").trigger('continue');
->>>>>>> 6f83f26f34898a7744a457b4e5f0ce9976f27e3e
                 $juego.cronometro.pausa=bool;
             }
         }
@@ -447,11 +428,11 @@ $("#continuar").click(function(){
 });
 $("#reiniciar").click(function(){
   $juego.game.restart();
-  $("#game").removeClass("blur");	
+  $("#game").removeClass("blur");
 });
 $("#salir_juego").click(function(){
   $juego.game.salir();
-  $("#game").removeClass("blur");	
+  $("#game").removeClass("blur");
 });
 $(".btnVideo").click(function(){
     $("#modalPrueba").modal('hide');
@@ -596,111 +577,111 @@ $(document).ready(function(){
 
 $(function(){
 	var SliderModule = (function(){
-		
+
 		var pb = {};
 		pb.el = $('#slider');
 		pb.nom = "fernando";
 		pb.items = {
 			panel: pb.el.find('li')
 		}
-		
+
 		// Variables Necesarias
 		var SliderInterval,
 			currentSlider = 0,
 			nextSlider = 1,
 			lengthSlider = pb.items.panel.length;
-		
+
 		//initialize
 		pb.init = function(settings){
-			
+
 			var output = "";
-			
+
 			for(var i = 0; i < lengthSlider; i++){
 				if(i == 0){
 					output += '<li class="active"></li>';
 				}
-				
+
 				else{
 					output += '<li></li>';
 				}
 			}
-			
-			
+
+
 			//Activamos nuestro slider
 			SliderInit();
-			
+
 			// Controles del Slider
 			$('#slider-controls').html(output).on('click','li', function(e){
 				var $this = $(this);
 				//console.log($this.index());
-				
+
 				if(currentSlider !== $this.index()){
 					changePanel($this.index());
 				};
-				
+
 			});
 		}
-		
+
 		pb.starSlider = function(){
 			var panels = pb.items.panel,
 				controls = $('#slider-controls li');
-			
+
 			if(nextSlider >= lengthSlider){
 				nextSlider = 0;
 				currentSlider = lengthSlider-1;
 			}
-			
+
 			// Efectos
 			controls.removeClass('active').eq(currentSlider).addClass('active');
 			panels.eq(currentSlider).fadeOut('slow');
 			panels.eq(nextSlider).fadeIn('slow');
-			
-			
+
+
 			//console.log(nextSlider);
-			
-			
-			
+
+
+
 			// Actualizamos nuestros datos
 			currentSlider = nextSlider;
 			nextSlider += 1;
 		}
-		
+
 		// Funcion para controles del Slider
 		var changePanel = function(id){
 			clearInterval(SliderInterval);
 			var panels = pb.items.panel,
 				controls = $('#slider-controls li');
-			
+
 			// Comprobamos el ID
 			if(id >= lengthSlider){
 				id = 0;
 			}
-			
+
 			else if(id < 0){
 				id = lengthSlider-1;
 			}
-			
+
 			// Efectos
 			controls.removeClass('active').eq(id).addClass('active');
 			panels.eq(currentSlider).fadeOut('slow');
 			panels.eq(id).fadeIn('slow');
-			
+
 			// Actualizamos nuestros datos
 			currentSlider = id;
 			nextSlider = id + 1;
-			
+
 			// Reactivamos el Interval (Slider)
 			SliderInit();
-			
+
 		}
-		
+
 		var SliderInit = function(){
 			SliderInterval = setInterval(pb.starSlider, 4000);
 		}
-		
+
 		return pb;
 	}());
-	
+
 	SliderModule.init();
-	
-}); 
+
+});
