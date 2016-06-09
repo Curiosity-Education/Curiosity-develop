@@ -256,11 +256,11 @@
   <div class="row">
     <div class="col-md-4">
       <h3><b>Califica la Actividad</b></h3>
-      <span class="fa fa-star-o fa-2x"></span>
-      <span class="fa fa-star-o fa-2x"></span>
-      <span class="fa fa-star-o fa-2x"></span>
-      <span class="fa fa-star-o fa-2x"></span>
-      <span class="fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
@@ -283,7 +283,63 @@
   {{ HTML::script('/packages/js/libs/jquery-ui/jquery-ui.min.js') }}
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   <script type="text/javascript">
-    {{--$juego.game.setMaxPuntuacion({{$maxProm}});--}}
+    $juego.game.setMaxPuntuacion({{$maxProm}});
+    {{-- 
+      var cali=0;
+     @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
+         $.ajax({
+             url:"/actividad-get-cali",
+             type:"post"
+         }).done(function(r){
+             cali =r;
+             $.each($(".cali"),function(i,o){
+               if(i<r){
+                   $(o).attr("class","cali fa fa-star fa-2x");
+               }  
+             });
+         }).fail(function(e){
+             console.error(e);
+         });
+     @endif
+     $(".cali").hover(function(){
+         $(".cali").attr("class","cali fa fa-star-o fa-2x");
+         var calificacion = $(this).index();
+          $.each($(".cali"),function(i,o){
+            if(i<calificacion){
+                $(o).attr("class","cali fa fa-star fa-2x");
+            } 
+         });
+     });
+     $(".cali").mouseleave(function(){
+         $(".cali").attr("class","cali fa fa-star-o fa-2x");
+         $.each($(".cali"),function(i,o){
+             if(i<cali){
+                 $(o).attr("class","cali fa fa-star fa-2x");
+             }
+         });
+     });  
+     $(".cali").click(function(){
+         $(".cali").attr("class","cali fa fa-star-o fa-2x");
+         var calificacion = $(this).index();
+         cali = calificacion;
+         $.each($(".cali"),function(i,o){
+            if(i<calificacion){
+                $(o).attr("class","cali fa fa-star fa-2x");
+            } 
+         });
+         @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
+         $.ajax({
+             url:"/actividad-save-cali",
+             type:"post",
+             data:{calificacion:calificacion}
+         }).done(function(r){
+             console.info(r);
+         }).fail(function(e){
+             console.error(e);
+         });
+         @endif
+     });
+        --}}
   </script>
   @yield('juego_js')
 @stop

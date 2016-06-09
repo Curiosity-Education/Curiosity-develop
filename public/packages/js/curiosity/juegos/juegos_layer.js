@@ -240,7 +240,7 @@ var $juego = {
           var ctx = mycanvas.getContext('2d');
           $juego.cronometro.interval_canvas = setInterval(drawCircle,1000);
           ctx.lineWidth=9;
-          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
+          mycanvas.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;

@@ -866,4 +866,32 @@ class actividadController extends BaseController
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
         }
     }
-}
+       public function saveCalificationActivity(){
+      try {
+     if(Auth::user()->hasRole('hijo')){
+          //if
+          // si esta consulta te encuentra un registro 
+          //quiere decir que el hijo que esta calificando esta actividad 
+          //ya la ha califcado anteriormente por lo cual solo actualizaremos 
+          //a la nueva calificación que este hijo estabecio
+          //else
+          // En caso de que no sea así entonces ingresaremos un nuevo 
+          //registro con la califcación que el hijo establecio a la actividad
+          $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",Auth::user()->persona->hijo->id)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
+          if($hijo_califica_actividad){
+            $hijo_califica_actividad->calificacion=Input::get('calificacion');
+            $hijo_califica_actividad->save();
+          }else{
+            $hijo_califica_actividad = new hijoCalificaActividad();
+            $hijo_califica_actividad->hijo_id = Auth::user()->persona->hijo->id;
+            $hijo_califica_actividad->actividad_id = Session::get('idActivity');
+            $hijo_califica_actividad->calificacion = Input::get("calificacion");
+            $hijo_califica_actividad->save();
+          }
+          return "success";
+        }
+      } catch (Exception $e) {
+        return "".$e;
+      }
+    }
+  }

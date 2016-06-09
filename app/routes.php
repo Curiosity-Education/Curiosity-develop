@@ -40,6 +40,8 @@ Route::group(array('before' => 'auth'), function(){
 
         // Acceder a juego
         Route::post('/hasgame','actividadController@hasGame');
+        Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
+        Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
         Route::get('/recordatorio','hijoController@recordatorio');
         Route::get('/cursos', 'cursoController@verPagina');
         Route::get('/cursosAdmin', 'cursoController@verPaginaAdmin');
