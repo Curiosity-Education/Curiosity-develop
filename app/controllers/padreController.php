@@ -13,12 +13,12 @@ class padreController extends BaseController
         $date_min =strtotime("-18 year",strtotime($dateNow));
         $date_min=date("Y-m-d",$date_min);
         $hoy= date("Y-m-d");
-        $datos_tarjeta=array(
-            "tarjetahabiente"   =>Input::get("tarjetahabiente"),
-            "numero_tarjeta"    =>Input::get("numero_tarjeta"),
-            "cvc"               =>Input::get("cvc"),
-            "fecha_expiracion"  =>Input::get("fecha_expiracion")
-        );
+        // $datos_tarjeta = array(
+        //     "tarjetahabiente"   =>Input::get("tarjetahabiente"),
+        //     "numero_tarjeta"    =>Input::get("numero_tarjeta"),
+        //     "cvc"               =>Input::get("cvc"),
+        //     "fecha_expiracion"  =>Input::get("fecha_expiracion")
+        // );
         $rules = [
             "username"          =>"required|unique:users,username|max:50",
             "password"          =>"required|min:8|max:100",
@@ -34,11 +34,7 @@ class padreController extends BaseController
             "calle"             =>"alpha_spaces",
             "numero"            =>"numero_casa",
             "codigo_postal"     =>"numeric",
-            "email"             =>"required|email|unique:padres,email",
-            "numero_tarjeta"    =>"required|credit_card",
-            "cvc"               =>"required|cvc",
-            "tarjetahabiente"   =>"required|alpha_spaces",
-            "fecha_expiracion"  =>"required|date_format:Y-m-d|after:$hoy"
+            "email"             =>"required|email|unique:padres,email"
 
         ];
         $messages = [
@@ -71,7 +67,7 @@ class padreController extends BaseController
                 $user->token=sha1($datos['email']);
                 $user->skin_id=skin::all()->first()->id;
                 $user->save();
-                $myRole = DB::table('roles')->where('name', '=', 'padre')->pluck('id');
+                $myRole = DB::table('roles')->where('name', '=', 'padre_free')->pluck('id');
                 $user->attachRole($myRole);
                 $persona = new persona($datos);
                 $persona->user_id=$user->id;
@@ -79,15 +75,14 @@ class padreController extends BaseController
                 $direccion = new direccion($datos);
                 $direccion->ciudad_id=$datos["ciudad"];
                 $direccion->save();
-                $membresia = new membresia();
-                $membresia->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
-                $membresia->fecha_registro= date("Y-m-d");
-                $membresia->active=1;
-                $membresia->save();
+                // $membresia = new membresia();
+                // $membresia->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
+                // $membresia->fecha_registro= date("Y-m-d");
+                // $membresia->active=1;
+                // $membresia->save();
                 $padre = new padre($datos);
                 $padre->persona_id   = $persona->id;
                 $padre->direccion_id = $direccion->id;
-                $padre->membresia_id = $membresia->id;
                 $padre->save();
                 $perfil = new perfil();
                 $perfil->foto_perfil="perfil-default.jpg";
@@ -98,7 +93,7 @@ class padreController extends BaseController
             } catch (Exception $e){
                 $user->delete();
                 $direccion->delete();
-                $membresia->delete();
+                // $membresia->delete();
                 return $e->getMessage();
             }
 
@@ -121,7 +116,7 @@ class padreController extends BaseController
             } catch (Exception $e) {
                 $user->delete();
                 $direccion->delete();
-                $membresia->delete();
+                // $membresia->delete();
                 $code = $e->getCode();
                 return $code;
             }
@@ -158,5 +153,12 @@ class padreController extends BaseController
         $mensaje->save();
         return Response::json(array("message"=>"El mensaje se envio al hijo","estado"=>"200"));
         }catch(Exception $e){return $e;}
+    }
+
+    public function getCountHijos(){
+      return persona::join('padres', "personas.id", "=", "padres.persona_id")
+      ->join("hijos", "padres.id", "=", "hijos.padre_id")
+      ->where("user_id", "=", Auth::user()->id)
+      ->count('hijos.padre_id');
     }
 }

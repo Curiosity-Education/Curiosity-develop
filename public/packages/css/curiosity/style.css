@@ -64,7 +64,7 @@ section div div h3{margin-top:50px;margin-bottom:70px;}
 .escuelas-mas label{font-size:2em;margin-left:25px;}
 .escuelas-mas:hover{cursor:pointer;opacity:.5;transition:.4s;}
 .escuelas-panel h5{color:rgba(255, 255, 255, 0.6);padding-top:20px;letter-spacing:0.5px;font-weight:bold;}
-#pagos{background-color:rgb(255, 255, 255);background-image:url(/packages/images/fondos/fondo2.jpg);background-repeat:no-repeat;background-size:cover;padding-bottom:50px;color:white !important;padding-top:150px;padding-bottom:100px;}
+#pagos{background-color:rgb(255, 255, 255);background-image:url(/packages/images/fondos/fondo2.jpg);background-repeat:no-repeat;background-size:cover;padding-bottom:50px;color:white !important;padding-top:10px!important;padding-bottom:10px!important;}
 #pagos > .container > .row > div > h3{color:rgba(40, 40, 40, 0.6);font-weight:bold;font-size:2em;}
 .pagos-panel{box-sizing:border-box;border-top-left-radius:20px;border-top-right-radius:20px;box-shadow:0px 0px 15px rgba(0, 0, 0, 0.55);}
 #mem1{padding:20px;background-color:rgb(52, 183, 64);}
@@ -96,4 +96,79 @@ footer div hr{border:solid 2px rgba(255, 255, 255, 0.2);}
 }
 @media (max-width:736px){.logo-inicio{width:70%;padding-left:30%;}
 .boton-inicio{margin-bottom:-30px;}
+}
+#btnPriceSuscripcion {
+	border: solid 1px red;
+  width: 21.72%;
+  height: 45px;
+  position: absolute;
+  margin-left: 42.5%;
+  margin-top: -11.1%;
+  border-radius: 5px;
+}
+@media(max-width:1440;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+    width: 21.72%;
+    height: 45px;
+    position: absolute;
+    margin-left: 42.5%;
+    margin-top: -11.1%;
+    border-radius: 5px;
+	}
+}
+@media(max-width:1024;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+		width: 21.5%;
+		height: 34px;
+		position: absolute;
+		margin-left: 42.2%;
+		margin-top: -11%;
+		border-radius: 5px;
+	}
+}
+@media(max-width:768;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+		width: 21.5%;
+		height: 31px;
+		position: absolute;
+		margin-left: 42.2%;
+		margin-top: -11%;
+		border-radius: 5px;
+	}
+}
+@media(max-width:425;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+		width: 21%;
+		height: 15px;
+		position: absolute;
+		margin-left: 40.5%;
+		margin-top: -10.4%;
+		border-radius: 5px;
+	}
+}
+@media(max-width:375;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+		width: 20%;
+		height: 15px;
+		position: absolute;
+		margin-left: 40.5%;
+		margin-top: -10.4%;
+		border-radius: 5px;
+	}
+}
+@media(max-width:320;){
+	#btnPriceSuscripcion {
+		border: solid 1px red;
+		width: 20%;
+		height: 12px;
+		position: absolute;
+		margin-left: 39.9%;
+		margin-top: -10.4%;
+		border-radius: 5px;
+	}
 }

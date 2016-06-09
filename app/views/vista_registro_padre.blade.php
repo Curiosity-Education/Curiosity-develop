@@ -206,7 +206,7 @@
 								 </div>
 								</section>
 
-							<h2>Pagos</h2>
+							<!-- <h2>Pagos</h2>
 								<section>
 										<div class="form-group">
 										  <div class="input-group">
@@ -244,7 +244,7 @@
 										    <input type="text" name="fecha_expiracion" class="form-control form-custom">
 										  </div>
 										</div>
-								</section>
+								</section> -->
 							</div>
 
 						</form>

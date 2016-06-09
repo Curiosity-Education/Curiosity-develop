@@ -10,8 +10,8 @@ $(document).on("ready",function(){
                                                     D:{pattern:/([0-9])?/},
                                                     E:{pattern:/([A-Za-z]{1})?$/}
     }});
-    $("input[name='numero_tarjeta']").mask('0000-0000-0000-0000');
-    $("input[name='cvc']").mask('000');
+    // $("input[name='numero_tarjeta']").mask('0000-0000-0000-0000');
+    // $("input[name='cvc']").mask('000');
     var dateNow = new Date();
     dateNow.setMonth(dateNow.getMonth()-216);//restar 19 años a la fecha actual
     $('.datepicker').datepicker({
@@ -31,10 +31,10 @@ $(document).on("ready",function(){
 	    "todayHighlight" : true
       });
    /*----------------------
-   Aplcar reglas de
+   Aplicar reglas de
    Validacion al formulario
    -----------------------*/
-    console.log($form);
+    // console.log($form);
    $form.validate({
        rules:{
            username:{required:true,maxlength:50,remote:{
@@ -64,11 +64,7 @@ $(document).on("ready",function(){
            colonia:{maxlength:50},
            calle:{maxlength:50},
            numero:{maxlength:5,numero_casa:true},
-           codigo_postal:{number:true,minlength:5,maxlength:5},
-           numero_tarjeta:{creditcard:true,required:true},
-           cvc:{cvc:true,required:true},
-           tarjetahabiente:{required:true,alpha:true},
-           fecha_expiracion:{required:true,date:true}
+           codigo_postal:{number:true,minlength:5,maxlength:5}
        },
        messages:{
            cpassword:{equalTo:"Las contraseñas no coinciden"},
@@ -90,12 +86,12 @@ $(document).on("ready",function(){
         }else return false;
 
     }
-    function cvc(value, element, param){
-        var er = /[0-9]{3}/;
-        if(er.test(value)){
-            return true;
-        }else return false;
-    }
+    // function cvc(value, element, param){
+    //     var er = /[0-9]{3}/;
+    //     if(er.test(value)){
+    //         return true;
+    //     }else return false;
+    // }
     function numero_casa(value, element, param){
       var er = /^([0-9])([0-9]{1,3})?([A-Za-z]{1})?$/;
       if(er.test(value)){
@@ -110,7 +106,7 @@ $(document).on("ready",function(){
     }
     $.validator.addMethod("alpha",alpha,"Formato no valido");
     $.validator.addMethod("telephone",telephone,"Numero telefónico invalido o incompleto");
-    $.validator.addMethod("cvc",cvc,"Por favor ingresa un cvc válido");
+    // $.validator.addMethod("cvc",cvc,"Por favor ingresa un cvc válido");
     $.validator.addMethod("numero_casa",numero_casa,"Por favor ingresa un numero de casa valido. Ej 1, 12, 124, 1248, 1A, 12B, 124C, 1248C");
     /*----------------------------------------------------
         function para limpiar el texto del formulario
@@ -150,11 +146,7 @@ $(document).on("ready",function(){
             colonia:$("input[name='colonia']").val(),
             calle:$("input[name='calle']").val(),
             numero:$("input[name='numero']").val(),
-            codigo_postal:$("input[name='codigo_postal']").val(),
-            tarjetahabiente:$("input[name='tarjetahabiente']").val(),
-            numero_tarjeta:$("input[name='numero_tarjeta']").val(),
-            cvc:$("input[name='cvc']").val(),
-            fecha_expiracion:$("input[name='fecha_expiracion']").val()
+            codigo_postal:$("input[name='codigo_postal']").val()
         }
         if($form.valid()){
           $btn = $(this).prop("disabled",true);
