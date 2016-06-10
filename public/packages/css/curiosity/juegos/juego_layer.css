@@ -13,9 +13,16 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
+.cali.fa-star{
+    color: rgb(242,221,72);
+}
+.cali.fa-star:hover{
+  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+  animation: neon3 1.5s ease-in-out infinite alternate;
+}
 .zona-juego{
-  color: white;
+  color: white;  
   margin-top: -10px;
   padding-top: 5px;
   padding-left: 25px;
@@ -461,17 +468,19 @@ li.slide-current{
 .slider-controls li.active{
   background: #00c5b9;
 }
-.modal-dialog{
+#modal-instrucciones .modal-dialog{
   background-color: rgb(54,142,184);
   padding: 5px;
   border-radius: 5px;
 }
-
-.modal-title{
-  font-family: fantasy;
+#myModalLabel{
   color: black;
 }
-hr{
+#modal-instrucciones .modal-title{
+  font-family: fantasy;
+  color: black!important;
+}
+#modal-instrucciones hr{
   height: 2px;
   background-color: grey;
   border-radius: 50%;
@@ -508,7 +517,7 @@ video{
   padding: 15px;
 }
 
-p{
+#modal-instrucciones p{
   font-family: "Comic Sans MS";
   font-size: 1.5em;
   color: black;
@@ -531,4 +540,13 @@ button.instruccion{
   color: white;
   margin-left: 10px;
   
+}
+
+@keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgb(242,221,72), 0 0 70px rgb(242,221,72), 0 0 80px rgb(242,221,72), 0 0 100px rgb(242,221,72), 0 0 150px rgb(242,221,72);
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgb(242,221,72), 0 0 35px rgb(242,221,72), 0 0 40px rgb(242,221,72), 0 0 50px rgb(242,221,72), 0 0 75px rgb(242,221,72);
+  }
 }

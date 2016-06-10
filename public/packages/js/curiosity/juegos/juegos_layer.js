@@ -5,6 +5,15 @@ var $juego = {
       $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
       $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
     },
+<<<<<<< .mine
+    slider:{
+        changeImages:function(json){
+          $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);  
+          $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);  
+          $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);  
+        }
+    },
+=======
     slider:{
         changeImages:function(json){
           $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);
@@ -12,6 +21,7 @@ var $juego = {
           $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);
         }
     },
+>>>>>>> .theirs
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
@@ -240,7 +250,7 @@ var $juego = {
           var ctx = mycanvas.getContext('2d');
           $juego.cronometro.interval_canvas = setInterval(drawCircle,1000);
           ctx.lineWidth=9;
-          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
+          mycanvas.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;
@@ -309,6 +319,11 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
+
+            if(!/true|false/.test(bool)){
+                console.error("El parametro inverso debe ser un booleano");
+            }else
+
             if(!/^true|false/.test(bool)){
                 console.error("El parametro inverso debe ser un booleano");
             }else{
@@ -316,6 +331,7 @@ var $juego = {
                     $("#game").trigger('pause');
                 else
                     $("#game").trigger('continue');
+
                 $juego.cronometro.pausa=bool;
             }
         }
@@ -428,11 +444,19 @@ $("#continuar").click(function(){
 });
 $("#reiniciar").click(function(){
   $juego.game.restart();
+<<<<<<< .mine
+  $("#game").removeClass("blur");	
+=======
   $("#game").removeClass("blur");
+>>>>>>> .theirs
 });
 $("#salir_juego").click(function(){
   $juego.game.salir();
+<<<<<<< .mine
+  $("#game").removeClass("blur");	
+=======
   $("#game").removeClass("blur");
+>>>>>>> .theirs
 });
 $(".btnVideo").click(function(){
     $("#modalPrueba").modal('hide');
@@ -572,6 +596,121 @@ $(document).ready(function(){
       event.preventDefault();
     });
 });
+<<<<<<< .mine
+
+// FUNCIONAMIENTO DEL SLIDER
+
+$(function(){
+	var SliderModule = (function(){
+		
+		var pb = {};
+		pb.el = $('#slider');
+		pb.nom = "fernando";
+		pb.items = {
+			panel: pb.el.find('li')
+		}
+		
+		// Variables Necesarias
+		var SliderInterval,
+			currentSlider = 0,
+			nextSlider = 1,
+			lengthSlider = pb.items.panel.length;
+		
+		//initialize
+		pb.init = function(settings){
+			
+			var output = "";
+			
+			for(var i = 0; i < lengthSlider; i++){
+				if(i == 0){
+					output += '<li class="active"></li>';
+				}
+				
+				else{
+					output += '<li></li>';
+				}
+			}
+			
+			
+			//Activamos nuestro slider
+			SliderInit();
+			
+			// Controles del Slider
+			$('#slider-controls').html(output).on('click','li', function(e){
+				var $this = $(this);
+				//console.log($this.index());
+				
+				if(currentSlider !== $this.index()){
+					changePanel($this.index());
+				};
+				
+			});
+		}
+		
+		pb.starSlider = function(){
+			var panels = pb.items.panel,
+				controls = $('#slider-controls li');
+			
+			if(nextSlider >= lengthSlider){
+				nextSlider = 0;
+				currentSlider = lengthSlider-1;
+			}
+			
+			// Efectos
+			controls.removeClass('active').eq(currentSlider).addClass('active');
+			panels.eq(currentSlider).fadeOut('slow');
+			panels.eq(nextSlider).fadeIn('slow');
+			
+			
+			//console.log(nextSlider);
+			
+			
+			
+			// Actualizamos nuestros datos
+			currentSlider = nextSlider;
+			nextSlider += 1;
+		}
+		
+		// Funcion para controles del Slider
+		var changePanel = function(id){
+			clearInterval(SliderInterval);
+			var panels = pb.items.panel,
+				controls = $('#slider-controls li');
+			
+			// Comprobamos el ID
+			if(id >= lengthSlider){
+				id = 0;
+			}
+			
+			else if(id < 0){
+				id = lengthSlider-1;
+			}
+			
+			// Efectos
+			controls.removeClass('active').eq(id).addClass('active');
+			panels.eq(currentSlider).fadeOut('slow');
+			panels.eq(id).fadeIn('slow');
+			
+			// Actualizamos nuestros datos
+			currentSlider = id;
+			nextSlider = id + 1;
+			
+			// Reactivamos el Interval (Slider)
+			SliderInit();
+			
+		}
+		
+		var SliderInit = function(){
+			SliderInterval = setInterval(pb.starSlider, 4000);
+		}
+		
+		return pb;
+	}());
+	
+	SliderModule.init();
+	
+}); 
+=======
 
 // FUNCIONAMIENTO DEL SLIDER
 
@@ -685,3 +824,4 @@ $(function(){
 	SliderModule.init();
 
 });
+>>>>>>> .theirs
