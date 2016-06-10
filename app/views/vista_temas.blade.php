@@ -27,8 +27,7 @@
   <div class='col-md-4 objeto'>
     <div class='box box-widget widget-title objetoPointer' data-rol='{{$rol}}'' data-prem='{{ $objeto->isPremium }}' data-estatus={{$objeto->estatus}} data-id = {{ $objeto->id }}>
       @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') && $objeto->isPremium == 1 )
-      <!-- <img src="/packages/images/premium.png" class="img-responsive isPremium"/> -->
-      <span class="fa fa-lock isPremium" style="background-color: {{$objeto->bg_color}}"></span>
+      <span class="fa fa-star isPremium" style="background-color: {{$objeto->bg_color}}"></span>
       @endif
       <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">
         <h3 class='widget-title-set text-center'> {{$objeto->nombre}} </h3>

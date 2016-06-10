@@ -22,17 +22,27 @@
       @foreach($temas as $tema)
         <div class='col-md-12 largeCard' data-rol="{{$rol}}" data-estatus="{{$tema->estatusTema}}" data-prem="{{$tema->isPremium}}" data-found="{{$tema->idTema}}" style="border-right: solid 25px {{$tema->colorTema}};">
           <div class="row">
-            <div class="col-xs-3 col-md-2">
+            <div class="col-xs-4 col-md-2">
               <img src="/packages/images/temas/{{$tema->imagenTema}}" class="img-responsive imgTema">
             </div>
-            <div class="col-xs-5 col-md-6">
-              <h3><b>{{$tema->nombreTema}}</b></h3>
-              <hr>
-              <p>
-                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreNivel}}<br>
-                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreInteligencia}}<br>
-                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreBloque}}<br>
+            <div class="col-xs-8 col-md-10">
+              <h3 class="titleTema"><b>{{$tema->nombreTema}}</b></h3>
+              @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') && $tema->isPremium == 1 )
+              <span class="fa fa-star isPremiumFound" style="background-color:{{$tema->colorTema}};"></span>
+              @endif
+              <hr class="dividerTitle">
+              <p class="temaDir">
+                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreNivel}}&nbsp;
+                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreInteligencia}}&nbsp;
+                <span class="fa fa-caret-right"></span>&nbsp;&nbsp;{{$tema->nombreBloque}}&nbsp;
               </p>
+              <br>
+              @if($tema->estatusTema == 'lock')
+                <div class="butonEstatusFound text-center">
+                  <span class='fa fa-clock-o fa-estatus-color'></span>&nbsp;
+                  Próximamente
+                </div>
+              @endif
             </div>
           </div>
         </div>
