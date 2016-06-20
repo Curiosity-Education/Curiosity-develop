@@ -19,6 +19,7 @@ Route::get('/nosotros', 'principalController@verNosotros');
 /* ------------------------------------------------- */
 Route::group(array('before' => 'unauth'), function(){
     Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
+    Route::match(array('GET','POST'),'/login-fb', 'loginController@loginFB');
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
 });
 Route::get('/confirmar/{token}','padreController@confirmar');
@@ -35,11 +36,19 @@ Route::group(array('before' => 'auth'), function(){
     Route::post('/actividad/setdata','actividadController@setDataActivity');
     Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
     Route::group(array('before' => 'only_session'), function(){
+
+      Route::post('/buscarTema', 'temaController@temasFound');
+
+        // padres
+        Route::post('/cotarhijos','padreController@getCountHijos');
+
         // salir (cerrar sesion)
         Route::get('/logout', 'loginController@salir');
 
         // Acceder a juego
         Route::post('/hasgame','actividadController@hasGame');
+        Route::post("/actividad-save-cali","actividadController@saveCalificationActivity");
+        Route::post("/actividad-get-cali","actividadController@getCalificacionActivity");
         Route::get('/recordatorio','hijoController@recordatorio');
         Route::get('/cursos', 'cursoController@verPagina');
         Route::get('/cursosAdmin', 'cursoController@verPaginaAdmin');
@@ -56,11 +65,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/foto','perfilController@cutImage');
         Route::post('/regAdmin','userController@saveAdmin');
         Route::group(array('before' => 'realizar_actividades'),function(){
-        Route::get('/nivel', 'nivelController@verPaginaInWeb');
-        Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
-        Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
-        Route::get('/tema{id}', 'temaController@verPaginaInWeb');
-        Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
+          Route::get('/nivel', 'nivelController@verPaginaInWeb');
+          Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
+          Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
+          Route::get('/tema{id}', 'temaController@verPaginaInWeb');
+          Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
         });
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
@@ -120,3 +129,4 @@ Route::group(array('before' => 'auth'), function(){
 
 
 });
+

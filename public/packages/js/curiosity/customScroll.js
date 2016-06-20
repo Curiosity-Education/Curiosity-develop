@@ -31,12 +31,17 @@ $(document).ready(function() {
     $(window).scroll(function(){
         if($(window).scrollTop() >= $("#inicio").height()/6){
             $navbar.height(heightNav);
-            $navbar.css("background","rgb(54, 142, 184)");
+            $navbar.css("background","#2d96ba");
+            $(".navbar-collapse").css("background","#2d96ba");
             $navbar.find('a').css({'margin-top': (heightInit-16)+'px'});
         }
         else{
             $navbar.height(heightNav+20);
             $navbar.css("background","transparent");
+            if($(window).width() <= 768)
+                $(".navbar-collapse").css("background","rgba(45, 150, 186, 0.53)");
+            else
+                $(".navbar-collapse").css("background","transparent");
             $navbar.find('a').css({'margin-top': (heightInit)+'px'});
         }
     });

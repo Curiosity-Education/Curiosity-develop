@@ -153,6 +153,12 @@ var $curiosity = {
        }
        //si estoy aqui es que no se ha podido submitir
        return false;
+    },
+    validarEmbedYoutube:function(codeEmbed){
+        if(/^www\.youtube\.com\/embed\/\S*$/.test(codeEmbed))
+            return true;
+        else
+            return false;
     }
 
 };
