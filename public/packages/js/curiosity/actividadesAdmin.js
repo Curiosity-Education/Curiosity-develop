@@ -52,11 +52,15 @@ $(document).ready(function() {
       $("#descripcion").val("");
       $("#video").val("");
       $("#archivoPDF").val("");
-      $.each($('#profesores > option'), function(index, obj){
-      if($(this).val() == ""){
-          $(this).attr('selected', 'selected');
-        }
-      });
+      // $.each($('#profesores > option'), function(index, obj){
+      // if($(this).val() == ""){
+      //     $(this).attr('selected', 'selected');
+      //   }
+      // });
+      $("#profesores").val($("#profesores").children().first().val());
+      $("#appendUpdateFile").empty();
+      $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
+      $("#docTitle").text("Sin Documento");
     },
     // funcion para mostrar el formulario
     // de administracion y ocultar los cuadros
@@ -71,6 +75,20 @@ $(document).ready(function() {
       $("#adminSection").hide('slow');
       $("#botonEstatus").hide();
       actividad.restablecerForm();
+    },
+    appendUpdateFile : function(nombreFile){
+      var codeApp = "<div class='fileArrow'>"+
+        "<span class='fa fa-arrow-right fa-4x'></span>"+
+      "</div>"+
+      "<div class='filePrev'>"+
+        "<img src='/packages/images/pdf_icon.png' class='updateFile'/><br>"+
+        "<center><label>"+nombreFile+"</label></center>"+
+      "</div>";
+      $("#appendUpdateFile").html(codeApp);
+    },
+    appendNewFile : function(nombreFile){
+      $("#docTitle").text(nombreFile);
+      $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
     },
     // creando sub objeto en el cual se declaran
     // las funciones correspondientes al resgistro
@@ -123,69 +141,71 @@ $(document).ready(function() {
       // hará la funcion de registrar y la inteligencia al que este
       // pertenece.
       guardarAdd : function(boton, direccion, tema){
-
-        $tipos = new Array('.pdf', '.docx');
-        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos)){
-          var $btnEnviar = boton;
-          $btnEnviar.attr('disabled', 'disabled');
-          $btnEnviar.text('Guardando...');
-          var formData = new FormData($("#formPDF")[0]);
-          formData.append('nombre', $("#nombre").val());
-          formData.append('estatus', 'lock');
-          formData.append('active', 1);
-          formData.append('objetivo', $("#descripcion").val());
-          formData.append('bg_color', $("#color").val());
-          formData.append('tema_id', tema);
-          formData.append('code_embed', $("#video").val());
-          formData.append('profesores_id', $("#profesores").val());
-          $.ajax({
-            url: direccion,
-            type: 'POST',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
-          })
-          .done(function(response) {
-            if($.isPlainObject(response)){
-              $.each(response,function(index,value){
-                $.each(value,function(i, message){
-                  $curiosity.noty(message, 'warning');
-                });
+        var $btnEnviar = boton;
+        $btnEnviar.attr('disabled', 'disabled');
+        $btnEnviar.text('Guardando...');
+        var formData = new FormData($("#formPDF")[0]);
+        formData.append('nombre', $("#nombre").val());
+        formData.append('estatus', 'lock');
+        formData.append('active', 1);
+        formData.append('objetivo', $("#descripcion").val());
+        formData.append('bg_color', $("#color").val());
+        formData.append('tema_id', tema);
+        formData.append('code_embed', $("#video").val());
+        formData.append('profesores_id', $("#profesores").val());
+        $.ajax({
+          url: direccion,
+          type: 'POST',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false
+        })
+        .done(function(response) {
+          if($.isPlainObject(response)){
+            $.each(response,function(index,value){
+              $.each(value,function(i, message){
+                $curiosity.noty(message, 'warning');
               });
-            }
-            else if(response[0] == 'success'){
-              actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-              $curiosity.noty("Registrado Correctamente", "success");
-              actividad.hideAdmin();
-            }
-            else if(response[0] == 'success_exist'){
-              actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-              $curiosity.noty("Se ha habilitado nuevamente", "success");
-              actividad.hideAdmin();
-            }
-            else if(response[0] == 'same'){
-              $curiosity.noty("El nombre ingresado ya existe", "warning");
-            }
-          })
-          .fail(function(error) {
-            console.log(error);
-          })
-          .always(function(){
-            $btnEnviar.removeAttr('disabled');
-            $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-          });
-        }
+            });
+          }
+          else if(response[0] == 'success'){
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            $curiosity.noty("Registrado Correctamente", "success");
+            actividad.hideAdmin();
+          }
+          else if(response[0] == 'success_exist'){
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            $curiosity.noty("Se ha habilitado nuevamente", "success");
+            actividad.hideAdmin();
+          }
+          else if(response[0] == 'same'){
+            $curiosity.noty("El nombre ingresado ya existe", "warning");
+          }
+        })
+        .fail(function(error) {
+          console.log(error);
+        })
+        .always(function(){
+          $btnEnviar.removeAttr('disabled');
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+        });
       },
-      // actualiza un objeto enviando como parametros
-      // el boton al que se le da clic, la direccion donde
-      // hará la funcion de actualizar, el id del cuadro
-      // al que se le ha dado clic y el estatus es decir
-      // si se encuentra bloqueado o desbloqueado
+       convertEmbedCode:function(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                return 'www.youtube.com/embed/' + match[2];
+            } else {
+                return 'error';
+            }
+      },
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         $tipos = new Array('.pdf', '.docx');
+        console.log(actividad.registro.convertEmbedCode($("#video").val()));
+        var embedCode =actividad.registro.convertEmbedCode($("#video").val());
         if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false || $curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == true){
-            if($curiosity.validarEmbedYoutube($("#video").val())){
                 var $btnEnviar = boton;
                   $btnEnviar.attr('disabled', 'disabled');
                   $btnEnviar.text('Guardando...');
@@ -193,7 +213,7 @@ $(document).ready(function() {
                   var formData = new FormData($("#formPDF")[0]);
                   formData.append('nombre', $("#nombre").val());
                   formData.append('objetivo', $("#descripcion").val());
-                  formData.append('code_embed', $("#video").val());
+                  formData.append('code_embed', embedCode);
                   formData.append('profesores_id', $("#profesores").val());
                   formData.append('estatus', estatusNow);
                   formData.append('procedenciaID', idProcedencia);
@@ -222,7 +242,7 @@ $(document).ready(function() {
                       $("#"+id).data('estatus', estatusNow);
                       $("#"+id).data('color', $("#color").val());
                       $("#"+id).parent().css('background',$("#color").val());
-                      $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
+                      $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', embedCode);
                       actividad.hideAdmin();
                     }
                     else if(response[0] == 'same'){
@@ -239,11 +259,62 @@ $(document).ready(function() {
                     $btnEnviar.removeAttr('disabled');
                     $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
                   });
-            }
-            else{
-                $curiosity.noty("La URL del video no es valida debe ser un embed https://www.youtube.com/embed/QKMf8BuwOCo", "warning");
-            }
         }
+        var $btnEnviar = boton;
+        $btnEnviar.attr('disabled', 'disabled');
+        $btnEnviar.text('Guardando...');
+
+        var formData = new FormData($("#formPDF")[0]);
+        formData.append('nombre', $("#nombre").val());
+        formData.append('objetivo', $("#descripcion").val());
+        formData.append('code_embed', $("#video").val());
+        formData.append('profesores_id', $("#profesores").val());
+        formData.append('estatus', estatusNow);
+        formData.append('procedenciaID', idProcedencia);
+        formData.append('color', $("#color").val());
+        formData.append('idUpdate', id);
+        $.ajax({
+          url: direccion,
+          type: 'POST',
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false
+        })
+        .done(function(response) {
+          if($.isPlainObject(response)){
+            $.each(response,function(index,value){
+              $.each(value,function(i, message){
+                $curiosity.noty(message, 'warning');
+              });
+            });
+          }
+          else if(response[0] == 'success'){
+            $curiosity.noty("Actualizado Correctamente", "success");
+            $("#"+id).text($("#nombre").val());
+            $("#"+id).data('descrip', $("#descripcion").val());
+            $("#"+id).data('estatus', estatusNow);
+            $("#"+id).data('color', $("#color").val());
+            $("#"+id).parent().css('background',$("#color").val());
+            $("#act"+id).data('pdf', $("#archivoPDF").val());
+            $("#act"+id).data('prof-id', $("#profesores").val());
+            $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
+            actividad.hideAdmin();
+          }
+          else if(response[0] == 'same'){
+            $curiosity.noty("El nombre ya existe", "warning");
+          }
+          else if(response[0] == 'same_exist'){
+            $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
+          }
+        })
+        .fail(function(error) {
+          console.log(error);
+        })
+        .always(function(){
+          $btnEnviar.removeAttr('disabled');
+          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+        });
       },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
@@ -323,11 +394,39 @@ $(document).ready(function() {
       var id_bloque = $(this).data('bloque');
       var id_inteligencia = $(this).data('inteligencia');
       var id_nivel = $(this).data('nivelid');
-      actividad.registro.guardarAdd($(this), "/adminActividad"+id_tema+"_"+id_bloque+"_"+id_inteligencia+"_"+id_nivel, id_tema);
+      if(!$('#archivoPDF').val()){
+        $curiosity.noty("El archivo PDF es requerido", 'warning');
+      }
+      else{
+        actividad.registro.guardarAdd($(this), "/adminActividad"+id_tema+"_"+id_bloque+"_"+id_inteligencia+"_"+id_nivel, id_tema);
+      }
         break;
         case 'update':
         actividad.registro.guardarUpdate($(this), '/updateActividad', $(this).data('updateId'), estatus, $(this).data('tema'));
           break;
+    }
+  });
+
+  $(".filePrev").click(function(event) {
+    $("#archivoPDF").trigger('click');
+  });
+
+  $("#archivoPDF").on('change', function(){
+    if($(this).data('state') == 'update'){
+      if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
+        actividad.appendUpdateFile($(this).val());
+      }
+      else{
+        $(this).val("");
+      }
+    }
+    else {
+      if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
+        actividad.appendNewFile($(this).val());
+      }
+      else{
+        $(this).val("");
+      }
     }
   });
 
@@ -345,6 +444,7 @@ $(document).ready(function() {
   // de registro en caso de ser presionado
   $('#addNew').click(function(event) {
     $("#enviarEnv").data('tipo', 'add');
+    $("#archivoPDF").data('state', 'add');
     $("#color").val("#000000");
     actividad.showAdmin();
   });
@@ -355,6 +455,7 @@ $(document).ready(function() {
   // para que el boton funcione para actualizar en caso de ser presionado
   $("#viewSection").on('click', '.objeto > .box > .box-footer > .row > div > .btnUpdate', function(event) {
     $("#enviarEnv").data('tipo', 'update');
+    $("#archivoPDF").data('state', 'update');
     var idSelected = $(this).data('id');
     // le ponemos la boton de enviar un data con el id del
     // objeto que se ha dado clic esto para saber a cual
@@ -367,13 +468,16 @@ $(document).ready(function() {
     $("#descripcion").val($("#"+idSelected).data('descrip'));
     $("#color").val($("#"+idSelected).data('color'));
     $("#video").val($(this).data('code-embed'));
+    $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
+    $("#docTitle").text($(this).data('pdf'));
     var idFromProfe = $(this).data('prof-id');
 
-    $.each($('#profesores > option'), function(index, obj){
-      if($(this).val() == idFromProfe){
-        $(this).attr('selected', 'selected');
-      }
-    });
+    // $.each($('#profesores > option'), function(index, obj){
+    //   if($(this).val() == idFromProfe){
+    //     $(this).attr('selected', 'selected');
+    //   }
+    // });
+    $("#profesores").val(idFromProfe);
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');
     if(estatus == "lock"){
