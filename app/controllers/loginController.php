@@ -10,7 +10,7 @@ class loginController extends BaseController
   {
     if(Request::method() == 'POST')
         {
-         
+
           /*Guardamos en la variable $Form todos los valores obtenidos*/
           $Form = Input::get('data'); //datos
           /*Creamos la reglas de validacion para esos valores*/
@@ -56,7 +56,7 @@ class loginController extends BaseController
           }
           else{
 
-              //---Este else responderá a Android 
+              //---Este else responderá a Android
               $validarAuth = array(
                     'username'  =>  Input::get('username'),
                     'password'  =>  Input::get('password'),

@@ -13,7 +13,7 @@ class userController extends BaseController{
             ->join('roles', 'assigned_roles.role_id', '=', 'roles.id')
             ->where('users.id', '=', Auth::user()->id)
             ->pluck('name');
-            if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('demo_padre')){
+            if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre_free')){
                 $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
                 $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
                 ->join('personas', 'personas.id', '=', 'hijos.persona_id')
@@ -21,7 +21,7 @@ class userController extends BaseController{
                 ->join('perfiles', 'perfiles.users_id','=', 'users.id')
                 ->where('users.active', '=', '1')
                 ->where('hijos.padre_id', '=', $idPadre)
-                ->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();                
+                ->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();
                 return View::make('vista_perfil')
                 ->with(array('perfil' => $perfil, 'persona' => $persona, 'datosHijos' => $datosHijos, 'escuelas'=>$escuelas,"padre"=>$padre,"estados"=>$estados, 'rol'=>$rol));
             }
@@ -75,7 +75,7 @@ class userController extends BaseController{
             "sexo_admin"              =>"required|string|size:1",
             "fecha_nacimiento_admin"  =>"required|date_format:Y-m-d|before:$date_min",
             "role_admin"              =>"required"
-           
+
         ];
         $messages = [
                      "required"    =>  "Este campo :attribute es requerido",
@@ -110,7 +110,7 @@ class userController extends BaseController{
                 $persona->apellido_paterno = Input::get('apellido_paterno_admin');
                 $persona->apellido_materno = Input::get('apellido_materno_admin');
                 $persona->sexo = Input::get('sexo_admin');
-                $persona->fecha_nacimiento = Input::get('fecha_nacimiento_admin'); 
+                $persona->fecha_nacimiento = Input::get('fecha_nacimiento_admin');
                 $persona->user_id = $user->id;
                 $persona->save();
                 $perfil = new perfil();
@@ -118,7 +118,7 @@ class userController extends BaseController{
                 $perfil->users_id=$user->id;
                 $perfil->save();
                 return Response::json(array("estado"=>200,"message"=>"El usuario ha sido registrado exitosamente"));
-                
+
             }catch (Exception $e) {
                 return Response::json(array("estado"=>500,"message"=>$e));
             }

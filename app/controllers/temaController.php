@@ -239,7 +239,7 @@ class temaController extends BaseController
       ->select('temas.id', 'temas.nombre', 'temas.descripcion', 'temas.estatus', 'temas.bg_color', 'temas.imagen', 'inteligencias.id as inteligencia_id', 'inteligencias.nombre as inteligencia_nombre', 'niveles.id as nivel_id', 'niveles.nombre as nivel_nombre', 'bloques.id as bloque_id', 'bloques.nombre as bloque_nombre', 'isPremium')
       ->get(),
       'rol' => Auth::user()->roles[0]->name
-    );    
+    );
 
     $objectBelive = bloque::where('id', '=', $id)->pluck('estatus');
 
@@ -271,6 +271,20 @@ class temaController extends BaseController
       return Response::json(array(0=>'success', 1=>$file->getClientOriginalName()));
     }
   }
+
+  function temasFound(){
+    $dato = Input::all();
+    $temas = DB::select("select temas.nombre as nombreTema, bloques.nombre as nombreBloque, temas.id as idTema, inteligencias.nombre as nombreInteligencia, niveles.nombre as nombreNivel, temas.imagen as imagenTema, temas.bg_color as colorTema, temas.isPremium as isPremium, temas.estatus as estatusTema
+    from temas
+    join bloques on bloques.id = temas.bloque_id
+    join inteligencias on inteligencias.id = bloques.inteligencia_id
+    join niveles on inteligencias.nivel_id = niveles.id
+    where temas.nombre like '%".$dato['buscarTema']."%' and temas.active = 1 and bloques.active = 1 and inteligencias.active = 1 and niveles.active = 1");
+    $informacion = array('temas' => $temas, 'dato' => $dato['buscarTema'], 'rol' => Auth::user()->roles[0]->name);
+    return View::make('vista_temasFound', $informacion);
+  }
+
+
 }
 
 

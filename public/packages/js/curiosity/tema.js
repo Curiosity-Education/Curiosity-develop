@@ -4,7 +4,7 @@ $(document).ready(function() {
   $(".objetoPointer").click(function(event) {
     if($(this).data('estatus') == "unlock"){
       if($(this).data('rol') == 'hijo_free' || $(this).data('rol') == 'root' && $(this).data('prem') == 1){
-        $curiosity.noty("Hazte PREMIUM y disfruta del conteido completo", "warning");
+        $curiosity.notyPremium();
       }
       else{
         window.location.href="/actividad"+$(this).data('id');
@@ -14,4 +14,5 @@ $(document).ready(function() {
       $curiosity.noty("Disponible próximamente", "warning");
     }
   });
+
 });

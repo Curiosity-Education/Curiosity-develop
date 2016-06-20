@@ -43,14 +43,9 @@ $(document).ready(function(){
       $("#email").val('');
       $("#gustos").val('');
       $("#foto").val('');
-      // var option = $("#escuela > option");
-      // $.each(option, function(){
-      //   if($(this).val() == ''){
-      //     $(this).attr('selected', 'true');
-      //   }
-      // });
       $("#escuela").val($("#escuela").children().first().val());
       $("#zonaData").show('slow');
+      $("#prevFotoProfesor").attr('src', '/packages/images/profesores/prof-default.jpg');
     },
     registro : {
       guardarAdd : function(){
@@ -176,17 +171,12 @@ $(document).ready(function(){
     if($tabla.bootstrapTable('getSelections').length != 0){
       $("#enviarEnv").data('tipo', 'update');
       $("#enviarEnv").data('id_profesor_update', $tabla.bootstrapTable('getSelections')[0].id);
+      $("#prevFotoProfesor").attr('src', '/packages/images/profesores/'+$tabla.bootstrapTable('getSelections')[0].foto);
       $("#nombre").val($tabla.bootstrapTable('getSelections')[0].nombre);
       $("#ape_p").val($tabla.bootstrapTable('getSelections')[0].apellido_paterno);
       $("#ape_m").val($tabla.bootstrapTable('getSelections')[0].apellido_materno);
       $("#email").val($tabla.bootstrapTable('getSelections')[0].email);
       $("#gustos").val($tabla.bootstrapTable('getSelections')[0].gustos);
-      // var option = $("#escuela > option");
-      // $.each(option, function(){
-      //   if($(this).val() == $tabla.bootstrapTable('getSelections')[0].escuela_id){
-      //     $(this).attr('selected', 'true');
-      //   }
-      // });
       $("#escuela").val($tabla.bootstrapTable('getSelections')[0].escuela_id);
       profesor.showAdmin();
     }
@@ -202,12 +192,27 @@ $(document).ready(function(){
   $("#enviarEnv").click(function(){
     switch($(this).data('tipo')){
       case 'add':
-        profesor.registro.guardarAdd();
+        $("#formProf").validate({
+          rules:{
+            email : {email:true}
+          }
+        });
+        if($("#formProf").valid()){
+          profesor.registro.guardarAdd();
+        }
         break;
       case 'update':
         profesor.registro.guardarUpdate($(this).data('id_profesor_update'));
         break
     }
+  });
+
+  $(".prevFotoProfesor").click(function() {
+    $("#foto").trigger("click");
+  });
+
+  $("#foto").on('change', function(){
+    // console.log($(this).val());
   });
 
 

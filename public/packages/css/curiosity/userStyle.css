@@ -15,6 +15,13 @@ body {
   overflow-y: auto;
 }
 
+#negated{
+  background-color: rgba(213, 213, 213, 0.5);
+  font-weight: normal;
+  padding: 25px;
+  border-radius: 5px;
+}
+
 /*/ Barra de desplazamiento /*/
 ::-webkit-scrollbar {
       width: 15px;

@@ -36,8 +36,11 @@
         <nav class="navbar navbar-static-top" role="navigation">
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
           <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
 
+            <ul class="nav navbar-nav">
+              <!-- <li>
+                <input type="text" id="inputSearch" class="form-control">
+              </li> -->
               <!-- Menu de cuenta de usuario -->
               <li class="dropdown user user-menu hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -71,7 +74,6 @@
                   </li>
                 </ul>
               </li>
-
             </ul>
           </div>
         </nav>
@@ -152,6 +154,18 @@
       <div class="content-wrapper">
         <!-- Encabezado de la pagina -->
         <section class="content-header">
+          @if(!Auth::user()->hasRole('padre') || !Auth::user()->hasRole('padre_free') || !Auth::user()->hasRole('demo_padre'))
+          <div class="form-group searchTema">
+            <div class="input-group">
+              <form action="/buscarTema" method="POST" id="formBuscarTema">
+                <input type="text" name="buscarTema" class="form-control" id="searchTema" placeholder="Buscar temas">
+              </form>
+              <span class="input-group-addon" id="iconSearch">
+                <spna class="fa fa-search"></spna>
+              </span>
+            </div>
+          </div>
+          @endif
           <div class="well">
             <h1>
               @yield('titulo_contenido')
@@ -186,6 +200,8 @@
       </footer>
 
   {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
+  {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
+  {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
   {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
   {{HTML::script('/packages/js/app.min.js')}}
   {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
@@ -194,10 +210,23 @@
   {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
   {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
-  {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}  
+  {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
 
   <script type="text/javascript">
     $(document).ready(function(){
+
+      $("#iconSearch").click(function(event) {
+        var temaVal = $("#searchTema").val();
+        if(temaVal != ""){
+          $("#formBuscarTema").trigger('submit');
+        }
+      });
+
+      $("#formBuscarTema").on('submit', function(e){
+        if($("#searchTema").val() == ""){
+          e.preventDefault();
+        }
+      });
 
       $(".tooltipShow").tooltipster({
         position : 'bottom',

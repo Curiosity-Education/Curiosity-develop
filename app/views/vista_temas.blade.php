@@ -5,20 +5,7 @@
 @stop
 
 @section('mi_css')
-<style media="screen">
-  .isPremium{
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin: 10px;
-    color: rgba(255, 255, 255, .9) !important;
-    font-size: 1.7em;
-    padding-left: 10px;
-    padding-top: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, .6);
-  }
-</style>
+  {{HTML::style('/packages/css/curiosity/tema.css')}}
 @stop
 
 @section('titulo_contenido')
@@ -40,8 +27,7 @@
   <div class='col-md-4 objeto'>
     <div class='box box-widget widget-title objetoPointer' data-rol='{{$rol}}'' data-prem='{{ $objeto->isPremium }}' data-estatus={{$objeto->estatus}} data-id = {{ $objeto->id }}>
       @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') && $objeto->isPremium == 1 )
-      <!-- <img src="/packages/images/premium.png" class="img-responsive isPremium"/> -->
-      <span class="fa fa-lock isPremium" style="background-color: {{$objeto->bg_color}}"></span>
+      <span class="fa fa-star isPremium" style="background-color: {{$objeto->bg_color}}"></span>
       @endif
       <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">
         <h3 class='widget-title-set text-center'> {{$objeto->nombre}} </h3>
@@ -78,6 +64,30 @@
     </div>
   </div>
   @endforeach
+
+  <div class="modal fade" id="modalPremium" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <button type="button" class="close" data-dismiss="modal" id="closePrem" aria-hidden="true">&times;</button>
+          <span class="fa fa-star" id="iconPrem"></span>
+          <br><br>
+          <h4 class="tituloPrem">Desbloquea el Tema.</h4>
+          <br>
+          <p class="text-center bodyPrem">
+            Este Tema se encuentra bloqueado por hoy.<br>
+            Puedes Jugar en él pasándote a Premium ahora.<br><br>
+            Cuentale ahora a tus padres, No esperes más!!
+          </p>
+          <!-- <br>
+          <button type="button" id="botonPremium" class="btn btn-primary btn-lg">
+            Notificarle a mis Padres
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 @stop
 
 @section('mi_js')

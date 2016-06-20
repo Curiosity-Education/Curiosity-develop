@@ -57,39 +57,44 @@
 
 <!-- Sección de Administración -->
   <div class="col-md-12" id="adminSection" hidden="hidden">
-    <div class="form-group">
-      <label for="nombre">Nombre</label>
-      <input type="text" class="form-control" id="nombre" name="nombre">
-    </div>
-    <div class="form-group">
-      <label for="ape_p">Apellido Paterno</label>
-      <input type="text" class="form-control" id="ape_p" name="ape_p">
-    </div>
-    <div class="form-group">
-      <label for="ape_m">Apellido Materno</label>
-      <input type="text" class="form-control" id="ape_m" name="ape_m">
-    </div>
-    <div class="form-group">
-      <label for="escuela">Escuela a que pertenece</label>
-      <select class="form-control" id="escuela" name="escuela">
-        <option value=''></option>
-        @foreach($escuelas as $escuela)
-        <option value='{{$escuela->id}}'>{{$escuela->nombre}}</option>
-        @endforeach
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="email">Correo Electrónico</label>
-      <input type="text" class="form-control" id="email" name="email">
-    </div>
-    <div class="form-group">
-      <label for="gustos">Gustos</label>
-      <textarea type="text" class="form-control" id="gustos" name="gustos"></textarea>
-    </div>
-    <label for="logotipo">Foto</label>
-    <form id="foto_profe">
-      <input type="file" class="form-control" id="foto" name="foto" accept="image/jpeg,image/png,image/jpg">
+    <form id="formProf">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="ape_p">Apellido Paterno</label>
+        <input type="text" class="form-control" id="ape_p" name="ape_p">
+      </div>
+      <div class="form-group">
+        <label for="ape_m">Apellido Materno</label>
+        <input type="text" class="form-control" id="ape_m" name="ape_m">
+      </div>
+      <div class="form-group">
+        <label for="escuela">Escuela a que pertenece</label>
+        <select class="form-control" id="escuela" name="escuela">
+          <option value=''></option>
+          @foreach($escuelas as $escuela)
+          <option value='{{$escuela->id}}'>{{$escuela->nombre}}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input type="text" class="form-control" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="gustos">Gustos</label>
+        <textarea type="text" class="form-control" id="gustos" name="gustos"></textarea>
+      </div>
     </form>
+    <label for="logotipo">Seleccionar Foto</label>
+    <form id="foto_profe">
+      <input type="file" class="form-control hidden" id="foto" name="foto" accept="image/jpeg,image/png,image/jpg">
+    </form>
+    <div class="prevFotoProfesor tooltipShow" title="Click para cambiar">
+      <img src="/packages/images/profesores/prof-default.jpg" id="prevFotoProfesor"/>
+    </div>
     <div class="form-group text-right">
       <br>
       <button type="button" class="btn btn-warning" id="cancelarEnv">
