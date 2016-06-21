@@ -124,6 +124,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/grafPuntajes', 'actividadController@grafPuntajes');
         Route::post('/getEstandarte', 'actividadController@getEstandarte');
         Route::post('/getEstadisticasHijo', 'actividadController@getEstadisticasHijo');
+
+        // Contenido de incio para el niño
+        Route::get('/inicio', 'contenidoController@getInicio');
+        // Obtener Inteligencias
+        Route::get('/edu-{idGrade}-inteligencia', 'contenidoController@getInteligencias');
     });
 
 

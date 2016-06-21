@@ -215,6 +215,10 @@
   <script type="text/javascript">
     $(document).ready(function(){
 
+      if($(window).width() > 767){
+        $(".sidebar-toggle").trigger('click');
+      }
+
       $("#iconSearch").click(function(event) {
         var temaVal = $("#searchTema").val();
         if(temaVal != ""){

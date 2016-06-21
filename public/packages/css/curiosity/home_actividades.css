@@ -1,0 +1,127 @@
+.panelWelcome{
+  background-color: rgb(252, 252, 252);
+  font-weight: normal;
+  padding: 35px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.02);
+}
+#avatarWelcome{
+  width: 100%;
+  max-width: 200px;
+}
+.carruselNews{
+  padding-top: 15px;
+}
+.imgSlideNew{
+  width: 100%;
+  height: auto !important;
+  min-height: 350px !important;
+  max-height: 350px !important;
+}
+.panels{
+  padding-top: 15px;
+}
+.panelsLook{
+  background-color: rgb(255, 255, 255);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 35px;
+  padding-bottom: 15px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.02);
+  /*border-radius: 5px;*/
+  margin-bottom: 15px;
+}
+.panelPopular{
+  border-top: solid 6px rgb(237, 105, 34);
+}
+.panelRanking{
+  border-top: solid 6px #3cb54a;
+}
+.panelParaTi{
+  border-top: solid 6px #44c6ee;
+}
+.panelsLook > center > h4{
+  margin-top: -20px;
+  margin-bottom: -10px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  font-size: 1em;
+}
+.nameGamePanels{
+  text-align: left;
+}
+.starRank{
+  font-size: 1.4em;
+  color: rgb(242, 221, 73);
+}
+.elementObj{
+  margin-bottom: 15px;
+}
+.elementObj:hover{
+  transition: .4s;
+  cursor: pointer;
+}
+.objetivoGame{
+  font-weight: normal;
+  font-size: 0.8em;
+  font-style: oblique;
+  opacity: 0.8;
+}
+.divisorGrados{
+  /*border-top: solid 1px black;
+  border-bottom: solid 1px black;*/
+}
+.grades{
+  padding-top: 15px;
+}
+.grade{
+  margin-bottom: 25px;
+}
+.grade > img{
+  border-radius: 50px;
+  transition: width .4s, height .4s, transform .4s;
+}
+.grade > img:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.slideVideos{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.itemVideo{
+  margin-bottom: 10px;
+}
+.owl-controls{
+  margin-top: 20px;
+  text-align: center;
+}
+.owl-prev{
+  text-align: center;
+  display: inline;
+  background: rgba(45, 150, 186, 0.8);
+  color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-right: 5px;
+}
+.owl-prev:hover{
+  opacity: 0.8;
+}
+.owl-next{
+  text-align: center;
+  display: inline;
+  background: rgba(45, 150, 186, 0.8);
+  color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 5px;
+}
+.owl-next:hover{
+  opacity: 0.8;
+}

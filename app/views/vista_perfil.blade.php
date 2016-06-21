@@ -394,7 +394,7 @@
                            </div>
                          </div>
                         </section>
-                        @if(Auth::User()->hasRole('padre') || Auth::User()->hasRole('padre_free') || Auth::User()->hasRole('demo_padre'))
+                        <!-- @if(Auth::User()->hasRole('padre') || Auth::User()->hasRole('padre_free') || Auth::User()->hasRole('demo_padre'))
                         <h2>Direccion</h2>
                         <section>
                          <div class="form-group">
@@ -458,7 +458,7 @@
                            </div>
                          </div>
                         </section>
-                        @endif
+                        @endif -->
                       </div>
                     </form>
                   </div><!-- /.tab-pane -->

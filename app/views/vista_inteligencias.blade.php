@@ -12,7 +12,7 @@
 @stop
 
 @section('migas')
-  <li><a href="/nivel">Grados Escolares</a></li>
+  <li><a href="/inicio">Inicio</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
   <li><a href="/inteligencia{{$perteneciente}}" class="brandActive">{{$objetos2[0]->nombre}}</a></li>
 @stop

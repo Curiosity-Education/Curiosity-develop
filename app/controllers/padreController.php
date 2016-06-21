@@ -28,12 +28,12 @@ class padreController extends BaseController
             "apellido_materno"  =>"required|letter|max:30",
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "telefono"          =>"required|telephone",
-            "ciudad"            =>"integer|exists:ciudades,id",
-            "colonia"           =>"alpha_spaces",
-            "calle"             =>"alpha_spaces",
-            "numero"            =>"numero_casa",
-            "codigo_postal"     =>"numeric",
+            // "telefono"          =>"required|telephone",
+            // "ciudad"            =>"integer|exists:ciudades,id",
+            // "colonia"           =>"alpha_spaces",
+            // "calle"             =>"alpha_spaces",
+            // "numero"            =>"numero_casa",
+            // "codigo_postal"     =>"numeric",
             "email"             =>"required|email|unique:padres,email"
 
         ];
@@ -72,17 +72,17 @@ class padreController extends BaseController
                 $persona = new persona($datos);
                 $persona->user_id=$user->id;
                 $persona->save();
-                $direccion = new direccion($datos);
-                $direccion->ciudad_id=$datos["ciudad"];
-                $direccion->save();
+                // $direccion = new direccion($datos);
+                // $direccion->ciudad_id=$datos["ciudad"];
+                // $direccion->save();
                 // $membresia = new membresia();
                 // $membresia->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
                 // $membresia->fecha_registro= date("Y-m-d");
                 // $membresia->active=1;
                 // $membresia->save();
                 $padre = new padre($datos);
-                $padre->persona_id   = $persona->id;
-                $padre->direccion_id = $direccion->id;
+                $padre->persona_id = $persona->id;
+                // $padre->direccion_id = $direccion->id;
                 $padre->save();
                 $perfil = new perfil();
                 $perfil->foto_perfil="perfil-default.jpg";

@@ -82,7 +82,7 @@
 											<input type="email" name="email" value="" class="form-control form-custom" placeholder="Correo Elecronico">
 										</div>
 									</div>
-									 <div class="form-group">
+									 <!-- <div class="form-group">
 										 <label for="telefono"><h4 class="title-input"><b>Número Telefónico</b></h4></label>
 										 <div class="input-group">
 										   <span class="input-group-addon">
@@ -90,7 +90,7 @@
 										   </span>
 										   <input type="tel" class="form-control form-custom" name="telefono" id="telefono">
 										 </div>
-									 </div>
+									 </div> -->
 								</section>
 
 								<h2>Datos Generales</h2>
@@ -146,7 +146,7 @@
 								 </div>
 								</section>
 
-								<h2>Direccion</h2>
+								<!-- <h2>Direccion</h2>
 								<section>
 								 <div class="form-group">
 								 	<div class="input-group">
@@ -204,7 +204,7 @@
 									 	<input type="number" name="codigo_postal" id="codigo_postal" placeholder="Codigo Postal" class="form-control form-custom">
 									 </div>
 								 </div>
-								</section>
+								</section> -->
 
 							<!-- <h2>Pagos</h2>
 								<section>
