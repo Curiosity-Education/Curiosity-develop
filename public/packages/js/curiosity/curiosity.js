@@ -65,7 +65,7 @@ var $curiosity = {
 
      document.getElementById('notyAudio').play();
   },
-  notyPremium : function(){    
+  notyPremium : function(){
     $("#modalPremium").modal("show");
   },
   call:{
@@ -140,7 +140,10 @@ var $curiosity = {
        permitida = true;
        break;
        }
+       //si estoy aqui es que no se ha podido submitir
+       return false;
     }
+
     if (!permitida) {
       // Si la extension no se encuentra entre
       // las permitidas se muestra el sig. mensaje
@@ -150,7 +153,13 @@ var $curiosity = {
     	}
      //si estoy aqui es que no se ha podido submitir
      return false;
-  }
+  },
+    validarEmbedYoutube:function(codeEmbed){
+        if(/^www\.youtube\.com\/embed\/\S*$/.test(codeEmbed))
+            return true;
+        else
+            return false;
+    }
 };
 //
 // function nobackbutton(){

@@ -31,7 +31,8 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-10">
+                @if(!Auth::user()->hasRole('padre-fb'))
+                 <div class="col-md-10">
                  {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
                   {{HTML::Image('packages/images/perfil/original/'.$perfil->foto_perfil,'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
                   <input  name="image" class="btn btn-default" id="inImage"  type="file">
@@ -41,6 +42,7 @@
                   <input type="hidden" name="height"/>
                  {{Form::close()}}
                  </div>
+                 @endif
                  <div class="col-md-2">
                  <div class="preview" style="width:120%;height:120%;border-radius:100%;overflow:hidden;border:3px solid #777;">
                  </div>
@@ -74,7 +76,12 @@
               <div class="box box-primary">
                 <div class="box-body box-profile">
                   <div class="image-portada">
-                        <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
+                        @if(!Auth::user()->hasRole('padre-fb'))
+                            <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
+                        @else
+                            <img style="cursor:pointer;" class="profile-user-img img-profile img-responsive img-circle" data-target="#modalPrueba"  src={{$perfil->foto_perfil}} alt="User profile picture">
+                        @endif
+
                         <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>
                         <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
                   </div>
@@ -102,7 +109,7 @@
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
-              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
               <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -123,7 +130,8 @@
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
+
                    <li class="active">
                      <a href="#hijosPerfil" data-toggle="tab">
                        <i class="fa fa-group"></i>
@@ -131,7 +139,8 @@
                     </a>
                   </li>
                  @endif
-                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+
+                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                   <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
                     <a href="#alerta" data-toggle="tab">
                       <i class="fa fa-warning"></i>
@@ -139,7 +148,9 @@
                     </a>
                   </li>
                   @endif
-                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+
+                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
+
                    <li id="data">
                      <a href="#graficas" data-toggle="tab">
                        <i class="fa fa-bar-chart"></i>
@@ -155,7 +166,8 @@
                       </a>
                     </li> -->
                   @endif
-                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+
+                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                    <li>
                     <a href="#reg-hijos" data-toggle="tab" id="tabRegHijos" data-dad='{{Auth::user()->roles[0]->name}}'>
                       <i class="fa fa-child"></i>
@@ -171,6 +183,7 @@
                     </a>
                   </li>
                  @endif
+                 @if(!Auth::user()->hasRole('padre-fb'))
                   <li>
                     <a href="#settings" data-toggle="tab">
                       <i class="fa fa-user"></i>
@@ -178,6 +191,7 @@
                     </a>
                   </li>
                 </ul>
+                @endif
                 <div class="tab-content">
                   @if(Auth::user()->hasRole('hijo'))
                   <div class="active tab-pane" id="bestPuntajes">
@@ -619,27 +633,31 @@
                     </div><!-- /. fin tab registro de hijos -->
 
                 </div><!-- /.tab-content -->
-                @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
-              <section class="active tab-pane" id="hijosPerfil">
-                <div class="container-fluid">
-                  <div class="row">
-                    <br>
-                    @foreach($datosHijos as $hijo)
-                      <div class="col-xs-4 col-md-3">
-                        <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
-                        class="img-responsive img-circle tooltipShow"
-                        title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
-                        <center><h4>{{$hijo->username}}</h4></center>
-                        <br>
-                      </div>
-                    @endforeach
-                    <br><br>
-                  </div>
-                </div>
-              </section>
-              @endif
 
-              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+
+                @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
+                  <section class="active tab-pane" id="hijosPerfil">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <br>
+                            @foreach($datosHijos as $hijo)
+                              <div class="col-xs-4 col-md-3">
+                                <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
+                                class="img-responsive img-circle tooltipShow"
+                                title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
+                                <center><h4>{{$hijo->username}}</h4></center>
+                                <br>
+                              </div>
+                            @endforeach
+
+                        <br><br>
+                      </div>
+                    </div>
+                  </section>
+                @endif
+
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
+
               <section class="tab-pane" id="alerta">
                 <div class="container-fluid">
                   <div class="row">
@@ -659,7 +677,8 @@
               </section>
               @endif
 
-              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
+
               <section class="tab-pane" id="graficas">
                 <div class="container-fluid">
                   <div class="row">

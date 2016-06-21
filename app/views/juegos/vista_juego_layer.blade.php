@@ -168,7 +168,7 @@
                         <div class="col-md-5">
                           <div class="text-right boton-instrucciones">
                             <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal-instrucciones">
-                              <i class="fa fa-book"></i> Instrucciones 
+                              <i class="fa fa-book"></i> Instrucciones
                             </button>
                           </div>
                         </div> 
@@ -284,7 +284,7 @@
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   <script type="text/javascript">
     $juego.game.setMaxPuntuacion({{$maxProm}});
-    {{-- 
+    {{--
       var cali=0;
      @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
@@ -295,7 +295,7 @@
              $.each($(".cali"),function(i,o){
                if(i<r){
                    $(o).attr("class","cali fa fa-star fa-2x");
-               }  
+               }
              });
          }).fail(function(e){
              console.error(e);
@@ -307,7 +307,7 @@
           $.each($(".cali"),function(i,o){
             if(i<calificacion){
                 $(o).attr("class","cali fa fa-star fa-2x");
-            } 
+            }
          });
      });
      $(".cali").mouseleave(function(){
@@ -317,7 +317,7 @@
                  $(o).attr("class","cali fa fa-star fa-2x");
              }
          });
-     });  
+     });
      $(".cali").click(function(){
          $(".cali").attr("class","cali fa fa-star-o fa-2x");
          var calificacion = $(this).index();
@@ -325,7 +325,7 @@
          $.each($(".cali"),function(i,o){
             if(i<calificacion){
                 $(o).attr("class","cali fa fa-star fa-2x");
-            } 
+            }
          });
          @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
