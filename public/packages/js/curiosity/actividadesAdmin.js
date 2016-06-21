@@ -191,13 +191,75 @@ $(document).ready(function() {
           $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
         });
       },
-      // actualiza un objeto enviando como parametros
-      // el boton al que se le da clic, la direccion donde
-      // hará la funcion de actualizar, el id del cuadro
-      // al que se le ha dado clic y el estatus es decir
-      // si se encuentra bloqueado o desbloqueado
+       convertEmbedCode:function(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                return 'www.youtube.com/embed/' + match[2];
+            } else {
+                return 'error';
+            }
+      },
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         $tipos = new Array('.pdf', '.docx');
+        console.log(actividad.registro.convertEmbedCode($("#video").val()));
+        var embedCode =actividad.registro.convertEmbedCode($("#video").val());
+        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false || $curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == true){
+                var $btnEnviar = boton;
+                  $btnEnviar.attr('disabled', 'disabled');
+                  $btnEnviar.text('Guardando...');
+
+                  var formData = new FormData($("#formPDF")[0]);
+                  formData.append('nombre', $("#nombre").val());
+                  formData.append('objetivo', $("#descripcion").val());
+                  formData.append('code_embed', embedCode);
+                  formData.append('profesores_id', $("#profesores").val());
+                  formData.append('estatus', estatusNow);
+                  formData.append('procedenciaID', idProcedencia);
+                  formData.append('color', $("#color").val());
+                  formData.append('idUpdate', id);
+                  $.ajax({
+                    url: direccion,
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                  })
+                  .done(function(response) {
+                    if($.isPlainObject(response)){
+                      $.each(response,function(index,value){
+                        $.each(value,function(i, message){
+                          $curiosity.noty(message, 'warning');
+                        });
+                      });
+                    }
+                    else if(response[0] == 'success'){
+                      $curiosity.noty("Actualizado Correctamente", "success");
+                      $("#"+id).text($("#nombre").val());
+                      $("#"+id).data('descrip', $("#descripcion").val());
+                      $("#"+id).data('estatus', estatusNow);
+                      $("#"+id).data('color', $("#color").val());
+                      $("#"+id).parent().css('background',$("#color").val());
+                      $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', embedCode);
+                      actividad.hideAdmin();
+                    }
+                    else if(response[0] == 'same'){
+                      $curiosity.noty("El nombre ya existe", "warning");
+                    }
+                    else if(response[0] == 'same_exist'){
+                      $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
+                    }
+                  })
+                  .fail(function(error) {
+                    console.log(error);
+                  })
+                  .always(function(){
+                    $btnEnviar.removeAttr('disabled');
+                    $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+                  });
+        }
         var $btnEnviar = boton;
         $btnEnviar.attr('disabled', 'disabled');
         $btnEnviar.text('Guardando...');

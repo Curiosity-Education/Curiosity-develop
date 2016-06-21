@@ -143,6 +143,62 @@ class loginController extends BaseController
         }
       // }
     }
+    public function loginFB(){
+        $validarAuth = array(
+            'username' => Input::get('first_name').' '.Input::get('last_name'),
+            'password' => Input::get('id')
+        );
+        /*Vemos si las credenciales son correctas*/
+                  if(Auth::attempt($validarAuth)){
+                        $idSession = $this->generaidSession();
+                        User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
+                        Session::put('sessionId',$idSession);
+                        return Response::json(array(0=>'success'));
+                  }
+                  else{
+                     $user = new User();
+                        $user->username=Input::get('first_name').' '.Input::get('last_name');
+                        $user->password=Hash::make(Input::get('id'));
+                        $user->token=sha1(Input::get('email'));
+                        $user->active = 1;
+                        $user->skin_id=skin::all()->first()->id;
+                        $user->save();
+                        Session::put('crypt',Crypt::encrypt($user->password));
+                        $myRole = DB::table('roles')->where('name', '=', 'padre-fb')->pluck('id');
+                        $user->attachRole($myRole);
+                        $persona = new persona();
+                        $persona->nombre = Input::get('first_name');
+                        $persona->apellido_paterno = Input::get('last_name');
+                        if(Input::get('gender') == 'male'){
+                            $persona->sexo = 'm';
+                        }
+                        else
+                            $persona->sexo = 'f';
+                        $persona->user_id=$user->id;
+                        $persona->save();
+                        // $membresia = new membresia();
+                        // $membresia->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
+                        // $membresia->fecha_registro= date("Y-m-d");
+                        // $membresia->active=1;
+                        // $membresia->save();
+                        $padre = new padre();
+                        $padre->persona_id   = $persona->id;
+                        $padre->email = (Input::get('email') == '')?'Sin email':Input::get('email');
+                        $padre->save();
+                        $perfil = new perfil();
+                        $perfil->foto_perfil=Input::get('picture')['data']['url'];
+                        $perfil->gustos="¿Cuáles son tus gustos?";
+                        $perfil->users_id=$user->id;
+                        $perfil->save();
+                        $idSession = $this->generaidSession();
+                            if(Auth::attempt($validarAuth)){
+                            $idSession = $this->generaidSession();
+                            User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
+                            Session::put('sessionId',$idSession);
+                            return Response::json(array(0=>'success'));
+                      }
+                  }
+    }
     private function generaidSession(){
 		$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 

@@ -35,7 +35,7 @@ $(document).on('ready',function(){
     $(".objetoPointer").click(function(event) {
       if($(this).data('estatus') != "unlock"){
         $curiosity.noty("Disponible próximamente", "warning");
-      }      
+      }
     });
 
     // Boton ingresar

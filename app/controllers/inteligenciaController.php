@@ -199,7 +199,7 @@ class inteligenciaController extends BaseController
     $id = Input::get('data.id');
     inteligencia::where('id', '=', $id)->update(array(
       'active' => 0
-    ));    
+    ));
     return Response::json(array(0=>'success'));
   }
 

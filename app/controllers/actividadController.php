@@ -878,12 +878,12 @@ class actividadController extends BaseController
       try {
      if(Auth::user()->hasRole('hijo')){
           //if
-          // si esta consulta te encuentra un registro 
-          //quiere decir que el hijo que esta calificando esta actividad 
-          //ya la ha califcado anteriormente por lo cual solo actualizaremos 
+          // si esta consulta te encuentra un registro
+          //quiere decir que el hijo que esta calificando esta actividad
+          //ya la ha califcado anteriormente por lo cual solo actualizaremos
           //a la nueva calificación que este hijo estabecio
           //else
-          // En caso de que no sea así entonces ingresaremos un nuevo 
+          // En caso de que no sea así entonces ingresaremos un nuevo
           //registro con la califcación que el hijo establecio a la actividad
           $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",Auth::user()->persona->hijo->id)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
           if($hijo_califica_actividad){

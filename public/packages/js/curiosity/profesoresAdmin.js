@@ -198,7 +198,7 @@ $(document).ready(function(){
           }
         });
         if($("#formProf").valid()){
-          profesor.registro.guardarAdd();  
+          profesor.registro.guardarAdd();
         }
         break;
       case 'update':

@@ -14,5 +14,5 @@ $(document).ready(function() {
       $curiosity.noty("Disponible próximamente", "warning");
     }
   });
-  
+
 });

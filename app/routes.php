@@ -19,6 +19,7 @@ Route::get('/nosotros', 'principalController@verNosotros');
 /* ------------------------------------------------- */
 Route::group(array('before' => 'unauth'), function(){
     Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
+    Route::match(array('GET','POST'),'/login-fb', 'loginController@loginFB');
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
 });
 Route::get('/confirmar/{token}','padreController@confirmar');
@@ -128,3 +129,4 @@ Route::group(array('before' => 'auth'), function(){
 
 
 });
+
