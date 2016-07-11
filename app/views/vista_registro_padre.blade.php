@@ -82,15 +82,6 @@
 											<input type="email" name="email" value="" class="form-control form-custom" placeholder="Correo Elecronico">
 										</div>
 									</div>
-									 <!-- <div class="form-group">
-										 <label for="telefono"><h4 class="title-input"><b>Número Telefónico</b></h4></label>
-										 <div class="input-group">
-										   <span class="input-group-addon">
-										   	<span class="fa fa-phone"></span>
-										   </span>
-										   <input type="tel" class="form-control form-custom" name="telefono" id="telefono">
-										 </div>
-									 </div> -->
 								</section>
 
 								<h2>Datos Generales</h2>
@@ -145,106 +136,6 @@
 									 </div>
 								 </div>
 								</section>
-
-								<!-- <h2>Direccion</h2>
-								<section>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-										 <select class="form-control  form-custom" id="estado" name="estado" data-placeholder="Estado">
-											 <option value="">Estado</option>
-											 @foreach($datos["estados"] as $estado)
-											 	<option value="{{$estado->id}}">{{$estado->nombre}}</option>
-											 @endforeach
-										 </select>
-									 </div>
-								 </div>
-
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		 <span class='input-group-addon'>
-								 		 	<i class="fa fa-home"></i>
-								 		 </span>
-										 <select class="form-control  form-custom" name="ciudad">
-											 <option value="">Ciudad</option>
-										 </select>
-									 </div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class='fa fa-home'></i>
-								 		</span>
-								 		<input type="text"  name="colonia" class="form-control form-custom" placeholder="Colonia"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-								 		<input type="text" name="calle" class="form-control form-custom" placeholder="Calle"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-								 		<input type="text" class="form-control form-custom" name="numero" placeholder="Numero de casa"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	 <div class="input-group">
-								 	 	<span class="input-group-addon">
-								 	 		<i class='fa fa-home'></i>
-								 	 	</span>
-									 	<input type="number" name="codigo_postal" id="codigo_postal" placeholder="Codigo Postal" class="form-control form-custom">
-									 </div>
-								 </div>
-								</section> -->
-
-							<!-- <h2>Pagos</h2>
-								<section>
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-user"></span>
-										    </span>
-										    <input type="text" name="tarjetahabiente" class="form-control" placeholder="Nombre del Tarjetahabiente">
-										  </div>
-										</div>
-
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-cc-visa"></span>
-										    </span>
-										    <input type="text" class="form-control" name="numero_tarjeta" placeholder="Numero de Tarjeta">
-										  </div>
-										</div>
-
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-credit-card"></span>
-										    </span>
-										    <input type="text" name="cvc" class="form-control" placeholder="CVC">
-										  </div>
-										</div>
-
-										<div class="form-group">
-											<label for="fec_nac"><h4 class="title-input"><b>Fecha de Expiración</b></h4></label>
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-calendar-times-o"></span>
-										    </span>
-										    <input type="text" name="fecha_expiracion" class="form-control form-custom">
-										  </div>
-										</div>
-								</section> -->
 							</div>
 
 						</form>

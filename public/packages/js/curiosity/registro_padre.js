@@ -59,12 +59,7 @@ $(document).on("ready",function(){
            apellido_paterno:{required:true,maxlength:30,alpha:true},
            apellido_materno:{required:true,maxlength:30,alpha:true},
            sexo:{required:true,maxlength:1},
-           fecha_nacimiento:{required:true,date:true},
-           telefono:{required:true,telephone:true,maxlength:14,minlength:10},
-           colonia:{maxlength:50},
-           calle:{maxlength:50},
-           numero:{maxlength:5,numero_casa:true},
-           codigo_postal:{number:true,minlength:5,maxlength:5}
+           fecha_nacimiento:{required:true,date:true}
        },
        messages:{
            cpassword:{equalTo:"Las contraseñas no coinciden"},
@@ -105,9 +100,9 @@ $(document).on("ready",function(){
         }else return false;
     }
     $.validator.addMethod("alpha",alpha,"Formato no valido");
-    $.validator.addMethod("telephone",telephone,"Numero telefónico invalido o incompleto");
+    // $.validator.addMethod("telephone",telephone,"Numero telefónico invalido o incompleto");
     // $.validator.addMethod("cvc",cvc,"Por favor ingresa un cvc válido");
-    $.validator.addMethod("numero_casa",numero_casa,"Por favor ingresa un numero de casa valido. Ej 1, 12, 124, 1248, 1A, 12B, 124C, 1248C");
+    // $.validator.addMethod("numero_casa",numero_casa,"Por favor ingresa un numero de casa valido. Ej 1, 12, 124, 1248, 1A, 12B, 124C, 1248C");
     /*----------------------------------------------------
         function para limpiar el texto del formulario
     ----------------------------------------------------*/
@@ -140,13 +135,7 @@ $(document).on("ready",function(){
             apellido_paterno:$("input[name='apellido_paterno']").val(),
             apellido_materno:$("input[name='apellido_materno']").val(),
             sexo:$("select[name='sexo']").val(),
-            fecha_nacimiento:$("input[name='fecha_nacimiento']").val(),
-            telefono:$("input[name='telefono']").val(),
-            ciudad:$("select[name='ciudad']").val(),
-            colonia:$("input[name='colonia']").val(),
-            calle:$("input[name='calle']").val(),
-            numero:$("input[name='numero']").val(),
-            codigo_postal:$("input[name='codigo_postal']").val()
+            fecha_nacimiento:$("input[name='fecha_nacimiento']").val()
         }
         if($form.valid()){
           $btn = $(this).prop("disabled",true);
@@ -239,29 +228,29 @@ $(document).on("ready",function(){
            });
         }
 });
-$("body").on("change","select[name='estado']",function(){
-        if($(this).val()!==""){
-            $("select[name='ciudad']").prop("disabled",true);
-            $("select[name='ciudad']").addClass("striped-alert");
-            $.ajax({
-                type:"GET",
-                url:"/getCiudades",
-                data:{estado_id:$("select[name='estado']").val()}
-
-            })
-            .done(function(r){
-                $("select[name='ciudad']").empty();
-                $default = $("<option>",{value:"null"}).text("Ciudad");
-                $("select[name='ciudad']").append($default);
-                $.each(r,function(i,o){
-                    $option_ciudad=$("<option/>",{value:o.id}).text(o.nombre);
-                    $("select[name='ciudad']").append($option_ciudad);
-                });
-            })
-            .always(function(){
-               $("select[name='ciudad']").prop("disabled",false);
-               $("select[name='ciudad']").removeClass("striped-alert");
-            });
-        }
-    });
+// $("body").on("change","select[name='estado']",function(){
+//         if($(this).val()!==""){
+//             $("select[name='ciudad']").prop("disabled",true);
+//             $("select[name='ciudad']").addClass("striped-alert");
+//             $.ajax({
+//                 type:"GET",
+//                 url:"/getCiudades",
+//                 data:{estado_id:$("select[name='estado']").val()}
+//
+//             })
+//             .done(function(r){
+//                 $("select[name='ciudad']").empty();
+//                 $default = $("<option>",{value:"null"}).text("Ciudad");
+//                 $("select[name='ciudad']").append($default);
+//                 $.each(r,function(i,o){
+//                     $option_ciudad=$("<option/>",{value:o.id}).text(o.nombre);
+//                     $("select[name='ciudad']").append($option_ciudad);
+//                 });
+//             })
+//             .always(function(){
+//                $("select[name='ciudad']").prop("disabled",false);
+//                $("select[name='ciudad']").removeClass("striped-alert");
+//             });
+//         }
+//     });
 });

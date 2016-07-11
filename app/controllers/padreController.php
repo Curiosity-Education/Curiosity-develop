@@ -82,7 +82,7 @@ class padreController extends BaseController
 
             } catch (Exception $e){
                 $user->delete();
-                $direccion->delete();
+                // $direccion->delete();
                 // $membresia->delete();
                 return $e->getMessage();
             }
@@ -105,11 +105,12 @@ class padreController extends BaseController
             //     return "OK";
             // } catch (Exception $e) {
             //     $user->delete();
-            //     $direccion->delete();
+            //     // $direccion->delete();
             //     // $membresia->delete();
             //     $code = $e->getCode();
             //     return $code;
             // }
+            return "OK";
 
         }
 

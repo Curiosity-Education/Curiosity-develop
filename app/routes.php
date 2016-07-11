@@ -13,6 +13,9 @@
 
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
+Route::get('/proximamente', function(){
+  return View::make('vista_proximamente');
+});
 
 /* ------------------------------------------------- */
 
