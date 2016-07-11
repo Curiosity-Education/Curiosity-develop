@@ -5,7 +5,7 @@
   @yield('juego_css')
 @stop
 @section('titulo_contenido')
-   {{--<label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>--}}
+   <label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>
 @stop
 @section('panel_opcion')
 @yield('panel_opciones')
@@ -69,7 +69,7 @@
           <h4 class="modal-title" id="">Video de Estudio</h4>
         </div>
         <div class="modal-body">
-         {{--<iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>--}}
+         <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
 
@@ -86,12 +86,12 @@
                   <div class='row'>
                     <div class='col-md-5 text-center' id='max-pts'>
                       <center>
-                        <img src="" class="img-responsive" width="60%" id="imgNivel"/>
+                        <!-- <img src="/packages/images/avatars_curiosity/secuencias/sec_estid_45_c688690ef82cd7cf5446f5b953f43295.gif" class="img-responsive" width="60%" id="imgNivel"/> -->
                       </center>
                       <div class="row">
                         <div class="col-md-12 cal-titulo">
                           <h3>Máxima Puntuación</h3>
-                          {{--<h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>--}}
+                          <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
                         </div>
                       </div>
                     </div>
@@ -120,12 +120,12 @@
                                 </div>
                               </li>
                             </ul>
-                            <!-- INICIO DE MODAL SUMAS Y RESTAS --> 
+                            <!-- INICIO DE MODAL SUMAS Y RESTAS -->
                               <div class="modal fade" id="modal-instrucciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                  
+
                                   <center><h3 class="modal-title" id="myModalLabel"><i class="icon fa fa-flag-checkered"></i> INSTRUCCIONES DE JUEGO </h3></center>
                                   <center><h4 class="modal-title" id="titulo-juego">| Sumas y Restas |<hr></h4></center>
                                   </div>
@@ -146,7 +146,7 @@
                                     </div>
                                   </div>
                                   <hr>
-                                  
+
                                     <div class="container-fluid">
                                     <div class="col-md-5 col-md-offset-7 col-xs-12">
                                       <button id="omitir" type="button" class="btn form-control" data-dismiss="modal" aria-label="Close"><i class="icon fa fa-times-circle"></i> saltar instrucciones</button>
@@ -156,7 +156,7 @@
                                   </div>
                                 </div>
                               </div>
-                        
+
                             <!-- Controles -->
                             <!--<ul id="slider-controls" class="slider-controls">
 
@@ -171,7 +171,7 @@
                               <i class="fa fa-book"></i> Instrucciones
                             </button>
                           </div>
-                        </div> 
+                        </div>
                         <div class="col-md-7">
                           <div class="text-right boton-comezar">
                             <button type="button" class="btn btn-info btn-lg" id="btn-comenzar">
@@ -194,13 +194,13 @@
                       <div class="modal-content col-md-12 col-xs-12" id="modal-conten-pausa">
                         <div class="col-md-12 col-xs-12" id="content"><br>
                           <center><h3 class="" id="titulo">Menu de Juego</h3> <hr></center>
-                       
+
                           <div class="col-md-12">
                             <center><h4 role="button" class="btn form-control modal-title myModalLabel" data-dismiss="modal" id="continuar"><i class="icon fa fa-play"></i> Continuar</h4></center>
                             <center><h4 role="button" class="btn form-control modal-title myModalLabel" data-dismiss="modal" id="reiniciar"><i class="icon fa fa-refresh"></i> Reiniciar juego</h4></center>
                             <center><h4 role="button" class="btn form-control modal-title myModalLabel" id="ayuda"><i class="icon fa fa-question-circle"></i> Ayuda</h4></center>
                             <center><h4 role="button" class="btn form-control modal-title myModalLabel" data-dismiss="modal" id="salir_juego"><i class="icon fa fa-sign-out"></i> Salir del juego</h4></center>
-                            
+
                           </div>
                         </div>
                       </div>
@@ -255,7 +255,7 @@
   <!-- SECCION FINAL DONDE SE COLOCA LA PUNTUACION POR ESTRELLAS Y LOS BOTONES DE DESCARGA Y VIDEO -->
   <div class="row">
     <div class="col-md-4">
-      <h3><b>Califica la Actividad</b></h3>
+      <h3><b>Califica la actividad</b></h3>
       <span class="cali fa fa-star-o fa-2x"></span>
       <span class="cali fa fa-star-o fa-2x"></span>
       <span class="cali fa fa-star-o fa-2x"></span>
@@ -264,7 +264,7 @@
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
-        <a target="_blank" class="btn btn-default btnDownloadPDF" {{--href="/packages/docs/{{ $datos[0]->pdf }}"--}}>
+        <a target="_blank" class="btn btn-default btnDownloadPDF" href="/packages/docs/{{ $datos[0]->pdf }}">
           <span class="fa fa-download"></span>&nbsp;
           <b>Guía de estudio PDF</b>
         </a>
@@ -284,7 +284,6 @@
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   <script type="text/javascript">
     $juego.game.setMaxPuntuacion({{$maxProm}});
-    {{--
       var cali=0;
      @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
@@ -339,7 +338,7 @@
          });
          @endif
      });
-        --}}
+
   </script>
   @yield('juego_js')
 @stop

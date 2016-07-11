@@ -45,7 +45,9 @@ function __init(){
             $('#login-reg').hide();
             $('#login-int').show();
             $('#login-back').show();
+            $(".login-img").hide("slow");
             $(".login-img").attr('src',foto);
+            $(".login-img").show("slow");
         }
 
         // reocultamos los botones y mostramos los botones de inicio asi como regresamos
@@ -58,7 +60,8 @@ function __init(){
             $('#login-int').hide();
             $('#login-back').hide();
             $("#username").val("");
-            $(".login-img").attr('src',"/packages/images/avatars/avt-cu-default.png");
+            $('#password').val("");
+            $(".login-img").attr('src',"/packages/images/avatars/perfil-default.jpg");
         }
 
         // ejecutamos la funcion return_log para regresar los valore de login
@@ -169,15 +172,13 @@ function __init(){
         }
         else{
           $curiosity.noty('La contraseña de usuario no es valida', 'information');
+          $env.removeAttr('disabled');
+          $env.text('Siguiente');
+          $canc.removeAttr('disabled');
         }
       })
       .fail(function(error) {
         console.log(error);
-      })
-      .always(function(){
-        $env.removeAttr('disabled');
-        $env.text('Siguiente');
-        $canc.removeAttr('disabled');
       });
     }
 

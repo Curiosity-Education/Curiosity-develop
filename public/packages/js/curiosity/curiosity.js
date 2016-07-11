@@ -2,6 +2,8 @@ var $curiosity = {
   menu : {
     setPaginaId : function(id){
       $(id).addClass('active');
+      $(id + " > .arrowAsideActive").show();
+      $(id + " > a").attr("href", "javascript:void(0)");
     }
   },
   createNotifications:function(message,titulo,image){
@@ -48,6 +50,21 @@ var $curiosity = {
                     theme       : 'defaultTheme',
                     maxVisible  : 10
                  });
+                // switch (tipo) {
+                //   case "success":
+                //     alertify.success(mensaje);
+                //     break;
+                //   case "warning":
+                //     alertify.message(mensaje);
+                //     // alertify.warning(mensaje);
+                //     break;
+                //   case "info":
+                //     alertify.message(mensaje);
+                //     break;
+                //   case "error":
+                //     alertify.error(mensaje);
+                //     break;
+                // }
         }
         else{
             var n = noty({
@@ -60,8 +77,21 @@ var $curiosity = {
                 theme       : 'defaultTheme',
                 maxVisible  : 10
              });
+            // switch (tipo) {
+            //   case "success":
+            //     alertify.success(mensaje);
+            //     break;
+            //   case "warning":
+            //     alertify.warning(mensaje);
+            //     break;
+            //   case "info":
+            //     alertify.message(mensaje);
+            //     break;
+            //   case "error":
+            //     alertify.error(mensaje);
+            //     break;
+            // }
         }
-      //notifyMe();
 
      document.getElementById('notyAudio').play();
   },
@@ -115,12 +145,12 @@ var $curiosity = {
   },
   notyConfirm : function($funcion){
     swal({
-      title: "¿Seguro que desea remover?",
-      text: "¡El elemento puede ser recuperado al registrarse con el mismo nombre!",
+      title: "¿Estas seguro que lo deseas eliminar?",
       type: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#c9371a",
-      confirmButtonText: "Sí, Remover!",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#ec2726",
+      confirmButtonText: "Eliminar",
       closeOnConfirm: false
     },
     function(){
@@ -141,7 +171,7 @@ var $curiosity = {
        break;
        }
        //si estoy aqui es que no se ha podido submitir
-       return false;
+      //  return false;
     }
 
     if (!permitida) {

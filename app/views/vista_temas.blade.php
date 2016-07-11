@@ -1,7 +1,7 @@
 @extends('admin_base')
 
 @section('title')
-  Temas
+  Actividades
 @stop
 
 @section('mi_css')
@@ -13,20 +13,22 @@
 @stop
 
 @section('migas')
+  <li><a href="/inicio">Inicio</a></li>
+  <li class="fa fa-angle-right separatorBrand"></li>
   <li><a href="/nivel">Grados Escolares</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
   <li><a href="/inteligencia{{$objetos[0]['nivel_id']}}">{{$objetos[0]['nivel_nombre']}}</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
   <li><a href="/bloque{{$objetos[0]['inteligencia_id']}}">{{$objetos[0]['inteligencia_nombre']}}</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
-  <li><a href="/tema{{$objetos[0]['bloque_id']}}">{{$objetos[0]['bloque_nombre']}}</a></li>
+  <li><a href="javascript:void(0)" class="brandActive">{{$objetos[0]['bloque_nombre']}}</a></li>
 @stop
 
 @section('panel_opcion')
   @foreach($objetos as $objeto)
   <div class='col-md-4 objeto'>
     <div class='box box-widget widget-title objetoPointer' data-rol='{{$rol}}'' data-prem='{{ $objeto->isPremium }}' data-estatus={{$objeto->estatus}} data-id = {{ $objeto->id }}>
-      @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') && $objeto->isPremium == 1 )
+      @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') and $objeto->isPremium == 1 )
       <span class="fa fa-star isPremium" style="background-color: {{$objeto->bg_color}}"></span>
       @endif
       <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">
@@ -44,49 +46,18 @@
       </div>
       <div class='box-footer'>
         <div class='row'>
-          <div class='col-xs-4 border-right'>
-            <div class='description-block'>
-            </div>
-          </div>
-          <div class='col-xs-4 border-right'>
+          <div class='col-xs-12 text-center'>
             @if($objeto->estatus != "lock")
               <div class='description-block'>
                 <span class='fa fa-star fa-star-color fa-4x tooltipShow' title='{{$objeto->descripcion}}'></span>
               </div>
             @endif
           </div>
-          <div class='col-xs-4'>
-            <div class='description-block btnIn'>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
   @endforeach
-
-  <div class="modal fade" id="modalPremium" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body text-center">
-          <button type="button" class="close" data-dismiss="modal" id="closePrem" aria-hidden="true">&times;</button>
-          <span class="fa fa-star" id="iconPrem"></span>
-          <br><br>
-          <h4 class="tituloPrem">Desbloquea el Tema.</h4>
-          <br>
-          <p class="text-center bodyPrem">
-            Este Tema se encuentra bloqueado por hoy.<br>
-            Puedes Jugar en él pasándote a Premium ahora.<br><br>
-            Cuentale ahora a tus padres, No esperes más!!
-          </p>
-          <!-- <br>
-          <button type="button" id="botonPremium" class="btn btn-primary btn-lg">
-            Notificarle a mis Padres
-          </button> -->
-        </div>
-      </div>
-    </div>
-  </div>
 
 @stop
 

@@ -176,3 +176,9 @@ Route::filter('realizar_actividades',function(){
        return View::make('view-error404');
    }
 });
+
+Route::filter('gestionar_avatar',function(){
+   if(!Entrust::can('gestionar_avatar')){
+       return View::make('view-error404');
+   }
+});

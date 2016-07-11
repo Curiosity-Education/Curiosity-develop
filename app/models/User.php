@@ -64,4 +64,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		  return $foto[0]['foto_perfil'];
 	}
 
+  public static function get_imagen_perfil_original($id){
+		$foto = User::where('users.id', '=', $id)
+		->join('perfiles', 'users.id', '=', 'perfiles.users_id')
+		->select('perfiles.foto_perfil')->get();
+        if(!Auth::user()->hasRole('padre-fb'))
+		  return "/packages/images/perfil/original/".$foto[0]['foto_perfil'];
+        else
+		  return $foto[0]['foto_perfil'];
+	}
+
 }

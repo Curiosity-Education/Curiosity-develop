@@ -32,7 +32,6 @@ Route::get('/gethijos','padreController@gethijos');
 // Route::post('/sendMensaje','padreController@sendMensaje');
 Route::group(array('before' => 'auth'), function(){
     /*Rutas para subir y ver juego*/
-    Route::get('/juego/{idActividad}/{nombre}','actividadController@getViewJuego');
     Route::post('/actividad/setdata','actividadController@setDataActivity');
     Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
     Route::group(array('before' => 'only_session'), function(){
@@ -64,12 +63,16 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/regHijo','hijoController@addHijo');
         Route::post('/foto','perfilController@cutImage');
         Route::post('/regAdmin','userController@saveAdmin');
+
+        // Realizar Actividades
         Route::group(array('before' => 'realizar_actividades'),function(){
+          Route::get('/juego/{idActividad}/{nombre}','actividadController@getViewJuego');
           Route::get('/nivel', 'nivelController@verPaginaInWeb');
           Route::get('/inteligencia{idNivel}', 'inteligenciaController@verPaginaInWeb');
           Route::get('/bloque{id}', 'bloqueController@verPaginaInWeb');
           Route::get('/tema{id}', 'temaController@verPaginaInWeb');
           Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
+          Route::post('/metaChange', 'hijoController@changeMeta');
         });
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
@@ -130,8 +133,27 @@ Route::group(array('before' => 'auth'), function(){
         Route::get('/inicio', 'contenidoController@getInicio');
         // Obtener Inteligencias
         Route::get('/edu-{idGrade}-inteligencia', 'contenidoController@getInteligencias');
+
+        // Filtro para la gestion de Avatar
+        Route::group(array('before' => 'gestionar_avatar'), function(){
+          // Administrar Avatar
+          Route::get('/adminavatar', 'avatarController@gestionar');
+          Route::post('/registrarAvatar', 'avatarController@registrarAvatar');
+          Route::post('/eliminarAvatar', 'avatarController@eliminarAvatar');
+          Route::post('/actualizarAvatar', 'avatarController@actualizarAvatar');
+          // Administrar estilos
+          Route::post('/getEstilos', 'avatarestilosController@getById');
+          Route::post('/registrarEstilo', 'avatarestilosController@registrarEstilo');
+          Route::post('/eliminarEstilo', 'avatarestilosController@eliminarEstilo');
+          Route::post('/actualizarEstilo', 'avatarestilosController@actualizarEstilo');
+          // Secuencias
+          Route::post('/getSecuencias', 'secuenciaController@getById');
+          Route::post('/getTiposSecuencia', 'secuenciaController@getTiposSecuencia');
+          Route::post('/resgistrarSecuencia', 'secuenciaController@guardar');
+          Route::post('/actualizarSecuencia', 'secuenciaController@actualizar');
+          Route::post('/eliminarSecuencia', 'secuenciaController@eliminar');
+        });
     });
 
 
 });
-

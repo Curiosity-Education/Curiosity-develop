@@ -7,7 +7,6 @@ $(document).ready(function(){
                                                     C:{pattern:/([0-9])?$/}
     }});
     var username = $("input[name='username']").val();
-    var telefono = $("input[name='telefono']").val();
     $("#frm-reg-admins").on("click","a[href='#finish']",function(){
         $btn = $(this);
         var text = $btn.text();
@@ -58,62 +57,61 @@ $(document).ready(function(){
             });
         }
     });
-    $("#frm_user").on("change","select[name='estado']",function(){
-        if($(this).val()!==""){
-            $("select[name='ciudad_id']").prop("disabled",true);
-            $("select[name='ciudad_id']").addClass("striped-alert");
-            $.ajax({
-                type:"GET",
-                url:"/getCiudades",
-                data:{estado_id:$("select[name='estado']").val()}
-
-            })
-            .done(function(r){
-                $("select[name='ciudad_id']").empty();
-                $default = $("<option>",{value:"null"}).text("Ciudad");
-                $("select[name='ciudad_id']").append($default);
-                $.each(r,function(i,o){
-                    $option_ciudad=$("<option/>",{value:o.id}).text(o.nombre);
-                    $("select[name='ciudad_id']").append($option_ciudad);
-                });
-            })
-            .always(function(){
-               $("select[name='ciudad_id']").prop("disabled",false);
-               $("select[name='ciudad_id']").removeClass("striped-alert");
-            });
-        }
-    });
+    // --- Seleccionar un estado y sus ciudades
+    // $("#frm_user").on("change","select[name='estado']",function(){
+    //     if($(this).val()!==""){
+    //         $("select[name='ciudad_id']").prop("disabled",true);
+    //         $("select[name='ciudad_id']").addClass("striped-alert");
+    //         $.ajax({
+    //             type:"GET",
+    //             url:"/getCiudades",
+    //             data:{estado_id:$("select[name='estado']").val()}
+    //         })
+    //         .done(function(r){
+    //             $("select[name='ciudad_id']").empty();
+    //             $default = $("<option>",{value:"null"}).text("Ciudad");
+    //             $("select[name='ciudad_id']").append($default);
+    //             $.each(r,function(i,o){
+    //                 $option_ciudad=$("<option/>",{value:o.id}).text(o.nombre);
+    //                 $("select[name='ciudad_id']").append($option_ciudad);
+    //             });
+    //         })
+    //         .always(function(){
+    //            $("select[name='ciudad_id']").prop("disabled",false);
+    //            $("select[name='ciudad_id']").removeClass("striped-alert");
+    //         });
+    //     }
+    // });
 
     $("#frm_user input[name='username']").keypress(function(){
         if($(this).valid()){
          $(this).next().remove();
         }
     });
-    $("#frm-reg-hijos").on("change","#escuela_id",function(){
-        if($(this).val()==="0"){
-            $(this).hide();
-            $("#return-fa-normal").hide();
-            $("#esc_alt").removeClass('hidden');
-            $("#return-select-school").removeClass("hidden");
-            $("#return-select-school").show();
-            $("#esc_alt").show();
-        }
-    });
-    $("#frm-reg-hijos").on("click","#return-select-school",function(){
-        $("#return-fa-normal").show();
-        $("#esc_alt").hide();
-        $(this).hide();
-        $("#escuela_id").show();
-        $("#escuela_id").val($("#escuela_id").children().first().val());
-        $("#esc_alt").val("");
-
-    });
+    // $("#frm-reg-hijos").on("change","#escuela_id",function(){
+    //     if($(this).val()==="0"){
+    //         $(this).hide();
+    //         $("#return-fa-normal").hide();
+    //         $("#esc_alt").removeClass('hidden');
+    //         $("#return-select-school").removeClass("hidden");
+    //         $("#return-select-school").show();
+    //         $("#esc_alt").show();
+    //     }
+    // });
+    // $("#frm-reg-hijos").on("click","#return-select-school",function(){
+    //     $("#return-fa-normal").show();
+    //     $("#esc_alt").hide();
+    //     $(this).hide();
+    //     $("#escuela_id").show();
+    //     $("#escuela_id").val($("#escuela_id").children().first().val());
+    //     $("#esc_alt").val("");
+    //
+    // });
 
 
     //evento click en el boton restaurar
     $("#rest").click(function(){
         $("input[name='username']").val(username);
-        $("input[name='telefono']").val(telefono);
     });
     //mandar los datos ha actualizar por el usuario
     $("#frm-reg-admins").validate({
@@ -129,7 +127,7 @@ $(document).ready(function(){
              apellido_paterno_admin:{required:true,maxlength:30,alpha:true},
              apellido_materno_admin:{required:true,maxlength:30,alpha:true},
              sexo_admin:{required:true,maxlength:1},
-             role:{required:true,maxlength:1,numeric:true}, 
+             role:{required:true,maxlength:1,numeric:true},
              fecha_nacimiento_admin:{required:true,date:true},
              password_admin:{required:true,minlength:8,maxlength:100},
              cpassword_admin:{required:true,equalTo:function(){
@@ -154,15 +152,12 @@ $(document).ready(function(){
              apellido_paterno:{required:true,maxlength:30,alpha:true},
              apellido_materno:{required:true,maxlength:30,alpha:true},
              sexo:{required:true,maxlength:1},
-             escuela_id:{required:true,maxlength:100},
-             web:{maxlength:100},
              promedio:{required:true,promedio:true},
              fecha_nacimiento:{required:true,date:true},
              password:{required:true,minlength:8,maxlength:100},
              cpassword:{required:true,equalTo:function(){
                return $("input[name='password']");
              }},
-             esc_alt:{maxlength:200},
              username_hijo:{required:true,maxlength:50,remote:{
                 url:"/remote-username-hijo",
                 type:"post",
@@ -185,15 +180,13 @@ $(document).ready(function(){
     });
      $.validator.addMethod("alpha",alpha,"Formato no valido");
      $.validator.addMethod("promedio",promedio,"Formato no valido");
-     $.validator.addMethod("numero_casa",numero_casa,"Por favor ingresa un numero de casa valido. Ej 1, 12, 124, 1248, 1A, 12B, 124C, 1248C");
-     $.validator.addMethod("telephone",telephone,"Numero telefónico invalido o incompleto");
      // creamos una nueva regla de validacion para el input de telefono
-     function telephone(value, element, param){//regla de validacion de numeros de telefono
-        var er = /^\([0-9]{3}\){1}\s[0-9]{3}\-[0-9]{4}/;// (999) 999-9999
-        if(er.test(value)){
-          return true;
-        }else return false;
-    }
+    //  function telephone(value, element, param){//regla de validacion de numeros de telefono
+    //     var er = /^\([0-9]{3}\){1}\s[0-9]{3}\-[0-9]{4}/;// (999) 999-9999
+    //     if(er.test(value)){
+    //       return true;
+    //     }else return false;
+    // }
      function alpha(value, element, param){
         var er =/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/;
         if(er.test(value)){
@@ -201,12 +194,12 @@ $(document).ready(function(){
         }else return false;
 
     }
-    function numero_casa(value, element, param){
-      var er = /^([0-9])([0-9]{1,3})?([A-Za-z]{1})?$/;
-      if(er.test(value)){
-        return true;
-      }else return false;
-    }
+    // function numero_casa(value, element, param){
+    //   var er = /^([0-9])([0-9]{1,3})?([A-Za-z]{1})?$/;
+    //   if(er.test(value)){
+    //     return true;
+    //   }else return false;
+    // }
     function promedio(value,element,param){
         var er = /^([0-9]{1}(\.[0-9]{1})?|10{1})$/;
         if(er.test(value)){
@@ -230,12 +223,10 @@ $(document).ready(function(){
                 apellido_materno:$("#apellido_materno").val(),
                 sexo:$("#sexo").val(),
                 fecha_nacimiento:$("#fecha_nacimiento").val(),
-                escuela_id:$("#escuela_id").val(),
                 username_hijo:$("#username_hijo").val(),
                 promedio:$("#promedio").val(),
                 password:$("#password").val(),
-                cpassword:$("#cpassword").val(),
-                esc_alt:$("#esc_alt").val()
+                cpassword:$("#cpassword").val()
             }
             $.ajax({
                 url:"/regHijo",

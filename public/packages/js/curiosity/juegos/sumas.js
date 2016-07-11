@@ -3,6 +3,7 @@ $(document).ready(function(){
 
   $juego.setBackgroundColor("rgb(25, 132, 179)");
   $juego.setBackgroundImg("/packages/images/fondos/fondo.jpg");
+  $juego.setNivelUsuarioIMG();
   $juego.boton.comenzar.setFuncion(funcionComenzar);
 
 // ----------------------------------------------------------------------------
@@ -10,7 +11,7 @@ $(document).ready(function(){
 // ---------------------------------------------------------------------------
   // Guardamos el puntaje maximo del usuario en una variable para uso global
   var puntosMaximos = $juego.getPuntuacion();
-
+  
   // Establece la cantidad de segundos de inicio
   var cantTemp = 60;
   // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)

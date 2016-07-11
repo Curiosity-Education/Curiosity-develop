@@ -56,29 +56,6 @@
     @endif
 </div>
 
-<div class="modal fade" id="modalPremium" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <button type="button" class="close" data-dismiss="modal" id="closePrem" aria-hidden="true">&times;</button>
-        <span class="fa fa-star" id="iconPrem"></span>
-        <br><br>
-        <h4 class="tituloPrem">Desbloquea el Tema.</h4>
-        <br>
-        <p class="text-center bodyPrem">
-          Este Tema se encuentra bloqueado por hoy.<br>
-          Puedes Jugar en él pasándote a Premium ahora.<br><br>
-          Cuentale ahora a tus padres, No esperes más!!
-        </p>
-        <!-- <br>
-        <button type="button" id="botonPremium" class="btn btn-primary btn-lg">
-          Notificarle a mis Padres
-        </button> -->
-      </div>
-    </div>
-  </div>
-</div>
-
 @stop
 
 @section('mi_js')

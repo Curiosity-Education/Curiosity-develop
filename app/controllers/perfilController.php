@@ -4,7 +4,7 @@ class perfilController extends BaseController{
     public function update(){
         $datos  =	 Input::get('data');
         $dateNow = date("Y-m-d");
-        if(!Auth::User()->hasRole('hijo')){
+        if(!Auth::User()->hasRole('hijo') && !Auth::User()->hasRole('hijo_free') && !Auth::User()->hasRole('demo_hijo')){
             $date_min =strtotime("-18 year",strtotime($dateNow));
         }else{
              $date_min =strtotime("-4 year",strtotime($dateNow));
@@ -12,19 +12,13 @@ class perfilController extends BaseController{
         $date_min=date("Y-m-d",$date_min);
         $rules= [
             "username_persona"          =>"required|user_check|max:50",
-            "telefono"                  =>"telephone",
             "password_new"              =>"min:8|max:100",
             "cpassword_new"             =>"same:password_new",
             "nombre_persona"            =>"required|letter|max:50",
             "apellido_paterno_persona"  =>"required|letter|max:30",
             "apellido_materno_persona"  =>"required|letter|max:30",
             "sexo_persona"              =>"required|string|size:1",
-            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min",
-            "ciudad_id"                 =>"integer|exists:ciudades,id",
-            "colonia"                   =>"alpha_spaces",
-            "calle"                     =>"alpha_spaces",
-            "numero"                    =>"numero_casa",
-            "codigo_postal"             =>"numeric"
+            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min"
         ];
         $messages = [
                "required"    =>  "Este campo :attribute es requerido",
@@ -53,29 +47,14 @@ class perfilController extends BaseController{
             $user =User::find(Auth::user()->id);
             $user->update($datos);
             $persona= $user->persona();
-            if(!Auth::User()->hasRole('hijo')){
-                $datos_persona = [
-                    "nombre"            =>  $datos["nombre_persona"],
-                    "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
-                    "apellido_materno"  =>  $datos["apellido_materno_persona"],
-                    "sexo"              =>  $datos["sexo_persona"],
-                    "telefono"          =>  $datos["telefono"],
-                    "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
-                ];
-            }else{
-                 $datos_persona = [
-                    "nombre"            =>  $datos["nombre_persona"],
-                    "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
-                    "apellido_materno"  =>  $datos["apellido_materno_persona"],
-                    "sexo"              =>  $datos["sexo_persona"],
-                    "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
-                ];
-            }
+            $datos_persona = [
+               "nombre"            =>  $datos["nombre_persona"],
+               "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
+               "apellido_materno"  =>  $datos["apellido_materno_persona"],
+               "sexo"              =>  $datos["sexo_persona"],
+               "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
+           ];
             $persona->update($datos_persona);
-            if(Auth::User()->hasRole('padre')){
-                $direccion = $persona->first()->padre()->first()->direccion();
-                $direccion->update($datos);
-            }
         }
         //$user =   	 User::find(Auth::user()->id);
         //$user->update($datos);
@@ -92,17 +71,11 @@ class perfilController extends BaseController{
         $date_min=date("Y-m-d",$date_min);
         $rules= [
             "username_persona"          =>"required|user_check|max:50",
-            "telefono"                  =>"telephone",
             "nombre_persona"            =>"required|letter|max:50",
             "apellido_paterno_persona"  =>"required|letter|max:30",
             "apellido_materno_persona"  =>"required|letter|max:30",
             "sexo_persona"              =>"required|string|size:1",
-            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min",
-            "ciudad_id"                 =>"integer|exists:ciudades,id",
-            "colonia"                   =>"alpha_spaces",
-            "calle"                     =>"alpha_spaces",
-            "numero"                    =>"numero_casa",
-            "codigo_postal"             =>"numeric"
+            "fecha_nacimiento_persona"  =>"required|date_format:Y-m-d|before:$date_min"
         ];
         $messages = [
                "required"    =>  "Este campo :attribute es requerido",
@@ -128,29 +101,14 @@ class perfilController extends BaseController{
             $datos["username"]=$datos["username_persona"];
             $user->update($datos);
             $persona= $user->persona();
-            if(!Auth::User()->hasRole('hijo')){
-                $datos_persona = [
-                    "nombre"            =>  $datos["nombre_persona"],
-                    "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
-                    "apellido_materno"  =>  $datos["apellido_materno_persona"],
-                    "sexo"              =>  $datos["sexo_persona"],
-                    "telefono"          =>  $datos["telefono"],
-                    "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
-                ];
-            }else{
-                 $datos_persona = [
-                    "nombre"            =>  $datos["nombre_persona"],
-                    "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
-                    "apellido_materno"  =>  $datos["apellido_materno_persona"],
-                    "sexo"              =>  $datos["sexo_persona"],
-                    "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
-                ];
-            }
+            $datos_persona = [
+                "nombre"            =>  $datos["nombre_persona"],
+                "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
+                "apellido_materno"  =>  $datos["apellido_materno_persona"],
+                "sexo"              =>  $datos["sexo_persona"],
+                "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
+            ];
             $persona->update($datos_persona);
-            if(Auth::User()->hasRole('padre')){
-                $direccion = $persona->first()->padre()->first()->direccion();
-                $direccion->update($datos);
-            }
             return "bien";
         }
     }

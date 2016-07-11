@@ -3,6 +3,16 @@
   font-weight: normal;
   padding: 35px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  border-top: solid 6px #3c8dbc;
+  font-family: Kiddish !important;
+}
+#text{
+  font-size: 1.5em;
+}
+.references{
+  font-family: Kiddish !important;
+  font-size: 1.5em;
 }
 #avatarWelcome{
   width: 100%;
@@ -10,12 +20,26 @@
 }
 .carruselNews{
   padding-top: 15px;
+  font-family: Kiddish !important;
+}
+.carousel-caption > h3{
+  font-family: Kiddish !important;
+  font-size: 2.5em;
+}
+.carousel-caption > p{
+  font-size: 1.2em;
+}
+.carousel-caption > button{
+  font-size: 1.2em;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 .imgSlideNew{
   width: 100%;
   height: auto !important;
   min-height: 350px !important;
   max-height: 350px !important;
+  border-radius: 10px !important;
 }
 .panels{
   padding-top: 15px;
@@ -27,8 +51,10 @@
   padding-top: 35px;
   padding-bottom: 15px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.02);
-  /*border-radius: 5px;*/
+  border-radius: 10px;
   margin-bottom: 15px;
+  font-family: Kiddish !important;
+  font-size: 1.7em;
 }
 .panelPopular{
   border-top: solid 6px rgb(237, 105, 34);
@@ -45,26 +71,42 @@
   color: rgba(0, 0, 0, 0.7);
   font-weight: 600;
   font-size: 1em;
+  font-family: Kiddish !important;
 }
 .nameGamePanels{
   text-align: left;
 }
+.nameGamePanels > h5{
+  font-size: 0.8em;
+  font-family: Kiddish !important;
+  font-weight: bold;
+}
+.nameGamePanels > h6{
+  font-family: kiddish;
+  font-size: 0.6em;
+  margin-bottom: 0;
+}
 .starRank{
-  font-size: 1.4em;
+  font-size: 1em;
   color: rgb(242, 221, 73);
 }
 .elementObj{
   margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 .elementObj:hover{
   transition: .4s;
   cursor: pointer;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  transform: scale(1.01);
 }
 .objetivoGame{
   font-weight: normal;
-  font-size: 0.8em;
-  font-style: oblique;
-  opacity: 0.8;
+  font-size: 0.7em;
+  opacity: 0.85;
 }
 .divisorGrados{
   /*border-top: solid 1px black;
@@ -77,7 +119,7 @@
   margin-bottom: 25px;
 }
 .grade > img{
-  border-radius: 50px;
+  border-radius: 10px;
   transition: width .4s, height .4s, transform .4s;
 }
 .grade > img:hover{
@@ -124,4 +166,34 @@
 }
 .owl-next:hover{
   opacity: 0.8;
+}
+.owl-carousel .owl-item img {
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+.isPremiumThis{
+  font-size: 0.5em;
+  background-color: #ed6922;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 5px;
+  position: absolute;
+  margin-left: 89.5%;
+  margin-top: -40px;
+}
+.isLockThis{
+  font-size: 0.5em;
+  background-color: #2d96ba;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 5px;
+  position: absolute;
+  margin-left: 85%;
+  margin-top: -40px;
 }

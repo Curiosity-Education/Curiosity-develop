@@ -372,6 +372,12 @@ class actividadController extends BaseController
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
 
+        // --- Le sumamos un visto mas a la actividad
+        // --- obtenemos una instancia de la actividad a la que se le sumará el visto
+        $act = actividad::where('id', '=', $idActividad)->first();
+        // --- Sumamos 1 a esos vistos en la actividad
+        $act->vistos = $act->vistos + 1;
+        $act->save();
 
         Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo')){

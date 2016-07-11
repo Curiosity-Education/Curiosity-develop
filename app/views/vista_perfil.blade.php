@@ -12,7 +12,7 @@
 @stop
 
 @section('titulo_contenido')
-
+  Mi Perfil
 @stop
 
 @section('titulo_small')
@@ -303,7 +303,7 @@
                   @endif
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" id="frm_user">
-                      <div id="wizard1">
+                      <div id="wizardUser">
                         <h2>Datos de Usuario</h2>
                         <section>
                           <div class="form-group">
@@ -581,9 +581,9 @@
                                     <span title="ver escuelas" style="color:blue; font-weight:bold"  id="return-select-school" class="fa fa-remove hidden"></span>
                                   </span>
                                   <select name="escuela_id" id="escuela_id"  class="form-control">
-                                    @foreach($escuelas  as $escuela)
+                                    {{--@foreach($escuelas  as $escuela)
                                       <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
-                                    @endforeach
+                                    @endforeach--}}
                                     <option value="NULL">Otra</option>
                                   </select>
                                   <input type="text" nombre="esc_alt" id="esc_alt" placeholder="nombre de la escuela" value="" class="form-control hidden"/>
@@ -640,7 +640,7 @@
                     <div class="container-fluid">
                       <div class="row">
                         <br>
-                            @foreach($datosHijos as $hijo)
+                            {{--@foreach($datosHijos as $hijo)
                               <div class="col-xs-4 col-md-3">
                                 <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
                                 class="img-responsive img-circle tooltipShow"
@@ -648,7 +648,7 @@
                                 <center><h4>{{$hijo->username}}</h4></center>
                                 <br>
                               </div>
-                            @endforeach
+                            @endforeach--}}
 
                         <br><br>
                       </div>
@@ -742,50 +742,10 @@
   {{HTML::script("/packages/js/curiosity/freeValidationDad.js")}}
 @endif
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    // $curiosity.call.getEstandarte(1, 1);
-  });
-</script>
-
 <script>
   $(function ()
   {
-    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('root'))
-      $("a[href='#reg-admins']").trigger("click");
-
-    @endif
-    $("#wizard-admin").steps({
-      headerTag: "h4",
-      bodyTag: "section",
-      transitionEffect:"slideLeft",
-      autoFocus:true,
-      cancel:true,
-      onFinishing: function (event, currentIndex) {
-            if($("#frm-reg-admins").valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-          if(newIndex>currentIndex){
-           if($(".current input,.current select").valid()){
-               return true;
-           }else return false;
-         }else return true;
-        },
-        labels: {
-          cancel: "Cancelar",
-          //  current: "current step:",
-          pagination: "Paginación",
-          finish: "Registar",
-          next: "Siguiente",
-          previous: "Anterior",
-          loading: "Registrando ..."
-        },
-    });
-    $("#wizard1").steps({
+    $("#wizardUser").steps({
         headerTag: "h2",
         bodyTag: "section",
         transitionEffect: "slideLeft",
@@ -805,40 +765,6 @@
           next: "Siguiente",
           previous: "Anterior",
           loading: "Actualizando ..."
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-          if(newIndex>currentIndex){
-           if($(".current input").valid()){
-               return true;
-           }else return false;
-         }else return true;
-        },
-
-  });
-
-    $("#wizard").steps({
-        headerTag: "h2",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        autoFocus:true,
-        next:"Siguiente",
-        finish:"Finalizar",
-        previous:"Anterior",
-        onFinishing: function (event, currentIndex) {
-            if($("#frm-reg-hijos").valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        labels: {
-          cancel: "Cancelar",
-          //  current: "current step:",
-          pagination: "Paginación",
-          finish: "Finalizar",
-          next: "Siguiente",
-          previous: "Anterior",
-          loading: "Cargando ..."
         },
         onStepChanging: function (event, currentIndex, newIndex){
           if(newIndex>currentIndex){

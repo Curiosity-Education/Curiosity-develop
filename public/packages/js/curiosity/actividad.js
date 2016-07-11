@@ -1,5 +1,5 @@
 $(document).on('ready',function(){
-  $curiosity.menu.setPaginaId('#menuNivel');
+  $curiosity.menu.setPaginaId('#menuNivel');  
 
     var actividad = {
         //--hasGame se encarga de ver que actividades tienen juegos

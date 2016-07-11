@@ -92,8 +92,8 @@
     <form id="foto_profe">
       <input type="file" class="form-control hidden" id="foto" name="foto" accept="image/jpeg,image/png,image/jpg">
     </form>
-    <div class="prevFotoProfesor tooltipShow" title="Click para cambiar">
-      <img src="/packages/images/profesores/prof-default.jpg" id="prevFotoProfesor"/>
+    <div class="prevFotoProfesor tooltipShow" title="Click para cambiar" style="width:150px; height:150px;">
+      <img src="/packages/images/profesores/prof-default.jpg" id="prevFotoProfesor"/ style="width:150px; height:150px;">
     </div>
     <div class="form-group text-right">
       <br>
