@@ -9,6 +9,7 @@
   {{HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
   {{HTML::style('/packages/css/curiosity/style.css')}}
   {{HTML::style('/packages/css/curiosity/loginStyle.css')}}
+  {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
   <title>Curiosity | login</title>
 
 
@@ -97,9 +98,7 @@
 {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
 {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
 {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
-{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
+{{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
 {{HTML::script('/packages/js/curiosity/curiosity.js')}}
 {{HTML::script('/packages/js/curiosity/login.js')}}
 <script>

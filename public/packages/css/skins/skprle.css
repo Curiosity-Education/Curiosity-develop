@@ -1,0 +1,175 @@
+/*
+ * Skin: Red
+ * ---------
+ */
+ .skprle .main-header .navbar {
+   background-color: #8a489b;
+ }
+ .skprle .main-header .navbar .nav > li > a {
+   color: #ffffff;
+ }
+ .skprle .main-header .navbar .nav > li > a:hover,
+ .skprle .main-header .navbar .nav > li > a:active,
+ .skprle .main-header .navbar .nav > li > a:focus,
+ .skprle .main-header .navbar .nav .open > a,
+ .skprle .main-header .navbar .nav .open > a:hover,
+ .skprle .main-header .navbar .nav .open > a:focus,
+ .skprle .main-header .navbar .nav > .active > a {
+   background: rgba(34, 98, 174, 0.18);
+   color: #f6f6f6;
+ }
+ .skprle .main-header .navbar .sidebar-toggle {
+   color: #ffffff;
+ }
+ .skprle .main-header .navbar .sidebar-toggle:hover {
+   background-color: rgba(34, 98, 174, 0.18);
+   transition: .6s;
+ }
+ .skprle .main-header .navbar .sidebar-toggle {
+   color: #fff;
+ }
+ .skprle .main-header .navbar .sidebar-toggle:hover {
+   background-color: rgba(34, 98, 174, 0.18);
+ }
+ @media (max-width: 767px) {
+   .skprle .main-header .navbar .dropdown-menu li.divider {
+     background-color: rgba(255, 255, 255, 0.1);
+   }
+   .skprle .main-header .navbar .dropdown-menu li a {
+     color: #fff;
+   }
+   .skprle .main-header .navbar .dropdown-menu li a:hover {
+     background: #367fa9;
+   }
+ }
+ .skprle .main-header .logo {
+   background-color: #8a489b;
+   color: #fff;
+   border-bottom: 0 solid transparent;
+ }
+ .skprle .main-header .logo:hover {
+   background-color: #8a489b;
+ }
+ .skprle .main-header li.user-header {
+   background-color: #fff;
+ }
+ .skprle .content-header {
+   background: transparent;
+ }
+
+ .skprle .main-sidebar,
+ .skprle .left-side {
+   background-color: #585d66;
+ }
+ .content-wrapper{
+   background-color: #ecf0f5;
+ }
+ .skprle .user-panel > .info,
+ .skprle .user-panel > .info > a {
+   color: #fff;
+ }
+ .skprle .sidebar-menu > li.header {
+   color: #4b646f;
+   background: #1a2226;
+ }
+ .skprle .sidebar-menu > li > a {
+   border-left: 3px solid transparent;
+   color: #fff;
+ }
+ .skprle .sidebar-menu > li > a:hover{
+   color: #fff;
+ 	 border-left: 3px solid #8a489b !important;
+ }
+ .skprle .sidebar-menu > li:hover > a{
+   color: #fff;
+   background: #222d32 !important;
+   border-left-color: #3c8dbc;
+ }
+ .arrowAsideActive {
+   width: 30px;
+   height: 30px;
+   margin-left: -26px;
+   background-color: #8a489b;
+   position: absolute;
+   margin-top: -37px;
+   transform: rotate(45deg);
+   display: none;
+ }
+ .skprle .sidebar-menu > li.active > a {
+   color: #fff;
+   background: #585d66;
+   border-left-color: #8a489b;
+ }
+ .skprle .sidebar-menu > li > .treeview-menu {
+   margin: 0 1px;
+   background: #2c3b41;
+ }
+ .skprle .sidebar a {
+   color: #b8c7ce;
+ }
+ .skprle .sidebar a:hover {
+   text-decoration: none;
+ }
+ .skprle .treeview-menu > li > a {
+   color: #8aa4af;
+ }
+ .skprle .treeview-menu > li.active > a,
+ .skprle .treeview-menu > li > a:hover {
+   color: #ffffff;
+ }
+ .skprle .sidebar-form {
+   border-radius: 3px;
+   border: 1px solid #374850;
+   margin: 10px 10px;
+ }
+ .skprle .sidebar-form input[type="text"],
+ .skprle .sidebar-form .btn {
+   box-shadow: none;
+   background-color: #374850;
+   border: 1px solid transparent;
+   height: 35px;
+   -webkit-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+ }
+ .skprle .sidebar-form input[type="text"] {
+   color: #666;
+   border-top-left-radius: 2px;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 2px;
+ }
+ .skprle .sidebar-form input[type="text"]:focus,
+ .skprle .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+   background-color: #fff;
+   color: #666;
+ }
+ .skprle .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+   border-left-color: #fff;
+ }
+ .skprle .sidebar-form .btn {
+   color: #999;
+   border-top-left-radius: 0;
+   border-top-right-radius: 2px;
+   border-bottom-right-radius: 2px;
+   border-bottom-left-radius: 0;
+ }
+ /*/ Barra de desplazamiento /*/
+ ::-webkit-scrollbar {
+       width: 10px;
+ }
+ ::-webkit-scrollbar-track {
+       background-color: #9d59af;
+ }
+ ::-webkit-scrollbar-thumb {
+       background-color: rgba(0, 0, 0, 0.22);
+
+       border-radius: 10px;
+
+ }
+ ::-webkit-scrollbar-button {
+       background-color: #9d59af;
+ }
+ ::-webkit-scrollbar-corner {
+       background-color: transparent;
+ }

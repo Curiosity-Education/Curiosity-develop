@@ -9,8 +9,8 @@
     {{ HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
     {{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
   	{{ HTML::style('/packages/css/libs/animate/animate.min.css')}}
-    {{ HTML::style('/packages/css/skins/_all-skins.min.css') }}
     {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
+    {{ HTML::style('/packages/css/curiosity/alert.css') }}
     {{ HTML::style('/packages/css/curiosity/userStyle.css') }}
     {{ HTML::style('/packages/css/curiosity/vistaEstandar.css') }}
     {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
@@ -19,10 +19,12 @@
     {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
     {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
     {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
+    {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
+    <link rel="stylesheet" href="/packages/css/skins/{{User::getSkin()->skin}}.css">
     @yield('mi_css')
     <title>Curiosity | @yield('title')</title>
   </head>
-  <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+  <body class="hold-transition {{User::getSkin()->skin}} sidebar-mini sidebar-collapse">
     <audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
     <div class="wrapper">
 
@@ -58,7 +60,7 @@
                      @if(Auth::user()->hasRole('root'))
                       	<small><b>¡ Soy curiosity !</b></small>
                       @endif
-                      @if(Auth::user()->hasRole('padre'))
+                      @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
                       	<small><b>¡ Soy curiosity !</b></small>
                       @endif
                       @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
@@ -119,37 +121,6 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
-            <li id="menuMisHijos">
-              <a href="/misHijos">
-                <i class="fa fa-child"></i>
-                <span>Mis hijos</span>
-              </a>
-              <div class="arrowAsideActive"></div>
-            </li>
-            <li id="menuPuntajes">
-              <a href="/puntajes">
-                <i class="fa fa-line-chart"></i>
-                <span>Puntajes</span>
-              </a>
-              <div class="arrowAsideActive"></div>
-            </li>
-            <li id="menuAlertas">
-              <a href="/alertas">
-                <i class="fa fa-bullhorn"></i>
-                <span>Alertas</span>
-              </a>
-              <div class="arrowAsideActive"></div>
-            </li>
-            <li id="menuPremium" class="">
-              <button class="btn form-control" id="premium">
-              	<i class="fa fa-diamond"></i>
-              	<span>Premium</span>
-              </button>
-              <div class="arrowAsideActive"></div>
-            </li>
-            @endif
-
             @if(Entrust::can('realizar_actividades'))
               <li id="menuNivel">
                 <a href="/nivel">
@@ -169,14 +140,45 @@
               <div class="arrowAsideActive"></div>
             </li>
 
-            @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
-        <!--<li id="menuTiendaAvatar">
-              <a href="/tienda">
-                <i class="fa fa-shopping-bag"></i>
-                <span>Tienda avatar</span>
+            @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+            <li id="menuMisHijos">
+              <a href="/misHijos">
+                <i class="fa fa-child"></i>
+                <span>Mis hijos</span>
               </a>
               <div class="arrowAsideActive"></div>
-            </li>-->
+            </li>
+            <li id="menuPuntajes">
+              <a href="/puntajes">
+                <i class="fa fa-line-chart"></i>
+                <span>Estadísticas</span>
+              </a>
+              <div class="arrowAsideActive"></div>
+            </li>
+            <!-- <li id="menuAlertas">
+              <a href="/alertas">
+                <i class="fa fa-bullhorn"></i>
+                <span>Alertas</span>
+              </a>
+              <div class="arrowAsideActive"></div>
+            </li> -->
+            <!-- <li id="menuPremium" class="">
+              <button class="btn form-control" id="premium">
+              	<i class="fa fa-diamond"></i>
+              	<span>Premium</span>
+              </button>
+              <div class="arrowAsideActive"></div>
+            </li> -->
+            @endif
+
+            @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
+            <li id="menuTiendaAvatar">
+              <a href="/tienda">
+                <i class="fa fa-shopping-bag"></i>
+                <span>Tienda Curiosity</span>
+              </a>
+              <div class="arrowAsideActive"></div>
+            </li>
 
             <li id="menuDatos" hidden="hidden">
               <a href="/datosHijo" data-toggle="modal" data-target="#editar_datos">
@@ -268,7 +270,7 @@
 			      </h1>
             @endif
           <div class="custom-brands">
-    				@if(Auth::user()->hasRole('padre'))
+    				@if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
     				<h4 id="msj_bienvenida">@yield('titulo_small')</h4>
     				@endif
 
@@ -451,7 +453,7 @@
             									 <span class="input-group-addon">
             									  <span class="fa fa-calendar"></span>
             									 </span>
-                               <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control form-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">                               
+                               <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control form-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
             								   </div>
             								 </div>
             								</section>
@@ -465,7 +467,19 @@
         				  </div>
         				</div>
               @endif <!-- Fin de modal para modificar datos del niño -->
-              @yield('panel_opcion') <!-- panel para contenido en general -->
+              @if (!Auth::user()->hasRole('padre') and !Auth::user()->hasRole('padre_free') and !Auth::user()->hasRole('demo_padre'))
+              <div class="form-group" id="navSearch">
+               <div class="input-group">
+                 <form action="/buscarTema" method="post" id="formFind">
+                   <input type="text" class="pull-left form-control" id="navbar-search-input" name="buscarTema" placeholder="Buscar Temas">
+                 </form>
+                 <span class="input-group-addon" id="btnfind">
+                   <spna class="fa fa-search"></spna>
+                 </span>
+               </div>
+             </div>
+             @endif
+            @yield('panel_opcion') <!-- panel para contenido en general -->
             </div>
           </div>
       </section>
@@ -479,12 +493,13 @@
             <button type="button" class="close" data-dismiss="modal" id="closePrem" aria-hidden="true">&times;</button>
             <span class="fa fa-star" id="iconPrem"></span>
             <br><br>
-            <h4 class="tituloPrem">Desbloquea el Tema.</h4>
+            <h4 class="tituloPrem">Curiosity Premium</h4>
             <br>
             <p class="text-center bodyPrem">
-              Este Tema se encuentra bloqueado por hoy.<br>
-              Puedes Jugar en él pasándote a Premium ahora.<br><br>
-              Cuentale ahora a tus padres, No esperes más!!
+              Este Tema se encuentra bloqueado por hoy.<br><br>
+              Para poder practicar en este juego es necesario que seas un usuario premium. <br>
+              Nos encontramos en fase Beta actualmente. <br>
+              En poco tiempo podrás cambiar tu cuenta a premium ¡Cuentale a tus papás!
             </p>
             <!-- <br>
             <button type="button" id="botonPremium" class="btn btn-primary btn-lg">
@@ -521,10 +536,8 @@
   {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
   {{HTML::script('/packages/js/app.min.js')}}
   {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
+  {{HTML::script('/packages/js/curiosity/alert.js')}}
   {{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
-  {{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
-  {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
-  {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
   {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
   {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
@@ -533,9 +546,11 @@
   {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
   {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
   {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
+  {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
+  {{HTML::script('/packages/js/curiosity/finding.js')}}
 
   <script type="text/javascript">
-    $(document).ready(function(){
+  $(document).ready(function(){
 
 		$('#menuDatos').click(function(){
 			if($(window).width() <= 767){
@@ -592,7 +607,7 @@
 	/*Sección para la gestion de actualización y registro de hijo*/
 $(function ()
   {
-    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('root'))
+    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('padre_free') && !Auth::user()->hasRole('demo_padre') && !Auth::user()->hasRole('root'))
       $("a[href='#reg-admins']").trigger("click");
 
     @endif
@@ -690,7 +705,7 @@ $(function ()
         },
 
   });
-  @if(!Auth::User()->hasRole('hijo') && !Auth::user()->hasRole('hijo_free') && !Auth::user()->hasRole('demo_hijo'))
+  @if(!Auth::User()->hasRole('hijo') and !Auth::user()->hasRole('hijo_free') and !Auth::user()->hasRole('demo_hijo'))
    var dateNow = new Date();
     dateNow.setMonth(dateNow.getMonth()-216);//restar 19 años a la fecha actual
     $('.datepicker').datepicker({
@@ -711,16 +726,6 @@ $(function ()
        "todayHighlight" : true
       });
   @endif
-  //  var dateNow = new Date();
-  //   dateNow.setMonth(dateNow.getMonth()-48);//restar 19 años a la fecha actual
-  //   $('.datepicker_hijo').datepicker({
-  //       "language":"es",
-  //       "format" : "yyyy-mm-dd",
-  //       "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
-  //      "autoclose": true,
-  //      "todayHighlight" : true
-  //     });
-      // fechaHijo
   // $("#telefono").mask('(000) 000-0000',{placeholder:"(999) 999-9999"});
   //   $("#codigo_postal").mask("00000");
   //   $("#numero").mask("ABCDE",{translation:{
@@ -780,7 +785,6 @@ $(function ()
                     apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
                     sexo_persona:$("select[name='sexo_persona']").val(),
                     fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val()
-
                 }
                 $.ajax({
                     url:"/updatePerfil",
@@ -788,18 +792,7 @@ $(function ()
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    after = noty({
-                                layout: 'bottomRight',
-                                theme: 'defaultTheme', // or 'relax'
-                                type: 'information',
-                                text: message,
-                                animation: {
-                                    open: {height: 'toggle'}, // jQuery animate function property object
-                                    close: {height: 'toggle'}, // jQuery animate function property object
-                                    easing: 'swing', // easing
-                                    speed: 300 // opening & closing animation speed
-                                }
-                            });
+                    $curiosity.noty(message, 'info');
                     }
                 })
                 .done(function(r){
@@ -826,7 +819,7 @@ $(function ()
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-                    after.close();
+
                 });
             }else{
                 var datos = {
@@ -843,18 +836,7 @@ $(function ()
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    after = noty({
-                                layout: 'bottomRight',
-                                theme: 'defaultTheme', // or 'relax'
-                                type: 'information',
-                                text: message,
-                                animation: {
-                                    open: {height: 'toggle'}, // jQuery animate function property object
-                                    close: {height: 'toggle'}, // jQuery animate function property object
-                                    easing: 'swing', // easing
-                                    speed: 300 // opening & closing animation speed
-                                }
-                            });
+                    $curiosity.noty(message, 'info');
                     }
                 }).done(function(r){
                     if($.isPlainObject(r)){
@@ -867,17 +849,153 @@ $(function ()
                         $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
                         $("span#username-profile").text(datos.username_persona);
                         $("#wizard1-t-0").trigger("click");
+                        $("#editar_datos_papa").modal('hide');
+                    }
+                }).always(function(r){
+                    $btn.text(text_temp);
+                    $btn.removeClass("striped-alert");
+                    $btn.prop("disabled",false);
+
+                });
+            }
+        }
+    });
+
+    // Actualizar los datos del padre
+    $("#frm_user_papa").validate({
+        rules:{
+            username_persona:{maxlength:50,required:true,remote:{
+                url:"/remote-username-update",
+                type:"post",
+                username:function(){
+                    return $("input[name='username']").val();
+                }
+            }},
+            password_new:{maxlength:100,minlength:8},
+            cpassword_new:{equalTo:function(){
+                return $("input[name='password_new']");
+            }},
+            nombre_persona:{required:true,maxlength:50,alpha:true},
+            apellido_paterno_persona:{required:true,maxlength:30,alpha:true},
+            apellido_materno_persona:{required:true,maxlength:30,alpha:true},
+            sexo_persona:{required:true,maxlength:1},
+            fecha_nacimiento_persona:{required:true,date:true},
+            email:{required:true,email:true}
+        },
+        messages:{
+            cpassword_new:{equalTo:"La contraseña no coincide"},
+            username_persona:{
+                        required:"No puedes dejaar en blanco este campo",
+                        remote:"Este nombre de usuario se encuentra en uso"
+            },
+            password_now:{remote:"La contraseña es incorrecta"},
+            email:{email:"Formato de correo incorrecto"}
+        },
+         errorPlacement: function (error, element) {
+            error.appendTo(element.parent().parent());
+         }
+    });
+   $("#frm_user_papa").on("click","a[href='#finish']",function(){
+        if($("#frm_user_papa").valid()){
+            $btn =$(this)
+            var text_temp = $(this).text();
+            $(this).addClass("striped-alert");
+            $(this).text("Actualizando...");
+            $(this).prop("disabled",true);
+            if($("input[name='password_new']").val()!==""){
+                var datos={
+                    username_persona:$("input[name='username_persona']").val(),
+                    password_persona:$("input[name='password_persona']").val(),
+                    password_new:$("input[name='password_new']").val(),
+                    cpassword_new:$("input[name='cpassword_new']").val(),
+                    nombre_persona:$("input[name='nombre_persona']").val(),
+                    apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
+                    apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
+                    sexo_persona:$("select[name='sexo_persona']").val(),
+                    fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val(),
+                    email:$("#email").val()
+                }
+                $.ajax({
+                    url:"/updatePerfil",
+                    type:"post",
+                    data:{data:datos},
+                    beforeSend: function(){
+                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
+                    $curiosity.noty(message, 'info');
+                    }
+                })
+                .done(function(r){
+                    if($.isPlainObject(r)){
+                        alerta.errorOnInputs(r);
+                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
+                    }else if(r == "contraseña incorrecta"){
+                        //alerta.show("Contraseña incorreca","","warning-alert striped");
+                        $curiosity.noty("Contraseña incorreca","warning");
+                    }
+                    else if(r =="bien"){
+                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
+                        $("#textEmail").text(datos.email);
+                        $("#textUser").text(datos.username_persona);
+                        $("input[name='password_persona']").val('');
+                        $("input[name='password_new']").val('');
+                        $("input[name='cpassword_new']").val('');
+                        $curiosity.noty("Los datos se han actualizado correctamente, su contraseña ha sido cambiada con exito!!","success");
+                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
+                        $("span#username-profile").text(datos.username_persona);
+                        $("label.error").remove();
+                        $("#wizard1-t-0").trigger("click");
+                        $("#editar_datos_papa").modal('hide');
+                    }
+                }).always(function(){
+                    $btn.text(text_temp);
+                    $btn.removeClass("striped-alert");
+                    $btn.prop("disabled",false);
+
+                });
+            }else{
+                var datos = {
+                     username_persona:$("input[name='username_persona']").val(),
+                     nombre_persona:$("input[name='nombre_persona']").val(),
+                     apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
+                     apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
+                     sexo_persona:$("select[name='sexo_persona']").val(),
+                     fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val(),
+                     email:$("#email").val()
+                }
+                $.ajax({
+                    url:"/updatePerfilUser",
+                    type:"post",
+                    data:{data:datos},
+                    beforeSend: function(){
+                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
+                    $curiosity.noty(message, 'info');
+                    }
+                }).done(function(r){
+                    if($.isPlainObject(r)){
+                        alerta.errorOnInputs(r);
+                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
+                    }else if(r == "bien"){
+                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
+                        $("#textEmail").text(datos.email);
+                        $("#textUser").text(datos.username_persona);
+                        $curiosity.noty("Los datos se han actualizado correctamente","success");
+                        $("label.error").remove();
+                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
+                        $("span#username-profile").text(datos.username_persona);
+                        $("#wizard1-t-0").trigger("click");
                         $("#editar_datos").modal('hide');
                     }
                 }).always(function(r){
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-                    after.close();
+
                 });
             }
         }
     });
+    // Termina actualizar datos del padre
+
     $('#image').cropper({
     aspectRatio: 1/1,
     responsive: true,
@@ -908,18 +1026,7 @@ $(function ()
             processData:false,
             beforeSend: function(){
                 message = "Espera.. La imagen se esta recortando...";
-                after = noty({
-                            layout: 'topRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'information',
-                            text: message,
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                $curiosity.noty(message, 'info');
                 }
 
          }).done(function(r){
@@ -930,7 +1037,7 @@ $(function ()
          }).fail(function(){
 
          }).always(function(){
-          after.close();
+
        });
      });
         var $inputImage = $('#inImage');

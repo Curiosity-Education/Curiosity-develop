@@ -28,7 +28,7 @@
   @foreach($objetos as $objeto)
   <div class='col-md-4 objeto'>
     <div class='box box-widget widget-title objetoPointer' data-rol='{{$rol}}'' data-prem='{{ $objeto->isPremium }}' data-estatus={{$objeto->estatus}} data-id = {{ $objeto->id }}>
-      @if(Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('root') and $objeto->isPremium == 1 )
+      @if(Auth::user()->hasRole('hijo_free') and $objeto->isPremium == 1 )
       <span class="fa fa-star isPremium" style="background-color: {{$objeto->bg_color}}"></span>
       @endif
       <div class="widget-title-header" style="background-color: {{$objeto->bg_color}}">

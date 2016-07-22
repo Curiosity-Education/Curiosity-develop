@@ -43,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      */
     public function skin(){
-        return $this->belongsTo('Skin');
+        return $this->belongsTo('skin');
     }
     /**
      *
@@ -73,5 +73,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         else
 		  return $foto[0]['foto_perfil'];
 	}
+
+  public static function getSkin(){
+    $skin = User::join('skins', 'users.skin_id', '=', 'skins.id')
+    ->where('users.id', '=', Auth::user()->id)
+    ->first();
+    return $skin;
+  }
 
 }

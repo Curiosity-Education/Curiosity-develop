@@ -261,7 +261,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 
 
 #slider{
-
+  height: 360px;
+  /*background-color: rgba(68, 198, 238, 0.05);*/
+  background-image: url(/packages/images/fondos/fondo2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
 }
 
 .contenedores{
@@ -301,13 +307,10 @@ div#collapseExample div.well{
 
 .slider-wrapper{
 	position: relative;
-	height: 220px;
+	height: 450px;
 	width: 100%;
-	border: 4px solid transparent;
-	border-top-color:#2d96ba;
 	overflow: hidden;
-	border-radius: 5px;
-
+	border-radius: 15px;
 }
 
 .slider-wrapper-hijo{
@@ -332,10 +335,8 @@ li.slide-current{
 	position:absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	max-height: 100%;
+  height: 100%;
+  width: 100%;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
@@ -536,16 +537,18 @@ li.slide-current{
 }
 
 .hijo_avatar{
-	border: 4px solid;
-	padding:10px;
-	border-color:#2d96ba;
-	border-radius: 3px;
+  padding: 10px;
+  border-color: #2d96ba;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px 2px rgba(0,0,0,0.15);
 }
 
 p.nombres{
 	font-family: "Calibri Light";
-    font-size: 1.3em;
+  font-size: 1.3em;
 	color:#ed6922;
+  text-align: left;
+  margin-bottom: 0;
 }
 
 .div-image {
@@ -661,8 +664,7 @@ div img#logo{
 /* estilos para PERFIL HIJO */
 
 img#avatar{
-	/*width: 70%;
-	height: 70%;*/
+	margin-bottom: 50px;
 }
 
 div#sandbox-container div#data_picker div#alert-picker div.datepicker{
@@ -719,7 +721,7 @@ div.alert-info, div.alert-danger{
     text-align: center;
     line-height: 40px;
     font-size: 20px;
-    color: #fff;
+    color: #e87eb1;
 }
 
 .panel {

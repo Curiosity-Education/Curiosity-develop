@@ -92,52 +92,81 @@
   </style>
  </head>
  <body style="font-family: Arial, sans-serif; font-size:13px; color: #444444; min-height: 200px;" bgcolor="#E4E6E9" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+
  <table width="100%" height="100%" bgcolor="#E4E6E9" cellspacing="0" cellpadding="0" border="0" >
  <tr><td width="100%" align="center" valign="top" bgcolor="#E4E6E9" style="background-color:#E4E6E9; min-height: 200px;">
-<table><tr><td class="table-td-wrap" align="center" width="458"><table class="table-space" height="18" style="height: 18px; font-size: 0px; line-height: 0; width: 450px; background-color: #e4e6e9;" width="450" bgcolor="#E4E6E9" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="18" style="height: 18px; width: 450px; background-color: #e4e6e9;" width="450" bgcolor="#E4E6E9" align="left">&nbsp;</td></tr></tbody></table>
-<table class="table-space" height="8" style="height: 8px; font-size: 0px; line-height: 0; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="8" style="height: 8px; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
 
-<table class="table-row" wedth="450" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 36px; padding-right: 36px;" valign="top" align="left">
-  <table class="table-col" align="left" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
-    <table class="header-row" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 5px; padding-top: 5px;" valign="top" align="left"><center> <img src="{{asset('packages/images/pg-curiosity.png') }}" style="width: 110px;"></center><br><center>{{$subject}}</center></td></tr></tbody></table>
+<table><tr><td class="table-td-wrap" align="center" width="458"><table class="table-space" height="18" style="height: 18px; font-size: 0px; line-height: 0; width: 600px; background-color: #e4e6e9;" width="600" bgcolor="#E4E6E9" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="18" style="height: 18px; width: 600px; background-color: #e4e6e9;" width="600" bgcolor="#E4E6E9" align="left">&nbsp;</td></tr></tbody></table>
+
+<table class="table-space" height="6" style="height: 3px; font-size: 0px; line-height: 0; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="6" style="height: 10px; width: 550px; background-color: #ec2726;" width="550" bgcolor="#ec2726" align="left">&nbsp;</td></tr></tbody></table>
+
+<table class="table-space" height="6" style="height: 3px; font-size: 0px; line-height: 0; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="6" style="height: 5px; width: 550px; background-color: #2d96ba;" width="550" bgcolor="#2d96ba" align="left">&nbsp;</td></tr></tbody></table>
+
+<table class="table-space" height="8" style="height: 8px; font-size: 0px; line-height: 0; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="8" style="height: 8px; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
+
+<table class="table-row" width="600" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 36px; padding-right: 36px;" valign="top" align="left">
+  <table class="table-col" align="left" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 378px;" valign="top" align="left">
+    <table class="header-row" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 5px; padding-top: 5px;" valign="top" align="left">
+    <center>
+      <img src="{{asset('packages/images/msj.png') }}" style="width: 150px;">
+    </center>
+    <br>
+    <center style="font-size:1.5em;">
+    ¡Bienvenido a Curiosity Eduación!
+    </center>
+    </td></tr></tbody></table>
     <div style="font-family: Arial, sans-serif; line-height: 20px; color: #444444; font-size: 13px;">
-      <br><b style="color: #777777;">  <!--here subject-->  Estimado/a: {{$client}}</b>
-      <br><br>
-      <!-- here name -->{{$msg}}<br><br>Gracias!!
       <br>
-      Atentamente: {{$name}}.
+      <b style="">Estimado/a: </b> {{$client}}
+      <br>
+      <p style="text-align: justify;">
+        Ahora tú y tu hijo/a forman parte de la comunidad educativa más divertida del mundo.<br><br>
+        Recuerda que tu usuario de <b>Curiosity</b> lo definiste al momento de tu registro y lo necesitarás para acceder junto con tu contraseña.<br><br>
+        Juntos, estamos luchando por generar equidad educativa de una manera divertida y permitirte estar más cerca de tu hijo/a.<br><br>
+        Si tienes alguna pregunta o comentario, házelo saber a nuestro equipo de atención al cliente por correo a :
+        <i>servicio@curiosity.com.mx</i> <br><br>
+        Gracias por registrarte y nos vemos pronto.
+      </p>
+      <br>
+      <center><b style="font-size:1.1em;">¡Que tu curiosidad no tenga límites!</b></center>
+      <br>
+      <center>
+      <b>Atentamente</b>
+      <br>
+      <i>Equipo Curiosity</i>
+      </center>
+      <br>
       <hr>
-      <a href="http://www.curiosity.com.mx/confirmar/{{$token}}">www.curiosity.com</a>
-    </div>
-  </td></tr></tbody></table>
-</td></tr></tbody></table>
-
-<table class="table-space" height="12" style="height: 12px; font-size: 0px; line-height: 0; width: 450px; background-color: #36f8da;" width="450" bgcolor="#36f8da" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="12" style="height: 12px; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
-<table class="table-space" height="12" style="height: 12px; font-size: 0px; line-height: 0; width: 450px; background-color: #36f8da;" width="450" bgcolor="#36f8da" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="12" style="height: 12px; width: 450px; padding-left: 16px; padding-right: 16px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" align="center">&nbsp;<table bgcolor="#E8E8E8" height="0" width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td bgcolor="#E8E8E8" height="1" width="100%" style="height: 1px; font-size:0;" valign="top" align="left">&nbsp;</td></tr></tbody></table></td></tr></tbody></table>
-<table class="table-space" height="16" style="height: 16px; font-size: 0px; line-height: 0; width: 450px; background-color: #36f8da;" width="450" bgcolor="#36f8da" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="16" style="height: 16px; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
-
-<table class="table-row" width="450" bgcolor="#FFFFFF" style="table-layout: fixed; background-color: #ffffff;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-td" style="font-family: Arial, sans-serif; line-height: 9px; color: #444444;  font-size: 13px; font-weight: normal; padding-left: 0px; padding-right: 0px;"  >
-  <table class="table-col" align="left" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="378" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; width: 578px;" valign="top">
-    <div style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; text-align: center;">
-    </div>
-    <table class="table-space" height="16" style="height: 16px; font-size: 0px; line-height: 0; width: 378px; background-color: #36f8da;" width="378" bgcolor="#36f8da" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td"  height="56" style="height: 16px; width: 598px; background-color:#fff;" width="598" bgcolor="#fff">&nbsp;</td></tr></tbody></table>
-  </td></tr></tbody></table>
-</td></tr></tbody></table>
-
-<table class="table-space" height="6" style="height: 6px; font-size: 0px; line-height: 0; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="6" style="height: 16px; width: 550px; background-color: #36f8da;" width="550" bgcolor="#36f8da" align="left">&nbsp;</td></tr></tbody></table>
-
-<table class="table-row-fixed" width="450" bgcolor=" rgba(255, 17, 17, 0.91)" style="table-layout: fixed; background-color:  rgba(255, 17, 17, 0.91);" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-fixed-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 1px; padding-right: 0px;" valign="top" align="left">
-  <table class="table-col" align="left" width="448" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="448" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal;" valign="top" align="left">
-    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td width="100%" align="center" bgcolor=" rgba(255, 17, 17, 0.91)" style="font-family: Arial, sans-serif; line-height: 24px; color: #fff; font-size: 13px; font-weight: normal; text-align: center; padding: 9px; border-width: 1px 0px 0px; border-style: solid; border-color: #71e9ff; background-color: rgba(255, 17, 17, 0.91);" valign="top">
-      <a href="#" style="color: #ffffff; text-decoration: none; background-color: transparent;"><b>Blvd. Diagonal Reforma #3030</b><br>Col. Nuevo Torreón, CP 27060 Torreón Coahuila. </a>
+      <br><br>
+      <center>
+        <a href="http://www.curiosity.com.mx/confirmar/{{$token}}"
+           style="background:#2262ae;padding:20px;border-radius:10px;color:#ffffff;text-decoration:none;font-size:1.2em;letter-spacing:1px;">
+          Clíck aquí para completar tu registro
+        </a>
+        <br><br>
+      </center>
       <br>
-      <a style="color: #000; text-decoration: none; background-color: transparent;">www.curiosity.com.mx</a>
+    </div>
+  </td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<table class="table-space" height="6" style="height: 6px; font-size: 0px; line-height: 0; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="6" style="height: 16px; width: 550px; background-color: #2d96ba;" width="550" bgcolor="#2d96ba" align="left">&nbsp;</td></tr></tbody></table>
+
+<table class="table-row-fixed" width="600" bgcolor=" #ec2726" style="table-layout: fixed; background-color:  #ec2726;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-row-fixed-td" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal; padding-left: 1px; padding-right: 0px;" valign="top" align="left">
+  <table class="table-col" align="left" width="448" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="table-col-td" width="448" style="font-family: Arial, sans-serif; line-height: 19px; color: #444444; font-size: 13px; font-weight: normal;" valign="top" align="left">
+    <table width="600" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td width="100%" align="center" bgcolor=" #ec2726" style="font-family: Arial, sans-serif; line-height: 24px; color: #fff; font-size: 13px; font-weight: normal; text-align: center; padding: 9px; border-width: 1px 0px 0px; border-style: solid; border-color: #2d96ba; background-color: #ec2726;" valign="top">
+      <center>
+        <a href="#" style="color: #ffffff; font-size:0.7em; text-decoration: none; background-color: transparent;"><b>Blvd. Diagonal Reforma #3030,</b> Col. Nuevo Torreón, CP 27060 Torreón Coahuila. </a>
+        <br>
+        <a style="color: #ffffff; font-size:0.9em; text-decoration: none; background-color: transparent;">www.curiosity.com.mx | <a style="font-size:0.5em;"> &copy; Todos los derechos reservados</a></a>
+      </center>
     </td></tr></tbody></table>
   </td></tr></tbody></table>
 </td></tr></tbody></table>
-<table class="table-space" height="1" style="height: 1px; font-size: 0px; line-height: 0; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="1" style="height: 1px; width: 450px; background-color: #ffffff;" width="450" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
-<table class="table-space" height="36" style="height: 36px; font-size: 0px; line-height: 0; width: 450px; background-color: #e4e6e9;" width="450" bgcolor="#E4E6E9" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="36" style="height: 36px; width: 450px; background-color: #e4e6e9;" width="450" bgcolor="#E4E6E9" align="left">&nbsp;</td></tr></tbody></table></td></tr></table>
+<table class="table-space" height="1" style="height: 1px; font-size: 0px; line-height: 0; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="table-space-td" valign="middle" height="1" style="height: 1px; width: 600px; background-color: #ffffff;" width="600" bgcolor="#FFFFFF" align="left">&nbsp;</td></tr></tbody></table>
+</td></tr></table>
 </td></tr>
  </table>
+ <br>
  </body>
  </html>

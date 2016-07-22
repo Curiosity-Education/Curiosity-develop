@@ -7,18 +7,15 @@ var $juego = {
     },
     slider:{
         changeImages:function(json){
-          $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);
-          $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);
-          $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);
+          $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);  
+          $("#slider img[alt='img-2']").attr("src","/packages/images/games/"+json.img2);  
+          $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);  
         }
     },
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
         intentos:0,
-        aciertosIntento:0,
-        aciertosCapacidad:0,
-        erroresItem:0,
         valorPuntos:100,
         puntajeActual:0,
         puntajeMaximo:0,
@@ -34,27 +31,8 @@ var $juego = {
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
         },
-        changeItem:function(change){
-          /*---./ Esta función estara atenta de los sucesos en los items
-            o ejercicios que se estan realizando en cada una de las partidas
-            en cada cambio de item el estará a la escucha de este y todo se
-            reiniciará
-          ./---*/
-            if(change){
-                if($juego.game.erroresItem >= 1)
-                    $juego.game.aciertosIntento+=1;
-                else
-                    $juego.game.aciertosCapacidad+=1;
-
-                $juego.game.erroresItem=0;
-            }
-            else
-                $juego.game.erroresItem+=1;
-            $("#game").trigger('changeItem');
-
-        },
         finish:function(){
-            $juego.aciertos=0;
+            $juego.game.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
             //nivel=0;
             // Guardamos el puntaje mayor actual en variable temporal para no perder la catidad de puntos maximos en caso de que este puntaje sea superado
@@ -76,6 +54,15 @@ var $juego = {
             $juego.cronometro.stop();
             $("#game").trigger("finish");
         },
+        finish_game_unity:function(){
+           $juego.game.eficiencia = Math.round(($juego.game.aciertos * 100) / $juego.game.intentos);
+            if($juego.game.puntajeActual > $juego.game.puntajeMaximo){
+            // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
+             $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+            }
+            $juego.game.save();
+            $juego.game.restart_game_unity();
+        },
         restart:function(){
             $juego.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
@@ -85,6 +72,12 @@ var $juego = {
             $juego.cronometro.stop();
             $("#btn-comenzar").trigger("click");
             $("#game").trigger('restart');
+        },
+        restart_game_unity:function(){
+            $juego.aciertos=0;
+            $juego.intentos = 0;
+            $juego.game.continuo=0;//reiniciar continuos
+            $juego.game.puntajeActual=0;
         },
         save:function(){
               data={
@@ -138,7 +131,6 @@ var $juego = {
             $(".verific").empty();
             // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
-            $juego.game.changeItem(true);
         },
         setError:function(puntosMenos){
             // regresamos la cantidad de aciertos continuos a cero
@@ -162,7 +154,6 @@ var $juego = {
               $(".verific").empty();
               // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
-            $juego.game.changeItem(false);
         },
         determinarCombo:function(){
             if($juego.game.continuo !== 0){
@@ -188,7 +179,7 @@ var $juego = {
                 }
             }
         }
-    },
+    }, 
     cronometro:{
         interval:"",
         interval_canvas:"",
@@ -218,7 +209,7 @@ var $juego = {
             }
         },
         contar:function(){
-            if(!$juego.cronometro.pausa){
+            if(!$juego.cronometro.pausa){          
                 if($juego.cronometro.tiempo>=0){
                     $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
                     $juego.cronometro.segundero++;
@@ -231,20 +222,22 @@ var $juego = {
                     $juego.game.finish();
                 }
             }
+            else{
+                $("#game").trigger('pause');
+            }
         },
         drawCircleTemp:function(){
           var mycanvas = document.getElementById('mycanvas');
           var mycanvas1 = $('#mycanvas');
-          var circleTime = $('.temp').position();
-          console.log(circleTime);
           var ctx = mycanvas.getContext('2d');
           $juego.cronometro.interval_canvas = setInterval(drawCircle,1000);
           ctx.lineWidth=9;
-          mycanvas.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
+          var circleTime = $('.temp').position();
+          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;
-          var gradian1  = ctx.createLinearGradient(120,0,220,0);
+          var gradian1  = ctx.createLinearGradient(120,0,220,0); 
           gradian1.addColorStop(0,'rgb(242,221,72)');
           gradian1.addColorStop(1,'rgb(54,142,184)'); // rojo
           gradian2 = ctx.createLinearGradient(100,90,420,0);
@@ -258,18 +251,18 @@ var $juego = {
                    ctx.strokeStyle=gradian1;
                    var radianes = (Math.PI/180)*grados;
                    ctx.arc(65,65,61,(Math.PI/180)*270,radianes,false);
-                   ctx.stroke();
+                   ctx.stroke();  
                    ctx.closePath();
                }else if(contadorGrados<=360){
                  ctx.beginPath();
                  ctx.strokeStyle=gradian2;
                  var radianes = (Math.PI/180)*grados;
                  ctx.arc(65,65,61,(Math.PI/180)*180,radianes,false);
-                 ctx.stroke();
+                 ctx.stroke();  
                  ctx.closePath();
                }else{
                  $juego.cronometro.endCanvasCronometro();
-                 return;
+                 return; 
                }
                grados=grados+(360/$juego.cronometro.duracion);
                contadorGrados+=(360/$juego.cronometro.duracion);
@@ -281,7 +274,7 @@ var $juego = {
         },
         endCanvasCronometro:function(){
            clearInterval($juego.cronometro.interval_canvas);
-           grados= 270;
+           grados= 270; 
            contadorGrados=0;
            mycanvas.width=mycanvas.width;
         },
@@ -309,21 +302,10 @@ var $juego = {
             $juego.cronometro.showCronometro($juego.cronometro.minutero,$juego.cronometro.segundero);
         },
         pausar:function(bool){
-
             if(!/true|false/.test(bool)){
                 console.error("El parametro inverso debe ser un booleano");
             }else
-
-            if(!/^true|false/.test(bool)){
-                console.error("El parametro inverso debe ser un booleano");
-            }else{
-                if(bool)
-                    $("#game").trigger('pause');
-                else
-                    $("#game").trigger('continue');
-
                 $juego.cronometro.pausa=bool;
-            }
         }
     },
     modal : {
@@ -410,7 +392,7 @@ var $juego = {
       });
     },
     setBackgroundColor : function(color){
-        if(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(color) || /^rgb\(([0-9]{1,3}), ([0-9]{1,3}), ([0-9]{1,3})\)$/.test(color)){
+        if(/^#[0-9][a-fA-F]{6}$/.test(color) || /^rgb\([0-9]{1,3}\,[0-9]{1,3}\,[0-9]{1,3}\)$/.test(color)){
             $(".zona-juego").css({
                 "background-color" : color
             });
@@ -432,26 +414,40 @@ $("#continuar").click(function(){
   $juego.cronometro.pausar(false);
   $("#game").removeClass("blur");
 });
+$("#continue").click(function(){
+    $("body").removeClass("modal-open");
+    $(".myModal").removeClass("in");
+    $(".myModal").hide();
+    $(".modal-backdrop").remove();
+    $("#continuar").trigger("click");
+});
+$("#ayuda").click(function(e){
+    $("body").removeClass("modal-open");
+    $("#menu-juego").removeClass("in");
+    $("#menu-juego").hide();
+    $(".modal-backdrop").remove();
+    $("body").addClass("modal-open");
+    $(".myModal").show();
+    $(".myModal").addClass("in");
+    $("body").append($("<div class='modal-backdrop fade in'></div>"));
+    
+     
+});
+
 $("#reiniciar").click(function(){
   $juego.game.restart();
-  $("#game").removeClass("blur");
+  $("#game").removeClass("blur");	
 });
 $("#salir_juego").click(function(){
   $juego.game.salir();
-  $("#game").removeClass("blur");
+  $("#game").removeClass("blur");	
 });
 $(".btnVideo").click(function(){
     $("#modalPrueba").modal('hide');
     $("#modalVideo").modal('show');
 });
 
-$(".btnDownloadPDF").click(function() {
-});
 
-$("#btn-comenzar").click(function(){
-  //$(".btnVideo").attr("disabled", "disabled");
-  //$(".btnDownloadPDF").attr("disabled", "disabled");
-});
 
 
 /*$("#ayuda").click(function(){
@@ -470,11 +466,6 @@ $("#btn-comenzar").click(function(){
 });*/
 
 $(document).ready(function(){
- $(window).resize(function(){
-    var mycanvas1 = $('#mycanvas');
-    var circleTime = $('.temp').position();
-    mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
- });
  (function ($) {
     // Detect touch support
     $.support.touch = 'ontouchend' in document;
@@ -579,230 +570,115 @@ $(document).ready(function(){
     });
 });
 
-
-// FUNCIONAMIENTO DEL SLIDER
-// COMENTE ESTO PORQUE CAUSABA CONFLICTOS Y NO SABIA SI AUN ES UTIL
-// $(function(){
-// 	var SliderModule = (function(){
-//
-// 		var pb = {};
-// 		pb.el = $('#slider');
-// 		pb.nom = "fernando";
-// 		pb.items = {
-// 			panel: pb.el.find('li')
-// 		}
-//
-// 		// Variables Necesarias
-// 		var SliderInterval,
-// 			currentSlider = 0,
-// 			nextSlider = 1,
-// 			lengthSlider = pb.items.panel.length;
-//
-// 		//initialize
-// 		pb.init = function(settings){
-//
-// 			var output = "";
-//
-// 			for(var i = 0; i < lengthSlider; i++){
-// 				if(i == 0){
-// 					output += '<li class="active"></li>';
-// 				}
-//
-// 				else{
-// 					output += '<li></li>';
-// 				}
-// 			}
-//
-//
-// 			//Activamos nuestro slider
-// 			SliderInit();
-//
-// 			// Controles del Slider
-// 			$('#slider-controls').html(output).on('click','li', function(e){
-// 				var $this = $(this);
-// 				//console.log($this.index());
-//
-// 				if(currentSlider !== $this.index()){
-// 					changePanel($this.index());
-// 				};
-//
-// 			});
-// 		}
-//
-// 		pb.starSlider = function(){
-// 			var panels = pb.items.panel,
-// 				controls = $('#slider-controls li');
-//
-// 			if(nextSlider >= lengthSlider){
-// 				nextSlider = 0;
-// 				currentSlider = lengthSlider-1;
-// 			}
-//
-// 			// Efectos
-// 			controls.removeClass('active').eq(currentSlider).addClass('active');
-// 			panels.eq(currentSlider).fadeOut('slow');
-// 			panels.eq(nextSlider).fadeIn('slow');
-//
-//
-// 			//console.log(nextSlider);
-//
-//
-//
-// 			// Actualizamos nuestros datos
-// 			currentSlider = nextSlider;
-// 			nextSlider += 1;
-// 		}
-//
-// 		// Funcion para controles del Slider
-// 		var changePanel = function(id){
-// 			clearInterval(SliderInterval);
-// 			var panels = pb.items.panel,
-// 				controls = $('#slider-controls li');
-//
-// 			// Comprobamos el ID
-// 			if(id >= lengthSlider){
-// 				id = 0;
-// 			}
-//
-// 			else if(id < 0){
-// 				id = lengthSlider-1;
-// 			}
-//
-// 			// Efectos
-// 			controls.removeClass('active').eq(id).addClass('active');
-// 			panels.eq(currentSlider).fadeOut('slow');
-// 			panels.eq(id).fadeIn('slow');
-//
-// 			// Actualizamos nuestros datos
-// 			currentSlider = id;
-// 			nextSlider = id + 1;
-//
-// 			// Reactivamos el Interval (Slider)
-// 			SliderInit();
-//
-// 		}
-//
-// 		var SliderInit = function(){
-// 			SliderInterval = setInterval(pb.starSlider, 4000);
-// 		}
-//
-// 		return pb;
-// 	}());
-//
-// 	SliderModule.init();
-//
-// });
-// =======
-
 // FUNCIONAMIENTO DEL SLIDER
 
 $(function(){
 	var SliderModule = (function(){
-
+		
 		var pb = {};
 		pb.el = $('#slider');
 		pb.nom = "fernando";
 		pb.items = {
 			panel: pb.el.find('li')
 		}
-
+		
 		// Variables Necesarias
 		var SliderInterval,
 			currentSlider = 0,
 			nextSlider = 1,
 			lengthSlider = pb.items.panel.length;
-
+		
 		//initialize
 		pb.init = function(settings){
-
+			
 			var output = "";
-
+			
 			for(var i = 0; i < lengthSlider; i++){
 				if(i == 0){
 					output += '<li class="active"></li>';
 				}
-
+				
 				else{
 					output += '<li></li>';
 				}
 			}
-
-
+			
+			
 			//Activamos nuestro slider
 			SliderInit();
-
+			
 			// Controles del Slider
 			$('#slider-controls').html(output).on('click','li', function(e){
 				var $this = $(this);
 				//console.log($this.index());
-
+				
 				if(currentSlider !== $this.index()){
 					changePanel($this.index());
 				};
-
+				
 			});
 		}
-
+		
 		pb.starSlider = function(){
 			var panels = pb.items.panel,
 				controls = $('#slider-controls li');
-
+			
 			if(nextSlider >= lengthSlider){
 				nextSlider = 0;
 				currentSlider = lengthSlider-1;
 			}
-
+			
 			// Efectos
 			controls.removeClass('active').eq(currentSlider).addClass('active');
 			panels.eq(currentSlider).fadeOut('slow');
 			panels.eq(nextSlider).fadeIn('slow');
-
-
+			
+			
 			//console.log(nextSlider);
-
-
-
+			
+			
+			
 			// Actualizamos nuestros datos
 			currentSlider = nextSlider;
 			nextSlider += 1;
 		}
-
+		
 		// Funcion para controles del Slider
 		var changePanel = function(id){
 			clearInterval(SliderInterval);
 			var panels = pb.items.panel,
 				controls = $('#slider-controls li');
-
+			
 			// Comprobamos el ID
 			if(id >= lengthSlider){
 				id = 0;
 			}
-
+			
 			else if(id < 0){
 				id = lengthSlider-1;
 			}
-
+			
 			// Efectos
 			controls.removeClass('active').eq(id).addClass('active');
 			panels.eq(currentSlider).fadeOut('slow');
 			panels.eq(id).fadeIn('slow');
-
+			
 			// Actualizamos nuestros datos
 			currentSlider = id;
 			nextSlider = id + 1;
-
+			
 			// Reactivamos el Interval (Slider)
 			SliderInit();
-
+			
 		}
-
+		
 		var SliderInit = function(){
 			SliderInterval = setInterval(pb.starSlider, 4000);
 		}
-
+		
 		return pb;
 	}());
-
+	
 	SliderModule.init();
-
-});
+	
+}); 

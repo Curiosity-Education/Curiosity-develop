@@ -73,7 +73,9 @@
 .latidos{
     animation: 2.5s latidos infinite ease;
 }
-.fa-star{
+
+.contenedor-padre
+ .fa-star{
     font-size: 8px !important;
     margin-left: 3px;
     color: rgb(240, 240, 0)!important;

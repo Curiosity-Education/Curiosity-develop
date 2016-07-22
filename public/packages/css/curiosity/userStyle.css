@@ -16,6 +16,35 @@ body {
   overflow-y: auto;
 }
 
+.hideIrAvatarStore{
+  display: none;
+}
+
+.irAvatarStore{
+  background: #65499d;
+  color: #ffffff;
+  width: 90%;
+  height: 50px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-decoration: none;
+}
+
+.irAvatarStore:hover{
+  background: #7759b1;
+  color: #fff;
+}
+
+#contAvatar{
+  padding-bottom: 43.5px;
+}
+
 .modal{
   background: rgba(0, 0, 0, 0.5);
 }
@@ -56,26 +85,6 @@ body {
   width: 90%;
   opacity: 0.1;
   margin-top: 5px;
-}
-
-/*/ Barra de desplazamiento /*/
-::-webkit-scrollbar {
-      width: 10px;
-}
-::-webkit-scrollbar-track {
-      background-color: rgba(60, 141, 187, 1);
-}
-::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.22);
-
-      border-radius: 10px;
-
-}
-::-webkit-scrollbar-button {
-      background-color: rgba(60, 141, 187, 1);
-}
-::-webkit-scrollbar-corner {
-      background-color: transparent;
 }
 
 .bloque-hover:hover{
@@ -150,10 +159,9 @@ body {
     transform: translate(230px, 0);
   }
 }
-.content-wrapper,
-.right-side {
+.content-wrapper{
   min-height: 100%;
-  background-color: #ecf0f5;
+  background-color: #ecf0f5 !important;
   z-index: 800;
 }
 .main-footer {
@@ -276,23 +284,43 @@ a:focus {
 .layout-top-nav .main-header > .navbar {
   margin-left: 0;
 }
-.main-header #navbar-search-input.form-control {
+#btnfind{
+  cursor: pointer;
+  background: rgba(88,93,102,0.3);
+  color: #fff;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 5px;
+}
+#navSearch{
+  position: fixed;
+  margin-top: -195px;
+  z-index: 9999999;
+  width: 250px;
+  margin-left: 50px;
+}
+#navbar-search-input{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border: none;
+}
+#navbar-search-input.form-control{
   background: rgba(255, 255, 255, 0.2);
   border-color: transparent;
 }
-.main-header #navbar-search-input.form-control:focus,
-.main-header #navbar-search-input.form-control:active {
+#navbar-search-input.form-control:focus,
+#navbar-search-input.form-control:active {
   border-color: rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.9);
 }
-.main-header #navbar-search-input.form-control::-moz-placeholder {
+#navbar-search-input.form-control::-moz-placeholder {
   color: #ccc;
   opacity: 1;
 }
-.main-header #navbar-search-input.form-control:-ms-input-placeholder {
+#navbar-search-input.form-control:-ms-input-placeholder {
   color: #ccc;
 }
-.main-header #navbar-search-input.form-control::-webkit-input-placeholder {
+#navbar-search-input.form-control::-webkit-input-placeholder {
   color: #ccc;
 }
 .main-header .navbar-custom-menu,

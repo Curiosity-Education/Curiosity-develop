@@ -13,16 +13,12 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.cali.fa-star{
-    color: rgb(242,221,72);
-}
-.cali.fa-star:hover{
-  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
-  animation: neon3 1.5s ease-in-out infinite alternate;
+#img-progress{
+  left: 40%!important;
+  top: 160%!important;
 }
 .zona-juego{
-  color: white;
+  color: white;  
   margin-top: -10px;
   padding-top: 5px;
   padding-left: 25px;
@@ -42,32 +38,32 @@
     z-index: 100;
 }
 .temp{
-    text-align:  center;
+    text-align:  center!important;
     padding: 7px!important;
-    border:7px solid #fff;
+    border:7px solid #fff!important;
     width: 130px!important;
     height: 130px!important;
     min-height: 130px!important;
     min-height: 130px!important;
-    border-radius: 100%;
+    border-radius: 100%!important;
     
 }
 .temp>i.fa{
-    font-size: 1.9em;
+    font-size: 1.9em!important;
 }
 .temp>label{
-    display: block;
+    display: block!important;
     margin: 0!important;
-    font-size: 1.9em;
+    font-size: 1.9em!important;
     padding: 0!important;
-    font-family: 'Calibri Light';
+    font-family: 'Calibri Light'!important;
 }
 .temp>#temp-count{
-    color: #fff; 
+    color: #fff!important; 
     font-size: 2.3em!important;
 }
 .temp>#temp-static{
-    color: #000;
+    color: #000!important;
 }
 .verific>i.fa.fa-check{
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0      150px #B6FF00;
@@ -77,6 +73,7 @@
 }
 .btn{
   outline: none !important;
+	border-radius: 3px; !important
 }
 
 .cal-titulo{
@@ -89,7 +86,7 @@
   letter-spacing: 0.8px;
 }
 .blur{
-  -webkit-filter:blur(2px);
+  -webkit-filter:blur(12px);
 }
 .cal-titulo > h1{
   font-size: 1.8em;
@@ -221,7 +218,12 @@
   margin-top: 20px;
 }
 @media only screen and (max-width: 794px) and (min-width: 495px) {
-    .temp>h3{
+ .zona-puntaje h3{
+    font-weight: bold;
+    font-size: 1.9em!important;
+    color:hsl(65, 100%, 50%);
+  }
+  .temp>h3{
     font-size: 1.5em;
   }
   .temp>h5{
@@ -249,6 +251,11 @@
 }
 
 @media only screen and (max-width: 494px) and (min-width: 335px) {
+  .zona-puntaje h3{
+    font-weight: bold;
+    font-size: 1.4em!important;
+    color:hsl(65, 100%, 50%);
+  }
   .temp>h3{
     font-size: 1.3em;
   }
@@ -276,6 +283,11 @@
   .temp>h3{
     font-size: 1em;
   }
+  .zona-puntaje h3{
+    font-weight: bold;
+    font-size: 1.1em!important;
+    color:hsl(65, 100%, 50%);
+  }
   .temp>h5{
     font-size: 1.1em;
   }
@@ -297,11 +309,11 @@
 
   }
 
-hr{
+.hr{
   height: 2px;
   background-color: grey;
   border-radius: 50%;
-  width: 70%;
+  width: 100%;
   
 }
 
@@ -324,14 +336,14 @@ hr{
 }
 #menu-juego .modal-dialog{
   margin-top: 10%;
-  margin-left: 45%;
+  margin-left: 40%;
 }
 #menu-juego .modal-title{
-  margin: 5px;
-  margin-bottom: 5px;
+  
+  margin-bottom: 10px;
   background-color: rgb(54,142,184);
-  -webkit-transition: background-color .4s;
-  border-radius: 3px;
+  -webkit-transition: background-color .6s;
+  border-radius: 5px;
   
 }
 #menu-juego h4[role='button']{
@@ -341,11 +353,13 @@ hr{
 }
 #menu-juego h4[role="button"]:hover{
   background-color: rgb(65,198,239);
-   border-radius: 2px;
+   border-radius: 5px;
    transition:1s;
 }
 
-
+#salir_juego{
+	margin-bottom: 15px !important;
+}
 
 
 #pausa{
@@ -361,6 +375,12 @@ hr{
 }
 ul{
   list-style-type: none;
+}
+
+/* Titulo del slider */
+
+#titulo-slider{
+	font-family: "Comic Sans MS";
 }
 
 /* Encabezado del slider */
@@ -383,7 +403,7 @@ ul{
   position: relative;
   height: 200px;
   width: 100%;
-  border:  5px solid rgb(228,126,60);
+  border:  5px solid rgb(82, 79, 77);
   overflow: hidden;
   border-radius: 5px;
   -webkit-box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.75);
@@ -478,7 +498,7 @@ li.slide-current{
 }
 #modal-instrucciones .modal-title{
   font-family: fantasy;
-  color: black!important;
+  
 }
 #modal-instrucciones hr{
   height: 2px;
@@ -488,13 +508,13 @@ li.slide-current{
 }
 
 #titulo-juego{
-  font-family: "Comic Sans MS";
-  font-size: 1.5em;
-  color: rgb(228,126,60);
+  font-family: "Comic Sans MS" !important;
+  font-size: 1.5em !important;
+  color:rgb(228,126,60) !important;
 }
 
 .contenedor-video{
-  margin-top: -40px;
+  margin-top: -30px;
   border-radius: 5px;
   
 }
@@ -523,7 +543,7 @@ video{
   color: black;
 }
 
-#omitir{
+#omitir,#continue{
   border-radius: 5px;
   margin-bottom: 15px;
   color: white;
@@ -531,7 +551,7 @@ video{
   -webkit-transition: background-color .4s;
 }
 
-#omitir:hover{
+#omitir:hover,#continue{
   background-color: rgb(54,142,184);
 }
 
@@ -541,12 +561,58 @@ button.instruccion{
   margin-left: 10px;
   
 }
-
-@keyframes neon3 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgb(242,221,72), 0 0 70px rgb(242,221,72), 0 0 80px rgb(242,221,72), 0 0 100px rgb(242,221,72), 0 0 150px rgb(242,221,72);
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgb(242,221,72), 0 0 35px rgb(242,221,72), 0 0 40px rgb(242,221,72), 0 0 50px rgb(242,221,72), 0 0 75px rgb(242,221,72);
-  }
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.4); }
+    to { transform: none; }
+}
+.fastToLeft{
+    animation: 1s fastToLeft 1;
+}
+.fastToRight{
+    animation: 1s fastToRight 1;
+}
+.zoom{
+    animation: 1.7s zoom 1 ease; 
+}
+@keyframes fastToLeft{
+    0%{
+        transform: translateX(800px);
+        opacity: .2;
+    }
+    80%{
+        transform: translateX(-400px);
+      /*  opacity:  0.3;*/
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes fastToRight{
+    0%{
+        transform: translateX(-800px);
+        opacity: .2;
+    }
+    80%{
+        transform: translateX(400px);
+      /*  opacity:  0.3;*/
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes zoom{
+    0%{
+        
+        opacity: .2;
+    }
+    70%{
+        transform: scale(1.1);
+        opacity: .8;
+    }
+    100%{
+        opacity: 1;
+    }
 }

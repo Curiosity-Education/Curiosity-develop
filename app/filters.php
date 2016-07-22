@@ -182,3 +182,9 @@ Route::filter('gestionar_avatar',function(){
        return View::make('view-error404');
    }
 });
+
+Route::filter('gestion_data_padre',function(){
+   if(!Entrust::can('gestion_data_padre')){
+       return View::make('view-error404');
+   }
+});

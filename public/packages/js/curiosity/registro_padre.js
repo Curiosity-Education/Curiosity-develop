@@ -147,78 +147,36 @@ $(document).on("ready",function(){
                data:{data:datos},
                beforeSend: function(){
                 message = "Espera.. Los datos se estan guardando... Verificando información";
-                after = noty({
-                            layout: 'bottomRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'information',
-                            text: message,
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                $curiosity.noty(message, "info");
                 },
                success:function(r){
                     console.log(r);
                     if($.isPlainObject(r)){
                        alerta.errorOnInputs(r);
-                       //alerta.show("Registro no Exitoso","Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos","warning-alert striped-alert",true);
-                       var n = noty({
-                            layout: 'bottomRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'warning',
-                            text: "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos",
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                       $curiosity.noty("Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos", "warning");
                        $btn.prop("disabled",false);
 
                        return;
                     }
                    else if(r=="0"){// cero es el codigo de exception cuando se pierde la conexón a internet
-                      // alerta.show("Fallo en la Conexión de internet","El registro no fue realizado por que se perdio la conexón a internet durante el proceso, verifique su conexión a internet e intente de nuevo,  ","warning-alert striped-alert",false);
-                          var n = noty({
-                            layout: 'bottomRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'success',
-                            text: "El registro no fue realizado por que se perdio la conexón a internet durante el proceso, verifique su conexión a internet e intente de nuevo,",
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                        $curiosity.noty("El registro no fue realizado por que se perdio la conexón a internet durante el proceso, verifique su conexión a internet e intente de nuevo", "error");
                        $btn.prop("disabled",false);
                    }
                    else if(r=="OK"){
-                     //  alerta.show("Registro  Exitoso","El registro fue realizado exitosamente. Se ha enviado un correo de verifcación a su cuenta para poder confirmar su registro. Favor de verificar el correo","success-alert striped-alert",false);
-                       var n = noty({
-                            layout: 'bottomRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'success',
-                            text: "El registro fue realizado exitosamente. Se ha enviado un correo de verifcación a su cuenta para poder confirmar su registro. Favor de verificar el correo",
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
-                       after.close();
-                       $("input").val("");
-                        setTimeout(function(){
-                            document.location="/";
-                        },9600);
+                    $("input").val("");
+                     swal({
+                       title: "¡Registro Exitoso!",
+                       text : "El registro fue realizado exitosamente. Se ha enviado un correo de verifcación a su cuenta para poder confirmar su registro. Favor de verificar el correo electrónico",
+                       type: "success",
+                       showCancelButton: false,
+                       confirmButtonColor: "#3cb54a",
+                       confirmButtonText: "Aceptar",
+                       closeOnConfirm: true
+                     },
+                     function(){
+                       document.location.href = '/';
+                     });
                    }
-
-
                }
            }).always(function(){
                $btn.text("finish");

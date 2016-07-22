@@ -374,10 +374,7 @@ class actividadController extends BaseController
 
         // --- Le sumamos un visto mas a la actividad
         // --- obtenemos una instancia de la actividad a la que se le sumará el visto
-        $act = actividad::where('id', '=', $idActividad)->first();
-        // --- Sumamos 1 a esos vistos en la actividad
-        $act->vistos = $act->vistos + 1;
-        $act->save();
+        $act = actividad::where('id', '=', $idActividad)->first()->increment('vistos');        
 
         Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo')){
@@ -880,7 +877,8 @@ class actividadController extends BaseController
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
         }
     }
-       public function saveCalificationActivity(){
+    
+    public function saveCalificationActivity(){
       try {
      if(Auth::user()->hasRole('hijo')){
           //if
@@ -908,4 +906,18 @@ class actividadController extends BaseController
         return "".$e;
       }
     }
+
+    public function getCalificacionActivity(){
+        if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free")){
+            $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",Auth::user()->persona->hijo->id)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
+          if($hijo_califica_actividad){
+            return (integer)($hijo_califica_actividad->calificacion);
+          }else{
+            return 0;
+          }
+             
+         }
+    }
+
+
   }

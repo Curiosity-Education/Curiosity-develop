@@ -91,7 +91,7 @@ class padreController extends BaseController
             //     "name"     =>       "Equipo Curiosity",
             //     "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
             //     "email"    =>       $padre->email,
-            //     "subject"  =>       "Registro relizado exitosamente",
+            //     "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
             //     "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
             //     "token"    =>       $user->token
             // ];
@@ -120,10 +120,10 @@ class padreController extends BaseController
         if($user){
             $user->active=1;
             $user->save();
-            Auth::login($user);
-            return Redirect::to("/perfil");
-        }else return Redirect::to("/");
-
+            return Redirect::to("/");
+        }else{
+          return Redirect::to("/");
+        }
     }
     public function gethijos(){
 
@@ -152,4 +152,35 @@ class padreController extends BaseController
       ->where("user_id", "=", Auth::user()->id)
       ->count('hijos.padre_id');
     }
+
+    public function seguimientoHijo(){
+      $hijos = padre::join('hijos', 'padres.id', '=', 'hijos.padre_id')
+      ->join('personas', 'hijos.persona_id', '=', 'personas.id')
+      ->where('padres.id', '=', Auth::user()->persona()->first()->padre()->first()->id)
+      ->select('hijos.id', 'personas.nombre', 'personas.apellido_paterno', 'personas.apellido_materno')
+      ->get();
+      $seguimientos = [];
+      foreach ($hijos as $key => $value) {
+        $segActsHijo = padre::join('hijos', 'padres.id', '=', 'hijos.padre_id')
+        ->join('hijos_metas_diarias', 'hijos.id', '=' , 'hijos_metas_diarias.hijo_id')
+        ->join('avances_metas', 'hijos_metas_diarias.id', '=', 'avances_metas.avance_id')
+        ->where('hijos.id' ,'=', $value['id'])
+        ->select('avances_metas.fecha', 'avances_metas.avance as cantidad')
+        ->orderBy('avances_metas.fecha', 'desc')
+        ->limit(7)
+        ->get();
+        $nombre = $value['nombre']." ".$value['apellido_paterno']." ".$value['apellido_materno'];
+        array_push($seguimientos, array('seguimiento' => $segActsHijo, 'hijo' => $nombre, 'id' => $value['id']));
+      }
+      return $seguimientos;
+    }
+
+    public function getPuntajes(){
+      return View::make('vista_papa_puntajes');
+    }
+
+    public function getAlertasNow(){
+      return View::make('vista_papa_alertas');
+    }
+
 }

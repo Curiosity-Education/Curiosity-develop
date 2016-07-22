@@ -1,3 +1,6 @@
+.modal{
+  z-index: 99999999999999999;
+}
 .butonEstatus{
   position: absolute;
   width: 88%;
@@ -395,10 +398,9 @@ textarea
 }
 
 @media (min-width: 768px){
-.sidebar-mini.sidebar-collapse .sidebar-menu > li#menuPremium > button#premium > span {
-		display: none;
-	}
-
+  .sidebar-mini.sidebar-collapse .sidebar-menu > li#menuPremium > button#premium > span {
+  		display: none;
+  }
 }
 
 li.user-footer{
@@ -419,8 +421,9 @@ aside{
 }
 
 #img-portada{
-	background-image: url(../../images/fondos/147H.jpg);
-	background-attachment: fixed;
+	background-image: url(../../images/dashboards/dashboard-01.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
 	background-size: cover;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 	height: 150px;
@@ -461,67 +464,6 @@ aside{
 	margin: 12px;
 	width: 90%;
 	border-color: white;
-}
-
-.skin-blue .main-header .navbar {
-    background-color: #2d96ba !important;
-}
-
-.skin-blue .main-header .logo {
-    background-color: #2d96ba !important;
-    color: #fff;
-    border-bottom: 0 solid transparent;
-}
-
-.skin-blue .main-header .navbar .sidebar-toggle:hover {
-    background-color: rgba(34, 98, 174, 0.18) !important;
-	transition: .6s;
-}
-
-.skin-blue .main-header .navbar .nav>li>a:hover, .skin-blue .main-header .navbar .nav>li>a:active, .skin-blue .main-header .navbar .nav>li>a:focus, .skin-blue .main-header .navbar .nav .open>a, .skin-blue .main-header .navbar .nav .open>a:hover, .skin-blue .main-header .navbar .nav .open>a:focus, .skin-blue .main-header .navbar .nav>.active>a{
-	background-color: rgba(34, 98, 174, 0.18) !important;
-	transition: .6s;
-}
-
-.skin-blue .sidebar-menu>li:hover>a {
-    color: #fff;
-    background: #222d32 !important;
-    border-left-color: #3c8dbc;
-}
-
-.skin-blue .sidebar-menu>li.active>a{
-	color: #fff;
-  background: #585d66;
-  border-left-color: #2d96ba;
-}
-
-.arrowAsideActive {
-  width: 30px;
-  height: 30px;
-  margin-left: -26px;
-  background-color: #2d96ba;
-  position: absolute;
-  margin-top: -37px;
-  transform: rotate(45deg);
-  display: none;
-}
-
-.skin-blue .sidebar-menu>li>a{
-	color: #fff;
-}
-
-.skin-blue .sidebar-menu>li>a:hover{
-	color: #fff;
-	border-left: 3px solid #2d96ba;
-}
-
-
-.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
-    background-color: #ecf0f5 !important;
-}
-
-#main-sidebar{
-  background-color: #585d66 !important;
 }
 
 @font-face{

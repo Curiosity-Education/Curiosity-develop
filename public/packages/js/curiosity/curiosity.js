@@ -33,64 +33,123 @@ var $curiosity = {
       }
   },
   noty:function(mensaje, tipo,titulo,image){
-
+      
         if(notify.permissionLevel() == notify.PERMISSION_DEFAULT)
             notify.requestPermission();
         else if(notify.permissionLevel() == notify.PERMISSION_GRANTED){
             if(tipo == "message")
                 this.createNotifications(mensaje,titulo,image);
             else
-                var n = noty({
-                    text        : mensaje,
-                    type        : tipo,
-                    dismissQueue: true,
-                    timeout     : 3000,
-                    closeWith   : ['click'],
-                    layout      : 'bottomRight',
-                    theme       : 'defaultTheme',
-                    maxVisible  : 10
-                 });
-                // switch (tipo) {
-                //   case "success":
-                //     alertify.success(mensaje);
-                //     break;
-                //   case "warning":
-                //     alertify.message(mensaje);
-                //     // alertify.warning(mensaje);
-                //     break;
-                //   case "info":
-                //     alertify.message(mensaje);
-                //     break;
-                //   case "error":
-                //     alertify.error(mensaje);
-                //     break;
-                // }
+                switch (tipo) {
+                  case "success":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Bien hecho!",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#3cb54a',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "warning":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Cuidado!",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#f7b219',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "info":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Informativo",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#2d96ba',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "error":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Error",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#ec2726',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                }
         }
         else{
-            var n = noty({
-                text        : mensaje,
-                type        : tipo,
-                dismissQueue: true,
-                timeout     : 3000,
-                closeWith   : ['click'],
-                layout      : 'bottomRight',
-                theme       : 'defaultTheme',
-                maxVisible  : 10
-             });
-            // switch (tipo) {
-            //   case "success":
-            //     alertify.success(mensaje);
-            //     break;
-            //   case "warning":
-            //     alertify.warning(mensaje);
-            //     break;
-            //   case "info":
-            //     alertify.message(mensaje);
-            //     break;
-            //   case "error":
-            //     alertify.error(mensaje);
-            //     break;
-            // }
+          switch (tipo) {
+            case "success":
+              $.toast({
+                text : mensaje,
+                heading : "Bien hecho!",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#3cb54a',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "warning":
+              $.toast({
+                text : mensaje,
+                heading : "Cuidado!",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#f7b219',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "info":
+              $.toast({
+                text : mensaje,
+                heading : "Informativo",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#2d96ba',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "error":
+              $.toast({
+                text : mensaje,
+                heading : "Error",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#ec2726',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+          }
         }
 
      document.getElementById('notyAudio').play();

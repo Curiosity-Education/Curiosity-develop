@@ -46,7 +46,7 @@ class perfilController extends BaseController{
             $datos["username"]=$datos["username_persona"];
             $user =User::find(Auth::user()->id);
             $user->update($datos);
-            $persona= $user->persona();
+            $persona = $user->persona();
             $datos_persona = [
                "nombre"            =>  $datos["nombre_persona"],
                "apellido_paterno"  =>  $datos["apellido_paterno_persona"],
@@ -55,10 +55,14 @@ class perfilController extends BaseController{
                "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
            ];
             $persona->update($datos_persona);
+            $rolee = Auth::user()->roles[0]->name;
+            if ($rolee == "padre" || $rolee == "padre_free" || $rolee == "demo_padre"){
+                $padreId = Auth::user()->persona()->first()->padre()->first()->id;
+                $padre = padre::where('id', '=', $padreId)->first();
+                $padre->update($datos);
+            }
+            return "bien";
         }
-        //$user =   	 User::find(Auth::user()->id);
-        //$user->update($datos);
-        return "bien";
     }
     public function updateUser(){
         $datos  =    Input::get('data');
@@ -109,6 +113,12 @@ class perfilController extends BaseController{
                 "fecha_nacimiento"  =>  $datos["fecha_nacimiento_persona"]
             ];
             $persona->update($datos_persona);
+            $rolee = Auth::user()->roles[0]->name;
+            if ($rolee == "padre" || $rolee == "padre_free" || $rolee == "demo_padre"){
+                $padreId = Auth::user()->persona()->first()->padre()->first()->id;
+                $padre = padre::where('id', '=', $padreId)->first();
+                $padre->update($datos);
+            }
             return "bien";
         }
     }

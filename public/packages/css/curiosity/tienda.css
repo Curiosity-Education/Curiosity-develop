@@ -1,0 +1,102 @@
+.ordenador{
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.miAvatar{
+  height: 350px;
+}
+img#miAvatar{
+  height: 310px;
+}
+.imgforinfo{
+  width: 35%;
+  margin-bottom: 30px;
+}
+.titleforinfo{
+  font-size: 1.5em;
+}
+.myinfo{
+  font-size: 2em;
+}
+.orderInfo{
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+#orderExp{
+  background-color: #2262ae;
+}
+#orderInfoExp{
+  background-color: #2d96ba;
+}
+#orderCoins{
+  background-color: #ed6922;
+}
+#orderInfoCoins{
+  background-color: #f68e55;
+}
+.titleforpanel{
+  margin: -20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 1.2em !important;
+  line-height: 1.5;
+}
+#seccEstilo{
+  background-color: #2262ae;
+}
+.panelItem{
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.panelItem:hover{
+  transition: .4s;
+  box-shadow: 2px 2px 4px 3px rgba(0,0,0,0.1);
+}
+.itemAvatar{
+  border-top: solid 6px #2262ae;
+}
+.captionInfo{
+  color: #fff;
+  margin: -20px;
+  margin-top: 5px;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.captionAvatar{
+  background-color: #2262ae;
+}
+.iconlock{
+  position: absolute;
+  background-color: #2262ae;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 5.5px;
+  margin-top: -15px;
+  margin-left: -15px;
+}
+#seccSkin{
+  background-color: #ed6922;
+}
+.itemSkin{
+  border-top: solid 6px #ed6922;
+}
+.captionSkin{
+  background-color: #ed6922;
+}

@@ -86,12 +86,12 @@ function __init(){
                 show_second_log("/packages/images/perfil/"+response[0].foto_perfil);
               }
               else{
-                $curiosity.noty("El nombre de usuario no existe.", 'information');
+                $curiosity.noty("El nombre de usuario no existe.", 'warning');
               }
             })
             .fail(function(error) {
                 $curiosity.noty(error.message,"warning")
-              console.log(error);
+                console.log(error);
             })
             .always(function(){
               $botonEnviar.removeAttr('disabled');
@@ -100,7 +100,7 @@ function __init(){
             });
           }
           else{
-            $curiosity.noty("Ingrese un nombre de usuario",'warning');
+            $curiosity.noty("Ingrese un nombre de usuario",'info');
             $botonEnviar.removeAttr('disabled');
             $botonEnviar.text('Siguiente');
             $botonCanel.removeAttr('disabled');
@@ -143,43 +143,52 @@ function __init(){
 
     // Funcion para la verificacion completa de usuario y contraseña en la base de datos
     function buscarUsuario($env, $canc){
-      $env.attr('disabled', 'disabled');
-      $env.text('Verificando...');
-      $canc.attr('disabled', 'disabled');
-      var datos = {
-        username: $username.val(),
-        password: $password.val()
-      };
+      if ($password.val() !== ""){
+        $env.attr('disabled', 'disabled');
+        $env.text('Verificando...');
+        $canc.attr('disabled', 'disabled');
+        var datos = {
+          username: $username.val(),
+          password: $password.val()
+        };
 
-      $.ajax({
-        url: '/login',
-        type: 'POST',
-        dataType: 'json',
-        data: {data: datos}
-      })
-      .done(function(response) {
-        // console.log(response);
-        if($.isPlainObject(response)){
-          $.each(response,function(index,value){
-            $.each(value,function(i,message){
-              $curiosity.noty(message, 'warning');
+        $.ajax({
+          url: '/login',
+          type: 'POST',
+          dataType: 'json',
+          data: {data: datos}
+        })
+        .done(function(response) {
+          // console.log(response);
+          if($.isPlainObject(response)){
+            $.each(response,function(index,value){
+              $.each(value,function(i,message){
+                $curiosity.noty(message, 'info');
+              });
             });
-          });
-        }
-        else if(response == 'success'){
-          $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
-          window.location.href = '/perfil';
-        }
-        else{
-          $curiosity.noty('La contraseña de usuario no es valida', 'information');
-          $env.removeAttr('disabled');
-          $env.text('Siguiente');
-          $canc.removeAttr('disabled');
-        }
-      })
-      .fail(function(error) {
-        console.log(error);
-      });
+          }
+          else if(response == 'success'){
+            $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
+            window.location.href = '/perfil';
+          }
+          else{
+            $curiosity.noty('La contraseña de usuario no es valida', 'warning');
+            $password.val("");
+            $env.removeAttr('disabled');
+            $env.text('Entrar');
+            $canc.removeAttr('disabled');
+          }
+        })
+        .fail(function(error) {
+          console.log(error);
+        });
+      }
+      else{
+        $curiosity.noty('Porfavor ingrese la contraseña primeramente', 'info');
+        $env.removeAttr('disabled');
+        $env.text('Entrar');
+        $canc.removeAttr('disabled');
+      }
     }
 
  (function ($) {

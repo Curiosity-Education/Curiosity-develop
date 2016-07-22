@@ -1,10 +1,8 @@
  @extends('admin_base')
 @section('mi_css')
- {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
  {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
  {{HTML::style("/packages/css/libs/cropper/cropper.min.css")}}
- {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
 @stop
 @section('title')
@@ -726,21 +724,10 @@
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
-{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
-{{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
-{{HTML::script('/packages/js/curiosity/alert.js')}}
 {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
-@if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
-  {{HTML::script("/packages/js/curiosity/perfilEstadisticas.js")}}
-@endif
-@if(Auth::user()->hasRole('padre_free'))
-  {{HTML::script("/packages/js/curiosity/freeValidationDad.js")}}
-@endif
 
 <script>
   $(function ()
@@ -891,18 +878,7 @@
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    after = noty({
-                                layout: 'bottomRight',
-                                theme: 'defaultTheme', // or 'relax'
-                                type: 'information',
-                                text: message,
-                                animation: {
-                                    open: {height: 'toggle'}, // jQuery animate function property object
-                                    close: {height: 'toggle'}, // jQuery animate function property object
-                                    easing: 'swing', // easing
-                                    speed: 300 // opening & closing animation speed
-                                }
-                            });
+                    $curiosity.noty(message, 'info');
                     }
                 })
                 .done(function(r){
@@ -928,7 +904,7 @@
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-                    after.close();
+                    
                 });
             }else{
                 var datos = {
@@ -955,18 +931,7 @@
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    after = noty({
-                                layout: 'bottomRight',
-                                theme: 'defaultTheme', // or 'relax'
-                                type: 'information',
-                                text: message,
-                                animation: {
-                                    open: {height: 'toggle'}, // jQuery animate function property object
-                                    close: {height: 'toggle'}, // jQuery animate function property object
-                                    easing: 'swing', // easing
-                                    speed: 300 // opening & closing animation speed
-                                }
-                            });
+                    $curiosity.noty(message, 'info');
                     }
                 }).done(function(r){
                     console.log(r);
@@ -984,7 +949,7 @@
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-                    after.close();
+
                 });
             }
         }else {
@@ -1030,18 +995,7 @@
             processData:false,
             beforeSend: function(){
                 message = "Espera.. La imagen se esta recortando...";
-                after = noty({
-                            layout: 'topRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'information',
-                            text: message,
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                $curiosity.noty(message, 'noty');
                 }
 
          }).done(function(r){
@@ -1052,7 +1006,7 @@
          }).fail(function(){
 
          }).always(function(){
-          after.close();
+
        });
      });
         var $inputImage = $('#inImage');

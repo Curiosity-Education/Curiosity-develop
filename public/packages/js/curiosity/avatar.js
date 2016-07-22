@@ -35,11 +35,12 @@ var $avatar = {
           });
         }
         else if (response[0] == "fileEmpty") {
-          $curiosity.noty("No se reconoce ninguna imagen. Seleccione una o intentelo nuevamente", 'warning');
+          $curiosity.noty("No se reconoce ninguna imagen valida. Por favor intentelo nuevamente", 'info');
         }
         else if (response[0] == "success") {
           $estructura.avatar(response[1]);
           $avatar.helperHide();
+          $curiosity.noty("Se ha registrado un nuevo avatar.", "success");
         }
       })
       .fail(function(error) {
@@ -72,6 +73,7 @@ var $avatar = {
           $selector.data('dat', $resp);
           $elemento.attr('style', "background:url(/packages/images/avatars_curiosity/estilos/"+$resp['preview']+");background-position: center;background-repeat: no-repeat;background-size: cover;");
           $avatar.helperHide();
+          $curiosity.noty("Se ha actualizado el avatar seleccionado.", "success");
         }
       })
       .fail(function(error) {
@@ -162,11 +164,12 @@ var $avatar = {
           });
         }
         else if (response[0] == "fileEmpty") {
-          $curiosity.noty("No se reconoce ninguna imagen. Seleccione una o intentelo nuevamente", 'warning');
+          $curiosity.noty("No se reconoce ninguna imagen valida. Por favor intentelo nuevamente", 'info');
         }
         else if (response[0] == "success") {
           $("#viewEstilos").append($estructura.estilo(response[1]));
           $avatar.estilo.helperCleanStyle();
+          $curiosity.noty("Se ha registrado un nuevo estilo para el avatar seleccionado.", 'success');
         }
       })
       .fail(function(error) {
@@ -199,6 +202,7 @@ var $avatar = {
           $selector.data('dat', $resp);
           $elemento.attr('style', "background:url(/packages/images/avatars_curiosity/estilos/"+$resp['preview']+");background-position: center;background-repeat: no-repeat;background-size: cover;");
           $avatar.estilo.helperCleanStyle();
+          $curiosity.noty("Se ha actualizado el estilo de avatar seleccionado", 'success');
         }
       })
       .fail(function(error) {
@@ -290,7 +294,7 @@ var $avatar = {
           });
         }
         else if (response[0] == "fileEmpty") {
-          $curiosity.noty("No se reconoce ninguna imagen. Seleccione una o intentelo nuevamente", 'warning');
+          $curiosity.noty("No se reconoce ninguna imagen valida. Por favor intentelo nuevamente", 'info');
         }
         else if (response[0] == "success") {
           if($estructura.flag != 0){
@@ -299,6 +303,7 @@ var $avatar = {
           }
           $("#viewSecuencias").append($estructura.secuencia(response[1]));
           $avatar.secuencia.helperClean();
+          $curiosity.noty("Se ha registrado una nueva secuencia para el estilo de avatar seleccioando", 'success');
         }
       })
       .fail(function(error) {

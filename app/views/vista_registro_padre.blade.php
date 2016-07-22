@@ -11,8 +11,11 @@
   {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
   {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
   {{HTML::style('/packages/css/curiosity/alert.css')}}
+	{{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
+	{{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
   <title>Curiosity</title>
 </head>
+<audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
 <!-- Navbar menu -->
 <div class="navbar navbar-default navbar-fixed-top bg-blue" role="navigation">
   <div class="container-fluid">
@@ -150,14 +153,15 @@
 {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
 {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
 {{HTML::script('packages/js/curiosity/alert.js')}}
-{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
+{{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
 {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
 {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+{{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
+{{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
+{{HTML::script('/packages/js/curiosity/curiosity.js')}}
 {{HTML::script('/packages/js/curiosity/registro_padre.js')}}
 <script>
   $(function ()

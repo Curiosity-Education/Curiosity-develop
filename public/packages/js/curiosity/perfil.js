@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-    $curiosity.menu.setPaginaId("#menuPerfil");
     $("#promedio").mask("ABC",{placeholder:"0.0"},{translation:{
                                                     A:{pattern:/^[0-9]?$/},
                                                     B:{pattern:/(\.)?/},
@@ -20,21 +19,10 @@ $(document).ready(function(){
                 data:$('#frm-reg-admins').serialize(),
                 beforeSend: function(){
                     message = "Espera.. Los datos se estan Almacenando... Verificando información";
-                    after = noty({
-                                layout: 'bottomRight',
-                                theme: 'defaultTheme', // or 'relax'
-                                type: 'information',
-                                text: message,
-                                animation: {
-                                    open: {height: 'toggle'}, // jQuery animate function property object
-                                    close: {height: 'toggle'}, // jQuery animate function property object
-                                    easing: 'swing', // easing
-                                    speed: 300 // opening & closing animation speed
-                                }
-                            });
+                    $curiosity.noty(message, 'info');
                     }
             }).done(function(r){
-                after.close();
+
                 console.log(r);
                 if(r.estado==200){
                     $curiosity.noty(r.message,"success");
@@ -48,7 +36,7 @@ $(document).ready(function(){
                    $curiosity.noty("Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos", 'warning');
                }
             }).always(function(){
-                after.close();
+
                 $btn.text(text);
                 $btn.removeClass('striped-alert');
                 $btn.prop("disabled",false);
@@ -152,6 +140,7 @@ $(document).ready(function(){
              apellido_paterno:{required:true,maxlength:30,alpha:true},
              apellido_materno:{required:true,maxlength:30,alpha:true},
              sexo:{required:true,maxlength:1},
+             grado:{required:true},
              promedio:{required:true,promedio:true},
              fecha_nacimiento:{required:true,date:true},
              password:{required:true,minlength:8,maxlength:100},
@@ -225,6 +214,7 @@ $(document).ready(function(){
                 fecha_nacimiento:$("#fecha_nacimiento").val(),
                 username_hijo:$("#username_hijo").val(),
                 promedio:$("#promedio").val(),
+                grado_inicial:$("#grado").val(),
                 password:$("#password").val(),
                 cpassword:$("#cpassword").val()
             }
@@ -234,31 +224,31 @@ $(document).ready(function(){
                 data:{data:datos},
                 beforeSend: function(){
                 message = "Espera.. Los datos se estan guardando... Verificando información";
-                after = noty({
-                            layout: 'bottomRight',
-                            theme: 'defaultTheme', // or 'relax'
-                            type: 'information',
-                            text: message,
-                            animation: {
-                                open: {height: 'toggle'}, // jQuery animate function property object
-                                close: {height: 'toggle'}, // jQuery animate function property object
-                                easing: 'swing', // easing
-                                speed: 300 // opening & closing animation speed
-                            }
-                        });
+                $curiosity.noty(message, 'info');
                 }
 
             }).done(function(r){
-                console.log(r);
                 if(r=="OK"){
                     //alerta.show("Registro Exitoso","EL niño fue registrado exitosamente","success-alert striped",true);
                     $curiosity.noty("EL niño fue registrado exitosamente","success");
-                    document.getElementById('frm-reg-hijos').reset();
                     $("#wizard-t-0").trigger("click");
-
+                    var codenew = "<div class='col-md-4 col-sm-6'>"+
+                 	 		"<div class='hijo_avatar' style='margin-bottom:20px;'>"+
+                				"<center>"+
+                          "<img src='/packages/images/perfil/perfil-default.jpg' class='img-responsive img-rounded' style='margin-top: 20px;'>"+
+                        "</center>"+
+                				"<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>"+
+                          "<p class='nombres'>"+ datos.nombre +" <br> "+ datos.apellido_paterno +" <br> "+ datos.apellido_materno +"</p>"+
+                					"<p class='nombres' style='color:black;'>"+ datos.username_hijo +"</p>"+
+                				"</div>"+
+                 	 		"</div>"+
+                 	 	"</div>";
+                    $("#hijosInfo").append(codenew);
+                    document.getElementById('frm-reg-hijos').reset();
+                    $("#registro_hijo").modal("hide");
                 }else if($.isPlainObject(r)){
                    alerta.errorOnInputs(r);
-                   after.close();
+
                    //alerta.show("Registro no Exitoso","Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos","warning-alert striped-alert",true);
                    mensage= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
                    $curiosity.noty(message, 'warning');
@@ -266,7 +256,7 @@ $(document).ready(function(){
                    return;
                }
             }).always(function(){
-                 after.close();
+
                  $btn.text(text_temp);
                  $btn.removeClass("striped-alert");
                  $btn.prop("disabled",false);
