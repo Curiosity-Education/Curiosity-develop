@@ -3,15 +3,7 @@ body{
   color: rgb(71, 71, 71);
 }
 
-#temp-count{
-  font-size: 3em;
-}
 
-.temp > h3{
-  margin-top: -8px;
-  font-weight: bold;
-  margin-right: 10px;
-}
 
 .valor-resp{
   margin-top: 20px;

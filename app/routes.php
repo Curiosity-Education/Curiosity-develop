@@ -14,6 +14,20 @@
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 
+Route::get('/proximamente',function(){
+    return View::make('aviso_beta');
+});
+Route::get('/websocket',function(){
+    try{
+        
+         return View::make('chat');
+    }
+    catch(Exception $e){
+        Response::make($e->getMessage(),500);
+    }
+   
+});
+
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/confirmar/{token}','padreController@confirmar');
@@ -37,6 +51,10 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/actividad/setdata','actividadController@setDataActivity');
         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
         Route::group(array('before' => 'only_session'), function(){
+
+        Route::get('/figuras',function(){
+          return View::make('juegos.figuras');
+        });
 
         Route::post('/buscarTema', 'temaController@temasFound');
 

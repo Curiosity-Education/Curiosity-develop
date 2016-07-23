@@ -1,8 +1,10 @@
  @extends('admin_base')
 @section('mi_css')
+ {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
  {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
  {{HTML::style("/packages/css/libs/cropper/cropper.min.css")}}
+ {{HTML::style('/packages/css/curiosity/alert.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
 @stop
 @section('title')
@@ -10,7 +12,7 @@
 @stop
 
 @section('titulo_contenido')
-  Mi Perfil
+
 @stop
 
 @section('titulo_small')
@@ -78,8 +80,8 @@
                             <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
                         @else
                             <img style="cursor:pointer;" class="profile-user-img img-profile img-responsive img-circle" data-target="#modalPrueba"  src={{$perfil->foto_perfil}} alt="User profile picture">
-                        @endif
-
+                        @endif    
+                        
                         <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>
                         <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
                   </div>
@@ -129,7 +131,6 @@
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
                    <li class="active">
                      <a href="#hijosPerfil" data-toggle="tab">
                        <i class="fa fa-group"></i>
@@ -137,7 +138,6 @@
                     </a>
                   </li>
                  @endif
-
                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                   <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
                     <a href="#alerta" data-toggle="tab">
@@ -146,9 +146,7 @@
                     </a>
                   </li>
                   @endif
-
                   @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
                    <li id="data">
                      <a href="#graficas" data-toggle="tab">
                        <i class="fa fa-bar-chart"></i>
@@ -164,7 +162,6 @@
                       </a>
                     </li> -->
                   @endif
-
                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                    <li>
                     <a href="#reg-hijos" data-toggle="tab" id="tabRegHijos" data-dad='{{Auth::user()->roles[0]->name}}'>
@@ -301,7 +298,7 @@
                   @endif
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" id="frm_user">
-                      <div id="wizardUser">
+                      <div id="wizard1">
                         <h2>Datos de Usuario</h2>
                         <section>
                           <div class="form-group">
@@ -406,7 +403,7 @@
                            </div>
                          </div>
                         </section>
-                        <!-- @if(Auth::User()->hasRole('padre') || Auth::User()->hasRole('padre_free') || Auth::User()->hasRole('demo_padre'))
+                        @if(Auth::User()->hasRole('padre') || Auth::User()->hasRole('padre_free') || Auth::User()->hasRole('demo_padre'))
                         <h2>Direccion</h2>
                         <section>
                          <div class="form-group">
@@ -470,7 +467,7 @@
                            </div>
                          </div>
                         </section>
-                        @endif -->
+                        @endif
                       </div>
                     </form>
                   </div><!-- /.tab-pane -->
@@ -631,31 +628,28 @@
                     </div><!-- /. fin tab registro de hijos -->
 
                 </div><!-- /.tab-content -->
-
-
                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-                  <section class="active tab-pane" id="hijosPerfil">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <br>
-                            {{--@foreach($datosHijos as $hijo)
-                              <div class="col-xs-4 col-md-3">
-                                <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
-                                class="img-responsive img-circle tooltipShow"
-                                title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
-                                <center><h4>{{$hijo->username}}</h4></center>
-                                <br>
-                              </div>
-                            @endforeach--}}
-
-                        <br><br>
-                      </div>
-                    </div>
-                  </section>
-                @endif
+              <section class="active tab-pane" id="hijosPerfil">
+                <div class="container-fluid">
+                  <div class="row">
+                    <br>
+                        {{--@foreach($datosHijos as $hijo)
+                          <div class="col-xs-4 col-md-3">
+                            <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
+                            class="img-responsive img-circle tooltipShow"
+                            title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
+                            <center><h4>{{$hijo->username}}</h4></center>
+                            <br>
+                          </div>
+                        @endforeach--}}
+                    
+                    <br><br>
+                  </div>
+                </div>
+              </section>
+              @endif
 
               @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
               <section class="tab-pane" id="alerta">
                 <div class="container-fluid">
                   <div class="row">
@@ -676,7 +670,6 @@
               @endif
 
               @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
               <section class="tab-pane" id="graficas">
                 <div class="container-fluid">
                   <div class="row">
@@ -724,15 +717,66 @@
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
+{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
+{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
+{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
+{{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
+{{HTML::script('/packages/js/curiosity/alert.js')}}
 {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
+@if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+  {{HTML::script("/packages/js/curiosity/perfilEstadisticas.js")}}
+@endif
+@if(Auth::user()->hasRole('padre_free'))
+  {{HTML::script("/packages/js/curiosity/freeValidationDad.js")}}
+@endif
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $curiosity.call.getEstandarte(1, 1);
+  });
+</script>
 
 <script>
   $(function ()
   {
-    $("#wizardUser").steps({
+    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('root'))
+      $("a[href='#reg-admins']").trigger("click");
+
+    @endif
+    $("#wizard-admin").steps({
+      headerTag: "h4",
+      bodyTag: "section",
+      transitionEffect:"slideLeft",
+      autoFocus:true,
+      cancel:true,
+      onFinishing: function (event, currentIndex) {
+            if($("#frm-reg-admins").valid()){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+          if(newIndex>currentIndex){
+           if($(".current input,.current select").valid()){
+               return true;
+           }else return false;
+         }else return true;
+        },
+        labels: {
+          cancel: "Cancelar",
+          //  current: "current step:",
+          pagination: "Paginación",
+          finish: "Registar",
+          next: "Siguiente",
+          previous: "Anterior",
+          loading: "Registrando ..."
+        },
+    });
+    $("#wizard1").steps({
         headerTag: "h2",
         bodyTag: "section",
         transitionEffect: "slideLeft",
@@ -752,6 +796,40 @@
           next: "Siguiente",
           previous: "Anterior",
           loading: "Actualizando ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+          if(newIndex>currentIndex){
+           if($(".current input").valid()){
+               return true;
+           }else return false;
+         }else return true;
+        },
+
+  });
+
+    $("#wizard").steps({
+        headerTag: "h2",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus:true,
+        next:"Siguiente",
+        finish:"Finalizar",
+        previous:"Anterior",
+        onFinishing: function (event, currentIndex) {
+            if($("#frm-reg-hijos").valid()){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        labels: {
+          cancel: "Cancelar",
+          //  current: "current step:",
+          pagination: "Paginación",
+          finish: "Finalizar",
+          next: "Siguiente",
+          previous: "Anterior",
+          loading: "Cargando ..."
         },
         onStepChanging: function (event, currentIndex, newIndex){
           if(newIndex>currentIndex){
@@ -878,7 +956,18 @@
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
+                    after = noty({
+                                layout: 'bottomRight',
+                                theme: 'defaultTheme', // or 'relax'
+                                type: 'information',
+                                text: message,
+                                animation: {
+                                    open: {height: 'toggle'}, // jQuery animate function property object
+                                    close: {height: 'toggle'}, // jQuery animate function property object
+                                    easing: 'swing', // easing
+                                    speed: 300 // opening & closing animation speed
+                                }
+                            });
                     }
                 })
                 .done(function(r){
@@ -904,7 +993,7 @@
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-                    
+                    after.close();
                 });
             }else{
                 var datos = {
@@ -931,7 +1020,18 @@
                     data:{data:datos},
                     beforeSend: function(){
                     message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
+                    after = noty({
+                                layout: 'bottomRight',
+                                theme: 'defaultTheme', // or 'relax'
+                                type: 'information',
+                                text: message,
+                                animation: {
+                                    open: {height: 'toggle'}, // jQuery animate function property object
+                                    close: {height: 'toggle'}, // jQuery animate function property object
+                                    easing: 'swing', // easing
+                                    speed: 300 // opening & closing animation speed
+                                }
+                            });
                     }
                 }).done(function(r){
                     console.log(r);
@@ -949,7 +1049,7 @@
                     $btn.text(text_temp);
                     $btn.removeClass("striped-alert");
                     $btn.prop("disabled",false);
-
+                    after.close();
                 });
             }
         }else {
@@ -995,7 +1095,18 @@
             processData:false,
             beforeSend: function(){
                 message = "Espera.. La imagen se esta recortando...";
-                $curiosity.noty(message, 'noty');
+                after = noty({
+                            layout: 'topRight',
+                            theme: 'defaultTheme', // or 'relax'
+                            type: 'information',
+                            text: message,
+                            animation: {
+                                open: {height: 'toggle'}, // jQuery animate function property object
+                                close: {height: 'toggle'}, // jQuery animate function property object
+                                easing: 'swing', // easing
+                                speed: 300 // opening & closing animation speed
+                            }
+                        });
                 }
 
          }).done(function(r){
@@ -1006,7 +1117,7 @@
          }).fail(function(){
 
          }).always(function(){
-
+          after.close();
        });
      });
         var $inputImage = $('#inImage');

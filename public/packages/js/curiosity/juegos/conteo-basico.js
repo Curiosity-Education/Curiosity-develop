@@ -3,10 +3,11 @@ $(document).on("ready",function() {
 
   $curiosity.menu.setPaginaId("#li-conteo-basico");
   $juego.setTitulo("Conteo - Basico");
-  //$juego.setBackgroundColor("rgb(25, 132, 179)");
+  $juego.setBackgroundColor("rgb(25, 132, 179)");
   $juego.setBackgroundImg("/packages/images/fondos/fondo.jpg");
+  $juego.setNivelUsuarioIMG("/packages/images/cups/medalla1.png");
   $juego.boton.comenzar.setFuncion(function(){
-     $juego.game.start(60,true);
+     $juego.game.start(60,false);
   });
   $juego.setSrcVideo({
     titulo:"| Conteo basico |",
@@ -35,7 +36,7 @@ $(document).on("ready",function() {
     array_imagenes[7]="/packages/images/games/imagen8.png";
     array_imagenes[8]="/packages/images/games/imagen9.png";
     array_imagenes[9]="/packages/images/games/imagen10.png";
-    animaciones = ["pulso","latidos","rotacion"];
+    animaciones = ["latidos","rotacion"];
     
     //almacen de colores para arreglo coloresBarajas
     var coloresBarajas=[];
@@ -69,7 +70,7 @@ $(document).on("ready",function() {
 
         
         c=Math.floor((Math.random()*4)+1);
-        n_animacion = Math.floor((Math.random()*3));
+        n_animacion = Math.floor((Math.random()*2));
         for(var i=0; i<num_randoms[c]; i++){
             var l =$("<img src='"+array_imagenes[m]+"' class='imgTamano "+animaciones[n_animacion]+"' style='width:75px!important;height:75px!important;'>");
             $(".iconos").append(l);

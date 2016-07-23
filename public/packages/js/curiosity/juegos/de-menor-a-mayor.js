@@ -46,19 +46,19 @@ $(document).on("ready",function() {
 // ---------------------------------------------------------------------------------------------
 // PETICIONES A BASE DE DATOS
 // ---------------------------------------------------------------------------------------------
-  // $.ajax({
-  //   url: '/puntajeSubtema',
-  //   type: 'POST',
-  //   data: {id: '1'}
-  // })
-  // .done(function(response) {
-  //   puntosMaximos = response;
-  //   // Se Coloca la cantidad máxima de puntaje que el usuario tiene en la pantalla principal
-  //   $juego.setPuntosMaxInicio(puntosMaximos);
-  // })
-  // .fail(function(error) {
-  //   console.log(error);
-  // });
+  $.ajax({
+    url: '/puntajeSubtema',
+    type: 'POST',
+    data: {id: '1'}
+  })
+  .done(function(response) {
+    puntosMaximos = response;
+    // Se Coloca la cantidad máxima de puntaje que el usuario tiene en la pantalla principal
+    $juego.setPuntosMaxInicio(puntosMaximos);
+  })
+  .fail(function(error) {
+    console.log(error);
+  });
 // ---------------------------------------------------------------------------------------------
 //	    -----------------Gestion del dom ---------------------------
 

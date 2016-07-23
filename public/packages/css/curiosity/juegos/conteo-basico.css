@@ -8,7 +8,7 @@
 }
 .contenedor1
 {
-    border-bottom: 10px solid white; 
+    border-bottom: 10px solid rgb(228,126,60); 
     background-color: transparent;
     height: 200px;
     width: 100%;
@@ -24,7 +24,7 @@
 {
     height: 100px !important;
     width: 120px !important;
-    border-color: white;
+    border-color: rgb(228,126,60);
     border-style: solid;
     display: inline-block;
     padding: 5px;
@@ -41,8 +41,8 @@
 .barajas>div>h3:hover
 {
     background-color: white;
-    transform: scale(2);
-    transition: 0.5s;
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 .contenedor2
 {
@@ -60,27 +60,181 @@
 .imgTamano
 {
     width: 15% !important;
-    -webkit-user-select:none;
     height: 15% !important;
     
 }
 .pulso{
-    animation: 3.5s pulso infinite ease;
+    animation: 3.5s pulso 1 ease;
 }
 .rotacion{
-    animation: 2.5s rotacion infinite ease;
+    animation: 2.5s rotacion 1 ease;
 }
 .latidos{
-    animation: 2.5s latidos infinite ease;
+    animation: 2.5s latidos 1 ease;
 }
-
-.contenedor-padre
- .fa-star{
+.barajas .fa-star{
     font-size: 8px !important;
     margin-left: 3px;
     color: rgb(240, 240, 0)!important;
 }
+@media(max-width: 1200px) and (min-width: 480px){
+   .barajas>div>h3
+    {
+        height: 90px !important;
+        width: 90px !important;
+        padding: 5px;
+        font-size: 3.2em;
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+    .barajas .fa-star{
+        font-size: .1em !important;
+        margin-left: 1px;
+    }
+    .contenedor1
+    {
+        border-bottom: 10px solid rgb(228,126,60); 
+        background-color: transparent;
+        height: 200px;
+        width: 100%;
+        display:inline-block;
+        text-align: center;
+    }
+    .contenedor-padre
+    {
+        padding-left: 35px;
+        padding-top: 10px;
+        background-color: transparent;
+        width: 100%;
+        height: 450px;    
+    }
+}
+/*Escritorio pequeño o una tablet*/
+@media(max-width: 980px){
+    .barajas>div>h3
+    {
+        height: 70px !important;
+        width: 70px !important;
+        border-color: rgb(228,126,60);
+        border-style: solid;
+        display: inline-block;
+        padding: 5px;
+        background-color: white;
+        cursor: pointer;
+        font-size: 3em;
+        color: black;
+        margin-left: 30px;
+        margin-right: 15px;
+        border-bottom-left-radius: 10PX;
+        border-top-right-radius: 10px;
+        text-align: center;
+    }
+        .barajas .fa-star{
+        font-size: .1em !important;
+        margin-left: 1px;
+    }
+    .contenedor1
+    {
+        border-bottom: 10px solid rgb(228,126,60); 
+        background-color: transparent;
+        height: 200px;
+        width: 100%;
+        display:inline-block;
+        text-align: center;
+    }
+    .contenedor-padre
+    {
+        padding-left: 35px;
+        padding-top: 10px;
+        background-color: transparent;
+        width: 100%;
+        height: 450px;    
+    }
+}
+/*Tablet o smartphone*/
+@media(max-width: 788px) and (min-width: 481px){
+    .barajas>div>h3
+    {
+        height: 70px !important;
+        width: 70px !important;
+        border-color: rgb(228,126,60);
+        border-style: solid;
+        display: inline-block;
+        padding: 5px;
+        background-color: white;
+        cursor: pointer;
+        font-size: 2em;
+        color: black;
+        margin-left: 2px;
+        margin-right: 3px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+        text-align: center;
+    }
+    .barajas .fa-star{
+        font-size: .1em !important;
+        margin-left: 1px;
+    }
+    .contenedor1
+    {
+        border-bottom: 10px solid rgb(228,126,60); 
+        background-color: transparent;
+        height: 200px;
+        width: 100%;
+        display:inline-block;
+        text-align: center;
+    }
+    .contenedor-padre
+    {
+        padding-left: 35px;
+        padding-top: 10px;
+        background-color: transparent;
+        width: 100%;
+        height: 450px;    
+    }
+}
+/*Smartphone */
+@media(max-width: 480px){
 
+}
+@media only screen and (max-width: 1178px) and (min-width: 300px){
+  
+
+}
+
+@media only screen and (max-width: 1278px) and (min-width: 100px){
+
+}
+@media only screen and (max-width: 1178px) and (min-width:845px) {
+
+}
+
+@media only screen and (max-width:844px) and (min-width:530px){
+
+
+}
+/* Para 600px */
+@media only screen and (max-width: 529px) and (min-width: 370px) {
+  
+}
+@media only screen and (max-width: 369px) and (min-width: 199px) {
+
+
+}
+
+
+
+/* Para 480px */
+@media only screen and (max-width: 369px) and (min-width: 300px) {
+
+
+}
+
+/* Para 320px */
+@media only screen and (max-width: 449px) and (min-width: 300px)  {
+
+
+}
 @keyframes rotacion{
     0%{
         transform: rotate(0deg);

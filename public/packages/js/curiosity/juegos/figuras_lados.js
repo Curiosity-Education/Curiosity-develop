@@ -19,7 +19,7 @@ $(document).ready(function(){
     //Zona del estandar de desarrollo de juegos //
       $curiosity.menu.setPaginaId("#li-conteo-basico");
       $juego.setTitulo("Conteo - Basico");
-      // $juego.setBackgroundColor("rgb(25, 132, 179)");
+      $juego.setBackgroundColor("rgb(25, 132, 179)");
       $juego.setBackgroundImg("/packages/images/fondos/fondo.jpg");
       $juego.boton.comenzar.setFuncion(function(){
         if(inicio==false){

@@ -71,7 +71,7 @@
           <h4 class="modal-title" id="">Video de Estudio</h4>
         </div>
         <div class="modal-body">
-         <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
 
@@ -177,7 +177,7 @@
                         </div> 
                         <div class="col-md-7">
                           <div class="text-right boton-comezar">
-                            <button onclick="SetFullscreen(1);" type="button" class="btn btn-info btn-lg" id="btn-comenzar">
+                            <button type="button" class="btn btn-info btn-lg" id="btn-comenzar">
                               <i class="fa fa-gamepad"></i> Comenzar Actividad
                             </button>
                           </div>
@@ -253,10 +253,10 @@
                   <div class="col-md-4"></div>
                 </div>
                 <div class="row">
-                  <div class="col-md-10 col-sm-7 col-xs-10 text-left">
+                  <div class="col-md-10 text-left">
                       <button id="pausa" class="btn btn-warning" data-toggle="modal" data-target="#menu-juego"><i class="fa fa-pause"></i></button>
                   </div>
-                  <div class="col-md-2 col-sm-5 col-xs-2 text-right">
+                  <div class="col-md-2 text-right">
                     <div class="temp">
                       <canvas id="mycanvas" style="" width="130px" height="130px"></canvas>
                       <label id="temp-static">1:00</label>
@@ -299,11 +299,11 @@
   <div class="row">
     <div class="col-md-4">
       <h3><b>Califica la Actividad</b></h3>
-      <span class="fa fa-star-o fa-2x cali"></span>
-      <span class="fa fa-star-o fa-2x cali"></span>
-      <span class="fa fa-star-o fa-2x cali"></span>
-      <span class="fa fa-star-o fa-2x cali"></span>
-      <span class="fa fa-star-o fa-2x cali"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
+      <span class="cali fa fa-star-o fa-2x"></span>
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
@@ -327,10 +327,9 @@
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   {{ HTML::script('/packages/js/libs/wow/wow.min.js') }}
   <script type="text/javascript">
-    $juego.game.setMaxPuntuacion({{$maxProm}});
+   $juego.game.setMaxPuntuacion({{$maxProm}});
 	 
-    new WOW().init();
-
+	 new WOW().init();
      var cali=0;
      @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
@@ -387,5 +386,4 @@
      });
   </script>
   @yield('juego_js')
-
 @stop

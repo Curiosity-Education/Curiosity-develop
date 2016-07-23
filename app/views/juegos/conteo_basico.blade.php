@@ -3,7 +3,7 @@
   {{HTML::style('/packages/css/curiosity/juegos/conteo-basico.css')}}
 @stop
 @section('title')
-  Conteo de Comida
+  Menor-Mayor
 @stop
 
 @section('juego')
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    @stop
+    @stop        
 @stop
 
 @section('juego_js')

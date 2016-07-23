@@ -142,7 +142,7 @@
 
 
 @section('mi_js')
-{{HTML::script('/packages/js/fixAside.js')}}
+
 {{HTML::script('/packages/js/curiosity/tienda.js')}}
 {{HTML::script('/packages/js/curiosity/useTienda.js')}}
 @stop

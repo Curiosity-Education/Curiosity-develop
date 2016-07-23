@@ -87,29 +87,29 @@ class padreController extends BaseController
                 return $e->getMessage();
             }
 
-            // $dataSend = [
-            //     "name"     =>       "Equipo Curiosity",
-            //     "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
-            //     "email"    =>       $padre->email,
-            //     "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
-            //     "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
-            //     "token"    =>       $user->token
-            // ];
-            // $toEmail=$padre->email;
-            // $toName=$dataSend["email"];
-            // $subject =$dataSend["subject"];
-            // try {
-            //     Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
-            //         $message->to($toEmail,$toName)->subject($subject);
-            //     });
-            //     return "OK";
-            // } catch (Exception $e) {
-            //     $user->delete();
-            //     // $direccion->delete();
-            //     // $membresia->delete();
-            //     $code = $e->getCode();
-            //     return $code;
-            // }
+             $dataSend = [
+                 "name"     =>       "Equipo Curiosity",
+                 "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
+                 "email"    =>       $padre->email,
+                 "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
+                 "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
+                 "token"    =>       $user->token
+             ];
+             $toEmail=$padre->email;
+             $toName=$dataSend["email"];
+             $subject =$dataSend["subject"];
+             try {
+                 Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
+                     $message->to($toEmail,$toName)->subject($subject);
+                 });
+                 return "OK";
+             } catch (Exception $e) {
+                 $user->delete();
+                 // $direccion->delete();
+                 // $membresia->delete();
+                 $code = $e->getCode();
+                 return $code;
+             }
             return "OK";
 
         }

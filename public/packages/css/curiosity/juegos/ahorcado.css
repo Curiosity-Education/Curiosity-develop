@@ -1,0 +1,605 @@
+
+#zona-play
+{
+    display: none;
+
+}
+.zona-puntaje
+{
+    position: relative;
+    margin-top: calc(3% - 1%);
+}
+#game {
+	padding-left: 0;
+    padding-right: 0;
+    margin-top: 2%!important;
+    background: linear-gradient(155deg, rgba(36, 162, 185, 0.65) 20%, rgba(14, 44, 208, 0.8) 80%,  rgba(15, 182, 222, 0.74) 80%, rgba(24, 18, 163, 0.53)20%);
+    background-size: auto;
+
+}
+div.col-md-7.first-part-game{
+	height: 490px;
+    background: url(../../../images/games/bg1-ahorcado.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+h2.fa-plus{
+    display: inline-block;
+    font-size: 2em;
+    float: left;
+    margin-top: 25%;
+    margin-left: 15%;
+}
+.second-part-game{
+     background: url(../../../images/games/bg-operaciones.png);
+     background-size: 100% 100%;
+}
+
+#can{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 5%;
+}
+.zona-operation{
+	color: rgba(0,0,0,1);
+}
+.zona-operation>*{
+    padding: 0;
+    margin: 0;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+.operation{
+	margin-left: 30%;
+	margin-top: .8%;
+}
+.operation td{
+	font-weight: bold;
+	font-size:2.7em;
+	padding: 0!important;
+	margin: 0!important;
+}
+.operation>tbody>tr:last-child{
+	border-top: 1px solid #000;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.operation th, .operation td{
+	text-align: center;
+}
+.operation th{
+	font-weight: bold;
+	font-size: 3.2em;
+	font-family: tahoma;
+}
+.operation th:last-child{
+	color: blue;
+}
+.operation th:first-child{
+	color:#d0d02d;
+}
+
+.operation th:nth-child(even){
+	color: red;
+}
+.numeros h1>i{
+	font-size: .69em;
+}
+.numeros h1{
+	 user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	display: inline-block;
+	color: black;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+	padding: 3%;
+	margin: 0!important;
+    border-radius: 14%;
+    border:2px solid #fff;
+	text-align: center;
+	background: rgba(76,76,76,1);
+    background: -moz-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(25%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(55%, rgba(44,44,44,1)), color-stop(60%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+
+}
+.numeros h1:hover{
+	color: #ddd;
+	border-radius:20%;
+	border:2px solid blue;
+	background: rgba(76,76,76,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(25%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(55%, rgba(44,44,44,1)), color-stop(60%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+
+
+}
+.numeros{
+	margin: 8% 25%;
+    margin-top: 10%;
+}
+#check:hover{
+	color: #2fc72f;
+}
+#delete:hover{
+	color: #fe4f0f;
+}
+.lives>i{
+	color:red;
+	font-size: 2em;
+}
+.img-start,.img-incorrect{
+    position: absolute;
+    z-index: 1000;
+    left: 40%;
+    top: 20%;
+    width: 14%;
+    height: 200%;
+    display: none;
+
+@keyframes good
+{
+    0%{display: inline;0;transform: translateY(-300px) translateX(-100px)}
+    69%{opacity: 1;transform: scale(1.9) translateY(0);}
+    99%{transform: translateY(-600px);opacity: 0}
+    100%{display: none;}
+}
+@keyframes bad
+{
+    0%{display: inline;0;transform: translateY(-500px);}
+    69%{opacity: 1;transform: scale(1.7) translateY(0);}
+    99%{transform: translateY(300px);opacity: 0}
+    100%{display: none;}
+}
+@media only screen and (max-width: 1278px) and (min-width: 1000px){
+    h2.fa-plus{
+        margin-top: 36%;
+    }
+    .numeros{
+        margin-bottom: 20%;
+    }
+}
+@media only screen and (max-width: 1350px) and (min-width: 1150px){
+     .numeros{
+        margin-bottom: 10%;
+    }
+}
+@media only screen and (max-width: 1178px) and (min-width: 300px){
+    #game{
+        padding-left: 1%;
+        padding-right: 0;
+    }
+}
+@media only screen and (max-width: 999px) and (min-width:845px) {
+   .numeros i.fa{
+    font-size: .7em;
+   }
+   h2.fa-plus{
+    margin-top: 47%;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 365px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 2em;
+    float: left;
+   }
+   .numeros{
+    padding-top:1%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 2em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.9em;
+    }
+
+    i.fa-heart{
+        font-size: 1.4em;
+    }
+
+
+}
+@media only screen and (max-width:844px) and (min-width:768px){
+    .numeros i.fa{
+    font-size: .6em;
+   }
+   h2.fa-plus{
+    margin-top: 42%;
+    font-size: 1.8em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 290px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 1.8em;
+    float: left;
+   }
+   .numeros{
+    padding-top:.8%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 1.8em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.9em;
+    }
+
+    i.fa-heart{
+        font-size: 1.4em;
+    }
+
+}
+@media only screen and (max-width:767px) and (min-width:610px){
+   .numeros i.fa{
+    font-size: .6em;
+   }
+   h2.fa-plus{
+    margin-top: 22%;
+    font-size: 1.8em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 315px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 1.8em;
+    float: left;
+   }
+   .numeros{
+    padding-top:.8%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 1.8em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.9em;
+    }
+
+    i.fa-heart{
+        font-size: 1.4em;
+    }
+}
+
+/* Para 600px */
+@media only screen and (max-width: 610px) and (min-width: 520px) {
+   .numeros i.fa{
+    font-size: .6em;
+   }
+   h2.fa-plus{
+    margin-top: 32%;
+    font-size: 1.6em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 300px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 1.8em;
+    float: left;
+   }
+   .numeros{
+    padding-top:.8%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 1.8em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.9em;
+    }
+
+    i.fa-heart{
+        font-size: 1.4em;
+    }
+
+}
+
+@media only screen and (max-width: 519px) and (min-width: 410px){
+  .numeros i.fa{
+    font-size: .6em;
+   }
+   h2.fa-plus{
+    margin-top: 42%;
+    font-size: 1.4em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 274px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 1.5em;
+    float: left;
+   }
+   .numeros{
+    padding-top:8%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 1.6em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.7em;
+    }
+
+    i.fa-heart{
+        font-size: 1.3em;
+    }
+    .zona-puntaje{
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+
+}
+@media only screen and (max-width: 409px) and (min-width: 300px){
+.numeros i.fa{
+    font-size: .6em;
+   }
+   h2.fa-plus{
+    margin-top: 46%;
+    font-size: 1.3em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 209px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: 1em;
+    float: left;
+   }
+   .numeros{
+    padding-top:.4%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: 1.3em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1.4em;
+    }
+
+    i.fa-heart{
+        font-size: 1.2em;
+    }
+    .zona-puntaje{
+      padding-left: 0;
+      padding-right: 0;
+    }
+}
+
+
+@media only screen and (max-width: 299px) and (min-width:240px) {
+   .numeros i.fa{
+    font-size: .7em;
+   }
+   h2.fa-plus{
+    margin-top: 36%;
+    font-size: .9em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 160px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: .8em;
+    float: left;
+   }
+   .numeros{
+    padding-top:.3%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: .9em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: 1em;
+    }
+
+    i.fa-heart{
+        font-size: 1em;
+    }
+    .zona-puntaje{
+      padding-left: 0;
+      padding-right: 0;
+    }
+}
+@media only screen and (max-width: 239px) and (min-width:190px){
+     .numeros i.fa{
+    font-size: .7em;
+   }
+   h2.fa-plus{
+    margin-top: 36%;
+    font-size: .7em;
+   }
+   div.col-md-7.first-part-game{
+        margin: 0!important;
+        padding: 0!important;
+        width: 55%;
+        float: left;
+        height: 120px;
+    }
+
+    .second-part-game{
+         background-size:100% 100%;
+         margin: 0!important;
+         float: left;
+         width: 45%;
+    }
+    #game{
+        float: left!important;
+        min-width: 100%;
+        padding: 0;
+    }
+   .numeros h1{
+    font-size: .6em;
+    float: left;
+   }
+   .numeros{
+    padding-top:1%;
+   }
+
+   .operation td{
+        font-weight: bold;
+        font-size: .6em;
+        padding: 0!important;
+        margin: 0!important;
+    }
+    .operation  th{
+      font-size: .7em;
+    }
+
+    i.fa-heart{
+        font-size: .9em;
+    }
+    .zona-puntaje{
+      padding-left: 0;
+      padding-right: 0;
+    }
+}
