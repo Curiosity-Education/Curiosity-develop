@@ -35,14 +35,9 @@
 			height: 40px;
 			margin-top: 10px;
 		}
-		
-		a.btn{
-			margin-top:15px;
-			margin-bottom:-10px;
-		}
 	</style>
 </head>
-<body><br><br>
+<body onload="nobackbutton"><br><br>
 	<div class="col-md-8 col-md-offset-2 animated flipInY" id="bg-full">
 		<div class="jumbotron">
 			<center><img src="/packages/images/logo_png.png" alt="" class="img-fluid" id="logo"></center><hr>
@@ -50,7 +45,7 @@
 			¡ Hola !, Vemos que estás listo para iniciar</h1>
 		</div>
 	</div>
-	<div class="col-md-6 col-md-offset-3 animated zoomInUp" id="bg-full">
+	<div class="col-md-6 col-md-offset-3 animated zoomInRight" id="bg-full">
 		<div class="jumbotron">
 			<h3 class="h3-responsive white-text text-xs-center">
 				Por el momento el acceso a la plataforma no se encuentra disponible, pero
@@ -59,9 +54,20 @@
 				No te preocupes te notificaremos a tu email.
 				<center><img src="/packages/images/grades.png" alt="" class="img-fluid emoticon"> </center>
 				¡ Gracias, nos vemos PRONTO !.
-				<center><a class="btn btn-primary btn-rounded" href="/">Regresar al inicio</a></center>
 			</h3>
+			<center><a class="btn btn-primary btn-rounded" href="/">Regresar al inicio</a></center>
 		</div>
 	</div>
+	<script type="text/javascript">
+        function nobackbutton(){
+        	
+           window.location.hash="no-back-button";
+        
+           window.location.hash="Again-No-back-button" //chrome
+        	
+           window.onhashchange=function(){window.location.hash="no-back-button";}
+        	
+        }
+    </script>
 </body>
 </html>

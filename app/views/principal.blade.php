@@ -2,15 +2,17 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/media/logo.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="keywords" content="Curiosity, Educación,equidad, divertida,juegos,pdf, documentos, videos,retroalimentación,aventura,limites,evaluado,resultados">
 	<meta name="description" content="Curiosity es una plataforma web educativa que permite aprender con videojuegos educativos y apoyo de videos animados hechos con explicaciones de  profesores reconocidos, materiales visuales y retroalimentación del desempeño desarrollando una comunidad de aprendizaje.">
-	<link rel="stylesheet" href="/packages/css/libs/css-mdb/bootstrap.min.css">
-	<link rel="stylesheet" href="/packages/css/libs/css-mdb/mdb.min.css">
-	<link rel="stylesheet" href="/packages/css/curiosity/style-index.css">
-	<link rel="stylesheet" href="/packages/css/libs/awensome/css/font-awesome.min.css">
+	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
+	{{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
+	{{ HTML::style('/packages/css/curiosity/style-index.css') }}
+	{{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css') }}
+	{{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
+    {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
 	<title>Curiosity</title>
 </head>
 <body>
@@ -22,15 +24,16 @@
         <i class="fa fa-bars"></i>
     </button>
 	
-        <!--Collapse content-->
-        <div class="container"><div class="collapse navbar-toggleable-sm" id="collapseEx2">
+     <div class="container">
+       <!--Collapse content-->
+        <div class="collapse navbar-toggleable-sm" id="collapseEx2">
             <!--Navbar Brand-->
             <div hidden="hidden">
             	<a class="btn success-rounded-outline waves-effect pull-right">Iniciar sesión</a>
     			<a class="btn warning-rounded-outline waves-effect pull-right">Registrarse</a>
             </div><br>
             <a href="#inicio" class="navbar-brand pull-left  chicle font-curiosity">
-				<span><img src="/packages/images/landing/logo.png" alt="logo-curiosity" class="logo-current" style="with:45px; height:45px;"></span>
+				<span><img src="/packages/images/landing/logo.png" alt="logo-curiosity" class="logo-current"></span>
 				Curiosity<small>.com.mx</small>
             </a>
             <!--Links-->
@@ -54,20 +57,21 @@
                     <a class="btn success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">{{Lang::get('landingPage.menu.logIn')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn danger-rounded-outline waves-effect pull-right" style="color:#fff; margin-left:-10px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+                    <a class="btn danger-rounded-outline waves-effect pull-right" style="color:#fff; margin-left:-15px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
                 </li>
             </ul>
         <!--/.Collapse content-->
-    </div></div>
+    	</div>
+    </div>
 </nav>
 <!--/.Navbar-->
   
   <!-- Sección de imagen a pantalla completa -->
   	<div class="view-entrada hm-black-strong" id="inicio">
   		<div class="full-bg-img flex-center">
-  			<ul class="animated rubberBand">
+  			<ul class="animated rubberBand"><br><br>
   				<li class="container-fluid">
-  					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12"><br><br>
+  					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
   						<img src="/packages/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
   					</div>
   				</li>
@@ -95,7 +99,7 @@
   			<div class="col-md-12">
   				<div class="col-md-6 col-sm-12 elemento-nosotros" id="">
   					<div class="col-md-3 col-sm-4 col-xs-12">
-  						<img src="/packages/images/landing/iconos/laptop.png" alt="" style="" class="wow bounceInLeft img-fluid">
+  						<img src="/packages/images/landing/iconos/laptop.png" alt="plataforma" style="" class="wow bounceInLeft img-fluid">
   					</div>
   					<div class="col-md-9 col-sm-7">
                         <p class="text-justify"><b>Plataforma web </b> diseñada para mejorar la educación de los niños y aprender jugando.
@@ -105,7 +109,7 @@
   				<div class="col-md-6">
   				    <div class="col-md-12  col-sm-12 elemento-nosotros" id="">
                         <div class="col-md-3 col-sm-4">
-                            <img src="http://image.flaticon.com/icons/svg/170/170423.svg" alt="" style="" class="wow bounceInLeft img-fluid">
+                            <img src="/packages/images/landing/equidad.svg" alt="equidad" style="" class="wow bounceInLeft img-fluid">
                         </div>
                         <div class="col-md-9 col-sm-7">
                             <p class="text-justify"><b>Equidad.</b> Acceso a los mejores profesores de diferentes escuelas para así evitar la desigualdad educativa.</p>
@@ -114,7 +118,7 @@
                 </div>
   				<div class="col-md-6  col-md-offset-3 col-sm-12 elemento-nosotros" id="content-elemento">
   					<div class="col-md-3 col-sm-4">
-  						<img src="http://image.flaticon.com/icons/svg/173/173054.svg" alt="" style="" class="img-responsive wow bounceInLeft img-fluid">
+  						<img src="/packages/images/landing/diversion.svg" alt="diversion" style="" class="img-responsive wow bounceInLeft img-fluid">
   					</div>
   					<div class="col-md-9 col-sm-7">
                         <p class="text-justify"><b>Diversión </b> en el mundo de la educación, para volver el aprendizaje uno de sus mejores momentos.</p>
@@ -709,7 +713,7 @@
 					<div class="col-md-2">
 						<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
 						<ul>
-							<li> - (871)455-2887</li>
+							<li>- (871)455-2887</li>
 						</ul>
 					</div>
 					<!--/.Fourth column-->
@@ -725,7 +729,7 @@
 				<ul>
 					<li>
 						<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-					<li><a href="/suscripcion" class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
+					<li><a class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
 				</ul>
 			</div>
 			<!--/.Call to action-->
@@ -752,7 +756,20 @@
 
 		</footer>
 		<!--/.Footer-->
-
+    </div>
+     <!-- Preloader web -->
+      <div id="cssload-pgloading" hidden="hidden">
+        <div class="cssload-loadingwrap">
+          <ul class="cssload-bokeh">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <h4 class="textPreloader">Espera un momento...</h4>
+        </div>
+      </div>
+      <!-- Fin de preloader -->
 	
 	<script type="text/javascript" src="/packages/js/libs/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>

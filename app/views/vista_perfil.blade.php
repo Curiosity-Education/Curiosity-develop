@@ -231,7 +231,7 @@
                               </span>
                               <select name="role_admin" id="role_admin" class="form-control">
                                 @foreach(Role::all() as $role)
-                                  @if($role->name!='hijo' && $role->name!='padre' && $role->name!='padre_free' && $role->name!='hijo_free')
+                                  @if($role->name!='hijo' && $role->name!='padre' && $role->name!='padre_free' && $role->name!='hijo_free' && $role->name!='demo_padre' && $role->name!='demo_hijo' && $role->name!='padre-fb')
                                     @if($role->name=='root')
                                       @if(Auth::User()->hasRole('root'))
                                         <option value="{{$role->id}}">{{$role->name}}</option>
