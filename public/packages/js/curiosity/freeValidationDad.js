@@ -3,7 +3,7 @@ $(document).ready(function() {
   var $padre = {
     validar : {
       roleFree : function(rol){
-        if (rol == 'padre_free'){
+        if (rol == 'padre_free' || rol == 'demo_padre'){
           return true;
         }
         else {

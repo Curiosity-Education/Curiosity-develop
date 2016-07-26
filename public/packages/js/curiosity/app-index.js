@@ -22,32 +22,50 @@ function __init(){
     $('#shareT').on({
         click:function(){shareSocialNetwork("http://twitter.com/home?status=",$("#videoCU").attr('src'),350,420)}
     });
-    var $navbar = $('.navbar');
-    var heightNav = $navbar.height();
-    var heightInit = ((heightNav)/2)/2;
-    if($(window).width() >= 768)
-    {
-        $navbar.find('a').css({'margin-top': heightInit+'px','transition':".6s"});
-        $navbar.height(heightNav+20);
-    }
-    $(window).scroll(function(){
-        if($(window).width() >= 768){
-            if($(window).scrollTop() >= ($("#inicio").height()/6)){
-                
-                $navbar.height(heightNav);
-                $navbar.removeClass('navbar_inicio');
-                $navbar.addClass('bg-navbar');
-                $navbar.find('a').css({'margin-top': (heightInit-15)+'px'});
-            }
-            else{
-                $navbar.height(heightNav+20);
-                $navbar.addClass('navbar_inicio');
-                $navbar.removeClass('bg-navbar');
-
-                $navbar.find('a').css({'margin-top': (heightInit)+'px'});
-            }
+    
+    configNavbar();
+    
+    function finalizado (){
+          $("#cssload-pgloading").fadeOut('slow', function() {
+            setTimeout(function () {
+              $(".wrapper").fadeIn('slow');
+              $(".wrapper").attr('hidden',false);
+              configNavbar();
+            }, 500);
+          });
+        };
+        window.onload = function(){
+          finalizado();
+    };
+    
+    function configNavbar(){
+        var $navbar = $('.navbar');
+        var heightNav = $navbar.height();
+        var heightInit = ((heightNav)/2)/2;
+        if($(window).width() >= 768)
+        {
+            $navbar.find('a').css({'margin-top': heightInit+'px','transition':".6s"});
+            $navbar.height(heightNav+20);
         }
-    });
+        $(window).scroll(function(){
+            if($(window).width() >= 768){
+                if($(window).scrollTop() >= ($("#inicio").height()/6)){
+
+                    $navbar.height(heightNav);
+                    $navbar.removeClass('navbar_inicio');
+                    $navbar.addClass('bg-navbar');
+                    $navbar.find('a').css({'margin-top': (heightInit-15)+'px'});
+                }
+                else{
+                    $navbar.height(heightNav+20);
+                    $navbar.addClass('navbar_inicio');
+                    $navbar.removeClass('bg-navbar');
+
+                    $navbar.find('a').css({'margin-top': (heightInit)+'px'});
+                }
+            }
+        });
+    };
     
 }
    

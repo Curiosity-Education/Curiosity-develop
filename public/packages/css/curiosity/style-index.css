@@ -124,7 +124,7 @@ section#nosotros{
 /* FIN fuente del logo */
 
 .font-curiosity{
-	font-family: 'Arial Rounded MT' Bold;
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;
 }
 
 .section-header{
@@ -543,6 +543,6 @@ div.mascara{
     margin-top: 10px;
 }
 .img-esc{
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
