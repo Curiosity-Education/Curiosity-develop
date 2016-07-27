@@ -23,10 +23,10 @@
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
         <i class="fa fa-bars"></i>
     </button>
-	
+
      <div class="container">
        <!--Collapse content-->
-        <div class="collapse navbar-toggleable-sm" id="collapseEx2">
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
             <!--Navbar Brand-->
             <div hidden="hidden">
             	<a class="btn success-rounded-outline waves-effect pull-right">Iniciar sesión</a>
@@ -65,7 +65,7 @@
     </div>
 </nav>
 <!--/.Navbar-->
-  
+
   <!-- Sección de imagen a pantalla completa -->
   	<div class="view-entrada hm-black-strong" id="inicio">
   		<div class="full-bg-img flex-center">
@@ -78,10 +78,13 @@
   				<li class="container-fluid">
   					<h1 class="h1-responsive font-curiosity white-text">{{Lang::get('landingPage.eslogan')}}</h1>
   				</li>
-  				<div class="button-sm-access col-sm-10 col-offset-1">
-                   <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
-                    <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
-                </div><br>
+					<div class="col-xs-1"></div>
+  				<div class="button-sm-access col-xs-10">
+            <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
+            <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
+          </div>
+					<div class="col-xs-1"></div>
+					<br>
   			</ul>
   		</div>
   	</div>
@@ -90,7 +93,7 @@
   <!-- Sección ¿Qué es curiosity? -->
   	<section id="nosotros" class="margen-dispositivo">
   		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow zoomInUp">
-  			<h2 class="section-header h2-responsive"> 
+  			<h2 class="section-header h2-responsive">
   				<img src="/packages/images/landing/iconos/computing.png" alt="" style="width:35px; height:35px;" class="">
   				¿Qué es Curiosity?
   			</h2>
@@ -124,16 +127,16 @@
                         <p class="text-justify"><b>Diversión </b> en el mundo de la educación, para volver el aprendizaje uno de sus mejores momentos.</p>
   					</div>
   				</div>
-  				
+
   			</div>
   		</div>
   	</section>
   <!-- Fin Sección ¿Qué es curiosity? -->
 
-	<!-- Sección ¿Cómo funciona curiosity? -->	
+	<!-- Sección ¿Cómo funciona curiosity? -->
 		<section id="funcionamiento" class="margen-dispositivo">
 			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceIn">
-  				<h2 class="section-header h2-responsive"> 
+  				<h2 class="section-header h2-responsive">
   					<img src="/packages/images/landing/iconos/pencil.png" alt="" style="width:35px; height:35px;" class="">
   					¿Cómo funciona?
   				</h2>
@@ -147,7 +150,7 @@
 								<h4 class="white-text">Juegos</h4>
 							</div>
   						</div>
-    					
+
     					<div class="funcionamiento-text"><p>Un tema, una aventura. <br> Diseñamos cada juego con el propósito de que el niño aprenda divirtiéndose y con cada tema viva una aventura </p></div>
   					</div>
   					<div class="col-md-3">
@@ -157,7 +160,7 @@
 								<h4 class="white-text">Videos explicativos</h4>
 							</div>
   						</div>
-    					
+
     					<div class="funcionamiento-text"><p>¿Me lo explicas? <br> Desarrollamos videos animados con  explicaciones de los mejores profesores para comprender mejor cada tema. </p></div>
   					</div>
   					<div class="col-md-3">
@@ -167,7 +170,7 @@
 								<h4 class="white-text">Documentos PDF</h4>
 							</div>
   						</div>
-    					
+
     					<div class="funcionamiento-text"><p>Algo que leer. <br>Documentos evaluados por expertos, que ayudarán a comprender mejor cada tema.</p></div>
   					</div>
   					<div class="col-md-3" id="content-elemento">
@@ -177,14 +180,14 @@
 								<h4 class="white-text">Retroalimentación</h4>
 							</div>
   						</div>
-    					
+
     					<div class="funcionamiento-text"><p>¿Aprendió? <br> El desempeño de tu hijo a un solo click. Evaluamos y detectamos distintas áreas de oportunidad para que nunca deje de mejorar.</p></div>
   					</div>
   				</div>
   			</div>
 		</section>
-	<!-- Fin Sección ¿Cómo funciona curiosity? -->	
-	
+	<!-- Fin Sección ¿Cómo funciona curiosity? -->
+
 	<!-- Separador 1 -->
 	<div class="col-md-12 view hm-cyan-light" id="separador1">
 		<div class="mask flex-center">
@@ -192,16 +195,16 @@
         		<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
         			<a href="/suscripcion" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
 				</h2>
-			</center>   
+			</center>
     	</div>
 	</div>
-	
+
 	<!-- Sección de Video -->
 		<section id="video" class="">
 			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow pulse">
-  				<h2 class="section-header h2-responsive"> 
+  				<h2 class="section-header h2-responsive">
   					<img src="/packages/images/landing/iconos/mortarboard.png" alt="" style="width:35px; height:35px;" class="">
-  					Conócenos mejor 
+  					Conócenos mejor
   				</h2>
   			</div>
   			<div class="container">
@@ -220,18 +223,18 @@
   			</div>
 		</section>
 	<!-- Fin Sección de Video -->
-	
+
 	<!-- Sección de Testimonial -->
 		<section id="testimonial" hidden="hidden" >
 			<div class="bg-color margen-dispositivo">
 				<div class="col-md-6 col-md-offset-3 divider-new z-depth-2 wow fadeInDownBig">
-					<h2 class="section-header h2-responsive"> 
+					<h2 class="section-header h2-responsive">
 						<img src="/packages/images/landing/iconos/diploma.png" alt="" style="width:35px; height:35px;" class="">
 						Testimonial
 					</h2>
 				</div>
 				<div class="container">
-					<div class="col-md-12" id="carusel-testimonial">	
+					<div class="col-md-12" id="carusel-testimonial">
 						<!--Carousel Wrapper-->
 						<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
@@ -297,7 +300,7 @@
 
 								</div>
 								<!--/.First slide-->
-								
+
 								<!--Second slide-->
 								<div class="carousel-item">
 
@@ -354,11 +357,11 @@
   			</div>
 		</section>
 	<!-- Fin Sección de Testimonial -->
-	
+
 	<!-- Sección de Colaboradores -->
 		<section id="colaboradores" class="margen-dispositivo">
 			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceInRight">
-				<h2 class="section-header h2-responsive"> 
+				<h2 class="section-header h2-responsive">
 					<img src="/packages/images/landing/iconos/school.png" alt="" style="width:35px; height:35px;" class="">
 					Colaboradores
 				</h2>
@@ -384,10 +387,10 @@
                                     @if($slide == 0)
                                     <ol class="carousel-indicators">
                                     @endif
-                                    
+
                                         <li data-target="#multi-item-example2" data-slide-to="{{$slide}}" class="{{$status}}" style="background-color:#65499d;"></li>
                                     <?php $status = ""; $slide++; $contador =0;?>
-                                    
+
                                 @endif
 							@endforeach
 							        </ol>
@@ -404,8 +407,8 @@
                                                 <div class="carousel-item active">
                                            @else
                                                 <div class="carousel-item">
-                                           @endif  
-                                        @endif    
+                                           @endif
+                                        @endif
                                         <div class="col-md-6 col-sm-6">
                                             <div class="card">
                                                 {{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
@@ -416,16 +419,16 @@
                                             </div>
                                             <?php $contador_esc=0;?>
                                         @endif
-                                        
+
                                     @endforeach
-									
+
 							</div>
 							<!--/.Slides-->
 
 						</div>
 						<!--/.Carousel Wrapper-->
 			</div>	<!-- Fin escuelas -->
-			
+
 			<div class="col-md-6" hidden="hidden" id="content-elemento">
 				<!--Carousel Wrapper-->
 						<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -471,7 +474,7 @@
 
 								</div>
 								<!--/.First slide-->
-								
+
 								<!--Second slide-->
 								<div class="carousel-item">
 
@@ -505,7 +508,7 @@
 		  </div>
 		</section>
 	<!-- Fin Sección de Colaboradores -->
-	
+
 	<!-- Separador 2 -->
 	<div class="col-md-12 view hm-blue-light" id="separador2">
 		<div class="mask flex-center">
@@ -513,21 +516,21 @@
         		<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
         			<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
 				</h2>
-			</center>   
+			</center>
     	</div>
 	</div>
-	
+
 	<!-- Sección de Membresías -->
 		<section id="membresia" class="">
 			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow rotateInUpLeft">
-				<h2 class="section-header h2-responsive"> 
+				<h2 class="section-header h2-responsive">
 					<img src="/packages/images/landing/iconos/attachment.png" alt="" style="width:35px; height:35px;" class="">
 					Membresía
 				</h2>
 			</div>
 			<div class="container">
 				<div class="col-md-12" id="content-elemento">
-					
+
 					<div class="row">
 
 						<!--First column-->
@@ -581,7 +584,7 @@
 						<!--/.First column-->
 
 						<!--Second column-->
-						
+
 						<!--Third column-->
 						<div class="col-md-4">
 
@@ -621,7 +624,7 @@
 											<p><i class="fa fa-check"></i> Análisis de problema de aprendizaje</p>
 										</li>
 									</ul>
-									
+
 									<center><button disabled class="btn" style="background-color: #65499d;">Suscribrse</button></center>
 								</div>
 								<!--/.Features-->
@@ -636,7 +639,7 @@
 			</div>
 		</section>
 	<!-- Fin Sección de Membresías -->
-	
+
 	<!-- Sección de Noticias -->
 		<section id="noticias">
 			<div class="bg-noticias">
@@ -655,7 +658,7 @@
 							<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
 							 style="padding-top:20px; padding-left:20px;">
 							<div class="md-form form-group">
-								
+
 								<input type="email" id="correo_noticia" class="form-control validate">
 								<label for="correo_noticia" data-error="no válido" data-success="correcto">@ escribe tu email</label>
 							</div>
@@ -669,7 +672,7 @@
 			</div>
 		</section>
 	<!-- Fin Sección de Noticias -->
-		
+
 		<!--Footer-->
 		<footer class="page-footer center-on-small-only" id="footer">
 
@@ -680,7 +683,7 @@
 					<!--First column-->
 					<div class="col-md-3 col-md-offset-1">
 						<h4 class="h4-responsive font-italic font-curiosity">Porque una educación divertida es posible.</h4>
-						
+
 					</div>
 					<!--/.First column-->
 
@@ -740,7 +743,7 @@
 			<div class="social-section">
 				<ul>
 					<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook" > </i></a></li>
-					<li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+					<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
 					<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus"><i class="fa fa-youtube"> </i></a></li>
 				</ul>
 			</div>
@@ -749,7 +752,7 @@
 			<!--Copyright-->
 			<div class="footer-copyright">
 				<div class="container-fluid">
-					© {{Date('Y')}} Todos los derechos reservados: Curiosity.com.mx 
+					© {{Date('Y')}} Todos los derechos reservados: Curiosity.com.mx
 				</div>
 			</div>
 			<!--/.Copyright-->
@@ -770,7 +773,7 @@
         </div>
       </div>
       <!-- Fin de preloader -->
-	
+
 	<script type="text/javascript" src="/packages/js/libs/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/bootstrap.min.js"></script>
@@ -782,7 +785,7 @@
 				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 			});
 		});
-		
+
 		new WOW().init();
         $('a').click(function(e){
             e.preventDefault();

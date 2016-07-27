@@ -22,12 +22,12 @@ div#collapseEx2{
 		-moz-transform:
 			scaleX(1.25) scaleY(0.75);
 	}
-	
+
 	50%{
 		-moz-transform:
 			scaleX(0.75) scaleY(5.25);
 	}
-	
+
 	60%{
 		-moz-transform:
 			scaleX(1.15) scaleY(0.85);
@@ -39,12 +39,12 @@ div#collapseEx2{
 		-webkit-transform:
 			scaleX(1.25) scaleY(0.75);
 	}
-	
+
 	50%{
 		-webkit-transform:
 			scaleX(0.75) scaleY(2);
 	}
-	
+
 	60%{
 		-webkit-transform:
 			scaleX(1.15) scaleY(0.85);
@@ -56,12 +56,12 @@ div#collapseEx2{
 		-o-transform:
 			scaleX(1.25) scaleY(0.75);
 	}
-	
+
 	50%{
 		-o-transform:
 			scaleX(0.75) scaleY(2);
 	}
-	
+
 	60%{
 		-o-transform:
 			scaleX(1.15) scaleY(0.85);
@@ -73,12 +73,12 @@ div#collapseEx2{
 		-ms-transform:
 			scaleX(1.25) scaleY(0.75);
 	}
-	
+
 	50%{
 		-ms-transform:
 			scaleX(0.75) scaleY(2);
 	}
-	
+
 	60%{
 		-ms-transform:
 			scaleX(1.15) scaleY(0.85);
@@ -88,7 +88,7 @@ div#collapseEx2{
 /* FIN animación de logo en la navbar */
 
 div#collapseEx2 > ul.navbar-nav > li.nav-item > a{
-	
+
 }
 
 div#collapseEx2 > ul.navbar-nav > li.anc:hover{
@@ -155,7 +155,7 @@ p.text-justify b{
 }
 
 div.funcionamiento-text{
-	word-wrap: break-word; 
+	word-wrap: break-word;
 	padding-top: 30px;
 	text-align: center;
 }
@@ -231,8 +231,8 @@ div#carusel-testimonial div.card{
 }
 
 div#carusel-testimonial div.card div.card-block{
-	
-	
+
+
 }
 
 section#colaboradores{
@@ -240,7 +240,7 @@ section#colaboradores{
 }
 
 div#carusel-colaboradores div.card{
-	
+
 }
 
 div#separador2{
@@ -279,7 +279,7 @@ div.proximamente{
 .bg-morado{
 	background-color: #65499d;
 }
-	
+
 section#noticias{
 	background: url("/packages/images/landing/bg-noticias2.jpg") repeat center center fixed;
 	background-attachment: fixed;
@@ -350,6 +350,7 @@ input#correo_noticia{
         -webkit-transition: .6s;
         -moz-transition: .6s;
         -o-transition: .6s;
+				margin-top: -20px;
     }
 }
 
@@ -481,13 +482,13 @@ div#wrapper-form img.img-thumbnail{
     transition: all .2s ease-in-out;
 }
 
-form#login div.form-group i.fa, 
+form#login div.form-group i.fa,
 form#login div.form-group input,
 form#login div.form-group label{
 	color: #fff;
 }
 
-form#registro div.form-group i.fa, 
+form#registro div.form-group i.fa,
 form#registro div.form-group input,
 form#registro div.form-group label{
 	color: #fff;
