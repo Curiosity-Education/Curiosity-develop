@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
+    <link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     {{ HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
@@ -31,10 +31,10 @@
       <header class="main-header" >
         <div class="logo">
           <span class="logo-mini">
-            {{HTML::image('/packages/images/Curiosity-mini.png')}}
+            <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
           </span>
           <span class="logo-lg">
-            {{HTML::image('/packages/images/Curiosity-mini.png')}}
+            <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
             <b>Curiosity<small>.com.mx</small></b>
           </span>
         </div>

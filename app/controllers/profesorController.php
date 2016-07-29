@@ -114,6 +114,7 @@ class profesorController extends BaseController
   {
     return profesor::join('escuelas', 'escuelas.id', '=', 'profesores.escuela_id')
     ->where('profesores.active', '=', 1)
+    ->where('escuelas.active', '=', 1)
     ->select('profesores.*', 'escuelas.nombre as escuela_nombre', 'escuelas.id as escuela_id')
     ->get();
   }

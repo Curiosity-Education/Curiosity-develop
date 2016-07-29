@@ -33,7 +33,7 @@ var $curiosity = {
       }
   },
   noty:function(mensaje, tipo,titulo,image){
-      
+
         if(notify.permissionLevel() == notify.PERMISSION_DEFAULT)
             notify.requestPermission();
         else if(notify.permissionLevel() == notify.PERMISSION_GRANTED){
@@ -236,7 +236,7 @@ var $curiosity = {
     if (!permitida) {
       // Si la extension no se encuentra entre
       // las permitidas se muestra el sig. mensaje
-       $curiosity.noty("Comprueba la extensión del archivo a subir. \nSólo se pueden subir archivos con extensiones de tipo: "+extensiones_permitidas.join(), 'warning');
+       $curiosity.noty("Comprueba la extensión del archivo a subir. \nSólo se pueden subir archivos con extensiones de tipo: "+extensiones_permitidas.join(), 'info');
     	}else{
        return true;
     	}

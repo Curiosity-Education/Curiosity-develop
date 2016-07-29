@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   $curiosity.menu.setPaginaId("#menuAdminNivel");
+  var namePdf, namePdfTemp;
 
   // Funcion para validar formato de archivo
   // en input file
@@ -170,12 +171,12 @@ $(document).ready(function() {
             });
           }
           else if(response[0] == 'success'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
             $curiosity.noty("Registrado Correctamente", "success");
             actividad.hideAdmin();
           }
           else if(response[0] == 'success_exist'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].descripcion, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
             $curiosity.noty("Se ha habilitado nuevamente", "success");
             actividad.hideAdmin();
           }
@@ -205,117 +206,63 @@ $(document).ready(function() {
         $tipos = new Array('.pdf', '.docx');
         console.log(actividad.registro.convertEmbedCode($("#video").val()));
         var embedCode =actividad.registro.convertEmbedCode($("#video").val());
-        if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false || $curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == true){
-                var $btnEnviar = boton;
-                  $btnEnviar.attr('disabled', 'disabled');
-                  $btnEnviar.text('Guardando...');
+        // if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false){
+              var $btnEnviar = boton;
+                $btnEnviar.attr('disabled', 'disabled');
+                $btnEnviar.text('Guardando...');
 
-                  var formData = new FormData($("#formPDF")[0]);
-                  formData.append('nombre', $("#nombre").val());
-                  formData.append('objetivo', $("#descripcion").val());
-                  formData.append('code_embed', embedCode);
-                  formData.append('profesores_id', $("#profesores").val());
-                  formData.append('estatus', estatusNow);
-                  formData.append('procedenciaID', idProcedencia);
-                  formData.append('color', $("#color").val());
-                  formData.append('idUpdate', id);
-                  $.ajax({
-                    url: direccion,
-                    type: 'POST',
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                  })
-                  .done(function(response) {
-                    if($.isPlainObject(response)){
-                      $.each(response,function(index,value){
-                        $.each(value,function(i, message){
-                          $curiosity.noty(message, 'warning');
-                        });
+                var formData = new FormData($("#formPDF")[0]);
+                formData.append('nombre', $("#nombre").val());
+                formData.append('objetivo', $("#descripcion").val());
+                formData.append('code_embed', embedCode);
+                formData.append('profesores_id', $("#profesores").val());
+                formData.append('estatus', estatusNow);
+                formData.append('procedenciaID', idProcedencia);
+                formData.append('color', $("#color").val());
+                formData.append('idUpdate', id);
+                $.ajax({
+                  url: direccion,
+                  type: 'POST',
+                  data: formData,
+                  cache: false,
+                  contentType: false,
+                  processData: false
+                })
+                .done(function(response) {
+                  if($.isPlainObject(response)){
+                    $.each(response,function(index,value){
+                      $.each(value,function(i, message){
+                        $curiosity.noty(message, 'warning');
                       });
-                    }
-                    else if(response[0] == 'success'){
-                      $curiosity.noty("Actualizado Correctamente", "success");
-                      $("#"+id).text($("#nombre").val());
-                      $("#"+id).data('descrip', $("#descripcion").val());
-                      $("#"+id).data('estatus', estatusNow);
-                      $("#"+id).data('color', $("#color").val());
-                      $("#"+id).parent().css('background',$("#color").val());
-                      $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', embedCode);
-                      actividad.hideAdmin();
-                    }
-                    else if(response[0] == 'same'){
-                      $curiosity.noty("El nombre ya existe", "warning");
-                    }
-                    else if(response[0] == 'same_exist'){
-                      $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
-                    }
-                  })
-                  .fail(function(error) {
-                    console.log(error);
-                  })
-                  .always(function(){
-                    $btnEnviar.removeAttr('disabled');
-                    $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-                  });
-        }
-        var $btnEnviar = boton;
-        $btnEnviar.attr('disabled', 'disabled');
-        $btnEnviar.text('Guardando...');
-
-        var formData = new FormData($("#formPDF")[0]);
-        formData.append('nombre', $("#nombre").val());
-        formData.append('objetivo', $("#descripcion").val());
-        formData.append('code_embed', $("#video").val());
-        formData.append('profesores_id', $("#profesores").val());
-        formData.append('estatus', estatusNow);
-        formData.append('procedenciaID', idProcedencia);
-        formData.append('color', $("#color").val());
-        formData.append('idUpdate', id);
-        $.ajax({
-          url: direccion,
-          type: 'POST',
-          data: formData,
-          cache: false,
-          contentType: false,
-          processData: false
-        })
-        .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
-              });
-            });
-          }
-          else if(response[0] == 'success'){
-            $curiosity.noty("Actualizado Correctamente", "success");
-            $("#"+id).text($("#nombre").val());
-            $("#"+id).data('descrip', $("#descripcion").val());
-            $("#"+id).data('estatus', estatusNow);
-            $("#"+id).data('color', $("#color").val());
-            $("#"+id).parent().css('background',$("#color").val());
-            $("#act"+id).data('pdf', $("#archivoPDF").val());
-            $("#act"+id).data('prof-id', $("#profesores").val());
-            $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', $("#video").val());
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'same'){
-            $curiosity.noty("El nombre ya existe", "warning");
-          }
-          else if(response[0] == 'same_exist'){
-            $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
-          }
-        })
-        .fail(function(error) {
-          console.log(error);
-        })
-        .always(function(){
-          $btnEnviar.removeAttr('disabled');
-          $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
-        });
-      },
+                    });
+                  }
+                  else if(response[0] == 'success'){
+                    $curiosity.noty("Actualizado Correctamente", "success");
+                    $("#"+id).text($("#nombre").val());
+                    $("#"+id).data('descrip', $("#descripcion").val());
+                    $("#"+id).data('estatus', estatusNow);
+                    $("#"+id).data('color', $("#color").val());
+                    $("#"+id).parent().css('background',$("#color").val());
+                    $(".box-footer > .row > div > [data-id="+id+"]").data('code-embed', embedCode);
+                    $(".box-footer > .row > div > [data-id="+id+"]").data('pdf', namePdf);
+                    actividad.hideAdmin();
+                  }
+                  else if(response[0] == 'same'){
+                    $curiosity.noty("El nombre ya existe", "warning");
+                  }
+                  else if(response[0] == 'same_exist'){
+                    $curiosity.noty("El nombre existe pero se encuentra deshabilitado", "warning");
+                  }
+                })
+                .fail(function(error) {
+                  console.log(error);
+                })
+                .always(function(){
+                  $btnEnviar.removeAttr('disabled');
+                  $btnEnviar.html("<i class='fa fa-check'></i> Guardar");
+                });
+                // }
+              },
       // elimina el objeto seleccionado enviando el id del
       // cuadro al que se le ha dado clic
       remove : function(miId){
@@ -403,6 +350,7 @@ $(document).ready(function() {
         break;
         case 'update':
         actividad.registro.guardarUpdate($(this), '/updateActividad', $(this).data('updateId'), estatus, $(this).data('tema'));
+        namePdf = namePdfTemp;
           break;
     }
   });
@@ -412,20 +360,29 @@ $(document).ready(function() {
   });
 
   $("#archivoPDF").on('change', function(){
-    if($(this).data('state') == 'update'){
-      if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
-        actividad.appendUpdateFile($(this).val());
-      }
-      else{
-        $(this).val("");
-      }
+    var $archivo = $(this);
+    var archivos = document.getElementById("archivoPDF").files;
+    if(archivos[0].size > 2048000){
+      $archivo.val("");
+      $curiosity.noty("El archivo seleccionado excede el peso máximo (2 MB)", 'warning');
     }
-    else {
-      if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
-        actividad.appendNewFile($(this).val());
+    else{
+      if($(this).data('state') == 'update'){
+        if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
+          actividad.appendUpdateFile(archivos[0].name);
+          namePdfTemp = archivos[0].name;
+        }
+        else{
+          $(this).val("");
+        }
       }
-      else{
-        $(this).val("");
+      else {
+        if($curiosity.comprobarFile($('#archivoPDF').val(), ['.pdf']) == true){
+          actividad.appendNewFile(archivos[0].name);
+        }
+        else{
+          $(this).val("");
+        }
       }
     }
   });

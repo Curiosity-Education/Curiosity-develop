@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
@@ -26,7 +26,7 @@
         <span class="icon icon-bar"></span>
       </button>
       <a href="javascript:void(0)" class="navbar-brand">
-				<span>{{HTML::image('/packages/images/Curiosity-mini.png')}}</span>
+				<span><img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;" /></span>
         Curiosity<small>.com.mx</small>
       </a>
     </div>

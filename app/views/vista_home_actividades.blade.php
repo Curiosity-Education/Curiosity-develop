@@ -43,7 +43,7 @@ Bienvenido a Curiosity
       <div class="carousel-inner" role="listbox" id="carrusel-list">
         @foreach($nuevos as $nuevo)
         <div class="item">
-          <div class="imgSlideNew" style='background:url(/packages/images/actividades/{{$nuevo->imagen}});background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
+          <div class="imgSlideNew" style='background:{{$nuevo->bg_color}};background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
           <div class="carousel-caption">
             <h3>{{$nuevo->nombre}}</h3>
             <p class="hidden-xs">{{$nuevo->objetivo}}</p>
@@ -86,7 +86,7 @@ Bienvenido a Curiosity
               @if($popular->estatus == "lock")
               <span class="fa fa-clock-o isLockThis"></span>
               @endif
-              @if($popular->premium == 1)
+              @if($popular->premium == 1 and Auth::User()->hasRole('hijo_free'))
               <span class="fa fa-star isPremiumThis"></span>
               @endif
             </div>
@@ -110,7 +110,7 @@ Bienvenido a Curiosity
               @if($rank->estatus == "lock")
               <span class="fa fa-clock-o isLockThis"></span>
               @endif
-              @if($rank->premium == 1)
+              @if($rank->premium == 1 and Auth::User()->hasRole('hijo_free'))
               <span class="fa fa-star isPremiumThis"></span>
               @endif
             </div>

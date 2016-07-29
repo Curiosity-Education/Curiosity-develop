@@ -80,7 +80,7 @@
       </div>
       <div class='widget-title-image'>
         <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
-      </div>
+      </div>      
       <div class='box-footer'>
         <div class='row'>
         @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))

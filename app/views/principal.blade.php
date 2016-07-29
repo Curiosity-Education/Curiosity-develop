@@ -1,796 +1,727 @@
-<!DOCTYPE html5>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta name="keywords" content="Curiosity, Educación,equidad, divertida,juegos,pdf, documentos, videos,retroalimentación,aventura,limites,evaluado,resultados">
-	<meta name="description" content="Curiosity es una plataforma web educativa que permite aprender con videojuegos educativos y apoyo de videos animados hechos con explicaciones de  profesores reconocidos, materiales visuales y retroalimentación del desempeño desarrollando una comunidad de aprendizaje.">
-	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
-	{{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
-	{{ HTML::style('/packages/css/curiosity/style-index.css') }}
-	{{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css') }}
-	{{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
-    {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
-	<title>Curiosity</title>
-</head>
-<body>
-<!--Navbar-->
-<nav class="navbar navbar-dark navbar_inicio navbar-fixed-top">
+@extends('principalMaster')
 
-    <!-- Collapse button-->
-    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
-        <i class="fa fa-bars"></i>
-    </button>
+@section('title')
+	Curiosity Educación
+@stop
 
-     <div class="container">
-       <!--Collapse content-->
-        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-            <!--Navbar Brand-->
-            <div hidden="hidden">
-            	<a class="btn success-rounded-outline waves-effect pull-right">Iniciar sesión</a>
-    			<a class="btn warning-rounded-outline waves-effect pull-right">Registrarse</a>
-            </div><br>
-            <a href="#inicio" class="navbar-brand pull-left  chicle font-curiosity">
-				<span><img src="/packages/images/landing/logo.png" alt="logo-curiosity" class="logo-current"></span>
-				Curiosity<small>.com.mx</small>
-            </a>
-            <!--Links-->
-            <ul class="nav navbar-nav pull-right">
-                <li class="nav-item anc">
-                    <a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item anc">
-                    <a class="nav-link" href="#nosotros">{{Lang::get('landingPage.menu.whatIs')}}</a>
-                </li>
-                <li class="nav-item anc">
-                    <a class="nav-link" href="#funcionamiento">{{Lang::get('landingPage.menu.howfunction')}}</a>
-                </li>
-                 <li class="nav-item anc">
-                    <a class="nav-link" href="#video">{{Lang::get('landingPage.menu.video')}}</a>
-                </li>
-                <li class="nav-item anc">
-                    <a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">{{Lang::get('landingPage.menu.logIn')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn danger-rounded-outline waves-effect pull-right" style="color:#fff; margin-left:-15px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
-                </li>
-            </ul>
-        <!--/.Collapse content-->
-    	</div>
-    </div>
-</nav>
-<!--/.Navbar-->
+@section('menu')
+	<li class="nav-item anc">
+			<a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item anc">
+			<a class="nav-link" href="#nosotros">{{Lang::get('landingPage.menu.whatIs')}}</a>
+	</li>
+	<li class="nav-item anc">
+			<a class="nav-link" href="#funcionamiento">{{Lang::get('landingPage.menu.howfunction')}}</a>
+	</li>
+	 <li class="nav-item anc">
+			<a class="nav-link" href="#video">{{Lang::get('landingPage.menu.video')}}</a>
+	</li>
+	<li class="nav-item anc">
+			<a class="nav-link" href="#membresia">{{Lang::get('landingPage.menu.paymentOption')}}</a>
+	</li>
+	<li class="nav-item">
+			<a class="btn success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">{{Lang::get('landingPage.menu.logIn')}}</a>
+	</li>
+	<li class="nav-item">
+			<a class="btn danger-rounded-outline waves-effect pull-right" style="color:#fff; margin-left:-15px;" href="/suscripcion">{{Lang::get('landingPage.menu.createAccount')}}</a>
+	</li>
+@stop
 
-  <!-- Sección de imagen a pantalla completa -->
-  	<div class="view-entrada hm-black-strong" id="inicio">
-  		<div class="full-bg-img flex-center">
-  			<ul class="animated rubberBand"><br><br>
-  				<li class="container-fluid">
-  					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-  						<img src="/packages/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
-  					</div>
-  				</li>
-  				<li class="container-fluid">
-  					<h1 class="h1-responsive font-curiosity white-text">{{Lang::get('landingPage.eslogan')}}</h1>
-  				</li>
-					<div class="col-xs-1"></div>
-  				<div class="button-sm-access col-xs-10">
-            <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
-            <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
-          </div>
-					<div class="col-xs-1"></div>
-					<br>
-  			</ul>
-  		</div>
+@section('contenido')
+<!-- Sección de imagen a pantalla completa -->
+	<div class="view-entrada hm-black-strong" id="inicio">
+		<div class="full-bg-img flex-center">
+			<ul class="animated rubberBand"><br><br>
+				<li class="container-fluid">
+					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+						<img src="/packages/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
+					</div>
+				</li>
+				<li class="container-fluid">
+					<h1 class="h1-responsive font-curiosity white-text">{{Lang::get('landingPage.eslogan')}}</h1>
+				</li>
+				<div class="col-xs-1 col-md-2"></div>
+				<div class="button-sm-access col-xs-10 col-md-8">
+          <a class="btn btn-block success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">Iniciar sesión</a>
+          <a class="btn btn-block danger-rounded-outline waves-effect pull-right" style="color:#fff;" href="/suscripcion">Registrarse</a>
+        </div>
+				<div class="col-xs-1 col-md-2"></div>
+				<br>
+			</ul>
+		</div>
+	</div>
+<!-- Fin de sección a pantalla completa -->
+
+<!-- Sección ¿Qué es curiosity? -->
+	<section id="nosotros" class="margen-dispositivo">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow zoomInUp">
+			<h2 class="section-header h2-responsive">
+				<img src="/packages/images/landing/iconos/computing.png" alt="" style="width:35px; height:35px;" class="">
+				¿Qué es Curiosity?
+			</h2>
+		</div>
+		<div class="container" id="content-nosotros">
+			<div class="col-md-12">
+				<div class="col-md-6 col-sm-12 elemento-nosotros" id="">
+					<div class="col-md-3 col-sm-4 col-xs-12">
+						<img src="/packages/images/landing/iconos/laptop.png" alt="plataforma" style="" class="wow bounceInLeft img-fluid">
+					</div>
+					<div class="col-md-9 col-sm-7">
+                      <p class="text-justify"><b>Plataforma web </b> diseñada para mejorar la educación de los niños y aprender jugando.
+                      </p>
+					</div>
+				</div>
+				<div class="col-md-6">
+				    <div class="col-md-12  col-sm-12 elemento-nosotros" id="">
+                      <div class="col-md-3 col-sm-4">
+                          <img src="/packages/images/landing/equidad.svg" alt="equidad" style="" class="wow bounceInLeft img-fluid">
+                      </div>
+                      <div class="col-md-9 col-sm-7">
+                          <p class="text-justify"><b>Equidad.</b> Acceso a los mejores profesores de diferentes escuelas para así evitar la desigualdad educativa.</p>
+                      </div>
+                  </div>
+              </div>
+				<div class="col-md-6  col-md-offset-3 col-sm-12 elemento-nosotros" id="content-elemento">
+					<div class="col-md-3 col-sm-4">
+						<img src="/packages/images/landing/diversion.svg" alt="diversion" style="" class="img-responsive wow bounceInLeft img-fluid">
+					</div>
+					<div class="col-md-9 col-sm-7">
+                      <p class="text-justify"><b>Diversión </b> en el mundo de la educación, para volver el aprendizaje uno de sus mejores momentos.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+<!-- Fin Sección ¿Qué es curiosity? -->
+
+<!-- Sección ¿Cómo funciona curiosity? -->
+	<section id="funcionamiento" class="margen-dispositivo">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceIn">
+				<h2 class="section-header h2-responsive">
+					<img src="/packages/images/landing/iconos/pencil.png" alt="" style="width:35px; height:35px;" class="">
+					¿Cómo funciona?
+				</h2>
+			</div>
+			<div class="container">
+				<div class="col-md-12">
+				    <div class="col-md-3">
+						<div class="view hm-zoom overlay hm-orange-strong">
+							<img src="/packages/images/landing/fun-game.jpg" alt="Juegos" class="img-thumbnail img-responsive img-fluid">
+						<div class="mask flex-center">
+							<h4 class="white-text">Juegos</h4>
+						</div>
+						</div>
+
+  					<div class="funcionamiento-text"><p>Un tema, una aventura. <br> Diseñamos cada juego con el propósito de que el niño aprenda divirtiéndose y con cada tema viva una aventura </p></div>
+					</div>
+					<div class="col-md-3">
+						<div class="view hm-zoom overlay hm-purple-strong">
+							<img src="/packages/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
+						<div class="mask flex-center">
+							<h4 class="white-text">Videos explicativos</h4>
+						</div>
+						</div>
+
+  					<div class="funcionamiento-text"><p>¿Me lo explicas? <br> Desarrollamos videos animados con  explicaciones de los mejores profesores para comprender mejor cada tema. </p></div>
+					</div>
+					<div class="col-md-3">
+						<div class="view hm-zoom overlay hm-blue-strong">
+							<img src="/packages/images/landing/fun-pdf.jpg" alt="PDF" class="img-thumbnail img-responsive img-fluid">
+						<div class="mask flex-center">
+							<h4 class="white-text">Documentos PDF</h4>
+						</div>
+						</div>
+
+  					<div class="funcionamiento-text"><p>Algo que leer. <br>Documentos evaluados por expertos, que ayudarán a comprender mejor cada tema.</p></div>
+					</div>
+					<div class="col-md-3" id="content-elemento">
+						<div class="view hm-zoom overlay hm-yellow-strong">
+							<img src="/packages/images/landing/fun-feedback.jpg" alt="Retroalimentación" class="img-thumbnail img-responsive img-fluid">
+						<div class="mask flex-center">
+							<h4 class="white-text">Retroalimentación</h4>
+						</div>
+						</div>
+
+  					<div class="funcionamiento-text"><p>¿Aprendió? <br> El desempeño de tu hijo a un solo click. Evaluamos y detectamos distintas áreas de oportunidad para que nunca deje de mejorar.</p></div>
+					</div>
+				</div>
+			</div>
+	</section>
+<!-- Fin Sección ¿Cómo funciona curiosity? -->
+
+<!-- Separador 1 -->
+<div class="col-md-12 view hm-cyan-light" id="separador1">
+	<div class="mask flex-center">
+      	<center>
+      		<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
+      			<a href="/suscripcion" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
+			</h2>
+		</center>
   	</div>
-  <!-- Fin de sección a pantalla completa -->
+</div>
 
-  <!-- Sección ¿Qué es curiosity? -->
-  	<section id="nosotros" class="margen-dispositivo">
-  		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow zoomInUp">
-  			<h2 class="section-header h2-responsive">
-  				<img src="/packages/images/landing/iconos/computing.png" alt="" style="width:35px; height:35px;" class="">
-  				¿Qué es Curiosity?
-  			</h2>
-  		</div>
-  		<div class="container" id="content-nosotros">
-  			<div class="col-md-12">
-  				<div class="col-md-6 col-sm-12 elemento-nosotros" id="">
-  					<div class="col-md-3 col-sm-4 col-xs-12">
-  						<img src="/packages/images/landing/iconos/laptop.png" alt="plataforma" style="" class="wow bounceInLeft img-fluid">
-  					</div>
-  					<div class="col-md-9 col-sm-7">
-                        <p class="text-justify"><b>Plataforma web </b> diseñada para mejorar la educación de los niños y aprender jugando.
-                        </p>
-  					</div>
-  				</div>
-  				<div class="col-md-6">
-  				    <div class="col-md-12  col-sm-12 elemento-nosotros" id="">
-                        <div class="col-md-3 col-sm-4">
-                            <img src="/packages/images/landing/equidad.svg" alt="equidad" style="" class="wow bounceInLeft img-fluid">
-                        </div>
-                        <div class="col-md-9 col-sm-7">
-                            <p class="text-justify"><b>Equidad.</b> Acceso a los mejores profesores de diferentes escuelas para así evitar la desigualdad educativa.</p>
-                        </div>
-                    </div>
-                </div>
-  				<div class="col-md-6  col-md-offset-3 col-sm-12 elemento-nosotros" id="content-elemento">
-  					<div class="col-md-3 col-sm-4">
-  						<img src="/packages/images/landing/diversion.svg" alt="diversion" style="" class="img-responsive wow bounceInLeft img-fluid">
-  					</div>
-  					<div class="col-md-9 col-sm-7">
-                        <p class="text-justify"><b>Diversión </b> en el mundo de la educación, para volver el aprendizaje uno de sus mejores momentos.</p>
-  					</div>
-  				</div>
-
-  			</div>
-  		</div>
-  	</section>
-  <!-- Fin Sección ¿Qué es curiosity? -->
-
-	<!-- Sección ¿Cómo funciona curiosity? -->
-		<section id="funcionamiento" class="margen-dispositivo">
-			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceIn">
-  				<h2 class="section-header h2-responsive">
-  					<img src="/packages/images/landing/iconos/pencil.png" alt="" style="width:35px; height:35px;" class="">
-  					¿Cómo funciona?
-  				</h2>
-  			</div>
-  			<div class="container">
-  				<div class="col-md-12">
-  				    <div class="col-md-3">
-  						<div class="view hm-zoom overlay hm-orange-strong">
-  							<img src="/packages/images/landing/fun-game.jpg" alt="Juegos" class="img-thumbnail img-responsive img-fluid">
-							<div class="mask flex-center">
-								<h4 class="white-text">Juegos</h4>
-							</div>
-  						</div>
-
-    					<div class="funcionamiento-text"><p>Un tema, una aventura. <br> Diseñamos cada juego con el propósito de que el niño aprenda divirtiéndose y con cada tema viva una aventura </p></div>
-  					</div>
-  					<div class="col-md-3">
-  						<div class="view hm-zoom overlay hm-purple-strong">
-  							<img src="/packages/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
-							<div class="mask flex-center">
-								<h4 class="white-text">Videos explicativos</h4>
-							</div>
-  						</div>
-
-    					<div class="funcionamiento-text"><p>¿Me lo explicas? <br> Desarrollamos videos animados con  explicaciones de los mejores profesores para comprender mejor cada tema. </p></div>
-  					</div>
-  					<div class="col-md-3">
-  						<div class="view hm-zoom overlay hm-blue-strong">
-  							<img src="/packages/images/landing/fun-pdf.jpg" alt="PDF" class="img-thumbnail img-responsive img-fluid">
-							<div class="mask flex-center">
-								<h4 class="white-text">Documentos PDF</h4>
-							</div>
-  						</div>
-
-    					<div class="funcionamiento-text"><p>Algo que leer. <br>Documentos evaluados por expertos, que ayudarán a comprender mejor cada tema.</p></div>
-  					</div>
-  					<div class="col-md-3" id="content-elemento">
-  						<div class="view hm-zoom overlay hm-yellow-strong">
-  							<img src="/packages/images/landing/fun-feedback.jpg" alt="Retroalimentación" class="img-thumbnail img-responsive img-fluid">
-							<div class="mask flex-center">
-								<h4 class="white-text">Retroalimentación</h4>
-							</div>
-  						</div>
-
-    					<div class="funcionamiento-text"><p>¿Aprendió? <br> El desempeño de tu hijo a un solo click. Evaluamos y detectamos distintas áreas de oportunidad para que nunca deje de mejorar.</p></div>
-  					</div>
-  				</div>
-  			</div>
-		</section>
-	<!-- Fin Sección ¿Cómo funciona curiosity? -->
-
-	<!-- Separador 1 -->
-	<div class="col-md-12 view hm-cyan-light" id="separador1">
-		<div class="mask flex-center">
-        	<center>
-        		<h2 class="white-text h1-responsive">Aprendiendo de una manera DIVERTIDA <br>
-        			<a href="/suscripcion" type="button" class="btn btn-secondary btn-rounded waves-effect">Registrarme ahora</a>
-				</h2>
-			</center>
-    	</div>
-	</div>
-
-	<!-- Sección de Video -->
-		<section id="video" class="">
-			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow pulse">
-  				<h2 class="section-header h2-responsive">
-  					<img src="/packages/images/landing/iconos/mortarboard.png" alt="" style="width:35px; height:35px;" class="">
-  					Conócenos mejor
-  				</h2>
-  			</div>
-  			<div class="container">
-  				<div class="col-md-12" id="">
-  					<div class="col-md-6">
-  						<img src="/packages/images/landing/video-img.jpg" alt="" class="img-fluid center-block animated zoomInRight" id="img-video">
-  					</div>
-  					<div class="col-md-6" id="content-iframe">
-  						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/QgnUs-ZE-ug" frameborder="0" allowfullscreen=""></iframe><br><br>
-  						<center>
-  							<button type="button" class="btn btn-fb btn-lg" id="shareFB"><small>compartir en <br></small><i class="fa fa-facebook left"></i> Facebook</button>
-  							<button type="button" class="btn btn-tw btn-lg" id="shareT"><small>compartir en <br></small><i class="fa fa-twitter left"></i> Twitter</button>
-  						</center>
-  					</div>
-  				</div>
-  			</div>
-		</section>
-	<!-- Fin Sección de Video -->
-
-	<!-- Sección de Testimonial -->
-		<section id="testimonial" hidden="hidden" >
-			<div class="bg-color margen-dispositivo">
-				<div class="col-md-6 col-md-offset-3 divider-new z-depth-2 wow fadeInDownBig">
-					<h2 class="section-header h2-responsive">
-						<img src="/packages/images/landing/iconos/diploma.png" alt="" style="width:35px; height:35px;" class="">
-						Testimonial
-					</h2>
-				</div>
-				<div class="container">
-					<div class="col-md-12" id="carusel-testimonial">
-						<!--Carousel Wrapper-->
-						<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-							<!--Controls-->
-							<div class="controls-top">
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-							</div>
-							<!--/.Controls-->
-
-							<!--Indicators-->
-							<ol class="carousel-indicators">
-								<li data-target="#multi-item-example" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
-								<li data-target="#multi-item-example" data-slide-to="1" style="background-color:#65499d;"></li>
-							</ol>
-							<!--/.Indicators-->
-
-							<!--Slides-->
-							<div class="carousel-inner" role="listbox">
-
-								<!--First slide-->
-								<div class="carousel-item active">
-
-									<div class="col-md-3 col-sm-6">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Pequeñ@</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Curiosity es muy divertido y lo que me gusta mas es mi avatar.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 col-sm-6 hidden-xs-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Papás</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Mi hijo aprende bastante y lo hace jugando que eso es bueno para el.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 hidden-sm-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 hidden-sm-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<!--/.First slide-->
-
-								<!--Second slide-->
-								<div class="carousel-item">
-
-									<div class="col-md-3 col-sm-6">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 col-sm-6 hidden-xs-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 hidden-sm-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3 hidden-sm-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title">Card title</h4><hr>
-												<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<!--/.Second slide-->
-
-							</div>
-							<!--/.Slides-->
-
-						</div>
-						<!--/.Carousel Wrapper-->
-					</div>
-				</div>
-  			</div>
-		</section>
-	<!-- Fin Sección de Testimonial -->
-
-	<!-- Sección de Colaboradores -->
-		<section id="colaboradores" class="margen-dispositivo">
-			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceInRight">
+<!-- Sección de Video -->
+	<section id="video" class="">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow pulse">
 				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/school.png" alt="" style="width:35px; height:35px;" class="">
-					Colaboradores
+					<img src="/packages/images/landing/iconos/mortarboard.png" alt="" style="width:35px; height:35px;" class="">
+					Conócenos mejor
 				</h2>
 			</div>
 			<div class="container">
-				<div class="col-md-12" id="carusel-colaboradores">
-					<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-12" id="">
+					<div class="col-md-6">
+						<img src="/packages/images/landing/video-img.jpg" alt="" class="img-fluid center-block animated zoomInRight" id="img-video">
+					</div>
+					<div class="col-md-6" id="content-iframe">
+						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/QgnUs-ZE-ug" frameborder="0" allowfullscreen=""></iframe><br><br>
+						<center>
+							<button type="button" class="btn btn-fb btn-lg" id="shareFB"><small>compartir en <br></small><i class="fa fa-facebook left"></i> Facebook</button>
+							<button type="button" class="btn btn-tw btn-lg" id="shareT"><small>compartir en <br></small><i class="fa fa-twitter left"></i> Twitter</button>
+						</center>
+					</div>
+				</div>
+			</div>
+	</section>
+<!-- Fin Sección de Video -->
+
+<!-- Sección de Testimonial -->
+	<section id="testimonial" hidden="hidden" >
+		<div class="bg-color margen-dispositivo">
+			<div class="col-md-6 col-md-offset-3 divider-new z-depth-2 wow fadeInDownBig">
+				<h2 class="section-header h2-responsive">
+					<img src="/packages/images/landing/iconos/diploma.png" alt="" style="width:35px; height:35px;" class="">
+					Testimonial
+				</h2>
+			</div>
+			<div class="container">
+				<div class="col-md-12" id="carusel-testimonial">
 					<!--Carousel Wrapper-->
-						<div id="multi-item-example2" class="carousel slide carousel-multi-item" data-ride="carousel">
+					<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-							<!--Controls-->
-							<div class="controls-top">
-								<h3 class="h3-responsive">Escuelas <hr></h3><br>
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-							</div>
-							<!--/.Controls-->
-                            <?php $slide=0; $status="active"; $contador=0; $long = count($escuelas);?>
-                            @foreach($escuelas as $escuela)
-                               <?php $contador++; ?>
-                                @if($contador == 2 || $contador == $long)
-                                    <!--Indicators-->
-                                    @if($slide == 0)
-                                    <ol class="carousel-indicators">
-                                    @endif
-
-                                        <li data-target="#multi-item-example2" data-slide-to="{{$slide}}" class="{{$status}}" style="background-color:#65499d;"></li>
-                                    <?php $status = ""; $slide++; $contador =0;?>
-
-                                @endif
-							@endforeach
-							        </ol>
-							<!--/.Indicators-->
-
-							<!--Slides-->
-							<div class="carousel-inner" role="listbox">
-
-								<!--First slide-->
-                                   <?php $contador_esc=0; $long = count($escuelas); $control=0;?>
-                                    @foreach($escuelas as $escuela)
-                                       @if($contador_esc == 0)
-                                           @if($escuelas[0]->id == $escuela->id)
-                                                <div class="carousel-item active">
-                                           @else
-                                                <div class="carousel-item">
-                                           @endif
-                                        @endif
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="card">
-                                                {{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
-                                            </div>
-                                        </div>
-                                        <?php $contador_esc+=1; $control+=1;?>
-                                        @if($contador_esc == 2 || $control == $long)
-                                            </div>
-                                            <?php $contador_esc=0;?>
-                                        @endif
-
-                                    @endforeach
-
-							</div>
-							<!--/.Slides-->
-
+						<!--Controls-->
+						<div class="controls-top">
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
 						</div>
-						<!--/.Carousel Wrapper-->
-			</div>	<!-- Fin escuelas -->
+						<!--/.Controls-->
 
-			<div class="col-md-6" hidden="hidden" id="content-elemento">
-				<!--Carousel Wrapper-->
-						<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
+						<!--Indicators-->
+						<ol class="carousel-indicators">
+							<li data-target="#multi-item-example" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
+							<li data-target="#multi-item-example" data-slide-to="1" style="background-color:#65499d;"></li>
+						</ol>
+						<!--/.Indicators-->
 
-							<!--Controls-->
-							<div class="controls-top">
-								<h3 class="h3-responsive">Personas <hr></h3><br>
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-								<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-							</div>
-							<!--/.Controls-->
+						<!--Slides-->
+						<div class="carousel-inner" role="listbox">
 
-							<!--Indicators-->
-							<ol class="carousel-indicators">
-								<li data-target="#multi-item-example3" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
-								<li data-target="#multi-item-example3" data-slide-to="1" style="background-color:#65499d;"></li>
-							</ol>
-							<!--/.Indicators-->
+							<!--First slide-->
+							<div class="carousel-item active">
 
-							<!--Slides-->
-							<div class="carousel-inner" role="listbox">
-
-								<!--First slide-->
-								<div class="carousel-item active">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title text-xs-center">Pequeñ@</h4>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-6 col-sm-6 hidden-xs-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title text-xs-center">Pequeñ@</h4>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<!--/.First slide-->
-
-								<!--Second slide-->
-								<div class="carousel-item">
-
-									<div class="col-md-6 col-sm-6">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title text-xs-center">Pequeñ@</h4>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-6 col-sm-6 hidden-xs-down">
-										<div class="card">
-											<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-											<div class="card-block">
-												<h4 class="card-title text-xs-center">Pequeñ@</h4>
-											</div>
+								<div class="col-md-3 col-sm-6">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Pequeñ@</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Curiosity es muy divertido y lo que me gusta mas es mi avatar.</p>
 										</div>
 									</div>
 								</div>
-								<!--/.Second slide-->
 
-							</div>
-							<!--/.Slides-->
-
-						</div>
-						<!--/.Carousel Wrapper-->
-				</div>	<!-- Fin colaboradores personas  -->
-			 </div>
-		  </div>
-		</section>
-	<!-- Fin Sección de Colaboradores -->
-
-	<!-- Separador 2 -->
-	<div class="col-md-12 view hm-blue-light" id="separador2">
-		<div class="mask flex-center">
-        	<center>
-        		<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
-        			<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
-				</h2>
-			</center>
-    	</div>
-	</div>
-
-	<!-- Sección de Membresías -->
-		<section id="membresia" class="">
-			<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow rotateInUpLeft">
-				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/attachment.png" alt="" style="width:35px; height:35px;" class="">
-					Membresía
-				</h2>
-			</div>
-			<div class="container">
-				<div class="col-md-12" id="content-elemento">
-
-					<div class="row">
-
-						<!--First column-->
-						<div class="col-md-4 col-md-offset-2">
-
-							<!--Pricing card-->
-							<div class="card pricing-card hoverable z-depth-3">
-								<!--Price-->
-								<div class="price" style="background-color: #44c6ee;">
-									<h2>0</h2>
-									<div class="version">
-										<h5>Beta</h5>
+								<div class="col-md-3 col-sm-6 hidden-xs-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Papás</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Mi hijo aprende bastante y lo hace jugando que eso es bueno para el.</p>
+										</div>
 									</div>
 								</div>
-								<!--/.Price-->
 
-								<!--Features-->
-								<div class="card-block">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> Juegos Educativos</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Documentos PDF</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Videos Explicativos</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> Acceso a todo el contenido</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> Items de Regalo</p>
-										</li>
-										<li>
-											<p><i class="fa fa-times"></i> Análisis de problema de aprendizaje</p>
-										</li>
-									</ul>
-
-									<center><button class="btn" style="background-color: #44c6ee;" href="/suscripcion">Obtener</button></center>
-								</div>
-								<!--/.Features-->
-
-							</div>
-							<!--/.Pricing card-->
-
-						</div>
-						<!--/.First column-->
-
-						<!--Second column-->
-
-						<!--Third column-->
-						<div class="col-md-4">
-
-							<!--Pricing card-->
-							<div class="card pricing-card proximamente hoverable">
-								<!--Price-->
-								<div class="price" style="background-color: #65499d;">
-									<h2>50</h2>
-									<div class="version">
-										<h5>Premium</h5>
+								<div class="col-md-3 hidden-sm-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
 									</div>
 								</div>
-								<!--/.Price-->
 
-								<!--Features-->
-								<div class="card-block">
-									<ul>
-										<li>
-											<p><i class="fa fa-check"></i> Juegos Educativos</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Documentos PDF</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Videos Explicativos</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Acceso a todo el contenido</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Items de Regalo</p>
-										</li>
-										<li>
-											<p><i class="fa fa-check"></i> Análisis de problema de aprendizaje</p>
-										</li>
-									</ul>
-
-									<center><button disabled class="btn" style="background-color: #65499d;">Suscribrse</button></center>
+								<div class="col-md-3 hidden-sm-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
+									</div>
 								</div>
-								<!--/.Features-->
 
 							</div>
-							<!--/.Pricing card-->
+							<!--/.First slide-->
+
+							<!--Second slide-->
+							<div class="carousel-item">
+
+								<div class="col-md-3 col-sm-6">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-sm-6 hidden-xs-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-3 hidden-sm-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-3 hidden-sm-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title">Card title</h4><hr>
+											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!--/.Second slide-->
 
 						</div>
-						<!--/.Third column-->
+						<!--/.Slides-->
+
 					</div>
+					<!--/.Carousel Wrapper-->
 				</div>
 			</div>
-		</section>
-	<!-- Fin Sección de Membresías -->
+			</div>
+	</section>
+<!-- Fin Sección de Testimonial -->
 
-	<!-- Sección de Noticias -->
-		<section id="noticias">
-			<div class="bg-noticias">
-				<div class="flex-center container">
-					<ul class="animated ">
-						<li class="container-fluid">
-							<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
-						</li>
-						<li class="container-fluid hidden-xs-down">
-							<h4 class="h4-responsive" style="color:white;">Estemos en contacto y hagamos juntos de la educación una experiencia divertida.</h4>
-						</li>
-						<li class="container-fluid">
-							<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
-						</li>
-						<div class="col-md-6 col-md-offset-3">
-							<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
-							 style="padding-top:20px; padding-left:20px;">
-							<div class="md-form form-group">
+<!-- Sección de Colaboradores -->
+	<section id="colaboradores" class="margen-dispositivo">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceInRight">
+			<h2 class="section-header h2-responsive">
+				<img src="/packages/images/landing/iconos/school.png" alt="" style="width:35px; height:35px;" class="">
+				Colaboradores
+			</h2>
+		</div>
+		<div class="container">
+			<div class="col-md-12" id="carusel-colaboradores">
+				<div class="col-md-6 col-md-offset-3">
+				<!--Carousel Wrapper-->
+					<div id="multi-item-example2" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-								<input type="email" id="correo_noticia" class="form-control validate">
-								<label for="correo_noticia" data-error="no válido" data-success="correcto">@ escribe tu email</label>
-							</div>
-							<div class="md-form form-group">
-								<a href="" class="btn btn-primary btn-lg">Enviar</a>
-							</div>
-						</form>
+						<!--Controls-->
+						<div class="controls-top">
+							<h3 class="h3-responsive">Escuelas <hr></h3><br>
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
 						</div>
-					</ul>
-				</div>
-			</div>
-		</section>
-	<!-- Fin Sección de Noticias -->
+						<!--/.Controls-->
+                          <?php $slide=0; $status="active"; $contador=0; $long = count($escuelas);?>
+                          @foreach($escuelas as $escuela)
+                             <?php $contador++; ?>
+                              @if($contador == 2 || $contador == $long)
+                                  <!--Indicators-->
+                                  @if($slide == 0)
+                                  <ol class="carousel-indicators">
+                                  @endif
 
-		<!--Footer-->
-		<footer class="page-footer center-on-small-only" id="footer">
+                                      <li data-target="#multi-item-example2" data-slide-to="{{$slide}}" class="{{$status}}" style="background-color:#65499d;"></li>
+                                  <?php $status = ""; $slide++; $contador =0;?>
 
-			<!--Footer Links-->
-			<div class="container-fluid">
+                              @endif
+						@endforeach
+						        </ol>
+						<!--/.Indicators-->
+
+						<!--Slides-->
+						<div class="carousel-inner" role="listbox">
+
+							<!--First slide-->
+                                 <?php $contador_esc=0; $long = count($escuelas); $control=0;?>
+                                  @foreach($escuelas as $escuela)
+                                     @if($contador_esc == 0)
+                                         @if($escuelas[0]->id == $escuela->id)
+                                              <div class="carousel-item active">
+                                         @else
+                                              <div class="carousel-item">
+                                         @endif
+                                      @endif
+                                      <div class="col-md-6 col-sm-6">
+                                          <div class="card">
+                                              {{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
+                                          </div>
+                                      </div>
+                                      <?php $contador_esc+=1; $control+=1;?>
+                                      @if($contador_esc == 2 || $control == $long)
+                                          </div>
+                                          <?php $contador_esc=0;?>
+                                      @endif
+
+                                  @endforeach
+
+						</div>
+						<!--/.Slides-->
+
+					</div>
+					<!--/.Carousel Wrapper-->
+		</div>	<!-- Fin escuelas -->
+
+		<div class="col-md-6" hidden="hidden" id="content-elemento">
+			<!--Carousel Wrapper-->
+					<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+						<!--Controls-->
+						<div class="controls-top">
+							<h3 class="h3-responsive">Personas <hr></h3><br>
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+							<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+						</div>
+						<!--/.Controls-->
+
+						<!--Indicators-->
+						<ol class="carousel-indicators">
+							<li data-target="#multi-item-example3" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
+							<li data-target="#multi-item-example3" data-slide-to="1" style="background-color:#65499d;"></li>
+						</ol>
+						<!--/.Indicators-->
+
+						<!--Slides-->
+						<div class="carousel-inner" role="listbox">
+
+							<!--First slide-->
+							<div class="carousel-item active">
+
+								<div class="col-md-6 col-sm-6">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title text-xs-center">Pequeñ@</h4>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 hidden-xs-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title text-xs-center">Pequeñ@</h4>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!--/.First slide-->
+
+							<!--Second slide-->
+							<div class="carousel-item">
+
+								<div class="col-md-6 col-sm-6">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title text-xs-center">Pequeñ@</h4>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 hidden-xs-down">
+									<div class="card">
+										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
+										<div class="card-block">
+											<h4 class="card-title text-xs-center">Pequeñ@</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--/.Second slide-->
+
+						</div>
+						<!--/.Slides-->
+
+					</div>
+					<!--/.Carousel Wrapper-->
+			</div>	<!-- Fin colaboradores personas  -->
+		 </div>
+	  </div>
+	</section>
+<!-- Fin Sección de Colaboradores -->
+
+<!-- Separador 2 -->
+<div class="col-md-12 view hm-blue-light" id="separador2">
+	<div class="mask flex-center">
+      	<center>
+      		<h2 class="white-text h1-responsive">Juega y aprende en cualquier dispositivo <br>
+      			<a type="button" class="btn btn-warning btn-rounded waves-effect" href="/suscripcion">Comenzar</a>
+			</h2>
+		</center>
+  	</div>
+</div>
+
+<!-- Sección de Membresías -->
+	<section id="membresia" class="">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow rotateInUpLeft">
+			<h2 class="section-header h2-responsive">
+				<img src="/packages/images/landing/iconos/attachment.png" alt="" style="width:35px; height:35px;" class="">
+				Membresía
+			</h2>
+		</div>
+		<div class="container">
+			<div class="col-md-12" id="content-elemento">
+
 				<div class="row">
 
 					<!--First column-->
-					<div class="col-md-3 col-md-offset-1">
-						<h4 class="h4-responsive font-italic font-curiosity">Porque una educación divertida es posible.</h4>
+					<div class="col-md-4 col-md-offset-2">
+
+						<!--Pricing card-->
+						<div class="card pricing-card hoverable z-depth-3">
+							<!--Price-->
+							<div class="price" style="background-color: #44c6ee;">
+								<h2>0</h2>
+								<div class="version">
+									<h5>Beta</h5>
+								</div>
+							</div>
+							<!--/.Price-->
+
+							<!--Features-->
+							<div class="card-block">
+								<ul>
+									<li>
+										<p><i class="fa fa-check"></i> Juegos Educativos</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Documentos PDF</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Videos Explicativos</p>
+									</li>
+									<li>
+										<p><i class="fa fa-times"></i> Acceso a todo el contenido</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
+									</li>
+									<li>
+										<p><i class="fa fa-times"></i> Items de Regalo</p>
+									</li>
+									<li>
+										<p><i class="fa fa-times"></i> Análisis de problema de aprendizaje</p>
+									</li>
+								</ul>
+
+								<center><button class="btn" style="background-color: #44c6ee;" href="/suscripcion">Obtener</button></center>
+							</div>
+							<!--/.Features-->
+
+						</div>
+						<!--/.Pricing card-->
 
 					</div>
 					<!--/.First column-->
 
-					<hr class="hidden-md-up">
-
 					<!--Second column-->
-					<div class="col-md-2 col-md-offset-1">
-						<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
-						<ul>
-							<li><a href="equipo.html">- Nuestro equipo</a></li>
-							<li><a href="colaboradores.html">- Colaboradores</a></li>
-						</ul>
-					</div>
-					<!--/.Second column-->
-
-					<hr class="hidden-md-up">
 
 					<!--Third column-->
-					<div class="col-md-2">
-						<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
-						<ul>
-							<li><a href="preguntas.html">- Preguntas frecuentes</a></li>
-						</ul>
+					<div class="col-md-4">
+
+						<!--Pricing card-->
+						<div class="card pricing-card proximamente hoverable">
+							<!--Price-->
+							<div class="price" style="background-color: #65499d;">
+								<h2>50</h2>
+								<div class="version">
+									<h5>Premium</h5>
+								</div>
+							</div>
+							<!--/.Price-->
+
+							<!--Features-->
+							<div class="card-block">
+								<ul>
+									<li>
+										<p><i class="fa fa-check"></i> Juegos Educativos</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Documentos PDF</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Videos Explicativos</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Acceso a todo el contenido</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Retroalimentación de desempeño</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Items de Regalo</p>
+									</li>
+									<li>
+										<p><i class="fa fa-check"></i> Análisis de problema de aprendizaje</p>
+									</li>
+								</ul>
+
+								<center><button disabled class="btn" style="background-color: #65499d;">Suscribrse</button></center>
+							</div>
+							<!--/.Features-->
+
+						</div>
+						<!--/.Pricing card-->
+
 					</div>
 					<!--/.Third column-->
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- Fin Sección de Membresías -->
 
-					<hr class="hidden-md-up">
+<!-- Sección de Noticias -->
+	<section id="noticias">
+		<div class="bg-noticias">
+			<div class="flex-center container">
+				<ul class="animated ">
+					<li class="container-fluid">
+						<h2 class="h1-responsive" style="color:white;">¿Quieres saber más sobre Curiosity?</h2>
+					</li>
+					<li class="container-fluid hidden-xs-down">
+						<h4 class="h4-responsive" style="color:white;">Estemos en contacto y hagamos juntos de la educación una experiencia divertida.</h4>
+					</li>
+					<li class="container-fluid">
+						<h4 class="h4-responsive" style="color:white;">Por favor, escribe tu email aquí:</h4>
+					</li>
+					<div class="col-md-6 col-md-offset-3">
+						<form class="form-inline form-control" action="mail_noticia" method="post" id="mail_noticia" name="mail_noticia"
+						 style="padding-top:20px; padding-left:20px;">
+						<div class="md-form form-group">
 
-					<!--Fourth column-->
-					<div class="col-md-2">
-						<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
-						<ul>
-							<li>- (871)455-2887</li>
-						</ul>
+							<input type="email" id="correo_noticia" class="form-control validate">
+							<label for="correo_noticia" data-error="no válido" data-success="correcto">@ escribe tu email</label>
+						</div>
+						<div class="md-form form-group">
+							<a href="" class="btn btn-primary btn-lg">Enviar</a>
+						</div>
+					</form>
 					</div>
-					<!--/.Fourth column-->
-
-				</div>
-			</div>
-			<!--/.Footer Links-->
-
-			<hr>
-
-			<!--Call to action-->
-			<div class="call-to-action">
-				<ul>
-					<li>
-						<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
-					<li><a class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
 				</ul>
 			</div>
-			<!--/.Call to action-->
+		</div>
+	</section>
+<!-- Fin Sección de Noticias -->
+@stop
 
-			<hr>
+@section('footer')
+<!--Footer-->
+<footer class="page-footer center-on-small-only" id="footer">
 
-			<!--Social buttons-->
-			<div class="social-section">
+	<!--Footer Links-->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!--First column-->
+			<div class="col-md-3 col-md-offset-1">
+				<h4 class="h4-responsive font-italic font-curiosity">Porque una educación divertida es posible.</h4>
+
+			</div>
+			<!--/.First column-->
+
+			<hr class="hidden-md-up">
+
+			<!--Second column-->
+			<div class="col-md-2 col-md-offset-1">
+				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul>
-					<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook" > </i></a></li>
-					<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
-					<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus"><i class="fa fa-youtube"> </i></a></li>
+					<li><a href="equipo.html">- Nuestro equipo</a></li>
+					<li><a href="colaboradores.html">- Colaboradores</a></li>
 				</ul>
 			</div>
-			<!--/.Social buttons-->
+			<!--/.Second column-->
 
-			<!--Copyright-->
-			<div class="footer-copyright">
-				<div class="container-fluid">
-					© {{Date('Y')}} Todos los derechos reservados: Curiosity.com.mx
-				</div>
+			<hr class="hidden-md-up">
+
+			<!--Third column-->
+			<div class="col-md-2">
+				<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
+				<ul>
+					<li><a href="preguntas.html">- Preguntas frecuentes</a></li>
+				</ul>
 			</div>
-			<!--/.Copyright-->
+			<!--/.Third column-->
 
-		</footer>
-		<!--/.Footer-->
-    </div>
-     <!-- Preloader web -->
-      <div id="cssload-pgloading" hidden="hidden">
-        <div class="cssload-loadingwrap">
-          <ul class="cssload-bokeh">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-          <h4 class="textPreloader">Espera un momento...</h4>
-        </div>
-      </div>
-      <!-- Fin de preloader -->
+			<hr class="hidden-md-up">
 
-	<script type="text/javascript" src="/packages/js/libs/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
-	<script type="text/javascript" src="/packages/js/libs/mdb/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
-	<script type="text/javascript" src="/packages/js/curiosity/app-index.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(function () {
-				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-			});
-		});
+			<!--Fourth column-->
+			<div class="col-md-2">
+				<h5 class="title"><i class="fa fa-comments-o"></i> contacto</h5>
+				<ul>
+					<li>- (871)455-2887</li>
+				</ul>
+			</div>
+			<!--/.Fourth column-->
 
-		new WOW().init();
-        $('a').click(function(e){
-            e.preventDefault();
-            window.location = $(this).attr('href');
-        });
-	</script>
-</body>
-</html>
+		</div>
+	</div>
+	<!--/.Footer Links-->
+
+	<hr>
+
+	<!--Call to action-->
+	<div class="call-to-action">
+		<ul>
+			<li>
+				<h5>¡ Vamos, que esperas para formar parte de la familia Curiosity !</h5></li>
+			<li><a class="btn btn-danger" href="/suscripcion">¡Únete!</a></li>
+		</ul>
+	</div>
+	<!--/.Call to action-->
+
+	<hr>
+
+	<!--Social buttons-->
+	<div class="social-section">
+		<ul>
+			<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook" > </i></a></li>
+			<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
+			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus"><i class="fa fa-youtube"> </i></a></li>
+		</ul>
+	</div>
+	<!--/.Social buttons-->
+
+	<!--Copyright-->
+	<div class="footer-copyright">
+		<div class="container-fluid">
+			© {{Date('Y')}} Todos los derechos reservados: Curiosity.com.mx
+		</div>
+	</div>
+	<!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+@stop
