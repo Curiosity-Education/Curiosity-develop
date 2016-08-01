@@ -11,19 +11,7 @@
 
 @section('menu')
 <li class='nav-item anc'>
-  <a class='nav-link' href='/#inicio'>Inicio <span class='sr-only'>(current)</span></a>
-</li>
-<li class='nav-item anc'>
-  <a class='nav-link' href='/#nosotros'>{{Lang::get('landingPage.menu.whatIs')}}</a>
-</li>
-<li class='nav-item anc'>
-  <a class='nav-link' href='/#funcionamiento'>{{Lang::get('landingPage.menu.howfunction')}}</a>
-</li>
- <li class='nav-item anc'>
-  <a class='nav-link' href='/#video'>{{Lang::get('landingPage.menu.video')}}</a>
-</li>
-<li class='nav-item anc'>
-  <a class='nav-link' href='/#membresia'>{{Lang::get('landingPage.menu.paymentOption')}}</a>
+  <a class='nav-link' href='/'>Inicio <span class='sr-only'>(current)</span></a>
 </li>
 <li class='nav-item'>
   &nbsp;&nbsp;&nbsp;&nbsp;
