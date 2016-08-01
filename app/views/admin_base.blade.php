@@ -35,7 +35,8 @@
           </span>
           <span class="logo-lg">
             <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
-            <b>Curiosity<small>.com.mx</small></b>
+            &nbsp;
+            <b>Curiosity<small></small></b>
           </span>
         </div>
 
@@ -248,7 +249,7 @@
             <li></li>
             <li></li>
           </ul>
-          <h4 class="textPreloader">Espera un momento...</h4>
+          <!-- <h4 class="textPreloader">Espera un momento...</h4> -->
         </div>
       </div>
       <!-- Fin de preloader -->

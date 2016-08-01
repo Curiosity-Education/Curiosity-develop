@@ -73,8 +73,7 @@ Bienvenido a Curiosity
     <div class="row">
       <div class="col-sm-6">
         <div class="panelsLook panelPopular">
-          <center><h4>Juegos Más Populares</h4></center>
-          <hr>
+          <center><h4 style="background-color: #ed6922;">Juegos Más Populares</h4></center>
           @foreach($populares as $popular)
           <div class='row elementObj gotoplay' data-as='{{$popular}}' data-r='{{$rol}}'>
             <div class='col-xs-3 col-sm-2'>
@@ -96,8 +95,7 @@ Bienvenido a Curiosity
       </div>
       <div class="col-sm-6">
         <div class="panelsLook panelRanking">
-          <center><h4>Juegos Mejor Calificados</h4></center>
-          <hr>
+          <center><h4 style="background-color: #3cb54a;">Juegos Mejor Calificados</h4></center>
           <!--  -->
           @foreach($ranking as $rank)
           <div class='row elementObj gotoplay' data-as='{{$rank}}' data-r='{{$rol}}'>
@@ -121,8 +119,7 @@ Bienvenido a Curiosity
       </div>
       <div class="col-xs-12">
         <div class="panelsLook panelParaTi">
-          <center><h4>Juegos Recomendados para Tí</h4></center>
-          <hr>
+          <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>          
           <!--  -->
           <div class='row elementObj'>
             <div class='col-xs-3 col-sm-1'>

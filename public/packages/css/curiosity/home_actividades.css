@@ -65,13 +65,18 @@
 .panelParaTi{
   border-top: solid 6px #44c6ee;
 }
-.panelsLook > center > h4{
-  margin-top: -20px;
-  margin-bottom: -10px;
-  color: rgba(0, 0, 0, 0.7);
+.panelsLook > center > h4{  
   font-weight: 600;
   font-size: 1em;
   font-family: Kiddish !important;
+  margin-top: -40px;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
 }
 .nameGamePanels{
   text-align: left;
@@ -198,5 +203,5 @@
   margin-top: -40px;
 }
 .cardInfo{
-  
+
 }
