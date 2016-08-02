@@ -5,7 +5,6 @@ var $juego = {
       $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
       $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
     },
-<<<<<<< .mine
     slider:{
         changeImages:function(json){
           $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);
@@ -13,7 +12,6 @@ var $juego = {
           $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);
         }
     },
-=======
     slider:{
         changeImages:function(json){
           $("#slider img[alt='img-1']").attr("src","/packages/images/games/"+json.img1);
@@ -21,7 +19,6 @@ var $juego = {
           $("#slider img[alt='img-3']").attr("src","/packages/images/games/"+json.img3);
         }
     },
->>>>>>> .theirs
     game:{
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
@@ -596,8 +593,6 @@ $(document).ready(function(){
       event.preventDefault();
     });
 });
-<<<<<<< .mine
-
 // FUNCIONAMIENTO DEL SLIDER
 
 $(function(){
