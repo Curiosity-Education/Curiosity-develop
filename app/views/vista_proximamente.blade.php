@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-  
+
   <link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 

@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB PRO 4.0.1 
+ * Version: MDB PRO 4.0.1
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -1268,25 +1268,25 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 			if (reflow){
 				this.reflow();
 			}
-			
+
 			if (this.options.animation && !reflow){
 				var animation = new Chart.Animation();
 				animation.numSteps = this.options.animationSteps;
 				animation.easing = this.options.animationEasing;
-				
+
 				// render function
 				animation.render = function(chartInstance, animationObject) {
 					var easingFunction = helpers.easingEffects[animationObject.easing];
 					var stepDecimal = animationObject.currentStep / animationObject.numSteps;
 					var easeDecimal = easingFunction(stepDecimal);
-					
+
 					chartInstance.draw(easeDecimal, stepDecimal, animationObject.currentStep);
 				};
-				
+
 				// user events
 				animation.onAnimationProgress = this.options.onAnimationProgress;
 				animation.onAnimationComplete = this.options.onAnimationComplete;
-				
+
 				Chart.animationService.addAnimation(this, animation);
 			}
 			else{
@@ -1708,11 +1708,11 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 		numSteps: 60, // default number of steps
 		easing: "", // the easing to use for this animation
 		render: null, // render function used by the animation service
-		
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
+
+		onAnimationProgress: null, // user specified callback to fire on each step of the animation
 		onAnimationComplete: null, // user specified callback to fire when the animation finishes
 	});
-	
+
 	Chart.Tooltip = Chart.Element.extend({
 		draw : function(){
 
@@ -2457,7 +2457,7 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 					return;
 				}
 			}
-			
+
 			this.animations.push({
 				chartInstance: chartInstance,
 				animationObject: animationObject
@@ -2473,7 +2473,7 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 			var index = helpers.findNextWhere(this.animations, function(animationWrapper) {
 				return animationWrapper.chartInstance === chartInstance;
 			});
-			
+
 			if (index)
 			{
 				this.animations.splice(index, 1);
@@ -2503,9 +2503,9 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 				if(this.animations[i].animationObject.currentStep > this.animations[i].animationObject.numSteps){
 					this.animations[i].animationObject.currentStep = this.animations[i].animationObject.numSteps;
 				}
-				
+
 				this.animations[i].animationObject.render(this.animations[i].chartInstance, this.animations[i].animationObject);
-				
+
 				// Check if executed the last frame.
 				if (this.animations[i].animationObject.currentStep == this.animations[i].animationObject.numSteps){
 					// Call onAnimationComplete
@@ -2968,7 +2968,7 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 			var index = atIndex !== undefined ? atIndex : this.segments.length;
 			if ( typeof(segment.color) === "undefined" ) {
 				segment.color = Chart.defaults.global.segmentColorDefault[index % Chart.defaults.global.segmentColorDefault.length];
-				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];				
+				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];
 			}
 			this.segments.splice(index, 0, new this.SegmentArc({
 				value : segment.value,
@@ -3648,7 +3648,7 @@ m.isFunction(t)&&t(null,!0)}),f.queue(a,m.isString(v)?v:"",[])),"stop"===y?(i(a)
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},
@@ -9564,7 +9564,7 @@ if (typeof define === 'function' && define.amd) {
  * easy-pie-chart
  * Lightweight plugin to render simple, animated and retina optimized pie charts
  *
- * @license 
+ * @license
  * @author Robert Fleischmann <rendro87@gmail.com> (http://robert-fleischmann.de)
  * @version 2.1.7
  **/
@@ -9924,7 +9924,7 @@ $.fn.easyPieChart = function(options) {
 
 
 }));
-//Collapse other tabs for popout 
+//Collapse other tabs for popout
 $(function () {
     var active = true;
 
@@ -13049,7 +13049,7 @@ $.extend($.fn.pickadate.defaults, {
 
       onRender: function () {
       var $pickerInstance = this.$root;
- 
+
           var year = this.get('highlight', 'yyyy');
           var day = this.get('highlight', 'dd');
           var month = this.get('highlight', 'mmm');
@@ -15158,7 +15158,7 @@ $.extend($.fn.pickadate.defaults, {
 
 var initPhotoSwipeFromDOM = function (gallerySelector) {
 
-    // parse slide data (url, title, size ...) from DOM elements 
+    // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
     var parseThumbnailElements = function (el) {
         var thumbElements = el.childNodes,
@@ -15173,7 +15173,7 @@ var initPhotoSwipeFromDOM = function (gallerySelector) {
 
             figureEl = thumbElements[i]; // <figure> element
 
-            // include only element nodes 
+            // include only element nodes
             if (figureEl.nodeType !== 1) {
                 continue;
             }
@@ -15318,7 +15318,7 @@ var initPhotoSwipeFromDOM = function (gallerySelector) {
         // PhotoSwipe opened from URL
         if (fromURL) {
             if (options.galleryPIDs) {
-                // parse real index when custom PIDs are used 
+                // parse real index when custom PIDs are used
                 // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                 for (var j = 0; j < items.length; j++) {
                     if (items[j].pid == index) {
@@ -15422,7 +15422,7 @@ initPhotoSwipeFromDOM('.mdb-lightbox');/* jSticky Plugin
       function stickyScroll() {
 
         var windowTop  = $window.scrollTop(); // Check window's scroll position
-        
+
         if ( hasStopper && typeof stopper === 'string' ) {
           var stopperTop = $(stopper).offset().top,
               stopPoint  = (stopperTop - thisHeight) - topSpacing;
@@ -15436,7 +15436,7 @@ initPhotoSwipeFromDOM('.mdb-lightbox');/* jSticky Plugin
             position: 'fixed',
             top: topSpacing
           });
-          
+
           if (hasIndex) {
             $this.css({ zIndex: zIndex });
           }

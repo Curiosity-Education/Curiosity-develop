@@ -109,7 +109,7 @@ class contenidoController extends BaseController
       ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium')
       ->orderBy('vistos', 'desc')
       ->limit(4)
-      ->get();      
+      ->get();
       $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
       $gradoHijo = DB::table('escolaridades')->where('hijo_id', '=', $idHijo)->orderBy('id', 'desc')->limit(1)->pluck('grado');
       $recomendados = archivo::join('actividades', 'actividades.id', '=', 'archivos.actividad_id')

@@ -61,7 +61,7 @@
       <h4 class="textPreloader">Espera un momento...</h4>
     </div>
   </div>
-  <!-- Fin de preloader -->	
+  <!-- Fin de preloader -->
 
 	<script type="text/javascript" src="/packages/js/libs/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>

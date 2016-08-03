@@ -16,5 +16,5 @@ class hijoCalificaActividad extends Eloquent{
     public function actividad(){
         return $this->belongsTo('actividad');
     }
-    
+
 }

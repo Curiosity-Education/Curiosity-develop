@@ -3,11 +3,11 @@ function BrainSocket(WebSocketConnection,BrainSocketPubSub){
 	this.Event = BrainSocketPubSub;
 
 	this.connection.BrainSocket = this;
-    
+
     this.onopen = function(fn){
          WebSocketConnection.onopen = fn;
     };
- 
+
 
 	this.connection.digestMessage = function(data){
 		try{

@@ -12,7 +12,7 @@
 @stop
 
 @section('juego')
-         
+
 @stop
 
 @section('game')

@@ -98,5 +98,5 @@
 
 @section('juego_js')
   {{HTML::script('/packages/js/curiosity/juegos/figuras_lados.js')}}
-@stop 
-       
+@stop
+

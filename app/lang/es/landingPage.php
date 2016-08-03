@@ -1,7 +1,7 @@
 <?php
  return array(
- 
-    'eslogan' =>'¡Que tu curiosidad no tenga límites!', 
+
+    'eslogan' =>'¡Que tu curiosidad no tenga límites!',
     'menu'=>array(
         'home' => 'Inicio',
         'whatIs' => '¿Qué es Curiosity?',
@@ -11,5 +11,4 @@
         'createAccount' => 'Registrarse',
         'logIn' => 'Iniciar Sesión'
     )
- 
  );

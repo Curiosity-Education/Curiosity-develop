@@ -119,7 +119,7 @@ Bienvenido a Curiosity
       </div>
       <div class="col-xs-12">
         <div class="panelsLook panelParaTi">
-          <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>          
+          <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>
           <!--  -->
           <div class='row elementObj'>
             <div class='col-xs-3 col-sm-1'>

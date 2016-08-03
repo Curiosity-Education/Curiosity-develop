@@ -94,6 +94,7 @@ div#collapseEx2 > ul.navbar-nav > li.nav-item > a{
 div#collapseEx2 > ul.navbar-nav > li.anc:hover{
 	border-bottom: 2px solid #44c6ee;
 }
+
 .selection{
     border-bottom: 2px solid #44c6ee;
 }
@@ -111,7 +112,7 @@ section#nosotros{
 }
 
 #logo_entrada{
-	margin-top: 100px;
+	margin-top: 140px;
 }
 
 /* Codigo para usar la fuente del logo */
@@ -124,7 +125,7 @@ section#nosotros{
 /* FIN fuente del logo */
 
 .font-curiosity{
-	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 }
 
 .section-header{
@@ -346,12 +347,11 @@ input#correo_noticia{
         font-size: 20px;
     }
     .navbar_inicio{
-        /*background: #2262ae;*/
+        background: #2262ae;
         transition: .6s;
         -webkit-transition: .6s;
         -moz-transition: .6s;
         -o-transition: .6s;
-				margin-top: -10px;
     }
 		#logo_entrada{
 			width: 100% !important;

@@ -19,7 +19,7 @@
   <body class="hold-transition">
   @yield('zona_game')
 
-    
+
   {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
   {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}

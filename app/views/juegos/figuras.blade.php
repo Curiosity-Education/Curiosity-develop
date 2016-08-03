@@ -50,7 +50,7 @@
 {{HTML::script('/Development/UnityLoader.js')}}
 <script type="text/javascript">
   $position_body = $("body").position();
-  
+
  // $("#canvas").css({"width":$(window).width(),"height":$(window).height(),"left":$position_body.left,"top":$position_body.top});
 </script>
 @stop
