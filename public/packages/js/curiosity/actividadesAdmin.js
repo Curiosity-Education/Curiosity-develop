@@ -53,11 +53,7 @@ $(document).ready(function() {
       $("#descripcion").val("");
       $("#video").val("");
       $("#archivoPDF").val("");
-      // $.each($('#profesores > option'), function(index, obj){
-      // if($(this).val() == ""){
-      //     $(this).attr('selected', 'selected');
-      //   }
-      // });
+      $("#framePreview").hide();
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
@@ -152,7 +148,7 @@ $(document).ready(function() {
         formData.append('objetivo', $("#descripcion").val());
         formData.append('bg_color', $("#color").val());
         formData.append('tema_id', tema);
-        formData.append('code_embed', $("#video").val());
+        formData.append('code_embed', actividad.registro.convertEmbedCode($(this).val()));
         formData.append('profesores_id', $("#profesores").val());
         $.ajax({
           url: direccion,
@@ -197,20 +193,18 @@ $(document).ready(function() {
             var match = url.match(regExp);
 
             if (match && match[2].length == 11) {
-                return 'www.youtube.com/embed/' + match[2];
+                return 'https://www.youtube.com/embed/' + match[2];
             } else {
                 return 'error';
             }
       },
       guardarUpdate : function(boton, direccion, id, estatusNow, idProcedencia){
         $tipos = new Array('.pdf', '.docx');
-        console.log(actividad.registro.convertEmbedCode($("#video").val()));
         var embedCode =actividad.registro.convertEmbedCode($("#video").val());
         // if($curiosity.comprobarFile($('#archivoPDF').val(), $tipos) == false){
               var $btnEnviar = boton;
                 $btnEnviar.attr('disabled', 'disabled');
                 $btnEnviar.text('Guardando...');
-
                 var formData = new FormData($("#formPDF")[0]);
                 formData.append('nombre', $("#nombre").val());
                 formData.append('objetivo', $("#descripcion").val());
@@ -779,6 +773,14 @@ $(document).ready(function() {
     });
 
   // Disparamos el hasgame
-    actividad.hasGame();
+  actividad.hasGame();
+
+  // hacemos el preview del video insertado
+  $("#video").change(function() {
+    var newEmbed = actividad.registro.convertEmbedCode($(this).val());
+    var frame = $("#framePreview");
+    frame.attr('src', newEmbed);
+    frame.show('slow');
+  });
 
 });
