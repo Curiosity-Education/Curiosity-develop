@@ -188,3 +188,9 @@ Route::filter('gestion_data_padre',function(){
        return View::make('view-error404');
    }
 });
+
+Route::filter('utilizar_tienda',function(){
+   if(!Entrust::can('utilizar_tienda')){
+       return View::make('view-error404');
+   }
+});
