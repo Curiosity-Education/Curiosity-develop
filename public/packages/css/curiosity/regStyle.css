@@ -1,0 +1,105 @@
+body{
+  background-image: url(/packages/images/landing/equipo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-navbar{
+  background-color: #2262ae;
+}
+div.mascara {
+  height: auto !important;
+  padding-top: 35px !important;
+  background-color: rgba(0,0,0,0.8) !important;
+}
+.formContent{
+  background-color: #1f6a85;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: solid 2px #1b7a9c;
+  padding: 25px;
+  color: #fff !important;
+}
+
+#terms{
+  cursor: pointer;
+}
+
+#termsLabel{
+  margin-left: 50px;
+  font-size: 0.8em;
+  line-height: 20px;
+}
+
+#termsLink{
+  color: #b7b7b7;
+  text-decoration: underline;
+}
+
+.btn-Reg{
+  width: 200px;
+  color: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#regAc{
+  border: solid 2px #f80;
+}
+
+#regcanceled{
+  background-color: transparent;
+  border: solid 2px #fff;
+  opacity: 0.7;
+}
+
+#regcanceled:hover{
+  transition: .4s;
+  opacity: 1;
+}
+label{
+  color: #fff !important;
+}
+.md-form .prefix.active{
+  color: #fff !important;
+}
+
+.navbar_inicio{
+  background-color: #2262ae;
+}
+
+.step{
+  background-color: #1c6078;
+  padding: 15px;
+  margin-left: -25px;
+  margin-right: -25px;
+  margin-top: -25px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 35px;
+}
+
+.titulo{
+  margin-bottom: 30px;
+  background-color: #1c6078;
+  padding: 20px;
+  margin-left: -30px;
+  margin-right: -30px;
+  margin-top: -20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+input{
+  color: #fff !important;
+}
+
+label.error{
+  margin-top: 40px;
+  font-size: 0.7em;
+  color: rgb(247, 132, 31) !important;
+}
+label.error.active{
+  margin-top: 70px;
+}
