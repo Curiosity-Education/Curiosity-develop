@@ -174,7 +174,7 @@ $(document).on("ready",function(){
       apellido_materno:$("input[name='apellido_materno']").val(),
       sexo:$("select[name='sexo']").val(),
       fecha_nacimiento:$("input[name='fecha_nacimiento']").val()
-    };    
+    };
     if($form.valid()){
       if(aceptedTerms){
         $btn = $(this).prop("disabled",true);

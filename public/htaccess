@@ -38,7 +38,7 @@
 
     # Redirect Trailing Slashes...
     RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://curiosity.com.mx/$1 [R,L]
+    RewriteRule ^(.*)$ https://www.curiosity.com.mx/$1 [R,L]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -54,7 +54,7 @@ $(document).ready(function() {
       $("#video").val("");
       $("#archivoPDF").val("");
       $("#framePreview").hide();
-      $("#framePreview").attr('src', '');
+      $("#framePreview").attr('src','');
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
@@ -423,9 +423,12 @@ $(document).ready(function() {
     $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
     $("#docTitle").text($(this).data('pdf'));
     var idFromProfe = $(this).data('prof-id');
-    // Mostrar el preview del video
-    $("#framePreview").attr('src', $(this).data('code-embed'));
-    $("#framePreview").show();
+
+    // $.each($('#profesores > option'), function(index, obj){
+    //   if($(this).val() == idFromProfe){
+    //     $(this).attr('selected', 'selected');
+    //   }
+    // });
     $("#profesores").val(idFromProfe);
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');
