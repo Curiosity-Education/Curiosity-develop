@@ -1,5 +1,6 @@
 $(document).on('ready',__init);
 function __init(){
+  $("#username").trigger('focus');
     /*
     * Declaramos la variable para el primer elemento que se mostrará
     */
@@ -27,7 +28,7 @@ function __init(){
     * haya ingresado el usuario y se logre
     * encontrar
     */
-        $segundo_log.hide();
+        // $segundo_log.hide();
         $('#login-int').hide();
         $('#login-back').hide();
 
@@ -40,12 +41,14 @@ function __init(){
         function show_second_log(foto){
             $primer_log.hide();
             $segundo_log.show();
-            $("#boxButtonsIn").removeAttr('hidden');
+            $("#boxButtonsIn").show();
             $('#login-next').hide();
             $('#login-reg').hide();
             $('#login-int').show();
             $('#login-back').show();
+            $(".login-img").hide("slow");
             $(".login-img").attr('src',foto);
+            $(".login-img").show("slow");
         }
 
         // reocultamos los botones y mostramos los botones de inicio asi como regresamos
@@ -53,12 +56,14 @@ function __init(){
         function return_log(){
             $primer_log.show();
             $segundo_log.hide();
+            $("#btn-fb").show();
             $('#login-next').show();
             $('#login-reg').show();
             $('#login-int').hide();
             $('#login-back').hide();
             $("#username").val("");
-            $(".login-img").attr('src',"/packages/images/avatars/avt-cu-default.png");
+            $('#password').val("");
+            $(".login-img").attr('src',"/packages/images/avatars/perfil-default.jpg");
         }
 
         // ejecutamos la funcion return_log para regresar los valore de login
@@ -67,7 +72,7 @@ function __init(){
         // Funcion de verificacion de usuario
         function verificarUser($botonEnviar, $botonCanel){
           $botonEnviar.attr('disabled', 'disabled');
-          $botonEnviar.text('Verificando...');
+          $botonEnviar.html("<span class='fa fa-spinner fa-pulse'></span>&nbsp;");
           $botonCanel.attr('disabled', 'disabled');
           if($("#username").val() !== ""){
             var datos = {
@@ -80,26 +85,27 @@ function __init(){
             })
             .done(function(response) {
               if(response != 'null'){
+                $("#btn-fb").hide();
                 show_second_log("/packages/images/perfil/"+response[0].foto_perfil);
               }
               else{
-                $curiosity.noty("El nombre de usuario no existe.", 'information');
+                $curiosity.noty("El nombre de usuario no existe.", 'warning');
               }
             })
             .fail(function(error) {
                 $curiosity.noty(error.message,"warning")
-              console.log(error);
+                console.log(error);
             })
             .always(function(){
               $botonEnviar.removeAttr('disabled');
-              $botonEnviar.text('Siguiente');
+              $botonEnviar.html("<span class='fa fa-share'></span> &nbsp;Siguiente");
               $botonCanel.removeAttr('disabled');
             });
           }
           else{
-            $curiosity.noty("Ingrese un nombre de usuario",'warning');
+            $curiosity.noty("Ingrese un nombre de usuario",'info');
             $botonEnviar.removeAttr('disabled');
-            $botonEnviar.text('Siguiente');
+            $botonEnviar.html("<span class='fa fa-share'></span> &nbsp;Siguiente");
             $botonCanel.removeAttr('disabled');
           }
         }
@@ -140,45 +146,52 @@ function __init(){
 
     // Funcion para la verificacion completa de usuario y contraseña en la base de datos
     function buscarUsuario($env, $canc){
-      $env.attr('disabled', 'disabled');
-      $env.text('Verificando...');
-      $canc.attr('disabled', 'disabled');
-      var datos = {
-        username: $username.val(),
-        password: $password.val()
-      };
+      if ($password.val() !== ""){
+        $env.attr('disabled', 'disabled');
+        $env.html("<span class='fa fa-spinner fa-pulse'></span>&nbsp;");
+        $canc.attr('disabled', 'disabled');
+        var datos = {
+          username: $username.val(),
+          password: $password.val()
+        };
 
-      $.ajax({
-        url: '/login',
-        type: 'POST',
-        dataType: 'json',
-        data: {data: datos}
-      })
-      .done(function(response) {
-        // console.log(response);
-        if($.isPlainObject(response)){
-          $.each(response,function(index,value){
-            $.each(value,function(i,message){
-              $curiosity.noty(message, 'warning');
+        $.ajax({
+          url: '/login',
+          type: 'POST',
+          dataType: 'json',
+          data: {data: datos}
+        })
+        .done(function(response) {
+          // console.log(response);
+          if($.isPlainObject(response)){
+            $.each(response,function(index,value){
+              $.each(value,function(i,message){
+                $curiosity.noty(message, 'info');
+              });
             });
-          });
-        }
-        else if(response == 'success'){
-          $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
-          window.location.href = '/perfil';
-        }
-        else{
-          $curiosity.noty('La contraseña de usuario no es valida', 'information');
-        }
-      })
-      .fail(function(error) {
-        console.log(error);
-      })
-      .always(function(){
+          }
+          else if(response == 'success'){
+            $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
+            window.location.href = '/perfil';
+          }
+          else{
+            $curiosity.noty('La contraseña de usuario no es valida', 'warning');
+            $password.val("");
+            $env.removeAttr('disabled');
+            $env.html("<span class='fa fa-share'></span> &nbsp;Entrar");
+            $canc.removeAttr('disabled');
+          }
+        })
+        .fail(function(error) {
+          console.log(error);
+        });
+      }
+      else{
+        $curiosity.noty('Porfavor ingrese la contraseña primeramente', 'info');
         $env.removeAttr('disabled');
-        $env.text('Siguiente');
+        $env.html("<span class='fa fa-share'></span> &nbsp;Entrar");
         $canc.removeAttr('disabled');
-      });
+      }
     }
 
  (function ($) {

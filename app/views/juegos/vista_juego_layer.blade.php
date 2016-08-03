@@ -2,10 +2,12 @@
 
 @section('mi_css')
   {{ HTML::style('/packages/css/curiosity/juegos/juego_layer.css') }}
+  {{ HTML::style('/packages/css/libs/animate/animate.min.css') }}
+
   @yield('juego_css')
 @stop
 @section('titulo_contenido')
-   {{--<label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>--}}
+   <label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>
 @stop
 @section('panel_opcion')
 @yield('panel_opciones')
@@ -69,7 +71,7 @@
           <h4 class="modal-title" id="">Video de Estudio</h4>
         </div>
         <div class="modal-body">
-         {{--<iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>--}}
+          <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
 
@@ -86,66 +88,67 @@
                   <div class='row'>
                     <div class='col-md-5 text-center' id='max-pts'>
                       <center>
-                        <img src="" class="img-responsive" width="60%" id="imgNivel"/>
+                        <img src="packages/images/cups/medalla1.png" class="img-responsive" width="60%" id="imgNivel"/>
                       </center>
                       <div class="row">
                         <div class="col-md-12 cal-titulo">
                           <h3>Máxima Puntuación</h3>
-                          {{--<h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>--}}
+                          <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
                         </div>
                       </div>
                     </div>
                     <div class='col-md-7' id='objetivo'>
                       <div class="row">
                         <div class="col-md-12">
+                         <center><h3 id="titulo-slider">¡ Qué tu curiosidad no tenga limítes !</h3></center>
                           <!-- Slider contenedor -->
                           <section class="slider-container">
                             <ul id="slider" class="slider-wrapper">
                               <li class="slide-current">
-                                <img src="/packages/images/games/s1.png" alt="img-1">
+                                <img src="" alt="img-1">
                                 <div class="caption">
-                                  <p>Un juego divertido perfecto para ti.</p>
+                                  <p>Elige el resultado correcto.</p>
                                 </div>
                               </li>
                               <li>
-                                <img src="/packages/images/games/s2.png" alt="img-2">
+                                <img src="" alt="img-2">
                                 <div class="caption">
-                                  <p>Un juego divertido perfecto para ti.</p>
+                                  <p>Acierta y suma puntos.</p>
                                 </div>
                               </li>
                               <li>
-                                <img src="/packages/images/games/s3.png" alt="img-3">
+                                <img src="" alt="img-3">
                                 <div class="caption">
-                                  <p>Un juego divertido perfecto para ti.</p>
+                                  <p>Si fallas, vuelve a intentarlo.</p>
                                 </div>
                               </li>
                             </ul>
                             <!-- INICIO DE MODAL SUMAS Y RESTAS --> 
-                              <div class="modal fade" id="modal-instrucciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal fade myModal" id="modal-instrucciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                   
                                   <center><h3 class="modal-title" id="myModalLabel"><i class="icon fa fa-flag-checkered"></i> INSTRUCCIONES DE JUEGO </h3></center>
-                                  <center><h4 class="modal-title" id="titulo-juego">| Sumas y Restas |<hr></h4></center>
+                                  <center><h4 class="modal-title" id="titulo-juego">| Sumas y Restas |</h4><hr class="hr"></center>
                                   </div>
                                   <div class="modal-body">
-                                  <div class="contenedor-video wow slideInRight" data-wow-duration="1s">
+                                  <div class="contenedor-video fastToRight">
                                     <div class="container-fluid">
                                       <div class="col-md-12 col-xs-12" id="video">
                                         <video src="/packages/video/games/instrucciones/sumas_restas.mp4" controls></video>
                                       </div>
                                     </div>
                                   </div><br>
-                                  <div class="contenedor-texto wow slideInLeft" data-wow-duration="1s">
+                                  <div class="contenedor-texto fastToLeft">
                                     <div class="container-fluid">
                                       <div class="col-md-12 col-xs-12" id="texto">
-                                        <center><p>1. Decide qué circulo tiene el resultado más alto y tócala.</p></center>
                                         <center><p>2. Si los resultados son iguales, toca el botón iguales.</p></center>
+                                        <center><p>1. Decide qué circulo tiene el resultado más alto y tócala.</p></center>
                                       </div>
                                     </div>
                                   </div>
-                                  <hr>
+                                  <hr class="hr">
                                   
                                     <div class="container-fluid">
                                     <div class="col-md-5 col-md-offset-7 col-xs-12">
@@ -185,6 +188,46 @@
                 </div>
                 @yield('juego')
              <!-- Modal para el menu de pausa -->
+
+			<div class="modal fade myModal" id="modal-instrucciones" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+
+                 <center><h3 class="modal-title" id="myModalLabel"><i class="icon fa fa-flag-checkered"></i> INSTRUCCIONES DE JUEGO </h3></center>
+                 <center><h4 class="modal-title" id="titulo-juego">| Sumas y Restas |</h4><hr class="hr"></center>
+                 </div>
+                 <div class="modal-body">
+                 <div class="contenedor-video zoom">
+                   <div class="container-fluid">
+                     <div class="col-md-12 col-xs-12" id="video">
+                       <video src="/packages/video/games/instrucciones/sumas_restas.mp4" controls></video>
+                     </div>
+                   </div>
+                 </div><br>
+                 <div class="contenedor-texto zoom">
+                   <div class="container-fluid">
+                     <div class="col-md-12 col-xs-12" id="texto">
+                       <center><p>1. Decide qué circulo tiene el resultado más alto y tócala.</p></center>
+                       <center><p>2. Si los resultados son iguales, toca el botón iguales.</p></center>
+                     </div>
+                   </div>
+                 </div>
+                 <hr class="hr">
+
+                   <div class="container-fluid">
+                   <div class="col-md-5 col-md-offset-7 col-xs-12">
+                     <button id="continue" type="button" class="btn form-control" data-dismiss="modal" aria-label="Close"><i class="icon fa fa-times-circle"></i> Continuar jugando</button>
+                    </div>
+                   </div>
+                 </div>
+                 </div>
+               </div>
+             </div>
+
+             <!-- BOTON OCULTO PARA DISPARAR EL CIERRE DEL MODAL DE MENU DE JUEGO -->
+             <button type="button" hidden="hidden" id="oculto" data-dismiss="modal"></button>
+
               <div id="zona-play" hidden="hidden">
                 <div class="row">
                   <div class="col-md-4"></div>
@@ -193,7 +236,7 @@
                       <div class="modal-dialog modal-sm">
                       <div class="modal-content col-md-12 col-xs-12" id="modal-conten-pausa">
                         <div class="col-md-12 col-xs-12" id="content"><br>
-                          <center><h3 class="" id="titulo">Menu de Juego</h3> <hr></center>
+                          <center><h3 class="" id="titulo">Menu de Juego</h3> <hr class="hr"></center>
                        
                           <div class="col-md-12">
                             <center><h4 role="button" class="btn form-control modal-title myModalLabel" data-dismiss="modal" id="continuar"><i class="icon fa fa-play"></i> Continuar</h4></center>
@@ -209,13 +252,13 @@
                   </div>
                   <div class="col-md-4"></div>
                 </div>
-                <canvas id="mycanvas" style="" width="130px" height="130px"></canvas>
                 <div class="row">
                   <div class="col-md-10 text-left">
                       <button id="pausa" class="btn btn-warning" data-toggle="modal" data-target="#menu-juego"><i class="fa fa-pause"></i></button>
                   </div>
                   <div class="col-md-2 text-right">
                     <div class="temp">
+                      <canvas id="mycanvas" style="" width="130px" height="130px"></canvas>
                       <label id="temp-static">1:00</label>
                       <label id="temp-count"></label>
                     </div>
@@ -264,7 +307,7 @@
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
-        <a target="_blank" class="btn btn-default btnDownloadPDF" {{--href="/packages/docs/{{ $datos[0]->pdf }}"--}}>
+        <a target="_blank" class="btn btn-default btnDownloadPDF" href="/packages/docs/{{ $datos[0]->pdf }}">
           <span class="fa fa-download"></span>&nbsp;
           <b>Guía de estudio PDF</b>
         </a>
@@ -282,10 +325,12 @@
 
   {{ HTML::script('/packages/js/libs/jquery-ui/jquery-ui.min.js') }}
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
+  {{ HTML::script('/packages/js/libs/wow/wow.min.js') }}
   <script type="text/javascript">
-    $juego.game.setMaxPuntuacion({{$maxProm}});
-    {{--
-      var cali=0;
+   $juego.game.setMaxPuntuacion({{$maxProm}});
+
+	 new WOW().init();
+     var cali=0;
      @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
              url:"/actividad-get-cali",
@@ -339,7 +384,6 @@
          });
          @endif
      });
-        --}}
   </script>
   @yield('juego_js')
 @stop

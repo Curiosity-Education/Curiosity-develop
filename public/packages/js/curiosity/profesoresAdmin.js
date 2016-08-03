@@ -212,7 +212,26 @@ $(document).ready(function(){
   });
 
   $("#foto").on('change', function(){
-    // console.log($(this).val());
+    var pesoMaximo = 2048000;
+    var extensiones = new Array(".png", ".jpg", ".jpeg", '.gif');
+    var $archivo = $(this);
+    if($curiosity.comprobarFile($archivo.val(), extensiones)){
+      var archivos = document.getElementById("foto").files;
+      if(archivos[0].size > 2048000){
+        $archivo.val("");
+        $("#prevFotoProfesor").attr("src", "/packages/images/profesores/prof-default.jpg");
+        $curiosity.noty("La imagen seleccionada excede el peso máximo (2 MB)", 'warning');
+      }
+      else{
+        var navegador = window.URL || window.webkitURL;
+        var objeto_url = navegador.createObjectURL(archivos[0]);
+        $("#prevFotoProfesor").attr("src", objeto_url);
+      }
+    }
+    else{
+      $archivo.val("");
+      $("#prevFotoProfesor").attr("src", "/packages/images/profesores/prof-default.jpg");
+    }
   });
 
 

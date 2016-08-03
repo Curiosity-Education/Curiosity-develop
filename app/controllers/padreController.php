@@ -28,12 +28,6 @@ class padreController extends BaseController
             "apellido_materno"  =>"required|letter|max:30",
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "telefono"          =>"required|telephone",
-            "ciudad"            =>"integer|exists:ciudades,id",
-            "colonia"           =>"alpha_spaces",
-            "calle"             =>"alpha_spaces",
-            "numero"            =>"numero_casa",
-            "codigo_postal"     =>"numeric",
             "email"             =>"required|email|unique:padres,email"
 
         ];
@@ -72,17 +66,13 @@ class padreController extends BaseController
                 $persona = new persona($datos);
                 $persona->user_id=$user->id;
                 $persona->save();
-                $direccion = new direccion($datos);
-                $direccion->ciudad_id=$datos["ciudad"];
-                $direccion->save();
                 // $membresia = new membresia();
                 // $membresia->token_card=sha1($datos_tarjeta["numero_tarjeta"]);
                 // $membresia->fecha_registro= date("Y-m-d");
                 // $membresia->active=1;
                 // $membresia->save();
                 $padre = new padre($datos);
-                $padre->persona_id   = $persona->id;
-                $padre->direccion_id = $direccion->id;
+                $padre->persona_id = $persona->id;
                 $padre->save();
                 $perfil = new perfil();
                 $perfil->foto_perfil="perfil-default.jpg";
@@ -92,34 +82,35 @@ class padreController extends BaseController
 
             } catch (Exception $e){
                 $user->delete();
-                $direccion->delete();
+                // $direccion->delete();
                 // $membresia->delete();
                 return $e->getMessage();
             }
 
-            $dataSend = [
-                "name"     =>       "Equipo Curiosity",
-                "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
-                "email"    =>       $padre->email,
-                "subject"  =>       "Registro relizado exitosamente",
-                "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
-                "token"    =>       $user->token
-            ];
-            $toEmail=$padre->email;
-            $toName=$dataSend["email"];
-            $subject =$dataSend["subject"];
-            try {
-                Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
-                    $message->to($toEmail,$toName)->subject($subject);
-                });
-                return "OK";
-            } catch (Exception $e) {
-                $user->delete();
-                $direccion->delete();
-                // $membresia->delete();
-                $code = $e->getCode();
-                return $code;
-            }
+             $dataSend = [
+                 "name"     =>       "Equipo Curiosity",
+                 "client"   =>       $persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno,
+                 "email"    =>       $padre->email,
+                 "subject"  =>       "¡Bienvenido a Curiosity Eduación!",
+                 "msg"      =>       "La petición de registro al sistema Curiosity que realizo ha sido realizada con exito, para confirmar y activar su cuenta siga el enlace que esta en la parte de abajo",
+                 "token"    =>       $user->token
+             ];
+             $toEmail=$padre->email;
+             $toName=$dataSend["email"];
+             $subject =$dataSend["subject"];
+             try {
+                 Mail::send('emails.confirmar_registro',$dataSend,function($message) use($toEmail,$toName,$subject){
+                     $message->to($toEmail,$toName)->subject($subject);
+                 });
+                 return "OK";
+             } catch (Exception $e) {
+                 $user->delete();
+                 // $direccion->delete();
+                 // $membresia->delete();
+                 $code = $e->getCode();
+                 return $code;
+             }
+            return "OK";
 
         }
 
@@ -129,10 +120,10 @@ class padreController extends BaseController
         if($user){
             $user->active=1;
             $user->save();
-            Auth::login($user);
-            return Redirect::to("/perfil");
-        }else return Redirect::to("/");
-
+            return Redirect::to("/");
+        }else{
+          return Redirect::to("/");
+        }
     }
     public function gethijos(){
 
@@ -161,4 +152,35 @@ class padreController extends BaseController
       ->where("user_id", "=", Auth::user()->id)
       ->count('hijos.padre_id');
     }
+
+    public function seguimientoHijo(){
+      $hijos = padre::join('hijos', 'padres.id', '=', 'hijos.padre_id')
+      ->join('personas', 'hijos.persona_id', '=', 'personas.id')
+      ->where('padres.id', '=', Auth::user()->persona()->first()->padre()->first()->id)
+      ->select('hijos.id', 'personas.nombre', 'personas.apellido_paterno', 'personas.apellido_materno')
+      ->get();
+      $seguimientos = [];
+      foreach ($hijos as $key => $value) {
+        $segActsHijo = padre::join('hijos', 'padres.id', '=', 'hijos.padre_id')
+        ->join('hijos_metas_diarias', 'hijos.id', '=' , 'hijos_metas_diarias.hijo_id')
+        ->join('avances_metas', 'hijos_metas_diarias.id', '=', 'avances_metas.avance_id')
+        ->where('hijos.id' ,'=', $value['id'])
+        ->select('avances_metas.fecha', 'avances_metas.avance as cantidad')
+        ->orderBy('avances_metas.fecha', 'desc')
+        ->limit(7)
+        ->get();
+        $nombre = $value['nombre']." ".$value['apellido_paterno']." ".$value['apellido_materno'];
+        array_push($seguimientos, array('seguimiento' => $segActsHijo, 'hijo' => $nombre, 'id' => $value['id']));
+      }
+      return $seguimientos;
+    }
+
+    public function getPuntajes(){
+      return View::make('vista_papa_puntajes');
+    }
+
+    public function getAlertasNow(){
+      return View::make('vista_papa_alertas');
+    }
+
 }

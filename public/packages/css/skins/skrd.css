@@ -1,0 +1,175 @@
+/*
+ * Skin: Red
+ * ---------
+ */
+ .skrd .main-header .navbar {
+   background-color: #d83130;
+ }
+ .skrd .main-header .navbar .nav > li > a {
+   color: #ffffff;
+ }
+ .skrd .main-header .navbar .nav > li > a:hover,
+ .skrd .main-header .navbar .nav > li > a:active,
+ .skrd .main-header .navbar .nav > li > a:focus,
+ .skrd .main-header .navbar .nav .open > a,
+ .skrd .main-header .navbar .nav .open > a:hover,
+ .skrd .main-header .navbar .nav .open > a:focus,
+ .skrd .main-header .navbar .nav > .active > a {
+   background: rgba(34, 98, 174, 0.18);
+   color: #f6f6f6;
+ }
+ .skrd .main-header .navbar .sidebar-toggle {
+   color: #ffffff;
+ }
+ .skrd .main-header .navbar .sidebar-toggle:hover {
+   background-color: rgba(34, 98, 174, 0.18);
+   transition: .6s;
+ }
+ .skrd .main-header .navbar .sidebar-toggle {
+   color: #fff;
+ }
+ .skrd .main-header .navbar .sidebar-toggle:hover {
+   background-color: rgba(34, 98, 174, 0.18);
+ }
+ @media (max-width: 767px) {
+   .skrd .main-header .navbar .dropdown-menu li.divider {
+     background-color: rgba(255, 255, 255, 0.1);
+   }
+   .skrd .main-header .navbar .dropdown-menu li a {
+     color: #fff;
+   }
+   .skrd .main-header .navbar .dropdown-menu li a:hover {
+     background: #367fa9;
+   }
+ }
+ .skrd .main-header .logo {
+   background-color: #d83130;
+   color: #fff;
+   border-bottom: 0 solid transparent;
+ }
+ .skrd .main-header .logo:hover {
+   background-color: #d83130;
+ }
+ .skrd .main-header li.user-header {
+   background-color: #fff;
+ }
+ .skrd .content-header {
+   background: transparent;
+ }
+
+ .skrd .main-sidebar,
+ .skrd .left-side {
+   background-color: #585d66;
+ }
+ .content-wrapper{
+   background-color: #ecf0f5;
+ }
+ .skrd .user-panel > .info,
+ .skrd .user-panel > .info > a {
+   color: #fff;
+ }
+ .skrd .sidebar-menu > li.header {
+   color: #4b646f;
+   background: #1a2226;
+ }
+ .skrd .sidebar-menu > li > a {
+   border-left: 3px solid transparent;
+   color: #fff;
+ }
+ .skrd .sidebar-menu > li > a:hover{
+   color: #fff;
+ 	 border-left: 3px solid #d83130 !important;
+ }
+ .skrd .sidebar-menu > li:hover > a{
+   color: #fff;
+   background: #222d32 !important;
+   border-left-color: #3c8dbc;
+ }
+ .arrowAsideActive {
+   width: 30px;
+   height: 30px;
+   margin-left: -26px;
+   background-color: #d83130;
+   position: absolute;
+   margin-top: -37px;
+   transform: rotate(45deg);
+   display: none;
+ }
+ .skrd .sidebar-menu > li.active > a {
+   color: #fff;
+   background: #585d66;
+   border-left-color: #d83130;
+ }
+ .skrd .sidebar-menu > li > .treeview-menu {
+   margin: 0 1px;
+   background: #2c3b41;
+ }
+ .skrd .sidebar a {
+   color: #b8c7ce;
+ }
+ .skrd .sidebar a:hover {
+   text-decoration: none;
+ }
+ .skrd .treeview-menu > li > a {
+   color: #8aa4af;
+ }
+ .skrd .treeview-menu > li.active > a,
+ .skrd .treeview-menu > li > a:hover {
+   color: #ffffff;
+ }
+ .skrd .sidebar-form {
+   border-radius: 3px;
+   border: 1px solid #374850;
+   margin: 10px 10px;
+ }
+ .skrd .sidebar-form input[type="text"],
+ .skrd .sidebar-form .btn {
+   box-shadow: none;
+   background-color: #374850;
+   border: 1px solid transparent;
+   height: 35px;
+   -webkit-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+ }
+ .skrd .sidebar-form input[type="text"] {
+   color: #666;
+   border-top-left-radius: 2px;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 2px;
+ }
+ .skrd .sidebar-form input[type="text"]:focus,
+ .skrd .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+   background-color: #fff;
+   color: #666;
+ }
+ .skrd .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+   border-left-color: #fff;
+ }
+ .skrd .sidebar-form .btn {
+   color: #999;
+   border-top-left-radius: 0;
+   border-top-right-radius: 2px;
+   border-bottom-right-radius: 2px;
+   border-bottom-left-radius: 0;
+ }
+ /*/ Barra de desplazamiento /*/
+ ::-webkit-scrollbar {
+       width: 10px;
+ }
+ ::-webkit-scrollbar-track {
+       background-color: #bd302f;
+ }
+ ::-webkit-scrollbar-thumb {
+       background-color: rgba(0, 0, 0, 0.22);
+
+       border-radius: 10px;
+
+ }
+ ::-webkit-scrollbar-button {
+       background-color: #bd302f;
+ }
+ ::-webkit-scrollbar-corner {
+       background-color: transparent;
+ }

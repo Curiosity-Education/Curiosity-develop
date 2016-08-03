@@ -1,0 +1,97 @@
+.textAlert{
+  font-size: 0.85em;
+}
+
+@media (max-width: 415px) {
+  .irAvatarStore, .hrHijo{
+    display: none;
+  }
+  .hideIrAvatarStore{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+  }
+  #contAvatar{
+    margin-bottom: 20px;
+  }
+  #panel_informativo{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #imgPerfilChanger{
+    margin-top: 20px !important;
+  }
+  #contAvatar{
+    padding-bottom: 10px !important;
+  }
+  .irAvatarStore, .hrHijo{
+    display: none;
+  }
+  .hideIrAvatarStore{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+  }
+  img#avatar {
+    margin-bottom: 42.5px !important;
+  }
+  #slider {
+    height: 360px;
+    margin-bottom: 20px !important;
+  }
+  .cardInfo{
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #slider {
+    height: 360px;
+  }
+  img#avatar {
+    margin-bottom: 50px;
+  }
+  #nameAvatar{
+    margin-bottom: 30px;
+  }
+  .titleAlert{
+    font-size: 0.8em;
+  }
+  .textAlert{
+    font-size: 0.75em;
+  }
+  .titlePanelInfo{
+    font-size: 0.8em;
+  }
+  #imgPerfilChanger{
+    padding-bottom: 0;
+  }
+  #contAvatar{
+    padding-bottom: 125px;
+  }
+}
+
+@media (max-width: 1320px) {
+  #slider {
+    height: 360px;
+  }
+  img#avatar {
+    margin-bottom: 50px;
+  }
+  #nameAvatar{
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  img#avatar {
+    margin-bottom: 25px;
+  }
+  #nameAvatar{
+    margin-bottom: 22px;
+  }
+}

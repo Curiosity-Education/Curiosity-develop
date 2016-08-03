@@ -1,0 +1,91 @@
+#back,
+#addSecuencias,
+#addEstilos,
+#viewEstilos,
+#viewSecuencias,
+#avatar,
+#prevAvatar,
+#estilos,
+#newEstilo,
+#newSecuencia,
+#secuencias{
+  display: none;
+}
+.btn-gestion-avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  outline: none !important;
+}
+.btn-gestion-avatar:hover{
+  opacity: 0.9;
+}
+.botoneraAvatar{
+  margin-bottom: 25px;
+}
+label{
+  color: rgba(33, 33, 33, 0.62);
+}
+.btnUploadImg{
+  background: rgba(128, 128, 128, 0.15);
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  padding-top: 25px;
+  border-radius: 5px;
+  border: dotted 3px rgba(0, 0, 0, 0.47);
+  cursor: pointer;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.47);
+}
+.btnUploadImg:hover{
+  background: rgba(128, 128, 128, 0.23);
+}
+.imgPreview{
+  width: 150px !important;
+  height: 150px !important;
+}
+.avatarFace{
+  padding-top: 200px;
+  border-radius: 5px;
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.botonesAvatarFace{
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.botonesAvatarFace > button{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 25px;
+  margin-right: 25px;
+  outline: none !important;
+}
+#secDef{
+  background-color: #2d96ba !important;
+  color: white;
+  border-color: #2d96ba;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  outline: none !important;
+}
+.isEmpty{
+  border: solid 2px rgba(55, 55, 55, 0.5);
+  padding: 30px;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  color: rgba(55, 55, 55, 0.5);
+  border-radius: 5px;
+}

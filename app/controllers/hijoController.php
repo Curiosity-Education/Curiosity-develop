@@ -4,8 +4,8 @@ class hijoController extends BaseController{
 	public function addHijo(){
 		$datos = Input::get('data');
 		$dateNow = date("Y-m-d");
-        $date_min =strtotime("-4 year",strtotime($dateNow));
-        $date_min=date("Y-m-d",$date_min);
+    $date_min =strtotime("-4 year",strtotime($dateNow));
+    $date_min=date("Y-m-d",$date_min);
 		$rules=[
 			"username_hijo"     =>"required|unique:users,username|max:50",
             "password"          =>"required|min:8|max:100",
@@ -15,8 +15,8 @@ class hijoController extends BaseController{
             "apellido_materno"  =>"required|letter|max:30",
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "esc_lat"           =>"max:200",
-            "promedio"			=>"required",
+            "promedio"					=>"required",
+						"grado_inicial"			=>"required"
 		];
 		$messages = [
 					 "required"    =>  "Este campo :attribute es requerido",
@@ -33,46 +33,65 @@ class hijoController extends BaseController{
 					 "same"        =>  "Las contraseñas no coinciden",
 					 "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
 		 ];
-        $validaciones = Validator::make($datos,$rules,$messages);
-        if($validaciones->fails()){
-            return $validaciones->messages();
-        }else{
-
-
-            if($datos["escuela_id"]=="" || $datos["escuela_id"]=="NULL"){
-                unset($datos["escuela_id"]);
-            }
-            $membresia_plan = new membresiaPlan();
-            $user = new User();
-            $user->username=$datos["username_hijo"];
-            $user->password=Hash::make($datos["password"]);
-            $user->token=sha1($datos["username_hijo"]);
-            $user->skin_id=skin::all()->first()->id;
-            $user->active=1;
-            $user->save();
-            $myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
-            $user->attachRole($myRole);
-            $perfil = new perfil();
-            $perfil->foto_perfil="perfil-default.jpg";
-            $perfil->users_id=$user->id;
-            $perfil->save();
-            $persona = new persona($datos);
-            $persona->user_id=$user->id;
-            $persona->save();
-            $hijo = new hijo($datos);
-            $hijo->persona_id=$persona->id;
-            $padre_id = Auth::user()->persona()->first()->padre()->first()->id;
-            $hijo->padre_id=$padre_id;
-            $hijo->save();
-            $membresia = Auth::user()->persona()->first()->padre()->first()->membresia()->first();
-            $membresia_plan->membresia_id=$membresia->id;
-            $plan = plan::where("name","=","1 Hijo")->first();
-            $membresia_plan->plan_id=$plan->id;
-            $membresia_plan->hijo_id=$hijo->id;
-            $membresia_plan->save();
-        	return "OK";
-
-        }
+		$validaciones = Validator::make($datos,$rules,$messages);
+		if($validaciones->fails()){
+	    return $validaciones->messages();
+		}else{
+			$padreRole = Auth::user()->roles[0]->name;
+	    $user = new User();
+	    $user->username=$datos["username_hijo"];
+	    $user->password=Hash::make($datos["password"]);
+	    $user->token=sha1($datos["username_hijo"]);
+	    $user->skin_id=skin::where('skin', '=', 'skin-blue')->pluck('id');
+	    $user->active=1;
+	    $user->save();
+			if($padreRole == "padre"){
+				$myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
+			}
+			else if ($padreRole == "padre_free"){
+				$myRole = DB::table('roles')->where('name', '=', 'hijo_free')->pluck('id');
+			}
+			else if ($padreRole == "demo_padre"){
+				$myRole = DB::table('roles')->where('name', '=', 'demo_hijo')->pluck('id');
+			}
+	    $user->attachRole($myRole);
+	    $perfil = new perfil();
+	    $perfil->foto_perfil = "perfil-default.jpg";
+	    $perfil->users_id = $user->id;
+	    $perfil->save();
+	    $persona = new persona($datos);
+	    $persona->user_id = $user->id;
+	    $persona->save();
+	    $hijo = new hijo();
+	    $hijo->persona_id = $persona->id;
+	    $padre_id = Auth::user()->persona()->first()->padre()->first()->id;
+	    $hijo->padre_id = $padre_id;
+	    $hijo->save();
+			DB::table('escolaridades')->insert(array(
+				'grado' => $datos['grado_inicial'],
+				'promedio' => $datos['promedio'],
+				'hijo_id' => $hijo->id
+			));
+			$avance = DB::table('hijos_metas_diarias')->insert(array(
+				'hijo_id' => $hijo->id,
+				'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
+			));
+			$exp = DB::table('hijo_experiencia')->insert(array(
+				'hijo_id' => $hijo->id,
+				'cantidad_exp' => 0,
+				'coins' => 0
+			));
+			if ($padreRole == "padre"){
+				// $membresia_plan = new membresiaPlan();
+				// $membresia = Auth::user()->persona()->first()->padre()->first()->membresia()->first();
+	      // $membresia_plan->membresia_id=$membresia->id;
+				// $plan = plan::where("name","=","1 Hijo")->first();
+				// $membresia_plan->plan_id=$plan->id;
+	      // $membresia_plan->hijo_id=$hijo->id;
+	      // $membresia_plan->save();
+			}
+			return "OK";
+		}
 	}
     public function recordatorio(){
         header('Content-Type: text/event-stream');
@@ -88,4 +107,65 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
 
         flush();
     }
+
+		public function changeMeta(){
+			$now = date("Y-m-d");
+			$idMeta = Input::get('data');
+			$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+
+			DB::table('hijos_metas_diarias')
+			->where('hijo_id', '=', $idHijo)
+			->update(array(
+				'meta_diaria_id' => $idMeta
+			));
+
+			$miMeta = DB::table('metas_diarias')
+			->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
+			->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
+			->select('metas_diarias.*')
+			->first();
+			$avanceMeta = DB::table('avances_metas')->where('fecha', '=', $now)->pluck('avance');
+			$porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
+			if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
+			// --- Calculo de cuanto falta para cumplir la meta diaria
+			$faltanteMeta = $miMeta->meta - $avanceMeta;
+			if ($faltanteMeta < 0) { $faltanteMeta = 0; }
+
+			$row = array(
+				"miMeta" => $miMeta,
+				"porcAvanceMeta" => $porcAvanceMeta,
+				'avanceMeta' => $avanceMeta,
+				'faltanteMeta' => $faltanteMeta
+			);
+
+			return $row;
+		}
+
+
+		function info(){
+			$rol = Auth::user()->roles[0]->name;
+			$idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
+			$datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
+			->join('personas', 'personas.id', '=', 'hijos.persona_id')
+			->join('users', 'users.id', '=', 'personas.user_id')
+			->join('perfiles', 'perfiles.users_id','=', 'users.id')
+			->where('users.active', '=', '1')
+			->where('hijos.padre_id', '=', $idPadre)
+			->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();
+			return View::make('vista_papa_misHijos')->with(array('rol' => $rol, 'datosHijos' => $datosHijos));
+		}
+
+		function asignAvatar(){
+			$av = Input::get('data');
+			$myId = Auth::User()->persona()->first()->hijo()->pluck('id');
+			DB::table('hijos_avatars')->insert(array(
+				'hijo_id' => $myId,
+				'avatar_id' => $av
+			));
+			$us = Auth::user();
+			$us->flag = 0;
+			$us->save();
+			return "success";
+		}
+
 }

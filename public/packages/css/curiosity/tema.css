@@ -6,9 +6,9 @@
   margin: 10px;
   color: rgba(255, 255, 255, .9) !important;
   font-size: 1.7em;
-  padding-left: 10px;
-  padding-top: 8px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .6);
+  padding-left: 6.5px;
+  padding-top: 7.5px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .5);
 }
 
 .modal{

@@ -5,11 +5,10 @@
     'menu'=>array(
         'home' => 'Inicio',
         'whatIs' => '¿Qué es Curiosity?',
-        'paymentOption' => 'Forma de Pago',
+        'paymentOption' => 'Membresía',
         'howfunction' => '¿Cómo funciona?',
         'video' => 'Video',
         'createAccount' => 'Registrarse',
         'logIn' => 'Iniciar Sesión'
     )
-
  );

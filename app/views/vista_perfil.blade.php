@@ -131,7 +131,6 @@
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
                    <li class="active">
                      <a href="#hijosPerfil" data-toggle="tab">
                        <i class="fa fa-group"></i>
@@ -139,7 +138,6 @@
                     </a>
                   </li>
                  @endif
-
                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                   <li id="data" data-id="{{Auth::user()->persona()->first()->padre()->pluck('id')}}">
                     <a href="#alerta" data-toggle="tab">
@@ -148,9 +146,7 @@
                     </a>
                   </li>
                   @endif
-
                   @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
                    <li id="data">
                      <a href="#graficas" data-toggle="tab">
                        <i class="fa fa-bar-chart"></i>
@@ -166,7 +162,6 @@
                       </a>
                     </li> -->
                   @endif
-
                  @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
                    <li>
                     <a href="#reg-hijos" data-toggle="tab" id="tabRegHijos" data-dad='{{Auth::user()->roles[0]->name}}'>
@@ -236,7 +231,7 @@
                               </span>
                               <select name="role_admin" id="role_admin" class="form-control">
                                 @foreach(Role::all() as $role)
-                                  @if($role->name!='hijo' && $role->name!='padre' && $role->name!='padre_free' && $role->name!='hijo_free')
+                                  @if($role->name!='hijo' && $role->name!='padre' && $role->name!='padre_free' && $role->name!='hijo_free' && $role->name!='demo_padre' && $role->name!='demo_hijo' && $role->name!='padre-fb')
                                     @if($role->name=='root')
                                       @if(Auth::User()->hasRole('root'))
                                         <option value="{{$role->id}}">{{$role->name}}</option>
@@ -581,9 +576,9 @@
                                     <span title="ver escuelas" style="color:blue; font-weight:bold"  id="return-select-school" class="fa fa-remove hidden"></span>
                                   </span>
                                   <select name="escuela_id" id="escuela_id"  class="form-control">
-                                    @foreach($escuelas  as $escuela)
+                                    {{--@foreach($escuelas  as $escuela)
                                       <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
-                                    @endforeach
+                                    @endforeach--}}
                                     <option value="NULL">Otra</option>
                                   </select>
                                   <input type="text" nombre="esc_alt" id="esc_alt" placeholder="nombre de la escuela" value="" class="form-control hidden"/>
@@ -633,31 +628,28 @@
                     </div><!-- /. fin tab registro de hijos -->
 
                 </div><!-- /.tab-content -->
-
-
                 @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-                  <section class="active tab-pane" id="hijosPerfil">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <br>
-                            @foreach($datosHijos as $hijo)
-                              <div class="col-xs-4 col-md-3">
-                                <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
-                                class="img-responsive img-circle tooltipShow"
-                                title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
-                                <center><h4>{{$hijo->username}}</h4></center>
-                                <br>
-                              </div>
-                            @endforeach
+              <section class="active tab-pane" id="hijosPerfil">
+                <div class="container-fluid">
+                  <div class="row">
+                    <br>
+                        {{--@foreach($datosHijos as $hijo)
+                          <div class="col-xs-4 col-md-3">
+                            <img src="/packages/images/perfil/{{$hijo->foto_perfil}}"
+                            class="img-responsive img-circle tooltipShow"
+                            title="{{$hijo->nombre}} {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}">
+                            <center><h4>{{$hijo->username}}</h4></center>
+                            <br>
+                          </div>
+                        @endforeach--}}
 
-                        <br><br>
-                      </div>
-                    </div>
-                  </section>
-                @endif
+                    <br><br>
+                  </div>
+                </div>
+              </section>
+              @endif
 
               @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
               <section class="tab-pane" id="alerta">
                 <div class="container-fluid">
                   <div class="row">
@@ -678,7 +670,6 @@
               @endif
 
               @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('root') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre') || Auth::user()->hasRole('padre-fb'))
-
               <section class="tab-pane" id="graficas">
                 <div class="container-fluid">
                   <div class="row">

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
@@ -11,8 +11,11 @@
   {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
   {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
   {{HTML::style('/packages/css/curiosity/alert.css')}}
+	{{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
+	{{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
   <title>Curiosity</title>
 </head>
+<audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
 <!-- Navbar menu -->
 <div class="navbar navbar-default navbar-fixed-top bg-blue" role="navigation">
   <div class="container-fluid">
@@ -23,7 +26,7 @@
         <span class="icon icon-bar"></span>
       </button>
       <a href="javascript:void(0)" class="navbar-brand">
-				<span>{{HTML::image('/packages/images/Curiosity-mini.png')}}</span>
+				<span><img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;" /></span>
         Curiosity<small>.com.mx</small>
       </a>
     </div>
@@ -82,15 +85,6 @@
 											<input type="email" name="email" value="" class="form-control form-custom" placeholder="Correo Elecronico">
 										</div>
 									</div>
-									 <div class="form-group">
-										 <label for="telefono"><h4 class="title-input"><b>Número Telefónico</b></h4></label>
-										 <div class="input-group">
-										   <span class="input-group-addon">
-										   	<span class="fa fa-phone"></span>
-										   </span>
-										   <input type="tel" class="form-control form-custom" name="telefono" id="telefono">
-										 </div>
-									 </div>
 								</section>
 
 								<h2>Datos Generales</h2>
@@ -145,106 +139,6 @@
 									 </div>
 								 </div>
 								</section>
-
-								<h2>Direccion</h2>
-								<section>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-										 <select class="form-control  form-custom" id="estado" name="estado" data-placeholder="Estado">
-											 <option value="">Estado</option>
-											 @foreach($datos["estados"] as $estado)
-											 	<option value="{{$estado->id}}">{{$estado->nombre}}</option>
-											 @endforeach
-										 </select>
-									 </div>
-								 </div>
-
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		 <span class='input-group-addon'>
-								 		 	<i class="fa fa-home"></i>
-								 		 </span>
-										 <select class="form-control  form-custom" name="ciudad">
-											 <option value="">Ciudad</option>
-										 </select>
-									 </div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class='fa fa-home'></i>
-								 		</span>
-								 		<input type="text"  name="colonia" class="form-control form-custom" placeholder="Colonia"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-								 		<input type="text" name="calle" class="form-control form-custom" placeholder="Calle"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	<div class="input-group">
-								 		<span class="input-group-addon">
-								 			<i class="fa fa-home"></i>
-								 		</span>
-								 		<input type="text" class="form-control form-custom" name="numero" placeholder="Numero de casa"/>
-								 	</div>
-								 </div>
-								 <div class="form-group">
-								 	 <div class="input-group">
-								 	 	<span class="input-group-addon">
-								 	 		<i class='fa fa-home'></i>
-								 	 	</span>
-									 	<input type="number" name="codigo_postal" id="codigo_postal" placeholder="Codigo Postal" class="form-control form-custom">
-									 </div>
-								 </div>
-								</section>
-
-							<!-- <h2>Pagos</h2>
-								<section>
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-user"></span>
-										    </span>
-										    <input type="text" name="tarjetahabiente" class="form-control" placeholder="Nombre del Tarjetahabiente">
-										  </div>
-										</div>
-
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-cc-visa"></span>
-										    </span>
-										    <input type="text" class="form-control" name="numero_tarjeta" placeholder="Numero de Tarjeta">
-										  </div>
-										</div>
-
-										<div class="form-group">
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-credit-card"></span>
-										    </span>
-										    <input type="text" name="cvc" class="form-control" placeholder="CVC">
-										  </div>
-										</div>
-
-										<div class="form-group">
-											<label for="fec_nac"><h4 class="title-input"><b>Fecha de Expiración</b></h4></label>
-										  <div class="input-group">
-										    <span class="input-group-addon">
-										    	<span class="fa fa-calendar-times-o"></span>
-										    </span>
-										    <input type="text" name="fecha_expiracion" class="form-control form-custom">
-										  </div>
-										</div>
-								</section> -->
 							</div>
 
 						</form>
@@ -259,14 +153,15 @@
 {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
 {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
 {{HTML::script('packages/js/curiosity/alert.js')}}
-{{HTML::script('/packages/js/libs/noty/packaged/jquery.noty.packaged.min.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
-{{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
+{{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
 {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
 {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+{{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
+{{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
+{{HTML::script('/packages/js/curiosity/curiosity.js')}}
 {{HTML::script('/packages/js/curiosity/registro_padre.js')}}
 <script>
   $(function ()

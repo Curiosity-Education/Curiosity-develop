@@ -2,6 +2,8 @@ var $curiosity = {
   menu : {
     setPaginaId : function(id){
       $(id).addClass('active');
+      $(id + " > .arrowAsideActive").show();
+      $(id + " > a").attr("href", "javascript:void(0)");
     }
   },
   createNotifications:function(message,titulo,image){
@@ -38,30 +40,117 @@ var $curiosity = {
             if(tipo == "message")
                 this.createNotifications(mensaje,titulo,image);
             else
-                var n = noty({
-                    text        : mensaje,
-                    type        : tipo,
-                    dismissQueue: true,
-                    timeout     : 3000,
-                    closeWith   : ['click'],
-                    layout      : 'bottomRight',
-                    theme       : 'defaultTheme',
-                    maxVisible  : 10
-                 });
+                switch (tipo) {
+                  case "success":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Bien hecho!",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#3cb54a',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "warning":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Cuidado!",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#f7b219',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "info":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Informativo",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#2d96ba',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                  case "error":
+                    $.toast({
+                      text : mensaje,
+                      heading : "Error",
+                      showHideTransition : 'slide',
+                      hideAfter : 5000,
+                      loader : false,
+                      position : 'bottom-right',
+                      bgColor : '#ec2726',
+                      textColor : '#fff',
+                      textAlign : 'left'
+                    });
+                    break;
+                }
         }
         else{
-            var n = noty({
-                text        : mensaje,
-                type        : tipo,
-                dismissQueue: true,
-                timeout     : 3000,
-                closeWith   : ['click'],
-                layout      : 'bottomRight',
-                theme       : 'defaultTheme',
-                maxVisible  : 10
-             });
+          switch (tipo) {
+            case "success":
+              $.toast({
+                text : mensaje,
+                heading : "Bien hecho!",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#3cb54a',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "warning":
+              $.toast({
+                text : mensaje,
+                heading : "Cuidado!",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#f7b219',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "info":
+              $.toast({
+                text : mensaje,
+                heading : "Informativo",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#2d96ba',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+            case "error":
+              $.toast({
+                text : mensaje,
+                heading : "Error",
+                showHideTransition : 'slide',
+                hideAfter : 5000,
+                loader : false,
+                position : 'bottom-right',
+                bgColor : '#ec2726',
+                textColor : '#fff',
+                textAlign : 'left'
+              });
+              break;
+          }
         }
-      //notifyMe();
 
      document.getElementById('notyAudio').play();
   },
@@ -115,12 +204,12 @@ var $curiosity = {
   },
   notyConfirm : function($funcion){
     swal({
-      title: "¿Seguro que desea remover?",
-      text: "¡El elemento puede ser recuperado al registrarse con el mismo nombre!",
+      title: "¿Estas seguro que lo deseas eliminar?",
       type: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#c9371a",
-      confirmButtonText: "Sí, Remover!",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#ec2726",
+      confirmButtonText: "Eliminar",
       closeOnConfirm: false
     },
     function(){
@@ -141,13 +230,13 @@ var $curiosity = {
        break;
        }
        //si estoy aqui es que no se ha podido submitir
-       return false;
+      //  return false;
     }
 
     if (!permitida) {
       // Si la extension no se encuentra entre
       // las permitidas se muestra el sig. mensaje
-       $curiosity.noty("Comprueba la extensión del archivo a subir. \nSólo se pueden subir archivos con extensiones de tipo: "+extensiones_permitidas.join(), 'warning');
+       $curiosity.noty("Comprueba la extensión del archivo a subir. \nSólo se pueden subir archivos con extensiones de tipo: "+extensiones_permitidas.join(), 'info');
     	}else{
        return true;
     	}

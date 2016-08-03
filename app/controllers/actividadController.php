@@ -29,8 +29,10 @@ class actividadController extends BaseController
         ->select('id', 'nombre')->get(),
         'obj_nivel' => nivel::where('id', '=', $idNivel)
         ->select('id', 'nombre')->get(),
-        'obj_profesores' => profesor::where('active', '=', 1)
-        ->select('id', 'nombre', 'apellido_paterno', 'apellido_materno')
+        'obj_profesores' => profesor::join('escuelas', 'escuelas.id', '=', 'profesores.escuela_id')
+        ->where('profesores.active', '=', 1)
+        ->where('escuelas.active', '=', 1)
+        ->select('profesores.id', 'profesores.nombre', 'profesores.apellido_paterno', 'profesores.apellido_materno')
         ->get()
         );
         // regresamos la vista junto con el arreglo recien creado
@@ -105,9 +107,10 @@ class actividadController extends BaseController
           $file->move($destinoPath, $archivo);
 
           $objeto = new actividad($formulario);
+          $objeto->objetivo = $formulario['objetivo'];
           $objeto->imagen = "default.png";
           $objeto->pdf = $archivo;
-          $objeto->pdf_real_name = $formulario['archivoPDF']->getClientOriginalName();
+          $objeto->pdf_real_name = $formulario['archivoPDF']->getClientOriginalName().'.'.$formulario['archivoPDF']->getClientOriginalExtension();
           $objeto->save();
           $video = new video($formulario);
           $video->actividad_id = $objeto->id;
@@ -139,9 +142,11 @@ class actividadController extends BaseController
               $destinoPath = public_path()."/packages/docs/";
               $file = $formulario['archivoPDF'];
               $file->move($destinoPath, $archivo);
+              $real = $formulario['archivoPDF']->getClientOriginalName().'.'.$formulario['archivoPDF']->getClientOriginalExtension();
             }
             else{
               $archivo = actividad::where('nombre', '=', $formulario['nombre'])->pluck('pdf');
+              $real = actividad::where('nombre', '=', $formulario['nombre'])->pluck('pdf_real_name');
             }
 
             actividad::where('nombre', '=', $formulario['nombre'])
@@ -151,7 +156,7 @@ class actividadController extends BaseController
                 'imagen' => 'default.png',
                 'objetivo' => $formulario['objetivo'],
                 'pdf' => $archivo,
-                'pdf_real_name' => $formulario['archivoPDF']->getClientOriginalName(),
+                'pdf_real_name' => $real,
                 'estatus' => 'lock',
                 'bg_color' => $formulario['bg_color']
               ));
@@ -372,6 +377,9 @@ class actividadController extends BaseController
         ->select('archivos.nombre as archivo_nombre', 'actividades.nombre as actividad_nombre', 'actividades.objetivo', 'actividades.pdf', 'videos.code_embed')
         ->get();
 
+        // --- Le sumamos un visto mas a la actividad
+        // --- obtenemos una instancia de la actividad a la que se le sumará el visto
+        $act = actividad::where('id', '=', $idActividad)->first()->increment('vistos');
 
         Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo')){
@@ -874,7 +882,8 @@ class actividadController extends BaseController
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
         }
     }
-       public function saveCalificationActivity(){
+
+    public function saveCalificationActivity(){
       try {
      if(Auth::user()->hasRole('hijo')){
           //if
@@ -902,4 +911,18 @@ class actividadController extends BaseController
         return "".$e;
       }
     }
+
+    public function getCalificacionActivity(){
+        if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free")){
+            $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",Auth::user()->persona->hijo->id)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
+          if($hijo_califica_actividad){
+            return (integer)($hijo_califica_actividad->calificacion);
+          }else{
+            return 0;
+          }
+
+         }
+    }
+
+
   }
