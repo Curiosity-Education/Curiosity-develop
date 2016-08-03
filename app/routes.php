@@ -18,6 +18,12 @@ Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){
     return View::make('aviso_beta');
 });
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
+Route::get('/aviso_privacidad',function(){
+    return View::make('aviso-privacidad');
+});
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
