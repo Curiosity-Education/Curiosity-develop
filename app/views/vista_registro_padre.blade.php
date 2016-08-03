@@ -1,243 +1,136 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="utf-8">
-	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
-  {{HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
-  {{HTML::style('/packages/css/curiosity/registro.css')}}
-  {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
+@extends('principalMaster')
+
+@section('css')
   {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
-  {{HTML::style('/packages/css/curiosity/alert.css')}}
-	{{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
-	{{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
-  <title>Curiosity</title>
-</head>
-<audio src="/packages/notificaciones/music.mp3" id="notyAudio"></audio>
-<!-- Navbar menu -->
-<div class="navbar navbar-default navbar-fixed-top bg-blue" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon icon-bar"></span>
-        <span class="icon icon-bar"></span>
-        <span class="icon icon-bar"></span>
-      </button>
-      <a href="javascript:void(0)" class="navbar-brand">
-				<span><img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;" /></span>
-        Curiosity<small>.com.mx</small>
-      </a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right main-navigation">
-        <li><a href="/" id="link-inicio">Inicio</a></li>
-        <li><a href="/login">Iniciar Sesión</a></li>
-      </ul>
-    </div>
+  {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
+  {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
+	{{HTML::style('/packages/css/curiosity/regStyle.css')}}
+@stop
+
+@section('title')
+  Curiosity | Regístro
+@stop
+
+@section('menu')
+  <li class='nav-item anc'>
+    <a class='nav-link' href='/'>Inicio <span class='sr-only'>(current)</span></a>
+  </li>
+  <li class="nav-item">
+  	<a class="btn success-rounded-outline waves-effect pull-right" style="color:#fff;" href="/login">{{Lang::get('landingPage.menu.logIn')}}</a>
+  </li>
+@stop
+
+@section('contenido')
+  <audio src='/packages/notificaciones/music.mp3' id='notyAudio'></audio>
+  <div class="mascara">
+  	<div class="">
+  		<div class="container-fluid">
+  			<div class="col-md-10 col-md-offset-1" id="wrapper-form" style="margin-bottom:30px;border-radius:10px;">
+  				<center>
+  					<h1 class="h1-responsive white-text titulo">
+  						¡Bienvenido a la cuenta padre curiosity!
+  					</h1>
+  				</center>
+  				<!-- <hr style="border:1px solid white;"> -->
+  				<form class="form" id="frm-registro" method="post">
+  					<div class="col-md-6">
+  						<div class="formContent" style="padding-bottom:45px;">
+  							<center><h4 class="step">Datos personales</h4></center>
+  							<!-- datos de generales -->
+  							<div class="md-form form-group">
+  								<i class="fa fa-user prefix"></i>
+  								<input type="text" id="nombre" class="form-control validate" name="nombre">
+  								<label for="nombre" data-error="" data-success="">Nombre (s)</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<i class="fa fa-user prefix"></i>
+  								<input type="text" id="ap_paterno" class="form-control validate" name="apellido_paterno">
+  								<label for="ap_paterno" data-error="" data-success="">Apellido paterno</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<i class="fa fa-user prefix"></i>
+  								<input type="text" id="ap_materno" class="form-control validate" name="apellido_materno">
+  								<label for="ap_materno" data-error="" data-success="">Apellido materno</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<select class="mdb-select" name="sexo" id="sexo">
+  									<option value="" disabled selected>Sexo</option>
+  									<option value="m" data-icon="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="img-circle">Masculino</option>
+  									<option value="f" data-icon="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg" class="img-circle">Femenino</option>
+  								</select>
+  							</div>
+
+  							<div class="md-form form-group">
+  							<i class="fa fa-calendar prefix"></i>
+  								<input placeholder="Fecha de nacimiento" type="text" id="fecha_nacimiento" class="form-control datepicker" name="fecha_nacimiento" readonly="true">
+  							</div>
+  						</div>
+  					</div>
+  					<!--  -->
+  					<div class="col-md-6">
+  						<div class="formContent">
+                <center><h4 class="step">Datos de usuario</h4></center>
+  							<!-- datos de usuario -->
+  							<div class="md-form form-group">
+  								<i class="fa fa-user prefix"></i>
+  								<input type="text" id="username" class="form-control validate" name="username" id="username">
+  								<label for="username" data-error="" data-success="">Nombre de usuario</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<i class="fa fa-lock prefix"></i>
+  								<input type="password" id="password" class="form-control validate" name="password" id="password">
+  								<label for="password" data-error="" data-success="">Contraseña</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<i class="fa fa-lock prefix"></i>
+  								<input type="password" id="password_confirm" class="form-control validate" name="cpassword">
+  								<label for="password_confirm" data-error="" data-success="">Confirmar contraseña</label>
+  							</div>
+
+  							<div class="md-form form-group">
+  								<i class="fa fa-lock prefix"></i>
+  								<input type="email" id="email" class="form-control validate" name="email">
+  								<label for="email" data-error="" data-success="">Correo electrónico</label>
+  							</div>
+  							<div class="md-form form-group">
+  								<i class="fa fa-square-o prefix" id="terms"></i>
+  								<h6 id="termsLabel">
+                    He leído los
+                    <a href="/terminos-y-condiciones" onclick="this.target='_blank' " id="termsLink">terminos y condiciones</a>
+                    presentados por Curiosity Educación y al completar el registro
+                    ACEPTO cada una de las normas y especificaciones establecidas.
+                  </h6>
+  							</div>
+  						</div>
+  					</div>
+  				</form>
+  				<button type="button" class="btn btn-warning pull-right btn-Reg" id="regAc">
+  					Guardar
+  				</button>
+  				<button type="button" class="btn pull-right btn-Reg" id="regcanceled">
+  					Reestablecer
+  				</button>
+  			</div>
+  		</div>
+  	</div>
   </div>
-</div>
+@stop
 
-<section class="container" id="registro">
-  <div class="row">
-    <div class="col-xs-12">
-			<div class="well well-lg" id="registro-well">
-				<div class="row">
-					<div class="col-xs-12">
-						<form  action="" method="post" class="form-horizontal" id="frm-registro">
-
-							<div id="wizard">
-								<h2>Datos de Usuario</h2>
-								<section>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna  class="fa fa-user"></spna>
-											</span>
-											<input type="text"  name="username" id="username" value="" class="form-control form-custom" placeholder="Nombre de Usuario">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-lock"></spna>
-											</span>
-											<input type="password" name="password" id="password" value="" class="form-control form-custom" placeholder="Contraseña">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-lock"></spna>
-											</span>
-											<input type="password" name="cpassword" value="" class="form-control form-custom" placeholder="Confirmar Contraseña">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-envelope"></spna>
-											</span>
-											<input type="email" name="email" value="" class="form-control form-custom" placeholder="Correo Elecronico">
-										</div>
-									</div>
-								</section>
-
-								<h2>Datos Generales</h2>
-								<section>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-user"></spna>
-											</span>
-											<input type="text" name="nombre" value="" class="form-control" placeholder="Nombre(s)">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-chevron-right"></spna>
-											</span>
-											<input type="text" name="apellido_paterno" value="" class="form-control" placeholder="Apellido Paterno">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon">
-												<spna class="fa fa-chevron-right"></spna>
-											</span>
-											<input type="text" name="apellido_materno" value="" class="form-control" placeholder="Apellido Materno">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="sexo"><h4 class="title-input"><b>Sexo</b></h4></label>
-										<div class="input-group">
-										  <span class="input-group-addon">
-										  	<span class="fa fa-venus-mars"></span>
-										  </span>
-											<select class="form-control form-custom" name="sexo" id="sexo">
-												<option value="m">Masculino</option>
-												<option value="f">Femenino</option>
-											</select>
-										</div>
-								 </div>
-
-								 <div class="form-group">
-									 <label for="fecha_nacimiento"><h4 class="title-input"><b>Fecha de Nacimiento</b></h4></label>
-									 <div class="input-group">
-									   <span class="input-group-addon">
-									   	<span class="fa fa-calendar"></span>
-									   </span>
-									   <input type="text" class="datepicker form-control form-custom" name="fecha_nacimiento" id="fecha_nacimiento">
-									 </div>
-								 </div>
-								</section>
-							</div>
-
-						</form>
-					</div>
-				</div>
-	    </div>
-    </div>
-  </div>
-</section>
-
-{{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
-{{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}
-{{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
-{{HTML::script('packages/js/curiosity/alert.js')}}
-{{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
-{{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
-{{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
-{{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
-{{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
-{{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
-{{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
-{{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
-{{HTML::script('/packages/js/curiosity/curiosity.js')}}
-{{HTML::script('/packages/js/curiosity/registro_padre.js')}}
-<script>
-  $(function ()
-  {
-    $("#wizard").steps({
-        headerTag: "h2",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        autoFocus:true,
-        Next:"Siguiente",
-        Finish:"Finalizar",
-        onFinishing: function (event, currentIndex) {
-            if($form.valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-        	if(newIndex>currentIndex){
-	           if($(".current input").valid()){
-	               return true;
-	           }else return false;
-	       }else return true;
-        },
-   /*headerTag: "h1",
-    bodyTag: "div",
-    contentContainerTag: "div",
-    actionContainerTag: "div",
-    stepsContainerTag: "div",
-    cssClass: "wizard",
-    stepsOrientation: $.fn.steps.stepsOrientation.horizontal,
-
-    /* Templates */
-   /* titleTemplate: '<span class="number">#index#.</span> #title#',
-    loadingTemplate: '<span class="spinner"></span> #text#',
-
-    /* Behaviour */
-    /*autoFocus: false,
-    enableAllSteps: false,
-    enableKeyNavigation: true,
-    enablePagination: true,
-    suppressPaginationOnFocus: true,
-    enableContentCache: true,
-    enableCancelButton: true,
-    enableFinishButton: true,
-    preloadContent: false,
-    showFinishButtonAlways: false,
-    forceMoveForward: false,
-    saveState: false,
-    startIndex: 0,
-
-    /* Transition Effects */
-    /*transitionEffect: $.fn.steps.transitionEffect.none,
-    transitionEffectSpeed: 200,
-
-    /* Events */
-   /* onStepChanging: function (event, currentIndex, newIndex) { return true; },
-    onStepChanged: function (event, currentIndex, priorIndex) { }},
-    onCanceled: function (event) { },
-    onFinishing: function (event, currentIndex) { return true; },
-    onFinished: function (event, currentIndex) { },
-
-    /* Labels */
-    labels: {
-        cancel: "Cancelar",
-      //  current: "current step:",
-        pagination: "Paginación",
-        finish: "Finalizar",
-        next: "Siguiente",
-        previous: "Anterior",
-        loading: "Cargando ..."
-    }
-
-  });
-});
-</script>
-</body>
-</html>
+@section('js')
+  {{HTML::script('packages/js/curiosity/alert.js')}}
+  {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
+  {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
+  {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
+  {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
+  {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
+  {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+  {{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
+  {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
+  {{HTML::script('/packages/js/curiosity/curiosity.js')}}
+  {{HTML::script('/packages/js/curiosity/registro_padre.js')}}
+@stop
