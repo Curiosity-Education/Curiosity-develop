@@ -54,6 +54,7 @@ $(document).ready(function() {
       $("#video").val("");
       $("#archivoPDF").val("");
       $("#framePreview").hide();
+      $("#framePreview").attr('src', '');
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
@@ -422,12 +423,9 @@ $(document).ready(function() {
     $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
     $("#docTitle").text($(this).data('pdf'));
     var idFromProfe = $(this).data('prof-id');
-
-    // $.each($('#profesores > option'), function(index, obj){
-    //   if($(this).val() == idFromProfe){
-    //     $(this).attr('selected', 'selected');
-    //   }
-    // });
+    // Mostrar el preview del video
+    $("#framePreview").attr('src', $(this).data('code-embed'));
+    $("#framePreview").show();
     $("#profesores").val(idFromProfe);
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');
@@ -778,7 +776,7 @@ $(document).ready(function() {
   // hacemos el preview del video insertado
   $("#video").change(function() {
     var newEmbed = actividad.registro.convertEmbedCode($(this).val());
-    var frame = $("#framePreview");    
+    var frame = $("#framePreview");
     frame.attr('src', newEmbed);
     frame.show('slow');
   });

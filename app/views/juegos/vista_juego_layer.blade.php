@@ -3,7 +3,7 @@
 @section('mi_css')
   {{ HTML::style('/packages/css/curiosity/juegos/juego_layer.css') }}
   {{ HTML::style('/packages/css/libs/animate/animate.min.css') }}
-
+  
   @yield('juego_css')
 @stop
 @section('titulo_contenido')
@@ -171,7 +171,7 @@
                         <div class="col-md-5">
                           <div class="text-right boton-instrucciones">
                             <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal-instrucciones">
-                              <i class="fa fa-book"></i> Instrucciones
+                              <i class="fa fa-book"></i> Instrucciones 
                             </button>
                           </div>
                         </div> 
@@ -188,12 +188,12 @@
                 </div>
                 @yield('juego')
              <!-- Modal para el menu de pausa -->
-
+             
 			<div class="modal fade myModal" id="modal-instrucciones" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                <div class="modal-content">
                  <div class="modal-header">
-
+                                  
                  <center><h3 class="modal-title" id="myModalLabel"><i class="icon fa fa-flag-checkered"></i> INSTRUCCIONES DE JUEGO </h3></center>
                  <center><h4 class="modal-title" id="titulo-juego">| Sumas y Restas |</h4><hr class="hr"></center>
                  </div>
@@ -214,7 +214,7 @@
                    </div>
                  </div>
                  <hr class="hr">
-
+                                  
                    <div class="container-fluid">
                    <div class="col-md-5 col-md-offset-7 col-xs-12">
                      <button id="continue" type="button" class="btn form-control" data-dismiss="modal" aria-label="Close"><i class="icon fa fa-times-circle"></i> Continuar jugando</button>
@@ -224,10 +224,10 @@
                  </div>
                </div>
              </div>
-
+                              
              <!-- BOTON OCULTO PARA DISPARAR EL CIERRE DEL MODAL DE MENU DE JUEGO -->
              <button type="button" hidden="hidden" id="oculto" data-dismiss="modal"></button>
-
+                            
               <div id="zona-play" hidden="hidden">
                 <div class="row">
                   <div class="col-md-4"></div>
@@ -328,7 +328,7 @@
   {{ HTML::script('/packages/js/libs/wow/wow.min.js') }}
   <script type="text/javascript">
    $juego.game.setMaxPuntuacion({{$maxProm}});
-
+	 
 	 new WOW().init();
      var cali=0;
      @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
@@ -340,7 +340,7 @@
              $.each($(".cali"),function(i,o){
                if(i<r){
                    $(o).attr("class","cali fa fa-star fa-2x");
-               }
+               }  
              });
          }).fail(function(e){
              console.error(e);
@@ -352,7 +352,7 @@
           $.each($(".cali"),function(i,o){
             if(i<calificacion){
                 $(o).attr("class","cali fa fa-star fa-2x");
-            }
+            } 
          });
      });
      $(".cali").mouseleave(function(){
@@ -362,7 +362,7 @@
                  $(o).attr("class","cali fa fa-star fa-2x");
              }
          });
-     });
+     });  
      $(".cali").click(function(){
          $(".cali").attr("class","cali fa fa-star-o fa-2x");
          var calificacion = $(this).index();
@@ -370,7 +370,7 @@
          $.each($(".cali"),function(i,o){
             if(i<calificacion){
                 $(o).attr("class","cali fa fa-star fa-2x");
-            }
+            } 
          });
          @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
