@@ -3,7 +3,7 @@
  *
  */
 class hijo extends Eloquent{
-    protected $table = 'hijos';    
+    protected $table = 'hijos';
 
   /*
   *

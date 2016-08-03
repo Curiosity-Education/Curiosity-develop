@@ -24,7 +24,7 @@
                     <span id="num3">3</span>
                     <span class="fdn" id="num4">4</span>
                 </div>
-            </div>  
+            </div>
         </div>
         <div id="respuestas" class="row">
             <div id="op1" class="respuesta medio3 col-md-3 col-sm-3 col-xs-3">
@@ -61,6 +61,6 @@
 
 @section('juego_js')
   {{HTML::script('packages/js/curiosity/juegos/fracciones.js')}}
- 
+
 @stop
 

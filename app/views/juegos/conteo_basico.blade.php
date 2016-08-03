@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    @stop        
+    @stop
 @stop
 
 @section('juego_js')

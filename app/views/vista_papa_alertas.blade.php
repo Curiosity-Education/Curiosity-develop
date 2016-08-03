@@ -67,7 +67,7 @@
 		language: "es",
 	});
 
-	$('#sandbox-container div#data_picker div.datepicker-inline').attr('id','alert-picker');  
+	$('#sandbox-container div#data_picker div.datepicker-inline').attr('id','alert-picker');
 
 </script>
 @stop

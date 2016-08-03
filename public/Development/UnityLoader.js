@@ -3,7 +3,7 @@ function LoadJSCodeBlob(blob, onload)
 	var script = document.createElement('script');
 	script.src = URL.createObjectURL(blob);
 	script.onload = onload;
-	document.body.appendChild(script);	
+	document.body.appendChild(script);
 }
 
 function LoadJSCode(code, onload)
@@ -27,7 +27,7 @@ function LoadJSCode(code, onload)
 }
 
 
-var 
+var
 
 CompressionState = {
     Uninitialized : 0,
@@ -97,7 +97,7 @@ function LoadCompressedFile(url, onload, onprogress)
 			if (xhr.status == 0 || xhr.status == 200)
 				CompressionState.Set(CompressionState.Supported);
 			else
-				CompressionState.Set(CompressionState.Unsupported);			
+				CompressionState.Set(CompressionState.Unsupported);
 		}
 	};
 	xhr.onload = function() {
@@ -105,7 +105,7 @@ function LoadCompressedFile(url, onload, onprogress)
 		{
 			CompressionState.Set(CompressionState.Supported);
 			var byteArray = new Uint8Array(xhr.response);
-			onload(byteArray);  
+			onload(byteArray);
 		}
 		else
 		{
@@ -136,13 +136,13 @@ function LoadCompressedJS(url, onload)
 {
 	LoadCompressedFile (url, function(response)
 	{
-		LoadJSCode (response, onload);		
+		LoadJSCode (response, onload);
 	});
 }
 
 Module["memoryInitializerRequest"]={
-	response: null, 
-	callback: null, 
+	response: null,
+	callback: null,
 	addEventListener: function(type, callback)
 	{
 		if (type != 'load')
@@ -3241,7 +3241,7 @@ exports.ungzip  = inflate;
 },{"./utils/common":1,"./utils/strings":2,"./zlib/constants":4,"./zlib/gzheader":6,"./zlib/inflate.js":8,"./zlib/messages":10,"./zlib/zstream":11}]},{},[])("/lib/inflate.js")
 });// Identify user agent
 var browser = (function(){
-    var ua= navigator.userAgent, tem, 
+    var ua= navigator.userAgent, tem,
     M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
     if(/trident/i.test(M[1])){
         tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
@@ -3257,25 +3257,25 @@ var browser = (function(){
 })();
 
 var hasWebGL = (function(){
-    if (!window.WebGLRenderingContext) 
+    if (!window.WebGLRenderingContext)
     {
       // Browser has no idea what WebGL is. Suggest they
       // get a new browser by presenting the user with link to
       // http://get.webgl.org
-      return 0;   
+      return 0;
     }
 
-    var canvas = document.createElement('canvas'); 
-    var gl = canvas.getContext("webgl");   
-    if (!gl) 
+    var canvas = document.createElement('canvas');
+    var gl = canvas.getContext("webgl");
+    if (!gl)
     {
-      gl = canvas.getContext("experimental-webgl");   
-      if (!gl) 
+      gl = canvas.getContext("experimental-webgl");
+      if (!gl)
       {
         // Browser could not initialize WebGL. User probably needs to
         // update their drivers or get a new browser. Present a link to
         // http://get.webgl.org/troubleshooting
-        return 0;  
+        return 0;
       }
     }
     return 1;
@@ -3292,13 +3292,13 @@ function CompatibilityCheck()
     if (!1 && !hasWebGL)
     {
         alert("You need a browser which supports WebGL to run this content. Try installing Firefox.");
-        window.history.back();                
+        window.history.back();
     }
     // Show warnings if needed.
     else if (mobile)
     {
         if (!confirm("Please note that Unity WebGL is not currently supported on mobiles. Press Ok if you wish to continue anyway."))
-            window.history.back();        
+            window.history.back();
     }
     else if (browser.indexOf("Firefox") == -1 && browser.indexOf("Chrome") == -1 && browser.indexOf("Safari") == -1)
     {
@@ -3331,7 +3331,7 @@ if (typeof window.onerror != 'function')
         // Firefox has a bug where it's IndexedDB implementation will throw UnknownErrors, which are harmless, and should not be shown.
         if (err.indexOf("UnknownError") != -1)
             return;
- 
+
         // Ignore error when application terminated with return code 0
         if (err.indexOf("Program terminated with exit(0)") != -1)
         {
@@ -3347,18 +3347,18 @@ if (typeof window.onerror != 'function')
         if (err.indexOf("Cannot enlarge memory arrays") != -1)
         {
             alert ("Out of memory. If you are the developer of this content, try allocating more memory to your WebGL build in the WebGL player settings.");
-            return;        
+            return;
         }
         if (err.indexOf("Invalid array buffer length") != -1 || err.indexOf("out of memory") != -1 )
         {
             alert ("The browser could not allocate enough memory for the WebGL content. If you are the developer of this content, try allocating less memory to your WebGL build in the WebGL player settings.");
-            return;                
+            return;
         }
         if (err.indexOf("Script error.") != -1 && document.URL.indexOf("file:") == 0)
         {
             alert ("It seems your browser does not support running Unity WebGL content from file:// urls. Please upload it to an http server, or try a different browser.");
             return;
-        } 
+        }
         alert ("An error occured running the Unity content on this page. See your browser's JavaScript console for more info. The error was:\n"+err);
     }
 }
@@ -3388,7 +3388,7 @@ Module.printErr= function(text) {
 Module.canvas = document.getElementById('canvas');
 Module.progress = null;
 Module.setStatus = function(text) {
-	if (this.progress == null) 
+	if (this.progress == null)
 	{
 		if (typeof UnityProgress != 'function')
 			return;
@@ -3400,7 +3400,7 @@ Module.setStatus = function(text) {
 	var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
 	if (m)
 		this.progress.SetProgress (parseInt(m[2])/parseInt(m[4]));
-	if (text === "") 
+	if (text === "")
 		this.progress.Clear()
 },
 Module.totalDependencies = 0;
@@ -3439,10 +3439,10 @@ Module.expectedDataFileDownloads++;
     var REMOTE_PACKAGE_NAME = typeof Module['locateFile'] === 'function' ?
                               Module['locateFile'](REMOTE_PACKAGE_BASE) :
                               ((Module['filePackagePrefixURL'] || '') + REMOTE_PACKAGE_BASE);
-  
+
       var REMOTE_PACKAGE_SIZE = 54313086;
       var PACKAGE_UUID = 'dfabd19b-9764-499c-b4ec-677bc7e44926';
-    
+
     function fetchRemotePackage(packageName, packageSize, callback, errback) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', packageName, true);
@@ -3487,7 +3487,7 @@ Module.expectedDataFileDownloads++;
     function handleError(error) {
       console.error('package error:', error);
     };
-  
+
       var fetched = null, fetchedCallback = null;
       fetchRemotePackageWrapper(REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE, function(data) {
         if (fetchedCallback) {
@@ -3497,7 +3497,7 @@ Module.expectedDataFileDownloads++;
           fetched = data;
         }
       }, handleError);
-    
+
   function runWithFS() {
 
     function assert(check, msg) {
@@ -3564,7 +3564,7 @@ Module['FS_createPath']('/Managed/mono', '2.0', true, true);
       assert(arrayBuffer, 'Loading data file failed.');
       var byteArray = new Uint8Array(arrayBuffer);
       var curr;
-      
+
       // Reuse the bytearray from the XHR as the source for file reads.
       DataRequest.prototype.byteArray = byteArray;
           DataRequest.prototype.requests["/globalgamemanagers"].onload();
@@ -3584,9 +3584,9 @@ Module['FS_createPath']('/Managed/mono', '2.0', true, true);
 
     };
     Module['addRunDependency']('datafile_figuras.data');
-  
+
     if (!Module.preloadResults) Module.preloadResults = {};
-  
+
       Module.preloadResults[PACKAGE_NAME] = {fromCache: false};
       if (fetched) {
         processPackageData(fetched);
@@ -3594,7 +3594,7 @@ Module['FS_createPath']('/Managed/mono', '2.0', true, true);
       } else {
         fetchedCallback = processPackageData;
       }
-    
+
   }
   if (Module['calledRun']) {
     runWithFS();

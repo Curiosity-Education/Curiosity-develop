@@ -16,5 +16,5 @@
 
 @section('juego_js')
   {{HTML::script('packages/js/curiosity/juegos/de-menor-a-mayor.js')}}
- 
+
 @stop

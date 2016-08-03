@@ -20,34 +20,34 @@
 		.jumbotron{
 			background-color: rgba(0,0,0,0.8);
 		}
-		
+
 		#logo{
 			width: 50px;
 			height: 50px;
 		}
-		
+
 		hr{
 			border: 1px solid #fff;
 		}
-		
+
 		.emoticon{
 			width: 40px;
 			height: 40px;
 			margin-top: 10px;
 		}
-		
+
 		#cuadro{
 			width: 360px;
 			height: 360px;
 			margin-left: 100px;
 			background-color: aqua;
 		}
-		
+
 		a.btn{
 			margin-top: 15px;
 			margin-bottom: -10px;
 		}
-		
+
 		.esquinas{
 			border-radius: 3px;
 		}
@@ -65,7 +65,7 @@
 	<div class="col-md-8 col-md-offset-2 jumbotron esquinas animated zoomInRight">
 		<div class="">
 			<p class="h4-responsive white-text text-xs-center">
-				Ahora formas parte de la familia Curiosity, lo cual nos pone muy felices; 
+				Ahora formas parte de la familia Curiosity, lo cual nos pone muy felices;
 				disfruta de esta aventura y recuerda, ¡Que tu curiosidad no tenga límites!
 			</p>
 			<div class="col-md-4 col-md-offset-4">

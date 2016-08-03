@@ -3,7 +3,7 @@ class userController extends BaseController{
 
     public function verPagina(){
         if(Request::method() == "GET"){
-          if (Auth::user()->hasRole('padre_free') ||          
+          if (Auth::user()->hasRole('padre_free') ||
           Auth::user()->hasRole('hijo_free'))
           {
             Auth::logout();

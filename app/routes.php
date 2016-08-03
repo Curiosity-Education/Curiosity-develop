@@ -14,18 +14,15 @@
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 
+
 Route::get('/proximamente',function(){
     return View::make('aviso_beta');
 });
-Route::get('/websocket',function(){
-    try{
-        
-         return View::make('chat');
-    }
-    catch(Exception $e){
-        Response::make($e->getMessage(),500);
-    }
-   
+Route::get('/terminos-y-condiciones',function(){
+    return View::make('terminos');
+});
+Route::get('/aviso_privacidad',function(){
+    return View::make('aviso-privacidad');
 });
 
 // registro
@@ -33,6 +30,7 @@ Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/confirmar/{token}','padreController@confirmar');
 Route::match(array('GET','POST'),'/suscripcion','suscripcionController@suscripcion');
 Route::match((array('GET','POST')),'/regPadre','padreController@addPadre');
+
 
 // Facebook user
 Route::group(array('before' => 'unauth'), function(){

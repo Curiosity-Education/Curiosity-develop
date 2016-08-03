@@ -16,8 +16,8 @@
       <i class="fa fa-heart"></i>
       <i class="fa fa-heart"></i>
       <i class="fa fa-heart"></i>
-</div>  
-       
+</div>
+
 @stop
 @section('game')
 <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->

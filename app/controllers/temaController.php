@@ -273,7 +273,7 @@ class temaController extends BaseController
   }
 
   function temasFound(){
-    $dato = Input::all();    
+    $dato = Input::all();
     $temas = DB::select("select temas.nombre as nombreTema, bloques.nombre as nombreBloque, temas.id as idTema, inteligencias.nombre as nombreInteligencia, niveles.nombre as nombreNivel, temas.imagen as imagenTema, temas.bg_color as colorTema, temas.isPremium as isPremium, temas.estatus as estatusTema
     from temas
     join bloques on bloques.id = temas.bloque_id

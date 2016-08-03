@@ -20,16 +20,16 @@
 		.jumbotron{
 			background-color: rgba(0,0,0,0.8);
 		}
-		
+
 		#logo{
 			width: 50px;
 			height: 50px;
 		}
-		
+
 		hr{
 			border: 1px solid #fff;
 		}
-		
+
 		.emoticon{
 			width: 40px;
 			height: 40px;
@@ -60,13 +60,13 @@
 	</div>
 	<script type="text/javascript">
         function nobackbutton(){
-        	
+
            window.location.hash="no-back-button";
-        
+
            window.location.hash="Again-No-back-button" //chrome
-        	
+
            window.onhashchange=function(){window.location.hash="no-back-button";}
-        	
+
         }
     </script>
 </body>

@@ -80,8 +80,8 @@
                             <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='/packages/images/perfil/{{$perfil->foto_perfil}}' alt="User profile picture">
                         @else
                             <img style="cursor:pointer;" class="profile-user-img img-profile img-responsive img-circle" data-target="#modalPrueba"  src={{$perfil->foto_perfil}} alt="User profile picture">
-                        @endif    
-                        
+                        @endif
+
                         <h3 class="profile-username text-center"><span id="name-complete">{{$persona->nombre." ".$persona->apellido_paterno." ".$persona->apellido_materno}}</span> <br><small>
                         <span id="username-profile">{{Auth::user()->username}}</span></small></h3>
                   </div>
@@ -642,7 +642,7 @@
                             <br>
                           </div>
                         @endforeach--}}
-                    
+
                     <br><br>
                   </div>
                 </div>

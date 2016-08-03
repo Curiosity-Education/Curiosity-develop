@@ -12,7 +12,7 @@
 @stop
 
 @section('juego')
-      
+
 @stop
 @section('game')
 <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->

@@ -36,11 +36,11 @@ $(document).on("ready",function() {
     array_imagenes[8]="/packages/images/games/imagen9.png";
     array_imagenes[9]="/packages/images/games/imagen10.png";
     animaciones = ["pulso","latidos","rotacion"];
-    
+
     //almacen de colores para arreglo coloresBarajas
     var coloresBarajas=[];
-    
-    
+
+
     BarajasIconos();
      /* para obtener barajas e iconos*/
     function BarajasIconos(){
@@ -57,7 +57,7 @@ $(document).on("ready",function() {
          if(repetida==0){
              var x=$("<h3/>");
              x.html(num_randoms[j]+"<br>");
-             x.data("valor",num_randoms[j])     
+             x.data("valor",num_randoms[j])
              $("#cartas").append(x);
          }
          else{
@@ -65,9 +65,9 @@ $(document).on("ready",function() {
          }
          repetida=0;
       }
-        
 
-        
+
+
         c=Math.floor((Math.random()*4)+1);
         n_animacion = Math.floor((Math.random()*3));
         for(var i=0; i<num_randoms[c]; i++){
@@ -77,13 +77,13 @@ $(document).on("ready",function() {
         $.each($("#cartas>h3"),function(i,o){
           for(var i=0;i<$(this).text();i++){
             $(this).append("<i class='fa fa-star'/>")
-          }  
+          }
         });
     }
-    
+
     /*para obtener numero de iconos y valor de barajas*/
-    
-    
+
+
       $("#cartas").on("click","h3",function(){
            var valorBaraja=$(this).data("valor");
            var iconosNum=$(".iconos>img").length;
@@ -97,8 +97,8 @@ $(document).on("ready",function() {
           }
      });
 
-    
-    
 
 
-}) 
+
+
+})

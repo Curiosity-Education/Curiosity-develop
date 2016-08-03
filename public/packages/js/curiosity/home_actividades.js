@@ -28,7 +28,7 @@ $(document).ready(function() {
         $curiosity.notyPremium();
       }
       else{
-        document.location.href = "/juego/" + $act['id'] + "/" + $nombre;        
+        document.location.href = "/juego/" + $act['id'] + "/" + $nombre;
       }
     }
     else{
