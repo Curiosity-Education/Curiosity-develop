@@ -54,6 +54,7 @@ $(document).ready(function() {
       $("#video").val("");
       $("#archivoPDF").val("");
       $("#framePreview").hide();
+      $("#framePreview").attr('src','');
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');

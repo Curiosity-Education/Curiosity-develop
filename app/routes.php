@@ -90,7 +90,9 @@ Route::group(array('before' => 'auth'), function(){
 
         // Realizar Actividades
         Route::group(array('before' => 'realizar_actividades'),function(){
-          Route::get('/tienda', 'tiendaController@viewPage');
+          Route::group(array('before' => 'utilizar_tienda'), function(){
+            Route::get('/tienda', 'tiendaController@viewPage');
+          });
           Route::post('/cambiarSkin', 'tiendaController@cambiarSkin');
           Route::post('/comprarSkin', 'tiendaController@comprarSkin');
           Route::post('/cambiarAvatar', 'tiendaController@cambiarAvatar');
