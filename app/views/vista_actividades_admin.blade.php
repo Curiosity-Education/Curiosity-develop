@@ -140,7 +140,7 @@
         <label for="video">Video (EMBED CODE)</label>
         <input name="video" type='text' class="form-control" id="video" rows="3">
         <br>
-        <iframe src="" width="300" height="250" id='framePreview' style="border: none;" hidden="hidden"></iframe>
+        <iframe src="" width="300" height="250" id='framePreview' style="border: none; width:100%; background-color:#000;" hidden="hidden"></iframe>
       </div>
       <div class="form-group">
         <label for="video">Profesor Encargado</label>
