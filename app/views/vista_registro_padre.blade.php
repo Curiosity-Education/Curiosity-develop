@@ -93,13 +93,13 @@
   							</div>
 
   							<div class="md-form form-group">
-  								<i class="fa fa-lock prefix"></i>
+  								<i class="fa fa-envelope prefix"></i>
   								<input type="email" id="email" class="form-control validate" name="email">
   								<label for="email" data-error="" data-success="">Correo electrónico</label>
   							</div>
   							<div class="md-form form-group">
   								<i class="fa fa-square-o prefix" id="terms"></i>
-  								<h6 id="termsLabel">
+  								<h6 id="termsLabel" class="text-justify">
                     He leído los
                     <a href="/terminos-y-condiciones" onclick="this.target='_blank' " id="termsLink">terminos y condiciones</a>
                     presentados por Curiosity Educación y al completar el registro
