@@ -80,7 +80,7 @@
       </div>
       <div class='widget-title-image'>
         <img class='img-circle img-effect tooltipShow' title="Cambiar imagen" src='/packages/images/actividades/{{$actividad->imagen}}' data-id-img={{$actividad->id}}>
-      </div>      
+      </div>
       <div class='box-footer'>
         <div class='row'>
         @if(!Entrust::can('subir_juegos') || Auth::user()->hasRole('root'))
@@ -138,7 +138,9 @@
       </div>
       <div class="form-group">
         <label for="video">Video (EMBED CODE)</label>
-        <textarea name="video" class="form-control" id="video" rows="3"></textarea>
+        <input name="video" type='text' class="form-control" id="video" rows="3">
+        <br>
+        <iframe src="" width="300" height="250" id='framePreview' style="border: none;" hidden="hidden"></iframe>
       </div>
       <div class="form-group">
         <label for="video">Profesor Encargado</label>
