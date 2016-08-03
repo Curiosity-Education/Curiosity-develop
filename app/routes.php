@@ -14,6 +14,7 @@
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 
+
 /* ------------------------------------------------- */
 
 /* ------------------------------------------------- */
