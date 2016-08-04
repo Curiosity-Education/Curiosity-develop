@@ -55,7 +55,7 @@
     padding: 0!important;
     font-family: 'Calibri Light'!important;
 }
-.temp>#temp-count{
+.temp>#temp-count{    
     color: #fff!important;
     font-size: 2.3em!important;
 }
@@ -312,6 +312,7 @@
   border-radius: 50%;
   width: 100%;
 
+
 }
 
 #modal-conten-pausa{
@@ -368,6 +369,7 @@
   -webkit-box-shadow: 4px 0px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 0px 5px 0px rgba(0,0,0,0.75);
+
 
 }
 ul{
@@ -444,6 +446,7 @@ li.slide-current{
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
+  
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -479,6 +482,7 @@ li.slide-current{
   height: 12px;
   width: 12px;
   margin: 0 4px;
+  
   cursor: pointer;
 }
 
@@ -495,6 +499,7 @@ li.slide-current{
 }
 #modal-instrucciones .modal-title{
   font-family: fantasy;
+
 
 }
 #modal-instrucciones hr{
@@ -577,7 +582,7 @@ button.instruccion{
     animation: 1s fastToRight 1;
 }
 .zoom{
-    animation: 1.7s zoom 1 ease;
+    animation: 1.7s zoom 1 ease; 
 }
 @keyframes fastToLeft{
     0%{

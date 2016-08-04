@@ -54,7 +54,7 @@ $(document).ready(function() {
       $("#video").val("");
       $("#archivoPDF").val("");
       $("#framePreview").hide();
-      $("#framePreview").attr('src', '');
+      $("#framePreview").attr('src','');
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
@@ -160,27 +160,26 @@ $(document).ready(function() {
           processData: false
         })
         .done(function(response) {
-          console.log(response);
-          // if($.isPlainObject(response)){
-          //   $.each(response,function(index,value){
-          //     $.each(value,function(i, message){
-          //       $curiosity.noty(message, 'warning');
-          //     });
-          //   });
-          // }
-          // else if(response[0] == 'success'){
-          //   actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-          //   $curiosity.noty("Registrado Correctamente", "success");
-          //   actividad.hideAdmin();
-          // }
-          // else if(response[0] == 'success_exist'){
-          //   actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-          //   $curiosity.noty("Se ha habilitado nuevamente", "success");
-          //   actividad.hideAdmin();
-          // }
-          // else if(response[0] == 'same'){
-          //   $curiosity.noty("El nombre ingresado ya existe", "warning");
-          // }
+          if($.isPlainObject(response)){
+            $.each(response,function(index,value){
+              $.each(value,function(i, message){
+                $curiosity.noty(message, 'warning');
+              });
+            });
+          }
+          else if(response[0] == 'success'){
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            $curiosity.noty("Registrado Correctamente", "success");
+            actividad.hideAdmin();
+          }
+          else if(response[0] == 'success_exist'){
+            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+            $curiosity.noty("Se ha habilitado nuevamente", "success");
+            actividad.hideAdmin();
+          }
+          else if(response[0] == 'same'){
+            $curiosity.noty("El nombre ingresado ya existe", "warning");
+          }
         })
         .fail(function(error) {
           console.log(error);
@@ -424,9 +423,12 @@ $(document).ready(function() {
     $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
     $("#docTitle").text($(this).data('pdf'));
     var idFromProfe = $(this).data('prof-id');
-    // Mostrar el preview del video
-    $("#framePreview").attr('src', $(this).data('code-embed'));
-    $("#framePreview").show();
+
+    // $.each($('#profesores > option'), function(index, obj){
+    //   if($(this).val() == idFromProfe){
+    //     $(this).attr('selected', 'selected');
+    //   }
+    // });
     $("#profesores").val(idFromProfe);
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');
@@ -818,7 +820,7 @@ $(document).ready(function() {
     var frame = $("#framePreview");
     frame.attr('src', newEmbed);
     frame.show('slow');
-    shoot(frame.find('video'));
+    // shoot(frame.find('video'));
   });
 
 });

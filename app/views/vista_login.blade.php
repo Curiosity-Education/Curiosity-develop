@@ -81,7 +81,7 @@
             </div>
             <center><span class="fa fa-life-ring spanIcon"></span></center>
             <p class="frasePie">
-              Porque a la cima no se llega superando a los demás, sino  superándose a sí mismo.              
+              Porque a la cima no se llega superando a los demás, sino  superándose a sí mismo.
             </p>
           </div>
         </div>
