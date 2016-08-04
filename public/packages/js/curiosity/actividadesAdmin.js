@@ -160,26 +160,27 @@ $(document).ready(function() {
           processData: false
         })
         .done(function(response) {
-          if($.isPlainObject(response)){
-            $.each(response,function(index,value){
-              $.each(value,function(i, message){
-                $curiosity.noty(message, 'warning');
-              });
-            });
-          }
-          else if(response[0] == 'success'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-            $curiosity.noty("Registrado Correctamente", "success");
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'success_exist'){
-            actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
-            $curiosity.noty("Se ha habilitado nuevamente", "success");
-            actividad.hideAdmin();
-          }
-          else if(response[0] == 'same'){
-            $curiosity.noty("El nombre ingresado ya existe", "warning");
-          }
+          console.log(response);
+          // if($.isPlainObject(response)){
+          //   $.each(response,function(index,value){
+          //     $.each(value,function(i, message){
+          //       $curiosity.noty(message, 'warning');
+          //     });
+          //   });
+          // }
+          // else if(response[0] == 'success'){
+          //   actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+          //   $curiosity.noty("Registrado Correctamente", "success");
+          //   actividad.hideAdmin();
+          // }
+          // else if(response[0] == 'success_exist'){
+          //   actividad.registro.sincronizar(response[1][0].nombre, response[1][0].bg_color, response[1][0].id, response[1][0].objetivo, response[1][0].estatus, response[1][0].imagen, response[1][0].tema_id, response[1][0].bloque_id, response[1][0].nivel_id, response[1][0].inteligencia_id, response[1][0].video_id, response[1][0].code_embed, response[1][0].pdf, response[1][0].profesores_id);
+          //   $curiosity.noty("Se ha habilitado nuevamente", "success");
+          //   actividad.hideAdmin();
+          // }
+          // else if(response[0] == 'same'){
+          //   $curiosity.noty("El nombre ingresado ya existe", "warning");
+          // }
         })
         .fail(function(error) {
           console.log(error);
@@ -773,12 +774,51 @@ $(document).ready(function() {
   // Disparamos el hasgame
   actividad.hasGame();
 
+  // Funciones para captura de pantalla
+  var videoId = 'framePreview';
+  var scaleFactor = 1;
+  var snapshots = [];
+
+  function capture (video, scaleFactor){
+    if(scaleFactor == null){
+      scaleFactor = 1
+    }
+    var w = video.width * scaleFactor;
+    var h = video.height * scaleFactor;
+    var canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+    var ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, w, h);
+    return canvas;
+  }
+
+  function shoot(vid, i){
+    var video = vid;
+    // var output = document.getElementById('output');
+    var canvas = capture(video, scaleFactor);
+        // canvas.onclick = function(){
+        //   console.log(this.toDataURL);
+        // }
+    snapshots.unshift(canvas);
+    // output.innerHTML = '';
+    length = snapshots.length;
+    if (length > 3){
+      length = 4;
+    }
+    for (var i = 0; i < length; i++) {
+      console.log(snapshots[i]);
+      // output.appendChild(snapshots[i]);
+    }
+  }
+
   // hacemos el preview del video insertado
   $("#video").change(function() {
     var newEmbed = actividad.registro.convertEmbedCode($(this).val());
     var frame = $("#framePreview");
     frame.attr('src', newEmbed);
     frame.show('slow');
+    shoot(frame.find('video'));
   });
 
 });

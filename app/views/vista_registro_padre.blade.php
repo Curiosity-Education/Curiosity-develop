@@ -58,14 +58,14 @@
   							<div class="md-form form-group">
   								<select class="mdb-select" name="sexo" id="sexo">
   									<option value="" disabled selected>Sexo</option>
-  									<option value="m" data-icon="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="img-circle">Masculino</option>
-  									<option value="f" data-icon="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg" class="img-circle">Femenino</option>
+  									<option value="m" data-icon="/packages/icons/man.png" class="img-circle">Masculino</option>
+  									<option value="f" data-icon="/packages/icons/woman.png" class="img-circle">Femenino</option>
   								</select>
   							</div>
 
   							<div class="md-form form-group">
   							<i class="fa fa-calendar prefix"></i>
-  								<input placeholder="Fecha de nacimiento" type="text" id="fecha_nacimiento" class="form-control datepicker" name="fecha_nacimiento" readonly="true">
+  								<input placeholder="Fecha de nacimiento" type="text" id="fecha_nacimiento" class="form-control datepicker2" name="fecha_nacimiento" readonly="true">
   							</div>
   						</div>
   					</div>

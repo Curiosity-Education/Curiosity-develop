@@ -140,6 +140,7 @@
         <label for="video">Video (EMBED CODE)</label>
         <input name="video" type='text' class="form-control" id="video" rows="3">
         <br>
+        <!-- <video src="" width="300" height="250" id='framePreview' style="border: none; width:100%; background-color:#000;" hidden="hidden" controls="true"></video> -->
         <iframe src="" width="300" height="250" id='framePreview' style="border: none; width:100%; background-color:#000;" hidden="hidden"></iframe>
       </div>
       <div class="form-group">

@@ -102,7 +102,7 @@ div#collapseEx2 > ul.navbar-nav > li.anc:hover{
 div.view-entrada{
 	background: url("/packages/images/landing/fondo-full.jpg") repeat center center fixed;
 	height: 100%;
-	background-attachment: fixed;
+	/*background-attachment: fixed;*/
 	background-size:cover;
 	background-repeat: no-repeat;
 }
@@ -169,7 +169,7 @@ div.funcionamiento-text p:first-line{
 div#separador1{
 	height: 200px;
 	background: url("/packages/images/landing/separador1.jpg") repeat center center fixed;
-	background-attachment: fixed;
+	/*background-attachment: fixed;*/
 	background-size:cover;
 	background-repeat: no-repeat;
 	margin-bottom: 30px;
