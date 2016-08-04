@@ -11,7 +11,15 @@
 |
 */
 
-
+//Con login o sin login
+Route::get('/terminos-y-condiciones',function(){
+        return View::make('terminos');
+});
+Route::get('/aviso_privacidad',function(){
+    return View::make('aviso-privacidad');
+});
+Route::get('/', 'principalController@verPagina');
+Route::get('/nosotros', 'principalController@verNosotros');
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
@@ -25,17 +33,10 @@ Route::group(array('before' => 'unauth'), function(){
     Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
     Route::match(array('GET','POST'),'/login-fb', 'loginController@loginFB');
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
-    Route::get('/', 'principalController@verPagina');
-    Route::get('/nosotros', 'principalController@verNosotros');
     Route::get('/proximamente',function(){
         return View::make('aviso_beta');
     });
-    Route::get('/terminos-y-condiciones',function(){
-        return View::make('terminos');
-    });
-    Route::get('/aviso_privacidad',function(){
-        return View::make('aviso-privacidad');
-    });
+
 });
 
 // Route::get('/getCiudades','ciudadController@getCiudades');
