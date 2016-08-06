@@ -22,6 +22,9 @@ Route::get('/terminos-y-condiciones',function(){
 Route::get('/aviso_privacidad',function(){
     return View::make('aviso-privacidad');
 });
+Route::get('/registro-exitoso',function(){
+    return View::make('registro_exitoso');
+});
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/confirmar/{token}','padreController@confirmar');
