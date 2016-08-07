@@ -14,7 +14,7 @@
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 
-
+// Apartados
 Route::get('/proximamente',function(){
     return View::make('aviso_beta');
 });
@@ -23,6 +23,15 @@ Route::get('/terminos-y-condiciones',function(){
 });
 Route::get('/aviso_privacidad',function(){
     return View::make('aviso-privacidad');
+});
+Route::get('/nuestro_equipo',function(){
+	return View::make('nuestro-equipo');
+});
+Route::get('/mentores',function(){
+	return View::make('mentores');
+});
+Route::get('/preguntas_frecuentes',function(){
+	return View::make('preguntas-frecuentes');
 });
 
 // registro
