@@ -80,32 +80,17 @@ class userController extends BaseController{
                 // --- se hace el registro de la fecha actual del servidor y se establece
                 // --- su avance en cero (0) ya que no ha jugado nada en el dia
                 $now = date("Y-m-d");
-                $isFirst = DB::table('avances_metas')
-                ->join('hijos_metas_diarias', 'hijos_metas_diarias.id', '=', 'avances_metas.avance_id')
-                ->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
-                ->where('avances_metas.fecha', '=', $now)
-                ->pluck('avances_metas.id');
-                $idAvance = DB::table('hijos_metas_diarias')
-                ->where('hijo_id', '=', $idHijo)
-                ->pluck('id');
-                if ($isFirst == ""){
-                  $avance = DB::table('avances_metas')->insert(array(
+                $meta = new metaController();
+                $metas = $meta->getAll();
+                $miMeta = $meta->getMetaHijo();
+                if (!$meta->hasMetaToday()){
+                  DB::table('avances_metas')->insert(array(
                     'avance' => 0,
                     'fecha' => $now,
-                    'avance_id' => $idAvance
+                    'avance_id' => $miMeta->metaAsignedId
                   ));
                 }
-
-                $avanceMeta = DB::table('avances_metas')
-                ->where('fecha', '=', $now)
-                ->where('avance_id', '=', $idAvance)
-                ->pluck('avance');
-                $metas = DB::table('metas_diarias')->get();
-                $miMeta = DB::table('metas_diarias')
-                ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
-                ->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
-                ->select('metas_diarias.*')
-                ->first();
+                $avanceMeta = $meta->getAvanceMetaHijo();
                 $experiencia = DB::table('hijo_experiencia')->where('hijo_id', '=', $idHijo)->first();
                 $coins = $experiencia->coins;
 

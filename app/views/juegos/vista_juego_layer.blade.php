@@ -168,20 +168,34 @@
                         </div>
                       </div>
                       <div class="row">
+                        @if($canPlay)
                         <div class="col-md-5">
                           <div class="text-right boton-instrucciones">
                             <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal-instrucciones">
-                              <i class="fa fa-book"></i> Instrucciones
+                              <i class="fa fa-book"></i>&nbsp;
+                              Instrucciones
                             </button>
                           </div>
                         </div>
                         <div class="col-md-7">
                           <div class="text-right boton-comezar">
                             <button type="button" class="btn btn-info btn-lg" id="btn-comenzar">
-                              <i class="fa fa-gamepad"></i> Comenzar Actividad
+                              <i class="fa fa-gamepad"></i>&nbsp;
+                              Comenzar Actividad
                             </button>
                           </div>
                         </div>
+                        @else
+                        <div class="col-md-12">
+                          <div class="text-center">
+                            <button type="button" class="btn btn-info btn-lg" id="btn-what"
+                             style="margin-top: 20px;width: 100%;border-radius: 10px;">
+                              <!-- <i class="fa fa-gamepad"></i>&nbsp; -->
+                              ¿Por qué ya no puedo jugar?
+                            </button>
+                          </div>
+                        </div>
+                        @endif
                        </div>
                     </div>
                   </div>
