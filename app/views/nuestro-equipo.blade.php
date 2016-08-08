@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/media/logo.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
@@ -19,7 +19,7 @@
   					<h1 class="h1-responsive font-curiosity titulo-apartado white-text">Nuestro Equipo</h1>
   				</li>
   				<li class="container-fluid">
-  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a> | <a href="/preguntas_frecuentes">Preguntas frecuentes</a></h5>
+  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="#">Mentores</a> | <a href="#">Preguntas frecuentes</a></h5>
   				</li>
   			</ul>
     	</div>
@@ -33,7 +33,7 @@
 				<hr class="hr-apartado">
 			</div>
 		</div>
-		<div class="col-md-12" id="content-integrantes">
+		<div class="col-md-12 col-sm-12" id="content-integrantes">
 			<div class="col-md-4 col-sm-6">
 				<!--Card-->
 				<div class="card">
@@ -137,7 +137,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/gerson.isaias323" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Twitter-->
-							<a type="button" class="btn-floating btn-tw" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/gersonisaias323" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -191,7 +191,7 @@
 						<h4 class="card-title text-xs-center">Rogelio Jinestas</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinador del área de desarrollo de juegos</b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Coordinador de desarrollo de juegos</b><br>Cofundador de "Curiosity Educación".</p>
 					</div>
 					<!--/.Card content-->
 
@@ -397,7 +397,7 @@
 						<h4 class="card-title text-xs-center">Fernando Canales</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Sistema</b><br>Diseño UI (interfaz de usuario) y UX (experiencia de usuario).</p>
+						<p class="card-text text-xs-center"><b>Desarrollo de Software</b><br>Diseño UI (interfaz de usuario) y UX (experiencia de usuario).</p>
 					</div>
 					<!--/.Card content-->
 
@@ -482,7 +482,7 @@
 						<h4 class="card-title text-xs-center">Luis García</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Investigación y Desarrollo</b><br>Desarrollador de juegos.</p>
+						<p class="card-text text-xs-center"><b>Investigación y Desarrollo</b><br>Desarrollador Back-end</p>
 					</div>
 					<!--/.Card content-->
 
@@ -495,7 +495,7 @@
 
 					<!--Card image-->
 					<div class="view overlay hm-pink-strong hm-zoom">
-						<img src="/packages/images/landing/equipo-mentores/nirvana-min.jpg" class="img-fluid img-rounded" alt="nirvana celis ferniza">
+						<img src="/packages/images/landing/equipo-mentores/nirvana-min.JPG" class="img-fluid img-rounded" alt="nirvana celis ferniza">
 						<a>
 							<div class="mask flex-center">
 								<p class="white-text text-xs-center" style="margin:5px 15px;">"El mundo necesita gente que ame lo que hace"</p>
