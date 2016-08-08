@@ -54,7 +54,7 @@ $(document).ready(function() {
       $("#video").val("");
       $("#archivoPDF").val("");
       $("#framePreview").hide();
-      $("#framePreview").attr('src', '');
+      $("#framePreview").attr('src','');
       $("#profesores").val($("#profesores").children().first().val());
       $("#appendUpdateFile").empty();
       $("#filePrev").attr('src', '/packages/images/pdf_icon_o.png');
@@ -423,9 +423,12 @@ $(document).ready(function() {
     $("#filePrev").attr('src', '/packages/images/pdf_icon.png');
     $("#docTitle").text($(this).data('pdf'));
     var idFromProfe = $(this).data('prof-id');
-    // Mostrar el preview del video
-    $("#framePreview").attr('src', $(this).data('code-embed'));
-    $("#framePreview").show();
+
+    // $.each($('#profesores > option'), function(index, obj){
+    //   if($(this).val() == idFromProfe){
+    //     $(this).attr('selected', 'selected');
+    //   }
+    // });
     $("#profesores").val(idFromProfe);
     // se pone el icono segun el estatus del objeto seleccionado
     estatus = $("#"+idSelected).data('estatus');
@@ -773,12 +776,51 @@ $(document).ready(function() {
   // Disparamos el hasgame
   actividad.hasGame();
 
+  // Funciones para captura de pantalla
+  var videoId = 'framePreview';
+  var scaleFactor = 1;
+  var snapshots = [];
+
+  function capture (video, scaleFactor){
+    if(scaleFactor == null){
+      scaleFactor = 1
+    }
+    var w = video.width * scaleFactor;
+    var h = video.height * scaleFactor;
+    var canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+    var ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, w, h);
+    return canvas;
+  }
+
+  function shoot(vid, i){
+    var video = vid;
+    // var output = document.getElementById('output');
+    var canvas = capture(video, scaleFactor);
+        // canvas.onclick = function(){
+        //   console.log(this.toDataURL);
+        // }
+    snapshots.unshift(canvas);
+    // output.innerHTML = '';
+    length = snapshots.length;
+    if (length > 3){
+      length = 4;
+    }
+    for (var i = 0; i < length; i++) {
+      console.log(snapshots[i]);
+      // output.appendChild(snapshots[i]);
+    }
+  }
+
   // hacemos el preview del video insertado
   $("#video").change(function() {
     var newEmbed = actividad.registro.convertEmbedCode($(this).val());
     var frame = $("#framePreview");
     frame.attr('src', newEmbed);
     frame.show('slow');
+    // shoot(frame.find('video'));
   });
 
 });

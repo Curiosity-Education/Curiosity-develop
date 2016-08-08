@@ -1,7 +1,7 @@
 <?php
 class hijoCalificaActividad extends Eloquent{
     protected $table ='hijo_califica_actividades';
-    public $timestamps =true;
+    public $timestamps = false;
   /*
   *
   ## Una actividad puede ser realizada por muchos hijos

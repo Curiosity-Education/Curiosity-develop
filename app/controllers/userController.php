@@ -96,7 +96,10 @@ class userController extends BaseController{
                   ));
                 }
 
-                $avanceMeta = DB::table('avances_metas')->where('fecha', '=', $now)->pluck('avance');
+                $avanceMeta = DB::table('avances_metas')
+                ->where('fecha', '=', $now)
+                ->where('avance_id', '=', $idAvance)
+                ->pluck('avance');
                 $metas = DB::table('metas_diarias')->get();
                 $miMeta = DB::table('metas_diarias')
                 ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
