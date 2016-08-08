@@ -14,7 +14,7 @@
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 
-// Apartados
+
 Route::get('/proximamente',function(){
     return View::make('aviso_beta');
 });
