@@ -215,7 +215,7 @@ $(document).on("ready",function(){
                   $("input").val("");
                    swal({
                      title: "¡Registro Exitoso!",
-                     text : "El registro fue realizado exitosamente. Se ha enviado un correo de verifcación a su cuenta para poder confirmar su registro. Favor de verificar el correo electrónico",
+                     text : "El registro fue realizado exitosamente. Se ha enviado un correo de verificación a su cuenta para poder confirmar su registro. Favor de verificar el correo electrónico",
                      type: "success",
                      showCancelButton: false,
                      confirmButtonColor: "#3cb54a",
@@ -223,7 +223,7 @@ $(document).on("ready",function(){
                      closeOnConfirm: true
                    },
                    function(){
-                     document.location.href = '/';
+                     document.location.href = '/registro-exitoso';
                    });
                  }
              }

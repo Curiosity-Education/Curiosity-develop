@@ -658,8 +658,8 @@
 			<div class="col-md-2 col-md-offset-1">
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul>
-					<li><a href="equipo.html">- Nuestro equipo</a></li>
-					<li><a href="colaboradores.html">- Colaboradores</a></li>
+					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
+					<li><a href="#">- Colaboradores</a></li>
 				</ul>
 			</div>
 			<!--/.Second column-->
@@ -670,7 +670,7 @@
 			<div class="col-md-2">
 				<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
 				<ul>
-					<li><a href="preguntas.html">- Preguntas frecuentes</a></li>
+					<li><a href="#">- Preguntas frecuentes</a></li>
 				</ul>
 			</div>
 			<!--/.Third column-->
