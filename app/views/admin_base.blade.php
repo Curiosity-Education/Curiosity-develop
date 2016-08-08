@@ -36,7 +36,7 @@
           <span class="logo-lg">
             <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
             &nbsp;
-            <b>Curiosity Educación</b>
+            <b>Curiosity</b>
           </span>
         </div>
 
