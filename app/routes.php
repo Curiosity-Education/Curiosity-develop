@@ -22,9 +22,22 @@ Route::get('/terminos-y-condiciones',function(){
 Route::get('/aviso_privacidad',function(){
     return View::make('aviso-privacidad');
 });
+<<<<<<< HEAD
+Route::get('/nuestro_equipo',function(){
+	return View::make('nuestro-equipo');
+});
+Route::get('/mentores',function(){
+	return View::make('mentores');
+});
+Route::get('/preguntas_frecuentes',function(){
+	return View::make('preguntas-frecuentes');
+});
+
+=======
 Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
+>>>>>>> Gerson
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/confirmar/{token}','padreController@confirmar');
