@@ -452,8 +452,8 @@ div#colaboradores{
 
 div.img-medida img{
 	height: 100%;
-	max-height: 290px;
-	min-height: 290px;
+	max-height: 230px;
+	min-height: 230px;
 	width: 100%;
 }
 
