@@ -10,6 +10,7 @@
 	{{ HTML::style('/packages/css/curiosity/style-index.css') }}
 	{{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css') }}
 	{{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
+	<!--Agrege un comentario-->
 	<title>Mentores</title>
 </head>
 <body>
