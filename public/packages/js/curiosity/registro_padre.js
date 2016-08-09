@@ -1,5 +1,10 @@
 $(document).on("ready",function(){
 
+  var dateNow = new Date();
+  var dateOld = new Date();
+  dateNow.setMonth(dateNow.getMonth() - 216);//restar 19 años a la fecha actual
+  dateOld.setMonth(dateNow.getMonth() - 1080);//restar 99 años a la fecha actual
+
   // Inicializacion
   new WOW().init();
 
@@ -23,7 +28,10 @@ $(document).on("ready",function(){
     labelMonthSelect: 'menu de mes',
     labelYearSelect: 'menu de años',
     selectMonths: true,
-    selectYears: true
+    selectYears: 99,
+    format: 'yyyy-mm-dd',    
+    min: [dateOld.getFullYear(),dateOld.getMonth(),dateOld.getDate()],
+    max: [dateNow.getFullYear(),dateNow.getMonth(),dateNow.getDate()]
   });
 
   // Variable para la comprobacion de terminos y condiciones
@@ -55,9 +63,6 @@ $(document).on("ready",function(){
       D:{pattern:/([0-9])?/},
       E:{pattern:/([A-Za-z]{1})?$/}
     }});
-
-  var dateNow = new Date();
-  dateNow.setMonth(dateNow.getMonth() - 216);//restar 19 años a la fecha actual
 
   $('.datepicker').datepicker({
     "language":"es",
@@ -174,12 +179,14 @@ $(document).on("ready",function(){
       apellido_materno:$("input[name='apellido_materno']").val(),
       sexo:$("select[name='sexo']").val(),
       fecha_nacimiento:$("input[name='fecha_nacimiento']").val()
-    };    
+    };
     if($form.valid()){
       if(aceptedTerms){
         $btn = $(this).prop("disabled",true);
         $btn.addClass("striped-alert");
         $(this).text("Enviando..");
+        console.log(datos);
+        console.log("enviando....");
          $.ajax({
              type:"POST",
              url:"/regPadre",
@@ -189,6 +196,7 @@ $(document).on("ready",function(){
               $curiosity.noty(message, "info");
               },
              success:function(r){
+               console.log(r);
                   if($.isPlainObject(r)){
                      $.each(r,function(index,value){
                        $.each(value,function(i, message){

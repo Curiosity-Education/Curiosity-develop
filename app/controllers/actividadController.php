@@ -382,17 +382,33 @@ class actividadController extends BaseController
         $act = actividad::where('id', '=', $idActividad)->first()->increment('vistos');
 
         Session::put("idActivity",$idActividad);
-        if(Auth::user()->hasRole('hijo')){
+        if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
+          $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+          $avatarActual = DB::table('hijos_avatars')
+          ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
+          ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
+          ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
+          ->where('hijos_avatars.hijo_id', '=', $idHijo)
+          ->where('tipos_secuencias.nombre', '=', 'esperar')
+          ->pluck('secuencias.sprite');
           $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)
           ->where('actividad_id', '=', $idActividad)
           ->max('promedio');
+          if(!$maxProm){
+            $maxProm = 0;
+            $avatarActual = "spritenonsondavatar.jpg";
+          }
         }
         else{
           $maxProm = 0;
         }
         try{
             //----Retornamos la vista del juego
-            return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array('datos'=>$vista, 'maxProm' => $maxProm));
+            return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array(
+              'datos'=>$vista,
+              'maxProm' => $maxProm,
+              'avatar' => $avatarActual
+            ));
         }
         catch(Exception $ex){
             return Redirect::back();
@@ -870,11 +886,13 @@ class actividadController extends BaseController
 
     public function setDataActivity(){
         try{
-          if(Auth::user()->hasRole('hijo')){
+          if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
+            $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
             $activida_hijo = new hijoRealizaActividad(Input::all());
-            $activida_hijo->hijo_id = Auth::user()->persona()->first()->hijo()->pluck('id');
+            $activida_hijo->hijo_id = $idHijo;
             $activida_hijo->actividad_id = Session::get('idActivity');
             $activida_hijo->save();
+            $this->avanceMetaIncrement($idHijo);
           }
           return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
         }
@@ -885,7 +903,7 @@ class actividadController extends BaseController
 
     public function saveCalificationActivity(){
       try {
-     if(Auth::user()->hasRole('hijo')){
+     if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
           //if
           // si esta consulta te encuentra un registro
           //quiere decir que el hijo que esta calificando esta actividad
@@ -894,13 +912,14 @@ class actividadController extends BaseController
           //else
           // En caso de que no sea así entonces ingresaremos un nuevo
           //registro con la califcación que el hijo establecio a la actividad
-          $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",Auth::user()->persona->hijo->id)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
+          $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+          $hijo_califica_actividad = hijoCalificaActividad::find(hijoCalificaActividad::where('hijo_id',"=",$idHijo)->where("actividad_id","=",Session::get("idActivity"))->pluck('id'));
           if($hijo_califica_actividad){
             $hijo_califica_actividad->calificacion=Input::get('calificacion');
             $hijo_califica_actividad->save();
           }else{
             $hijo_califica_actividad = new hijoCalificaActividad();
-            $hijo_califica_actividad->hijo_id = Auth::user()->persona->hijo->id;
+            $hijo_califica_actividad->hijo_id = $idHijo;
             $hijo_califica_actividad->actividad_id = Session::get('idActivity');
             $hijo_califica_actividad->calificacion = Input::get("calificacion");
             $hijo_califica_actividad->save();
@@ -924,5 +943,14 @@ class actividadController extends BaseController
          }
     }
 
+    private function avanceMetaIncrement($hijoID){
+      $idAvance = DB::table('hijos_metas_diarias')
+      ->where('hijo_id', '=', $hijoID)
+      ->pluck('id');
+      DB::table('avances_metas')
+      ->where('fecha', '=', date("Y-m-d"))
+      ->where('avance_id', '=', $idAvance)
+      ->increment('avance', 1);
+    }
 
-  }
+}

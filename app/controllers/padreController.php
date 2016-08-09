@@ -8,7 +8,7 @@ class padreController extends BaseController
     }
 
     public function addPadre(){
-        $datos = Input::get('data');
+        $datos = Input::get('data');        
         $dateNow = date("Y-m-d");
         $date_min =strtotime("-18 year",strtotime($dateNow));
         $date_min=date("Y-m-d",$date_min);
