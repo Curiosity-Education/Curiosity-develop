@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/media/logo.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
@@ -20,7 +20,7 @@
   					<h1 class="h1-responsive font-curiosity titulo-apartado white-text">Nuestro Equipo</h1>
   				</li>
   				<li class="container-fluid">
-  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/mentores">Mentores</a> | <a href="/preguntas_frecuentes">Preguntas frecuentes</a></h5>
+  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="#">Mentores</a> | <a href="#">Preguntas frecuentes</a></h5>
   				</li>
   			</ul>
     	</div>
@@ -28,13 +28,13 @@
 	<div class="container">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="introduccion">
-				<p class="text-xs-center">Un joven y multidisciplinario equipo, que comparten la iniciativa de crear una equidad educativa de forma divertida. Comprometidos con esta gran tarea hacen de <i>Curiosity Educación</i>
-					una posibilidad para cumplir con un aprendizaje de calidad con las nuevas tecnologías.
+				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primera nivel debe ser accesible para todos.
+				En <i>Curiosity Educación</i> buscamos brindar equidad educativa de una manera divertida.
 				</p>
 				<hr class="hr-apartado">
 			</div>
 		</div>
-		<div class="col-md-12" id="content-integrantes">
+		<div class="col-md-12 col-sm-12" id="content-integrantes">
 			<div class="col-md-4 col-sm-6">
 				<!--Card-->
 				<div class="card">
@@ -138,7 +138,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/gerson.isaias323" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Twitter-->
-							<a type="button" class="btn-floating btn-tw" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/gersonisaias323" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:gerson.isaias@curiosity.com.mx"  data-toggle="tooltip" title="gerson.isaias@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -192,7 +192,7 @@
 						<h4 class="card-title text-xs-center">Rogelio Jinestas</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinador del área de desarrollo de juegos</b><br>Cofundador de Curiosity Educación.</p>
+						<p class="card-text text-xs-center"><b>Coordinador de desarrollo de juegos</b><br>Cofundador de "Curiosity Educación".</p>
 					</div>
 					<!--/.Card content-->
 
@@ -223,6 +223,7 @@
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/bazan_victoria" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:vicky.bazan@curiosity.com.mx"  data-toggle="tooltip" title="vicky.bazan@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -250,7 +251,7 @@
 						<img src="/packages/images/landing/equipo-mentores/mau-min.jpg" class="img-fluid img-rounded" alt="mauricio martinez martinez">
 						<a>
 							<div class="mask flex-center">
-								<p class="white-text text-xs-center" style="margin:5px 15px;">"Nunca digas no puedo"</p>
+								<p class="white-text text-xs-center" style="margin:5px 15px;">"Nunca digas no puedo, todo está en la actitud"</p>
 							</div>
 						</a>
 					</div>
@@ -262,7 +263,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/mauricio.mtz2" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:mauricio.mtz@curiosity.com.mx"  data-toggle="tooltip" title="mauricio.mtz@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:mauricio.mtz@curiosity.com.mx" data-toggle="tooltip" title="mauricio.mtz@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -304,7 +305,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/jose_gm08" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jr.guadarrama@curiosity.com.mx"  data-toggle="tooltip" title="jr.guadarrama@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jr.guadarrama@curiosity.com.mx" data-toggle="tooltip" title="jr.guadarrama@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -345,7 +346,11 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/profile.php?id=1270307543&fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
+<<<<<<< HEAD
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx"  data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+=======
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx" data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+>>>>>>> a62c38b1228752ff5613b81992c3fa31f29f51db
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -386,7 +391,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/FerCnls" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:fernando.canales@curiosity.com.mx"  data-toggle="tooltip" title="fernando.canales@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:fernando.canales@curiosity.com.mx" data-toggle="tooltip" title="fernando.canales@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -398,7 +403,7 @@
 						<h4 class="card-title text-xs-center">Fernando Canales</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Sistema</b><br>Diseño UI (interfaz de usuario) y UX (experiencia de usuario).</p>
+						<p class="card-text text-xs-center"><b>Desarrollo de Software</b><br>Diseño UI (interfaz de usuario) y UX (experiencia de usuario).</p>
 					</div>
 					<!--/.Card content-->
 
@@ -483,7 +488,7 @@
 						<h4 class="card-title text-xs-center">Luis García</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Investigación y Desarrollo</b><br>Desarrollador de juegos.</p>
+						<p class="card-text text-xs-center"><b>Investigación y Desarrollo</b><br>Desarrollador Back-end</p>
 					</div>
 					<!--/.Card content-->
 
@@ -496,7 +501,7 @@
 
 					<!--Card image-->
 					<div class="view overlay hm-pink-strong hm-zoom">
-						<img src="/packages/images/landing/equipo-mentores/nirvana-min.jpg" class="img-fluid img-rounded" alt="nirvana celis ferniza">
+						<img src="/packages/images/landing/equipo-mentores/nirvana-min.JPG" class="img-fluid img-rounded" alt="nirvana celis ferniza">
 						<a>
 							<div class="mask flex-center">
 								<p class="white-text text-xs-center" style="margin:5px 15px;">"El mundo necesita gente que ame lo que hace"</p>
@@ -554,6 +559,7 @@
 							
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jonathan.garcia@curiosity.com.mx"  data-toggle="tooltip" title="jonathan.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -595,7 +601,7 @@
 							<!--Twitter
 							<a type="button" class="btn-floating btn-tw"><i class="fa fa-twitter"></i></a>-->
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:sahian.mt@hotmail.com"  data-toggle="tooltip" title="sahian.mt@hotmail.com"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:sahian.mt@hotmail.com" data-toggle="tooltip" title="sahian.mt@hotmail.com"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -628,7 +634,7 @@
 			$(function () {
 				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 			});
-			
+ 
 			$(".tooltipShow").tooltipster({
 				position : 'bottom',
 				touchDevices: true

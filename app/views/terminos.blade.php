@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
+
 	<title>Terminos y Condiciones</title>
 	<link rel="stylesheet" href="/packages/css/libs/css-mdb/bootstrap.min.css">
 	<link rel="stylesheet" href="/packages/css/libs/css-mdb/mdb.min.css">
