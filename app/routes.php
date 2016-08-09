@@ -10,7 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Route::get("/chat",function(){
+    return View::make('borrar');
+});
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){

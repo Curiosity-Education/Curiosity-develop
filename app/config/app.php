@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
-		'Intervention\Image\ImageServiceProvider'
+		'Intervention\Image\ImageServiceProvider',
+        'BrainSocket\BrainSocketServiceProvider',
 
 	),
 
@@ -192,6 +193,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Entrust'		  => 'Zizaco\Entrust\EntrustFacade',
 		'Image'           => 'Intervention\Image\Facades\Image',
+        'BrainSocket'     => 'BrainSocket\BrainSocketFacade',
 
 	),
 
