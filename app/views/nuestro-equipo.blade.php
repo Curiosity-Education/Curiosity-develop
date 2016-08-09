@@ -9,6 +9,7 @@
 	{{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
 	{{ HTML::style('/packages/css/curiosity/style-index.css') }}
 	{{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css') }}
+	{{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
 	<title>Nuestro Equipo</title>
 </head>
 <body style="">
@@ -27,8 +28,8 @@
 	<div class="container">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="introduccion">
-				<p class="text-xs-center">Un joven y multidisciplinario equipo, que comparten la iniciativa de crear una equidad educativa de forma divertida. Comprometidos con esta gran tarea hacen de <i>Curiosity Educación</i>
-					una posibilidad para cumplir con un aprendizaje de calidad con las nuevas tecnologías.
+				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primera nivel debe ser accesible para todos.
+				En <i>Curiosity Educación</i> buscamos brindar equidad educativa de una manera divertida.
 				</p>
 				<hr class="hr-apartado">
 			</div>
@@ -57,7 +58,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/danielseijasglz" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:daniel.seijasglz@curiosity.com.mx"  data-toggle="tooltip" title="daniel.seijasglz@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -97,7 +98,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/wilvardo.95" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:willy.ramirez@curiosity.com.mx"  data-toggle="tooltip" title="willy.ramirez@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -139,7 +140,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/gersonisaias323" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:gerson.isaias@curiosity.com.mx"  data-toggle="tooltip" title="gerson.isaias@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -179,7 +180,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/jinestasgarcia" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:rogelio.jinestas@curiosity.com.mx"  data-toggle="tooltip" title="rogelio.jinestas@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -221,7 +222,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/bazan_victoria" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:vicky.bazan@curiosity.com.mx" data-toggle="tooltip" title="vicky.bazan@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -249,7 +250,7 @@
 						<img src="/packages/images/landing/equipo-mentores/mau-min.jpg" class="img-fluid img-rounded" alt="mauricio martinez martinez">
 						<a>
 							<div class="mask flex-center">
-								<p class="white-text text-xs-center" style="margin:5px 15px;">"Nunca digas no puedo"</p>
+								<p class="white-text text-xs-center" style="margin:5px 15px;">"Nunca digas no puedo, todo está en la actitud"</p>
 							</div>
 						</a>
 					</div>
@@ -261,7 +262,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/mauricio.mtz2" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:mauricio.mtz@curiosity.com.mx" data-toggle="tooltip" title="mauricio.mtz@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -303,7 +304,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/jose_gm08" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jr.guadarrama@curiosity.com.mx" data-toggle="tooltip" title="jr.guadarrama@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -344,7 +345,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/profile.php?id=1270307543&fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx" data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -385,7 +386,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/FerCnls" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:fernando.canales@curiosity.com.mx" data-toggle="tooltip" title="fernando.canales@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -470,7 +471,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/ElIngeCuriosity" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:garcia@curiosity.com.mx" data-toggle="tooltip" title="ing.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -511,7 +512,7 @@
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/nirvana.celisferniza" target="_blank"><i class="fa fa-facebook"></i></a>
 			
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:nirvana.ferniza@curiosity.com.mx" data-toggle="tooltip" title="nirvana.ferniza@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -552,7 +553,7 @@
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/federico.martines.182" target="_blank"><i class="fa fa-facebook"></i></a>
 							
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jonathan.garcia@curiosity.com.mx" data-toggle="tooltip" title="jonathan.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -594,7 +595,7 @@
 							<!--Twitter
 							<a type="button" class="btn-floating btn-tw"><i class="fa fa-twitter"></i></a>-->
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email" href="mailto:fernando.canales@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:sahian.mt@hotmail.com" data-toggle="tooltip" title="sahian.mt@hotmail.com"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -621,11 +622,17 @@
 	<script type="text/javascript" src="/packages/js/libs/mdb/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
 	<script type="text/javascript" src="/packages/js/curiosity/app-index.js"></script>
+	{{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(function () {
 				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 			});
+
+			$(".tooltipShow").tooltipster({
+				position : 'bottom',
+				touchDevices: true
+			  });
 		});
 		
 		new WOW().init();
