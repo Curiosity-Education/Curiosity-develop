@@ -70,7 +70,7 @@
 						<h4 class="card-title text-xs-center">Daniel Seijas</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Director general</b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Director general</b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -110,7 +110,7 @@
 						<h4 class="card-title text-xs-center">Wilvardo Ramirez</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinador General de Desarrollo de Software </b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Coordinador General de Desarrollo de Software </b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -152,7 +152,7 @@
 						<h4 class="card-title text-xs-center">Gerson Isaías</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinador General de Investigación y Desarrollo</b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Coordinador General de Investigación y Desarrollo</b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -222,7 +222,8 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/bazan_victoria" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:vicky.bazan@curiosity.com.mx" data-toggle="tooltip" title="vicky.bazan@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:vicky.bazan@curiosity.com.mx"  data-toggle="tooltip" title="vicky.bazan@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -234,7 +235,7 @@
 						<h4 class="card-title text-xs-center">Victoria Bazan</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinadora de Contenidos </b><br>Cofundadora de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Coordinadora de Contenidos </b><br>Cofundadora de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -274,7 +275,7 @@
 						<h4 class="card-title text-xs-center">Mauricio Martínez</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Gerente de ventas </b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Gerente de ventas </b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -316,7 +317,7 @@
 						<h4 class="card-title text-xs-center">José Guadarrama</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Ventas y Marketing</b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Ventas y Marketing</b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -333,7 +334,7 @@
 						<img src="/packages/images/landing/equipo-mentores/marcela-min.jpg" class="img-fluid img-rounded" alt="claudia marcela rios">
 						<a>
 							<div class="mask flex-center">
-								<p class="white-text text-xs-center">"El mundo es lo que creemos que es. Si podemos cambiar nuestros pensamientos, podemos cambiar el mundo"</p>
+								<p class="white-text text-xs-center" style="margin:5px 15px;">"El mundo es lo que creemos que es. Si podemos cambiar nuestros pensamientos, podemos cambiar el mundo"</p>
 							</div>
 						</a>
 					</div>
@@ -345,7 +346,11 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/profile.php?id=1270307543&fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
+<<<<<<< HEAD
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx"  data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+=======
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx" data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+>>>>>>> a62c38b1228752ff5613b81992c3fa31f29f51db
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -471,7 +476,7 @@
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/ElIngeCuriosity" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:garcia@curiosity.com.mx" data-toggle="tooltip" title="ing.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:ing.garcia@curiosity.com.mx"  data-toggle="tooltip" title="ing.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -512,7 +517,7 @@
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/nirvana.celisferniza" target="_blank"><i class="fa fa-facebook"></i></a>
 			
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:nirvana.ferniza@curiosity.com.mx" data-toggle="tooltip" title="nirvana.ferniza@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:nirvana.ferniza@curiosity.com.mx"  data-toggle="tooltip" title="nirvana.ferniza@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -553,7 +558,8 @@
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/federico.martines.182" target="_blank"><i class="fa fa-facebook"></i></a>
 							
 							<!--Google -->
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jonathan.garcia@curiosity.com.mx" data-toggle="tooltip" title="jonathan.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jonathan.garcia@curiosity.com.mx"  data-toggle="tooltip" title="jonathan.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
+
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
@@ -628,7 +634,7 @@
 			$(function () {
 				$("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
 			});
-
+ 
 			$(".tooltipShow").tooltipster({
 				position : 'bottom',
 				touchDevices: true
