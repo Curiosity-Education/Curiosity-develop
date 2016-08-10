@@ -899,7 +899,7 @@ class actividadController extends BaseController
             $addedExp = $this->incrementExp($idHijo, Input::get('eficiencia'));
             $addedCoin = $this->incrementCoins($idHijo, $addedExp);
           }
-          return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
+          return Response::json(array("estado"=>"200","message"=>"Juego finalizado","exp"=>$addedExp, "coins"=>$addedCoin));
         }
         catch(Excetion $ex){
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
