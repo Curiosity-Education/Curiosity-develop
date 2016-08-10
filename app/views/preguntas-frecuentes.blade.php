@@ -139,7 +139,6 @@
 			<!--/.Main wrapper-->
 		</div>
 	</div>
-
 	<script type="text/javascript" src="/packages/js/libs/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 	<script type="text/javascript" src="/packages/js/libs/mdb/bootstrap.min.js"></script>
@@ -153,7 +152,6 @@
 
 		});
 
-		new WOW().init();
 	</script>
 </body>
 </html>
