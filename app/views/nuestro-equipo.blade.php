@@ -346,11 +346,7 @@
 							<!--Facebook-->
 							<a type="button" class="btn-floating btn-fb" href="https://www.facebook.com/profile.php?id=1270307543&fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
 							<!--Google -->
-<<<<<<< HEAD
-							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx"  data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
-=======
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx" data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
->>>>>>> a62c38b1228752ff5613b81992c3fa31f29f51db
 						</div>
 						<a class="btn-floating btn-action share-toggle primary-color-dark"><i class="fa fa-share-alt"></i></a>
 					</div>
