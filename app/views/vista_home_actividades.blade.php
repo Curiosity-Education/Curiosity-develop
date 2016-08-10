@@ -117,11 +117,12 @@ Bienvenido a Curiosity
           <!--  -->
         </div>
       </div>
-      @if(isset($recomendable))
+      @if(!$recomendables)
       <div hidden="hidden">
       @else
        <div class="col-xs-12">
-      @endif
+       @endif
+
         <div class="panelsLook panelParaTi">
           <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>
           @foreach($recomendables as $recomendable)
