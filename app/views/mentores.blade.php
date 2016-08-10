@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" type="image/png" href="/media/logo.png">
+	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
@@ -21,7 +21,7 @@
   					<h1 class="h1-responsive font-curiosity titulo-apartado white-text">Mentores</h1>
   				</li>
   				<li class="container-fluid">
-  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/nuestro_equipo">Nuestro equipo</a> | <a href="/preguntas_frecuentes">Preguntas frecuentes</a></h5>
+  					<h5 class="h5-responsive titulo-apartado white-text"><a href="/">Inicio</a> | <a href="/nuestro_equipo">Nuestro equipo</a> | <a href="#">Preguntas frecuentes</a></h5>
   				</li>
   			</ul>
     	</div>
@@ -140,7 +140,7 @@
 						<h4 class="card-title text-xs-center">Cristy Belausteguigoitia</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Lorem ipsum dolor sit amet.</b><br>Lorem ipsum dolor sit.</p>
+						<p class="card-text text-xs-center"><b>Licenciada en Diseño Gráfico</b><br>Cofundaora de Work St.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -196,7 +196,7 @@
 						<h4 class="card-title text-xs-center">Natalia Ramírez</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Licenciada en Creación y Desarrollo de empresas</b><br>Lorem ipsum dolor sit.</p>
+						<p class="card-text text-xs-center"><b>Licenciada en Creación y Desarrollo de empresas</b><br>SUM México.</p>
 					</div>
 					<!--/.Card content-->
 
