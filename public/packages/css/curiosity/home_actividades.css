@@ -172,10 +172,6 @@
 .owl-next:hover{
   opacity: 0.8;
 }
-.owl-carousel .owl-item img {
-    transform-style: preserve-3d;
-    border-radius: 10px;
-}
 .isPremiumThis{
   font-size: 0.5em;
   background-color: #ed6922;
