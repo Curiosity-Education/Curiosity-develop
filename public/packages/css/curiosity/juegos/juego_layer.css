@@ -95,19 +95,6 @@
   color: #585d66;
 }
 
-#btn-comenzar,#btn-instrucciones{
-  margin-top: 25px;
-  width: 100%;
-  background-color: rgb(138, 71, 156);
-  border: solid 3px rgb(255, 255, 255);
-  font-family: kiddish;
-}
-
-#btn-comenzar:hover,#btn-instrucciones:hover{
-  background-color: rgb(228, 126,60);
-  transition: .4s;
-}
-
 #objetivo{
   /*padding-left: 35px;
   padding-right: 35px;
