@@ -200,7 +200,8 @@ Bienvenido a Curiosity
   <section class="row divisorGrados">
     <div class="col-xs-12">
       <center>
-        <h3 style="font-family: Kiddish !important;"><b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b></h3>
+        <h3 style="font-family: Kiddish !important; font-size:2.5em;">
+          <b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b></h3>
       </center>
     </div>
   </section>
