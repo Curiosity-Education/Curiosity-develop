@@ -391,23 +391,24 @@ class actividadController extends BaseController
           ->max('puntaje');
           if(!$maxProm){
             $maxProm = 0;
-            $avatarActual = "spritenonsondavatar.png";
+          }
+          $meta = new metaController();
+          if ($meta->getAvanceMetaHijo() >= $meta->getMetaHijo()->meta){
+            $canPlay = false;
+          }
+          else{
+            $canPlay = true;
           }
         }
         else{
           $maxProm = 0;
-        }
-        $meta = new metaController();
-        if ($meta->getAvanceMetaHijo() >= $meta->getMetaHijo()->meta){
-          $canPlay = false;
-        }
-        else{
+          $spriteAvatar = "spritenonsondavatar.png";
           $canPlay = true;
         }
         try{
             //----Retornamos la vista del juego
             return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array(
-              'datos'=>$vista,
+              'datos'=> $vista,
               'maxProm' => $maxProm,
               'avatar' => $spriteAvatar,
               'canPlay' => $canPlay
