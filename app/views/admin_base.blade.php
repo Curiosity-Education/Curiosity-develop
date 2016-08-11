@@ -50,7 +50,7 @@
               <li class="dropdown user user-menu hidden-xs">
                 <a id="menu-usuario" href="#" class="dropdown-toggle" data-toggle="dropdown">
                   {{HTML::image(User::get_imagen_perfil(Auth::user()->id), 'alt', array('class' => 'user-image img-profile'))}}
-                  {{Auth::user()->persona()->first()->nombre}} {{Auth::user()->persona()->first()->apellido_paterno}} <i class="fa fa-angle-down"></i>
+                  {{Auth::user()->persona()->first()->nombre}} {{Auth::user()->persona()->first()->apellido_paterno}} <i class="fa fa-angle-down" id="arrow"></i>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="user-header">
@@ -557,16 +557,6 @@
 			if($(window).width() <= 767){
 				$(".sidebar-toggle").trigger("click");
 			}
-		});
-
-		$("body").click(function(){
-			if($(".user-menu").hasClass("open")){
-				$("#menu-usuario").trigger('click');
-			}
-		});
-
-		$("#menu-usuario").click(function(){
-			$('.fa-angle-down').toggleClass('giro');
 		});
 
 		$(function () {
