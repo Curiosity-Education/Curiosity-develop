@@ -391,7 +391,7 @@ class actividadController extends BaseController
           ->max('puntaje');
           if(!$maxProm){
             $maxProm = 0;
-            $avatarActual = "spritenonsondavatar.jpg";
+            $avatarActual = "spritenonsondavatar.png";
           }
         }
         else{

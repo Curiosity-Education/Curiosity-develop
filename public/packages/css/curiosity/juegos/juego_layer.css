@@ -121,19 +121,6 @@
   font-size: 1.2em;
 }
 
-.zoneSlide{
-  background-color: #fff;
-  background-image: url(/packages/images/exito.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-left: 35px;
-  padding-right: 35px;
-  border-radius: 10px;
-  padding-bottom: 30px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-}
-
 /*------------------------------------------*/
 
 .modal-content {
@@ -409,20 +396,6 @@ ul{
   list-style-type: none;
 }
 
-/* Titulo del slider */
-
-#titulo-slider{
-	font-family: "Kiddish";
-  background-color: #65499d;
-  margin-left: -35px;
-  margin-right: -35px;
-  margin-top: 0px;
-  margin-bottom: 25px;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
 /* Encabezado del slider */
 
 .slider-title{
@@ -610,21 +583,6 @@ button.instruccion{
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
-.avatarZone{
-  background-color: #fff;
-  background-image: url(/packages/images/exito.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 13px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
-}
-
 #btn-what{
   margin-top: 30px;
   width: 100%;
@@ -635,16 +593,6 @@ button.instruccion{
 
 #btn-what:hover{
   background-color: #7455b0;
-}
-
-#titAvZon{
-  margin: 0;
-  font-family: kiddish;
-  background-color: #65499d;
-  padding: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin-bottom: 25px;
 }
 
 /*keyframes*/

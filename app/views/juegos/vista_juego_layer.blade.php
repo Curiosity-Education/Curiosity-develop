@@ -126,7 +126,7 @@
                 <h3 id="titAvZon">Ayuda a tu Avatar a superarse</h3>
                 <center>
                   <!-- <img src="/packages/images/avatars_curiosity/secuencias/{{$avatar}}" class="img-responsive" width="50%" /> -->
-                  <img src="/packages/images/avatars_curiosity/secuencias/spritenonsondavatar.jpg" class="img-responsive" width="50%" />
+                  <img src="/packages/images/avatars_curiosity/secuencias/spritenonsondavatar.png" class="img-responsive" width="50%" />
                 </center>
                 <div class="row">
                   <div class="col-md-12 cal-titulo">
