@@ -32,7 +32,7 @@
 <!-- Sección de imagen a pantalla completa -->
 	<div class="view-entrada hm-black-strong" id="inicio">
 		<div class="full-bg-img flex-center">
-			<ul class="animated rubberBand"><br><br>
+			<ul class="animated rubberBand"><br>
 				<li class="container-fluid">
 					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
 						<img src="/packages/images/landing/nuevo_log.png" alt="logo_curiosity" class="img-responsive" id="logo_entrada" style="width:100%; height:;">
@@ -106,7 +106,7 @@
 			</div>
 			<div class="container">
 				<div class="col-md-12">
-				    <div class="col-md-3">
+				    <div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-orange-strong">
 							<img src="/packages/images/landing/fun-game.jpg" alt="Juegos" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
@@ -116,7 +116,7 @@
 
   					<div class="funcionamiento-text"><p>Un tema, una aventura. <br> Diseñamos cada juego con el propósito de que el niño aprenda divirtiéndose y con cada tema viva una aventura </p></div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-purple-strong">
 							<img src="/packages/images/landing/fun-video.jpg" alt="Videos" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
@@ -126,7 +126,7 @@
 
   					<div class="funcionamiento-text"><p>¿Me lo explicas? <br> Desarrollamos videos animados con  explicaciones de los mejores profesores para comprender mejor cada tema. </p></div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 col-sm-6">
 						<div class="view hm-zoom overlay hm-blue-strong">
 							<img src="/packages/images/landing/fun-pdf.jpg" alt="PDF" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
@@ -136,7 +136,7 @@
 
   					<div class="funcionamiento-text"><p>Algo que leer. <br>Documentos evaluados por expertos, que ayudarán a comprender mejor cada tema.</p></div>
 					</div>
-					<div class="col-md-3" id="content-elemento">
+					<div class="col-md-3 col-sm-6" id="content-elemento">
 						<div class="view hm-zoom overlay hm-yellow-strong">
 							<img src="/packages/images/landing/fun-feedback.jpg" alt="Retroalimentación" class="img-thumbnail img-responsive img-fluid">
 						<div class="mask flex-center">
@@ -497,7 +497,7 @@
 				<div class="row">
 
 					<!--First column-->
-					<div class="col-md-4 col-md-offset-2">
+					<div class="col-md-4 col-md-offset-2 col-sm-6">
 
 						<!--Pricing card-->
 						<div class="card pricing-card hoverable z-depth-3">
@@ -549,7 +549,7 @@
 					<!--Second column-->
 
 					<!--Third column-->
-					<div class="col-md-4">
+					<div class="col-md-4 col-sm-6">
 
 						<!--Pricing card-->
 						<div class="card pricing-card proximamente hoverable">
@@ -602,6 +602,35 @@
 		</div>
 	</section>
 <!-- Fin Sección de Membresías -->
+
+<!-- Sección con el Apoyo -->
+
+	<section id="apoyo" class="margen-dispositivo">
+		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow fadeInUpBig">
+			<h2 class="section-header h2-responsive">
+				<img src="/packages/images/landing/iconos/compass.png" alt="" style="width:35px; height:35px;" class="">
+				Con el Apoyo:
+			</h2>
+		</div>
+		<div class="container">
+			<div class="col-md-12" id="content-elemento">
+				<div class="col-md-3 col-sm-6">
+					<img src="/packages/images/landing/sum.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp">
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<img src="/packages/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp">
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<img src="/packages/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp">
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<img src="/packages/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp"><br>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!-- Fin Sección con el Apoyo -->
 
 <!-- Sección de Noticias -->
 	<section id="noticias">
@@ -657,9 +686,9 @@
 			<!--Second column-->
 			<div class="col-md-2 col-md-offset-1">
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
-				<ul>
+				<ul class="ul-content">
 					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
-					<li><a href="#">- Colaboradores</a></li>
+					<li class="separacion"><a href="#">- Mentores</a></li>
 				</ul>
 			</div>
 			<!--/.Second column-->
@@ -669,8 +698,10 @@
 			<!--Third column-->
 			<div class="col-md-2">
 				<h5 class="title"><i class="fa fa-info-circle"></i> apoyo</h5>
-				<ul>
+				<ul class="ul-content">
 					<li><a href="#">- Preguntas frecuentes</a></li>
+					<li class="separacion"><a href="/terminos-y-condiciones">- Términos y Condiciones</a></li>
+					<li class="separacion"><a href="/aviso_privacidad">- Aviso de privacidad</a></li>
 				</ul>
 			</div>
 			<!--/.Third column-->

@@ -586,3 +586,24 @@ div.mascara{
 div#content-integrantes div.card div.card-block{
 	height: 170px !important;
 }
+
+section#apoyo{
+	background-color: #EEEEEE;
+}
+
+section#apoyo div.container div#content-elemento img.hoverable{
+	opacity: 0.5;
+	transition: 0.5s;
+}
+
+section#apoyo div.container div#content-elemento img.hoverable:hover{
+	opacity: 1;
+}
+
+li.separacion{
+	margin-top: 8px;
+}
+
+ul.ul-content li a:hover{
+	color:#f68e55;
+}
