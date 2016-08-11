@@ -211,6 +211,9 @@
    background-color: rgb(228, 126,60);
    transition: .4s;
  }
+ .miAvatar{
+   border-top: solid 6px #d83130;
+ }
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;
