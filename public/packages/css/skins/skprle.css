@@ -200,6 +200,17 @@
    border-top-right-radius: 10px;
    margin-bottom: 25px;
  }
+ #btn-comenzar,#btn-instrucciones{
+   margin-top: 25px;
+   width: 100%;
+   background-color: rgb(138, 71, 156);
+   border: solid 3px rgb(255, 255, 255);
+   font-family: kiddish;
+ }
+ #btn-comenzar:hover,#btn-instrucciones:hover{
+   background-color: rgb(228, 126,60);
+   transition: .4s;
+ }
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;
