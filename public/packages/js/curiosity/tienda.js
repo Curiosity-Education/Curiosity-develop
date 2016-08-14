@@ -9,7 +9,7 @@ var $tienda = {
         cancelButtonText: "Cancelar",
         confirmButtonColor: "#2262ae",
         confirmButtonText: "Sí, utilizar",
-        closeOnConfirm: false
+        closeOnConfirm: true
       },
       function(){
         $.ajax({
@@ -26,8 +26,8 @@ var $tienda = {
               showCancelButton: false,
               showConfirmButton: false
             });
-            window.location.reload();
           }
+          window.location.reload();
         })
         .fail(function(error) {
           console.log(error);

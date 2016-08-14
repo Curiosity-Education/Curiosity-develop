@@ -14,270 +14,270 @@ class ComposerStaticInit5db348c9c0434df55946e56c3664fae3
     );
 
     public static $prefixLengthsPsr4 = array (
-        'Z' =>
+        'Z' => 
         array (
             'Zizaco\\Entrust\\' => 15,
         ),
-        'T' =>
+        'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
         ),
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
         ),
-        'R' =>
+        'R' => 
         array (
             'React\\Stream\\' => 13,
             'React\\Socket\\' => 13,
             'React\\EventLoop\\' => 16,
             'Ratchet\\' => 8,
         ),
-        'P' =>
+        'P' => 
         array (
             'Patchwork\\' => 10,
         ),
-        'M' =>
+        'M' => 
         array (
             'Monolog\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Zizaco\\Entrust\\' =>
+        'Zizaco\\Entrust\\' => 
         array (
             0 => __DIR__ . '/..' . '/zizaco/entrust/src/Entrust',
         ),
-        'TijsVerkoyen\\CssToInlineStyles\\' =>
+        'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
-        'Symfony\\Component\\Filesystem\\' =>
+        'Symfony\\Component\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/filesystem',
         ),
-        'Symfony\\Component\\EventDispatcher\\' =>
+        'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'React\\Stream\\' =>
+        'React\\Stream\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/stream/src',
         ),
-        'React\\Socket\\' =>
+        'React\\Socket\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/socket/src',
         ),
-        'React\\EventLoop\\' =>
+        'React\\EventLoop\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/event-loop/src',
         ),
-        'Ratchet\\' =>
+        'Ratchet\\' => 
         array (
             0 => __DIR__ . '/..' . '/cboden/ratchet/src/Ratchet',
         ),
-        'Patchwork\\' =>
+        'Patchwork\\' => 
         array (
             0 => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork',
         ),
-        'Monolog\\' =>
+        'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'W' =>
+        'W' => 
         array (
-            'Whoops' =>
+            'Whoops' => 
             array (
                 0 => __DIR__ . '/..' . '/filp/whoops/src',
             ),
         ),
-        'T' =>
+        'T' => 
         array (
-            'Thujohn\\Pdf' =>
+            'Thujohn\\Pdf' => 
             array (
                 0 => __DIR__ . '/..' . '/thujohn/pdf/src',
             ),
         ),
-        'S' =>
+        'S' => 
         array (
-            'System' =>
+            'System' => 
             array (
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
-            'Symfony\\Component\\Translation\\' =>
+            'Symfony\\Component\\Translation\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/translation',
             ),
-            'Symfony\\Component\\Security\\Core\\' =>
+            'Symfony\\Component\\Security\\Core\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/security-core',
             ),
-            'Symfony\\Component\\Routing\\' =>
+            'Symfony\\Component\\Routing\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/routing',
             ),
-            'Symfony\\Component\\Process\\' =>
+            'Symfony\\Component\\Process\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/process',
             ),
-            'Symfony\\Component\\HttpKernel\\' =>
+            'Symfony\\Component\\HttpKernel\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/http-kernel',
             ),
-            'Symfony\\Component\\HttpFoundation\\' =>
+            'Symfony\\Component\\HttpFoundation\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/http-foundation',
             ),
-            'Symfony\\Component\\Finder\\' =>
+            'Symfony\\Component\\Finder\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/finder',
             ),
-            'Symfony\\Component\\DomCrawler\\' =>
+            'Symfony\\Component\\DomCrawler\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/dom-crawler',
             ),
-            'Symfony\\Component\\Debug\\' =>
+            'Symfony\\Component\\Debug\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/debug',
             ),
-            'Symfony\\Component\\CssSelector\\' =>
+            'Symfony\\Component\\CssSelector\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/css-selector',
             ),
-            'Symfony\\Component\\Console\\' =>
+            'Symfony\\Component\\Console\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/console',
             ),
-            'Symfony\\Component\\BrowserKit\\' =>
+            'Symfony\\Component\\BrowserKit\\' => 
             array (
                 0 => __DIR__ . '/..' . '/symfony/browser-kit',
             ),
-            'Stack' =>
+            'Stack' => 
             array (
                 0 => __DIR__ . '/..' . '/stack/builder/src',
             ),
         ),
-        'P' =>
+        'P' => 
         array (
-            'Psr\\Log\\' =>
+            'Psr\\Log\\' => 
             array (
                 0 => __DIR__ . '/..' . '/psr/log',
             ),
-            'Predis' =>
+            'Predis' => 
             array (
                 0 => __DIR__ . '/..' . '/predis/predis/lib',
             ),
-            'PHPParser' =>
+            'PHPParser' => 
             array (
                 0 => __DIR__ . '/..' . '/nikic/php-parser/lib',
             ),
-            'PHPExcel' =>
+            'PHPExcel' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
         ),
-        'N' =>
+        'N' => 
         array (
-            'Net' =>
+            'Net' => 
             array (
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
-        'M' =>
+        'M' => 
         array (
-            'Math' =>
+            'Math' => 
             array (
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
-            'Maatwebsite\\Excel\\' =>
+            'Maatwebsite\\Excel\\' => 
             array (
                 0 => __DIR__ . '/..' . '/maatwebsite/excel/src',
             ),
         ),
-        'L' =>
+        'L' => 
         array (
-            'LaravelBook\\Ardent' =>
+            'LaravelBook\\Ardent' => 
             array (
                 0 => __DIR__ . '/..' . '/laravelbook/ardent/src',
             ),
         ),
-        'J' =>
+        'J' => 
         array (
-            'Jeremeamia\\SuperClosure' =>
+            'Jeremeamia\\SuperClosure' => 
             array (
                 0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
             ),
         ),
-        'I' =>
+        'I' => 
         array (
-            'Intervention\\Image' =>
+            'Intervention\\Image' => 
             array (
                 0 => __DIR__ . '/..' . '/intervention/image/src',
             ),
-            'Illuminate' =>
+            'Illuminate' => 
             array (
                 0 => __DIR__ . '/..' . '/laravel/framework/src',
             ),
         ),
-        'G' =>
+        'G' => 
         array (
-            'Guzzle\\Stream' =>
+            'Guzzle\\Stream' => 
             array (
                 0 => __DIR__ . '/..' . '/guzzle/stream',
             ),
-            'Guzzle\\Parser' =>
+            'Guzzle\\Parser' => 
             array (
                 0 => __DIR__ . '/..' . '/guzzle/parser',
             ),
-            'Guzzle\\Http' =>
+            'Guzzle\\Http' => 
             array (
                 0 => __DIR__ . '/..' . '/guzzle/http',
             ),
-            'Guzzle\\Common' =>
+            'Guzzle\\Common' => 
             array (
                 0 => __DIR__ . '/..' . '/guzzle/common',
             ),
         ),
-        'F' =>
+        'F' => 
         array (
-            'File' =>
+            'File' => 
             array (
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
-        'E' =>
+        'E' => 
         array (
-            'Evenement' =>
+            'Evenement' => 
             array (
                 0 => __DIR__ . '/..' . '/evenement/evenement/src',
             ),
         ),
-        'C' =>
+        'C' => 
         array (
-            'Crypt' =>
+            'Crypt' => 
             array (
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
-            'ClassPreloader' =>
+            'ClassPreloader' => 
             array (
                 0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
             ),
-            'Carbon' =>
+            'Carbon' => 
             array (
                 0 => __DIR__ . '/..' . '/nesbot/carbon/src',
             ),
         ),
-        'B' =>
+        'B' => 
         array (
-            'BrainSocket' =>
+            'BrainSocket' => 
             array (
                 0 => __DIR__ . '/..' . '/brainboxlabs/brain-socket/src',
             ),
-            'Boris' =>
+            'Boris' => 
             array (
                 0 => __DIR__ . '/..' . '/d11wtq/boris/lib',
             ),
@@ -1163,7 +1163,6 @@ class ComposerStaticInit5db348c9c0434df55946e56c3664fae3
         'PHPExcel_Writer_OpenDocument_MetaInf' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/MetaInf.php',
         'PHPExcel_Writer_OpenDocument_Mimetype' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/Mimetype.php',
         'PHPExcel_Writer_OpenDocument_Settings' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/Settings.php',
-        'PHPExcel_Writer_OpenDocument_Styles' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/Styles.php',
         'PHPExcel_Writer_OpenDocument_Thumbnails' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/Thumbnails.php',
         'PHPExcel_Writer_OpenDocument_WriterPart' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/OpenDocument/WriterPart.php',
         'PHPExcel_Writer_PDF' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/PDF.php',
@@ -2694,10 +2693,15 @@ class ComposerStaticInit5db348c9c0434df55946e56c3664fae3
         'archivo' => __DIR__ . '/../..' . '/app/models/archivo.php',
         'archivoController' => __DIR__ . '/../..' . '/app/controllers/archivoController.php',
         'assignedRole' => __DIR__ . '/../..' . '/app/models/roleUser.php',
+        'avatar' => __DIR__ . '/../..' . '/app/models/avatar.php',
+        'avatarController' => __DIR__ . '/../..' . '/app/controllers/avatarController.php',
+        'avatarestilo' => __DIR__ . '/../..' . '/app/models/avatarestilo.php',
+        'avatarestilosController' => __DIR__ . '/../..' . '/app/controllers/avatarestilosController.php',
         'bloque' => __DIR__ . '/../..' . '/app/models/bloque.php',
         'bloqueController' => __DIR__ . '/../..' . '/app/controllers/bloqueController.php',
         'ciudad' => __DIR__ . '/../..' . '/app/models/ciudad.php',
         'ciudadController' => __DIR__ . '/../..' . '/app/controllers/ciudadController.php',
+        'contenidoController' => __DIR__ . '/../..' . '/app/controllers/contenidoController.php',
         'cursoController' => __DIR__ . '/../..' . '/app/controllers/cursoController.php',
         'direccion' => __DIR__ . '/../..' . '/app/models/direccion.php',
         'escuela' => __DIR__ . '/../..' . '/app/models/escuela.php',
@@ -2727,10 +2731,13 @@ class ComposerStaticInit5db348c9c0434df55946e56c3664fae3
         'profesorController' => __DIR__ . '/../..' . '/app/controllers/profesorController.php',
         'recordatorioHijo' => __DIR__ . '/../..' . '/app/models/recordatorioHijo.php',
         'renovacion' => __DIR__ . '/../..' . '/app/models/renovacion.php',
+        'secuencia' => __DIR__ . '/../..' . '/app/models/secuencia.php',
+        'secuenciaController' => __DIR__ . '/../..' . '/app/controllers/secuenciaController.php',
         'skin' => __DIR__ . '/../..' . '/app/models/skin.php',
         'suscripcionController' => __DIR__ . '/../..' . '/app/controllers/suscripcionController.php',
         'tema' => __DIR__ . '/../..' . '/app/models/tema.php',
         'temaController' => __DIR__ . '/../..' . '/app/controllers/temaController.php',
+        'tiendaController' => __DIR__ . '/../..' . '/app/controllers/tiendaController.php',
         'userController' => __DIR__ . '/../..' . '/app/controllers/userController.php',
         'video' => __DIR__ . '/../..' . '/app/models/video.php',
     );

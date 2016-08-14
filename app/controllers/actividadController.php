@@ -384,30 +384,34 @@ class actividadController extends BaseController
         Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
           $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-          $avatarActual = DB::table('hijos_avatars')
-          ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
-          ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
-          ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
-          ->where('hijos_avatars.hijo_id', '=', $idHijo)
-          ->where('tipos_secuencias.nombre', '=', 'esperar')
-          ->pluck('secuencias.sprite');
-          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::user()->persona->hijo->id)
+          $avatarActual = new avatarController();
+          $spriteAvatar = $avatarActual->getAvatarSprite('esperar');
+          $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::User()->persona()->first()->hijo()->pluck('id'))
           ->where('actividad_id', '=', $idActividad)
-          ->max('promedio');
+          ->max('puntaje');
           if(!$maxProm){
             $maxProm = 0;
-            $avatarActual = "spritenonsondavatar.jpg";
+          }
+          $meta = new metaController();
+          if ($meta->getAvanceMetaHijo() >= $meta->getMetaHijo()->meta){
+            $canPlay = false;
+          }
+          else{
+            $canPlay = true;
           }
         }
         else{
           $maxProm = 0;
+          $spriteAvatar = "spritenonsondavatar.png";
+          $canPlay = true;
         }
         try{
             //----Retornamos la vista del juego
             return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array(
-              'datos'=>$vista,
+              'datos'=> $vista,
               'maxProm' => $maxProm,
-              'avatar' => $avatarActual
+              'avatar' => $spriteAvatar,
+              'canPlay' => $canPlay
             ));
         }
         catch(Exception $ex){
@@ -893,8 +897,10 @@ class actividadController extends BaseController
             $activida_hijo->actividad_id = Session::get('idActivity');
             $activida_hijo->save();
             $this->avanceMetaIncrement($idHijo);
+            $addedExp = $this->incrementExp($idHijo, Input::get('eficiencia'));
+            $addedCoin = $this->incrementCoins($idHijo, $addedExp);
           }
-          return Response::json(array("estado"=>"200","message"=>"Juego finalizado"));
+          return Response::json(array("estado"=>"200","message"=>"Juego finalizado","exp"=>$addedExp, "coins"=>$addedCoin));
         }
         catch(Excetion $ex){
             return Response::json(array("estado"=>"500","message"=>$ex->getMessage()));
@@ -951,6 +957,27 @@ class actividadController extends BaseController
       ->where('fecha', '=', date("Y-m-d"))
       ->where('avance_id', '=', $idAvance)
       ->increment('avance', 1);
+    }
+
+    private function incrementExp($id, $porc){
+      $cant_exp = hijo::join('hijos_metas_diarias', 'hijos_metas_diarias.hijo_id', '=', 'hijos.id')
+      ->join('metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
+      ->where('hijos.id', '=', $id)
+      ->select('metas_diarias.cant_exp')
+      ->get();
+      $exp = round($porc * $cant_exp[0]['cant_exp'] / 100);
+      DB::table('hijo_experiencia')
+      ->where('hijo_id', '=', $id)
+      ->increment('cantidad_exp', $exp);
+      return $exp;
+    }
+
+    private function incrementCoins($id, $experiencia){
+      $coins = $experiencia * 2;
+      DB::table('hijo_experiencia')
+      ->where('hijo_id', '=', $id)
+      ->increment('coins', $coins);
+      return $coins;
     }
 
 }

@@ -1,6 +1,6 @@
-@font-face {
-  font-family: DS-DIGII;
-  src: url('/packages/css/libs/fonts/DS-DIGIB.TTF');
+@font-face{
+	font-family:Kiddish;
+	src:url(/packages/fonts/Kiddish.ttf);
 }
 *{
     -webkit-user-select:none;
@@ -26,6 +26,7 @@
     font-weight: bold;
     font-size: 2.7em;
     color:hsl(65, 100%, 50%);
+    font-family: kiddish;
 }
 #mycanvas{
     background:transparent;
@@ -53,9 +54,9 @@
     margin: 0!important;
     font-size: 1.9em!important;
     padding: 0!important;
-    font-family: 'Calibri Light'!important;
+    font-family: 'Kiddish'!important;
 }
-.temp>#temp-count{    
+.temp>#temp-count{
     color: #fff!important;
     font-size: 2.3em!important;
 }
@@ -79,37 +80,28 @@
 
 .cal-titulo > h3{
   margin-top: -5px;
-  font-size: 1.2em;
   letter-spacing: 0.8px;
+  font-family: kiddish;
+  font-size: 2.2em;
+  color: #585d66;
 }
 .blur{
   -webkit-filter:blur(12px);
 }
 .cal-titulo > h1{
-  font-size: 1.8em;
+  font-size: 3em;
   margin-top: -5px;
-}
-
-#max-pts{
-  border-right: solid 10px;
-}
-
-#btn-comenzar,#btn-instrucciones{
-  margin-top: 25px;
-  width: 100%;
-  max-width: 300px;
-  background-color: rgb(138, 71, 156);
-  border: solid 3px rgb(255, 255, 255);
-}
-
-#btn-comenzar:hover,#btn-instrucciones:hover{
-  background-color: rgb(228, 126,60);
-  transition: .4s;
+  font-family: kiddish;
+  color: #585d66;
 }
 
 #objetivo{
-  padding-left: 35px;
+  /*padding-left: 35px;
   padding-right: 35px;
+  background-color: red;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 30px;*/
 }
 
 #objetivo > p{
@@ -186,28 +178,43 @@
   transition: 0.4s;
 }
 
+#zona-play{
+  padding-left: 25px;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+}
+
 .btnVideo{
-  background-color: rgb(235, 11, 11) !important;
-  color: white !important;
-  border-color: rgba(138, 0, 0, 0.6) !important;
+  background-color: rgba(236, 39, 38, 1) !important;
+  color: #fff !important;
+  border: solid 2px rgb(246, 69, 68) !important;
+  width: 100%;
+  border-radius: 30px !important;
+  font-size: 1.2em !important;
+  margin-bottom: 10px;
 }
 .error-shadow{
   box-shadow: 0px 0px 15px 5px rgba(190, 0, 0, 0.85);
   transition: 0.5s;
 }
 .btnVideo:hover{
-  background-color: rgba(172, 5, 5, 1) !important;
+  background-color: rgb(245, 73, 72) !important;
   transition: .4s;
 }
 
 .btnDownloadPDF{
-  background-color: rgb(7, 139, 95) !important;
-  color: white !important;
-  border-color: rgba(0, 82, 54, 0.4) !important;
+  background-color: rgba(45,150,186,1);
+  color: #fff !important;
+  border: solid 2px #2d96ba !important;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 .btnDownloadPDF:hover{
-  background-color: rgb(2, 108, 74) !important;
+  background-color: #3da5c8 !important;
   transition: 0.4s;
 }
 
@@ -326,7 +333,7 @@
 }
 
 #titulo{
-  font-family: fantasy;
+  font-family: Kiddish;
   color: black;
 }
 #menu-juego {
@@ -376,12 +383,6 @@ ul{
   list-style-type: none;
 }
 
-/* Titulo del slider */
-
-#titulo-slider{
-	font-family: "Comic Sans MS";
-}
-
 /* Encabezado del slider */
 
 .slider-title{
@@ -400,11 +401,10 @@ ul{
 
 .slider-wrapper{
   position: relative;
-  height: 200px;
+  height: 275px;
   width: 100%;
-  border:  5px solid rgb(82, 79, 77);
+  border: none;
   overflow: hidden;
-  border-radius: 5px;
   -webkit-box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.75);
@@ -446,7 +446,6 @@ li.slide-current{
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
-  
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -482,7 +481,7 @@ li.slide-current{
   height: 12px;
   width: 12px;
   margin: 0 4px;
-  
+
   cursor: pointer;
 }
 
@@ -498,7 +497,7 @@ li.slide-current{
   color: black;
 }
 #modal-instrucciones .modal-title{
-  font-family: fantasy;
+  font-family: Kiddish;
 
 
 }
@@ -510,7 +509,7 @@ li.slide-current{
 }
 
 #titulo-juego{
-  font-family: "Comic Sans MS" !important;
+  font-family: "Kiddish" !important;
   font-size: 1.5em !important;
   color:rgb(228,126,60) !important;
 }
@@ -520,8 +519,6 @@ li.slide-current{
   border-radius: 5px;
 
 }
-
-
 
 video{
   width: 100%;
@@ -540,7 +537,7 @@ video{
 }
 
 #modal-instrucciones p{
-  font-family: "Comic Sans MS";
+  font-family: "Kiddish";
   font-size: 1.5em;
   color: black;
 }
@@ -564,9 +561,25 @@ button.instruccion{
 
 }
 
+#sectionStars{
+  color: #585d66;
+}
+
 #sectionStars > .fa-star{
   color: #f2bc19;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+#btn-what{
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #65499d;
+  border: none;
+}
+
+#btn-what:hover{
+  background-color: #7455b0;
 }
 
 /*keyframes*/
@@ -582,7 +595,7 @@ button.instruccion{
     animation: 1s fastToRight 1;
 }
 .zoom{
-    animation: 1.7s zoom 1 ease; 
+    animation: 1.7s zoom 1 ease;
 }
 @keyframes fastToLeft{
     0%{

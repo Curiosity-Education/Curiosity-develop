@@ -82,13 +82,13 @@
   text-align: left;
 }
 .nameGamePanels > h5{
-  font-size: 0.8em;
+  font-size: 1em;
   font-family: Kiddish !important;
   font-weight: bold;
 }
 .nameGamePanels > h6{
   font-family: kiddish;
-  font-size: 0.6em;
+  font-size: 0.75em;
   margin-bottom: 0;
 }
 .starRank{
@@ -171,10 +171,6 @@
 }
 .owl-next:hover{
   opacity: 0.8;
-}
-.owl-carousel .owl-item img {
-    transform-style: preserve-3d;
-    border-radius: 10px;
 }
 .isPremiumThis{
   font-size: 0.5em;

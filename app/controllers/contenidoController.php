@@ -110,29 +110,40 @@ class contenidoController extends BaseController
       ->orderBy('vistos', 'desc')
       ->limit(4)
       ->get();
-      $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-      $gradoHijo = DB::table('escolaridades')->where('hijo_id', '=', $idHijo)->orderBy('id', 'desc')->limit(1)->pluck('grado');
-      $recomendados = archivo::join('actividades', 'actividades.id', '=', 'archivos.actividad_id')
-      ->join('temas', 'temas.id', '=', 'actividades.tema_id')
-      ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
-      ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
-      ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-      ->where('actividades.active', '=', '1')
-      ->where('archivos.active', '=', '1')
-      ->where('temas.active', '=', '1')
-      ->where('bloques.active', '=', '1')
-      ->where('inteligencias.active', '=', '1')
-      ->where('niveles.active', '=', '1')
-      ->where('actividades.estatus', '=', 'unlock')
-      ->where('temas.estatus', '=', 'unlock')
-      ->where('bloques.estatus', '=', 'unlock')
-      ->where('inteligencias.estatus', '=', 'unlock')
-      ->where('niveles.estatus', '=', 'unlock')
-      ->where('ext', '=', 'php')
-      ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium')
-      ->orderBy('actividades.id', 'desc')
-      ->limit(5)
-      ->get();
+
+      // Juegos recomendables para el alumno dependiendo los resultados mas bajos
+      if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
+          $recomendables = archivo::join('actividades', 'archivos.actividad_id', '=', 'actividades.id')
+            ->join('hijo_realiza_actividades', 'hijo_realiza_actividades.actividad_id', '=', 'actividades.id')
+            ->join('temas', 'temas.id', '=', 'actividades.tema_id')
+            ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
+            ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
+            ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
+            ->join('hijos','hijos.id','=','hijo_realiza_actividades.hijo_id')
+            ->join('personas','hijos.persona_id','=','personas.id')
+            ->where('actividades.active', '=', '1')
+            ->where('archivos.active', '=', '1')
+            ->where('temas.active', '=', '1')
+            ->where('bloques.active', '=', '1')
+            ->where('inteligencias.active', '=', '1')
+            ->where('niveles.active', '=', '1')
+            ->where('actividades.estatus', '=', 'unlock')
+            ->where('temas.estatus', '=', 'unlock')
+            ->where('bloques.estatus', '=', 'unlock')
+            ->where('inteligencias.estatus', '=', 'unlock')
+            ->where('niveles.estatus', '=', 'unlock')
+            ->where('ext', '=', 'php')
+            ->where('personas.user_id',Auth::user()->id)
+            ->select(DB::raw("actividades.nombre, actividades.estatus, AVG( hijo_realiza_actividades.promedio ) AS  'promedio', actividades.*, archivos.nombre as nombreFile, temas.nombre as nombreTema, bloques.nombre as 'nombreBloque', inteligencias.nombre as 'nombreInteligencia', niveles.nombre as 'nombreNivel', temas.isPremium as 'premium'"))
+            ->groupBy('actividades.nombre')
+            ->orderBy('promedio')
+            ->limit(3)
+            ->get();
+      }
+      else{
+          $recomendables = array();
+      }
+
       // return array(
       //   'rol' => $rol,
       //   'grados' => $grados,
@@ -145,7 +156,8 @@ class contenidoController extends BaseController
         'grados' => $grados,
         'ranking' => $ranking,
         'nuevos' => $nuevos,
-        'populares' => $populares
+        'populares' => $populares,
+        'recomendables' => $recomendables
       ));
     }
     else {

@@ -117,36 +117,31 @@ Bienvenido a Curiosity
           <!--  -->
         </div>
       </div>
-      <div class="col-xs-12">
+      @if(!$recomendables)
+      <div hidden="hidden">
+      @else
+       <div class="col-xs-12">
+       @endif
+
         <div class="panelsLook panelParaTi">
           <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>
-          <!--  -->
-          <div class='row elementObj'>
-            <div class='col-xs-3 col-sm-1'>
-              <img src='/packages/images/temas/figuras.png' class='img-circle img-responsive'>
-            </div>
-            <div class='col-xs-9 col-sm-11 nameGamePanels'>
-              <h5>Nombre del juego</h5>
-              <h6>Primero > Matematicas > Bloque II > Sumas y Restas</h6>
-              <p class='objetivoGame hidden-xs'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam id culpa, magnam quod quibusdam ex consectetur quam perspiciatis possimus ipsam quasi dolores nihil vitae maiores suscipit architecto velit reiciendis! Recusandae.
-              </p>
-            </div>
-          </div>
-          <!--  -->
-          <div class='row elementObj'>
-            <div class='col-xs-3 col-sm-1'>
-              <img src='/packages/images/temas/figuras.png' class='img-circle img-responsive'>
-            </div>
-            <div class='col-xs-9 col-sm-11 nameGamePanels'>
-              <h5>Nombre del juego</h5>
-              <h6>Primero > Matematicas > Bloque II > Sumas y Restas</h6>
-              <p class='objetivoGame hidden-xs'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam id culpa, magnam quod quibusdam ex consectetur quam perspiciatis possimus ipsam quasi dolores nihil vitae maiores suscipit architecto velit reiciendis! Recusandae.
-              </p>
-            </div>
-          </div>
-          <!--  -->
+          @foreach($recomendables as $recomendable)
+              <div class='row elementObj gotoplay' data-as='{{$recomendable}}' data-r='{{$rol}}'>
+                <div class='col-xs-3 col-sm-1'>
+                  <img src='/packages/images/actividades/{{$recomendable->imagen}}' class='img-circle img-responsive'>
+                </div>
+                <div class='col-xs-9 col-sm-11 nameGamePanels'>
+                  <h5>{{$recomendable->nombre}}</h5>
+                  <h6>{{$recomendable->nombreNivel}} > {{$recomendable->nombreInteligencia}} > {{$recomendable->nombreBloque}} > {{$recomendable->nombreTema}}</h6>
+                  @if($recomendable->estatus == "lock")
+                  <span class="fa fa-clock-o isLockThis"></span>
+                  @endif
+                  @if($recomendable->premium == 1 and Auth::User()->hasRole('hijo_free'))
+                  <span class="fa fa-star isPremiumThis"></span>
+                  @endif
+                </div>
+              </div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -205,7 +200,8 @@ Bienvenido a Curiosity
   <section class="row divisorGrados">
     <div class="col-xs-12">
       <center>
-        <h3 style="font-family: Kiddish !important;"><b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b></h3>
+        <h3 style="font-family: Kiddish !important; font-size:2.5em;">
+          <b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b></h3>
       </center>
     </div>
   </section>

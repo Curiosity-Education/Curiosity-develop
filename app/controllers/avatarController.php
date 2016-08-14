@@ -117,18 +117,16 @@ class avatarController extends BaseController
     return Response::json(array(0=>'success'));
   }
 
-  function getAvatarSprite(){
-    $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-    $secuencia = Input::get('data');
-    $avatar = DB::table('hijos_avatars')
+  function getAvatarSprite($secuenciaName){
+    $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');    
+    $sprite = DB::table('hijos_avatars')
     ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
     ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
     ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
     ->where('hijos_avatars.hijo_id', '=', $idHijo)
-    ->where('tipos_secuencias.nombre', '=', $secuencia)
-    ->select('secuencias.sprite', 'avatars_estilos.avatars_id')
-    ->first();
-    return $avatar;
+    ->where('tipos_secuencias.nombre', '=', $secuenciaName)
+    ->pluck('secuencias.sprite');
+    return $sprite;
   }
 
 }
