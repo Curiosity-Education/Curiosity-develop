@@ -149,7 +149,7 @@ $(document).ready(function() {
         formData.append('objetivo', $("#descripcion").val());
         formData.append('bg_color', $("#color").val());
         formData.append('tema_id', tema);
-        formData.append('code_embed', actividad.registro.convertEmbedCode($(this).val()));
+        formData.append('code_embed', actividad.registro.convertEmbedCode($("#video").val()));
         formData.append('profesores_id', $("#profesores").val());
         $.ajax({
           url: direccion,
