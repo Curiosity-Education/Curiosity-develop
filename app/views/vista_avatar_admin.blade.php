@@ -5,6 +5,7 @@
 @stop
 
 @section('mi_css')
+  {{HTML::style('packages/css/libs/dropzone/dropzone.css')}}
   {{HTML::style('/packages/css/curiosity/gestionAvatar.css')}}
 @stop
 
@@ -140,9 +141,46 @@
         </select>
       </div>
       <div class='form-group'>
-        <label for='prevAvatar'>Imagen previa de secuencia</label>
-        <div class='btnUploadImg'><span class='fa fa-file-image-o fa-3x'></span><br><br>click para seleccionar</div>
+        <form id="filesecuenceForm">
+          <input type="file" id="filesecuence" name="filesecuence">
+        </form>
+        <!-- <label for='filesecuence'>Imagen previa de secuencia</label> -->
+        <div class="btnUploadSec" id="dropper">
+          Da click aquí para seleccionar tu archivo .zip
+        </div>
+        <!-- <label for='prevAvatar'>Imagen previa de secuencia</label> -->
+        <!-- <div class='btnUploadImg'><span class='fa fa-file-image-o fa-3x'></span><br><br>click para seleccionar</div> -->
       </div>
+      {{--<div class="col-md-12">
+        <div class="zonedrop">
+          {{Form::open(array(
+            'files'=>true,
+            'class'=>'dropzone',
+            'method'=>'POST',
+            'id'=>'my-dropzone'
+          ))}}
+            <!-- <button id="subirJuego" class="btn btn-primary" type="button" style="margin-left:300px;">
+              <i class="fa fa-upload"></i>&nbsp;
+              Subir Archivo
+            </button>
+            <button id="removeFile" class="btn btn-danger" type="button" disabled="true" style="margin-left:300px;">
+              <i class="fa fa-times"></i>&nbsp;
+              Quitar Archivo
+            </button> -->
+            <div class="fallback">
+              <input type="file" class="fallback"  accept="application/zip" name="juego_zip" id="juego_zip">
+            </div>
+            <div class="dz-message" id="dropper">
+              Suelta tus archivos aqui..
+            </div>
+            <h4 class="infouploadedfiles">Total de archivos cargados: <b id="toload">0</b></h4>
+            <h4 id="progress"></h4><h4 id="bytesSent"></h4>
+            <div class="dropzone-previews"></div>
+          {{Form::close()}}
+          <h3 class="hide text-center" id="archivosUpload">Archivos que se subieron</h3>
+          <div id="archivos" class="col-md-12"></div>
+        </div>
+      </div>--}}
       <div class='form-group text-right'>
         <button class='btn btn-success' id='guardarSecuencia'>
           <span class='fa fa-upload'></span>&nbsp;
@@ -158,6 +196,7 @@
 @stop
 
 @section('mi_js')
+  {{HTML::script('packages/js/libs/dropzone/dropzone.js')}}
   {{HTML::script('/packages/js/curiosity/avatar_estrucs.js')}}
   {{HTML::script('/packages/js/curiosity/avatar.js')}}
   {{HTML::script('/packages/js/curiosity/gestionAvatar.js')}}

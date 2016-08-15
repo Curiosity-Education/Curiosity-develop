@@ -222,6 +222,14 @@
 .miAvatar{
   border-top: solid 6px #2262ae;
 }
+ul#slider{
+  height: 360px;
+  background-image: url(/packages/images/fondos/1511.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
 /*/ Barra de desplazamiento /*/
 ::-webkit-scrollbar {
       width: 10px;

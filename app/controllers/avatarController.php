@@ -44,7 +44,7 @@ class avatarController extends BaseController
         $destinoPath = public_path()."/packages/images/avatars_curiosity/estilos/";
         $nombreFile = "def_avid_".$avatar->id.'_'.md5($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
         $estilo = new avatarestilo($datos);
-        $estilo->nombre = $datos['nombreEstilo'];
+        $estilo->nombre = $datos['nombreAvatar'];
         $estilo->preview = $nombreFile;
         $estilo->avatars_id = $avatar->id;
         $estilo->save();
@@ -95,6 +95,8 @@ class avatarController extends BaseController
       $avatar->sexo = $datos['sexo'];
       $avatar->historia = $datos['historia'];
       $avatar->save();
+      $estilo->nombre = $datos['nombreAvatar'];
+      $estilo->descripcion = $datos['historia'];
       $estilo->preview = $nombreFile;
       $estilo->save();
       $tupla = array(
@@ -117,16 +119,15 @@ class avatarController extends BaseController
     return Response::json(array(0=>'success'));
   }
 
-  function getAvatarSprite($secuenciaName){
-    $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');    
-    $sprite = DB::table('hijos_avatars')
+  public static function getSelectedInfo(){
+    $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+    $info = DB::table('hijos_avatars')
     ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
-    ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
-    ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
+    ->join('avatars', 'avatars_estilos.avatars_id', '=', 'avatars.id')
     ->where('hijos_avatars.hijo_id', '=', $idHijo)
-    ->where('tipos_secuencias.nombre', '=', $secuenciaName)
-    ->pluck('secuencias.sprite');
-    return $sprite;
+    ->select('avatars.*')
+    ->first();
+    return $info;
   }
 
 }

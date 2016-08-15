@@ -262,7 +262,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 
 #slider{
   height: 360px;
-  /*background-color: rgba(68, 198, 238, 0.05);*/
   background-image: url(/packages/images/fondos/fondo2.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -316,8 +315,7 @@ div#collapseExample div.well{
 .slider-wrapper-hijo{
   position: relative;
   height: 330px;
-  width: 100%;
-  border-top: 6px solid #2d96ba;
+  width: 100%;  
   overflow: hidden;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
   border-radius: 10px;
