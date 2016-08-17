@@ -42,7 +42,7 @@ class tiendaController extends BaseController
 
     // $nombreAvatarActual = DB::table('avatars')->where('id', '=', $avatarActual->avatars_id)->pluck('nombre');
     $estiloAvatar = avatarestilosController::getSelectedInfo();
-    $avatarEstilos = avatarestilosController::getEstilosByAvatar();    
+    $avatarEstilos = avatarestilosController::getEstilosByAvatar();
     // $avatarEstilos = avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
     // ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
     // ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
