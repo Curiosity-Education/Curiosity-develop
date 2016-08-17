@@ -615,7 +615,7 @@
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/sum.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp">
+					<img src="/packages/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp">
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<img src="/packages/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp">
