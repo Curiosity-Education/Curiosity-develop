@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'www.curiosity.com.mx',
 			'database'  => 'curiositydb',
-			'username'  => 'root',
-			'password'  => '',
+			'username'  => 'curiositydb',
+			'password'  => 'roothascuriosity',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_spanish2_ci',
 			'prefix'    => '',
