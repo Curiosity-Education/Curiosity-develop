@@ -47,7 +47,12 @@ class loginController extends BaseController
                     $idSession = $this->generaidSession();
                     User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                     Session::put('sessionId',$idSession);
-                    return Response::json(array(0=>'success'));
+                    if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('demo_hijo') || Auth::user()->hasRole('hijo_free')){
+                      return Response::json(array(0=>'success', 1=>'h'));
+                    }
+                    else{
+                      return Response::json(array(0=>'success', 1=>'o'));
+                    }
                   }
                   else{
                     return Response::json(array(0=>'error'));;

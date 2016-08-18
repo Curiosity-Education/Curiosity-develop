@@ -308,7 +308,6 @@ input#correo_noticia{
     -moz-transition: .6s;
     -o-transition: .6s;
     box-shadow: 0px 0px 0px #f5f5f5;
-		margin-top: -30px;
 }
 
 #footer{
@@ -500,7 +499,7 @@ div#wrapper-form{
 	background-color: rgba(45, 150, 186, 0.7);
 	padding: 20px 30px 0px;
 	border-radius: 3px;
-    margin-top: 110px;		
+    margin-top: 110px;
 }
 
 div#wrapper-form img.img-thumbnail{

@@ -107,7 +107,11 @@
   	   <!-- Nombre del avatar del niño -->
   		<center><h2 class="fontHijo" id="nameAvatar">{{$nombreAvatar}}<hr class="hrHijo"></h2></center>
   	   <!-- Imagen del avatar -->
-  		<center><img src="/packages/images/avatars_curiosity/secuencias/{{$avatar->sprite}}" alt="" class="img-responsive" id="avatar"><hr class="hrHijo"></center>
+  		<center>
+        <img src="" class="img-responsive" id="avatar">
+        {{--<img src="/packages/images/avatars_curiosity/secuencias/{{$avatar->sprite}}" class="img-responsive" id="avatar">--}}
+        <hr class="hrHijo">
+      </center>
       <center>
         <a href="/tienda" class="irAvatarStore">
           <i class="fa fa-shopping-bag"></i>&nbsp;
@@ -306,10 +310,12 @@
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/chart/Chart.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
+{{HTML::script('/packages/js/curiosity/getspav.js')}}
 <script type="text/javascript">
   $(document).ready(function() {
 
     $curiosity.menu.setPaginaId("#menuPerfil");
+    $sprite.putSpriteSelected('esperar', $("#avatar"));
 
     var avanceMeta = {{$avanceMeta}};
     var faltanMeta = {{$faltanteMeta}};
@@ -325,7 +331,7 @@
           labels : ["Juegos Terminados", "Faltantes"],
           datasets : [{
             data : [avances, faltantes],
-            backgroundColor : ["#3cb54a", "rgba(195, 228, 199, 1)"],
+            backgroundColor : ["#3cb54a", "rgba(255, 255, 255, 1)"],
             hoverBackgroundColor : ["#2f943a", "rgba(195, 228, 199, 1)"],
             borderColor : ["#3cb54a", "rgba(195, 228, 199, 1)"],
             borderWidth : [1, 1]

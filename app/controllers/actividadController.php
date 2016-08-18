@@ -49,6 +49,7 @@ class actividadController extends BaseController
       // si se accedio a la ruta por POST se realiza lo siguiente:
       // obtenemos la informacion del formulario
       $formulario = Input::all();
+      // return Input::file('wallpaper');
       // creamos las reglas de validacion
       $reglas = array(
         'nombre' => 'required',
@@ -384,8 +385,6 @@ class actividadController extends BaseController
         Session::put("idActivity",$idActividad);
         if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
           $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-          $avatarActual = new avatarController();
-          $spriteAvatar = $avatarActual->getAvatarSprite('esperar');
           $maxProm = hijoRealizaActividad::where('hijo_id', '=', Auth::User()->persona()->first()->hijo()->pluck('id'))
           ->where('actividad_id', '=', $idActividad)
           ->max('puntaje');
@@ -402,7 +401,6 @@ class actividadController extends BaseController
         }
         else{
           $maxProm = 0;
-          $spriteAvatar = "spritenonsondavatar.png";
           $canPlay = true;
         }
         try{
@@ -410,7 +408,6 @@ class actividadController extends BaseController
             return View::make('juegos.'.str_replace('.blade.php','',$vista[0]->archivo_nombre), array(
               'datos'=> $vista,
               'maxProm' => $maxProm,
-              'avatar' => $spriteAvatar,
               'canPlay' => $canPlay
             ));
         }

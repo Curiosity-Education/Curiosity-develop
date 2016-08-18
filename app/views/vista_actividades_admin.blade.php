@@ -162,6 +162,16 @@
         <i class="fa fa-lock fa-4x" id="btnLock"></i>
       </div>
     </form>
+    <!-- <div class="fixForm">
+      <label>Seleccionar Wallpaper</label>
+      <form id="formWallpaper" class="form-horizontal">
+        <input type="file" class="form-control hidden" id="wallpaper" name="wallpaper">
+      </form>
+      <div class="filePrevWallp tooltipShow" title="Click para seleccionar nuevo">
+        <img src="/packages/images/pdf_icon_o.png" id="" /><br>
+      </div>
+      <div id="appendUpdateFile"></div>
+    </div> -->
     <div class="fixForm">
       <label>Seleccionar PDF</label>
       <form id="formPDF" class="form-horizontal">

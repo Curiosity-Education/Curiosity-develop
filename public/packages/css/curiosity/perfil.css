@@ -262,7 +262,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 
 #slider{
   height: 360px;
-  /*background-color: rgba(68, 198, 238, 0.05);*/
   background-image: url(/packages/images/fondos/fondo2.jpg);
   background-position: center;
   background-repeat: no-repeat;

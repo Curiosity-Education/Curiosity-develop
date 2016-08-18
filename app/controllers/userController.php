@@ -55,15 +55,15 @@ class userController extends BaseController{
               if(Auth::user()->flag == 1){
                 $avatars = array(
                   "avatars" => DB::table('avatars')->join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
-                                                   ->join('secuencias', 'secuencias.avatar_estilo_id', '=', 'avatars_estilos.id')
-                                                   ->join('tipos_secuencias', 'tipos_secuencias.id', '=', 'secuencias.tipo_secuencia_id')
-                                                   ->where('avatars.active', '=', '1')
-                                                   ->where('avatars_estilos.active', '=', '1')
-                                                   ->where('avatars_estilos.is_default', '=', '1')
-                                                   ->where('secuencias.active', '=', '1')
-                                                   ->where('tipos_secuencias.nombre', '=', 'esperar')
-                                                   ->select('avatars.nombre', 'avatars_estilos.preview', 'avatars_estilos.id as yd')
-                                                   ->get()
+                   ->join('secuencias', 'secuencias.avatar_estilo_id', '=', 'avatars_estilos.id')
+                   ->join('tipos_secuencias', 'tipos_secuencias.id', '=', 'secuencias.tipo_secuencia_id')
+                   ->where('avatars.active', '=', '1')
+                   ->where('avatars_estilos.active', '=', '1')
+                   ->where('avatars_estilos.is_default', '=', '1')
+                   ->where('secuencias.active', '=', '1')
+                   ->where('tipos_secuencias.nombre', '=', 'esperar')
+                   ->select('avatars.nombre', 'avatars_estilos.preview', 'avatars_estilos.id as yd')
+                   ->get()
                 );
                 DB::table('users_skins')->insert(array(
                   'uso' => 1,
@@ -102,27 +102,16 @@ class userController extends BaseController{
                 $faltanteMeta = $miMeta->meta - $avanceMeta;
                 if ($faltanteMeta < 0) { $faltanteMeta = 0; }
 
-                $avatar = DB::table('hijos_avatars')
-                ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
-                ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
-                ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
-                ->where('hijos_avatars.hijo_id', '=', $idHijo)
-                ->where('tipos_secuencias.nombre', '=', 'esperar')
-                ->select('secuencias.sprite', 'avatars_estilos.avatars_id')
-                ->first();
-                $nombreAvatar = DB::table('avatars')->where('id', '=', $avatar->avatars_id)->pluck('nombre');
-
                 return View::make('vista_hijo_inicio')
                 ->with(array(
                   'experiencia' => $experiencia,
-                  'avatar' => $avatar,
                   'metas' => $metas,
                   'miMeta' => $miMeta,
                   'porcAvanceMeta' => $porcAvanceMeta,
                   'avanceMeta' => $avanceMeta,
                   'faltanteMeta' => $faltanteMeta,
                   'coins' => $coins,
-                  'nombreAvatar' => $nombreAvatar
+                  'nombreAvatar' => avatarController::getSelectedInfo()->nombre
                 ));
               }
             }

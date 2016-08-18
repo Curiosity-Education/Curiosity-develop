@@ -143,6 +143,7 @@ class contenidoController extends BaseController
       else{
           $recomendables = array();
       }
+      $videos = video::select('code_embed')->limit(4)->get();
 
       // return array(
       //   'rol' => $rol,
@@ -157,7 +158,8 @@ class contenidoController extends BaseController
         'ranking' => $ranking,
         'nuevos' => $nuevos,
         'populares' => $populares,
-        'recomendables' => $recomendables
+        'recomendables' => $recomendables,
+        'videos' => $videos
       ));
     }
     else {
@@ -168,6 +170,10 @@ class contenidoController extends BaseController
   function getInteligencias($idGrade){
     $inteligencias = inteligencia::where("active", '=', "1")->where("nivel_id", "=", $idGrade)->get();
     return View::make("vista_contenido")->with("inteligencias", $inteligencias);
+  }
+
+  function getAllVideos(){
+    return video::select('code_embed')->get();
   }
 
 
