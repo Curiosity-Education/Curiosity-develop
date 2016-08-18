@@ -106,6 +106,7 @@ Route::group(array('before' => 'auth'), function(){
           Route::get('/actividad{id}', 'actividadController@verPaginaInWeb');
           Route::post('/metaChange', 'hijoController@changeMeta');
           Route::post('/getSpriteselected-{nameType}', 'secuenciaController@getSelectedSprite');
+          Route::post('/getVideos', 'contenidoController@getAllVideos');
         });
         Route::group(array('before' => 'gestionar_niveles'),function(){
           // Niveles

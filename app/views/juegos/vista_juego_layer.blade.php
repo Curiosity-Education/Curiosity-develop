@@ -125,7 +125,7 @@
               <div class="avatarZone">
                 <h3 id="titAvZon">Ayuda a tu Avatar a superarse</h3>
                 <center>
-                  <img class="img-responsive" width="50%" id="avatarUser"/>
+                  <img class="img-responsive" width="50.5%" id="avatarUser"/>
                 </center>
                 <div class="row">
                   <div class="col-md-12 cal-titulo">

@@ -138,40 +138,6 @@
 .itemVideo{
   margin-bottom: 10px;
 }
-.owl-controls{
-  margin-top: 20px;
-  text-align: center;
-}
-.owl-prev{
-  text-align: center;
-  display: inline;
-  background: rgba(45, 150, 186, 0.8);
-  color: white;
-  border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-right: 5px;
-}
-.owl-prev:hover{
-  opacity: 0.8;
-}
-.owl-next{
-  text-align: center;
-  display: inline;
-  background: rgba(45, 150, 186, 0.8);
-  color: white;
-  border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-left: 5px;
-}
-.owl-next:hover{
-  opacity: 0.8;
-}
 .isPremiumThis{
   font-size: 0.5em;
   background-color: #ed6922;
@@ -200,4 +166,20 @@
 }
 .cardInfo{
 
+}
+.videosArrow{
+  border: none;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding-top: 2px;
+  background-color: #4aacd2;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  outline: none;
 }
