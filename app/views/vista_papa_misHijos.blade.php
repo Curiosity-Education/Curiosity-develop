@@ -225,7 +225,7 @@
 
 <!-- SECCION DONDE MOSTRAMOS HIJO Y AVATAR -->
 <div class='container-fluid'>
-	<div class='col-xs-12 contenedores' id='hijosInfo'>
+	<div class='col-xs-12 contenedores color-top' id='hijosInfo'>
 	  <h3><i class='fa fa-child'></i> Mis Hijos
 	  <button class='btn pull-right' style='background-color:#94bc3d; color:white;' id='tabRegHijos' data-dad='{{$rol}}'>
       <span class="fa fa-plus"></span>&nbsp;

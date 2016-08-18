@@ -103,7 +103,7 @@
 
    <div class="">
    <!-- Apartado para mostrar lo referente al avatar -->
-	  <div class="col-md-3 col-sm-4 col-xs-12 contenedores" id="contAvatar">
+	  <div class="col-md-3 col-sm-4 col-xs-12 contenedores color-top" id="contAvatar">
   	   <!-- Nombre del avatar del niño -->
   		<center><h2 class="fontHijo" id="nameAvatar">{{$nombreAvatar}}<hr class="hrHijo"></h2></center>
   	   <!-- Imagen del avatar -->
@@ -191,7 +191,7 @@
   			<div class="col-md-5 col-xs-12" id="slider">
   				<div class="row">
             <section class="slider-container">
-  				    <ul id="slider" class="slider-wrapper-hijo">
+  				    <ul id="slider" class="slider-wrapper-hijo color-top">
   				      <li class="slide-current">
                   <center><div id="makeCanvas"></div></center>
   						    <div class="caption">
@@ -292,7 +292,7 @@
       			</div>
       		  </div>
       		  <div class="col-xs-12 col-md-3">
-      			<div class="box box-primary tarjetas" id="imgPerfilChanger">
+      			<div class="box box-primary tarjetas color-top" id="imgPerfilChanger">
     			   <div class="box-body box-profile">
     				  <div class="image-portada">
     					<img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">

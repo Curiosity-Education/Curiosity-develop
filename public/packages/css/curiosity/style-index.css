@@ -108,7 +108,7 @@ div.view-entrada{
 }
 
 section#nosotros{
-	background-color: #EEEEEE;
+	background-color: #fff;
 }
 
 #logo_entrada{
@@ -147,7 +147,7 @@ section#nosotros{
 }
 
 section#funcionamiento{
-	background-color: #fff;
+	background-color: #F5F5F5;
 }
 
 p.text-justify b{
@@ -237,7 +237,7 @@ div#carusel-testimonial div.card div.card-block{
 }
 
 section#colaboradores{
-	background-color: #EEEEEE;
+	background-color: #F5F5F5;
 }
 
 div#carusel-colaboradores div.card{
@@ -587,7 +587,7 @@ div#content-integrantes div.card div.card-block{
 }
 
 section#apoyo{
-	background-color: #EEEEEE;
+	background-color: #F5F5F5;
 }
 
 section#apoyo div.container div#content-elemento img.hoverable{

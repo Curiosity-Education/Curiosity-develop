@@ -19,7 +19,7 @@ Bienvenido a Curiosity
 @stop
 
 @section('panel_opcion')
-  <section class="panelWelcome">
+  <section class="panelWelcome color-top">
     <div class="row">
       <div class="col-sm-4">
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>

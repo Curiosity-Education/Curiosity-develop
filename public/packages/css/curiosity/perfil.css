@@ -272,7 +272,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', end
 .contenedores{
 	background-color: white;
 	border-radius: 10px;
-  border-top: 6px solid #2d96ba;
 	padding-bottom: 12px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
 }
@@ -315,7 +314,7 @@ div#collapseExample div.well{
 .slider-wrapper-hijo{
   position: relative;
   height: 330px;
-  width: 100%;  
+  width: 100%;
   overflow: hidden;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
   border-radius: 10px;
@@ -903,3 +902,8 @@ div.content-emocion{
 	margin: 0px 5px;
 }
 /*----------------------------------------------*/
+
+/*------- COLOR DEL BORDER-TOP DE LOS PANELES -------*/
+.color-top{
+	border-top: 5px solid #2262ae !important;
+}
