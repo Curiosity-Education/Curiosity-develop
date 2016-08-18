@@ -221,7 +221,7 @@
 
  	<div class="col-md-3">
  		<!-- CUADRO DATOS USUARIO -->
- 		<div class="box box-primary">
+ 		<div class="box box-primary color-top">
       <div class="box-body box-profile">
          <div class="image-portada">
            <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
@@ -230,7 +230,7 @@
       </div>
     </div>
     <!-- CUADRO DATOS PERSONAL -->
-    <div class="box box-primary">
+    <div class="box box-primary color-top">
       <div class="box-header with-border">
         <center><h3 class="box-title">Mis Datos</h3></center>
       </div>
@@ -282,7 +282,7 @@
 
  <!-- SECCION MIS HIJOS -->
   <div class="container-fluid">
-    <div class="col-xs-12 contenedores" id="">
+    <div class="col-xs-12 contenedores color-top" id="">
    	  <h3><i class="fa fa-child"></i> Mis Hijos</h3><hr class="hr">
    	  @foreach ($datosHijos as $hijo)
    	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">

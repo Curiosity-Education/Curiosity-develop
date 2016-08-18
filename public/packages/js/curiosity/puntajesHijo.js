@@ -42,7 +42,7 @@ $(document).ready(function(){
   function makeSections(id, nombre){
     var html =
     "<div class='row' id='rw"+id+"' style='margin-bottom:20px;'>"+
-      "<div class='col-md-6 col-xs-12 col-sm-12 contenedores' style='padding-bottom:35px;'>"+
+      "<div class='col-md-6 col-xs-12 col-sm-12 contenedores color-top' style='padding-bottom:35px;'>"+
         "<h4 style='margin-top: 30px;"+
           "margin-left: 20px;"+
           "margin-bottom: 0;'>"+
