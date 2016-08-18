@@ -17,12 +17,12 @@
 
   	<div class="row">
   		<div class="col-sm-4">
-  			<div class="ordenador miAvatar">
+  			<div class="ordenador color-top">
   				<center><img src="/packages/images/avatars_curiosity/secuencias/{{$avatarActual->sprite}}" id='miAvatar' class="img-responsive"></center>
   			</div>
   		</div>
 			<div class="col-sm-8">
-				<div class="ordenador miAvatar">
+				<div class="ordenador color-top">
 					<h4 class="text-center"><b>{{$nombreAvatarActual}}</b></h4>
 					<br>
 					<p class="text-center">{{$avatarActual->historia}}</p>
