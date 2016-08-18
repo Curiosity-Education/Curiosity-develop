@@ -315,7 +315,7 @@ $(document).ready(function() {
       else{
         $selectorzip.html('');
         var $zip = $("<img/>");
-        $zip.attr('src', '/packages/images/icon-css.png');
+        $zip.attr('src', '/packages/images/zipicon.png');
         $zip.css('width', '15%');
         $selectorzip.css({
           'padding-top' : '10px',
