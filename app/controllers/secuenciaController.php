@@ -34,22 +34,13 @@ class secuenciaController extends BaseController
         $tiposDir = array(
           'png' => '/packages/images/avatars_curiosity/secuencias/'
         );
-        $zipFile = $myZip->extraerSave($file, $tiposDir);
+        $zipFile = $myZip->extraerSave($file, $tiposDir, 'both');
         foreach ($zipFile[1] as $index => $objeto) {
           $secuencia = new secuencia($datos);
           $secuencia->tipo_secuencia_id = $datos['tipo_secuencia'];
           $secuencia->sprite = $objeto['nombre'];
           $secuencia->save();
         }
-
-        // $destinoPath = public_path()."/packages/images/avatars_curiosity/secuencias/";
-        // $nombreFile = "sec_estid_".$datos['avatar_estilo_id'].'_'.md5($file->getClientOriginalName()).".".$file->getClientOriginalExtension();
-        // $secuencia = new secuencia($datos);
-        // $secuencia->tipo_secuencia_id = $datos['tipo_secuencia'];
-        // $secuencia->sprite = $nombreFile;
-        // $secuencia->save();
-        // $file->move($destinoPath, $nombreFile);
-
         return Response::json(array("success", json_encode($secuencia)));
       }
       else{
@@ -71,14 +62,16 @@ class secuenciaController extends BaseController
   public static function getSelectedSprite($nameType){
     if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
       $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+      $idEstilo = avatarestilosController::getSelectedInfo()->id;
       $spritePack = DB::table('hijos_avatars')
       ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
       ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
       ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
       ->where('hijos_avatars.hijo_id', '=', $idHijo)
       ->where('tipos_secuencias.nombre', '=', $nameType)
+      ->where('secuencias.avatar_estilo_id', '=', $idEstilo)
       ->select('secuencias.sprite', 'secuencias.id')
-      ->orderBy('secuencias.id', 'asc')
+      ->orderBy('secuencias.sprite', 'asc')
       ->get();
       return Response::json(array('estatus'=>true, 'sprite'=>$spritePack));
     }

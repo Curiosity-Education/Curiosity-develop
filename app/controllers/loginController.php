@@ -10,7 +10,6 @@ class loginController extends BaseController
   {
     if(Request::method() == 'POST')
         {
-
           /*Guardamos en la variable $Form todos los valores obtenidos*/
           $Form = Input::get('data'); //datos
           /*Creamos la reglas de validacion para esos valores*/

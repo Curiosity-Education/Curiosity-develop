@@ -6,7 +6,7 @@
  */
 class zipController extends BaseController
 {
-  private function recorrer_ruta($ruta, $typeAndFolder){
+  private function recorrer_ruta($ruta, $typeAndFolder, $boolean){
     $filesSaved = [];
     // abrir un directorio y listarlo
     //---Verificamos si la ruta es un dirctorio
@@ -21,7 +21,15 @@ class zipController extends BaseController
             //Encontramos su extension
             foreach ($typeAndFolder as $tipo => $directorio) {
               if ($tipo == archivoController::findExtension($file)){
-                $fileName = rand()."_".date('Y-m-d').".".archivoController::findExtension($file);
+                if ($boolean == 'yes'){
+                  $fileName = rand()."_".date('Y-m-d').".".archivoController::findExtension($file);
+                }
+                else if ($boolean == 'not'){
+                  $fileName = $file;
+                }
+                else if ($boolean == 'both'){
+                  $fileName = $file."-".rand()."_".date('Y-m-d').".".archivoController::findExtension($file);
+                }
                 archivoController::moveFile($ruta.$file,public_path().$directorio.$fileName);
                 array_push($filesSaved, array(
                   'nombre' => $fileName,
@@ -40,7 +48,7 @@ class zipController extends BaseController
     }
   }
 
-  private function extraerArchivo($rutaZIP, $typeAndFolder){
+  private function extraerArchivo($rutaZIP, $typeAndFolder, $boolean){
     //Creamos un objeto de la clase ZipArchive()
     $enzipado = new ZipArchive();
     //Abrimos el archivo a descomprimir
@@ -53,8 +61,9 @@ class zipController extends BaseController
     $extraido = $enzipado->extractTo($ruta);
     //--Crerramos el archivo
     $enzipado->close();
+    unlink($rutaZIP);
     //---Recorreomos la ruta para validar sus archivos y distribuirlos
-    $saved = $this->recorrer_ruta($ruta, $typeAndFolder);
+    $saved = $this->recorrer_ruta($ruta, $typeAndFolder, $boolean);
     /* Si el archivo se extrajo correctamente listamos los nombres de los
     * archivos que contenia de lo contrario mostramos un mensaje de error
     */
@@ -66,7 +75,7 @@ class zipController extends BaseController
     }
   }
 
-  public function extraerSave($inputFile, $typeAndFolder){
+  public function extraerSave($inputFile, $typeAndFolder, $boolean){
     try{
       //Validamos que el input no este vacio
       if($inputFile != null){
@@ -88,7 +97,7 @@ class zipController extends BaseController
           $rutaZIP = $destinoPath.$log;
           // Extraemos el archivo y como parametro recibe la ruta si todo
           // se procesa bien dentro de la funcion
-          $extraccion = $this->extraerArchivo($rutaZIP, $typeAndFolder);
+          $extraccion = $this->extraerArchivo($rutaZIP, $typeAndFolder, $boolean);
           if($extraccion[0] == true){
             return $extraccion;
           }

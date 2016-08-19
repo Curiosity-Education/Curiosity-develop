@@ -100,10 +100,11 @@ div#collapseEx2 > ul.navbar-nav > li.anc:hover{
 }
 
 div.view-entrada{
-	background: url("/packages/images/landing/fondo-full.jpg") repeat center center fixed;
+	background: url("/packages/images/landing/fondo-full-min.jpg");
 	height: 100%;
 	/*background-attachment: fixed;*/
 	background-size:cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
