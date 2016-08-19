@@ -21,12 +21,32 @@ var $juego = {
         puntajeMaximo:0,
         eficiencia:0,
         continuo:0,//variable para determinar combos dentro del juego.
+        unity:{//objeto para iteractuar con los juegos desarrollados en unity
+           ayudar:function(){
+            $("#ayuda").trigger("click");
+            alert();
+           },
+           salir:function(){
+              $juego.aciertos=0;
+              $juego.game.continuo=0;//reiniciar continuos
+              $("#zona-play").hide();//desaparecer zona juego
+              $("#zona-obj").show();//aparecer zona del objetivo
+              $juego.game.puntajeActual=0;
+              $("#game").trigger('exit');
+           }
+        },
         start:function(duracion,inverso){
             $("#zona-play").show();
             $("#zona-obj").hide();
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
             $juego.cronometro.start(duracion,inverso);
+        },
+        _start:function(){
+            $("#zona-play").show();
+            $("#zona-obj").hide();
+            $("#countPuntaje").text($juego.game.puntajeActual);
+            $("#game").trigger('start');
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
@@ -415,10 +435,13 @@ var $juego = {
 $("#pausa").click(function(){
   $juego.cronometro.pausar(true);
   $("#game").addClass("blur");
+  $("#game").trigger("pausa");
 });
 $("#continuar").click(function(){
   $juego.cronometro.pausar(false);
   $("#game").removeClass("blur");
+  $("#game").trigger("continue");
+
 });
 $("#continue").click(function(){
     $("body").removeClass("modal-open");
