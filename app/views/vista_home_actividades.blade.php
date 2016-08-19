@@ -6,8 +6,6 @@
 
 @section('mi_css')
   {{HTML::style('/packages/css/curiosity/home_actividades.css')}}
-  {{HTML::style('/packages/css/libs/slick-carousel-1_6/slick.css')}}
-  {{HTML::style('/packages/css/libs/slick-carousel-1_6/slick-theme.css')}}
 @stop
 
 @section('titulo_contenido')
@@ -206,7 +204,6 @@ Bienvenido a Curiosity
   </section>
 @stop
 
-@section('mi_js')
-  {{HTML::script('/packages/js/libs/slick-carousel-1_6/slick.min.js')}}
+@section('mi_js')  
   {{HTML::script('/packages/js/curiosity/home_actividades.js')}}
 @stop
