@@ -15,6 +15,7 @@ class tiendaController extends BaseController
     $mySkins = skin::join('users_skins', 'users_skins.skin_id', '=', 'skins.id')
     ->where('user_id', '=', Auth::user()->id)
     ->select('skins.id', 'skin', 'preview', 'premium', 'costo', 'uso')
+    ->groupBy('skins.id')
     ->get();
 
     $skinsBuy = [];
