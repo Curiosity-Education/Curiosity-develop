@@ -570,6 +570,10 @@ button.instruccion{
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
+#sectionStars > .fa-star-o{
+  color: #a2a6ad !important;
+}
+
 #btn-what{
   margin-top: 30px;
   width: 100%;

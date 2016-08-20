@@ -15,6 +15,7 @@ class tiendaController extends BaseController
     $mySkins = skin::join('users_skins', 'users_skins.skin_id', '=', 'skins.id')
     ->where('user_id', '=', Auth::user()->id)
     ->select('skins.id', 'skin', 'preview', 'premium', 'costo', 'uso')
+    ->groupBy('skins.id')
     ->get();
 
     $skinsBuy = [];
@@ -82,7 +83,7 @@ class tiendaController extends BaseController
     ->update(array(
       'skin_id' => $skin
     ));
-    return "success";
+    return Response::json(array("success"));
   }
 
   function comprarSkin(){

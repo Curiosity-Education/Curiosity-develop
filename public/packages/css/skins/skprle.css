@@ -222,6 +222,9 @@
    background-size: cover;
    border-radius: 10px;
  }
+ .color-top{
+ 	border-top: 5px solid rgb(138, 71, 156) !important;
+ }
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;
