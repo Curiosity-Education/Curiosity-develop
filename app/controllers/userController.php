@@ -50,70 +50,46 @@ class userController extends BaseController{
               return View::make('vista_papa_inicio')->with(array('datosHijos' => $datosHijos, 'juegos' => $juegos));
             }
             else if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
-              // Si el hijo es la primera vez en iniciar sesion
-              // le mostramos una vista en la cual seleccionará su avatar
-              if(Auth::user()->flag == 1){
-                $avatars = array(
-                  "avatars" => DB::table('avatars')->join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
-                   ->join('secuencias', 'secuencias.avatar_estilo_id', '=', 'avatars_estilos.id')
-                   ->join('tipos_secuencias', 'tipos_secuencias.id', '=', 'secuencias.tipo_secuencia_id')
-                   ->where('avatars.active', '=', '1')
-                   ->where('avatars_estilos.active', '=', '1')
-                   ->where('avatars_estilos.is_default', '=', '1')
-                   ->where('secuencias.active', '=', '1')
-                   ->where('tipos_secuencias.nombre', '=', 'esperar')
-                   ->select('avatars.nombre', 'avatars_estilos.preview', 'avatars_estilos.id as yd')
-                   ->get()
-                );
-                DB::table('users_skins')->insert(array(
-                  'uso' => 1,
-                  'skin_id' => Auth::user()->skin_id,
-                  'user_id' => Auth::user()->id
-                ));
-                return View::make('vista_selectAvatar', $avatars);
-              }
-              else{
-                $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
-
-                // --- Verificamos la fecha para la meta diaria del hijo
-                // --- Si es la primera vez del dia en la que ha iniciado sesión
-                // --- se hace el registro de la fecha actual del servidor y se establece
-                // --- su avance en cero (0) ya que no ha jugado nada en el dia
-                $now = date("Y-m-d");
-                $meta = new metaController();
-                $metas = $meta->getAll();
-                $miMeta = $meta->getMetaHijo();
-                if (!$meta->hasMetaToday()){
-                  DB::table('avances_metas')->insert(array(
-                    'avance' => 0,
-                    'fecha' => $now,
-                    'avance_id' => $miMeta->metaAsignedId
-                  ));
-                }
-                $avanceMeta = $meta->getAvanceMetaHijo();
-                $experiencia = DB::table('hijo_experiencia')->where('hijo_id', '=', $idHijo)->first();
-                $coins = $experiencia->coins;
-
-                // --- Calculo del avance en porcenaje de la meta del hijo
-                $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
-                if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
-
-                // --- Calculo de cuanto falta para cumplir la meta diaria
-                $faltanteMeta = $miMeta->meta - $avanceMeta;
-                if ($faltanteMeta < 0) { $faltanteMeta = 0; }
-
-                return View::make('vista_hijo_inicio')
-                ->with(array(
-                  'experiencia' => $experiencia,
-                  'metas' => $metas,
-                  'miMeta' => $miMeta,
-                  'porcAvanceMeta' => $porcAvanceMeta,
-                  'avanceMeta' => $avanceMeta,
-                  'faltanteMeta' => $faltanteMeta,
-                  'coins' => $coins,
-                  'nombreAvatar' => avatarController::getSelectedInfo()->nombre
+              // Obtenemos el id del hijo logueado
+              $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+              // --- Verificamos la fecha para la meta diaria del hijo
+              // --- Si es la primera vez del dia en la que ha iniciado sesión
+              // --- se hace el registro de la fecha actual del servidor y se establece
+              // --- su avance en cero (0) ya que no ha jugado nada en el dia
+              $now = date("Y-m-d");
+              $meta = new metaController();
+              $metas = $meta->getAll();
+              $miMeta = $meta->getMetaHijo();
+              if (!$meta->hasMetaToday()){
+                DB::table('avances_metas')->insert(array(
+                  'avance' => 0,
+                  'fecha' => $now,
+                  'avance_id' => $miMeta->metaAsignedId
                 ));
               }
+              $avanceMeta = $meta->getAvanceMetaHijo();
+              $experiencia = DB::table('hijo_experiencia')->where('hijo_id', '=', $idHijo)->first();
+              $coins = $experiencia->coins;
+
+              // --- Calculo del avance en porcenaje de la meta del hijo
+              $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
+              if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
+
+              // --- Calculo de cuanto falta para cumplir la meta diaria
+              $faltanteMeta = $miMeta->meta - $avanceMeta;
+              if ($faltanteMeta < 0) { $faltanteMeta = 0; }
+
+              return View::make('vista_hijo_inicio')
+              ->with(array(
+                'experiencia' => $experiencia,
+                'metas' => $metas,
+                'miMeta' => $miMeta,
+                'porcAvanceMeta' => $porcAvanceMeta,
+                'avanceMeta' => $avanceMeta,
+                'faltanteMeta' => $faltanteMeta,
+                'coins' => $coins,
+                'nombreAvatar' => avatarController::getSelectedInfo()->nombre
+              ));
             }
             else{
                 return View::make('vista_perfil')->with(array('perfil' => $perfil, 'persona' => $persona, 'rol'=>$rol));
@@ -218,5 +194,5 @@ class userController extends BaseController{
         }
 
     }
-    
+
 }

@@ -165,7 +165,7 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
 			$us = Auth::user();
 			$us->flag = 0;
 			$us->save();
-			return "success";
-		}		
+			return Response::json(array(0=>"success"));
+		}
 
 }
