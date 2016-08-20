@@ -902,8 +902,3 @@ div.content-emocion{
 	margin: 0px 5px;
 }
 /*----------------------------------------------*/
-
-/*------- COLOR DEL BORDER-TOP DE LOS PANELES -------*/
-.color-top{
-	border-top: 5px solid #2262ae !important;
-}
