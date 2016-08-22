@@ -68,7 +68,9 @@ class contenidoController extends BaseController
           ->where('ext', '=', 'php')
           ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium')
           ->get();
-          array_push($flagRank, array('act' => $actividad, 'promedio' => $promedio));
+          if (count($actividad) > 0){
+            array_push($flagRank, array('act' => $actividad, 'promedio' => $promedio));
+          }
         }
         // Ordenamos cada actividad segun su promedio
         for ($i=0; $i < count($flagRank); $i++) {
