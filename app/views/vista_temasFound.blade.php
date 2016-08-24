@@ -60,4 +60,7 @@
 
 @section('mi_js')
   {{ HTML::script('/packages/js/curiosity/temasFound.js') }}
+  <script type="text/javascript">
+    $("#navbar-search-input").val("{{$dato}}");
+  </script>
 @stop
