@@ -2,7 +2,9 @@ $(document).ready(function() {
 
 
   $("#btnfind").click(function() {
-    buscar();
+    if ($("#navbar-search-input").val() != ''){
+      $("#formFind").submit();
+    }
   });
 
   function buscar (){
