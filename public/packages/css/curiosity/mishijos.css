@@ -1,0 +1,77 @@
+#tit-mishijos{
+  background-color: #2262ae;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+#tit-hijos{
+  margin: 0;
+  font-size: 1.5em;
+  margin-top: 5px;
+}
+#tabRegHijos{
+  background-color:#3cb54a;
+  color:white;
+  border-radius: 50px;
+  padding-left: 35px;
+  padding-right: 35px;
+  margin-bottom: 5px;
+  border: solid 2px #7ed688;
+  outline: none;
+}
+/*Estilos para modal de registro de hijos*/
+#wizard-p-0, #wizard-p-1, #wizard-p-2{
+  background-color: #eee;
+  border: none;
+  padding: 30px;
+}
+.input-group .input-group-addon{
+  border-top-left-radius: 10px;
+  border: #fff;
+  border-left-color: #2262ae;
+  border-bottom-left-radius: 10px;
+  background-color: #2184be;
+  color: #fff;
+  font-size: 1.2em;
+}
+.form-custom-step{
+  border: none !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+.modal-header{
+  background-color: #2262ae;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: -10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 16px;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.modal-content{
+  border-top-right-radius: 16px;
+}
+.title-input{
+  color: #585d66;
+}
+.steps{
+  margin-bottom: 20px;
+}
+button[data-dismiss="modal"]{
+  margin-top: -20px !important;
+  color: rgb(33, 132, 190) !important;
+  opacity: 1 !important;
+  background-color: #fff !important;
+  border-radius: 50% !important;
+  width: 35px !important;
+  height: 35px !important;
+  margin-right: -20px !important;
+  outline: none !important;
+  border: none !important;
+  padding: 0px !important;
+}
+/*Fin de Estilos para modal de registro de hijos*/

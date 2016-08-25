@@ -4,6 +4,7 @@
  {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
  {{HTML::style('/packages/css/curiosity/helper.css')}}
+ {{HTML::style('/packages/css/curiosity/mishijos.css')}}
 @stop
 
 @section('title')
@@ -95,11 +96,11 @@
 		  <div class='modal-header'>
 			<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 			<center>
-			  <h2 class='modal-title titulo-modal' id='myModalLabel'> Registro de un nuevo hijo </h2>
+			  <h2 class='modal-title titulo-modal' id='myModalLabel' style="font-size:1.5em;"> Registro a otro Hijo </h2>
 			</center>
 			<center>
-				<i class='fa fa-female' style='color:#65499d; font-size:2em;'></i>
-				<i class='fa fa-male' style='color:#65499d; font-size:2em;'></i>
+				<!-- <i class='fa fa-female' style='color:#65499d; font-size:2em;'></i>
+				<i class='fa fa-male' style='color:#65499d; font-size:2em;'></i> -->
 			</center>
 		  </div>
 		  <div class='modal-body'>
@@ -114,7 +115,7 @@
                         <span class='input-group-addon'>
                           <spna  class='fa fa-user'></spna>
                         </span>
-                        <input type='text'  name='nombre' id='nombre' value='' class='form-control form-custom' placeholder='Nombre del niño/a'>
+                        <input type='text'  name='nombre' id='nombre' value='' class='form-control form-custom-step' placeholder='Nombre del niño/a'>
                       </div>
                     </div>
                     <div class='form-group'>
@@ -122,7 +123,7 @@
                         <span class='input-group-addon'>
                           <spna class='fa fa-chevron-right'></spna>
                         </span>
-                        <input type='text' name='apellido_paterno' id='apellido_paterno' value='' class='form-control form-custom' placeholder='Apellido paterno'>
+                        <input type='text' name='apellido_paterno' id='apellido_paterno' value='' class='form-control form-custom-step' placeholder='Apellido paterno'>
                       </div>
                     </div>
 
@@ -131,7 +132,7 @@
                         <span class='input-group-addon'>
                           <spna class='fa fa-chevron-right'></spna>
                         </span>
-                        <input type='text' name='apellido_materno' id='apellido_materno' value='' class='form-control form-custom' placeholder='Apellido materno'>
+                        <input type='text' name='apellido_materno' id='apellido_materno' value='' class='form-control form-custom-step' placeholder='Apellido materno'>
                       </div>
                     </div>
 
@@ -140,7 +141,7 @@
                         <span class='input-group-addon'>
                           <spna class='fa fa-calendar'></spna>
                         </span>
-                        <input type='text' name='fecha_nacimiento' id='fecha_nacimiento' value='' class='form-control datepicker_hijo' placeholder='Fecha de nacimiento'>
+                        <input type='text' name='fecha_nacimiento' id='fecha_nacimiento' value='' class='form-control form-custom-step datepicker_hijo' placeholder='Fecha de nacimiento'>
                       </div>
                     </div>
                     <div class='form-group'>
@@ -149,7 +150,7 @@
                           <span class='input-group-addon'>
                             <span class='fa fa-venus-mars'></span>
                           </span>
-                          <select class='form-control form-custom' name='sexo' id='sexo'>
+                          <select class='form-control form-custom-step' name='sexo' id='sexo'>
                             <option value='m'>Masculino</option>
                             <option value='f'>Femenino</option>
                           </select>
@@ -164,7 +165,7 @@
                       <span class='input-group-addon'>
                         <spna class='fa fa-chevron-right'></spna>
                       </span>
-                      <select name='grado' id='grado' class='form-control'>
+                      <select name='grado' id='grado' class='form-control form-custom-step'>
                         <option value='1'>Primero</option>
                         <option value='2'>Segundo</option>
                         <option value='3'>Tercero</option>
@@ -180,7 +181,7 @@
                       <span class='input-group-addon'>
                         <spna class='fa fa-chevron-right'></spna>
                       </span>
-                      <input type='text' name='promedio' id='promedio' value='' class='form-control' placeholder='Promedio de su hijo'>
+                      <input type='text' name='promedio' id='promedio' value='' class='form-control form-custom-step' placeholder='Promedio de su hijo'>
                     </div>
                  </div>
                </section>
@@ -191,7 +192,7 @@
                       <span class='input-group-addon'>
                         <spna  class='fa fa-user'></spna>
                       </span>
-                      <input type='text'  name='username_hijo' id='username_hijo' value='' class='form-control form-custom' placeholder='Nombre de Usuario para el niño/a'>
+                      <input type='text'  name='username_hijo' id='username_hijo' value='' class='form-control form-custom-step' placeholder='Nombre de Usuario para el niño/a'>
                     </div>
                   </div>
 
@@ -200,7 +201,7 @@
                       <span class='input-group-addon'>
                         <spna class='fa fa-lock'></spna>
                       </span>
-                      <input type='password' name='password' id='password' value='' class='form-control form-custom' placeholder='Contraseña'>
+                      <input type='password' name='password' id='password' value='' class='form-control form-custom-step' placeholder='Contraseña'>
                     </div>
                   </div>
 
@@ -209,7 +210,7 @@
                       <span class='input-group-addon'>
                         <spna class='fa fa-lock'></spna>
                       </span>
-                      <input type='password' name='cpassword' id='cpassword' value='' class='form-control form-custom' placeholder='Confirmar Contraseña'>
+                      <input type='password' name='cpassword' id='cpassword' value='' class='form-control form-custom-step' placeholder='Confirmar Contraseña'>
                     </div>
                   </div>
 				      </section>
@@ -226,26 +227,40 @@
 <!-- SECCION DONDE MOSTRAMOS HIJO Y AVATAR -->
 <div class='container-fluid'>
 	<div class='col-xs-12 contenedores color-top' id='hijosInfo'>
-	  <h3><i class='fa fa-child'></i> Mis Hijos
-	  <button class='btn pull-right' style='background-color:#94bc3d; color:white;' id='tabRegHijos' data-dad='{{$rol}}'>
-      <span class="fa fa-plus"></span>&nbsp;
-      Registrar nuevo hijo
-    </button></h3>
-	  <hr class='hr'>
-    @foreach ($datosHijos as $hijo)
- 	 	<div class='col-md-4 col-sm-6'>
- 	 		<div class='hijo_avatar' style='margin-bottom:20px;'>
-				<center>
-          <img src='/packages/images/perfil/{{$hijo->foto_perfil}}' class='img-responsive img-rounded' style='margin-top: 20px;'>
-        </center>
-				<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>
-          <p class='nombres'>{{$hijo->nombre}} <br> {{$hijo->apellido_paterno}} <br> {{$hijo->apellido_materno}}</p>
-					<p class='nombres' style='color:black;'>{{$hijo->username}}</p>
-				</div>
- 	 		</div>
- 	 	</div>
-    @endforeach
-	</div>
+    <div class="row">
+      <div class="col-md-12"  id="tit-mishijos">
+        <div class="col-md-6">
+          <h3 id="tit-hijos">
+            <i class='fa fa-child'></i>&nbsp;
+            Mis Hijos
+          </h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <button class='btn' id='tabRegHijos' data-dad='{{$rol}}'>
+            <span class="fa fa-plus"></span>&nbsp;
+            Registrar a otro Hijo
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        @foreach ($datosHijos as $hijo)
+      	 	<div class='col-md-4 col-sm-6'>
+      	 		<div class='hijo_avatar' style='margin-bottom:20px;'>
+      			<center>
+              <img src='/packages/images/perfil/{{$hijo->foto_perfil}}' class='img-responsive img-rounded' style='margin-top: 20px;'>
+            </center>
+      			<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>
+              <p class='nombres'>{{$hijo->nombre}} <br> {{$hijo->apellido_paterno}} <br> {{$hijo->apellido_materno}}</p>
+      				<p class='nombres' style='color:black;'>{{$hijo->username}}</p>
+      			</div>
+      	 		</div>
+      	 	</div>
+        @endforeach
+      </div>
+    </div>
+  </div>
 </div>
 @stop
 

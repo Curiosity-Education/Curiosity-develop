@@ -225,14 +225,14 @@
       <div class="box-body box-profile">
          <div class="image-portada">
            <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
-            <center><h4>Aquí tu imagen favorita</h4></center>
+            <center><h4 style="margin-top: 35px;margin-bottom: -20px;">Aquí tu imagen favorita</h4></center>
          </div>
       </div>
     </div>
     <!-- CUADRO DATOS PERSONAL -->
     <div class="box box-primary color-top">
       <div class="box-header with-border">
-        <center><h3 class="box-title">Mis Datos</h3></center>
+        <center><h3 class="box-title" id="tit-mydata">Mis Datos</h3></center>
       </div>
       <div class="box-body">
         <strong><i class="fa fa-envelope margin-r-5"></i>  Correo</strong>
@@ -247,7 +247,7 @@
          </p>
       </div>
       <center>
-        <button class="btn btn-primary btn-sm form-control frm_datosP" id="edit_datos" style="width:50%;">Editar mis datos</button>
+        <button class="btn btn-primary btn-sm form-control frm_datosP" id="edit_datos">Editar mis datos</button>
       </center>
     </div>
   </div>
@@ -255,35 +255,30 @@
 
  <!-- SLIDER DE NUESTOS JUEGOS -->
   <div class="col-md-9">
-    <section class="slider-container">
-      <ul id="slider-ul" class="slider-wrapper">
-        <!-- slide-current -->
-        @foreach ($juegos as $juego)
-        <li class="">
-          <img src="/packages/images/actividades/{{$juego->imagen}}">
-          <div class="caption">
-            <p>{{$juego->nombre}}</p>
-            @if ($juego->premium == 1)
-            <p class="text-right isP">
-              <span class="fa fa-star"></span>&nbsp;
-              Premium
-            </p>
-            <p class="text-right isP2">
-              <span class="fa fa-star"></span>
-            </p>
-            @endif
-          </div>
-        </li>
-        @endforeach
-      </ul>
-    </section>
+    <div class="col-md-6">
+      <div id="noticias" class="secbox">
+        <h1 id="tit-news">¡Novedades Curiosity!</h1>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div id="sec1" class="secbox">
+          <h1 id="tit-sec1" class="titsecs">titulo</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div id="sec2" class="secbox">
+          <h1 id="tit-sec2" class="titsecs">titulo</h1>
+        </div>
+      </div>
+    </div>
   </div>
  <!-- FIN DEL SLIDER DE NUESTROS JUEGOS -->
 
  <!-- SECCION MIS HIJOS -->
   <div class="container-fluid">
     <div class="col-xs-12 contenedores color-top" id="">
-   	  <h3><i class="fa fa-child"></i> Mis Hijos</h3><hr class="hr">
+   	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
    	  @foreach ($datosHijos as $hijo)
    	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">
     		<div class="div-img">
