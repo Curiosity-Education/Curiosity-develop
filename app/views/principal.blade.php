@@ -176,7 +176,7 @@
 						<img src="/packages/images/landing/video-img.jpg" alt="" class="img-fluid center-block animated zoomInRight" id="img-video">
 					</div>
 					<div class="col-md-6" id="content-iframe">
-						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/QgnUs-ZE-ug" frameborder="0" allowfullscreen=""></iframe><br><br>
+						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/9Ixi5LyyMuw" frameborder="0" allowfullscreen=""></iframe><br><br>
 						<center>
 							<button type="button" class="btn btn-fb btn-lg" id="shareFB"><small>compartir en <br></small><i class="fa fa-facebook left"></i> Facebook</button>
 							<button type="button" class="btn btn-tw btn-lg" id="shareT"><small>compartir en <br></small><i class="fa fa-twitter left"></i> Twitter</button>
