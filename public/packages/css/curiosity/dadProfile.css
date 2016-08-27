@@ -1,3 +1,66 @@
+#tit-mydata{
+  background-color: #2262ae;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  margin-top: -100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 20px;
+}
+#tit-mychild{
+  background-color: #2262ae;
+  width: 102.5%;
+  padding-top: 15px;
+  color: #fff;
+  margin-top: -5px;
+  margin-left: -15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 25px;
+}
+.secbox {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+#tit-news{
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #2262ae;
+  margin: 0;
+  padding: 10px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+#sec1{
+  margin-bottom: 20px;
+  height: 300px;
+}
+#sec2{
+  height: 167px;
+}
+.titsecs{
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0;
+  background-color: #2262ae;
+  color: #fff;
+  padding: 10px;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 .box-header{
   padding: 0;
 }
@@ -5,9 +68,13 @@
   padding-bottom: 0;
 }
 #edit_datos{
- outline: none;
- margin-bottom: 10px;
- margin-top: 5px;
+  width: 90%;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  background-color: #3cb54a;
+  margin-top: 10px;
+  margin-bottom: 22px;
 }
 .box-profile{
  padding-bottom: 51.5px;
