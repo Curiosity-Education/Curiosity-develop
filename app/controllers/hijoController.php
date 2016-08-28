@@ -56,7 +56,12 @@ class hijoController extends BaseController{
 			}
 	    $user->attachRole($myRole);
 	    $perfil = new perfil();
-	    $perfil->foto_perfil = "perfil-default.jpg";
+			if ($datos['sexo'] == 'm'){
+				$perfil->foto_perfil = "boy-def.png";
+			}
+			else{
+				$perfil->foto_perfil = "girl-def.png";
+			}
 	    $perfil->users_id = $user->id;
 	    $perfil->save();
 	    $persona = new persona($datos);
@@ -90,7 +95,7 @@ class hijoController extends BaseController{
 	      // $membresia_plan->hijo_id=$hijo->id;
 	      // $membresia_plan->save();
 			}
-			return "OK";
+			return Response::json(array("OK", $perfil->foto_perfil));
 		}
 	}
     public function recordatorio(){
