@@ -178,21 +178,20 @@ div#separador1{
 
 /* Barra scroll */
 ::-webkit-scrollbar {
-      width: 15px;
+	width: 13px;
 }
 ::-webkit-scrollbar-track {
-      background-color: #2d96ba;
+	background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
-			background-color: #2262ae;
-			border: solid 3px #2d96ba;
-			border-radius: 10px;
+	background-color: #2262ae;
+	border: solid 3px #fff;
+	border-radius: 10px;
 }
 ::-webkit-scrollbar-corner {
-      background-color: transparent;
+	background-color: transparent;
 }
 /* FIN Barra scroll */
-
 button{
 	border: none;
 	outline: none !important;
@@ -580,7 +579,19 @@ div.mascara{
 }
 .img-esc{
     width: 100%;
-    height: 200px;
+    height: 300px;
+}
+
+@media only screen and (max-width:768px){
+	div.card img.img-esc{
+		height:25%  !important;
+	}
+}
+
+@media only screen and (max-width:554px){
+	div.card img.img-esc{
+		height:40%  !important;
+	}
 }
 
 div#content-integrantes div.card div.card-block{

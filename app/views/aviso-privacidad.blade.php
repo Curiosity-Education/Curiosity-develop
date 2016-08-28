@@ -158,7 +158,7 @@
 
 					<!-- Contenido -->
 					<div class="col-md-10 col-sm-10 col-xs-12 jumbotron col-md-offset-1 col-sm-offset-1 animated bounceInRight secciones" id="descripcion" >
-						<p style="font-size:1.1em;"><b style="font-size:2em; color:#f68e55;">L</b>a empresa <b>Curiosity Educación</b> estamos convencidos que el
+						<p style="font-size:1.1em;"><b style="font-size:2em; color:#f68e55;">E</b>n <b>Curiosity Educación</b> estamos convencidos que el
 						 principal activo son nuestros clientes, es por ello que aplicamos lineamientos, políticas, procedimientos y programas de privacidad
 						 para proteger su información. <br><br>
 
