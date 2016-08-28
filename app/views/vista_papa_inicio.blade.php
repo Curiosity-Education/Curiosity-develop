@@ -1,8 +1,7 @@
 @extends('admin_base')
 @section('mi_css')
- {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
- {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
+ {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/dadProfile.css')}}
 @stop
 
@@ -77,7 +76,7 @@
  <!-- FIN DE MODAL ELEGIR FOTO PERFIL -->
 
  <!-- Modal para modificar datos del Papá -->
-  <section>
+  <section id="sectionChangeData">
     <div class="col-xs-12">
       <div id="changedatabox">
         <form class="form-horizontal" id="frm_user_papa">
@@ -190,7 +189,7 @@
              <span class="input-group-addon addonStyle">
               <span class="fa fa-calendar"></span>
              </span>
-             <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control input-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
+             <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="form-control input-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona" readonly="true">
              </div>
            </div>
           </section>
@@ -210,93 +209,81 @@
       </div>
     </div>
   </section>
-      <!-- Fin de modal para modificar datos del Papá -->
+  <!-- Fin de modal para modificar datos del Papá -->
 
- <!-- Datos de usuario y personal -->
-
- 	<div class="col-md-3">
- 		<!-- CUADRO DATOS USUARIO -->
- 		<div class="box box-primary color-top">
-      <div class="box-body box-profile">
-         <div class="image-portada">
-           <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
-            <center><h4 style="margin-top: 35px;margin-bottom: -20px;">Aquí tu imagen favorita</h4></center>
-         </div>
-      </div>
-    </div>
-    <!-- CUADRO DATOS PERSONAL -->
-    <div class="box box-primary color-top">
-      <div class="box-header with-border">
-        <center><h3 class="box-title" id="tit-mydata">Mis Datos</h3></center>
-      </div>
-      <div class="box-body">
-        <strong><i class="fa fa-envelope margin-r-5"></i>  Correo</strong>
-         <p class="text-muted">
-            <samll id="textEmail">{{Auth::user()->persona->padre->email}}</samll>
-         </p>
-      </div>
-      <div class="box-body">
-        <strong><i class="fa fa-user margin-r-5"></i>  Nombre de usuario</strong>
-         <p class="text-muted">
-            <samll id="textUser">{{Auth::user()->username}}</samll>
-         </p>
-      </div>
-      <center>
-        <button class="btn btn-primary btn-sm form-control frm_datosP" id="edit_datos">Editar mis datos</button>
-      </center>
-    </div>
-  </div>
- <!-- FIN Datos de usuario y personal -->
-
- <!-- SLIDER DE NUESTOS JUEGOS -->
-  <div class="col-md-9">
-    <div class="col-md-6">
-      <div id="noticias" class="secbox">
-        <h1 id="tit-news">¡Novedades Curiosity!</h1>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row">
-        <div id="sec1" class="secbox">
-          <h1 id="tit-sec1" class="titsecs">titulo</h1>
+  <section id="sectionGral">
+    <div class="container-fluid">
+      <div class="col-sm-3">
+        <div class="row">
+          <div id="secimgperf" class="secbox">
+            <h1 id="tit-imgprofile" class="titsecs">Imagen de Perfil</h1>
+            <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+            <h4 id="subtit-imgprofile">Aquí tu imagen favorita</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="secbox">
+            <h1 id="tit-secdata" class="titsecs">Mis Datos</h1>
+            <div class="bodyData">
+              <strong><i class="fa fa-envelope margin-r-5"></i>  Correo</strong>
+               <p class="text-muted">
+                <samll id="textEmail">{{Auth::user()->persona->padre->email}}</samll>
+               </p>
+            </div>
+            <div class="bodyData">
+              <strong><i class="fa fa-user margin-r-5"></i>  Nombre de usuario</strong>
+               <p class="text-muted">
+                <samll id="textUser">{{Auth::user()->username}}</samll>
+               </p>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary btn-sm form-control frm_datosP" id="edit_datos">Editar mis datos</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div id="sec2" class="secbox">
-          <h1 id="tit-sec2" class="titsecs">titulo</h1>
+      <div class="col-sm-4">
+        <div id="noticias" class="secbox">
+          <h1 id="tit-news">¡Novedades Curiosity!</h1>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="row">
+          <div id="sec1" class="secbox">
+            <h1 id="tit-sec1" class="titsecs">titulo</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="sec2" class="secbox">
+            <h1 id="tit-sec2" class="titsecs">titulo</h1>
+          </div>
         </div>
       </div>
     </div>
-  </div>
- <!-- FIN DEL SLIDER DE NUESTROS JUEGOS -->
-
- <!-- SECCION MIS HIJOS -->
-  <div class="container-fluid">
-    <div class="col-xs-12 contenedores color-top" id="">
-   	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
-   	  @foreach ($datosHijos as $hijo)
-   	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">
-    		<div class="div-img">
-    			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img" >
-    			<div class="text">
-    				<center>{{$hijo->nombre}}</center>
-    			</div>
-    		</div>
-  	  </div>
-  	  @endforeach
-   	</div>
-  </div>
+    <div class="container-fluid">
+      <div class="col-xs-12" id="sectionChildren">
+     	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
+     	  @foreach ($datosHijos as $hijo)
+     	  <div class="col-md-2 col-xs-4 col-sm-3">
+      		<div class="div-img">
+      			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img" >
+      			<div class="text">
+      				<center>{{$hijo->nombre}}</center>
+      			</div>
+      		</div>
+    	  </div>
+    	  @endforeach
+     	</div>
+    </div>
+  </section>
 @stop
-
 
 @section('mi_js')
 {{HTML::script("/packages/js/libs/validation/jquery.validate.min.js")}}
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
-{{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
-{{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
-{{HTML::script('/packages/js/curiosity/perfil.js')}}
 {{HTML::script('/packages/js/curiosity/padrePerfil.js')}}
-
+<script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
+<script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
 @stop

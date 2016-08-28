@@ -10,13 +10,13 @@
 }
 #tit-mychild{
   background-color: #2262ae;
-  width: 102.5%;
   padding-top: 15px;
   color: #fff;
-  margin-top: -5px;
+  margin: 0;
   margin-left: -15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  margin-right: -15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding-bottom: 15px;
   padding-left: 30px;
   padding-right: 30px;
@@ -25,7 +25,7 @@
 .secbox {
   background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 #tit-news{
@@ -37,8 +37,8 @@
   margin-left: -20px;
   margin-right: -20px;
   margin-top: -20px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   text-align: center;
 }
 #sec1{
@@ -46,7 +46,7 @@
   height: 300px;
 }
 #sec2{
-  height: 167px;
+  height: 200px;
 }
 .titsecs{
   font-size: 1.2em;
@@ -58,8 +58,8 @@
   margin-top: -20px;
   margin-left: -20px;
   margin-right: -20px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .box-header{
   padding: 0;
@@ -68,13 +68,12 @@
   padding-bottom: 0;
 }
 #edit_datos{
-  width: 90%;
+  width: 100%;
   border-radius: 50px;
   border: none;
   outline: none;
   background-color: #3cb54a;
-  margin-top: 10px;
-  margin-bottom: 22px;
+  margin-top: 5px;
 }
 .box-profile{
  padding-bottom: 51.5px;
@@ -95,8 +94,10 @@
   padding: 0 !important;
   margin-right: 30px !important;
 }
-#changedatabox{
+#sectionChangeData{
   display: none;
+}
+#changedatabox{
   background-color: #fff;
   padding: 20px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
@@ -117,6 +118,12 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+#tit-secdata{
+  margin-bottom: 25px;
+}
+.bodyData{
+  margin-bottom: 30px;
+}
 .boxData{
   background-color: #ecf0f5;
   padding: 40px;
@@ -133,10 +140,10 @@
   border-bottom-right-radius: 5px !important;
 }
 .addonStyle{
-  border-top-left-radius: 10px;
+  border-top-left-radius: 5px;
   border: #fff;
   border-left-color: #2262ae;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 5px;
   background-color: #2184be;
   color: #fff;
   font-size: 1em;
@@ -164,6 +171,30 @@
   padding-right: 20px;
   outline: none;
 }
+#secimgperf{
+  margin-bottom: 20px;
+}
+#tit-imgprofile{
+  margin-bottom: 25px;
+}
+#subtit-imgprofile{
+  margin-top: 25px;
+  text-align: center;
+}
+#noticias{
+  height: 520px;
+}
+#sectionChildren{
+  background-color: #fff;
+  margin-top: 25px;
+  border-radius: 5px;
+  padding-bottom: 25px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+#fecha_nacimiento_persona{
+  background-color: #fff;
+  cursor: pointer;
+}
 
 @media(max-width: 767px){
   #btn-clh{
@@ -173,43 +204,8 @@
     width: 100%;
     margin-top: 10px;
   }
-}
-
-@media (max-width: 1024px) {
-  .slider-wrapper{
-    height: 469px;
-  }
-}
-
-@media (max-width: 415px) {
-  .slider-wrapper{
-    height: 150px;
-  }
-  .caption p{
-    font-size: 0.8em;
-  }
-}
-
-@media (max-width: 450px) {
-  .slider-wrapper{
-    height: 200px !important;
-  }
-  .caption p{
-    font-size: 0.8em !important;
-  }
-  .isP2{
-    display: block;
-  }
-  .isP{
-    display: none;
-  }
-}
-
-@media (max-width: 650px) {
-  .slider-wrapper{
-    height: 300px;
-  }
-  .caption p{
-    font-size: 1em;
+  #noticias{
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }

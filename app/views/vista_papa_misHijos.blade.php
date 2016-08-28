@@ -1,6 +1,7 @@
 @extends('admin_base')
 @section('mi_css')
  {{HTML::style('/packages/css/curiosity/helper.css')}}
+ {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/mishijos.css')}}
 @stop
 
