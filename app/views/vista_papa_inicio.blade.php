@@ -23,44 +23,56 @@
 
 <!-- VENTANA MODAL PARA ELEGIR FOTO DE PERFIL -->
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="modal  fade" id="modalPrueba" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="modal  fade" id="modalPrueba" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-lg" id="modalDialog">
+            <div class="modal-content" id="modalContent">
               <div class="modal-header" id="modal-header-juego">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h2 class="title-modal titulo-modal">Cambiar y/o Recortar imagen</h2></center>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnCloseModal">&times;</button>
                 <center>
-					<i class="fa fa-picture-o" style="color:#65499d; font-size:2em;"></i>
-			    </center>
+                  <h2 class="tit-modalhead">
+                    <i class="fa fa-picture-o"></i>&nbsp;
+                    Cambiar y/o Recortar imagen
+                  </h2>
+			          </center>
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                  {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
                   {{HTML::Image(User::get_imagen_perfil(Auth::user()->id),'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
-                  <input  name="image" class="btn btn-default" id="inImage"  type="file">
-                  <input type="hidden" name="x"/>
-                  <input type="hidden" name="y"/>
-                  <input type="hidden" name="width"/>
-                  <input type="hidden" name="height"/>
+                  <input name="image" id="inImage" type="file">
+                  <a href="javascript:void(0)" for="image" class="btn" id="btnselectprofile">
+                    <span class="fa fa-folder-open"></span>&nbsp;
+                    Seleccionar Imagen desde Archivos
+                  </a>
                  {{Form::close()}}
                  </div>
-                 <div class="col-md-2">
-                 <div class="preview" style="width:120%;height:120%;border-radius:100%;overflow:hidden;border:3px solid #777;">
-                 </div>
+                 <div class="col-md-4">
+                   <center>
+                     <div class="preview"></div>
+                   </center>
+                   <div class="datainfo">
+                     <label class="datalabel">Ancho (px)</label>
+                     <input type="text" class="input-prof" readonly='true' name="width"/>
+                     <label class="datalabel">Alto (px)</label>
+                     <input type="text" class="input-prof" readonly='true' name="height"/>
+                     <label class="datalabel">Posición (x)</label>
+                     <input type="text" class="input-prof" readonly='true' name="x"/>
+                     <label class="datalabel">Posición (y)</label>
+                     <input type="text" class="input-prof" readonly='true' name="y"/>
+                   </div>
                 </div>
               </div>
               </div>
-              <div class="modal-footer" id="modal-footer-juego">
+              <div class="modal-footer" id="modalFooter">
                 <div class="row">
                   <div class="col-md-12">
                     <center>
-                      <div class="actividadBotones">
+                      <div class="actividadBotones text-right">
                         <button type="button" class="btn btn-success btnRecortar">
-                          <span class="fa fa-cut"></span>&nbsp;
-                          <b>Recortar y/o cambiar imagen</b>
+                          Guardar Cambios
                         </button>
                       </div>
                     </center>
@@ -217,7 +229,9 @@
         <div class="row">
           <div id="secimgperf" class="secbox">
             <h1 id="tit-imgprofile" class="titsecs">Imagen de Perfil</h1>
-            <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+            <center>
+            <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+            </center>
             <h4 id="subtit-imgprofile">Aquí tu imagen favorita</h4>
           </div>
         </div>

@@ -46,7 +46,7 @@
   height: 300px;
 }
 #sec2{
-  height: 200px;
+  height: 315px;
 }
 .titsecs{
   font-size: 1.2em;
@@ -182,7 +182,7 @@
   text-align: center;
 }
 #noticias{
-  height: 520px;
+  height: 635px;
 }
 #sectionChildren{
   background-color: #fff;
@@ -194,6 +194,95 @@
 #fecha_nacimiento_persona{
   background-color: #fff;
   cursor: pointer;
+}
+.profileimg{
+  width: 80%;
+  border: solid 5px #585d66;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/*Estilo para modal de cambio de imagen*/
+#modalDialog{
+  padding: 5px;
+  background-color: #2262ae;
+  border-radius: 5px;
+  border-top-right-radius: 20px;
+}
+#modalContent{
+  background-color: #fff;
+  border-radius: 5px;
+}
+#modalFooter{
+  background-color: #f4f4f4;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#btnCloseModal{
+  background-color: #fff;
+  opacity: 1;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  color: #2262ae;
+  border-radius: 50%;
+  border: none;
+  margin-right: -20px;
+  margin-top: -20px !important;
+  outline: none;
+}
+.tit-modalhead{
+  margin: 0;
+  background-color: #2262ae;
+  color: #fff;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 20px;
+  font-size: 1.5em;
+}
+.input-prof{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 2px rgba(119, 119, 119, 0.3);
+  font-size: 0.85em;
+  color: #777;
+}
+.datalabel{
+  color: #777;
+  font-size: 0.85em;
+}
+.datainfo{
+  text-align: left;
+  background-color: #ecf0f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+#inImage{
+  display: none;
+}
+#btnselectprofile{
+  width: 100%;
+  background-color: #2262ae;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.btnRecortar{
+  background-color: #00a65a;
+  border: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 50px;
 }
 
 @media(max-width: 767px){
@@ -208,4 +297,15 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+}
+
+.cropper-bg {
+  width: 100% !important;
+}
+.preview{
+  width:200px;
+  height:200px;
+  border-radius:100%;
+  overflow:hidden;
+  border:3px solid #777;
 }

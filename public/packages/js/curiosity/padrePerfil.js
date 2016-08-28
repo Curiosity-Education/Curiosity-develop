@@ -184,4 +184,8 @@ $(document).ready(function(){
   });
   // Termina actualizar datos del padre
 
+  $("#btnselectprofile").click(function(event) {
+    $("#inImage").trigger('click');
+  });
+
 });
