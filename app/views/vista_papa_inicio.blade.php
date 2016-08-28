@@ -77,144 +77,139 @@
  <!-- FIN DE MODAL ELEGIR FOTO PERFIL -->
 
  <!-- Modal para modificar datos del Papá -->
-      	<div class="row">
-				  <div class="">
-					<div class="modal fade " id="editar_datos_papa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog modal-lg">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<center>
-							  <h2 class="modal-title titulo-modal" id="myModalLabel"> Modificar mis datos </h2>
-							</center>
-							<center>
-								<i class="fa fa-edit" style="color:#65499d; font-size:2em;"></i>
-							</center>
-						  </div>
-						  <div class="modal-body">
-							<div class="row" style="padding-right:1%; padding-left:1%">
-							  <form class="form-horizontal" id="frm_user_papa">
-								  <div id="wizard1">
-									<h2>Datos de Usuario</h2>
-									<section>
-									  <div class="form-group">
-									   <label for="username_padre"><h4 class="title-input"><b>Nombre de usuario</b></h4></label>
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna  class="fa fa-user"></spna>
-										  </span>
-										  <input type="text"  name="username_persona" id="username_persona" value="{{Auth::user()->username}}" class="form-control form-custom" placeholder="Nombre de Usuario">
-										</div>
-									  </div>
+  <section>
+    <div class="col-xs-12">
+      <div id="changedatabox">
+        <form class="form-horizontal" id="frm_user_papa">
+          <h2 id="tit-headchange">
+            <span class="fa fa-edit"></span>&nbsp;
+            Editar Mis Datos
+          </h2>
+          <section class="boxData">
+            <div class="form-group">
+             <label for="username_padre"><h4 class="title-input"><b>Nombre de usuario</b></h4></label>
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna  class="fa fa-user"></spna>
+              </span>
+              <input type="text"  name="username_persona" id="username_persona" value="{{Auth::user()->username}}" class="form-control input-custom" placeholder="Nombre de Usuario">
+            </div>
+            </div>
+            <label><h4 class="title-input" style="margin-left:-15px;"><b>Cambiar Contraseña</b></h4></label>
+            <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-unlock-alt"></spna>
+              </span>
+              <input type="password" name="password_persona" id="password_persona" value="" class="form-control input-custom" placeholder="Contraseña Actual">
+            </div>
+            </div>
 
-									  <div class="form-group">
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-lock"></spna>
-										  </span>
-										  <input type="password" name="password_persona" id="password_persona" value="" class="form-control form-custom" placeholder="Contraseña Actual">
-										</div>
-									  </div>
+             <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-lock"></spna>
+              </span>
+              <input type="password" name="password_new" id="password_new" value="" class="form-control input-custom" placeholder="Contraseña Nueva">
+            </div>
+            </div>
 
-									   <div class="form-group">
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-lock"></spna>
-										  </span>
-										  <input type="password" name="password_new" id="password_new" value="" class="form-control form-custom" placeholder="Contraseña Nueva">
-										</div>
-									  </div>
+             <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-lock"></spna>
+              </span>
+              <input type="password" name="cpassword_new" id="cpassword_new" value="" class="form-control input-custom" placeholder="Confirmar nueva contraseña">
+            </div>
+            </div>
+          </section>
 
-									   <div class="form-group">
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-lock"></spna>
-										  </span>
-										  <input type="password" name="cpassword_new" id="cpassword_new" value="" class="form-control form-custom" placeholder="Confirmar nueva contraseña">
-										</div>
-									  </div>
-									</section>
+          <section class="boxData">
+            <div class="form-group">
+            <label for="username_persona"><h4 class="title-input"><b>Nombre(s) y Apellidos</b></h4></label>
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-user"></spna>
+              </span>
+              <input type="text" name="nombre_persona" id="nombre_persona" value="{{Auth::user()->persona()->first()->nombre}}" class="form-control input-custom" placeholder="Nombre(s)">
+            </div>
+            </div>
 
-									<h2>Datos Personales</h2>
-									<section>
-									  <div class="form-group">
-										<label for="username_persona"><h4 class="title-input"><b>Nombre(s) y Apellidos</b></h4></label>
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-user"></spna>
-										  </span>
-										  <input type="text" name="nombre_persona" id="nombre_persona" value="{{Auth::user()->persona()->first()->nombre}}" class="form-control" placeholder="Nombre(s)">
-										</div>
-									  </div>
+            <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-chevron-right"></spna>
+              </span>
+              <input type="text" name="apellido_paterno_persona" id="apellido_paterno_persona" value="{{Auth::user()->persona()->first()->apellido_paterno}}" class="form-control input-custom" placeholder="Apellido Paterno">
+            </div>
+            </div>
 
-									  <div class="form-group">
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-chevron-right"></spna>
-										  </span>
-										  <input type="text" name="apellido_paterno_persona" id="apellido_paterno_persona" value="{{Auth::user()->persona()->first()->apellido_paterno}}" class="form-control" placeholder="Apellido Paterno">
-										</div>
-									  </div>
+            <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-chevron-right"></spna>
+              </span>
+              <input type="text" name="apellido_materno_persona" id="apellido_materno_persona" value="{{Auth::user()->persona()->first()->apellido_materno}}" class="form-control input-custom" placeholder="Apellido Materno">
+            </div>
+            </div>
 
-									  <div class="form-group">
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-chevron-right"></spna>
-										  </span>
-										  <input type="text" name="apellido_materno_persona" id="apellido_materno_persona" value="{{Auth::user()->persona()->first()->apellido_materno}}" class="form-control" placeholder="Apellido Materno">
-										</div>
-									  </div>
+            <div class="form-group">
+            <label for="email"><h4 class="title-input"><b>Correo electrónico</b></h4></label>
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <spna class="fa fa-envelope"></spna>
+              </span>
+              <input type="text" name="email" id="email" value="{{Auth::user()->persona()->first()->padre()->first()->email}}" class="form-control input-custom" placeholder="Correo electrónico">
+            </div>
+            </div>
 
-                    <div class="form-group">
-                    <label for="email"><h4 class="title-input"><b>Correo electrónico</b></h4></label>
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<spna class="fa fa-envelope"></spna>
-										  </span>
-										  <input type="text" name="email" id="email" value="{{Auth::user()->persona()->first()->padre()->first()->email}}" class="form-control" placeholder="Correo electrónico">
-										</div>
-									  </div>
+            <div class="form-group">
+            <label for="sexo"><h4 class="title-input"><b>Sexo</b></h4></label>
+            <div class="input-group">
+              <span class="input-group-addon addonStyle">
+              <span class="fa fa-venus-mars"></span>
+              </span>
+              <select class="form-control input-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
+                @if (Auth::user()->persona()->first()->sexo == "m")
+                <option value="m" selected>Masculino</option>
+                @else
+                <option value="m">Masculino</option>
+                @endif
+                @if(Auth::user()->persona()->first()->sexo == "f")
+                <option value="f" selected>Femenino</option>
+                @else
+                <option value="f">Masculino</option>
+                @endif
+              </select>
+            </div>
+           </div>
 
-									  <div class="form-group">
-										<label for="sexo"><h4 class="title-input"><b>Sexo</b></h4></label>
-										<div class="input-group">
-										  <span class="input-group-addon">
-											<span class="fa fa-venus-mars"></span>
-										  </span>
-										  <select class="form-control form-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
-                        @if (Auth::user()->persona()->first()->sexo == "m")
-											  <option value="m" selected>Masculino</option>
-                        @else
-                        <option value="m">Masculino</option>
-                        @endif
-                        @if(Auth::user()->persona()->first()->sexo == "f")
-											  <option value="f" selected>Femenino</option>
-                        @else
-                        <option value="f">Masculino</option>
-                        @endif
-										  </select>
-										</div>
-									 </div>
-
-									 <div class="form-group">
-									   <label for="fecha_nacimiento"><h4 class="title-input"><b>Fecha de Nacimiento</b></h4></label>
-									   <div class="input-group">
-										 <span class="input-group-addon">
-										  <span class="fa fa-calendar"></span>
-										 </span>
-										 <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control form-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
-									   </div>
-									 </div>
-									</section>
-								  </div>
-								</form>
-							</div>
-						  </div>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
+           <div class="form-group">
+             <label for="fecha_nacimiento"><h4 class="title-input"><b>Fecha de Nacimiento</b></h4></label>
+             <div class="input-group">
+             <span class="input-group-addon addonStyle">
+              <span class="fa fa-calendar"></span>
+             </span>
+             <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control input-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
+             </div>
+           </div>
+          </section>
+        </form>
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <button type="button" class="btn" id="btn-clh">
+              <span class="fa fa-times"></span>&nbsp;
+              Cancelar
+            </button>
+            <button type="button" class="btn" id="btn-svh">
+              <span class="fa fa-upload"></span>&nbsp;
+              Guardar Registro
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
       <!-- Fin de modal para modificar datos del Papá -->
 
  <!-- Datos de usuario y personal -->

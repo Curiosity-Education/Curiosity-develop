@@ -95,7 +95,7 @@
                 <div class='form-group'>
                  <label for='sexo'><h4 class='title-input'><b>Nombre de tu Hijo</b></h4></label>
                   <div class='input-group'>
-                    <span class='input-group-addon'>
+                    <span class='input-group-addon addonStyle'>
                       <span  class='fa fa-user'></span>
                     </span>
                     <input type='text'  name='nombre' id='nombre' value='' class='form-control form-custom-step' placeholder='Nombre del niño/a'>
@@ -103,7 +103,7 @@
                 </div>
                 <div class='form-group'>
                   <div class='input-group'>
-                    <span class='input-group-addon'>
+                    <span class='input-group-addon addonStyle'>
                       <span class='fa fa-chevron-right'></span>
                     </span>
                     <input type='text' name='apellido_paterno' id='apellido_paterno' value='' class='form-control form-custom-step' placeholder='Apellido paterno'>
@@ -112,7 +112,7 @@
 
                 <div class='form-group'>
                   <div class='input-group'>
-                    <span class='input-group-addon'>
+                    <span class='input-group-addon addonStyle'>
                       <span class='fa fa-chevron-right'></span>
                     </span>
                     <input type='text' name='apellido_materno' id='apellido_materno' value='' class='form-control form-custom-step' placeholder='Apellido materno'>
@@ -121,7 +121,7 @@
 
                 <div class='form-group'>
                   <div class='input-group'>
-                    <span class='input-group-addon'>
+                    <span class='input-group-addon addonStyle'>
                       <span class='fa fa-calendar'></span>
                     </span>
                     <input type='text' name='fecha_nacimiento' id='fecha_nacimiento' class='form-control form-custom-step' placeholder='Fecha de nacimiento' readonly="true">
@@ -130,7 +130,7 @@
                 <div class='form-group'>
                     <label for='sexo'><h4 class='title-input'><b>Sexo</b></h4></label>
                     <div class='input-group'>
-                      <span class='input-group-addon'>
+                      <span class='input-group-addon addonStyle'>
                         <span class='fa fa-venus-mars'></span>
                       </span>
                       <select class='form-control form-custom-step' name='sexo' id='sexo'>
@@ -144,7 +144,7 @@
              <div class='form-group'>
                 <label for='grado'><h4 class='title-input'><b>Grado escolar actual</b></h4></label>
                 <div class='input-group'>
-                  <span class='input-group-addon'>
+                  <span class='input-group-addon addonStyle'>
                     <span class='fa fa-chevron-right'></span>
                   </span>
                   <select name='grado' id='grado' class='form-control form-custom-step'>
@@ -160,7 +160,7 @@
              <div class='form-group'>
                 <label for='sexo'><h4 class='title-input'><b>Promedio escolar</b></h4></label>
                 <div class='input-group'>
-                  <span class='input-group-addon'>
+                  <span class='input-group-addon addonStyle'>
                     <span class='fa fa-chevron-right'></span>
                   </span>
                   <input type='text' name='promedio' id='promedio' value='' class='form-control form-custom-step' placeholder='Promedio de su hijo'>
@@ -171,7 +171,7 @@
              <h4 class='title-input' id="tit-userh"><b>Datos de Usuario de tu Hijo</b></h4>
               <div class='form-group'>
                 <div class='input-group'>
-                  <span class='input-group-addon'>
+                  <span class='input-group-addon addonStyle'>
                     <span  class='fa fa-user'></span>
                   </span>
                   <input type='text'  name='username_hijo' id='username_hijo' value='' class='form-control form-custom-step' placeholder='Nombre de Usuario para el niño/a'>
@@ -180,7 +180,7 @@
 
               <div class='form-group'>
                 <div class='input-group'>
-                  <span class='input-group-addon'>
+                  <span class='input-group-addon addonStyle'>
                     <span class='fa fa-lock'></span>
                   </span>
                   <input type='password' name='password' id='password' value='' class='form-control form-custom-step' placeholder='Contraseña'>
@@ -189,7 +189,7 @@
 
               <div class='form-group'>
                 <div class='input-group'>
-                  <span class='input-group-addon'>
+                  <span class='input-group-addon addonStyle'>
                     <span class='fa fa-lock'></span>
                   </span>
                   <input type='password' name='cpassword' id='cpassword' value='' class='form-control form-custom-step' placeholder='Confirmar Contraseña'>
@@ -201,11 +201,11 @@
       <div class="row">
         <div class="col-md-12 text-right">
           <button type="button" class="btn" id="btn-clh">
-            <span class="fa fa-caret"></span>
+            <span class="fa fa-times"></span>&nbsp;
             Cancelar
           </button>
           <button type="button" class="btn" id="btn-svh">
-            <span class="fa fa-done"></span>
+            <span class="fa fa-upload"></span>&nbsp;
             Guardar Registro
           </button>
         </div>
