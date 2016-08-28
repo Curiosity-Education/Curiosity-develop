@@ -75,7 +75,7 @@ class zipController extends BaseController
     }
   }
 
-  public function extraerSave($inputFile, $typeAndFolder, $boolean){
+  public function extraerSave($inputFile, $typeAndFolder = [], $boolean = 'yes'){
     try{
       //Validamos que el input no este vacio
       if($inputFile != null){
