@@ -67,7 +67,7 @@ class perfilController extends BaseController{
     public function updateUser(){
         $datos  =    Input::get('data');
         $dateNow = date("Y-m-d");
-        if(!Auth::User()->hasRole('hijo')){
+        if(!Auth::User()->hasRole('hijo') && !Auth::User()->hasRole('hijo_free') && !Auth::User()->hasRole('demo_hijo')){
             $date_min =strtotime("-18 year",strtotime($dateNow));
         }else{
              $date_min =strtotime("-4 year",strtotime($dateNow));

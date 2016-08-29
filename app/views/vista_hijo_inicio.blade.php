@@ -1,6 +1,7 @@
 @extends('admin_base')
 @section('mi_css')
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
+ {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/perfilHijoResp.css')}}
 @stop
 
@@ -19,44 +20,170 @@
 
 
 @section('panel_opcion')
-<!-- VENTANA MODAL PARA ELEGIR FOTO DE PERFIL -->
-<div class="container">
+<!-- Formulario de actualizacion de datos -->
+<div class="col-md-12" id="updatedatachild">
+  <div>
+    <form class="form-horizontal" id="frm_user">
+      <h2 id="tit-secupd">Actualiza tus datos</h2>
+      <section class="sectionUpdate">
+        <div class="form-group">
+         <label for="username_padre"><h3 class="title-input fontHijo"><b>Nombre de usuario</b></h3></label>
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-user"></spna>
+          </span>
+          <input type="text"  name="username_persona" id="username_persona" value="{{Auth::user()->username}}" class="form-control inputData" placeholder="Nombre de Usuario">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-lock"></spna>
+          </span>
+          <input type="password" name="password_persona" id="password_persona" value="" class="form-control inputData" placeholder="Contraseña Actual">
+        </div>
+        </div>
+
+         <div class="form-group">
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-lock"></spna>
+          </span>
+          <input type="password" name="password_new" id="password_new" value="" class="form-control inputData" placeholder="Contraseña Nueva">
+        </div>
+        </div>
+
+         <div class="form-group">
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-lock"></spna>
+          </span>
+          <input type="password" name="cpassword_new" id="cpassword_new" value="" class="form-control inputData" placeholder="Confirmar nueva contraseña">
+        </div>
+        </div>
+      </section>
+
+      <section class="sectionUpdate">
+        <div class="form-group">
+        <label for="username_persona"><h3 class="title-input fontHijo"><b>Nombre(s) y Apellidos</b></h3></label>
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-user"></spna>
+          </span>
+          <input type="text" name="nombre_persona" id="nombre_persona" value="{{Auth::user()->persona()->first()->nombre}}" class="form-control inputData" placeholder="Nombre(s)">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-chevron-right"></spna>
+          </span>
+          <input type="text" name="apellido_paterno_persona" id="apellido_paterno_persona" value="{{Auth::user()->persona()->first()->apellido_paterno}}" class="form-control inputData" placeholder="Apellido Paterno">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <spna class="fa fa-chevron-right"></spna>
+          </span>
+          <input type="text" name="apellido_materno_persona" id="apellido_materno_persona" value="{{Auth::user()->persona()->first()->apellido_materno}}" class="form-control inputData" placeholder="Apellido Materno">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label for="sexo"><h3 class="title-input fontHijo"><b>Sexo</b></h3></label>
+        <div class="input-group groupInputWidth">
+          <span class="input-group-addon addonskstyle">
+          <span class="fa fa-venus-mars"></span>
+          </span>
+          <select class="form-control inputData" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
+          <option value="m">Masculino</option>
+          <option value="f">Femenino</option>
+          </select>
+        </div>
+       </div>
+
+       <div class="form-group" hidden="hidden">
+         <label for="fecha_nacimiento"><h3 class="title-input fontHijo"><b>Fecha de Nacimiento</b></h3></label>
+         <div class="input-group groupInputWidth">
+         <span class="input-group-addon addonskstyle">
+          <span class="fa fa-calendar"></span>
+         </span>
+         <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="dpk form-control inputData" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
+         </div>
+       </div>
+      </section>
+    </form>
     <div class="row">
       <div class="col-md-12">
-        <div class="modal  fade" id="modalPrueba" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+        <div class="text-right">
+          <button type="button" class="btn" id="btnCncl">
+            Cancelar
+          </button>
+          <button type="button" class="btn" id="btnupdate">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin formulario de actualizacion de datos -->
+<!-- VENTANA MODAL PARA ELEGIR FOTO DE PERFIL -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="modal  fade" id="modalPrueba" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-lg" id="modalDialog">
+            <div class="modal-content" id="modalContent">
               <div class="modal-header" id="modal-header-juego">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h1 class="title-modal titulo-modal fontHijo">Cambiar y/o Recortar imagen</h1></center>
-                <center><i class="fa fa-picture-o" style="color:#65499d; font-size:2em;"></i></center>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnCloseModal">&times;</button>
+                <center>
+                  <h2 class="tit-modalhead">
+                    <i class="fa fa-picture-o"></i>&nbsp;
+                    Cambiar y/o Recortar imagen
+                  </h2>
+			          </center>
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-10">
+                  <div class="col-md-8">
                  {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
-                  {{HTML::image(User::get_imagen_perfil(Auth::user()->id),'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
-                  <input  name="image" class="btn btn-default" id="inImage"  type="file">
-                  <input type="hidden" name="x"/>
-                  <input type="hidden" name="y"/>
-                  <input type="hidden" name="width"/>
-                  <input type="hidden" name="height"/>
+                  {{HTML::Image(User::get_imagen_perfil(Auth::user()->id),'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
+                  <input name="image" id="inImage" type="file">
+                  <a href="javascript:void(0)" for="image" class="btn" id="btnselectprofile">
+                    <span class="fa fa-folder-open"></span>&nbsp;
+                    Seleccionar Imagen desde Archivos
+                  </a>
                  {{Form::close()}}
                  </div>
-                 <div class="col-md-2">
-                 <div class="preview" style="width:120%;height:120%;border-radius:100%;overflow:hidden;border:3px solid #777;">
-                 </div>
+                 <div class="col-md-4">
+                   <center>
+                     <div class="preview"></div>
+                   </center>
+                   <div class="datainfo">
+                     <label class="datalabel">Ancho (px)</label>
+                     <input type="text" class="input-prof" readonly='true' name="width"/>
+                     <label class="datalabel">Alto (px)</label>
+                     <input type="text" class="input-prof" readonly='true' name="height"/>
+                     <label class="datalabel">Posición (x)</label>
+                     <input type="text" class="input-prof" readonly='true' name="x"/>
+                     <label class="datalabel">Posición (y)</label>
+                     <input type="text" class="input-prof" readonly='true' name="y"/>
+                   </div>
                 </div>
               </div>
               </div>
-              <div class="modal-footer" id="modal-footer-juego">
+              <div class="modal-footer" id="modalFooter">
                 <div class="row">
                   <div class="col-md-12">
                     <center>
-                      <div class="actividadBotones">
+                      <div class="actividadBotones text-right">
                         <button type="button" class="btn btn-success btnRecortar">
-                          <span class="fa fa-cut"></span>&nbsp;
-                          <b>Recortar y/o cambiar imagen</b>
+                          Guardar Cambios
                         </button>
                       </div>
                     </center>
@@ -100,7 +227,7 @@
 	  </div>
 	</div>
  <!-- FIN MODAL PARA ESCOGER META DE JUEGO -->
-
+  <section id="sectionGralPerfil">
    <div class="">
    <!-- Apartado para mostrar lo referente al avatar -->
 	  <div class="col-md-3 col-sm-4 col-xs-12 contenedores color-top" id="contAvatar">
@@ -304,13 +431,17 @@
       		</div>
       	</div>
     	<!-- </section> -->
+    </section>
 @stop
 
 @section('mi_js')
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/chart/Chart.min.js')}}
-{{HTML::script('/packages/js/curiosity/perfil.js')}}
+{{HTML::script('/packages/js/curiosity/updateDataHijo.js')}}
 {{HTML::script('/packages/js/curiosity/getspav.js')}}
+{{--{{HTML::script('/packages/js/curiosity/perfil.js')}}
+{{HTML::script('/packages/js/libs/mdb/tether.min.js')}}
+{{HTML::script('/packages/js/libs/mdb/mdb.min.js')}}--}}
 <script type="text/javascript">
   $(document).ready(function() {
 
@@ -347,8 +478,6 @@
     }
 
     makeMetaChart (avanceMeta, faltanMeta);
-
-    $("#menuDatos").show();
 
     $(".metaType").click(function(){
       $.each($(".metaType"), function(index, el) {
@@ -399,6 +528,10 @@
       else{
         $("#myModal").modal('hide');
       }
+    });
+
+    $("#btnselectprofile").click(function(event) {
+      $("#inImage").trigger('click');
     });
 
   });

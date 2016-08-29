@@ -284,6 +284,17 @@
   padding-right: 25px;
   border-radius: 50px;
 }
+.cropper-bg {
+  width: 100% !important;
+}
+.preview{
+  width:200px;
+  height:200px;
+  border-radius:100%;
+  overflow:hidden;
+  border:3px solid #777;
+}
+/*Fin Estilo para modal de cambio de imagen*/
 
 @media(max-width: 767px){
   #btn-clh{
@@ -297,15 +308,4 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
-}
-
-.cropper-bg {
-  width: 100% !important;
-}
-.preview{
-  width:200px;
-  height:200px;
-  border-radius:100%;
-  overflow:hidden;
-  border:3px solid #777;
 }
