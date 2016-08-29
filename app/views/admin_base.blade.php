@@ -16,8 +16,6 @@
     {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
     {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
     {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
-    {{HTML::style('/packages/css/libs/steps/jquery.steps.css')}}
-    {{HTML::style('/packages/css/libs/date-picker/datepicker.min.css')}}
     {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
     {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
     <link rel="stylesheet" href="/packages/css/skins/{{User::getSkin()->skin}}.css">
@@ -181,8 +179,8 @@
               <div class="arrowAsideActive"></div>
             </li>
 
-            <li id="menuDatos" hidden="hidden">
-              <a href="/datosHijo" data-toggle="modal" data-target="#editar_datos">
+            <li id="menuDatos">
+              <a href="javascript:void(0)">
                 <i class="fa fa-pencil-square-o"></i>
                 <span>Editar mis datos</span>
               </a>
@@ -345,129 +343,6 @@
         <section class="content_body">
             <div class="container-fluid">
               <div class="row" id="make-all">
-              <!-- Modal para modificar datos del niño -->
-              @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
-              	<div class="row">
-        				  <div class="">
-            				<div class="modal fade " id="editar_datos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            				  <div class="modal-dialog modal-lg">
-            					<div class="modal-content">
-            					  <div class="modal-header">
-            						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            						<center>
-            						  <h1 class="modal-title titulo-modal fontHijo" id="myModalLabel"> Modificar mis datos </h1>
-            						</center>
-            						<center>
-            							<i class="fa fa-edit" style="color:#65499d; font-size:2em;"></i>
-            						</center>
-            					  </div>
-            					  <div class="modal-body">
-            						<div class="row" style="padding-right:1%; padding-left:1%">
-            						  <form class="form-horizontal" id="frm_user">
-            							  <div id="wizard1">
-            								<h2>Datos de Usuario</h2>
-            								<section>
-            								  <div class="form-group">
-            								   <label for="username_padre"><h3 class="title-input fontHijo"><b>Nombre de usuario</b></h3></label>
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna  class="fa fa-user"></spna>
-            									  </span>
-            									  <input type="text"  name="username_persona" id="username_persona" value="{{Auth::user()->username}}" class="form-control form-custom" placeholder="Nombre de Usuario">
-            									</div>
-            								  </div>
-
-            								  <div class="form-group">
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-lock"></spna>
-            									  </span>
-            									  <input type="password" name="password_persona" id="password_persona" value="" class="form-control form-custom" placeholder="Contraseña Actual">
-            									</div>
-            								  </div>
-
-            								   <div class="form-group">
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-lock"></spna>
-            									  </span>
-            									  <input type="password" name="password_new" id="password_new" value="" class="form-control form-custom" placeholder="Contraseña Nueva">
-            									</div>
-            								  </div>
-
-            								   <div class="form-group">
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-lock"></spna>
-            									  </span>
-            									  <input type="password" name="cpassword_new" id="cpassword_new" value="" class="form-control form-custom" placeholder="Confirmar nueva contraseña">
-            									</div>
-            								  </div>
-            								</section>
-
-            								<h2>Datos Personales</h2>
-            								<section>
-            								  <div class="form-group">
-            									<label for="username_persona"><h3 class="title-input fontHijo"><b>Nombre(s) y Apellidos</b></h3></label>
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-user"></spna>
-            									  </span>
-            									  <input type="text" name="nombre_persona" id="nombre_persona" value="{{Auth::user()->persona()->first()->nombre}}" class="form-control" placeholder="Nombre(s)">
-            									</div>
-            								  </div>
-
-            								  <div class="form-group">
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-chevron-right"></spna>
-            									  </span>
-            									  <input type="text" name="apellido_paterno_persona" id="apellido_paterno_persona" value="{{Auth::user()->persona()->first()->apellido_paterno}}" class="form-control" placeholder="Apellido Paterno">
-            									</div>
-            								  </div>
-
-            								  <div class="form-group">
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<spna class="fa fa-chevron-right"></spna>
-            									  </span>
-            									  <input type="text" name="apellido_materno_persona" id="apellido_materno_persona" value="{{Auth::user()->persona()->first()->apellido_materno}}" class="form-control" placeholder="Apellido Materno">
-            									</div>
-            								  </div>
-
-            								  <div class="form-group">
-            									<label for="sexo"><h3 class="title-input fontHijo"><b>Sexo</b></h3></label>
-            									<div class="input-group">
-            									  <span class="input-group-addon">
-            										<span class="fa fa-venus-mars"></span>
-            									  </span>
-            									  <select class="form-control form-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
-            										<option value="m">Masculino</option>
-            										<option value="f">Femenino</option>
-            									  </select>
-            									</div>
-            								 </div>
-
-            								 <div class="form-group">
-            								   <label for="fecha_nacimiento"><h3 class="title-input fontHijo"><b>Fecha de Nacimiento</b></h3></label>
-            								   <div class="input-group">
-            									 <span class="input-group-addon">
-            									  <span class="fa fa-calendar"></span>
-            									 </span>
-                               <input type="text" value="{{Auth::user()->persona()->first()->fecha_nacimiento}}" class="datepicker form-control form-custom" name="fecha_nacimiento_persona" id="fecha_nacimiento_persona">
-            								   </div>
-            								 </div>
-            								</section>
-            							  </div>
-            							</form>
-            						</div>
-            					  </div>
-            					</div>
-            				  </div>
-            				</div>
-        				  </div>
-        				</div>
-              @endif <!-- Fin de modal para modificar datos del niño -->
               @if (!Auth::user()->hasRole('padre') and !Auth::user()->hasRole('padre_free') and !Auth::user()->hasRole('demo_padre'))
               <div class="form-group" id="navSearch">
                <div class="input-group">
@@ -540,9 +415,7 @@
   {{HTML::script('/packages/js/curiosity/alert.js')}}
   {{HTML::script('/packages/js/libs/sweetalert/sweetalert.min.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
-  {{HTML::script('/packages/js/libs/steps/jquery.steps.min.js')}}
   {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
-  {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
   {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
   {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
   {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
@@ -600,392 +473,103 @@ $(function ()
   {
     @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('padre_free') && !Auth::user()->hasRole('demo_padre') && !Auth::user()->hasRole('root'))
       $("a[href='#reg-admins']").trigger("click");
-
     @endif
-    $("#wizard-admin").steps({
-      headerTag: "h4",
-      bodyTag: "section",
-      transitionEffect:"slideLeft",
-      autoFocus:true,
-      cancel:true,
-      onFinishing: function (event, currentIndex) {
-            if($("#frm-reg-admins").valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-          if(newIndex>currentIndex){
-           if($(".current input,.current select").valid()){
-               return true;
-           }else return false;
-         }else return true;
-        },
-        labels: {
-          cancel: "Cancelar",
-          //  current: "current step:",
-          pagination: "Paginación",
-          finish: "Registar",
-          next: "Siguiente",
-          previous: "Anterior",
-          loading: "Registrando ..."
-        },
-    });
-    $("#wizard1").steps({
-        headerTag: "h2",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        autoFocus:true,
-        onFinishing: function (event, currentIndex) {
-            if($("#frm-reg-hijos").valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        labels: {
-          cancel: "Cancelar",
-          //  current: "current step:",
-          pagination: "Paginación",
-          finish: "Actualizar",
-          next: "Siguiente",
-          previous: "Anterior",
-          loading: "Actualizando ..."
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-          if(newIndex>currentIndex){
-           if($(".current input").valid()){
-               return true;
-           }else return false;
-         }else return true;
-        },
+  //   $("#wizard-admin").steps({
+  //     headerTag: "h4",
+  //     bodyTag: "section",
+  //     transitionEffect:"slideLeft",
+  //     autoFocus:true,
+  //     cancel:true,
+  //     onFinishing: function (event, currentIndex) {
+  //           if($("#frm-reg-admins").valid()){
+  //               return true;
+  //           }else{
+  //               return false;
+  //           }
+  //       },
+  //       onStepChanging: function (event, currentIndex, newIndex){
+  //         if(newIndex>currentIndex){
+  //          if($(".current input,.current select").valid()){
+  //              return true;
+  //          }else return false;
+  //        }else return true;
+  //       },
+  //       labels: {
+  //         cancel: "Cancelar",
+  //         //  current: "current step:",
+  //         pagination: "Paginación",
+  //         finish: "Registar",
+  //         next: "Siguiente",
+  //         previous: "Anterior",
+  //         loading: "Registrando ..."
+  //       },
+  //   });
+  //   $("#wizard1").steps({
+  //       headerTag: "h2",
+  //       bodyTag: "section",
+  //       transitionEffect: "slideLeft",
+  //       autoFocus:true,
+  //       onFinishing: function (event, currentIndex) {
+  //           if($("#frm-reg-hijos").valid()){
+  //               return true;
+  //           }else{
+  //               return false;
+  //           }
+  //       },
+  //       labels: {
+  //         cancel: "Cancelar",
+  //         //  current: "current step:",
+  //         pagination: "Paginación",
+  //         finish: "Actualizar",
+  //         next: "Siguiente",
+  //         previous: "Anterior",
+  //         loading: "Actualizando ..."
+  //       },
+  //       onStepChanging: function (event, currentIndex, newIndex){
+  //         if(newIndex>currentIndex){
+  //          if($(".current input").valid()){
+  //              return true;
+  //          }else return false;
+  //        }else return true;
+  //       },
+  //
+  // });
+  //
+  //   $("#wizard").steps({
+  //       headerTag: "h2",
+  //       bodyTag: "section",
+  //       transitionEffect: "slideLeft",
+  //       autoFocus:true,
+  //       next:"Siguiente",
+  //       finish:"Finalizar",
+  //       previous:"Anterior",
+  //       onFinishing: function (event, currentIndex) {
+  //           if($("#frm-reg-hijos").valid()){
+  //               return true;
+  //           }else{
+  //               return false;
+  //           }
+  //       },
+  //       labels: {
+  //         cancel: "Cancelar",
+  //         //  current: "current step:",
+  //         pagination: "Paginación",
+  //         finish: "Finalizar",
+  //         next: "Siguiente",
+  //         previous: "Anterior",
+  //         loading: "Cargando ..."
+  //       },
+  //       onStepChanging: function (event, currentIndex, newIndex){
+  //         if(newIndex>currentIndex){
+  //          if($(".current input").valid()){
+  //              return true;
+  //          }else return false;
+  //        }else return true;
+  //       },
+  //
+  // });
 
-  });
 
-    $("#wizard").steps({
-        headerTag: "h2",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        autoFocus:true,
-        next:"Siguiente",
-        finish:"Finalizar",
-        previous:"Anterior",
-        onFinishing: function (event, currentIndex) {
-            if($("#frm-reg-hijos").valid()){
-                return true;
-            }else{
-                return false;
-            }
-        },
-        labels: {
-          cancel: "Cancelar",
-          //  current: "current step:",
-          pagination: "Paginación",
-          finish: "Finalizar",
-          next: "Siguiente",
-          previous: "Anterior",
-          loading: "Cargando ..."
-        },
-        onStepChanging: function (event, currentIndex, newIndex){
-          if(newIndex>currentIndex){
-           if($(".current input").valid()){
-               return true;
-           }else return false;
-         }else return true;
-        },
-
-  });
-  @if(!Auth::User()->hasRole('hijo') and !Auth::user()->hasRole('hijo_free') and !Auth::user()->hasRole('demo_hijo'))
-   var dateNow = new Date();
-    dateNow.setMonth(dateNow.getMonth()-216);//restar 19 años a la fecha actual
-    $('.datepicker').datepicker({
-        "language":"es",
-        "format" : "yyyy-mm-dd",
-        "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
-       "autoclose": true,
-       "todayHighlight" : true
-      });
-  @else
-    var dateNow = new Date();
-    dateNow.setMonth(dateNow.getMonth()-48);//restar 19 años a la fecha actual
-    $('.datepicker').datepicker({
-        "language":"es",
-        "format" : "yyyy-mm-dd",
-        "endDate":dateNow.getFullYear()+"/"+dateNow.getMonth()+"/"+dateNow.getDate(),
-       "autoclose": true,
-       "todayHighlight" : true
-      });
-  @endif
-  // $("#telefono").mask('(000) 000-0000',{placeholder:"(999) 999-9999"});
-  //   $("#codigo_postal").mask("00000");
-  //   $("#numero").mask("ABCDE",{translation:{
-  //                                                   A:{pattern:/^[0-9]/},
-  //                                                   B:{pattern:/([0-9])?/},
-  //                                                   C:{pattern:/([0-9])?/},
-  //                                                   D:{pattern:/([0-9])?/},
-  //                                                   E:{pattern:/([A-Za-z]{1})?$/}
-  //   }});
-    $("#frm_user").validate({
-        rules:{
-            username_persona:{maxlength:50,required:true,remote:{
-                url:"/remote-username-update",
-                type:"post",
-                username:function(){
-                    return $("input[name='username']").val();
-                }
-            }},
-            password_new:{maxlength:100,minlength:8},
-            cpassword_new:{equalTo:function(){
-                return $("input[name='password_new']");
-            }},
-            nombre_persona:{required:true,maxlength:50,alpha:true},
-            apellido_paterno_persona:{required:true,maxlength:30,alpha:true},
-            apellido_materno_persona:{required:true,maxlength:30,alpha:true},
-            sexo_persona:{required:true,maxlength:1},
-            fecha_nacimiento_persona:{required:true,date:true}
-        },
-        messages:{
-            cpassword_new:{equalTo:"La contraseña no coincide"},
-            username_persona:{
-                        required:"No puedes dejaar en blanco este campo",
-                        remote:"Este nombre de usuario se encuentra en uso"
-            },
-            password_now:{remote:"La contraseña es incorrecta"}
-
-        },
-         errorPlacement: function (error, element) {
-            error.appendTo(element.parent().parent());
-         }
-    });
-   $("#frm_user").on("click","a[href='#finish']",function(){
-        if($("#frm_user input").valid()){
-            $btn =$(this)
-            var text_temp = $(this).text();
-            $(this).addClass("striped-alert");
-            $(this).text("Actualizando...");
-            $(this).prop("disabled",true);
-            if($("input[name='password_new']").val()!==""){
-                var datos={
-                    username_persona:$("input[name='username_persona']").val(),
-                    password_persona:$("input[name='password_persona']").val(),
-                    password_new:$("input[name='password_new']").val(),
-                    cpassword_new:$("input[name='cpassword_new']").val(),
-                    nombre_persona:$("input[name='nombre_persona']").val(),
-                    apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
-                    apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
-                    sexo_persona:$("select[name='sexo_persona']").val(),
-                    fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val()
-                }
-                $.ajax({
-                    url:"/updatePerfil",
-                    type:"post",
-                    data:{data:datos},
-                    beforeSend: function(){
-                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
-                    }
-                })
-                .done(function(r){
-                    if($.isPlainObject(r)){
-                        alerta.errorOnInputs(r);
-                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
-                    }else if(r == "contraseña incorrecta"){
-                        //alerta.show("Contraseña incorreca","","warning-alert striped");
-                        $curiosity.noty("Contraseña incorreca","warning");
-                    }
-                    else if(r =="bien"){
-                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
-                        $("input[name='password_persona']").val('');
-                        $("input[name='password_new']").val('');
-                        $("input[name='cpassword_new']").val('');
-                        $curiosity.noty("Los datos se han actualizado correctamente, su contraseña ha sido cambiada con exito!!","success");
-                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
-                        $("span#username-profile").text(datos.username_persona);
-                        $("label.error").remove();
-                        $("#wizard1-t-0").trigger("click");
-                        $("#editar_datos").modal('hide');
-                    }
-                }).always(function(){
-                    $btn.text(text_temp);
-                    $btn.removeClass("striped-alert");
-                    $btn.prop("disabled",false);
-
-                });
-            }else{
-                var datos = {
-                     username_persona:$("input[name='username_persona']").val(),
-                     nombre_persona:$("input[name='nombre_persona']").val(),
-                     apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
-                     apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
-                     sexo_persona:$("select[name='sexo_persona']").val(),
-                     fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val()
-                }
-                $.ajax({
-                    url:"/updatePerfilUser",
-                    type:"post",
-                    data:{data:datos},
-                    beforeSend: function(){
-                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
-                    }
-                }).done(function(r){
-                    if($.isPlainObject(r)){
-                        alerta.errorOnInputs(r);
-                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
-                    }else if(r == "bien"){
-                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
-                        $curiosity.noty("Los datos se han actualizado correctamente","success");
-                        $("label.error").remove();
-                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
-                        $("span#username-profile").text(datos.username_persona);
-                        $("#wizard1-t-0").trigger("click");
-                        $("#editar_datos_papa").modal('hide');
-                    }
-                }).always(function(r){
-                    $btn.text(text_temp);
-                    $btn.removeClass("striped-alert");
-                    $btn.prop("disabled",false);
-
-                });
-            }
-        }
-    });
-
-    // Actualizar los datos del padre
-    $("#frm_user_papa").validate({
-        rules:{
-            username_persona:{maxlength:50,required:true,remote:{
-                url:"/remote-username-update",
-                type:"post",
-                username:function(){
-                    return $("input[name='username']").val();
-                }
-            }},
-            password_new:{maxlength:100,minlength:8},
-            cpassword_new:{equalTo:function(){
-                return $("input[name='password_new']");
-            }},
-            nombre_persona:{required:true,maxlength:50,alpha:true},
-            apellido_paterno_persona:{required:true,maxlength:30,alpha:true},
-            apellido_materno_persona:{required:true,maxlength:30,alpha:true},
-            sexo_persona:{required:true,maxlength:1},
-            fecha_nacimiento_persona:{required:true,date:true},
-            email:{required:true,email:true}
-        },
-        messages:{
-            cpassword_new:{equalTo:"La contraseña no coincide"},
-            username_persona:{
-                        required:"No puedes dejaar en blanco este campo",
-                        remote:"Este nombre de usuario se encuentra en uso"
-            },
-            password_now:{remote:"La contraseña es incorrecta"},
-            email:{email:"Formato de correo incorrecto"}
-        },
-         errorPlacement: function (error, element) {
-            error.appendTo(element.parent().parent());
-         }
-    });
-   $("#frm_user_papa").on("click","a[href='#finish']",function(){
-        if($("#frm_user_papa").valid()){
-            $btn =$(this)
-            var text_temp = $(this).text();
-            $(this).addClass("striped-alert");
-            $(this).text("Actualizando...");
-            $(this).prop("disabled",true);
-            if($("input[name='password_new']").val()!==""){
-                var datos={
-                    username_persona:$("input[name='username_persona']").val(),
-                    password_persona:$("input[name='password_persona']").val(),
-                    password_new:$("input[name='password_new']").val(),
-                    cpassword_new:$("input[name='cpassword_new']").val(),
-                    nombre_persona:$("input[name='nombre_persona']").val(),
-                    apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
-                    apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
-                    sexo_persona:$("select[name='sexo_persona']").val(),
-                    fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val(),
-                    email:$("#email").val()
-                }
-                $.ajax({
-                    url:"/updatePerfil",
-                    type:"post",
-                    data:{data:datos},
-                    beforeSend: function(){
-                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
-                    }
-                })
-                .done(function(r){
-                    if($.isPlainObject(r)){
-                        alerta.errorOnInputs(r);
-                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
-                    }else if(r == "contraseña incorrecta"){
-                        //alerta.show("Contraseña incorreca","","warning-alert striped");
-                        $curiosity.noty("Contraseña incorreca","warning");
-                    }
-                    else if(r =="bien"){
-                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
-                        $("#textEmail").text(datos.email);
-                        $("#textUser").text(datos.username_persona);
-                        $("input[name='password_persona']").val('');
-                        $("input[name='password_new']").val('');
-                        $("input[name='cpassword_new']").val('');
-                        $curiosity.noty("Los datos se han actualizado correctamente, su contraseña ha sido cambiada con exito!!","success");
-                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
-                        $("span#username-profile").text(datos.username_persona);
-                        $("label.error").remove();
-                        $("#wizard1-t-0").trigger("click");
-                        $("#editar_datos_papa").modal('hide');
-                    }
-                }).always(function(){
-                    $btn.text(text_temp);
-                    $btn.removeClass("striped-alert");
-                    $btn.prop("disabled",false);
-
-                });
-            }else{
-                var datos = {
-                     username_persona:$("input[name='username_persona']").val(),
-                     nombre_persona:$("input[name='nombre_persona']").val(),
-                     apellido_paterno_persona:$("input[name='apellido_paterno_persona']").val(),
-                     apellido_materno_persona:$("input[name='apellido_materno_persona']").val(),
-                     sexo_persona:$("select[name='sexo_persona']").val(),
-                     fecha_nacimiento_persona:$("input[name='fecha_nacimiento_persona']").val(),
-                     email:$("#email").val()
-                }
-                $.ajax({
-                    url:"/updatePerfilUser",
-                    type:"post",
-                    data:{data:datos},
-                    beforeSend: function(){
-                    message = "Espera.. Los datos se estan Actualizando... Verificando información";
-                    $curiosity.noty(message, 'info');
-                    }
-                }).done(function(r){
-                    if($.isPlainObject(r)){
-                        alerta.errorOnInputs(r);
-                        $curiosity.noty("Algunos campos no fueron obtenidos... Favor de verificar la información  e intentar nuevamente ","warning");
-                    }else if(r == "bien"){
-                        $("#menu-usuario").text(datos.nombre_persona+" "+datos.apellido_paterno_persona);
-                        $("#textEmail").text(datos.email);
-                        $("#textUser").text(datos.username_persona);
-                        $curiosity.noty("Los datos se han actualizado correctamente","success");
-                        $("label.error").remove();
-                        $("span#name-complete").text(datos.nombre_persona+" "+datos.apellido_paterno_persona+" "+datos.apellido_materno_persona);
-                        $("span#username-profile").text(datos.username_persona);
-                        $("#wizard1-t-0").trigger("click");
-                        $("#editar_datos").modal('hide');
-                    }
-                }).always(function(r){
-                    $btn.text(text_temp);
-                    $btn.removeClass("striped-alert");
-                    $btn.prop("disabled",false);
-
-                });
-            }
-        }
-    });
-    // Termina actualizar datos del padre
 
     $('#image').cropper({
     aspectRatio: 1/1,

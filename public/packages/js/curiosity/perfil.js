@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-    $("#promedio").mask("ABC",{placeholder:"0.0"},{translation:{
-                                                    A:{pattern:/^[0-9]?$/},
-                                                    B:{pattern:/(\.)?/},
-                                                    C:{pattern:/([0-9])?$/}
-    }});
+    // $("#promedio").mask("ABC",{placeholder:"0.0"},{translation:{
+    //                                                 A:{pattern:/^[0-9]?$/},
+    //                                                 B:{pattern:/(\.)?/},
+    //                                                 C:{pattern:/([0-9])?$/}
+    // }});
     var username = $("input[name='username']").val();
     $("#frm-reg-admins").on("click","a[href='#finish']",function(){
         $btn = $(this);
@@ -134,39 +134,39 @@ $(document).ready(function(){
          }
 
     });
-    $("#frm-reg-hijos").validate({
-        rules:{
-             nombre:{required:true,maxlength:50,alpha:true},
-             apellido_paterno:{required:true,maxlength:30,alpha:true},
-             apellido_materno:{required:true,maxlength:30,alpha:true},
-             sexo:{required:true,maxlength:1},
-             grado:{required:true},
-             promedio:{required:true,promedio:true},
-             fecha_nacimiento:{required:true,date:true},
-             password:{required:true,minlength:8,maxlength:100},
-             cpassword:{required:true,equalTo:function(){
-               return $("input[name='password']");
-             }},
-             username_hijo:{required:true,maxlength:50,remote:{
-                url:"/remote-username-hijo",
-                type:"post",
-                username:function(){
-                  return $("input[name='username_hijo']").val();
-                }
-             }}
-
-        },
-         messages:{
-           cpassword:{equalTo:"Las contraseñas no coinciden"},
-           username_hijo:{remote:"EL nombre de usuario que ingreso ya  esta en uso, intente con otro nombre."},
-           nombre:{alpha:"Nombre invalido,solo puedes agregar letras."},
-           apellido_paterno:{alpha:"Apellido invalido,solo puedes agregar letras."},
-           apellido_materno:{alpha:"Apellido invalido,solo puedes agregar letras."}
-       },
-        errorPlacement: function (error, element) {
-            error.appendTo(element.parent().parent());
-         }
-    });
+    // $("#frm-reg-hijos").validate({
+    //     rules:{
+    //          nombre:{required:true,maxlength:50,alpha:true},
+    //          apellido_paterno:{required:true,maxlength:30,alpha:true},
+    //          apellido_materno:{required:true,maxlength:30,alpha:true},
+    //          sexo:{required:true,maxlength:1},
+    //          grado:{required:true},
+    //          promedio:{required:true,promedio:true},
+    //          fecha_nacimiento:{required:true,date:true},
+    //          password:{required:true,minlength:8,maxlength:100},
+    //          cpassword:{required:true,equalTo:function(){
+    //            return $("input[name='password']");
+    //          }},
+    //          username_hijo:{required:true,maxlength:50,remote:{
+    //             url:"/remote-username-hijo",
+    //             type:"post",
+    //             username:function(){
+    //               return $("input[name='username_hijo']").val();
+    //             }
+    //          }}
+    //
+    //     },
+    //      messages:{
+    //        cpassword:{equalTo:"Las contraseñas no coinciden"},
+    //        username_hijo:{remote:"EL nombre de usuario que ingreso ya  esta en uso, intente con otro nombre."},
+    //        nombre:{alpha:"Nombre invalido,solo puedes agregar letras."},
+    //        apellido_paterno:{alpha:"Apellido invalido,solo puedes agregar letras."},
+    //        apellido_materno:{alpha:"Apellido invalido,solo puedes agregar letras."}
+    //    },
+    //     errorPlacement: function (error, element) {
+    //         error.appendTo(element.parent().parent());
+    //      }
+    // });
      $.validator.addMethod("alpha",alpha,"Formato no valido");
      $.validator.addMethod("promedio",promedio,"Formato no valido");
      // creamos una nueva regla de validacion para el input de telefono
@@ -199,69 +199,69 @@ $(document).ready(function(){
         $(".list-hijos>li").removeClass("active");
         $(this).addClass("active");
     });
-    $("#frm-reg-hijos").on("click","a[href='#finish']",function(){
-        if($("#frm-reg-hijos").valid()){
-            $btn = $(this);
-             var text_temp = $(this).text();
-            $(this).addClass("striped-alert");
-            $(this).text("Registrando...");
-            $(this).prop("disabled",true);
-            datos={
-                nombre:$("#nombre").val(),
-                apellido_paterno:$("#apellido_paterno").val(),
-                apellido_materno:$("#apellido_materno").val(),
-                sexo:$("#sexo").val(),
-                fecha_nacimiento:$("#fecha_nacimiento").val(),
-                username_hijo:$("#username_hijo").val(),
-                promedio:$("#promedio").val(),
-                grado_inicial:$("#grado").val(),
-                password:$("#password").val(),
-                cpassword:$("#cpassword").val()
-            }
-            $.ajax({
-                url:"/regHijo",
-                type:"post",
-                data:{data:datos},
-                beforeSend: function(){
-                message = "Espera.. Los datos se estan guardando... Verificando información";
-                $curiosity.noty(message, 'info');
-                }
-
-            }).done(function(r){
-                if(r=="OK"){
-                    //alerta.show("Registro Exitoso","EL niño fue registrado exitosamente","success-alert striped",true);
-                    $curiosity.noty("EL niño fue registrado exitosamente","success");
-                    $("#wizard-t-0").trigger("click");
-                    var codenew = "<div class='col-md-4 col-sm-6'>"+
-                 	 		"<div class='hijo_avatar' style='margin-bottom:20px;'>"+
-                				"<center>"+
-                          "<img src='/packages/images/perfil/perfil-default.jpg' class='img-responsive img-rounded' style='margin-top: 20px;'>"+
-                        "</center>"+
-                				"<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>"+
-                          "<p class='nombres'>"+ datos.nombre +" <br> "+ datos.apellido_paterno +" <br> "+ datos.apellido_materno +"</p>"+
-                					"<p class='nombres' style='color:black;'>"+ datos.username_hijo +"</p>"+
-                				"</div>"+
-                 	 		"</div>"+
-                 	 	"</div>";
-                    $("#hijosInfo").append(codenew);
-                    document.getElementById('frm-reg-hijos').reset();
-                    $("#registro_hijo").modal("hide");
-                }else if($.isPlainObject(r)){
-                   alerta.errorOnInputs(r);
-
-                   //alerta.show("Registro no Exitoso","Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos","warning-alert striped-alert",true);
-                   mensage= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
-                   $curiosity.noty(message, 'warning');
-                   $btn.prop("disabled",false);
-                   return;
-               }
-            }).always(function(){
-
-                 $btn.text(text_temp);
-                 $btn.removeClass("striped-alert");
-                 $btn.prop("disabled",false);
-            });
-        }
-    });
+    // $("#frm-reg-hijos").on("click","a[href='#finish']",function(){
+    //     if($("#frm-reg-hijos").valid()){
+    //         $btn = $(this);
+    //          var text_temp = $(this).text();
+    //         $(this).addClass("striped-alert");
+    //         $(this).text("Registrando...");
+    //         $(this).prop("disabled",true);
+    //         datos={
+    //             nombre:$("#nombre").val(),
+    //             apellido_paterno:$("#apellido_paterno").val(),
+    //             apellido_materno:$("#apellido_materno").val(),
+    //             sexo:$("#sexo").val(),
+    //             fecha_nacimiento:$("#fecha_nacimiento").val(),
+    //             username_hijo:$("#username_hijo").val(),
+    //             promedio:$("#promedio").val(),
+    //             grado_inicial:$("#grado").val(),
+    //             password:$("#password").val(),
+    //             cpassword:$("#cpassword").val()
+    //         }
+    //         $.ajax({
+    //             url:"/regHijo",
+    //             type:"post",
+    //             data:{data:datos},
+    //             beforeSend: function(){
+    //             message = "Espera.. Los datos se estan guardando... Verificando información";
+    //             $curiosity.noty(message, 'info');
+    //             }
+    //
+    //         }).done(function(r){
+    //             if(r=="OK"){
+    //                 //alerta.show("Registro Exitoso","EL niño fue registrado exitosamente","success-alert striped",true);
+    //                 $curiosity.noty("EL niño fue registrado exitosamente","success");
+    //                 $("#wizard-t-0").trigger("click");
+    //                 var codenew = "<div class='col-md-4 col-sm-6'>"+
+    //              	 		"<div class='hijo_avatar' style='margin-bottom:20px;'>"+
+    //             				"<center>"+
+    //                       "<img src='/packages/images/perfil/perfil-default.jpg' class='img-responsive img-rounded' style='margin-top: 20px;'>"+
+    //                     "</center>"+
+    //             				"<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>"+
+    //                       "<p class='nombres'>"+ datos.nombre +" <br> "+ datos.apellido_paterno +" <br> "+ datos.apellido_materno +"</p>"+
+    //             					"<p class='nombres' style='color:black;'>"+ datos.username_hijo +"</p>"+
+    //             				"</div>"+
+    //              	 		"</div>"+
+    //              	 	"</div>";
+    //                 $("#hijosInfo").append(codenew);
+    //                 document.getElementById('frm-reg-hijos').reset();
+    //                 $("#registro_hijo").modal("hide");
+    //             }else if($.isPlainObject(r)){
+    //                alerta.errorOnInputs(r);
+    //
+    //                //alerta.show("Registro no Exitoso","Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos","warning-alert striped-alert",true);
+    //                mensage= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
+    //                $curiosity.noty(message, 'warning');
+    //                $btn.prop("disabled",false);
+    //                return;
+    //            }
+    //         }).always(function(){
+    //
+    //              $btn.text(text_temp);
+    //              $btn.removeClass("striped-alert");
+    //              $btn.prop("disabled",false);
+    //         });
+    //     }
+    // });
 
 });

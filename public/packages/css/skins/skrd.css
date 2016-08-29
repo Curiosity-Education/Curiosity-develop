@@ -225,6 +225,32 @@
  .color-top{
  	border-top: 5px solid #d83130 !important;
  }
+
+ /*Seccion para actualizar la informacion del perfil del niño*/
+ #tit-secupd{
+   margin: 0;
+   background-color: #d83130;
+   color: #fff;
+   padding: 20px;
+   font-size: 1.5em;
+   margin-top: -40px;
+   margin-left: -40px;
+   margin-right: -40px;
+   margin-bottom: 40px;
+   text-align: center;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+ }
+ .addonskstyle{
+   width: 50px;
+   background-color: #d83130;
+   color: #fff;
+   border: none;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+ }
+ /*Fin Seccion para actualizar la informacion del perfil del niño*/
+
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;

@@ -21,7 +21,8 @@ $(document).ready(function() {
             $("#modalPremDad").modal('show');
           }
           else{
-            $("#registro_hijo").modal('show');
+            $("#hijosInfo").hide('slow');
+            $("#secreghijo").show('slow');
           }
         })
         .fail(function(error) {
@@ -36,7 +37,8 @@ $(document).ready(function() {
       $padre.validar.hijosCount();
     }
     else{
-      $("#registro_hijo").modal('show');
+      $("#hijosInfo").hide('slow');
+      $("#secreghijo").show('slow');
     }
   });
 

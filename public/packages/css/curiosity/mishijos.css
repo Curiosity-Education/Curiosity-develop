@@ -22,19 +22,27 @@
   outline: none;
 }
 /*Estilos para modal de registro de hijos*/
+.modal {
+  z-index: 9999;
+}
 #wizard-p-0, #wizard-p-1, #wizard-p-2{
   background-color: #eee;
   border: none;
   padding: 30px;
 }
-.input-group .input-group-addon{
+.addonStyle{
   border-top-left-radius: 10px;
   border: #fff;
   border-left-color: #2262ae;
   border-bottom-left-radius: 10px;
   background-color: #2184be;
   color: #fff;
-  font-size: 1.2em;
+  font-size: 1em;
+  width: 50px;
+  text-align: center;
+}
+.input-group{
+  width: 100%;
 }
 .form-custom-step{
   border: none !important;
@@ -75,3 +83,101 @@ button[data-dismiss="modal"]{
   padding: 0px !important;
 }
 /*Fin de Estilos para modal de registro de hijos*/
+#hijosInfo{
+	background-color: white;
+	border-radius: 10px;
+	padding-bottom: 12px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
+.hijo_avatar{
+  padding: 10px;
+  border-color: #2d96ba;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px 2px rgba(0,0,0,0.15);
+  margin-bottom:20px;
+}
+p.nombres{
+	font-family: "Calibri Light";
+  font-size: 1.3em;
+	color:#ed6922;
+  text-align: left;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+.imgprfh{
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+}
+#secreghijo{
+  display: none;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+#tit-regh{
+  font-size: 1.5em;
+  background-color: #2262ae;
+  color: #fff;
+  padding: 10px;
+  margin-top: -30px;
+  margin-left: -45px;
+  margin-right: -45px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+}
+.box-regh{
+  background-color: #eaeef3;
+  padding: 40px;
+  margin-top: 20px;
+  margin-left: -10px;
+  border-radius: 5px;
+}
+#tit-userh{
+  margin-top: 0;
+  margin-left: -15px;
+  margin-bottom: 25px;
+}
+#btn-svh{
+  margin-top: 30px;
+  color: #fff;
+  background-color: #3cb54a;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+}
+#btn-clh{
+  margin-top: 30px;
+  color: #fff;
+  background-color: #ed6922;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+}
+#fecha_nacimiento{
+  background-color: #fff !important;
+  cursor: pointer;
+}
+
+@media(max-width: 767px){
+  #tabRegHijos{
+    width: 100%;
+    margin-top: 30px;
+  }
+  #tit-hijos{
+    text-align: center;
+  }
+  #btn-clh{
+    width: 100%;
+  }
+  #btn-svh{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
