@@ -244,6 +244,7 @@ var $avatar = {
         data: {data: $id}
       })
       .done(function(response) {
+        console.log(response);
         if(response.length > 0){
           $sel.html("");
           $.each(response, function(index, obj) {
@@ -313,12 +314,12 @@ var $avatar = {
         $boton.html("<span class='fa fa-upload'></span>&nbsp;Guardar Secuencia");
       });
     },
-    eliminar : function($id, $selector){
+    eliminar : function($dat, $selector){
       var remover = function(){
         $.ajax({
           url: '/eliminarSecuencia',
           type: 'POST',
-          data: {data: $id}
+          data: {data: $dat}
         })
         .done(function(response) {
           if(response[0] == 'success'){

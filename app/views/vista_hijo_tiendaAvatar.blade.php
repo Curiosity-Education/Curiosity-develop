@@ -18,14 +18,14 @@
   	<div class="row">
   		<div class="col-sm-4">
   			<div class="ordenador miAvatar">
-  				<center><img src="/packages/images/avatars_curiosity/secuencias/{{$avatarActual->sprite}}" id='miAvatar' class="img-responsive"></center>
+  				<center><img id='miAvatar' class="img-responsive"></center>
   			</div>
   		</div>
 			<div class="col-sm-8">
 				<div class="ordenador miAvatar">
-					<h4 class="text-center"><b>{{$nombreAvatarActual}}</b></h4>
+					<h4 class="text-center"><b>{{$estiloAvatar->nombre}}</b></h4>
 					<br>
-					<p class="text-center">{{$avatarActual->historia}}</p>
+					<p class="text-center">{{$estiloAvatar->descripcion}}</p>
 				</div>
 			</div>
   	</div>
@@ -39,7 +39,7 @@
 					<div class="row">
 						@foreach ($avatarEstilos as $estilo)
 						@if ($experiencia->cantidad_exp >= $estilo->valor)
-							@if ($estilo->id == $avatarActual->idEstilo)
+							@if ($estilo->id == $estiloAvatar->id)
 								<div class="col-sm-6 col-md-3">
 							@else
 								<div class="col-sm-6 col-md-3 myStyle" id="{{$estilo->id}}ast">
@@ -56,7 +56,7 @@
 								<center>
 									<img src="/packages/images/avatars_curiosity/estilos/{{$estilo->preview}}" class="img-responsive">
 									<div class="captionInfo captionAvatar">
-										@if ($estilo->id == $avatarActual->idEstilo)
+										@if ($estilo->id == $estiloAvatar->id)
 											En uso
 										@elseif ($experiencia->cantidad_exp >= $estilo->valor)
 											Utilizar
@@ -142,7 +142,7 @@
 
 
 @section('mi_js')
-
+{{ HTML::script('/packages/js/curiosity/getspav.js') }}
 {{HTML::script('/packages/js/curiosity/tienda.js')}}
 {{HTML::script('/packages/js/curiosity/useTienda.js')}}
 @stop

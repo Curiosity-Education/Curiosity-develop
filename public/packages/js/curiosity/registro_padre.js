@@ -2,7 +2,7 @@ $(document).on("ready",function(){
 
   var dateNow = new Date();
   var dateOld = new Date();
-  dateNow.setMonth(dateNow.getMonth() - 216);//restar 19 años a la fecha actual
+  dateNow.setMonth(dateNow.getMonth() - 216);//restar 18 años a la fecha actual
   dateOld.setMonth(dateNow.getMonth() - 1080);//restar 99 años a la fecha actual
 
   // Inicializacion
@@ -29,7 +29,7 @@ $(document).on("ready",function(){
     labelYearSelect: 'menu de años',
     selectMonths: true,
     selectYears: 99,
-    format: 'yyyy-mm-dd',    
+    format: 'yyyy-mm-dd',
     min: [dateOld.getFullYear(),dateOld.getMonth(),dateOld.getDate()],
     max: [dateNow.getFullYear(),dateNow.getMonth(),dateNow.getDate()]
   });

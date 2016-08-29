@@ -1,0 +1,18 @@
+.tit-nameh{
+  background-color: #2262ae;
+  color: #fff;
+  padding: 15px;
+  margin-top: -5px;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 1.2em;
+}
+
+.contgrafh{
+  background-color: white;
+  border-radius: 5px;
+  padding-bottom: 12px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}

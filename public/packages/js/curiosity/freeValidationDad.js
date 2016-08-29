@@ -3,7 +3,7 @@ $(document).ready(function() {
   var $padre = {
     validar : {
       roleFree : function(rol){
-        if (rol == 'padre_free' || rol == 'demo_padre'){
+        if (rol == 'demo_padre'){
           return true;
         }
         else {
@@ -17,11 +17,12 @@ $(document).ready(function() {
           dataType: 'JSON'
         })
         .done(function(response) {
-          if(response >= 1){
+          if(response >= 5){
             $("#modalPremDad").modal('show');
           }
           else{
-            $("#registro_hijo").modal('show');
+            $("#hijosInfo").hide('slow');
+            $("#secreghijo").show('slow');
           }
         })
         .fail(function(error) {
@@ -36,7 +37,8 @@ $(document).ready(function() {
       $padre.validar.hijosCount();
     }
     else{
-      $("#registro_hijo").modal('show');
+      $("#hijosInfo").hide('slow');
+      $("#secreghijo").show('slow');
     }
   });
 

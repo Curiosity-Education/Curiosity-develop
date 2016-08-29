@@ -6,7 +6,6 @@
 
 @section('mi_css')
   {{HTML::style('/packages/css/curiosity/home_actividades.css')}}
-  {{HTML::style('/packages/css/libs/owl_carousel/owl.carousel.css')}}
 @stop
 
 @section('titulo_contenido')
@@ -18,7 +17,7 @@ Bienvenido a Curiosity
 @stop
 
 @section('panel_opcion')
-  <section class="panelWelcome">
+  <section class="panelWelcome color-top">
     <div class="row">
       <div class="col-sm-4">
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>
@@ -147,61 +146,49 @@ Bienvenido a Curiosity
     </div>
   </section>
 
-  <!-- <section class="slideVideos">
-    <div class="owl-carousel">
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
-      <div class="itemVideo">
-        <img src="/packages/images/fondos/fondo.jpg" />
-      </div>
+  <section class="row divisorGrados">
+    <div class="col-xs-12">
+      <center>
+        <h3 style="font-family: Kiddish !important; font-size:2.5em;">
+          <b><span class="tilde">~ </span>Nuevos Videos<span class="tilde"> ~</span></b>
+        </h3>
+        <br><br>
+      </center>
     </div>
-  </section> -->
+  </section>
+
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <section class="slickVideos">
+        @foreach($videos as $video)
+        <div class='col-xs-6 col-md-3'>
+          <iframe width='100%' src='{{$video->code_embed}}' frameborder='0'></iframe>
+        </div>
+        @endforeach
+        <!-- <div class="row">
+          <div class="col-xs-12">
+            <center>
+              <button type="button" class="videosArrow" id="gotoback">
+                <span class="fa fa-chevron-left"></span>
+              </button>
+              <button type="button" class="videosArrow" id="gotonext">
+                <span class="fa fa-chevron-right"></span>
+              </button>
+            </center>
+          </div>
+        </div> -->
+      </section>
+    </div>
+  </div>
+
+  <br><br>
 
   <section class="row divisorGrados">
     <div class="col-xs-12">
       <center>
         <h3 style="font-family: Kiddish !important; font-size:2.5em;">
-          <b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b></h3>
+          <b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b>
+        </h3>
       </center>
     </div>
   </section>
@@ -217,40 +204,6 @@ Bienvenido a Curiosity
   </section>
 @stop
 
-@section('mi_js')
-  {{HTML::script('/packages/js/libs/owl_carousel/owl.carousel.min.js')}}
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.owl-carousel').owlCarousel({
-          loop:true,margin:10,responsiveClass:true,responsive:{
-              0:{
-                  items:1,
-                  nav:true
-              },
-              600:{
-                  items:3,
-                  nav:false
-              },
-              1000:{
-                  items:4,
-                  nav:true,
-                  loop:false
-              }
-          }
-      });
-      $(".owl-next").text("Siguiente");
-      $(".owl-prev").text("Anterior");
-      $(".imgGrade").click(function(){
-        var $grado = $(this);
-        if($grado.data('status') != 'lock'){
-          // window.location.href = "/edu-"+$grado.data('grade')+"-inteligencia";
-          window.location.href="/inteligencia"+$grado.data('grade');
-        }
-        else{
-          $curiosity.noty("Disponible próximamente", "warning");
-        }
-      });
-    });
-  </script>
+@section('mi_js')  
   {{HTML::script('/packages/js/curiosity/home_actividades.js')}}
 @stop

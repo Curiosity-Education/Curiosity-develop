@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   $curiosity.menu.setPaginaId('#menuTiendaAvatar');
+  $sprite.putSpriteSelected('esperar', $("#miAvatar"));
 
   $('body').on('click', '.sk', function(){
     var prev = $(this).find('img').attr('src');

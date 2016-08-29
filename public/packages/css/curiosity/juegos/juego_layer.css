@@ -401,7 +401,7 @@ ul{
 
 .slider-wrapper{
   position: relative;
-  height: 275px;
+  height: 275px !important;
   width: 100%;
   border: none;
   overflow: hidden;
@@ -568,6 +568,10 @@ button.instruccion{
 #sectionStars > .fa-star{
   color: #f2bc19;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+#sectionStars > .fa-star-o{
+  color: #a2a6ad !important;
 }
 
 #btn-what{

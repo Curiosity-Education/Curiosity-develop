@@ -1,5 +1,5 @@
 /*
- * Skin: Red
+ * Skin: Purpura
  * ---------
  */
  .skprle .main-header .navbar {
@@ -214,6 +214,43 @@
  .miAvatar{
    border-top: solid 6px rgb(138, 71, 156);
  }
+ ul#slider{
+   height: 360px;
+   background-image: url(/packages/images/fondos/1513.jpg);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   border-radius: 10px;
+ }
+ .color-top{
+ 	border-top: 5px solid rgb(138, 71, 156) !important;
+ }
+
+ /*Seccion para actualizar la informacion del perfil del niño*/
+ #tit-secupd{
+   margin: 0;
+   background-color: rgb(138, 71, 156);
+   color: #fff;
+   padding: 20px;
+   font-size: 1.5em;
+   margin-top: -40px;
+   margin-left: -40px;
+   margin-right: -40px;
+   margin-bottom: 40px;
+   text-align: center;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+ }
+ .addonskstyle{
+   width: 50px;
+   background-color: rgb(138, 71, 156);
+   color: #fff;
+   border: none;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+ }
+ /*Fin Seccion para actualizar la informacion del perfil del niño*/
+
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;

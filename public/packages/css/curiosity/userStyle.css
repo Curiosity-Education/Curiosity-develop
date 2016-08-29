@@ -42,7 +42,7 @@ body {
 }
 
 #contAvatar{
-  padding-bottom: 43.5px;
+  padding-bottom: 75px;
 }
 
 .modal{
@@ -1382,10 +1382,10 @@ a:focus {
 }
 /* Input group */
 .input-group .input-group-addon {
-  border-radius: 0;
+  /*border-radius: 0;
   border-color: #d2d6de;
   background-color: #fff;
-  border-left-color: #2262ae;
+  border-left-color: #2262ae;*/
 }
 /* button groups */
 .btn-group-vertical .btn.btn-flat:first-of-type,
@@ -1626,7 +1626,7 @@ a:focus {
   position: relative;
   border-radius: 10px;
   background: #ffffff;
-  border-top: 6px solid #d2d6de;
+
   margin-bottom: 20px;
   width: 100%;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);

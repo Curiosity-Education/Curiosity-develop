@@ -36,6 +36,17 @@ $(document).ready(function() {
     }
   });
 
+  $(".imgGrade").click(function(){
+    var $grado = $(this);
+    if($grado.data('status') != 'lock'){
+      window.location.href="/inteligencia"+$grado.data('grade');
+    }
+    else{
+      $curiosity.noty("Disponible próximamente", "warning");
+    }
+  });
+
+
 
 
 });

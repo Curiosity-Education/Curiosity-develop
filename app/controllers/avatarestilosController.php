@@ -93,6 +93,30 @@ class avatarestilosController extends BaseController
     return Response::json(array(0=>'success'));
   }
 
+  public static function getSelectedInfo(){
+    $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+    $info = DB::table('hijos_avatars')
+    ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
+    ->where('hijos_avatars.hijo_id', '=', $idHijo)
+    ->select('avatars_estilos.*')
+    ->first();
+    return $info;
+  }
+
+  public static function getEstilosByAvatar(){
+    $avatarId = avatarestilosController::getSelectedInfo()->avatars_id;
+    $avatarEstilos = avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
+    ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
+    ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
+    ->where('avatars.active', '=', '1')
+    ->where('avatars_estilos.active', '=', '1')
+    ->where('avatars.id', '=', $avatarId)
+    ->where('tipos_secuencias.nombre', '=', 'esperar')
+    ->select('avatars_estilos.*')
+    ->groupBy('avatars_estilos.id')
+    ->get();
+    return $avatarEstilos;
+  }
 
 }
 

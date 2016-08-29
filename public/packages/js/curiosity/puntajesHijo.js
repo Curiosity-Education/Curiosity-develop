@@ -42,14 +42,11 @@ $(document).ready(function(){
   function makeSections(id, nombre){
     var html =
     "<div class='row' id='rw"+id+"' style='margin-bottom:20px;'>"+
-      "<div class='col-md-6 col-xs-12 col-sm-12 contenedores' style='padding-bottom:35px;'>"+
-        "<h4 style='margin-top: 30px;"+
-          "margin-left: 20px;"+
-          "margin-bottom: 0;'>"+
+      "<div class='col-md-6 col-xs-12 col-sm-12 contgrafh' style='padding-bottom:35px;'>"+
+        "<h4 class='tit-nameh'>"+
           "<i class='fa fa-line-chart'></i>&nbsp;&nbsp;"+
           ""+nombre+""+
         "</h4>"+
-        "<hr class='hr'>"+
         "<div class='col-md-12 col-sm-12 col-xs-12' id='' style='padding-top:10px;' data-d="+id+">"+
           "<center><canvas class='thiscanvas'></canvas></center>"+
         "</div>"+
@@ -59,7 +56,7 @@ $(document).ready(function(){
   }
 
   function makeChart ($fechas, $cantidades, $id){
-    var $contenedor = $("#seccionesHijos > #rw"+$id+" > .contenedores > div > center");
+    var $contenedor = $("#seccionesHijos > #rw"+$id+" > .contgrafh > div > center");
     var grafica = $contenedor.find('.thiscanvas');
     var myChart = new Chart(grafica, {
       type : 'bar',
@@ -68,8 +65,8 @@ $(document).ready(function(){
         datasets : [{
           label : 'Cantidad de juegos terminados en el día',
           data : $cantidades,
-          backgroundColor : ['#3cb54a', '#3cb54a', '#3cb54a', '#3cb54a', '#3cb54a', '#3cb54a', '#3cb54a'],
-          borderColor : ['#227d2d', '#227d2d', '#227d2d', '#227d2d', '#227d2d', '#227d2d', '#227d2d'],
+          backgroundColor : ['#259fba', '#259fba', '#259fba', '#259fba', '#259fba', '#259fba', '#259fba'],
+          borderColor : ['#096d83', '#096d83', '#096d83', '#096d83', '#096d83', '#096d83', '#096d83'],
           borderWidth : [2, 2, 2, 2, 2, 2, 2]
         }]
       },

@@ -46,9 +46,7 @@ function __init(){
             $('#login-reg').hide();
             $('#login-int').show();
             $('#login-back').show();
-            $(".login-img").hide("slow");
             $(".login-img").attr('src',foto);
-            $(".login-img").show("slow");
         }
 
         // reocultamos los botones y mostramos los botones de inicio asi como regresamos
@@ -170,9 +168,14 @@ function __init(){
               });
             });
           }
-          else if(response == 'success'){
+          else if(response[0] == 'success'){
             $curiosity.noty('Bienvenid@ '+$("#username").val(), 'message','Bienvenido a Curiosity!!',$(".login-img").attr('src'));
-            window.location.href = '/perfil';
+            if(response[1] == 'h'){
+              window.location.href = '/inicio';
+            }
+            else{
+              window.location.href = '/perfil';
+            }
           }
           else{
             $curiosity.noty('La contraseña de usuario no es valida', 'warning');

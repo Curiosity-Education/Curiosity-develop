@@ -15,6 +15,7 @@ class tiendaController extends BaseController
     $mySkins = skin::join('users_skins', 'users_skins.skin_id', '=', 'skins.id')
     ->where('user_id', '=', Auth::user()->id)
     ->select('skins.id', 'skin', 'preview', 'premium', 'costo', 'uso')
+    ->groupBy('skins.id')
     ->get();
 
     $skinsBuy = [];
@@ -31,26 +32,27 @@ class tiendaController extends BaseController
       }
     }
 
-    $avatarActual = DB::table('hijos_avatars')
-    ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
-    ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
-    ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
-    ->where('hijos_avatars.hijo_id', '=', $idHijo)
-    ->where('tipos_secuencias.nombre', '=', 'esperar')
-    ->select('secuencias.sprite', 'avatars_estilos.descripcion as historia', 'avatars_estilos.avatars_id', 'hijos_avatars.avatar_id as idEstilo')
-    ->first();
+    // $avatarActual = DB::table('hijos_avatars')
+    // ->join('avatars_estilos', 'hijos_avatars.avatar_id', '=', 'avatars_estilos.id')
+    // ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
+    // ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
+    // ->where('hijos_avatars.hijo_id', '=', $idHijo)
+    // ->where('tipos_secuencias.nombre', '=', 'esperar')
+    // ->select('secuencias.sprite', 'avatars_estilos.descripcion as historia', 'avatars_estilos.avatars_id', 'hijos_avatars.avatar_id as idEstilo')
+    // ->first();
 
-    $nombreAvatarActual = DB::table('avatars')->where('id', '=', $avatarActual->avatars_id)->pluck('nombre');
-
-    $avatarEstilos = avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
-    ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
-    ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
-    ->where('avatars.active', '=', '1')
-    ->where('avatars_estilos.active', '=', '1')
-    ->where('avatars_estilos.avatars_id', '=', $avatarActual->avatars_id)
-    ->where('tipos_secuencias.nombre', '=', 'esperar')
-    ->select('avatars.nombre as nombreAvatar', 'avatars_estilos.*')
-    ->get();
+    // $nombreAvatarActual = DB::table('avatars')->where('id', '=', $avatarActual->avatars_id)->pluck('nombre');
+    $estiloAvatar = avatarestilosController::getSelectedInfo();
+    $avatarEstilos = avatarestilosController::getEstilosByAvatar();
+    // $avatarEstilos = avatar::join('avatars_estilos', 'avatars.id', '=', 'avatars_estilos.avatars_id')
+    // ->join('secuencias', 'avatars_estilos.id', '=', 'secuencias.avatar_estilo_id')
+    // ->join('tipos_secuencias', 'secuencias.tipo_secuencia_id', '=', 'tipos_secuencias.id')
+    // ->where('avatars.active', '=', '1')
+    // ->where('avatars_estilos.active', '=', '1')
+    // ->where('avatars_estilos.avatars_id', '=', $estiloAvatar->avatars_id)
+    // ->where('tipos_secuencias.nombre', '=', 'esperar')
+    // ->select('avatars.nombre as nombreAvatar', 'avatars_estilos.*')
+    // ->get();
 
     $experiencia = DB::table('hijo_experiencia')->where('hijo_id', '=', $idHijo)->first();
 
@@ -58,8 +60,7 @@ class tiendaController extends BaseController
       'skinsBuy' => $skinsBuy,
       'mySkins' => $mySkins,
       'experiencia' => $experiencia,
-      'avatarActual' => $avatarActual,
-      'nombreAvatarActual' => $nombreAvatarActual,
+      'estiloAvatar' => $estiloAvatar,
       'avatarEstilos' => $avatarEstilos
     ));
   }
@@ -82,7 +83,7 @@ class tiendaController extends BaseController
     ->update(array(
       'skin_id' => $skin
     ));
-    return "success";
+    return Response::json(array("success"));
   }
 
   function comprarSkin(){

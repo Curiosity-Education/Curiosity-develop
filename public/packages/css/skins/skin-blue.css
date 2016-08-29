@@ -83,7 +83,7 @@
 .skin-blue .sidebar-menu > li:hover > a{
   color: #fff;
   background: #222d32 !important;
-  border-left-color: #3c8dbc;
+  border-left-color: #2262ae;
 }
 .arrowAsideActive {
   width: 30px;
@@ -222,6 +222,43 @@
 .miAvatar{
   border-top: solid 6px #2262ae;
 }
+ul#slider{
+  height: 360px;
+  background-image: url(/packages/images/fondos/1511.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+.color-top{
+	border-top: 5px solid #2262ae !important;
+}
+
+/*Seccion para actualizar la informacion del perfil del niño*/
+#tit-secupd{
+  margin: 0;
+  background-color: #2262ae;
+  color: #fff;
+  padding: 20px;
+  font-size: 1.5em;
+  margin-top: -40px;
+  margin-left: -40px;
+  margin-right: -40px;
+  margin-bottom: 40px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.addonskstyle{
+  width: 50px;
+  background-color: #2262ae;
+  color: #fff;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+/*Fin Seccion para actualizar la informacion del perfil del niño*/
+
 /*/ Barra de desplazamiento /*/
 ::-webkit-scrollbar {
       width: 10px;

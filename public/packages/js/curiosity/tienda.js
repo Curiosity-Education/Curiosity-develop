@@ -26,8 +26,8 @@ var $tienda = {
               showCancelButton: false,
               showConfirmButton: false
             });
+            window.location.reload();
           }
-          window.location.reload();
         })
         .fail(function(error) {
           console.log(error);

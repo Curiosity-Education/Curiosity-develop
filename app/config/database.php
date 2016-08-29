@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'curiositydb',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'admin',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_spanish2_ci',
 			'prefix'    => '',

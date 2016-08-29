@@ -100,15 +100,16 @@ div#collapseEx2 > ul.navbar-nav > li.anc:hover{
 }
 
 div.view-entrada{
-	background: url("/packages/images/landing/fondo-full.jpg") repeat center center fixed;
+	background: url("/packages/images/landing/fondo-full-min.jpg");
 	height: 100%;
 	/*background-attachment: fixed;*/
 	background-size:cover;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
 section#nosotros{
-	background-color: #EEEEEE;
+	background-color: #fff;
 }
 
 #logo_entrada{
@@ -147,7 +148,7 @@ section#nosotros{
 }
 
 section#funcionamiento{
-	background-color: #fff;
+	background-color: #F5F5F5;
 }
 
 p.text-justify b{
@@ -177,21 +178,20 @@ div#separador1{
 
 /* Barra scroll */
 ::-webkit-scrollbar {
-      width: 15px;
+	width: 13px;
 }
 ::-webkit-scrollbar-track {
-      background-color: #2d96ba;
+	background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
-			background-color: #2262ae;
-			border: solid 3px #2d96ba;
-			border-radius: 10px;
+	background-color: #2262ae;
+	border: solid 3px #fff;
+	border-radius: 10px;
 }
 ::-webkit-scrollbar-corner {
-      background-color: transparent;
+	background-color: transparent;
 }
 /* FIN Barra scroll */
-
 button{
 	border: none;
 	outline: none !important;
@@ -237,7 +237,7 @@ div#carusel-testimonial div.card div.card-block{
 }
 
 section#colaboradores{
-	background-color: #EEEEEE;
+	background-color: #F5F5F5;
 }
 
 div#carusel-colaboradores div.card{
@@ -308,7 +308,6 @@ input#correo_noticia{
     -moz-transition: .6s;
     -o-transition: .6s;
     box-shadow: 0px 0px 0px #f5f5f5;
-		margin-top: -30px;
 }
 
 #footer{
@@ -500,7 +499,7 @@ div#wrapper-form{
 	background-color: rgba(45, 150, 186, 0.7);
 	padding: 20px 30px 0px;
 	border-radius: 3px;
-    margin-top: 110px;		
+    margin-top: 110px;
 }
 
 div#wrapper-form img.img-thumbnail{
@@ -580,7 +579,19 @@ div.mascara{
 }
 .img-esc{
     width: 100%;
-    height: 200px;
+    height: 300px;
+}
+
+@media only screen and (max-width:768px){
+	div.card img.img-esc{
+		height:25%  !important;
+	}
+}
+
+@media only screen and (max-width:554px){
+	div.card img.img-esc{
+		height:40%  !important;
+	}
 }
 
 div#content-integrantes div.card div.card-block{
@@ -588,7 +599,7 @@ div#content-integrantes div.card div.card-block{
 }
 
 section#apoyo{
-	background-color: #EEEEEE;
+	background-color: #F5F5F5;
 }
 
 section#apoyo div.container div#content-elemento img.hoverable{

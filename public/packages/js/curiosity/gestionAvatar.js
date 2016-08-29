@@ -134,6 +134,12 @@ $(document).ready(function() {
     $("#prevAvatar").trigger('click');
   });
 
+  // Click para seleccionar el zip de avatar
+  $(".btnUploadSec").on('click', function(){
+    $("#filesecuence").trigger('click');
+  });
+
+  $("#filesecuence").attr('accept', 'application/zip');
   // ----------------------------
   // Gestión de avatar
   // ----------------------------
@@ -144,7 +150,7 @@ $(document).ready(function() {
     var $archivo = $(this);
     if($curiosity.comprobarFile($archivo.val(), extensiones)){
       var archivos = document.getElementById("prevAvatar").files;
-      if(archivos[0].size > 2048000){
+      if(archivos[0].size > pesoMaximo){
         $archivo.val("");
         resetPreview();
         $curiosity.noty("La imagen seleccionada excede el peso máximo (2 MB)", 'warning');
@@ -288,6 +294,48 @@ $(document).ready(function() {
   // ----------------------------
   // Gestión de secuencias
   // ----------------------------
+  // comprobar tipo de archivo seleccionado y mostrar preview
+  $("#filesecuence").on('change', function(){
+    var pesoMaximo = 2048000;
+    var extensiones = new Array('.zip');
+    var $archivo = $(this);
+    var $selectorzip = $(".btnUploadSec");
+    if($curiosity.comprobarFile($archivo.val(), extensiones)){
+      var archivos = document.getElementById("filesecuence").files;
+      if(archivos[0].size > pesoMaximo){
+        $archivo.val("");
+        $selectorzip.css({
+          'padding-top' : '80px',
+          'height' : '200px'
+        });
+        $selectorzip.html('');
+        $selectorzip.text('Da click aquí para seleccionar tu archivo .zip');
+        $curiosity.noty("El archivo seleccionado excede el peso máximo establecido (2 MB)", 'warning');
+      }
+      else{
+        $selectorzip.html('');
+        var $zip = $("<img/>");
+        $zip.attr('src', '/packages/images/zipicon.png');
+        $zip.css('width', '15%');
+        $selectorzip.css({
+          'padding-top' : '10px',
+          'height' : 'auto'
+        });
+        $selectorzip.append($zip);
+        $selectorzip.append("<h5 class='zipinfoloaded'>"+ archivos[0].name +"<h5/>");
+        $selectorzip.append("<h5 class='zipinfoloaded'>"+ archivos[0].size +" kb<h5/>");
+      }
+    }
+    else{
+      $archivo.val("");
+      $selectorzip.css({
+        'padding-top' : '80px',
+        'height' : '200px'
+      });
+      $selectorzip.html('');
+      $selectorzip.text('Da click aquí para seleccionar tu archivo .zip');
+    }
+  });
   // mostrar las secuencias del estilo del avatar
   $("#addSecuencias").click(function() {
     $("#back").data('go', 'estilos');
@@ -319,7 +367,7 @@ $(document).ready(function() {
     var accion = $(this).data('action');
     if(accion == 1){
       // Guardar
-      var formData = new FormData($("#formImgPrev")[0]);
+      var formData = new FormData($("#filesecuenceForm")[0]);
       formData.append('tipo_secuencia', $("#tipoSecuencia").val());
       formData.append('active', 1);
       formData.append('avatar_estilo_id', $idEstilo);
@@ -328,9 +376,100 @@ $(document).ready(function() {
   });
   // Eliminar secuencia de avatar
   $('body').on('click', '.eliminarSec', function(){
-    $idSecuencia = $(this).data('dat')['id'];
+    var data = {
+      'idEstilo' : $(this).data('dat')['avatar_estilo_id'],
+      'isTipo' : $(this).data('dat')['tipo_secuencia_id']
+    }
+
     var $el = $(this).parent().parent().parent();
-    $avatar.secuencia.eliminar($idSecuencia, $el);
+    $avatar.secuencia.eliminar(data, $el);
   });
 
+  // var urls='/asignar/juego/'+$("#subir_juego").attr('data-id-actividad');
+  // var fileAdded;
+  // Dropzone.options.myDropzone = {
+  //   autoProcessQueue : false,
+  //   uploadMultiple:false,
+  //   maxFiles:10,
+  //   maxFilesize:10000000,//MB
+  //   success: function(file, response){
+  //     $("#archivos").empty();
+  //     console.log(response);
+  //     if(response.archivos != null || response.archivos != undefined){
+  //       $.each(response.archivos,function(i,archivo){
+  //         var $img = $("<img/>");
+  //         $img.attr({'title':archivo.nombre, 'style':'width:70px; height:70px;'});
+  //         switch(archivo.tipo){
+  //           case 'png':
+  //             $img.attr({
+  //               'src':'packages/images/icon-css.png',
+  //               'rel':archivo.ruta,
+  //               'title':archivo.name
+  //             });
+  //             break;
+  //           }
+  //           var $title = $('<label/>');
+  //           var div = $("<div/>").addClass("col-md-4");
+  //           div.append($img);
+  //           div.append("<br>");
+  //           div.append($title.text(archivo.nombre).css("word-wrap","break-word"));
+  //           $("#archivos").append(div);
+  //           $("#archivosUpload").removeClass('hide');
+  //         });
+  //         $curiosity.noty("El juego "+file.name+" se subio con exito","success");
+  //       }
+  //       else{
+  //         $curiosity.noty(response.message,"warning");
+  //       }
+  //     },
+  //     init:function(){
+  //       var submitButton = document.getElementById('guardarSecuencia');
+  //       myDropzone=this;
+  //       submitButton.addEventListener("click",function(e){
+  //         e.preventDefault();
+  //         e.stopPropagation();
+  //         myDropzone.processQueue();
+  //       });
+  //       var addedfile = false;
+  //       this.on('addedfile',function(file){
+  //         urls='/asignar/juego/'+$("#subir_juego").attr('data-id-actividad');
+  //         this.options.url = urls;
+  //         fileAdded=file;
+  //         //Evento al agregar un archivo
+  //         var toload = $("#toload").text();
+  //         var total = parseFloat(toload) + 1;
+  //         $("#toload").text(total);
+  //         $("#removeFile").attr('disabled',false);
+  //       });
+  //       this.on('complete',function(file){
+  //         //Evento al completar la carga
+  //         $("#subirJuego").prop('disabled',false);
+  //         myDropzone.removeFile(file);
+  //         $("#toload").text(0);
+  //         $("#subirJuego").empty();
+  //         $("#subirJuego").append("<i class='fa fa-upload'></i> Subir Juego");
+  //       });
+  //       this.on("maxfilesexceeded",function(file){
+  //         $curiosity.noty("Demasiado grande","warning");
+  //       });
+  //       this.on('success',function(file, response){
+  //         actividad.hasGame();
+  //         $("#subirJuego").prop('disabled',false);
+  //         $("#bytesSent").text("");
+  //         $("#progress").text("");
+  //       });
+  //       this.on('sending',function(files,response){
+  //         $("#subirJuego").prop('disabled',true);
+  //         $("#removeFile").attr('disabled',true);
+  //         $("#subirJuego").text('Subiendo archivo...');
+  //       });
+  //     },
+  //     uploadprogress: function(file, progress, bytesSent) {
+  //       // Display the progress
+  //       var progresAlt = parseFloat(progress).toFixed(2);
+  //       var bytesAlt = parseFloat(bytesSent).toFixed(2);
+  //       $("#bytesSent").text(bytesAlt+"KB");
+  //       $("#progress").text(progresAlt+"%");
+  //     }
+  //   }
 });

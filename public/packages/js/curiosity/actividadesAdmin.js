@@ -151,6 +151,8 @@ $(document).ready(function() {
         formData.append('tema_id', tema);
         formData.append('code_embed', actividad.registro.convertEmbedCode($("#video").val()));
         formData.append('profesores_id', $("#profesores").val());
+        // var wallpaper = document.getElementById("wallpaper").files;
+        // formData.append('wallpaper', wallpaper[0]);
         $.ajax({
           url: direccion,
           type: 'POST',
@@ -160,6 +162,7 @@ $(document).ready(function() {
           processData: false
         })
         .done(function(response) {
+          // console.log(response);
           if($.isPlainObject(response)){
             $.each(response,function(index,value){
               $.each(value,function(i, message){
@@ -352,6 +355,10 @@ $(document).ready(function() {
 
   $(".filePrev").click(function(event) {
     $("#archivoPDF").trigger('click');
+  });
+
+  $(".filePrevWallp").click(function(event) {
+    $("#wallpaper").trigger('click');
   });
 
   $("#archivoPDF").on('change', function(){
