@@ -331,13 +331,13 @@
 		</div>
 		<div class="container">
 			<div class="col-md-12" id="carusel-colaboradores">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-12 col-md-offset-">
 				<!--Carousel Wrapper-->
 					<div id="multi-item-example2" class="carousel slide carousel-multi-item" data-ride="carousel">
 
 						<!--Controls-->
 						<div class="controls-top">
-							<h3 class="h3-responsive">Escuelas <hr></h3><br>
+							<h3 class="h3-responsive">Escuelas <hr style="border-color:#2262ae;"></h3><br>
 							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
 							<a class="btn-floating btn-small indicadores" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
 						</div>
@@ -345,7 +345,7 @@
                           <?php $slide=0; $status="active"; $contador=0; $long = count($escuelas);?>
                           @foreach($escuelas as $escuela)
                              <?php $contador++; ?>
-                              @if($contador == 2 || $contador == $long)
+                              @if($contador == 3 || $contador == $long)
                                   <!--Indicators-->
                                   @if($slide == 0)
                                   <ol class="carousel-indicators">
@@ -372,13 +372,13 @@
                                               <div class="carousel-item">
                                          @endif
                                       @endif
-                                      <div class="col-md-6 col-sm-6">
+                                      <div class="col-md-4 col-sm-4">
                                           <div class="card">
                                               {{HTML::image('/packages/images/escuelas/'.$escuela->logotipo, 'alt', array('class' => 'img-fluid img-esc'))}}
                                           </div>
                                       </div>
                                       <?php $contador_esc+=1; $control+=1;?>
-                                      @if($contador_esc == 2 || $control == $long)
+                                      @if($contador_esc == 3 || $control == $long)
                                           </div>
                                           <?php $contador_esc=0;?>
                                       @endif
@@ -688,7 +688,7 @@
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul class="ul-content">
 					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
-					<li class="separacion"><a href="#">- Mentores</a></li>
+					<li class="separacion"><a href="/mentores">- Mentores</a></li>
 				</ul>
 			</div>
 			<!--/.Second column-->
@@ -738,9 +738,9 @@
 	<!--Social buttons-->
 	<div class="social-section">
 		<ul>
-			<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook" > </i></a></li>
+			<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb" target="_blank"><i class="fa fa-facebook" > </i></a></li>
 			<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
-			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus"><i class="fa fa-youtube"> </i></a></li>
+			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus" target="_blank"><i class="fa fa-youtube"> </i></a></li>
 		</ul>
 	</div>
 	<!--/.Social buttons-->
