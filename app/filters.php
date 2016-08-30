@@ -194,3 +194,9 @@ Route::filter('utilizar_tienda',function(){
        return View::make('view-error404');
    }
 });
+
+Route::filter('ver_reportes',function(){
+   if(!Entrust::can('ver_reportes')){
+       return View::make('view-error404');
+   }
+});

@@ -229,6 +229,16 @@
                 <div class="arrowAsideActive"></div>
               </li>
             @endif
+            
+            @if(Entrust::can('ver_reportes'))
+              <li id="menuAdminNovedad">
+                <a href="/vistaNovedades">
+                  <i class="fa fa-file-text"></i>
+                  <span>Gestión Novedades</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            @endif
 
             <li class="visible-xs">
               <a href="/logout" class="btn" id="logOut">

@@ -253,7 +253,7 @@
   </div>
  <!-- FIN Datos de usuario y personal -->
 
- <!-- SLIDER DE NUESTOS JUEGOS -->
+ <!-- SECCIÓN DE NOVEDADES -->
   <div class="col-md-9">
     <div class="col-md-6">
       <div id="noticias" class="secbox">
@@ -273,7 +273,7 @@
       </div>
     </div>
   </div>
- <!-- FIN DEL SLIDER DE NUESTROS JUEGOS -->
+ <!-- FIN DE SECCIÓN DE NOVEDADES -->
 
  <!-- SECCION MIS HIJOS -->
   <div class="container-fluid">
