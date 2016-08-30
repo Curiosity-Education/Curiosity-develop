@@ -258,11 +258,12 @@
   				<div class="panel panel-info" id="panel_informativo">
   					<div class="panel-heading" id="heading-novedades">
   						<div class="panel-title">
-  							<center><h4 class="fontHijo">LO NUEVO EN CURIOSITY</h4></center>
+  							<center><h4 class="fontHijo" style="font-size:1.5em;">¡Feliz Regreso de Clases!</h4></center>
   						</div>
   					</div>
   					<div class="panel-body">
-  						<!-- Mostramos las novedades -->
+              <img src="/packages/images/chicos.png" class="img-responsive" style="margin-top:5px;margin-bottom:5px;">
+  						{{--<!-- Mostramos las novedades -->
   						<div class="alert alert-info clearfix fixIndez" style="background-color:#e87eb1 !important;">
                 <!-- Icono -->
   							<span class="alert-icon" style="background-color:#fff;"><i class="fa fa-check"></i></span>
@@ -306,7 +307,7 @@
   									</li>
   								</ul>
   							</div>
-  						</div>
+  						</div>--}}
               <!-- ///////////////////////// -->
   					</div>
   				</div>
@@ -533,6 +534,8 @@
     $("#btnselectprofile").click(function(event) {
       $("#inImage").trigger('click');
     });
+
+    $("#menuDatos").show();
 
   });
 </script>

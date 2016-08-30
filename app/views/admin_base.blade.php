@@ -179,7 +179,7 @@
               <div class="arrowAsideActive"></div>
             </li>
 
-            <li id="menuDatos">
+            <li id="menuDatos" hidden="hidden">
               <a href="javascript:void(0)">
                 <i class="fa fa-pencil-square-o"></i>
                 <span>Editar mis datos</span>
