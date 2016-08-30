@@ -223,6 +223,13 @@
   </section>
   <!-- Fin de modal para modificar datos del Papá -->
 
+<<<<<<< HEAD
+ <!-- SECCIÓN DE NOVEDADES -->
+  <div class="col-md-9">
+    <div class="col-md-6">
+      <div id="noticias" class="secbox">
+        <h1 id="tit-news">¡Novedades Curiosity!</h1>
+=======
   <section id="sectionGral">
     <div class="container-fluid">
       <div class="col-sm-3">
@@ -255,6 +262,7 @@
             </div>
           </div>
         </div>
+>>>>>>> 87b40b4a2508ac68492211738aee23e14ad60f35
       </div>
       <div class="col-sm-4">
         <div id="noticias" class="secbox">
@@ -274,6 +282,27 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+  </div>
+ <!-- FIN DE SECCIÓN DE NOVEDADES -->
+
+ <!-- SECCION MIS HIJOS -->
+  <div class="container-fluid">
+    <div class="col-xs-12 contenedores color-top" id="">
+   	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
+   	  @foreach ($datosHijos as $hijo)
+   	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">
+    		<div class="div-img">
+    			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img" >
+    			<div class="text">
+    				<center>{{$hijo->nombre}}</center>
+    			</div>
+    		</div>
+  	  </div>
+  	  @endforeach
+   	</div>
+  </div>
+=======
     <div class="container-fluid">
       <div class="col-xs-12" id="sectionChildren">
      	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
@@ -290,6 +319,7 @@
      	</div>
     </div>
   </section>
+>>>>>>> 87b40b4a2508ac68492211738aee23e14ad60f35
 @stop
 
 @section('mi_js')
