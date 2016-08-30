@@ -6,7 +6,7 @@ var $sprite = {
       url: '/getSpriteselected-'+$name,
       type: 'POST'
     })
-    .done(function(response) {      
+    .done(function(response) {
       if (response['estatus'] == true){
         $sprite.startAnim($selector, response['sprite']);
       }

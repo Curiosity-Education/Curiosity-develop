@@ -46,9 +46,7 @@ function __init(){
             $('#login-reg').hide();
             $('#login-int').show();
             $('#login-back').show();
-            $(".login-img").hide("slow");
             $(".login-img").attr('src',foto);
-            $(".login-img").show("slow");
         }
 
         // reocultamos los botones y mostramos los botones de inicio asi como regresamos

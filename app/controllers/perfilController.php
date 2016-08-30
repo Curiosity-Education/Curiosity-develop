@@ -36,7 +36,7 @@ class perfilController extends BaseController{
                "after"       =>  "La fecha de expiracion es incorrecta, no puedes ingresar fechas inferiores al día de hoy",
          ];
         if(!Hash::check($datos["password_persona"],Auth::user()->password)){
-            return "contraseña incorrecta";
+            return Response::json("contraseña incorrecta");
         }
         $valid = Validator::make($datos,$rules,$messages);
         if($valid->fails()){
@@ -61,13 +61,13 @@ class perfilController extends BaseController{
                 $padre = padre::where('id', '=', $padreId)->first();
                 $padre->update($datos);
             }
-            return "bien";
+            return Response::json("bien");
         }
     }
     public function updateUser(){
         $datos  =    Input::get('data');
         $dateNow = date("Y-m-d");
-        if(!Auth::User()->hasRole('hijo')){
+        if(!Auth::User()->hasRole('hijo') && !Auth::User()->hasRole('hijo_free') && !Auth::User()->hasRole('demo_hijo')){
             $date_min =strtotime("-18 year",strtotime($dateNow));
         }else{
              $date_min =strtotime("-4 year",strtotime($dateNow));
@@ -119,7 +119,7 @@ class perfilController extends BaseController{
                 $padre = padre::where('id', '=', $padreId)->first();
                 $padre->update($datos);
             }
-            return "bien";
+            return Response::json("bien");
         }
     }
     public function cutImage(){
