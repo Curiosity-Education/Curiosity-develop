@@ -23,12 +23,14 @@ Bienvenido a Curiosity
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>
       </div>
       <div class="col-sm-8 text-center">
-        <h2 style="font-family: Kiddish !important;"><b>¡Aprende mientras te diviertes!</b></h2>
+        <h2 style="font-family: Kiddish !important;"><b>¡Aprender jamás había sido tan divertido.!</b></h2>
         <p id="text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, porro velit, recusandae temporibus blanditiis eaque aliquam modi maxime magnam, assumenda incidunt necessitatibus fugit optio amet nisi enim autem culpa doloremque.
+          En esta sección encontrarás los juegos más populares, mejor calificados y los más recomendados para ti. Además de los nuevos videos animados, todo a un sólo click. Recuerda que el secreto del éxito no es la suerte, sino la constancia.
+          <br>
+          ¡Que te diviertas!
         </p>
         <br>
-        <h6 class="pull-right"><i class="references">Nombre de alguien</i></h6>
+        <h6 class="pull-right"><i class="references">Equipo Curiosity</i></h6>
       </div>
     </div>
   </section>
@@ -157,12 +159,14 @@ Bienvenido a Curiosity
     </div>
   </section>
 
-  <div class="container-fluid">
-    <div class="col-md-12">
+  <div class="">
+    <div class="">
       <section class="slickVideos">
         @foreach($videos as $video)
         <div class='col-xs-6 col-md-3'>
-          <iframe width='100%' src='{{$video->code_embed}}' frameborder='0'></iframe>
+          <div class="frameVideo" style="border-top:solid 5px {{$video->color}};">
+            <iframe width='100%' src='{{$video->code_embed}}' frameborder='0'></iframe>
+          </div>
         </div>
         @endforeach
         <!-- <div class="row">
@@ -204,6 +208,6 @@ Bienvenido a Curiosity
   </section>
 @stop
 
-@section('mi_js')  
+@section('mi_js')
   {{HTML::script('/packages/js/curiosity/home_actividades.js')}}
 @stop
