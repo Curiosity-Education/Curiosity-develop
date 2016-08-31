@@ -259,6 +259,22 @@ ul#slider{
 }
 /*Fin Seccion para actualizar la informacion del perfil del niño*/
 
+/*Videos de estudio (Modal)*/
+#titvid{
+  BACKGROUND-COLOR: #2262ae;
+  color: #fff;
+  padding: 15px;
+  margin: -15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: -17px;
+}
+#btnclvid{
+  color: #fff;
+  outline: none;
+}
+/*Fin Videos de estudio Modal*/
+
 /*/ Barra de desplazamiento /*/
 ::-webkit-scrollbar {
       width: 10px;
