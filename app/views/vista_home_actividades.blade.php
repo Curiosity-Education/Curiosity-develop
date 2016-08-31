@@ -23,7 +23,7 @@ Bienvenido a Curiosity
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>
       </div>
       <div class="col-sm-8 text-center">
-        <h2 style="font-family: Kiddish !important;"><b>¡Aprender jamás había sido tan divertido.!</b></h2>
+        <h2 style="font-family: Kiddish !important;"><b>¡Aprender jamás había sido tan divertido!</b></h2>
         <p id="text">
           En esta sección encontrarás los juegos más populares, mejor calificados y los más recomendados para ti. Además de los nuevos videos animados, todo a un sólo click. Recuerda que el secreto del éxito no es la suerte, sino la constancia.
           <br>
