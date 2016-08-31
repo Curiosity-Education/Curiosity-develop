@@ -688,7 +688,7 @@
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul class="ul-content">
 					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
-					<li class="separacion"><a href="#">- Mentores</a></li>
+					<li class="separacion"><a href="/mentores">- Mentores</a></li>
 				</ul>
 			</div>
 			<!--/.Second column-->
@@ -738,9 +738,9 @@
 	<!--Social buttons-->
 	<div class="social-section">
 		<ul>
-			<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook" > </i></a></li>
+			<li><a href="https://www.facebook.com/curiosity.mx/" class="btn-floating btn-small btn-fb" target="_blank"><i class="fa fa-facebook" > </i></a></li>
 			<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
-			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus"><i class="fa fa-youtube"> </i></a></li>
+			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus" target="_blank"><i class="fa fa-youtube"> </i></a></li>
 		</ul>
 	</div>
 	<!--/.Social buttons-->

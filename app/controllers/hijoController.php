@@ -4,8 +4,8 @@ class hijoController extends BaseController{
 	public function addHijo(){
 		$datos = Input::get('data');
 		$dateNow = date("Y-m-d");
-    $date_min =strtotime("-4 year",strtotime($dateNow));
-    $date_min=date("Y-m-d",$date_min);
+        $date_min =strtotime("-4 year",strtotime($dateNow));
+        $date_min=date("Y-m-d",$date_min);
 		$rules=[
 			"username_hijo"     =>"required|unique:users,username|max:50",
             "password"          =>"required|min:8|max:100",
@@ -56,7 +56,12 @@ class hijoController extends BaseController{
 			}
 	    $user->attachRole($myRole);
 	    $perfil = new perfil();
-	    $perfil->foto_perfil = "perfil-default.jpg";
+			if ($datos['sexo'] == 'm'){
+				$perfil->foto_perfil = "boy-def.png";
+			}
+			else{
+				$perfil->foto_perfil = "girl-def.png";
+			}
 	    $perfil->users_id = $user->id;
 	    $perfil->save();
 	    $persona = new persona($datos);
@@ -90,7 +95,7 @@ class hijoController extends BaseController{
 	      // $membresia_plan->hijo_id=$hijo->id;
 	      // $membresia_plan->save();
 			}
-			return "OK";
+			return Response::json(array("OK", $perfil->foto_perfil));
 		}
 	}
     public function recordatorio(){

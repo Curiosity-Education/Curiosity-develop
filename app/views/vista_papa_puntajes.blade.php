@@ -1,6 +1,6 @@
 @extends('admin_base')
 @section('mi_css')
- {{HTML::style('/packages/css/curiosity/perfil.css')}}
+ {{HTML::style('/packages/css/curiosity/puntajesdad.css')}}
  {{HTML::style('/packages/css/curiosity/helper.css')}}
 @stop
 

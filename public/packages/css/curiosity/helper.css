@@ -6,7 +6,7 @@
     font-size:1.3em;
 }
 .note-helper{
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 #tituloHelp{
@@ -34,7 +34,7 @@
   line-height: 1.7;
 }
 
-button[data-dismiss="modal"]{
+#closehelp{
   margin-top: -20px !important;
   color: rgba(153, 153, 153, 0.61) !important;
   opacity: 1 !important;

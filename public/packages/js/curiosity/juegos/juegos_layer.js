@@ -98,7 +98,7 @@ var $juego = {
                     url:'/actividad/setdata',
                     method:"POST",
                     data:data
-                }).done(function(response){                  
+                }).done(function(response){
                     if(response.estado == "200"){
                         // $curiosity.noty(response.message,"success");
                     }
@@ -689,4 +689,15 @@ $(function(){
 
 	SliderModule.init();
 
+});
+
+$(document).ready(function() {
+  var tempEmbed;
+  $iframe = $("#srcvid");
+
+  $("#btnclvid").click(function(event) {
+    tempEmbed = $iframe.attr('src');
+    $iframe.attr('src', '');
+    $iframe.attr('src', tempEmbed);
+  });
 });
