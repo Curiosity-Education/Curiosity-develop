@@ -190,10 +190,9 @@ $(document).ready(function(){
 
 
     $(".img-hijo").on('click',function(){
-        $("#nom_hijo_s_est").empty();
         crearGraficaJuegosJugados($(this).attr('data-id'));
         crearGraficaAvanceMeta($(this).attr('data-id'));
-        $("#nom_hijo_s_est").append($("#name_hijo_s_mis_hijos").text());
+        $("#nom_hijo_s_est").text($("#name_hijo_s_mis_hijos_"+$(this).attr('data-id')).text());
         $(".container-estadisticas").show('slow');
         $("html,body").animate({scrollTop:$(".container-estadisticas").offset().top});
     });
@@ -299,10 +298,13 @@ $(document).ready(function(){
                 }
                 seriesGET.data.push(dataResponse);
             });
-            $curiosityCharts.pieMonoChrome('#des_jue',{
-                title:'',
-                series: seriesGET
-            });
+            if(seriesGET.data[0] != undefined){
+                $curiosityCharts.pieMonoChrome('#des_jue',{
+                    title:'',
+                    series: seriesGET
+                });
+            }
+
         }).fail(function(error){
 
         });
@@ -347,16 +349,22 @@ $(document).ready(function(){
             dataType:'JSON'
         }).done(function(response){
             $(".info-uso-plataform").attr('data-info',response);
+            var dataResponse=0,index = 0,avgResponse=0;
             $.each(response,function(i,object){
-                var dataResponse = (object.total_jugados*100)/object.meta;
-                $curiosityCharts.gauge('#status',{
+                index++;
+                avgResponse = (object.total_jugados*100)/object.meta;
+                dataResponse += avgResponse;
+            });
+            if(dataResponse > 0)
+                dataResponse = dataResponse/index;
+
+            $curiosityCharts.gauge('#status',{
                 name: 'Status',
                 data: [dataResponse],
                 tooltip: {
                     valueSuffix: '%'
                 }
             });
-        });
         }).fail(function(error){
             
         });

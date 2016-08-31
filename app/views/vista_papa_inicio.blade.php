@@ -285,7 +285,7 @@
     		<div class="div-img">
     			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img img-hijo tooltipShow" title="Click para ver estadísticas del día" data-id="{{$hijo->idHijo}}">
     			<div class="text">
-    				<center id="name_hijo_s_mis_hijos">{{$hijo->nombre}}</center>
+    				<center id="name_hijo_s_mis_hijos_{{$hijo->idHijo}}">{{$hijo->nombre}}</center>
     			</div>
     		</div>
   	  </div>
@@ -306,7 +306,7 @@
    	      <article id="sec1" class="secbox title-progress-day col-md-6 col-sm-12">
               <h1 id="tit-sec1" class="titsecs">Desglose de actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Mas Información"></i></h1><br>
               <div class="col-md-3"></div>
-   	          <div id="des_jue" class="col-md-8" style="min-width: 280px; max-width: 390px; height: 200px; margin: 0 auto">
+              <div id="des_jue" class="col-md-8" style="min-width: 280px; max-width: 390px; height: 200px; margin: 0 auto"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad!</h3></div>
    	          <div class="col-md-1"></div>
    	      </article>
    	  </section>
@@ -356,7 +356,7 @@
 {{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
-{{HTML::script('/packages/js/curiosity/curiosityCharts.js')}}
+{{HTML::script('/packages/js/curiosity/CuriosityCharts.js')}}
 {{HTML::script('/packages/js/curiosity/padrePerfil.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
