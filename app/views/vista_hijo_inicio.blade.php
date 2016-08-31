@@ -204,7 +204,7 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<center><h1 class="modal-title fontHijo" id="myModalLabel">Nivel de juego</h1></center>
+			<center><h1 class="modal-title fontHijo" id="myModalLabel">Meta Diaria</h1></center>
 			<center><i style="color:#65499d; font-size:2em;" class="fa fa-flag-checkered"></i></center>
 		  </div>
 		  <div class="modal-body" id="body-nivel">

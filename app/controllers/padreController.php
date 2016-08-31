@@ -8,7 +8,7 @@ class padreController extends BaseController
     }
 
     public function addPadre(){
-        $datos = Input::get('data');        
+        $datos = Input::get('data');
         $dateNow = date("Y-m-d");
         $date_min =strtotime("-18 year",strtotime($dateNow));
         $date_min=date("Y-m-d",$date_min);
@@ -75,7 +75,12 @@ class padreController extends BaseController
                 $padre->persona_id = $persona->id;
                 $padre->save();
                 $perfil = new perfil();
-                $perfil->foto_perfil="perfil-default.jpg";
+                if ($datos['sexo'] == 'm'){
+                  $perfil->foto_perfil="dad-def.png";
+                }
+                else{
+                  $perfil->foto_perfil="mom-def.png";
+                }
                 $perfil->gustos="¿Cuáles son tus gustos?";
                 $perfil->users_id=$user->id;
                 $perfil->save();

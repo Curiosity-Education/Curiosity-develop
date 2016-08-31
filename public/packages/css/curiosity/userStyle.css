@@ -26,7 +26,7 @@ body {
   width: 90%;
   height: 50px;
   letter-spacing: 1px;
-  border-radius: 10px;
+  border-radius: 50px;
   border: none;
   outline: none;
   padding-top: 10px;
@@ -34,6 +34,7 @@ body {
   padding-left: 30px;
   padding-right: 30px;
   text-decoration: none;
+  border: solid 3px #845ed0;  
 }
 
 .irAvatarStore:hover{
@@ -294,7 +295,7 @@ a:focus {
 }
 #navSearch{
   position: fixed;
-  margin-top: -195px;
+  margin-top: -247px;
   z-index: 9999999;
   width: 250px;
   margin-left: 50px;
@@ -1182,9 +1183,9 @@ a:focus {
   background-size: cover;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
-  margin-top: 20px;
+  margin-top: 5px;
   z-index: 5;
-  height: 90px;
+  height: auto;
   width: 90px;
   border: 0px solid;
   border-color: transparent;
@@ -1201,6 +1202,10 @@ a:focus {
   display: block;
   font-size: 13px;
 	color: #222d32;
+}
+#txtprofchild{
+  font-family: kiddish;
+  font-size: 1em;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
   padding: 15px;

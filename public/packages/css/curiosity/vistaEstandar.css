@@ -420,13 +420,34 @@ aside{
 	text-align: center;
 }
 
+/*Imagen de portada para los niños*/
 #img-portada{
 	background-image: url(../../images/dashboards/sh2brdcu.png);
   background-position: center;
   background-repeat: no-repeat;
 	background-size: cover;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
-	height: 150px;
+	height: 200px;
+	width: 100%;
+}
+/*Imagen de portada para los padres*/
+#img-portada-dad{
+	background-image: url(../../images/dashboards/sh2brdcu.png);
+  background-position: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+	height: 200px;
+	width: 100%;
+}
+/*Imagen de portada para los administrativos*/
+#img-portada-admon{
+	background-image: url(../../images/dashboards/sh2brdcu.png);
+  background-position: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+	height: 200px;
 	width: 100%;
 }
 

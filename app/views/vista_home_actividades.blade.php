@@ -30,7 +30,7 @@ Bienvenido a Curiosity
           ¡Que te diviertas!
         </p>
         <br>
-        <h6 class="pull-right"><i class="references">Equipo Curiosity</i></h6>
+        <h6 class="pull-right"><i class="references">~ &nbsp;Equipo Curiosity&nbsp; ~</i></h6>
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@ Bienvenido a Curiosity
           <div class="imgSlideNew" style='background:{{$nuevo->bg_color}};background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
           <div class="carousel-caption">
             <h3>{{$nuevo->nombre}}</h3>
-            <p class="hidden-xs">{{$nuevo->objetivo}}</p>
+            {{--<p class="hidden-xs">{{$nuevo->objetivo}}</p>--}}
             <button type="button" class="btn btn-warning btnPlay gotoplay" data-as='{{$nuevo}}' data-r='{{$rol}}'>
               <span class="fa fa-play"></span>&nbsp;
               Comenzar a jugar
