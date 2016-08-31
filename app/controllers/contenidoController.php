@@ -190,6 +190,18 @@ class contenidoController extends BaseController
         //   'nuevos' => $nuevos,
         //   'populares' => $populares
         // );
+        $now = date("Y-m-d");
+        $meta = new metaController();
+        $metas = $meta->getAll();
+        $miMeta = $meta->getMetaHijo();
+        if (!$meta->hasMetaToday()){
+          DB::table('avances_metas')->insert(array(
+            'avance' => 0,
+            'fecha' => $now,
+            'avance_id' => $miMeta->metaAsignedId
+          ));
+        }
+
         return View::make('vista_home_actividades')->with(array(
           'rol' => $rol,
           'grados' => $grados,

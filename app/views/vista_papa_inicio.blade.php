@@ -267,7 +267,9 @@
               <h1 id="tit-sec1" class="titsecs">Estado del uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
               <div class="col-md-1"></div>
               <div class="col-md-10">
-                  <div id="status" style="min-width: 240px; max-width: 380px; height: 220px; margin: 0 auto"></div>
+                <center>
+                  <div id="status" style="min-width: 340px; max-width: 480px; height: 320px; margin-top:20px;"></div>
+                </center>
               </div>
               <div class="col-md-1"></div>
             </div>
@@ -297,23 +299,28 @@
     <div class="col-xs-12 contenedores color-top" id="">
    	  <h3 id="tit-mychild-est"> <i class="fa fa-pie-chart"></i> Estadística diaria de <b id="nom_hijo_s_est"><!--[nombre-hijo]--></b> <i class="fa fa-times-circle tooltipShow back-misHijos pull-right" title="Cerrar"></i></h3>
    	  <section class="panel-est-hijo">
-          <article id="sec1" class="secbox title-of-the-progress col-md-4 col-sm-12">
-              <h1 id="tit-sec1" class="titsecs">Progreso de meta diaria.<i class="fa fa-info-circle pull-right tooltipShow info-progress-day" data-info="" title="Mas Información"></i></h1><br>
-   	          <input type="text" value="0"  class="dial col-md-10">
-   	          <div class="col-md-1"></div>
+          <article class="col-md-4 col-sm-12">
+            <center>
+              <div id="sec1" class="secbox title-of-the-progress">
+                <h1 id="tit-sec1" class="titsecs">Progreso de meta diaria.<i class="fa fa-info-circle pull-right tooltipShow info-progress-day" data-info="" title="Mas Información"></i></h1><br>
+     	          <input type="text" value="0"  class="dial col-md-12">
+              </div>
+            </center>
    	      </article>
-   	      <article class="col-md-1"></article>
-   	      <article id="sec1" class="secbox title-progress-day col-md-6 col-sm-12">
-              <h1 id="tit-sec1" class="titsecs">Desglose de actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Mas Información"></i></h1><br>
-              <div class="col-md-3"></div>
-              <div id="des_jue" class="col-md-8" style="min-width: 280px; max-width: 390px; height: 200px; margin: 0 auto"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad!</h3></div>
-   	          <div class="col-md-1"></div>
+   	      <article class="col-md-8 col-sm-12">
+            <center>
+              <div id="sec1" class="secbox title-progress-day">
+                <h1 id="tit-sec1" class="titsecs">Desglose de actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Mas Información"></i></h1><br>
+                <div class="col-md-3"></div>
+                <div id="des_jue" class="col-md-12" style="min-width: 280px; max-width: 390px; height: 200px;"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad!</h3></div>
+              </div>
+            </center>
    	      </article>
    	  </section>
    	</div>
   </div>
 </section>
-  
+
   <!-- Helper --->
   <div class="modal fade" id="helper" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
       <div class="modal-dialog">

@@ -10,7 +10,6 @@
 }
 #tit-mychild{
   background-color: #2262ae;
-  width: 102.9%;
   padding-top: 15px;
   color: #fff;
   margin: 0;
@@ -27,7 +26,7 @@
 }
 #tit-mychild-est{
   background-color: #2d96ba;
-  width: 102.9%;
+  font-size: 1.2em;
   padding-top: 15px;
   color: #fff;
   margin-top: -5px;
@@ -40,17 +39,18 @@
   margin-bottom: 25px;
   transition: .5s;
   -webkit-transition: .5s;
+  margin-right: -15px;
 }
 .title-of-the-progress{
     font-family: 'Helvetica', sans-serif;
     font-size: 20px;
     outline-width: medium;
     text-shadow: .1px 0px .1px #5f5f5f;
-    margin-bottom: 40px;    
+    margin-bottom: 40px;
 }
 
 .container-estadisticas{
-   margin-top: 25px; 
+   margin-top: 25px;
 }
 .secbox {
   background-color: #fff;
@@ -74,7 +74,7 @@
 }
 #sec1{
   margin-bottom: 20px;
-  height: 300px;
+  height: 400px;
 }
 #sec2{
   height: 315px;
@@ -94,17 +94,18 @@
 }
 
 .title-of-the-progress h1{
-    color:#585d66;
-    background: #f2bc19;
+  color: #fff;
+  background: #3cb54a;
+  font-size: 1em;
 }
 .title-progress-day h1{
-    color:#fff;
-    background: #8a489b;
-    font-family: 'Helvetica', sans-serif;
-    font-size: 20px;
-    outline-width: medium;
-    text-shadow: .1px 0px .1px #5f5f5f;
-    margin-bottom: 20px;   
+  color:#fff;
+  background: #8a489b;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1.4em;
+  outline-width: medium;
+  text-shadow: .1px 0px .1px #5f5f5f;
+  margin-bottom: 20px;
 }
 #sec3{
   height: 300px;
@@ -297,9 +298,9 @@
   margin: 0;
   background-color: #2262ae;
   color: #fff;
-  margin-top: -20px;
-  margin-left: -20px;
-  margin-right: -20px;
+  margin-top: -30px;
+  margin-left: -30px;
+  margin-right: -30px;
   padding: 20px;
   border-top-left-radius: 5px;
   border-top-right-radius: 20px;
