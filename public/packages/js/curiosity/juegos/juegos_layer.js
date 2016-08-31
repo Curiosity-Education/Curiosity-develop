@@ -700,4 +700,12 @@ $(document).ready(function() {
     $iframe.attr('src', '');
     $iframe.attr('src', tempEmbed);
   });
+
+  $("#btn-what").click(function(){
+    swal(
+      "¡Meta diaria Completa!",
+      "¡Felicidades! has completado tu meta diaria. Puedes cambiar esta configuración desde tu perfil. Vuelve mañana y sigue divirtiendote.",
+      "success"
+    );
+  });
 });
