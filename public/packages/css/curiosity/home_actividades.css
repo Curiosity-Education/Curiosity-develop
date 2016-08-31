@@ -29,9 +29,14 @@
   font-size: 1.2em;
 }
 .carousel-caption > button{
-  font-size: 1.2em;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding: 10px;
+  font-size: 1.5em;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 50px;
+  outline: none;
+  background-color: #ed6922;
+  border: solid 5px #f68e55;
 }
 .imgSlideNew{
   width: 100%;

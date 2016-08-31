@@ -63,7 +63,7 @@
                       	<small><b>¡ Soy curiosity !</b></small>
                       @endif
                       @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
-                      	<small><b>¡ Qué tu curiosidad no tenga límites !</b></small>
+                      	<small id="txtprofchild"><b>{{Lang::get('landingPage.eslogan')}}</b></small>
                       @endif
                     </p>
                   </li>
@@ -76,8 +76,8 @@
                         Editar Perfil
                       </a>
                     </div>-->
-                    <div class="">
-                      <a href="/logout" class="btn form-control" style="width:70%; margin-left:15%; background-color:#44c6ee; color:white;">
+                    <div class="text-center">
+                      <a href="/logout" class="btn form-control" style="width:90%; background-color:#44c6ee; color:white; border-radius:50px; outline:none;">
                         <span class="fa fa-sign-out"></span>
                         Cerrar Sesión
                       </a>
@@ -227,7 +227,7 @@
                 <div class="arrowAsideActive"></div>
               </li>
             @endif
-            
+
             @if(Entrust::can('ver_reportes'))
               <li id="menuAdminNovedad">
                 <a href="/vistaNovedades">
@@ -264,7 +264,13 @@
       <!-- Zona de Contenido general -->
       <div class="content-wrapper" hidden="hidden"><br><br>
         <!-- Encabezado de la pagina -->
+        @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
         <section class="content-header" id="img-portada">
+        @elseif(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+        <section class="content-header" id="img-portada-dad">
+        @else
+        <section class="content-header" id="img-portada-admon">
+        @endif
           <div class="">
             @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
            	<h1 id="titulo_hijo">
