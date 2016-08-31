@@ -183,14 +183,14 @@
               </span>
               <select class="form-control input-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
                 @if (Auth::user()->persona()->first()->sexo == "m")
-                <option value="m" selected>Masculino</option>
+                <option value="m" selected>Másculino</option>
                 @else
-                <option value="m">Masculino</option>
+                <option value="m">Másculino</option>
                 @endif
                 @if(Auth::user()->persona()->first()->sexo == "f")
                 <option value="f" selected>Femenino</option>
                 @else
-                <option value="f">Masculino</option>
+                <option value="f">Másculino</option>
                 @endif
               </select>
             </div>
@@ -232,7 +232,7 @@
             <center>
             <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
             </center>
-            <h4 id="subtit-imgprofile">Aquí tu imagen favorita</h4>
+            <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4>
           </div>
         </div>
         <div class="row">
@@ -258,13 +258,13 @@
       </div>
       <div class="col-sm-4">
             <div id="noticias" class="secbox">
-              <h1 id="tit-news">¡Novedades Curiosity!</h1>
+              <h1 id="tit-news">Novedades Curiosity</h1>
             </div>
       </div>
         <div class="col-md-5">
           <div class="row">
             <div id="sec1" class="secbox">
-              <h1 id="tit-sec1" class="titsecs">Estado del uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
+              <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
               <div class="col-md-1"></div>
               <div class="col-md-10">
                 <center>
@@ -302,7 +302,7 @@
           <article class="col-md-4 col-sm-12">
             <center>
               <div id="sec1" class="secbox title-of-the-progress">
-                <h1 id="tit-sec1" class="titsecs">Progreso de meta diaria.<i class="fa fa-info-circle pull-right tooltipShow info-progress-day" data-info="" title="Mas Información"></i></h1><br>
+                <h1 id="tit-sec1" class="titsecs">Meta diaria.<i class="fa fa-info-circle pull-right tooltipShow info-progress-day" data-info="" title="Más Información"></i></h1><br><br><br>
      	          <input type="text" value="0"  class="dial col-md-12">
               </div>
             </center>
@@ -310,9 +310,10 @@
    	      <article class="col-md-8 col-sm-12">
             <center>
               <div id="sec1" class="secbox title-progress-day">
-                <h1 id="tit-sec1" class="titsecs">Desglose de actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Mas Información"></i></h1><br>
-                <div class="col-md-3"></div>
-                <div id="des_jue" class="col-md-12" style="min-width: 280px; max-width: 390px; height: 200px;"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad!</h3></div>
+                <h1 id="tit-sec1" class="titsecs">Actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Más Información"></i></h1><br>
+                <center>
+                  <div id="des_jue" class="col-md-12" style="width: 100%; max-width: 80%; height: auto;"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad</h3></div>
+                </center>
               </div>
             </center>
    	      </article>
@@ -360,7 +361,7 @@
 {{HTML::script("/packages/js/libs/validation/jquery.validate.min.js")}}
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
-{{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+{{HTML::script('/packages/js/libs/Másk/jquery-Másk/jquery.Másk.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
 {{HTML::script('/packages/js/curiosity/CuriosityCharts.js')}}
