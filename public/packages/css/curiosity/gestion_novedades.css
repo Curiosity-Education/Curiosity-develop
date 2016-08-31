@@ -15,7 +15,7 @@ hr.hr-novedad{
 }
 .panel-default > .panel-footer {
     color: #fff;
-    background-color: #f68e55;    
+    background-color: #f68e55;
     display:none;
     text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 }
@@ -74,5 +74,5 @@ form#agregarNovedad_hijo, form#editarNovedad_hijo{
 }
 
 .input-group{
-	
+
 }

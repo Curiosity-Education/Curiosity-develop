@@ -187,5 +187,22 @@ class padreController extends BaseController
     public function getAlertasNow(){
       return View::make('vista_papa_alertas');
     }
+    public function getUsoPlataforma(){
+        $now = date("Y-m-d");
+        $idPadre = Auth::user()->persona()->first()->padre()->first()->id;
+        return DB::select(
+             "SELECT hijos.id, metas_diarias.meta, count(hijo_realiza_actividades.hijo_id) as 'total_jugados'  
+             FROM hijos 
+             inner join hijos_metas_diarias 
+             on hijos_metas_diarias.hijo_id = hijos.id 
+             inner join metas_diarias
+             on metas_diarias.id = hijos_metas_diarias.meta_diaria_id 
+             inner join hijo_realiza_actividades on hijo_realiza_actividades.hijo_id = hijos.id 
+             inner join padres on  hijos.padre_id = padres.id 
+             where hijos.padre_id = $idPadre and hijo_realiza_actividades.created_at 
+             between  '$now 00:00:00' and '$now 23:59:59' 
+             group by(hijo_realiza_actividades.hijo_id)"
+        );
+    }
 
 }

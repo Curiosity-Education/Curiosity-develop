@@ -437,6 +437,10 @@
   {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
   {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
   {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
+  {{HTML::script('/packages/js/libs/knob/jquery.knob.js')}}
+  {{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
+  {{HTML::script('/packages/js/libs/highcharts/highcharts-more.js')}}
+  {{HTML::script('/packages/js/libs/highcharts/modules/exporting.js')}}
   {{HTML::script('/packages/js/curiosity/finding.js')}}
 
   <script type="text/javascript">

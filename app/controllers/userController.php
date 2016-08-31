@@ -46,7 +46,7 @@ class userController extends BaseController{
               ->join('perfiles', 'perfiles.users_id','=', 'users.id')
               ->where('users.active', '=', '1')
               ->where('hijos.padre_id', '=', $idPadre)
-              ->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();
+              ->select('hijos.id as idHijo', 'personas.nombre','personas.apellido_paterno','personas.apellido_materno','personas.fecha_nacimiento','users.active', 'perfiles.foto_perfil')->get();
               return View::make('vista_papa_inicio')->with(array('datosHijos' => $datosHijos, 'juegos' => $juegos));
             }
             else if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
