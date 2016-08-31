@@ -66,6 +66,9 @@ Route::group(array('before' => 'auth'), function(){
           Route::get('/alertas', 'padreController@getAlertasNow');
           Route::get('/misHijos', 'hijoController@info');
           Route::get('/gethijos','padreController@gethijos');
+          Route::post('/desgloce/hijo/{idHijo}','hijoController@desgloceJuegos');
+          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');  
+          Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');  
           Route::post('/regHijo','hijoController@addHijo');
           Route::post('/cotarhijos','padreController@getCountHijos');
           Route::post('/getsegs','padreController@seguimientoHijo');

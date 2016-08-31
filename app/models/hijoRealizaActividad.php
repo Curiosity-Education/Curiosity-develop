@@ -5,7 +5,7 @@
 class hijoRealizaActividad extends Eloquent
 {
     protected $table ='hijo_realiza_actividades';
-    protected $fillable =['puntaje','eficiencia','intervalo','promedio'];
+    protected $fillable =['puntaje','eficiencia','promedio','aciertos','incorrectos'];
   /*
   *
   ## Una actividad puede ser realizada por muchos hijos

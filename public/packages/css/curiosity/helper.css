@@ -2,6 +2,12 @@
   color: #3c8dbc;
   font-size: 8em;
 }
+.description-helper, .description-helper, .description-subtitle, #subtitle-1{
+    font-size:1.3em;
+}
+.note-helper{
+    font-size: 1.1em;
+}
 
 #tituloHelp{
   color: #333;

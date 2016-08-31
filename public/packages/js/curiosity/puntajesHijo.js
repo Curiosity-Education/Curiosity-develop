@@ -32,6 +32,7 @@ $(document).ready(function(){
       if(!existCero){
         datos.push(0);
       }
+      console.log(datos);
       makeChart(fechas, datos, idhijo);
     });
   })
