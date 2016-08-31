@@ -199,7 +199,6 @@ $(document).ready(function(){
     
     $(".back-misHijos").on('click',function(){
         $(".container-estadisticas").hide('slow');
-
     });
     
     $(".info-progress-day").click(function(){
@@ -321,14 +320,20 @@ $(document).ready(function(){
             dataType:'JSON'
         }).done(function(response){
             $(".info-progress-day").attr('data-info', JSON.stringify(response));
-            $(".dial").val(response.porcAvanceMeta+'%');
-            $(".dial").knob({
-                readOnly:true,
-                fgColor:"#f2dd49",
-                angleOffset:0,
-                font:'Helvetica'
-            });
-            $(".dial").val(response.porcAvanceMeta+'%');
+            if($('#knob').length){
+                $('.dial')
+                .val(response.porcAvanceMeta+'%')
+                .trigger('change');
+            }
+            else{
+                $('.dial').val(response.porcAvanceMeta+'%');
+                $(".dial").knob({
+                    readOnly:true,
+                    fgColor:"#f2dd49",
+                    angleOffset:0,
+                    font:'Helvetica'
+                });
+            }
         }).fail(function(error){
             
         });
