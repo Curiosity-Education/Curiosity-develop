@@ -54,7 +54,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/daniel-seijas-7539b6a4" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/daniel-seijas-7539b6a4" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/danielseijasglz" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
@@ -96,8 +96,8 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
-							
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:willy.ramirez@curiosity.com.mx"  data-toggle="tooltip" title="willy.ramirez@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -137,8 +137,8 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/gersoon-isaias-2837b3124" target="_blank"><i class="fa fa-linkedin"></i></a>	
-							
+							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/gersoon-isaias-2837b3124" target="_blank"><i class="fa fa-linkedin"></i></a>
+
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/gersonisaias323" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
@@ -180,7 +180,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:rogelio.jinestas@curiosity.com.mx"  data-toggle="tooltip" title="rogelio.jinestas@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -220,7 +220,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:vicky.bazan@curiosity.com.mx"  data-toggle="tooltip" title="vicky.bazan@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 
@@ -261,7 +261,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:mauricio.mtz@curiosity.com.mx" data-toggle="tooltip" title="mauricio.mtz@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -301,7 +301,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jr.guadarrama@curiosity.com.mx" data-toggle="tooltip" title="jr.guadarrama@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -341,7 +341,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:marcela.rios@curiosity.com.mx" data-toggle="tooltip" title="marcela.rios@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -381,7 +381,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="https://mx.linkedin.com/in/fernando-canales-b21629122" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="https://mx.linkedin.com/in/fernando-canales-b21629122" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:fernando.canales@curiosity.com.mx" data-toggle="tooltip" title="fernando.canales@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -401,7 +401,7 @@
 
 				</div>
 				<!--/.Card-->
-			</div>		
+			</div>
 			<div class="col-md-4 col-sm-6" hidden="hidden">
 				<!--Card-->
 				<div class="card">
@@ -421,7 +421,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email"><i class="fa fa-envelope"></i></a>
 						</div>
@@ -461,7 +461,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/luis-fernando-garcia-velazquez" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="https://www.linkedin.com/in/luis-fernando-garcia-velazquez" target="_blank"><i class="fa fa-linkedin"></i></a>
 							<!--Twitter-->
 							<a type="button" class="btn-floating btn-tw" href="https://twitter.com/ElIngeCuriosity" target="_blank"><i class="fa fa-twitter"></i></a>
 							<!--Google -->
@@ -503,7 +503,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 			
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:nirvana.ferniza@curiosity.com.mx"  data-toggle="tooltip" title="nirvana.ferniza@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
@@ -544,7 +544,7 @@
 					<div class="card-share">
 						<div class="social-reveal">
 							<!--Linkedin-->
-							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>	
+							<a type="button" class="btn-floating btn-li" href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 							
 							<!--Google -->
 							<a type="button" class="btn-floating btn-email tooltipShow" href="mailto:jonathan.garcia@curiosity.com.mx"  data-toggle="tooltip" title="jonathan.garcia@curiosity.com.mx"><i class="fa fa-envelope"></i></a>
