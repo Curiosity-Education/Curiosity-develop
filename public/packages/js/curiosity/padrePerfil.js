@@ -279,6 +279,7 @@ $(document).ready(function(){
     });
     //Graficación juegos jugados!
     function crearGraficaJuegosJugados(idHijo){
+        console.log(idHijo);
         var ruta = '/desgloce/hijo/'+idHijo;
         $.ajax({
             url:'/desgloce/hijo/'+idHijo,
@@ -286,6 +287,8 @@ $(document).ready(function(){
             dataType:'JSON'
         }).done(function(response){
             $(".info-progress-game").attr('data-info', JSON.stringify(response));
+            $('#des_jue').empty();
+            $('#des_jue').append('<h3 style="text-align:center; font-size:1.5em; font-family:"Helvetica";">No se ha realizado ninguna actividad!</h3>');
             var seriesGET = {
                 name: 'Porcentaje',
                 data: []
@@ -317,7 +320,6 @@ $(document).ready(function(){
             method:'POST',
             dataType:'JSON'
         }).done(function(response){
-
             $(".info-progress-day").attr('data-info', JSON.stringify(response));
             $(".dial").val(response.porcAvanceMeta+'%');
             $(".dial").knob({

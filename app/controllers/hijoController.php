@@ -129,16 +129,23 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
         public function getMeta($idHijo){
             $now = date("Y-m-d");
             $miMeta = DB::table('metas_diarias')
-			->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
-			->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
-			->select('metas_diarias.*')
-			->first();
-			$avanceMeta = DB::table('avances_metas')->where('fecha', '=', $now)->pluck('avance');
-			$porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
-			if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
-			// --- Calculo de cuanto falta para cumplir la meta diaria
-			$faltanteMeta = $miMeta->meta - $avanceMeta;
-			if ($faltanteMeta < 0) { $faltanteMeta = 0; }
+            ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
+            ->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
+            ->select('metas_diarias.*', 'hijos_metas_diarias.id as metaAsignedId')
+            ->first();
+            $idAvance = $miMeta->metaAsignedId;
+            $avanceMeta = DB::table('avances_metas')
+            ->where('fecha', '=', $now)
+            ->where('avance_id', '=', $idAvance)
+            ->pluck('avance');
+
+              // --- Calculo del avance en porcenaje de la meta del hijo
+              $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
+              if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
+
+              // --- Calculo de cuanto falta para cumplir la meta diaria
+              $faltanteMeta = $miMeta->meta - $avanceMeta;
+              if ($faltanteMeta < 0) { $faltanteMeta = 0; }
 
 			$row = array(
 				"miMeta" => $miMeta,
