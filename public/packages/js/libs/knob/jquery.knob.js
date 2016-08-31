@@ -182,9 +182,11 @@
             !this.o.displayInput && this.$.hide();
 
             // adds needed DOM elements (canvas, div)
-            this.$c = $(document.createElement('canvas')).attr({
+            var canvas = document.createElement('canvas');
+            this.$c = $(canvas).attr({
                 width: this.o.width,
-                height: this.o.height
+                height: this.o.height,
+                'id':'knob'
             });
 
             // wraps all elements in a div
