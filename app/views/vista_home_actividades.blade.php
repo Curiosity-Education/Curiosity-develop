@@ -44,7 +44,7 @@ Bienvenido a Curiosity
       <div class="carousel-inner" role="listbox" id="carrusel-list">
         @foreach($nuevos as $nuevo)
         <div class="item">
-          <div class="imgSlideNew" style='background:{{$nuevo->bg_color}};background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
+          <div class="imgSlideNew" style='background:url(/packages/images/actividades/wallpapers/{{$nuevo->wallpaper}});background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
           <div class="carousel-caption">
             <h3>{{$nuevo->nombre}}</h3>
             {{--<p class="hidden-xs">{{$nuevo->objetivo}}</p>--}}
