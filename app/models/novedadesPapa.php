@@ -2,10 +2,10 @@
 /**
  *
  */
-class novedades_papa extends Eloquent
+class novedadesPapa extends Eloquent
 {
     protected $table='novedades_papa';
-	protected = array('titulo', 'pdf', 'status');
+	protected $fillable = ['titulo', 'pdf', 'status', 'administrativo_id'];
 	
 	/* Una novedad es registrada por un administrativo */
 	public function administrativo(){

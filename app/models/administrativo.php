@@ -25,7 +25,7 @@ class administrativo extends Eloquent
   ## un administrativo registra muchas novedades
   */
 	public function novedades_papa(){
-        return $this->hasMany('novedades_papa');
+        return $this->hasMany('novedadesPapa');
     }
 	
 	public function novedades_hijo(){
