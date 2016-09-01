@@ -27,6 +27,7 @@
 			<div class="col-md-4">
 				<div class="panel panel-default">
                 	<div class="panel-body">
+                   		<input type="text" id="id_nov" name="id_nov" hidden="hidden">
                     	<h2>Titulo</h2>
                     	<p>Link para el PDF</p>
                 	</div>
@@ -36,30 +37,7 @@
                 	</div>
             	</div>
 			</div>
-			<div class="col-md-4">
-				<div class="panel panel-default">
-                	<div class="panel-body">
-                    	<h2>Titulo</h2>
-                    	<p>Link para el PDF</p>
-                	</div>
-                	<div class="panel-footer">
-                		<a href="#" class="tooltipShow " title="eliminar"><span class="fa fa-trash"></span></a>
-                		<a href="#" class="tooltipShow " title="editar_nov_papa" data-toggle="modal" data-target="#novedad_papa"><span class="fa fa-pencil-square-o"></span></a>
-                	</div>
-            	</div>
-			</div>
-			<div class="col-md-4">
-				<div class="panel panel-default">
-                	<div class="panel-body">
-                    	<h2>Titulo</h2>
-                    	<p>Link para el PDF</p>
-                	</div>
-                	<div class="panel-footer">
-                		<a href="#" class="tooltipShow " title="eliminar"><span class="fa fa-trash"></span></a>
-                		<a href="#" class="tooltipShow " title="editar_nov_papa" data-toggle="modal" data-target="#novedad_papa"><span class="fa fa-pencil-square-o"></span></a>
-                	</div>
-            	</div>
-			</div>
+			
 			<div class="col-md-12">
 				<div class="row"><hr class="hr-novedad"></div>
 				<center><button id="agregar_nov_papa" class="btn btn-primary" data-toggle="modal" data-target="#novedad_papa">Agregar nueva novedad</button></center>
@@ -129,33 +107,33 @@
 					<div class="modal-body">
 						<div class="row" style="padding-right:1%; padding-left:1%">
 							<!-- Formulario para alta de novedad -->
-							<form action="/agregarNovedad" method="post" id="agregarNovedad_papa" class="formularios">
+							<form action="/agregarNovedad" method="post" id="agregarNovedad_papa" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-plus-square"></i> Agregar Novedad</h3></center><hr class="hr-novedad">
 								<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="titulo" id="titulo">
+								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="titulo_papa" id="titulo_papa">
 							   	</div><br>
 							   	<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-file-pdf-o"></i></span>
 								   <input type="file" class="form-control" name="pdf" id="pdf">
 							   	</div>
 							   	<br>
-							   	<center><button class="btn btn-success" type="submit" id="add_novedad">Registar la novedad</button></center>
+							   	<center><button class="btn btn-success" type="submit" id="btn_add_papa">Registar la novedad</button></center>
 							</form>
 
 							<!-- Formulario para editar de novedad -->
-							<form action="/editarNovedad" method="post" id="editarNovedad_papa" class="formularios">
+							<form action="/editarNovedad" method="post" id="editarNovedad_papa" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-pencil-square"></i> Editar Novedad</h3></center><hr class="hr-novedad">
 								<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="titulo" id="titulo">
+								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="tituloEditar_papa" id="tituloEditar_papa">
 							   	</div><br>
 							   	<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-file-pdf-o"></i></span>
-								   <input type="file" class="form-control" name="pdf" id="pdf">
+								   <input type="file" class="form-control" name="pdf_edit" id="pdf_edit">
 							   	</div>
 							   	<br>
-							   	<center><button class="btn btn-success" type="submit" id="add_novedad">Editar la novedad</button></center>
+							   	<center><button class="btn btn-success" type="submit" id="btn_edit_papa">Editar la novedad</button></center>
 							</form>
 						</div>
 					</div>
@@ -183,33 +161,33 @@
 					<div class="modal-body">
 						<div class="row" style="padding-right:1%; padding-left:1%">
 							<!-- Formulario para alta de novedad -->
-							<form action="/agregarNovedad" method="post" id="agregarNovedad_hijo" class="formularios">
+							<form action="/agregarNovedad" method="post" id="agregarNovedad_hijo" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-plus-square"></i> Agregar Novedad</h3></center><hr class="hr-novedad">
 								<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="titulo" id="titulo">
+								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="tituloNov_hijo" id="tituloNov_hijo">
 							   	</div><br>
 							   	<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-link"></i></span>
 								   <input type="text" class="form-control" placeholder="Link para dirigir a la novedad en la plataforma" name="link" id="link">
 							   	</div>
 							   	<br>
-							   	<center><button class="btn btn-success" type="submit" id="add_novedad">Registar la novedad</button></center>
+							   	<center><button class="btn btn-success" type="submit" id="btn_add_hijo">Registar la novedad</button></center>
 							</form>
 
 							<!-- Formulario para editar de novedad -->
-							<form action="/editarNovedad" method="post" id="editarNovedad_hijo" class="formularios">
+							<form action="/editarNovedad" method="post" id="editarNovedad_hijo" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-pencil-square"></i> Editar Novedad</h3></center><hr class="hr-novedad">
 								<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="titulo" id="titulo">
+								   <input type="text" class="form-control" placeholder="Titulo de la novedad" name="tituloEditar_hijo" id="tituloEdit_hijo">
 							   	</div><br>
 							   	<div class="input-group">
 								   <span class="input-group-addon"><i class="fa fa-link"></i></span>
-								   <input type="text" class="form-control" placeholder="Link para dirigir a la novedad en la plataforma" name="link" id="link">
+								   <input type="text" class="form-control" placeholder="Link para dirigir a la novedad en la plataforma" name="link_edit" id="link_edit">
 							   	</div>
 							   	<br>
-							   	<center><button class="btn btn-success" type="submit" id="add_novedad">Editar la novedad</button></center>
+							   	<center><button class="btn btn-success" type="submit" id="btn_edit_hijo">Editar la novedad</button></center>
 							</form>
 						</div>
 					</div>
