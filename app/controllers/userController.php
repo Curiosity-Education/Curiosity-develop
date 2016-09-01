@@ -3,13 +3,13 @@ class userController extends BaseController{
 
     public function verPagina(){
         if(Request::method() == "GET"){
-          if (Auth::user()->hasRole('padre_free') ||
-          Auth::user()->hasRole('hijo_free'))
-          {
-            Auth::logout();
-            return Redirect::to('/proximamente');
-          }
-          else{
+        //   if (Auth::user()->hasRole('padre_free') ||
+        //   Auth::user()->hasRole('hijo_free'))
+        //   {
+        //     Auth::logout();
+        //     return Redirect::to('/proximamente');
+        //   }
+        //   else{
             $perfil = Auth::User()->perfil()->first();
             $persona = Auth::User()->persona()->first();
             $padre=$persona->padre()->first();
@@ -94,7 +94,7 @@ class userController extends BaseController{
             else{
                 return View::make('vista_perfil')->with(array('perfil' => $perfil, 'persona' => $persona, 'rol'=>$rol));
             }
-          }
+          // }
         }
 
     }

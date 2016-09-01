@@ -16,18 +16,37 @@ var $juego = {
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
         intentos:0,
-        intervalo:0,
         valorPuntos:100,
         puntajeActual:0,
         puntajeMaximo:0,
         eficiencia:0,
         continuo:0,//variable para determinar combos dentro del juego.
+        unity:{//objeto para iteractuar con los juegos desarrollados en unity
+           ayudar:function(){
+            $("#ayuda").trigger("click");
+            alert();
+           },
+           salir:function(){
+              $juego.aciertos=0;
+              $juego.game.continuo=0;//reiniciar continuos
+              $("#zona-play").hide();//desaparecer zona juego
+              $("#zona-obj").show();//aparecer zona del objetivo
+              $juego.game.puntajeActual=0;
+              $("#game").trigger('exit');
+           }
+        },
         start:function(duracion,inverso){
             $("#zona-play").show();
             $("#zona-obj").hide();
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
             $juego.cronometro.start(duracion,inverso);
+        },
+        _start:function(){
+            $("#zona-play").show();
+            $("#zona-obj").hide();
+            $("#countPuntaje").text($juego.game.puntajeActual);
+            $("#game").trigger('start');
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
@@ -44,10 +63,10 @@ var $juego = {
               $juego.game.eficiencia = 0;
             }
             if($juego.game.puntajeActual > $juego.game.puntajeMaximo){
-              // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-              $juego.game.puntajeMaximo = $juego.game.puntajeActual;
-              // Cambiamos el puntaje maximo en pantalla
-              $("#num-max-pts").html($juego.game.puntajeMaximo + " pts");
+            // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
+            $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+            // Cambiamos el puntaje maximo en pantalla
+            $("#num-max-pts").html($juego.game.puntajeMaximo + " pts");
             }
             $("#zona-play").hide();//desaparecer zona juego
             $("#zona-obj").show();//aparecer zona del objetivo
@@ -55,9 +74,9 @@ var $juego = {
             $juego.modal.puntuacion.mostrar($juego.game.puntajeMaximo,$juego.game.puntajeActual);
             $juego.game.puntajeActual=0;
             $juego.game.intentos=0;
-            $juego.cronometro.stop();
             $juego.game.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
+            $juego.cronometro.stop();
             $("#game").trigger("finish");
         },
         finish_game_unity:function(){
@@ -89,11 +108,9 @@ var $juego = {
               data={
                 puntaje:$juego.game.puntajeActual,
                 eficiencia:$juego.game.eficiencia,
-                aciertos:$juego.game.aciertos,//Se agrega el envio de los datos aciertos y errores
-                incorrectos:$juego.game.errores,
-                promedio:($juego.game.aciertos*100)/$juego.game.intentos//El promedio se define diferente
+                promedio:($juego.game.eficiencia*$juego.game.puntajeActual)/100
               }
-               console.log(data);
+              console.log(data);
               $.ajax({
                     url:'/actividad/setdata',
                     method:"POST",
@@ -144,7 +161,6 @@ var $juego = {
             // regresamos la cantidad de aciertos continuos a cero
             $juego.game.continuo = 0;
             $juego.game.intentos++;
-            $juego.game.errores++;//Se agregó esta linea para aumentar los errores cada vez que se equivoque por que esto se mostrará al padre.
             if($juego.game.puntajeActual>puntosMenos){
               if(/^[0-9]*$/.test(puntosMenos))
                 $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);
@@ -168,22 +184,22 @@ var $juego = {
             if($juego.game.continuo !== 0){
                 // si la cantidad de aciertos continuos es igual a 5 se asigna un nuevo valor a los puntos por acierto
                 if($juego.game.continuo == 5){
-                  $juego.game.valorPuntos = 150;
-                  $juego.game.setCombo(150);
+                  $juego.game.valorPuntos += 50;
+                  $juego.game.setCombo(50);
                 }
                 // si la cantidad de aciertos continuos es igual a 10 se asigna un nuevo valor a los puntos por acierto
                 if($juego.game.continuo == 10){
-                  $juego.game.valorPuntos = 250;
-                  $juego.game.setCombo(250);
+                  $juego.game.valorPuntos += 100;
+                  $juego.game.setCombo(100);
                 }
                 // si la cantidad de aciertos continuos es igual a 15 se asigna un nuevo valor a los puntos por acierto
                 if($juego.game.continuo == 15){
-                  $juego.game.valorPuntos = 500;
-                  $juego.game.setCombo(500);
+                  $juego.game.valorPuntos += 250;
+                  $juego.game.setCombo(250);
                 }
                 if($juego.game.continuo == 20){
-                    $juego.game.valorPuntos =1000;
-                    $juego.game.setCombo(1000);
+                    $juego.game.valorPuntos +=500;
+                    $juego.game.setCombo(500);
                     $juego.game.continuo=0;//Reiniciar la variable continuos para poder generar más combos
                 }
             }
@@ -393,6 +409,12 @@ var $juego = {
       });
     },
     setBackgroundImg : function(dirIMG){
+      // $(".zona-juego").css({
+      //   "background-image" : "url("+dirIMG+")",
+      //   "background-position" : "center",
+      //   "background-repeat" : "no-repeat",
+      //   "background-size" : "cover"
+      // });
       $("#zona-play").css({
         "background-image" : "url("+dirIMG+")",
         "background-position" : "center",
@@ -402,16 +424,15 @@ var $juego = {
     },
     setBackgroundColor : function(color){
         if(/^#[0-9][a-fA-F]{6}$/.test(color) || /^rgb\([0-9]{1,3}\,[0-9]{1,3}\,[0-9]{1,3}\)$/.test(color)){
-            $("#zona-play").css({
+            $(".zona-juego").css({
                 "background-color" : color
             });
         }
         else{
-            console.error("El parametro de la funcion setBackgroundColor debe ser hexadecimal o rgb");
+            // console.error("El parametro de la funcion setBackgroundColor debe ser hexadecimal o rgb");
         }
     },
     setTitulo : function(titulo){
-        $curiosity.menu.setPaginaId("#menuNivel");
         if(/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/.test(titulo))
             $("#juego-titulo").text(titulo);
     }
@@ -419,10 +440,12 @@ var $juego = {
 $("#pausa").click(function(){
   $juego.cronometro.pausar(true);
   $("#game").addClass("blur");
+  $("#game").trigger("pausa");
 });
 $("#continuar").click(function(){
   $juego.cronometro.pausar(false);
   $("#game").removeClass("blur");
+  $("#game").trigger("continue");
 });
 $("#continue").click(function(){
     $("body").removeClass("modal-open");
@@ -629,28 +652,20 @@ $(function(){
 
 		pb.starSlider = function(){
 			var panels = pb.items.panel,
-				controls = $('#slider-controls li');
-
+			controls = $('#slider-controls li');
 			if(nextSlider >= lengthSlider){
 				nextSlider = 0;
 				currentSlider = lengthSlider-1;
 			}
-
 			// Efectos
 			controls.removeClass('active').eq(currentSlider).addClass('active');
 			panels.eq(currentSlider).fadeOut('slow');
 			panels.eq(nextSlider).fadeIn('slow');
-
-
 			//console.log(nextSlider);
-
-
-
 			// Actualizamos nuestros datos
 			currentSlider = nextSlider;
 			nextSlider += 1;
 		}
-
 		// Funcion para controles del Slider
 		var changePanel = function(id){
 			clearInterval(SliderInterval);
@@ -690,6 +705,7 @@ $(function(){
 	SliderModule.init();
 
 });
+
 
 $(document).ready(function() {
   var tempEmbed;

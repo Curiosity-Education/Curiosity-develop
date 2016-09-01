@@ -257,18 +257,19 @@
         </div>
       </div>
       <div class="col-sm-4">
-            <div id="noticias" class="secbox">
-              <h1 id="tit-news">Novedades Curiosity</h1>
-            </div>
+        <div id="noticias" class="secbox">
+          <h1 id="tit-news">Bienvenido/a a Curiosity</h1>
+          <img src="/packages/images/familia-curiosity.png" style="width:95%;padding-bottom:15px;">
+        </div>
       </div>
         <div class="col-md-5">
           <div class="row">
-            <div id="sec1" class="secbox">
+            <div id="sec1-uso" class="secbox">
               <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
               <div class="col-md-1"></div>
               <div class="col-md-10">
                 <center>
-                  <div id="status" style="min-width: 340px; max-width: 480px; height: 320px; margin-top:20px;"></div>
+                  <div id="status" style="min-width: 340px; max-width: 450px; height: 320px; margin-top:20px;"></div>
                 </center>
               </div>
               <div class="col-md-1"></div>

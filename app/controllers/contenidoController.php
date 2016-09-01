@@ -114,7 +114,7 @@ class contenidoController extends BaseController
         ->where('inteligencias.estatus', '=', 'unlock')
         ->where('niveles.estatus', '=', 'unlock')
         ->where('ext', '=', 'php')
-        ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium')
+        ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium', 'actividades.wallpaper')
         ->orderBy('actividades.id', 'desc')
         ->limit(5)
         ->get();
