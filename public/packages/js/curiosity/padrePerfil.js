@@ -188,4 +188,197 @@ $(document).ready(function(){
     $("#inImage").trigger('click');
   });
 
+
+    $(".img-hijo").on('click',function(){
+        crearGraficaJuegosJugados($(this).attr('data-id'));
+        crearGraficaAvanceMeta($(this).attr('data-id'));
+        $("#nom_hijo_s_est").text($("#name_hijo_s_mis_hijos_"+$(this).attr('data-id')).text());
+        $(".container-estadisticas").show('slow');
+        $("html,body").animate({scrollTop:$(".container-estadisticas").offset().top});
+    });
+    
+    $(".back-misHijos").on('click',function(){
+        $(".container-estadisticas").hide('slow');
+    });
+    
+    $(".info-progress-day").click(function(){
+        var infoJSON = JSON.parse($(this).attr('data-info'));
+        infoJSON.miMeta = JSON.parse(JSON.stringify(infoJSON.miMeta));
+        data = {
+            tituloHelp:'Progreso de la meta diaria',
+            description_helper:'El progreso del cumplimiento de la meta diaria de cada hijo se muestra en una gráfica donde se puede observar el porcentaje de avance que lleva en el día',
+            subtitle_1:'Meta',
+            description_subtitle:'La meta se compone de los siguientes elementos <br> <b>Nombre: </b>'+infoJSON.miMeta.nombre+'<br> <b>Meta:</b> '+infoJSON.miMeta.meta+' actividades <br> <b>Actividades realizadas: </b>'+(infoJSON.porcAvanceMeta*infoJSON.miMeta.meta/100)+'/'+infoJSON.miMeta.meta,
+            note_helper:'El total de actividades a realizar depende de la meta seleccionada por el alumno'     
+        };
+        llenarHelper(data);
+        
+        
+    });
+    $(".info-uso-plataform").click(function(){
+    
+        data = {
+            tituloHelp:'Uso de la plataforma',
+            description_helper:'En esta sección encontrarás las metas diarias de cada uno de tus hijos. La gráfica te indicará el cumplimiento de sus metas, recuerda que si la aguja está de color rojo, alguno de tus hijos no está cumpliendo su meta del día.',
+            subtitle_1:'Avisos',
+            description_subtitle:'<b>Rojo: </b> No está practicando suficiente.<br> <b>Amarillo: </b> Debe de practicar un poco más.<br> <b>Verde: </b> ¡Excelente! <br>',
+            note_helper:' El objetivo es que la aguja siempre marque verde. Recuerda que el secreto del éxito no es la suerte, sino la constancia.'
+        };
+        llenarHelper(data);
+        
+        
+    });
+    
+    $(".info-uso-misHijos").click(function(){
+    
+        data = {
+            tituloHelp:'Mis hijos',
+            description_helper:'En esta sección se encuentra tus hijos registrados y su progreso en el día.',
+            subtitle_1:'Recuerda:',
+            description_subtitle:'Puedes acceder a las estadísticas dando click en la imagen de tu hijo.',
+            note_helper:' Las estadísticas se generan con las actividades de tus hijos.'
+        };
+        llenarHelper(data);
+        
+        
+    });
+    
+    $(".info-progress-game").click(function(){
+        var infoJSON = JSON.parse($(this).attr('data-info'));
+        
+        var act_real = function(){
+            var text='';
+            var table = $('<table/>').addClass('table table-bordered table-hover col-md-12');
+            var tbody = $('<tbody/>');
+            table.append($('<thead/>').append($('<tr/>').append('<td>Actividad</td><td>Total de veces jugados</td><td>Porcentaje de los juegos totales</td>')));
+            $.each(infoJSON,function(i,objeto){
+                var tr = $('<tr/>');
+                $.each(objeto,function(i,o){
+                    var td = $('<td/>');
+                    if(i == 'y')
+                        td.append(parseFloat(o).toFixed(2)+'%');
+                    else 
+                        td.append(o);
+                    tr.append(td);
+                });
+                tbody.append(tr);
+            });
+            return table.append(tbody);
+        }
+        data = {
+            tituloHelp:'Desglose de las actividades realizadas',
+            description_helper:'El desglose de las actividades se observa en una gráfica de pie la cual se muestra dividida en porcentajes ej. Si su hijo ha jugado 10 veces y de esas 10 veces a jugado 5 veces el tema sumas y restas entonces este aparecera con un porcentaje de 50% ',
+            subtitle_1:'Actividades Realizadas',
+            description_subtitle:act_real(),
+            note_helper:'Las actividades que se muestran son las que el alumno ha realizado durante el transcurso del día'     
+        };
+        llenarHelper(data);
+        
+        
+    });
+    //Graficación juegos jugados!
+    function crearGraficaJuegosJugados(idHijo){
+        console.log(idHijo);
+        var ruta = '/desgloce/hijo/'+idHijo;
+        $.ajax({
+            url:'/desgloce/hijo/'+idHijo,
+            method:'POST',
+            dataType:'JSON'
+        }).done(function(response){
+            $(".info-progress-game").attr('data-info', JSON.stringify(response));
+            $('#des_jue').empty();
+            $('#des_jue').append('<h3 style="text-align:center; font-size:1.5em; font-family:"Helvetica";">No se ha realizado ninguna actividad!</h3>');
+            var seriesGET = {
+                name: 'Porcentaje',
+                data: []
+            };
+            $.each(response,function(index,object){
+                var yData = parseFloat(object.y).toFixed(2);
+                var dataResponse = {
+                    name : object.name,
+                    y : yData - 0
+                }
+                seriesGET.data.push(dataResponse);
+            });
+            if(seriesGET.data[0] != undefined){
+                $curiosityCharts.pieMonoChrome('#des_jue',{
+                    title:'',
+                    series: seriesGET
+                });
+            }
+
+        }).fail(function(error){
+
+        });
+    }
+    
+    //Crear grafica avance meta 
+    function crearGraficaAvanceMeta(idHijo){
+        $.ajax({
+            url:'getMeta/hijo/'+idHijo,
+            method:'POST',
+            dataType:'JSON'
+        }).done(function(response){
+            $(".info-progress-day").attr('data-info', JSON.stringify(response));
+            if($('#knob').length){
+                $('.dial')
+                .val(response.porcAvanceMeta+'%')
+                .trigger('change');
+            }
+            else{
+                $('.dial').val(response.porcAvanceMeta+'%');
+                $(".dial").knob({
+                    readOnly:true,
+                    fgColor:"#f2dd49",
+                    angleOffset:0,
+                    font:'Helvetica'
+                });
+            }
+        }).fail(function(error){
+            
+        });
+    }
+    
+    function llenarHelper(data){
+        $("#tituloHelp").text(data.tituloHelp);
+        $(".description-helper").text(data.description_helper);
+        $('#subtitle-1').text(data.subtitle_1);
+        $('.description-subtitle').empty();
+        $('.description-subtitle').append(data.description_subtitle);
+        $('.note-helper').text(data.note_helper);
+        $("#helper").modal('show');
+    }
+    crearGraficaUsoPlataforma();
+    function crearGraficaUsoPlataforma(){
+        $.ajax({
+            url:'/obtenerUsoPlataforma',
+            method:'POST',
+            dataType:'JSON'
+        }).done(function(response){
+            $(".info-uso-plataform").attr('data-info',response);
+            var dataResponse=0,index = 0,avgResponse=0;
+            $.each(response,function(i,object){
+                index++;
+                avgResponse = (object.total_jugados*100)/object.meta;
+                dataResponse += avgResponse;
+            });
+            if(dataResponse > 0)
+                dataResponse = dataResponse/index;
+
+            $curiosityCharts.gauge('#status',{
+                name: 'Status',
+                data: [dataResponse],
+                tooltip: {
+                    valueSuffix: '%'
+                }
+            });
+        }).fail(function(error){
+            
+        });
+        
+    }
+    
+    //$curiosityCharts.column();
+    
+
 });

@@ -3,6 +3,7 @@
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/dadProfile.css')}}
+ {{HTML::style('/packages/css/curiosity/helper.css')}}
 @stop
 
 @section('title')
@@ -182,14 +183,14 @@
               </span>
               <select class="form-control input-custom" value="{{Auth::user()->persona()->first()->sexo}}" name="sexo_persona" id="sexo_persona">
                 @if (Auth::user()->persona()->first()->sexo == "m")
-                <option value="m" selected>Masculino</option>
+                <option value="m" selected>Másculino</option>
                 @else
-                <option value="m">Masculino</option>
+                <option value="m">Másculino</option>
                 @endif
                 @if(Auth::user()->persona()->first()->sexo == "f")
                 <option value="f" selected>Femenino</option>
                 @else
-                <option value="f">Masculino</option>
+                <option value="f">Másculino</option>
                 @endif
               </select>
             </div>
@@ -222,7 +223,6 @@
     </div>
   </section>
   <!-- Fin de modal para modificar datos del Papá -->
-
   <section id="sectionGral">
     <div class="container-fluid">
       <div class="col-sm-3">
@@ -232,7 +232,7 @@
             <center>
             <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
             </center>
-            <h4 id="subtit-imgprofile">Aquí tu imagen favorita</h4>
+            <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4>
           </div>
         </div>
         <div class="row">
@@ -257,46 +257,114 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div id="noticias" class="secbox">
-          <h1 id="tit-news">¡Novedades Curiosity!</h1>
-        </div>
+            <div id="noticias" class="secbox">
+              <h1 id="tit-news">Novedades Curiosity</h1>
+            </div>
       </div>
-      <div class="col-sm-5">
-        <div class="row">
-          <div id="sec1" class="secbox">
-            <h1 id="tit-sec1" class="titsecs">titulo</h1>
+        <div class="col-md-5">
+          <div class="row">
+            <div id="sec1" class="secbox">
+              <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <center>
+                  <div id="status" style="min-width: 340px; max-width: 480px; height: 320px; margin-top:20px;"></div>
+                </center>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div id="sec2" class="secbox">
-            <h1 id="tit-sec2" class="titsecs">titulo</h1>
+     </div>
+ <!-- FIN DE SECCIÓN DE NOVEDADES -->
+
+ <!-- SECCION MIS HIJOS -->
+  <div class="container-fluid container-misHijo">
+    <div class="col-xs-12 contenedores color-top" id="">
+   	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos <i class="fa fa-info-circle info-uso-misHijos tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h3>
+   	  @foreach ($datosHijos as $hijo)
+   	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">
+    		<div class="div-img">
+    			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img img-hijo tooltipShow" title="Click para ver estadísticas del día" data-id="{{$hijo->idHijo}}">
+    			<div class="text">
+    				<center id="name_hijo_s_mis_hijos_{{$hijo->idHijo}}">{{$hijo->nombre}}</center>
+    			</div>
+    		</div>
+  	  </div>
+  	  @endforeach
+   	</div>
+  </div>
+  <!-- SECCION PAR ESTADISTICAS DIARIAS HIJO -->
+  <div class="container-fluid container-estadisticas" hidden="hidden">
+    <div class="col-xs-12 contenedores color-top" id="">
+   	  <h3 id="tit-mychild-est"> <i class="fa fa-pie-chart"></i> Estadística diaria de <b id="nom_hijo_s_est"><!--[nombre-hijo]--></b> <i class="fa fa-times-circle tooltipShow back-misHijos pull-right" title="Cerrar"></i></h3>
+   	  <section class="panel-est-hijo">
+          <article class="col-md-4 col-sm-12">
+            <center>
+              <div id="sec1" class="secbox title-of-the-progress">
+                <h1 id="tit-sec1" class="titsecs">Meta diaria.<i class="fa fa-info-circle pull-right tooltipShow info-progress-day" data-info="" title="Más Información"></i></h1><br><br><br>
+     	          <input type="text" value="0"  class="dial col-md-12">
+              </div>
+            </center>
+   	      </article>
+   	      <article class="col-md-8 col-sm-12">
+            <center>
+              <div id="sec1" class="secbox title-progress-day">
+                <h1 id="tit-sec1" class="titsecs">Actividades realizadas.<i class="fa fa-info-circle pull-right tooltipShow info-progress-game" data-info="" title="Más Información"></i></h1><br>
+                <center>
+                  <div id="des_jue" class="col-md-12" style="width: 100%; max-width: 80%; height: auto;"><h3 style="text-align:center; font-size:1.5em; font-family:'Helvetica';">No se ha realizado ninguna actividad</h3></div>
+                </center>
+              </div>
+            </center>
+   	      </article>
+   	  </section>
+   	</div>
+  </div>
+</section>
+
+  <!-- Helper --->
+  <div class="modal fade" id="helper" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" id="closehelp" aria-hidden="true">&times;</button>
+            <center>
+              <span class="fa fa-info-circle" id="iconhelp"></span>
+              <br><br>
+              <h4 id="tituloHelp"><!--[ Helper Title ]--></h4>
+              <br>
+            </center>
+            <div id="cuerpoHelp">
+              <p class="text-justify description-helper">
+                <!-- [ Description section o element HTML ] --->
+              </p>
+              <br>
+              <ul>
+                <li>
+                  <b id="subtitle-1"><!--[ Subtitle ]--></b>
+                  <br>
+                  <div class="description-subtitle">
+                      <!-- [ Description helper ] -->
+                  </div>
+                  <br>
+                  <small><i><b>Nota: </b><span class="note-helper"><!--[ Note helper ]--></span></i></small>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="col-xs-12" id="sectionChildren">
-     	  <h3 id="tit-mychild"><i class="fa fa-child"></i> Mis Hijos</h3>
-     	  @foreach ($datosHijos as $hijo)
-     	  <div class="col-md-2 col-xs-4 col-sm-3">
-      		<div class="div-img">
-      			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img" >
-      			<div class="text">
-      				<center>{{$hijo->nombre}}</center>
-      			</div>
-      		</div>
-    	  </div>
-    	  @endforeach
-     	</div>
-    </div>
-  </section>
 @stop
 
 @section('mi_js')
 {{HTML::script("/packages/js/libs/validation/jquery.validate.min.js")}}
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
-{{HTML::script('/packages/js/libs/mask/jquery-mask/jquery.mask.js')}}
+{{HTML::script('/packages/js/libs/Másk/jquery-Másk/jquery.Másk.js')}}
+{{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
+{{HTML::script('/packages/js/curiosity/perfil.js')}}
+{{HTML::script('/packages/js/curiosity/CuriosityCharts.js')}}
 {{HTML::script('/packages/js/curiosity/padrePerfil.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>

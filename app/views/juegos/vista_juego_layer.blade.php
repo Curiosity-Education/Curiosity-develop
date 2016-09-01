@@ -69,11 +69,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="">Video de Estudio</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnclvid">&times;</button>
+        <h4 class="modal-title" id="titvid">¡Nosotros te guiamos!</h4>
       </div>
       <div class="modal-body">
-        <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen  id="srcvid"></iframe>
       </div>
       <div class="modal-footer"></div>
     </div>

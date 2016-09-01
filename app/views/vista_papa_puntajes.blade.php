@@ -27,22 +27,20 @@
             <center>
               <span class="fa fa-info-circle" id="iconhelp"></span>
               <br><br>
-              <h4 id="tituloHelp">Sección de Estadísticas de mis hijos</h4>
+              <h4 id="tituloHelp">Estadísticas</h4>
               <br>
             </center>
             <div id="cuerpoHelp">
               <p class="text-justify">
-                En la sección de estadísticas se muestra primeramente a cada uno de tus hijos registrados. Junto a cada uno
-                de ellos podrás observar de manera agrupada lo siguiente:
+                En esta sección encontrarás toda la información del desempeño de tus hijos.
               </p>
               <br>
               <ul>
                 <li>
                   <b>Seguimiento de actividades diarias</b>
                   <br>
-                  Se muestra una gráfica en la cual podrás observar cada uno de los últimos 7 (siete) días en los que tu hijo a ingresado a
-                  <i>Curiosity.com.mx</i>, y por cada uno de estos días se muestra cuántos fueron sus juegos terminados. <br>
-                  Esto lo hacemos para que tú como padre puedas observar y hacer un seguimiento del empeño y esfuerzo de tus hijos.
+                  La gráfica muestra el desempeño de  los últimos 7 días de tu hijo dentro de Curiosity.<br>
+                  Recuerda que es muy importante monitorear el desempeño y esfuerzo de tus hijos.
                   <br>
                   <small><i><b>Nota: </b>Las fechas de cada gráfica se muestran con el formato (yyyy-mm-dd)</i></small>
                 </li>

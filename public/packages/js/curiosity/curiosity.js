@@ -57,7 +57,7 @@ var $curiosity = {
                   case "warning":
                     $.toast({
                       text : mensaje,
-                      heading : "Cuidado!",
+                      heading : "¡Lo sentimos!!",
                       showHideTransition : 'slide',
                       hideAfter : 5000,
                       loader : false,
@@ -113,7 +113,7 @@ var $curiosity = {
             case "warning":
               $.toast({
                 text : mensaje,
-                heading : "Cuidado!",
+                heading : "¡Lo sentimos!!",
                 showHideTransition : 'slide',
                 hideAfter : 5000,
                 loader : false,

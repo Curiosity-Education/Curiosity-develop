@@ -172,7 +172,16 @@ class contenidoController extends BaseController
         else{
             $recomendables = array();
         }
-        $videos = video::select('code_embed')->limit(4)->get();
+
+        $videos = video::join('actividades', 'videos.actividad_id', '=', 'actividades.id')
+        ->join('temas', 'actividades.tema_id', '=', 'temas.id')
+        ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
+        ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
+        ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+        ->select('videos.code_embed', 'temas.bg_color as color')
+        ->orderBy('videos.id', 'desc')
+        ->limit(4)
+        ->get();
 
         // return array(
         //   'rol' => $rol,
@@ -181,6 +190,18 @@ class contenidoController extends BaseController
         //   'nuevos' => $nuevos,
         //   'populares' => $populares
         // );
+        $now = date("Y-m-d");
+        $meta = new metaController();
+        $metas = $meta->getAll();
+        $miMeta = $meta->getMetaHijo();
+        if (!$meta->hasMetaToday()){
+          DB::table('avances_metas')->insert(array(
+            'avance' => 0,
+            'fecha' => $now,
+            'avance_id' => $miMeta->metaAsignedId
+          ));
+        }
+
         return View::make('vista_home_actividades')->with(array(
           'rol' => $rol,
           'grados' => $grados,

@@ -16,6 +16,7 @@ var $juego = {
         aciertos:0,//variable para almacenar la cantidad de aciertos obtenidos por el usuario durante el juego.
         errores:0,
         intentos:0,
+        intervalo:0,
         valorPuntos:100,
         puntajeActual:0,
         puntajeMaximo:0,
@@ -108,14 +109,16 @@ var $juego = {
               data={
                 puntaje:$juego.game.puntajeActual,
                 eficiencia:$juego.game.eficiencia,
-                promedio:($juego.game.eficiencia*$juego.game.puntajeActual)/100
+                aciertos:$juego.game.aciertos,//Se agrega el envio de los datos aciertos y errores
+                incorrectos:$juego.game.errores,
+                promedio:($juego.game.aciertos*100)/$juego.game.intentos//El promedio se define diferente
               }
-              // console.log(data);
+               console.log(data);
               $.ajax({
                     url:'/actividad/setdata',
                     method:"POST",
                     data:data
-                }).done(function(response){                  
+                }).done(function(response){
                     if(response.estado == "200"){
                         // $curiosity.noty(response.message,"success");
                     }
@@ -161,6 +164,7 @@ var $juego = {
             // regresamos la cantidad de aciertos continuos a cero
             $juego.game.continuo = 0;
             $juego.game.intentos++;
+            $juego.game.errores++;//Se agregó esta linea para aumentar los errores cada vez que se equivoque por que esto se mostrará al padre.
             if($juego.game.puntajeActual>puntosMenos){
               if(/^[0-9]*$/.test(puntosMenos))
                 $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);
@@ -708,4 +712,23 @@ $(function(){
 
 	SliderModule.init();
 
+});
+
+$(document).ready(function() {
+  var tempEmbed;
+  $iframe = $("#srcvid");
+
+  $("#btnclvid").click(function(event) {
+    tempEmbed = $iframe.attr('src');
+    $iframe.attr('src', '');
+    $iframe.attr('src', tempEmbed);
+  });
+
+  $("#btn-what").click(function(){
+    swal(
+      "¡Meta diaria Completa!",
+      "¡Felicidades! has completado tu meta diaria. Puedes cambiar esta configuración desde tu perfil. Vuelve mañana y sigue divirtiendote.",
+      "success"
+    );
+  });
 });
