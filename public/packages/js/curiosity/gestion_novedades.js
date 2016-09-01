@@ -138,7 +138,6 @@ $(document).on("ready",function(){
 
 	$('.formularios').hide();
 
->>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
 	$('#agregar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_papa').show();
@@ -161,7 +160,6 @@ $(document).on("ready",function(){
 		event.preventDefault();
 		$('#editarNovedad_hijo').show();
 		$('#agregarNovedad_hijo').hide();
-<<<<<<< HEAD
 	}); */
 	
 	

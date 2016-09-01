@@ -4,7 +4,7 @@
  *
  */
 class novedadesController extends BaseController{
-<<<<<<< HEAD
+
 	
 	// Validaciones remotas
 	
@@ -145,11 +145,6 @@ class novedadesController extends BaseController{
 	
 	public function delete_hijoNovedad(){
 		
-=======
-
-	function getViewNovedad(){
-		return View::make('vista_gestion_novedades');
->>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
 	}
 
 }
