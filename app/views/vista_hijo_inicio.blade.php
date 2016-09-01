@@ -204,7 +204,7 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<center><h1 class="modal-title fontHijo" id="myModalLabel">Nivel de juego</h1></center>
+			<center><h1 class="modal-title fontHijo" id="myModalLabel">Meta Diaria</h1></center>
 			<center><i style="color:#65499d; font-size:2em;" class="fa fa-flag-checkered"></i></center>
 		  </div>
 		  <div class="modal-body" id="body-nivel">
@@ -258,7 +258,7 @@
   				<div class="panel panel-info" id="panel_informativo">
   					<div class="panel-heading" id="heading-novedades">
   						<div class="panel-title">
-  							<center><h4 class="fontHijo" style="font-size:1.5em;">¡Feliz Regreso de Clases!</h4></center>
+  							<center><h4 class="fontHijo" style="font-size:1.5em;">¡Feliz regreso a clases!</h4></center>
   						</div>
   					</div>
   					<div class="panel-body">
@@ -424,7 +424,7 @@
     			   <div class="box-body box-profile">
     				  <div class="image-portada">
     					<img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
-    					 <center><h3 class="fontHijo description-block"><br>Aquí tu imagen favorita</h3></center>
+    					 <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center>
     				  </div>
     			   </div>
     			 </div>

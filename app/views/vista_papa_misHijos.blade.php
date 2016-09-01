@@ -28,23 +28,23 @@
             <center>
               <span class="fa fa-info-circle" id="iconhelp"></span>
               <br><br>
-              <h4 id="tituloHelp">Sección Mis Hijos</h4>
+              <h4 id="tituloHelp">Mis hijos</h4>
               <br>
             </center>
             <div id="cuerpoHelp">
               <p class="text-justify">
-                Esta sección muestra a tus hijos registrados dentro de Curiosity,
-                De no contar con ninguno de tus hijos registrados aún, la sección se mostrará vacía.
+                En esta sección se encuentra tus hijos registrados y su progreso en el día. <br>
+                <b>Recuerda</b><br>
+                Puedes acceder a las estadísticas dando click en la imagen de tu hijo desde tu perfil.
+                <br>
+                <!-- <small><i><b>Nota: </b> Las estadísticas se generan con las actividades de tus hijos.</i></small> -->
               </p>
               <br>
               <ul>
                 <li>
                   <b>Registra a tus hijos</b>
                   <br>
-                  Podrás registrar a tus hijos únicamente con pulsar el botón ubicado en la parte superior
-                  derecha llamado "Registrar nuevo hijo". Una vez hecho click se despliega una ventana con
-                  un pequeño formulario que deberás llenar, el cual proporciona la información necesaria para
-                  completar el registro de tus hijos y así brindarles una mayor calidad de contenido.
+                  Podrás registrar a tus hijos dando click al botón "Registrar hijo/hija" ubicado en la parte superior derecha.
                   <br>
                   <small><i><b>Nota: </b>Si cuentas con una cuenta gratuita únicamente es posible registrar un máximo de 1 (uno) hijo.</i></small>
                 </li>
@@ -88,7 +88,7 @@
 <!-- VENTANA PARA EL REGISTRO DE UN NUEVO HIJO -->
 <div class='container-fluid' id="secreghijo">
   <div class='col-md-12'>
-	  <h2 id='tit-regh'> Registrar a otro Hijo </h2>
+	  <h2 id='tit-regh'> Registrar hijo/a </h2>
         <div class='row'>
           <form class='form-horizontal' id='frm-reg-hijos'>
             <div>
@@ -229,7 +229,7 @@
         <div class="col-md-6 text-right">
           <button class='btn' id='tabRegHijos' data-dad='{{$rol}}'>
             <span class="fa fa-plus"></span>&nbsp;
-            Registrar a otro Hijo
+            Registrar hijo/a
           </button>
         </div>
       </div>

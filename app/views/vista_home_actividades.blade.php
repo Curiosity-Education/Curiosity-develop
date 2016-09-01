@@ -23,14 +23,14 @@ Bienvenido a Curiosity
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>
       </div>
       <div class="col-sm-8 text-center">
-        <h2 style="font-family: Kiddish !important;"><b>¡Aprender jamás había sido tan divertido.!</b></h2>
+        <h2 style="font-family: Kiddish !important;"><b>¡Aprender jamás había sido tan divertido!</b></h2>
         <p id="text">
           En esta sección encontrarás los juegos más populares, mejor calificados y los más recomendados para ti. Además de los nuevos videos animados, todo a un sólo click. Recuerda que el secreto del éxito no es la suerte, sino la constancia.
           <br>
           ¡Que te diviertas!
         </p>
         <br>
-        <h6 class="pull-right"><i class="references">Equipo Curiosity</i></h6>
+        <h6 class="pull-right"><i class="references">~ &nbsp;Equipo Curiosity&nbsp; ~</i></h6>
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@ Bienvenido a Curiosity
           <div class="imgSlideNew" style='background:{{$nuevo->bg_color}};background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
           <div class="carousel-caption">
             <h3>{{$nuevo->nombre}}</h3>
-            <p class="hidden-xs">{{$nuevo->objetivo}}</p>
+            {{--<p class="hidden-xs">{{$nuevo->objetivo}}</p>--}}
             <button type="button" class="btn btn-warning btnPlay gotoplay" data-as='{{$nuevo}}' data-r='{{$rol}}'>
               <span class="fa fa-play"></span>&nbsp;
               Comenzar a jugar

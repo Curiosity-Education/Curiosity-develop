@@ -23,7 +23,7 @@
 		<!-- Panel de novedad para papá -->
 		<div class="col-md-6">
 			<h3><i class="fa fa-list-ul"></i> Novedades Activas para Padre</h3><hr class="hr-novedad">
-			
+
 			<div class="col-md-4">
 				<div class="panel panel-default">
                 	<div class="panel-body">
@@ -43,11 +43,11 @@
 				<center><button id="agregar_nov_papa" class="btn btn-primary" data-toggle="modal" data-target="#novedad_papa">Agregar nueva novedad</button></center>
 			</div>
 		</div>
-		
+
 		<!-- Panel de novedad para hijo -->
 		<div class="col-md-6">
 			<h3><i class="fa fa-list-ul"></i> Novedades Activas para Hijo</h3><hr class="hr-novedad">
-			
+
 			<div class="col-md-4">
 				<div class="panel panel-default">
                 	<div class="panel-body">
@@ -120,7 +120,7 @@
 							   	<br>
 							   	<center><button class="btn btn-success" type="submit" id="btn_add_papa">Registar la novedad</button></center>
 							</form>
-							
+
 							<!-- Formulario para editar de novedad -->
 							<form action="/editarNovedad" method="post" id="editarNovedad_papa" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-pencil-square"></i> Editar Novedad</h3></center><hr class="hr-novedad">
@@ -174,7 +174,7 @@
 							   	<br>
 							   	<center><button class="btn btn-success" type="submit" id="btn_add_hijo">Registar la novedad</button></center>
 							</form>
-							
+
 							<!-- Formulario para editar de novedad -->
 							<form action="/editarNovedad" method="post" id="editarNovedad_hijo" class="formularios" enctype="multipart/form-data">
 								<center><h3><i class="fa fa-pencil-square"></i> Editar Novedad</h3></center><hr class="hr-novedad">

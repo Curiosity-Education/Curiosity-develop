@@ -1,5 +1,5 @@
 $(document).on("ready",function(){
-	
+
 	// función para mostrar el footer de las notificaciones
 	$(function(){
 		$('.panel').hover(function(){
@@ -8,6 +8,7 @@ $(document).on("ready",function(){
         	$(this).find('.panel-footer').slideUp(200); //.fadeOut(205)
     	});
 	});
+<<<<<<< HEAD
 	
 	// MODULO DE NOVEDADES DEL PAPÁ
 	
@@ -96,11 +97,15 @@ $(document).on("ready",function(){
 				processData:false
 			}).done(function(response){
 				console.log(response);
-				$curiosity.noty('Novedad guardada','success');
+				$curiosity.noty('Novedad guardada exitosamente','success');
 			}).fail(function(){
 				$curiosity.noty('Error al intentar guardar','error');
 			});
 		};
+		
+		$(this).click(function(){
+			$('.close').trigger('click');
+		});
 	});
 	
 	$('#btn_edit_papa').click(function(){
@@ -126,28 +131,37 @@ $(document).on("ready",function(){
 	
 	/*$('.formularios').hide();
 	
+=======
+
+	/* funciones para mostrar los formularios
+		según sea el de agregar o editar. */
+
+	$('.formularios').hide();
+
+>>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
 	$('#agregar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_papa').show();
 		$('#editarNovedad_papa').hide();
 	});
-	
+
 	$('#editar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#editarNovedad_papa').show();
 		$('#agregarNovedad_papa').hide();
 	});
-	
+
 	$('#agregar_nov_hijo').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_hijo').show();
 		$('#editarNovedad_hijo').hide();
 	});
-	
+
 	$('#editar_nov_hijo').click(function(event){
 		event.preventDefault();
 		$('#editarNovedad_hijo').show();
 		$('#agregarNovedad_hijo').hide();
+<<<<<<< HEAD
 	}); */
 	
 	
@@ -253,3 +267,26 @@ $(document).on("ready",function(){
 	
 	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
 });
+=======
+	});
+
+
+	// MODULO DE NOVEDADES DEL HIJO
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
+
+	/******************************************************************/
+
+	// MODULO DE NOVEDADES DEL PAPÁ
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
+});
+>>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963

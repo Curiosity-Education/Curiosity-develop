@@ -38,6 +38,10 @@ Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
 
+<<<<<<< HEAD
+=======
+Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
+>>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
@@ -68,6 +72,9 @@ Route::group(array('before' => 'auth'), function(){
           Route::get('/alertas', 'padreController@getAlertasNow');
           Route::get('/misHijos', 'hijoController@info');
           Route::get('/gethijos','padreController@gethijos');
+          Route::post('/desgloce/hijo/{idHijo}','hijoController@desgloceJuegos');
+          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');  
+          Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');  
           Route::post('/regHijo','hijoController@addHijo');
           Route::post('/cotarhijos','padreController@getCountHijos');
           Route::post('/getsegs','padreController@seguimientoHijo');
@@ -110,6 +117,7 @@ Route::group(array('before' => 'auth'), function(){
           Route::post('/getSpriteselected-{nameType}', 'secuenciaController@getSelectedSprite');
           Route::post('/getVideos', 'contenidoController@getAllVideos');
         });
+<<<<<<< HEAD
 			
 		Route::group(array('before' => 'ver_reportes'),function(){
 			// Validaciones remotas
@@ -131,6 +139,15 @@ Route::group(array('before' => 'auth'), function(){
 			
 		});
 			
+=======
+
+		/*Route::group(array('before' => 'ver_reportes'),function(){
+			// Gestión Novedades
+			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
+
+		});*/
+
+>>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
         Route::group(array('before' => 'gestionar_niveles'),function(){
           // Niveles
           Route::match(array('GET', 'POST'), '/adminNivel', 'nivelController@verPagina');
