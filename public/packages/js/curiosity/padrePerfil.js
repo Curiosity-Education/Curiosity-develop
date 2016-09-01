@@ -218,11 +218,11 @@ $(document).ready(function(){
     $(".info-uso-plataform").click(function(){
     
         data = {
-            tituloHelp:'Estado de uso de la plataforma',
-            description_helper:'Muestra el porcentaje de uso de la plataforma basado en las metas del día de cada uno de sus hijos. Esta gráfica se relaciona con el cumpliento de metas, recuerde que cuando la aguja se encuentre en color rojo, alguno o todos sus hijos no esta cumpliendo con todas sus metas del día',
-            subtitle_1:'Estados de uso',
-            description_subtitle:'<b>Rojo: </b> El uso de la plataforma es muy bajo y no se obtendran buenos resultados.<br> <b>Amarillo: </b> El uso de la plataforma es suficiente y en ocasiones se obtendran buenos resultados.<br> <b>Verde: </b> El uso de la plataforma es bueno  y hay mas posibilidades que se obtengan buenos resultados.<br>',
-            note_helper:'Si sus hijos han cumplido con todas sus metas del día la aguja marcará en verde.'     
+            tituloHelp:'Uso de la plataforma',
+            description_helper:'En esta sección encontrarás las metas diarias de cada uno de tus hijos. La gráfica te indicará el cumplimiento de sus metas, recuerda que si la aguja está de color rojo, alguno de tus hijos no está cumpliendo su meta del día.',
+            subtitle_1:'Avisos',
+            description_subtitle:'<b>Rojo: </b> No está practicando suficiente.<br> <b>Amarillo: </b> Debe de practicar un poco más.<br> <b>Verde: </b> ¡Excelente! <br>',
+            note_helper:' El objetivo es que la aguja siempre marque verde. Recuerda que el secreto del éxito no es la suerte, sino la constancia.'
         };
         llenarHelper(data);
         
@@ -233,10 +233,10 @@ $(document).ready(function(){
     
         data = {
             tituloHelp:'Mis hijos',
-            description_helper:'En esta sección se encuentra tus hijos registrados y su progreso en el día',
-            subtitle_1:'Estadisticas',
-            description_subtitle:'Puedes acceder a las estadisticas de cada uno de tus hijos dando un click en la imagen correspondiente a tu hijo',
-            note_helper:'Las estadisticas de esta sección se generan con las actividades realizadas de tus hijos'     
+            description_helper:'En esta sección se encuentra tus hijos registrados y su progreso en el día.',
+            subtitle_1:'Recuerda:',
+            description_subtitle:'Puedes acceder a las estadísticas dando click en la imagen de tu hijo.',
+            note_helper:' Las estadísticas se generan con las actividades de tus hijos.'
         };
         llenarHelper(data);
         
