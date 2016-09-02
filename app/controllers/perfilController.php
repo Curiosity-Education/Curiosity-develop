@@ -135,29 +135,29 @@ class perfilController extends BaseController{
             $alto = $imagen->height;
             $ancho = $imagen->width;
 
-            if($ancho > 3000){
-                $max = 3000;
-                $extra = ($ancho - $max);
-                $porcent = (integer)(($extra * 100) / $max);
-                $imagen->width = $max;
-
-                $dif = (($porcent * $alto) / 100);
-                $alturaNew = $alto - $dif;
-                $imagen->height = $alturaNew;
-                $imagen->resize($imagen->width, $imagen->height);
-            }
-
-            if($alto > 2000){
-                $max = 2000;
-                $extra = ($alto - $max);
-                $porcent = (integer)(($extra * 100) / $max);
-                $imagen->height = $max;
-
-                $dif = (($porcent * $ancho) / 100);
-                $anchoNew = $ancho - $dif;
-                $imagen->width = $anchoNew;
-                $imagen->resize($imagen->width, $imagen->height);
-            }
+            // if($ancho > 3000){
+            //     $max = 3000;
+            //     $extra = ($ancho - $max);
+            //     $porcent = (integer)(($extra * 100) / $max);
+            //     $imagen->width = $max;
+            //
+            //     $dif = (($porcent * $alto) / 100);
+            //     $alturaNew = $alto - $dif;
+            //     $imagen->height = $alturaNew;
+            //     $imagen->resize($imagen->width, $imagen->height);
+            // }
+            //
+            // if($alto > 2000){
+            //     $max = 2000;
+            //     $extra = ($alto - $max);
+            //     $porcent = (integer)(($extra * 100) / $max);
+            //     $imagen->height = $max;
+            //
+            //     $dif = (($porcent * $ancho) / 100);
+            //     $anchoNew = $ancho - $dif;
+            //     $imagen->width = $anchoNew;
+            //     $imagen->resize($imagen->width, $imagen->height);
+            // }
 
             //guardar imagen original
             $imagen->save(public_path()."/packages/images/perfil/original/".Auth::user()->username.".".$image->getClientOriginalExtension());

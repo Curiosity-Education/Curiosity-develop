@@ -235,7 +235,7 @@
   		<center><h2 class="fontHijo" id="nameAvatar">{{$nombreAvatar}}<hr class="hrHijo"></h2></center>
   	   <!-- Imagen del avatar -->
   		<center>
-        <img src="" class="img-responsive" id="avatar">
+        <img src="" class="img-responsive" id="avatar" style="transform:scale(2);">
         {{--<img src="/packages/images/avatars_curiosity/secuencias/{{$avatar->sprite}}" class="img-responsive" id="avatar">--}}
         <hr class="hrHijo">
       </center>
