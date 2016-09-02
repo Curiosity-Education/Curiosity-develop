@@ -9,7 +9,7 @@
 
 
 @section('titulo_contenido')
-	¡Tienda Curiosity!
+	Tienda Curiosity
 @stop
 
 @section('panel_opcion')
