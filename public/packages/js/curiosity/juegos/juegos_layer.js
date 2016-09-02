@@ -73,7 +73,8 @@ var $juego = {
             $juego.game.save();
             $juego.modal.puntuacion.mostrar($juego.game.puntajeMaximo,$juego.game.puntajeActual);
             $juego.game.puntajeActual=0;
-            $juego.game.intentos=0;
+            $juego.game.intentos = 0;
+            $juego.game.errores = 0;
             $juego.game.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
             $juego.cronometro.stop();
@@ -91,6 +92,8 @@ var $juego = {
         restart:function(){
             $juego.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
+            $juego.game.intentos = 0;
+            $juego.game.errores = 0;
             $("#zona-play").hide();//desaparecer zona juego
             $("#zona-obj").show();//aparecer zona del objetivo
             $juego.game.puntajeActual=0;
@@ -99,8 +102,9 @@ var $juego = {
             $("#game").trigger('restart');
         },
         restart_game_unity:function(){
-            $juego.aciertos=0;
-            $juego.intentos = 0;
+            $juego.game.aciertos=0;
+            $juego.game.intentos = 0;
+            $juego.game.errores = 0;
             $juego.game.continuo=0;//reiniciar continuos
             $juego.game.puntajeActual=0;
         },
@@ -108,9 +112,11 @@ var $juego = {
               data={
                 puntaje:$juego.game.puntajeActual,
                 eficiencia:$juego.game.eficiencia,
-                promedio:($juego.game.eficiencia*$juego.game.puntajeActual)/100
+                aciertos:$juego.game.aciertos,//Se agrega el envio de los datos aciertos y errores
+                incorrectos:$juego.game.errores,
+                promedio:($juego.game.aciertos*100)/$juego.game.intentos//El promedio se define diferente
               }
-              console.log(data);
+
               $.ajax({
                     url:'/actividad/setdata',
                     method:"POST",
@@ -129,6 +135,8 @@ var $juego = {
         },
         salir:function(){
             $juego.aciertos=0;
+            $juego.game.intentos = 0;
+            $juego.game.errores = 0;
             $juego.game.continuo=0;//reiniciar continuos
             $("#zona-play").hide();//desaparecer zona juego
             $("#zona-obj").show();//aparecer zona del objetivo
@@ -161,6 +169,7 @@ var $juego = {
             // regresamos la cantidad de aciertos continuos a cero
             $juego.game.continuo = 0;
             $juego.game.intentos++;
+            $juego.game.errores++;//Se agregó esta linea para aumentar los errores cada vez que se equivoque por que esto se mostrará al padre.
             if($juego.game.puntajeActual>puntosMenos){
               if(/^[0-9]*$/.test(puntosMenos))
                 $("#countPuntaje").text($juego.game.puntajeActual-=puntosMenos);

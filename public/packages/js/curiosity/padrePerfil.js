@@ -266,8 +266,8 @@ $(document).ready(function(){
             return table.append(tbody);
         }
         data = {
-            tituloHelp:'Desglose de las actividades realizadas',
-            description_helper:'El desglose de las actividades se observa en una gráfica de pie la cual se muestra dividida en porcentajes ej. Si su hijo ha jugado 10 veces y de esas 10 veces a jugado 5 veces el tema sumas y restas entonces este aparecera con un porcentaje de 50% ',
+            tituloHelp:'Actividades realizadas',
+            description_helper:'A continuación se muestra una gráfica de pastel donde se puede observar la actividad de su hijo en la plataforma Curiosity, los juegos, así como las veces que ha jugado. Ej. Supongamos que su hijo jugo 5 veces el mismo juego, entonces este representara el 100% de la gráfica. ',
             subtitle_1:'Actividades Realizadas',
             description_subtitle:act_real(),
             note_helper:'Las actividades que se muestran son las que el alumno ha realizado durante el transcurso del día'     
@@ -296,10 +296,13 @@ $(document).ready(function(){
                 var yData = parseFloat(object.y).toFixed(2);
                 var dataResponse = {
                     name : object.name,
-                    y : yData - 0
+                    y : yData - 0,
+                    total_jugados : object.total
                 }
                 seriesGET.data.push(dataResponse);
+
             });
+
             if(seriesGET.data[0] != undefined){
                 $curiosityCharts.pieMonoChrome('#des_jue',{
                     title:'',

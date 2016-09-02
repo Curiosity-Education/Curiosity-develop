@@ -128,15 +128,15 @@ var $curiosityCharts = {
                 plotBands: [{
                     from: 0,
                     to: 59,
-                    color: '#db262c' // green
+                    color: '#ec2726' // green
                 }, {
                     from: 60,
                     to: 79,
-                    color: '#DDDF0D' // yellow
+                    color: '#f2bc19' // yellow
                 }, {
                     from: 80,
                     to: 100,
-                    color: '#1f9651' // red
+                    color: '#3cd24a' // red
                 }]
             },
 
