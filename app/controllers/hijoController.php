@@ -123,9 +123,9 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
 				'meta_diaria_id' => $idMeta
 			));
 
-			$this->getMeta($idHijo);
+			return $this->getMeta($idHijo);
 		}
-    
+
         public function getMeta($idHijo){
             $now = date("Y-m-d");
             $miMeta = DB::table('metas_diarias')
@@ -183,37 +183,37 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
 			$us->save();
 			return Response::json(array(0=>"success"));
 		}
-    
+
     function desgloceJuegos($idHijo){
             $now = date("Y-m-d");
-            return DB::select("SELECT 
+            return DB::select("SELECT
             t_jugados.nombre as 'name',t_jugados.t_jugados_act as 'total' , (t_jugados.t_jugados_act * 100 /t_sum_juegos.total_jugados) as 'y'
-            FROM 
+            FROM
             (
-                SELECT 
-                actividades.nombre,count(actividades.id) as 't_jugados_act'  
-                FROM 
-                hijo_realiza_actividades 
+                SELECT
+                actividades.nombre,count(actividades.id) as 't_jugados_act'
+                FROM
+                hijo_realiza_actividades
                 inner join
-                actividades 
-                on 
-                hijo_realiza_actividades.actividad_id = actividades.id 
-                where 
+                actividades
+                on
+                hijo_realiza_actividades.actividad_id = actividades.id
+                where
                 hijo_realiza_actividades.hijo_id = $idHijo and hijo_realiza_actividades.created_at between  '$now 00:00:00' and '$now 23:59:59'
                 group by(actividades.nombre)
-            ) 
-            as t_jugados, 
+            )
+            as t_jugados,
             (
-                SELECT 
-                    count(actividades.id) as 'total_jugados'  
-                FROM 
-                    hijo_realiza_actividades 
-                inner join 
-                    actividades on hijo_realiza_actividades.actividad_id = actividades.id 
-                where 
-                    hijo_realiza_actividades.hijo_id = $idHijo and hijo_realiza_actividades.created_at between  '$now 00:00:00' and '$now 23:59:59' 
+                SELECT
+                    count(actividades.id) as 'total_jugados'
+                FROM
+                    hijo_realiza_actividades
+                inner join
+                    actividades on hijo_realiza_actividades.actividad_id = actividades.id
+                where
+                    hijo_realiza_actividades.hijo_id = $idHijo and hijo_realiza_actividades.created_at between  '$now 00:00:00' and '$now 23:59:59'
                 group by(hijo_realiza_actividades.hijo_id)
-            ) 
+            )
             as t_sum_juegos");
     }
 
