@@ -40,7 +40,6 @@ Route::get('/registro-exitoso',function(){
 
 Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
-
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
 Route::get('/confirmar/{token}','padreController@confirmar');
@@ -121,8 +120,6 @@ Route::group(array('before' => 'auth'), function(){
 			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
 		});*/
-
-
 			
 		Route::group(array('before' => 'ver_reportes'),function(){
 			// Validaciones remotas
@@ -144,6 +141,7 @@ Route::group(array('before' => 'auth'), function(){
 			
 		});
 			
+
         Route::group(array('before' => 'gestionar_niveles'),function(){
           // Niveles
           Route::match(array('GET', 'POST'), '/adminNivel', 'nivelController@verPagina');

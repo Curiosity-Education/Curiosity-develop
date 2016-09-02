@@ -76,6 +76,10 @@
   margin-bottom: 20px;
   height: 500px;
 }
+#sec1-uso{
+  margin-bottom: 20px;
+  height: 400px;
+}
 #sec2{
   height: 315px;
 }
@@ -245,7 +249,7 @@
   text-align: center;
 }
 #noticias{
-  height: 635px;
+  background-color: #b2e2e2;
 }
 #sectionChildren{
   background-color: #fff;

@@ -15,6 +15,8 @@ $(document).on("ready",function(){
 
 	$('.formularios').hide();
 
+
+
 	
 	// MODULO DE NOVEDADES DEL PAPÁ
 	
@@ -103,11 +105,15 @@ $(document).on("ready",function(){
 				processData:false
 			}).done(function(response){
 				console.log(response);
-				$curiosity.noty('Novedad guardada','success');
+				$curiosity.noty('Novedad guardada exitosamente','success');
 			}).fail(function(){
 				$curiosity.noty('Error al intentar guardar','error');
 			});
 		};
+		
+		$(this).click(function(){
+			$('.close').trigger('click');
+		});
 	});
 	
 	$('#btn_edit_papa').click(function(){
@@ -133,6 +139,13 @@ $(document).on("ready",function(){
 	
 	/*$('.formularios').hide();
 	
+
+
+	/* funciones para mostrar los formularios
+		según sea el de agregar o editar. */
+
+	$('.formularios').hide();
+
 	$('#agregar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_papa').show();
@@ -176,6 +189,7 @@ $(document).on("ready",function(){
 
 	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
 /*});
+
 	}); */
 	
 	
@@ -281,3 +295,26 @@ $(document).on("ready",function(){
 	
 	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
 });
+
+	});
+
+
+	// MODULO DE NOVEDADES DEL HIJO
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
+
+	/******************************************************************/
+
+	// MODULO DE NOVEDADES DEL PAPÁ
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
+});
+
