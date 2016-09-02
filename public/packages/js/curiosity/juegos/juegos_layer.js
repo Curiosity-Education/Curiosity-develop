@@ -90,7 +90,7 @@ var $juego = {
             $juego.game.restart_game_unity();
         },
         restart:function(){
-            $juego.aciertos=0;
+            $juego.game.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
@@ -134,7 +134,7 @@ var $juego = {
             $("#game").trigger('save');
         },
         salir:function(){
-            $juego.aciertos=0;
+            $juego.game.aciertos=0;
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
             $juego.game.continuo=0;//reiniciar continuos

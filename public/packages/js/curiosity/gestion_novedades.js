@@ -8,7 +8,15 @@ $(document).on("ready",function(){
         	$(this).find('.panel-footer').slideUp(200); //.fadeOut(205)
     	});
 	});
-<<<<<<< HEAD
+
+
+	/* funciones para mostrar los formularios
+		según sea el de agregar o editar. */
+
+	$('.formularios').hide();
+
+
+
 	
 	// MODULO DE NOVEDADES DEL PAPÁ
 	
@@ -131,7 +139,7 @@ $(document).on("ready",function(){
 	
 	/*$('.formularios').hide();
 	
-=======
+
 
 	/* funciones para mostrar los formularios
 		según sea el de agregar o editar. */
@@ -160,6 +168,28 @@ $(document).on("ready",function(){
 		event.preventDefault();
 		$('#editarNovedad_hijo').show();
 		$('#agregarNovedad_hijo').hide();
+	});
+
+
+	// MODULO DE NOVEDADES DEL HIJO
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
+
+	/******************************************************************/
+
+	// MODULO DE NOVEDADES DEL PAPÁ
+
+	// Validaciones del formulario
+	// Validaciones remotas
+	// funciones necesarias
+
+	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
+/*});
+
 	}); */
 	
 	
@@ -265,7 +295,7 @@ $(document).on("ready",function(){
 	
 	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
 });
-=======
+
 	});
 
 
@@ -287,4 +317,4 @@ $(document).on("ready",function(){
 
 	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
 });
->>>>>>> 74c8aae6fcbfb63f892beb29183fcd1076b05963
+
