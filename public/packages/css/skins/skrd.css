@@ -267,6 +267,17 @@
  }
  /*Fin Videos de estudio Modal*/
 
+ /*Nombre del avatar en la tienda*/
+ #nameAvStore{
+   background-color: #d83130;
+   color: #fff;
+   padding: 15px;
+   margin: -20px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   margin-bottom: 5px;
+ }
+
  /*/ Barra de desplazamiento /*/
  ::-webkit-scrollbar {
        width: 10px;

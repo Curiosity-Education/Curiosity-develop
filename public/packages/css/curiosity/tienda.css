@@ -2,6 +2,9 @@
 	font-family:Kiddish;
 	src:url(/packages/fonts/Kiddish.ttf);
 }
+.fuenteForChild{
+  font-family: kiddish !important;
+}
 .ordenador{
   background-color: #fff;
   padding: 20px;

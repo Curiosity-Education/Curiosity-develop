@@ -34,7 +34,7 @@ body {
   padding-left: 30px;
   padding-right: 30px;
   text-decoration: none;
-  border: solid 3px #845ed0;  
+  border: solid 3px #845ed0;
 }
 
 .irAvatarStore:hover{
@@ -1205,7 +1205,7 @@ a:focus {
 }
 #txtprofchild{
   font-family: kiddish;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
   padding: 15px;
