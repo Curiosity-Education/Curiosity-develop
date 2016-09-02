@@ -273,6 +273,18 @@ ul#slider{
   color: #fff;
   outline: none;
 }
+
+/*Nombre del avatar en la tienda*/
+#nameAvStore{
+  background-color: #2262ae;
+  color: #fff;
+  padding: 15px;
+  margin: -20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 5px;
+}
+
 /*Fin Videos de estudio Modal*/
 
 /*/ Barra de desplazamiento /*/

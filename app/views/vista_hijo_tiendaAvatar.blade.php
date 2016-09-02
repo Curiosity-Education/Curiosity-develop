@@ -9,7 +9,7 @@
 
 
 @section('titulo_contenido')
-	¡Tienda Curiosity!
+	Tienda Curiosity
 @stop
 
 @section('panel_opcion')
@@ -23,9 +23,9 @@
   		</div>
 			<div class="col-sm-8">
 				<div class="ordenador miAvatar">
-					<h4 class="text-center"><b>{{$estiloAvatar->nombre}}</b></h4>
+					<h4 class="text-center fuenteForChild" id="nameAvStore"><b>{{$estiloAvatar->nombre}}</b></h4>
 					<br>
-					<p class="text-center">{{$estiloAvatar->descripcion}}</p>
+					<p class="text-center fuenteForChild">{{$estiloAvatar->descripcion}}</p>
 				</div>
 			</div>
   	</div>
@@ -35,7 +35,7 @@
 			<div class="col-sm-8 col-md-9">
 				<!-- Estilos para el avtar -->
 				<div class="ordenador">
-					<center><h4 class="titleforpanel" id="seccEstilo">Cambia el estilo de tu avatar</h4></center>
+					<center><h4 class="titleforpanel fuenteForChild" id="seccEstilo">Cambia el estilo de tu avatar</h4></center>
 					<div class="row">
 						@foreach ($avatarEstilos as $estilo)
 						@if ($experiencia->cantidad_exp >= $estilo->valor)
@@ -55,7 +55,7 @@
 								@endif
 								<center>
 									<img src="/packages/images/avatars_curiosity/estilos/{{$estilo->preview}}" class="img-responsive">
-									<div class="captionInfo captionAvatar">
+									<div class="captionInfo captionAvatar fuenteForChild">
 										@if ($estilo->id == $estiloAvatar->id)
 											En uso
 										@elseif ($experiencia->cantidad_exp >= $estilo->valor)
@@ -72,7 +72,7 @@
 				</div>
 				<!-- Skins para el sistema -->
 				<div class="ordenador">
-					<center><h4 class="titleforpanel" id="seccSkin">Escoge tu color favorito</h4></center>
+					<center><h4 class="titleforpanel fuenteForChild" id="seccSkin">Escoge tu color favorito</h4></center>
 					<div class="row">
 						@foreach ($mySkins as $skin)
 						<div class="col-sm-6 col-md-3">
@@ -83,7 +83,7 @@
 							@endif
 								<center>
 									<img src="/packages/images/skins/{{$skin->preview}}" class="img-responsive">
-									<div class="captionInfo captionSkin">
+									<div class="captionInfo captionSkin fuenteForChild">
 										@if ($skin->uso == 1)
 											En uso
 										@else
@@ -99,7 +99,7 @@
 							<div class="panelItem itemSkin skout" id='{{$skin->id}}sku'>
 								<center>
 									<img src="/packages/images/skins/{{$skin->preview}}" class="img-responsive">
-									<div class="captionInfo captionSkin">
+									<div class="captionInfo captionSkin fuenteForChild">
 										@if ($skin->costo == 0)
 											Utilizar
 										@else
@@ -119,8 +119,8 @@
 					<center>
 						<img src="/packages/icons/settings.png" class="img-responsive imgforinfo">
 						<div class="orderInfo" id="orderInfoExp">
-							<h5 class="titleforinfo"><b>Mi Experiencia</b></h5>
-							<b class="myinfo" id="cantExp">{{$experiencia->cantidad_exp}} pts</b>
+							<h5 class="titleforinfo fuenteForChild"><b>Mi Experiencia</b></h5>
+							<b class="myinfo fuenteForChild" id="cantExp">{{$experiencia->cantidad_exp}} pts</b>
 						</div>
 					</center>
 				</div>
@@ -128,8 +128,8 @@
 					<center>
 						<img src="/packages/icons/medall.png" class="img-responsive imgforinfo">
 						<div class="orderInfo" id="orderInfoCoins">
-							<h5 class="titleforinfo"><b>Curiosity Coins</b></h5>
-							<b class="myinfo" id="cantCoins">{{$experiencia->coins}} cc</b>
+							<h5 class="titleforinfo fuenteForChild"><b>Curiosity Coins</b></h5>
+							<b class="myinfo fuenteForChild" id="cantCoins">{{$experiencia->coins}} cc</b>
 						</div>
 					</center>
 				</div>
