@@ -59,8 +59,7 @@ Route::filter('only_session',function(){
    $session_real=User::where('id','=',Auth::user()->id)->select('id_session')->get();
    if(isset($session_real)){
        if($session_real[0]->id_session != Session::get('sessionId') ){
-            Auth::logout();
-            return Redirect::guest('/');
+            return Redirect::guest('/missedSession');
        }
    }
 });

@@ -17,6 +17,8 @@ Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){
     return View::make('aviso_beta');
 });
+Route::get('/missedSession','sesionInfoController@missedSession');
+Route::post('/last-session','sesionInfoController@getLastSession');
 Route::get('/terminos-y-condiciones',function(){
     return View::make('terminos');
 });

@@ -150,9 +150,11 @@ function __init(){
         $canc.attr('disabled', 'disabled');
         var datos = {
           username: $username.val(),
-          password: $password.val()
+          password: $password.val(),
+          browser:WURFL.complete_device_name, //GET name Browser
+          app_version:navigator.appVersion,// GET name appVersion
+          mobile:(WURFL.is_mobile) ? 1 : 0 //GET if it's mobile
         };
-
         $.ajax({
           url: '/login',
           type: 'POST',
