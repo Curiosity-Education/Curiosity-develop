@@ -160,4 +160,20 @@ $(document).ready(function() {
     $("#sectionGralPerfil").show('slow');
   });
 
+  // cropper
+  $('#image').cropper({
+  aspectRatio: 1/1,
+  responsive: true,
+  autoCropArea:1,
+  preview:".preview",
+  dragMode:'move',
+  crop: function(e) {
+    // Output the result data for cropping image.
+    $("input[name='x']").val(e.x);
+    $("input[name='y']").val(e.y);
+    $("input[name='width']").val(e.width);
+    $("input[name='height']").val(e.height);
+
+  }
+
 });
