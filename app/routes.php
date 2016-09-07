@@ -123,6 +123,7 @@ Route::group(array('before' => 'auth'), function(){
         });
 
 		// NOVEDADES
+
 		Route::group(array('before' => 'ver_reportes'),function(){
 			// Validaciones remotas
 			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
@@ -138,7 +139,7 @@ Route::group(array('before' => 'auth'), function(){
 			Route::match(array('GET','POST'), '/add_hijoNovedad', 'novedadesController@add_hijoNovedad');
 			Route::match(array('GET','POST'), '/edit_hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
 			Route::match(array('GET','POST'), '/delete_hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
-    
+
 		});
 
 
