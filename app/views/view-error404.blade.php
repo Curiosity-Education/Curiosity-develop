@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="/packages/images/Curiosity.png">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-  {{HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
-  {{HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
+  {{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
+  {{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
   {{HTML::style('/packages/css/curiosity/userStyle.css')}}
   <title>Curiosity | ERROR 404</title>
 </head>
@@ -16,7 +16,7 @@
       background-image: url(/packages/images/fondos/fondo.jpg);
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: 100% 100%;
     }
 
     .well{
@@ -35,7 +35,7 @@
             <div class="lockscreen-logo">
               <!-- <b>Curiosity</b><small>.com.mx</small> -->
               <center>
-                {{HTML::image('/packages/images/pg-curiosity.png', 'alt', array('class' => 'img-responsive wow bounceIn lock-img'))}}
+                {{HTML::image('/packages/images/landing/nuevo_log.png', 'alt', array('class' => 'img-responsive wow bounceIn lock-img'))}}
               </center>
             </div>
             <h1 class="text-center"><b>404</b></h1>
