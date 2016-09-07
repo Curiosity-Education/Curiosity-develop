@@ -94,6 +94,7 @@
   {{HTML::script('/packages/js/curiosity/desktop-notify.js')}}
   {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
   {{HTML::script('/packages/js/curiosity/curiosity.js')}}
+  {{HTML::script('//wurfl.io/wurfl.js')}}
   {{HTML::script('/packages/js/curiosity/login.js')}}
 <!--
   Below we include the Login Button social plugin. This button uses

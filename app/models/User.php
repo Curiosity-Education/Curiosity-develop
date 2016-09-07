@@ -80,5 +80,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     ->first();
     return $skin;
   }
+    public function sesionInfo(){
+        return $this->hasOne('sesionInfo','users_id');
+    }
 
 }

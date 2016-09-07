@@ -13,8 +13,12 @@ class novedadesController extends BaseController{
 	// Validaciones remotas
 	
 	public function tituloNov_papa(){
-		$novedad = DB::table('novedades_papa')->where("titulo","=",Input::get("titulo_papa"))->first();
-		$novedadEdit = DB::table('novedades_papa')->where("titulo","=",Input::get("tituloEdit_papa"))->first();
+		$novedad = DB::table('novedades_papa')
+			->where("titulo","=",Input::get("titulo_papa"))
+			->where("status", "=", "1")->first();
+		$novedadEdit = DB::table('novedades_papa')
+			->where("titulo","=",Input::get("tituloEdit_papa"))
+			->where("status", "=", "1")->first();
 		
 		if($novedad || $novedadEdit){
 			return "false";
@@ -24,8 +28,12 @@ class novedadesController extends BaseController{
 	}
 	
 	public function tituloNov_hijo(){
-		$novedad = DB::table('novedades_hijo')->where("titulo","=",Input::get("titulo_hijo"))->first();
-		$novedadEdit = DB::table('novedades_hijo')->where("titulo","=",Input::get("tituloEdit_hijo"))->first();
+		$novedad = DB::table('novedades_hijo')
+			->where("titulo","=",Input::get("tituloNov_hijo"))
+			->where("status", "=", "1")->first();
+		$novedadEdit = DB::table('novedades_hijo')
+			->where("titulo","=",Input::get("tituloEditar_hijo"))
+			->where("status", "=", "1")->first();
 		
 		if($novedad || $novedadEdit){
 			return "false";
@@ -34,35 +42,40 @@ class novedadesController extends BaseController{
 		}
 	}
 	
-	// Traer las novedades del papá
-	public function getnovedades_papa(){
-		$novedades_papa = DB::table('novedades_papa')
-			->select('*')
-			->where('status', '=', '1')
-			->get();
-		
-		return $novedades_papa;
+	public function linkNov_hijo(){
+		$link = DB::table('novedades_hijo')
+			->where("uri","=",Input::get("link"))
+			->where("status","=","1")->first();
+					
+		$link_edit = DB::table('novedades_hijo')		
+			->where("uri","=",Input::get("link_edit"))		
+			->where("status","=","1")->first();
+					
+		if($link || $link_edit){
+			return "false";
+		}else{
+			return "true";
+		}
 	}
 	
-	// Traer las novedades del hijo
-	public function getnovedades_hijo(){
-		$novedades_hijo = DB::table('novedades_hijo')
-			->select('*')
-			->where('status', '=', '1')
-			->get();
-		
-		return $novedades_hijo;
-	}
-	
+	// Mostrar la vista
 	public function getViewNovedad(){
 		
 		$novedades_papa = DB::table('novedades_papa')
 			->select('*')
 			->where('status', '=', '1')
+			->limit(3)
+			->orderBy('id','DESC')
 			->get();
 		
+		$novedades_hijo = DB::table('novedades_hijo')
+			->select('*')
+			->where('status', '=', '1')
+			->limit(3)
+			->orderBy('id','DESC')
+			->get();
 		
-		return View::make('vista_gestion_novedades')->with('novedades_papa', $novedades_papa);
+		return View::make('vista_gestion_novedades')->with('novedades_papa', $novedades_papa)->with('novedades_hijo', $novedades_hijo);
 	}
 	
 	// Crud de papá
@@ -79,7 +92,7 @@ class novedadesController extends BaseController{
 		
 		
 		$rules = array(
-			'titulo_papa'  => 'required',
+			'titulo_papa'  => 'required|max:20',
 			'pdf'          => 'required|mimes:pdf'
 		);
 		
@@ -100,54 +113,126 @@ class novedadesController extends BaseController{
 			
 			$datos['pdf']->move(public_path()."/packages/docs/novedades", $datos['pdf'] -> getClientOriginalName());
 			
-			return "Guardado";
 		}
 	}
 	
-	public function edit_papaNovedad(){
+	public function edit_papaNovedad($id){
 		
-		$datos = Input::get('data');        
+		$datos = Input::all();        
+		
+		$id_admin = DB::table('users')
+			->select('administrativos.id')
+			->join('personas','personas.user_id', '=', 'users.id')
+			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->first()->id;
 		
 		$rules = array(
 			'tituloEditar_papa'  => 'required',
-			'pdf_edit'           => 'required|mimes:pdf'
+			'pdf_edit'           => 'mimes:pdf'
 		);
 		
 		$validacion = Validator::make(Input::all(),$rules);
 		
-		if($validacion -> fail()){
+		if($validacion -> fails()){
 			return $validar -> messages();
 		}else{
-			$nov_papa = novedades_papa::find(Input::get('id_nov'));
+			$nov_papa = novedadesPapa::find($id);
 			$nov_papa -> titulo = $datos['tituloEditar_papa'];
-			$nov_papa -> pdf = $datos['pdf_edit'];
+			if(Input::hasFile('pdf_edit')){
+				$nov_papa -> pdf = $datos['pdf_edit'] -> getClientOriginalName();
+			}
 			$nov_papa -> status = (1);
-			$nov_papa -> administrativo_id = Auth::user()->id;
+			$nov_papa -> administrativo_id = $id_admin;
 			$nov_papa -> save();
 			
 			return "Editado";
 		}
 	}
 	
-	public function delete_papaNovedad(){
+	public function delete_papaNovedad($id){
 		
-		$nov_papa = novedades_papa::find(Input::get('id_nov'));
+		$nov_papa = novedadesPapa::find($id);
 		$nov_papa -> status = (0);
 		$nov_papa -> save();
-		
+		sleep(1);
+		return Redirect::back();
 	}
 	
 	// Crud de hijo
 	
 	public function add_hijoNovedad(){
 		
-	}
-	
-	public function edit_hijoNovedad(){
+		$datos_hijo = Input::all(); 
+		
+		$id_admin = DB::table('users')
+			->select('administrativos.id')
+			->join('personas','personas.user_id', '=', 'users.id')
+			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->first()->id;
+		
+		
+		$rules = array(
+			'tituloNov_hijo'  => 'required|max:20',
+			'link'         	  => 'required'
+		);
+		
+		$validacion = Validator::make(Input::all(),$rules);
+		
+		if($validacion -> fails()){
+			return $validacion -> messages();
+		}else{
+			
+			$nov_hijo = new novedadesHijo($datos_hijo);
+			$nov_hijo -> titulo = $datos_hijo['tituloNov_hijo'];
+			$nov_hijo -> uri = $datos_hijo['link'];
+			$nov_hijo -> status = (1);
+			$nov_hijo -> administrativo_id = $id_admin;
+			$nov_hijo -> save();
+			
+			return "Guardado";
+		}
 		
 	}
 	
-	public function delete_hijoNovedad(){
+	public function edit_hijoNovedad($id){
+		
+		$datos = Input::all();       
+		
+		$id_admin = DB::table('users')
+			->select('administrativos.id')
+			->join('personas','personas.user_id', '=', 'users.id')
+			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->first()->id;
+		
+		$rules = array(
+			'tituloEditar_hijo'   => 'required',
+			'link_edit'           => 'required'
+		);
+		
+		$validacion = Validator::make(Input::all(),$rules);
+		
+		if($validacion -> fails()){
+			return $validar -> messages();
+		}else{
+			$nov_hijo = novedadesHijo::find($id);
+			$nov_hijo -> titulo = $datos['tituloEditar_hijo'];
+			$nov_hijo -> uri = $datos['link_edit'];
+			$nov_hijo -> status = (1);
+			$nov_hijo -> administrativo_id = $id_admin;
+			$nov_hijo -> save();
+			
+			return "Editado";
+		}
+		
+	}
+	
+	public function delete_hijoNovedad($id){
+		
+		$nov_papa = novedadesHijo::find($id);
+		$nov_papa -> status = (0);
+		$nov_papa -> save();
+		sleep(1);
+		return Redirect::back();
 		
 	}
 
