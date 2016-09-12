@@ -81,6 +81,7 @@ App::down(function()
 require app_path().'/filters.php';
 require app_path().'/validator.php';
 require app_path().'/events.php';
+require app_path().'/dreamDate.php';
 App::missing(function($exception)
 {
     return Response::view('view-error404', array(), 404);

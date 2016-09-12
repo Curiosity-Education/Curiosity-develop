@@ -7,7 +7,7 @@ $(document).ready(function() {
   });
 
   $.validator.addMethod("alpha",alpha,"Formato no valido");
-  $.validator.addMethod("promedio",promedio,"Formato no valido");
+  $.validator.addMethod("promedio",promedio,"Formato no valido Ej. (9,9.2,10)");
 
   function alpha(value, element, param){
     var er =/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/;
@@ -51,9 +51,9 @@ $(document).ready(function() {
   });
 
   $("#promedio").mask("ABC", {placeholder:"0.0"}, {translation:{
-      A:{pattern:/^[0-9]?$/},
-      B:{pattern:/(\.)?/},
-      C:{pattern:/([0-9])?$/}}
+      A:{pattern:/[0-9]/},
+      B:{pattern:/(\.)/,optional:true},
+      C:{pattern:/([0-9])/}}
     }
   );
 
