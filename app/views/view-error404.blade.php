@@ -13,7 +13,8 @@
 <body>
   <style media="screen">
     body{
-      background-image: url(/packages/images/fondos/fondo.jpg);
+      /*background-image: url(/packages/images/fondos/fondo.jpg);*/
+      background-image: url(/packages/images/errors/404view16.png);
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100% 100%;
@@ -26,7 +27,7 @@
     }
   </style>
 
-  <br><br>
+  {{--<br><br>
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
@@ -48,7 +49,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>--}}
 
 {{HTML::script('/packages/js/libs/jquery/jquery.min.js')}}
 {{HTML::script('/packages/js/libs/bootstrap/bootstrap.min.js')}}

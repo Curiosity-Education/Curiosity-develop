@@ -16,7 +16,6 @@
     {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
     {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
     {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
-    {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
     {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
     <link rel="stylesheet" href="/packages/css/skins/{{User::getSkin()->skin}}.css">
     @yield('mi_css')
@@ -435,7 +434,6 @@
   {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
   {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
   {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
-  {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
   {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
   {{HTML::script('/packages/js/libs/knob/jquery.knob.js')}}
   {{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
@@ -591,20 +589,20 @@ $(function ()
 
 
 
-    $('#image').cropper({
-    aspectRatio: 1/1,
-    responsive: true,
-    autoCropArea:1,
-    preview:".preview",
-    dragMode:'move',
-    crop: function(e) {
-      // Output the result data for cropping image.
-      $("input[name='x']").val(e.x);
-      $("input[name='y']").val(e.y);
-      $("input[name='width']").val(e.width);
-      $("input[name='height']").val(e.height);
-
-    }
+    // $('#image').cropper({
+    // aspectRatio: 1/1,
+    // responsive: true,
+    // autoCropArea:1,
+    // preview:".preview",
+    // dragMode:'move',
+    // crop: function(e) {
+    //   // Output the result data for cropping image.
+    //   $("input[name='x']").val(e.x);
+    //   $("input[name='y']").val(e.y);
+    //   $("input[name='width']").val(e.width);
+    //   $("input[name='height']").val(e.height);
+    //
+    // }
     });
     $("img[data-target='#modalPrueba']").click(function(){
 

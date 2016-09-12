@@ -1,8 +1,10 @@
 @extends('admin_base')
 @section('mi_css')
+ {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/perfilHijoResp.css')}}
+ {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
 @stop
 
 @section('title')
@@ -423,8 +425,9 @@
       			<div class="box box-primary tarjetas color-top" id="imgPerfilChanger">
     			   <div class="box-body box-profile">
     				  <div class="image-portada">
-    					<img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
-    					 <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center>
+                <img class="profile-user-img img-profile img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+    					<!-- <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
+    					 <!-- <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center> -->
     				  </div>
     			   </div>
     			 </div>

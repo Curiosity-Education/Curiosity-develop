@@ -230,9 +230,10 @@
           <div id="secimgperf" class="secbox">
             <h1 id="tit-imgprofile" class="titsecs">Imagen de Perfil</h1>
             <center>
-            <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+              <img class="profileimg img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture" style="cursor:default;">
+            <!-- <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
             </center>
-            <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4>
+            <!-- <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4> -->
           </div>
         </div>
         <div class="row">
