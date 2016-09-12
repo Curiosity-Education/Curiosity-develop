@@ -230,9 +230,10 @@
           <div id="secimgperf" class="secbox">
             <h1 id="tit-imgprofile" class="titsecs">Imagen de Perfil</h1>
             <center>
-            <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+              <img class="profileimg img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture" style="cursor:default;">
+            <!-- <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
             </center>
-            <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4>
+            <!-- <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4> -->
           </div>
         </div>
         <div class="row">
@@ -259,17 +260,17 @@
       <div class="col-sm-4">
         <div id="noticias" class="secbox">
           <h1 id="tit-news">Bienvenido/a a Curiosity</h1>
-          <img src="/packages/images/familia-curiosity.png" style="width:95%;padding-bottom:15px;">
+          <img src="/packages/images/familia-curiosity.png" id='img-msj'>
         </div>
       </div>
-        <div class="col-md-5">
+        <div class="col-sm-5">
           <div class="row">
             <div id="sec1-uso" class="secbox">
               <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
               <div class="col-md-1"></div>
               <div class="col-md-10">
                 <center>
-                  <div id="status" style="min-width: 340px; max-width: 450px; height: 320px; margin-top:20px;"></div>
+                  <div id="status"></div>
                 </center>
               </div>
               <div class="col-md-1"></div>

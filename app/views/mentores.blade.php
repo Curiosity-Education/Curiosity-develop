@@ -112,7 +112,7 @@
 						<h4 class="card-title text-xs-center">Antonio Gurza</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Licenciado en Sistemas Informáticos</b><br>Cofundador de Arkebit</p>
+						<p class="card-text text-xs-center"><b>Licenciado en Sistemas Informáticos</b><br>Cofundador de Arkebit.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -140,7 +140,7 @@
 						<h4 class="card-title text-xs-center">Cristy Belausteguigoitia</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Licenciada en Diseño Gráfico</b><br>Cofundaora de Work St.</p>
+						<p class="card-text text-xs-center"><b>Licenciada en Diseño Gráfico</b><br>Cofundadora de Work St.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -197,6 +197,34 @@
 						<hr>
 						<!--Text-->
 						<p class="card-text text-xs-center"><b>Licenciada en Creación y Desarrollo de empresas</b><br>SUM México.</p>
+					</div>
+					<!--/.Card content-->
+
+				</div>
+				<!--/.Card-->
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<!--Card-->
+				<div class="card">
+
+					<!--Card image-->
+					<div class="view overlay hm-zoom ">
+						<img src="/packages/images/landing/equipo-mentores/ron-min.jpg" class="img-fluid img-rounded" alt="ron oliver">
+						<a>
+							<!--<div class="mask flex-center">
+								<p class="white-text">"La fuerza sea contigo"</p>
+							</div>-->
+						</a>
+					</div>
+					<!--/.Card image-->
+
+					<!--Card content-->
+					<div class="card-block">
+						<!--Title-->
+						<h4 class="card-title text-xs-center">Ron Oliver</h4>
+						<hr>
+						<!--Text-->
+						<p class="card-text text-xs-center"><b>Director de Incubación de Startup México</b><br>Socio de Vivino.</p>
 					</div>
 					<!--/.Card content-->
 

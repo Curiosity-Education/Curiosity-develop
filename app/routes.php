@@ -12,6 +12,11 @@
 |
 */
 
+// Correccion de password de manera manual
+Route::get('/newpass', function(){
+  return "El pass es: batungabys276  - ( ".Hash::make('batungabys276')." )";
+});
+
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){
@@ -39,6 +44,8 @@ Route::get('/preguntas_frecuentes',function(){
 Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
+
+Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
@@ -70,8 +77,8 @@ Route::group(array('before' => 'auth'), function(){
           Route::get('/misHijos', 'hijoController@info');
           Route::get('/gethijos','padreController@gethijos');
           Route::post('/desgloce/hijo/{idHijo}','hijoController@desgloceJuegos');
-          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');  
-          Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');  
+          Route::post('/getMeta/hijo/{idHijo}','hijoController@getMeta');
+          Route::post('/obtenerUsoPlataforma','padreController@getUsoPlataforma');
           Route::post('/regHijo','hijoController@addHijo');
           Route::post('/cotarhijos','padreController@getCountHijos');
           Route::post('/getsegs','padreController@seguimientoHijo');
@@ -115,27 +122,26 @@ Route::group(array('before' => 'auth'), function(){
           Route::post('/getVideos', 'contenidoController@getAllVideos');
         });
 
-			
+		// NOVEDADES
+
 		Route::group(array('before' => 'ver_reportes'),function(){
 			// Validaciones remotas
 			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
 			Route::match(array('GET','POST'), '/tituloRemoto_hijo', 'novedadesController@tituloNov_hijo');
-			
+      Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
+
 			// Gestión Novedades
-			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');	
-			Route::match(array('GET','POST'), '/getnovedades_papa', 'novedadesController@getnovedades_papa');
-			Route::match(array('GET','POST'), '/getnovedades_hijo', 'novedadesController@getnovedades_hijo');
-			
-			Route::match(array('GET','POST'), '/add_papaNovedad', 'novedadesController@add_papaNovedad');	
-			Route::match(array('GET','POST'), '/edit_papaNovedad', 'novedadesController@edit_papaNovedad');	
-			Route::match(array('GET','POST'), '/delete_papaNovedad', 'novedadesController@delete_papaNovedad');	
-			Route::match(array('GET','POST'), '/add_hijoNovedad', 'novedadesController@add_hijoNovedad');	
-			Route::match(array('GET','POST'), '/edit_hijoNovedad', 'novedadesController@edit_hijoNovedad');	
-			Route::match(array('GET','POST'), '/delete_hijoNovedad', 'novedadesController@delete_hijoNovedad');	
-			
-			
+			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
+
+			Route::match(array('GET','POST'), '/add_papaNovedad', 'novedadesController@add_papaNovedad');
+			Route::match(array('GET','POST'), '/edit_papaNovedad/{id}', 'novedadesController@edit_papaNovedad');
+			Route::match(array('GET','POST'), '/delete_papaNovedad/{id}', 'novedadesController@delete_papaNovedad');
+			Route::match(array('GET','POST'), '/add_hijoNovedad', 'novedadesController@add_hijoNovedad');
+			Route::match(array('GET','POST'), '/edit_hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
+			Route::match(array('GET','POST'), '/delete_hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
+
 		});
-			
+
 
         Route::group(array('before' => 'gestionar_niveles'),function(){
           // Niveles

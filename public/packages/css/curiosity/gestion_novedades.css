@@ -7,19 +7,6 @@ hr.hr-novedad{
 	border: 1px solid;
 }
 
-.panel-default{
-    text-align:center;
-    cursor:pointer;
-    font-family: 'Raleway',sans-serif;
-	border: 2px solid #2d96ba;
-}
-.panel-default > .panel-footer {
-    color: #fff;
-    background-color: #f68e55;
-    display:none;
-    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
-}
-
 div.panel-footer a{
 	color: #fff;
 	font-size: 2em;
@@ -73,6 +60,49 @@ form#agregarNovedad_hijo, form#editarNovedad_hijo{
     font-size: 1.2em;
 }
 
-.input-group{
-
+.icon-papa{
+	color: #94bc3d;
 }
+
+.icon-hijo{
+	color: #44c6ee;
+}
+
+.bg-papabtn,
+.bg-papabtn:hover,
+.bg-papabtn:focus{
+	background-color: #94bc3d;
+	color: #fff;
+}
+
+.bg-hijobtn,
+.bg-hijobtn:hover,
+.bg-hijobtn:focus{
+	background-color: #44c6ee;
+	color: #fff;
+}
+
+.clickable, .forma
+{
+    cursor: pointer;
+}
+
+.clickable .glyphicon,
+.forma .glyphicon
+{
+    background: rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+	margin: 0px 10px;
+	color: #fff;
+}
+
+.panel-heading span
+{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+a.clickable { color: inherit; }
+a.clickable:hover { text-decoration:none; }

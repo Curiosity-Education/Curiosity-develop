@@ -50,7 +50,10 @@ $(document).ready(function() {
     max: [dateNow.getFullYear(),dateNow.getMonth(),dateNow.getDate()]
   });
 
-  $("#promedio").mask("ABC", {placeholder:"0.0"}, {translation:{
+
+  $("#promedio").mask("ABC",{
+      placeholder:"0.0",
+      translation:{
       A:{pattern:/[0-9]/},
       B:{pattern:/(\.)/,optional:true},
       C:{pattern:/([0-9])/}}

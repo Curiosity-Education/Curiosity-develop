@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="introduccion">
-				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primera nivel debe ser accesible para todos.
+				<p class="text-xs-center">Somos un equipo joven y multidisciplinario. Creemos que una educación de primer nivel debe ser accesible para todos.
 				En <i>Curiosity Educación</i> buscamos brindar equidad educativa de una manera divertida.
 				</p>
 				<hr class="hr-apartado">
@@ -194,7 +194,7 @@
 						<h4 class="card-title text-xs-center">Rogelio Jinestas</h4>
 						<hr>
 						<!--Text-->
-						<p class="card-text text-xs-center"><b>Coordinador de desarrollo de juegos</b><br>Cofundador de "Curiosity Educación".</p>
+						<p class="card-text text-xs-center"><b>Coordinador de desarrollo de juegos</b><br>Cofundador de Curiosity Educación.</p>
 					</div>
 					<!--/.Card content-->
 
@@ -442,7 +442,7 @@
 				</div>
 				<!--/.Card-->
 			</div>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-md-4 col-sm-6" hidden="hidden">
 				<!--Card-->
 				<div class="card">
 

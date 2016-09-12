@@ -2,8 +2,17 @@ var $juego = {
     setSrcVideo:function(json){
       $("#modal-instrucciones #titulo-juego").text(json.titulo);
       $("#modal-instrucciones video").attr("src",json.ruta);
-      $("#modal-instrucciones #texto>center>p").first().text(json.explanation1);
-      $("#modal-instrucciones #texto>center>p").last().text(json.explanation2);
+      $(".contenedor-texto>div>div").empty();
+      if(json.explanations === undefined){
+          $(".contenedor-texto>div>div").append("<center><p>"+json.explanation1+"</p></center>");
+          $(".contenedor-texto>div>div").append("<center><p>"+json.explanation2+"</p></center>");
+
+          alert("No se definieron muchas instrucciones");
+      }else{
+          for(var i = 0; i< json.explanations.length;i++){
+            $(".contenedor-texto>div>div").append("<center><p>"+json.explanations[i]+"</p></center>");
+          }
+      }
     },
     slider:{
         changeImages:function(json){
@@ -90,7 +99,7 @@ var $juego = {
             $juego.game.restart_game_unity();
         },
         restart:function(){
-            $juego.aciertos=0;
+            $juego.game.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
@@ -134,7 +143,7 @@ var $juego = {
             $("#game").trigger('save');
         },
         salir:function(){
-            $juego.aciertos=0;
+            $juego.game.aciertos=0;
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
             $juego.game.continuo=0;//reiniciar continuos
