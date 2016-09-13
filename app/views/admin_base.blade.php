@@ -227,7 +227,7 @@
               </li>
             @endif
 
-            @if(Entrust::can('ver_reportes'))
+            @if(Entrust::can('gestionar_novedades'))
               <li id="menuAdminNovedad">
                 <a href="/vistaNovedades">
                   <i class="fa fa-file-text"></i>
@@ -603,64 +603,64 @@ $(function ()
     //   $("input[name='height']").val(e.height);
     //
     // }
-    });
-    $("img[data-target='#modalPrueba']").click(function(){
-
-
-    });
-     $(".btnRecortar").click(function(){
-         var formData = new FormData(document.getElementById('frm-change-image'));
-          $.ajax({
-            url:$("#frm-change-image").attr("action"),
-            type:$("#frm-change-image").attr("method"),
-            data:formData,
-            cache:false,
-            contentType:false,
-            processData:false,
-            beforeSend: function(){
-                message = "Espera.. La imagen se esta recortando...";
-                $curiosity.noty(message, 'info');
-                }
-
-         }).done(function(r){
-            console.log(r);
-            $(".img-profile").attr("src",r);
-            $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
-            $("button[data-dismiss='modal']").trigger("click");
-         }).fail(function(){
-
-         }).always(function(){
-
-       });
-     });
-        var $inputImage = $('#inImage');
-        var URL = window.URL || window.webkitURL;
-        var blobURL;
-        var $image = $('#image');
-
-            $inputImage.change(function () {
-              var files = this.files;
-              var file;
-
-              if (!$image.data('cropper')) {
-                return;
-              }
-
-              if (files && files.length) {
-                file = files[0];
-                if (/^image\/\w+$/.test(file.type)) {
-                    blobURL = URL.createObjectURL(file);
-                    $image.one('built.cropper', function () {
-
-
-                    URL.revokeObjectURL(blobURL);
-                  }).cropper('reset').cropper('replace', blobURL);
-
-                } else {
-                  window.alert('Please choose an image file.');
-                }
-              }
-      });
+    // });
+    // $("img[data-target='#modalPrueba']").click(function(){
+    //
+    //
+    // });
+    //  $(".btnRecortar").click(function(){
+    //      var formData = new FormData(document.getElementById('frm-change-image'));
+    //       $.ajax({
+    //         url:$("#frm-change-image").attr("action"),
+    //         type:$("#frm-change-image").attr("method"),
+    //         data:formData,
+    //         cache:false,
+    //         contentType:false,
+    //         processData:false,
+    //         beforeSend: function(){
+    //             message = "Espera.. La imagen se esta recortando...";
+    //             $curiosity.noty(message, 'info');
+    //             }
+    //
+    //      }).done(function(r){
+    //         console.log(r);
+    //         $(".img-profile").attr("src",r);
+    //         $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
+    //         $("button[data-dismiss='modal']").trigger("click");
+    //      }).fail(function(){
+    //
+    //      }).always(function(){
+    //
+    //    });
+    //  });
+    //     var $inputImage = $('#inImage');
+    //     var URL = window.URL || window.webkitURL;
+    //     var blobURL;
+    //     var $image = $('#image');
+    //
+    //         $inputImage.change(function () {
+    //           var files = this.files;
+    //           var file;
+    //
+    //           if (!$image.data('cropper')) {
+    //             return;
+    //           }
+    //
+    //           if (files && files.length) {
+    //             file = files[0];
+    //             if (/^image\/\w+$/.test(file.type)) {
+    //                 blobURL = URL.createObjectURL(file);
+    //                 $image.one('built.cropper', function () {
+    //
+    //
+    //                 URL.revokeObjectURL(blobURL);
+    //               }).cropper('reset').cropper('replace', blobURL);
+    //
+    //             } else {
+    //               window.alert('Please choose an image file.');
+    //             }
+    //           }
+    //   });
 });
 	/*Fin de la sección de la gestion de actualización y modificación del perfil de usuario y registro de hijos*/
 
