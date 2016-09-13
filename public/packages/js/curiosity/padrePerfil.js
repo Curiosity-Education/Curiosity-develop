@@ -250,12 +250,12 @@ $(document).ready(function(){
             var text='';
             var table = $('<table/>').addClass('table table-bordered table-hover col-md-12');
             var tbody = $('<tbody/>');
-            table.append($('<thead/>').append($('<tr/>').append('<td>Actividad</td><td>Total de veces jugados</td><td>Porcentaje de los juegos totales</td>')));
+            table.append($('<thead/>').append($('<tr/>').append('<td>Actividad</td><td>Total de veces jugados</td><td>Promedio del juego</td><td>Porcentaje de los juegos totales</td>')));
             $.each(infoJSON,function(i,objeto){
                 var tr = $('<tr/>');
                 $.each(objeto,function(i,o){
                     var td = $('<td/>');
-                    if(i == 'y')
+                    if(i == 'y' || i == 'promedio')
                         td.append(parseFloat(o).toFixed(2)+'%');
                     else
                         td.append(o);

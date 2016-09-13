@@ -216,6 +216,8 @@ Route::group(array('before' => 'auth'), function(){
           Route::post('/actualizarSecuencia', 'secuenciaController@actualizar');
           Route::post('/eliminarSecuencia', 'secuenciaController@eliminar');
         });
+        //Monitoreo de Navegadores
+        Route::match(array('GET','POST'),'/getBrowsers/{limit?}','sesionInfoController@getBrowsers');
     });
 
 

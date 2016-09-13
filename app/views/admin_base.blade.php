@@ -236,6 +236,15 @@
                 <div class="arrowAsideActive"></div>
               </li>
             @endif
+            @if(Entrust::can('gestionar_avatar'))
+              <li id="menuAdminNavegadores">
+                <a href="/getBrowsers">
+                  <i class="fa fa-chrome"></i>
+                  <span>Navegadores mas usados</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            @endif
 
             <li class="visible-xs">
               <a href="/logout" class="btn" id="logOut">

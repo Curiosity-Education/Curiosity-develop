@@ -31,7 +31,7 @@
 				<div class="panel">
 					<div class="panel-heading bg-papabtn">
 						<h3 class="panel-title">{{$novedad_papa -> titulo}}
-						
+
 						</h3>
 						<span class="pull-right clickable tooltipShow" title="ver mas"><i class="glyphicon glyphicon-minus"></i></span>
 						<a class="editar_nov_papaClass" data-toggle="modal" data-target="#novedad_papa" id="editar_nov_papa" data-yd="{{$novedad_papa -> id}}" data-tit="{{$novedad_papa -> titulo}}" data-arc="{{$novedad_papa -> pdf}}">
@@ -60,7 +60,7 @@
 				<div class="panel">
 					<div class="panel-heading bg-hijobtn">
 						<h3 class="panel-title">{{$novedad_hijo -> titulo}}
-						
+
 						</h3>
 						<span class="pull-right clickable tooltipShow" title="ver mas"><i class="glyphicon glyphicon-minus"></i></span>
 						<a class="editar_nov_hijoClass" data-toggle="modal" data-target="#novedad_hijo" id="editar_nov_hijo" data-yd="{{$novedad_hijo -> id}}" data-tit="{{$novedad_hijo -> titulo}}" data-lk="{{$novedad_hijo -> uri}}">

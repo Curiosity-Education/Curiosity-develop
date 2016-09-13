@@ -6,7 +6,7 @@ var $juego = {
       if(json.explanations === undefined){
           $(".contenedor-texto>div>div").append("<center><p>"+json.explanation1+"</p></center>");
           $(".contenedor-texto>div>div").append("<center><p>"+json.explanation2+"</p></center>");
-          
+
           alert("No se definieron muchas instrucciones");
       }else{
           for(var i = 0; i< json.explanations.length;i++){

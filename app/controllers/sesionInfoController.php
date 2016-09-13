@@ -18,4 +18,26 @@ class sesionInfoController extends BaseController{
         }
         return Session::get('sesionInfo');
     }
+    public function getBrowsers($limit = 30){
+        if(Auth::check()){
+            if(Request::method() == "GET"){
+                return View::make('vista_browsers');
+            }
+            else{
+                return DB::select("SELECT browser, COUNT( browser ) AS  'uso'
+                    FROM  `sesiones_info`
+                    WHERE id !=0
+                    GROUP BY (
+                    browser
+                    )
+                    ORDER BY (
+                    COUNT( browser )
+                    ) DESC
+                    LIMIT 0 , $limit"
+                );
+            }
+        }
+        else
+            return Redirect::to('/');
+    }
 }
