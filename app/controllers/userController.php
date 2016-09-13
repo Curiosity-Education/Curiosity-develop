@@ -18,27 +18,7 @@ class userController extends BaseController{
             $idAuth = Auth::user()->id;
             $rol = Auth::user()->roles[0]->name;
             if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre')){
-              $juegos = archivo::join('actividades', 'actividades.id', '=', 'archivos.actividad_id')
-              ->join('temas', 'temas.id', '=', 'actividades.tema_id')
-              ->join('bloques', 'bloques.id', '=', 'temas.bloque_id')
-              ->join('inteligencias', 'inteligencias.id', '=', 'bloques.inteligencia_id')
-              ->join('niveles', 'niveles.id', '=', 'inteligencias.nivel_id')
-              ->where('actividades.active', '=', '1')
-              ->where('archivos.active', '=', '1')
-              ->where('temas.active', '=', '1')
-              ->where('bloques.active', '=', '1')
-              ->where('inteligencias.active', '=', '1')
-              ->where('niveles.active', '=', '1')
-              ->where('actividades.estatus', '=', 'unlock')
-              ->where('temas.estatus', '=', 'unlock')
-              ->where('bloques.estatus', '=', 'unlock')
-              ->where('inteligencias.estatus', '=', 'unlock')
-              ->where('niveles.estatus', '=', 'unlock')
-              ->where('ext', '=', 'php')
-              ->select('actividades.*', 'archivos.nombre as nombreFile', 'temas.nombre as nombreTema', 'bloques.nombre as nombreBloque', 'inteligencias.nombre as nombreInteligencia', 'niveles.nombre as nombreNivel', 'temas.isPremium as premium')
-              ->orderBy('actividades.id', 'desc')
-              ->limit(5)
-              ->get();
+              $novedades = novedadesController::getNovedadesToDad();
               $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
               $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
               ->join('personas', 'personas.id', '=', 'hijos.persona_id')
@@ -47,7 +27,7 @@ class userController extends BaseController{
               ->where('users.active', '=', '1')
               ->where('hijos.padre_id', '=', $idPadre)
               ->select('hijos.id as idHijo', 'personas.nombre','personas.apellido_paterno','personas.apellido_materno','personas.fecha_nacimiento','users.active', 'perfiles.foto_perfil')->get();
-              return View::make('vista_papa_inicio')->with(array('datosHijos' => $datosHijos, 'juegos' => $juegos));
+              return View::make('vista_papa_inicio')->with(array('datosHijos' => $datosHijos, 'novedades' => $novedades));
             }
             else if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
               // Obtenemos el id del hijo logueado

@@ -14,7 +14,7 @@
 
 // Correccion de password de manera manual
 Route::get('/newpass', function(){
-  return "El pass es: batungabys276  - ( ".Hash::make('batungabys276')." )";
+  return "El pass es: claudia438  - ( ".Hash::make('claudia438')." )";
 });
 
 Route::get('/', 'principalController@verPagina');

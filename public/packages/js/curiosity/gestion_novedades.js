@@ -50,16 +50,16 @@ $(document).on("ready",function(){
 		$('.close').trigger('click');
 	});
 
-	
+
 	// MODULO DE NOVEDADES DEL PAPÁ
-	
-	// Validaciones del formulario 
-	
+
+	// Validaciones del formulario
+
 	var form_nov_papa = $('#agregarNovedad_papa');
 	var form_nov_papaEdit = $('#editarNovedad_papa');
 	var tituloEditar_papa;
 	var pdf_edit;
-	
+
 	form_nov_papa.validate({
 		rules:{
 			titulo_papa:{
@@ -76,13 +76,13 @@ $(document).on("ready",function(){
 			},
 			pdf:{required:true}
 		},
-		
+
 		messages:{
 			titulo_papa:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
 			pdf:{required:'Selecciona el archivo PDF'}
 		}
 	});
-	
+
 	$("input[name='tituloEditar_papa'], input[name='pdf_edit']").keyup(function(e){
 		if($("input[name='tituloEditar_papa']").val() != tituloEditar_papa || $("input[name='pdf_edit']").val() != pdf_edit){
 
@@ -120,12 +120,12 @@ $(document).on("ready",function(){
 			});
 		}
 	});
-	
+
 	// Sumit de los formularios
 
 	$('#btn_add_papa').click(function(e){
 		e.preventDefault();
-		
+
 			var formdata_papa = new FormData(form_nov_papa[0]);
 
 		if(form_nov_papa.valid()){
@@ -140,7 +140,8 @@ $(document).on("ready",function(){
 				console.log(response);
 				$curiosity.noty('Novedad guardada exitosamente','success');
 				window.location.href = "/vistaNovedades";
-			}).fail(function(){
+			}).fail(function(e){
+				console.log(e);
 				$curiosity.noty('Error al intentar guardar','error');
 			});
 
@@ -149,7 +150,7 @@ $(document).on("ready",function(){
 		};
 
 	});
-	
+
 	$('#btn_edit_papa').click(function(e){
 		e.preventDefault();
 
@@ -188,11 +189,11 @@ $(document).on("ready",function(){
 		$curiosity.notyConfirm(elimNov_papa);
 
 	});
-	
+
 	// Funciones extras
-	
+
 		/* Vaciar datos en form de editar */
-	
+
 
 
 	/* funciones para mostrar los formularios
@@ -311,8 +312,8 @@ $(document).on("ready",function(){
 	}); */
 
 
-	
-	
+
+
 		/* Mostrar el input de pdf, en
 			caso que quiera cambiar el pdf ya existente */
 
@@ -322,25 +323,25 @@ $(document).on("ready",function(){
 		$(this).hide();
 	});
 
-	
+
 	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
-	
+
 
 
 	/******************************************************************/
-	
+
 
 
 	// MODULO DE NOVEDADES DEL HIJO
-	
-	// Validaciones del formulario 
-	
+
+	// Validaciones del formulario
+
 	var form_nov_hijo = $("#agregarNovedad_hijo");
 	var form_nov_hijoEdit = $("#editarNovedad_hijo");
 	var tituloEditar_hijo;
 	var link_edit;
 
-	
+
 	form_nov_hijo.validate({
 		rules:{
 			tituloNov_hijo:{
@@ -357,13 +358,13 @@ $(document).on("ready",function(){
 			},
 			link:{required:true}
 		},
-		
+
 		messages:{
 			tituloNov_hijo:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
 			link:{required:'Ingresa el link'}
 		}
 	});
-	
+
 	$("input[name='tituloEditar_hijo'], input[name='link_edit']").keyup(function(e){
 		if($("input[name='tituloEditar_hijo']").val() != tituloEditar_hijo || $("input[name='link_edit']").val() != link_edit){
 			//alert("los campos han cambiado");
@@ -415,17 +416,17 @@ $(document).on("ready",function(){
 			});
 		}
 	});
-	
+
 
 	// Sumit de los formularios
-	
+
 	$('#btn_add_hijo').click(function(e){
 		e.preventDefault();
 
 		var formdata_hijo = new FormData(form_nov_hijo[0]);
 
 		if(form_nov_hijo.valid()){
-			
+
 			$.ajax({
 				url:'/add_hijoNovedad',
 				type:"POST",
@@ -443,7 +444,7 @@ $(document).on("ready",function(){
 			$('.close').trigger('click');
 		};
 	});
-	
+
 	$('#btn_edit_hijo').click(function(e){
 		e.preventDefault();
 
@@ -468,7 +469,7 @@ $(document).on("ready",function(){
 			$('.close').trigger('click');
 		};
 	});
-	
+
 	$('.eliminar_nov_hijoClass').click(function(e){
 		e.preventDefault();
 
@@ -484,7 +485,7 @@ $(document).on("ready",function(){
 	});
 
 	// Funciones extras
-	
+
 		/* Vaciar datos en form de editar */
 
 	$('.editar_nov_hijoClass').click(function(e){
@@ -522,3 +523,4 @@ $(document).on("ready",function(){
 
 });
 
+});
