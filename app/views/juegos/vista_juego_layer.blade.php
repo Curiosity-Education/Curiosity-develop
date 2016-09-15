@@ -7,7 +7,7 @@
   @yield('juego_css')
 @stop
 @section('titulo_contenido')
-   <label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label>
+  {{-- <label id="juego-titulo">{{ $datos[0]->actividad_nombre }}</label> --}}
 @stop
 @section('panel_opcion')
 @yield('panel_opciones')
@@ -73,7 +73,7 @@
         <h4 class="modal-title" id="titvid">¡Nosotros te guiamos!</h4>
       </div>
       <div class="modal-body">
-        <iframe width="100%" height="350" src="{{ $datos[0]->code_embed }}" frameborder="0" allowfullscreen  id="srcvid"></iframe>
+        <iframe width="100%" height="350"{{-- src="{{ $datos[0]->code_embed }}" --}} frameborder="0" allowfullscreen  id="srcvid"></iframe>
       </div>
       <div class="modal-footer"></div>
     </div>
@@ -130,7 +130,7 @@
                 <div class="row">
                   <div class="col-md-12 cal-titulo">
                     <h3>Máxima Puntuación</h3>
-                    <h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>
+                    {{--<h1><b id="num-max-pts">{{ $maxProm }} pts</b></h1>--}}
                   </div>
                 </div>
               </div>
@@ -167,7 +167,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  @if($canPlay)
+                  {{--@if($canPlay)--}}
                   <div class="col-md-5">
                     <div class="text-right boton-instrucciones">
                       <button type="button" class="btn btn-info btn-lg" id="btn-instrucciones" data-toggle="modal" data-target="#modal-instrucciones">
@@ -184,7 +184,7 @@
                       </button>
                     </div>
                   </div>
-                  @else
+                  {{--@else--}}
                   <div class="col-md-12">
                     <div class="text-center">
                       <button type="button" class="btn btn-info btn-lg" id="btn-what">
@@ -193,7 +193,7 @@
                       </button>
                     </div>
                   </div>
-                  @endif
+                 {{-- @endif --}}
                 </div>
               </div>
             </div>
@@ -294,10 +294,10 @@
              <div class="col-md-4"></div>
            </div>
            <div class="row">
-             <div class="col-md-10 text-left">
+             <div class="col-md-10 col-sm-10 col-xs-7 text-left">
                <button id="pausa" class="btn btn-warning" data-toggle="modal" data-target="#menu-juego"><i class="fa fa-pause"></i></button>
              </div>
-             <div class="col-md-2 text-right">
+             <div class="col-md-2 col-xs-5 col-sm-2 text-right">
                <div class="temp">
                  <canvas id="mycanvas" style="" width="130px" height="130px"></canvas>
                  <label id="temp-static">1:00</label>
@@ -354,7 +354,7 @@
       <div class="col-md-7 text-right">
         <div class="actividadBotones">
           <div class="col-md-6">
-            <a target="_blank" class="btn btn-default btnDownloadPDF" href="/packages/docs/{{ $datos[0]->pdf }}">
+            <a target="_blank" class="btn btn-default btnDownloadPDF" href="/packages/docs/{{--{{ $datos[0]->pdf }}--}}">
               <span class="fa fa-download"></span>&nbsp;
               <b>Guía de estudio PDF</b>
             </a>
@@ -379,12 +379,12 @@
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   {{ HTML::script('/packages/js/libs/wow/wow.min.js') }}
   <script type="text/javascript">
-   $juego.game.setMaxPuntuacion({{$maxProm}});
+   {{-- $juego.game.setMaxPuntuacion({{$maxProm}}); --}}
    $sprite.putSpriteSelected('esperar', $("#avatarUser"));
 
 	 new WOW().init();
      var cali=0;
-     @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
+    {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
              url:"/actividad-get-cali",
              type:"post"
@@ -398,7 +398,7 @@
          }).fail(function(e){
              console.error(e);
          });
-     @endif
+     @endif--}}
      $(".cali").hover(function(){
          $(".cali").attr("class","cali fa fa-star-o fa-2x");
          var calificacion = $(this).index();
@@ -425,7 +425,7 @@
                 $(o).attr("class","cali fa fa-star fa-2x");
             }
          });
-         @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
+{{--         @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole("demo_hijo") || Auth::user()->hasRole("hijo_free"))
          $.ajax({
              url:"/actividad-save-cali",
              type:"post",
@@ -436,7 +436,7 @@
              console.error(e);
          });
          @endif
-     });
+     });--}}
   </script>
   @yield('juego_js')
 @stop

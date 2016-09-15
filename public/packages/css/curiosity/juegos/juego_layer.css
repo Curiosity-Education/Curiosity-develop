@@ -642,3 +642,37 @@ button.instruccion{
         opacity: 1;
     }
 }
+@media(max-width: 400px) and (min-width: 181px){
+    #mycanvas{
+        background:transparent;
+        position:absolute;
+        z-index: 100;
+    }
+    .temp{
+        text-align:  center!important;
+        padding: 5px!important;
+        border:7px solid #fff!important;
+        width:  110px!important;
+        height: 110px!important;
+        min-height: 110px!important;
+        border-radius: 100%!important;
+
+    }
+    .temp>i.fa{
+        font-size: 1.3em!important;
+    }
+    .temp>label{
+        display: block!important;
+        margin: 0!important;
+        font-size: 1.2em!important;
+        padding: 0!important;
+        font-family: 'Kiddish'!important;
+    }
+    .temp>#temp-count{
+        color: #fff!important;
+        font-size: 2em!important;
+    }
+    .temp>#temp-static{
+        color: #000!important;
+    }
+}
