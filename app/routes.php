@@ -14,7 +14,7 @@
 
 // Correccion de password de manera manual
 Route::get('/newpass', function(){
-  return "El pass es: claudia438  - ( ".Hash::make('claudia438')." )";
+  return "El pass es: nayzaa258  - ( ".Hash::make('nayzaa258')." )";
 });
 
 Route::get('/', 'principalController@verPagina');
@@ -124,7 +124,7 @@ Route::group(array('before' => 'auth'), function(){
 
 		// NOVEDADES
 
-		Route::group(array('before' => 'ver_reportes'),function(){
+		Route::group(array('before' => 'gestionar_novedades'),function(){
 			// Validaciones remotas
 			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
 			Route::match(array('GET','POST'), '/tituloRemoto_hijo', 'novedadesController@tituloNov_hijo');
