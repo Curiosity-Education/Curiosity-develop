@@ -220,5 +220,10 @@ Route::group(array('before' => 'auth'), function(){
         Route::match(array('GET','POST'),'/getBrowsers/{limit?}','sesionInfoController@getBrowsers');
     });
 
+    Route::group(array('before' => 'gestionar_actividades'), function(){
+      Route::get('/videoInicio', 'contenidoController@adminVideos');
+      Route::post('/getAllVideosAdmin', 'contenidoController@myVideos');
+    });
+
 
 });

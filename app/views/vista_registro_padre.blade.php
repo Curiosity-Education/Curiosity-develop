@@ -69,6 +69,11 @@
       							<i class="fa fa-calendar prefix"></i>
       								<input placeholder="Fecha de nacimiento" type="text" id="fecha_nacimiento" class="form-control datepicker2" name="fecha_nacimiento" readonly="true">
       							</div>
+
+                    <div class="md-form form-group">
+      							<i class="fa fa-mobile-phone prefix"></i>
+      								<input placeholder="" type="text" id="telefono" class="form-control" name="telefono" >
+      							</div>
     							</div>
                   <div class="col-md-6">
                     <div class="md-form form-group">
