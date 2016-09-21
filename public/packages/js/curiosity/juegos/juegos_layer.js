@@ -40,6 +40,10 @@ var $juego = {
               $("#zona-play").hide();//desaparecer zona juego
               $("#zona-obj").show();//aparecer zona del objetivo
               $juego.game.puntajeActual=0;
+              var iframe = document.querySelector("iframe[name='iframe_juego']");
+              if(iframe){
+                iframe.removeAttribute("src");
+              }
               $("#game").trigger('exit');
            }
         },
@@ -49,12 +53,14 @@ var $juego = {
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
             $juego.cronometro.start(duracion,inverso);
+            
         },
         _start:function(){
             $("#zona-play").show();
             $("#zona-obj").hide();
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
+            document.querySelector("iframe[name='iframe_juego']").setAttribute("src",$juego.game.unity.iframe_src);
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
@@ -89,10 +95,21 @@ var $juego = {
             $("#game").trigger("finish");
         },
         finish_game_unity:function(){
-           $juego.game.eficiencia = Math.round(($juego.game.aciertos * 100) / $juego.game.intentos);
+            //nivel=0;
+            // Guardamos el puntaje mayor actual en variable temporal para no perder la catidad de puntos maximos en caso de que este puntaje sea superado
+            //reiniciar puntuaje
+            // Verificamos si el puntaje obtenido es mayor que el puntaje mayor actual
+            if($juego.game.intentos > 0){
+              $juego.game.eficiencia = Math.round(($juego.game.aciertos * 100) / $juego.game.intentos);
+            }
+            else{
+              $juego.game.eficiencia = 0;
+            }
             if($juego.game.puntajeActual > $juego.game.puntajeMaximo){
-            // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-             $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+                // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
+                $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+                // Cambiamos el puntaje maximo en pantalla
+                $("#num-max-pts").html($juego.game.puntajeMaximo + " pts");
             }
             $juego.game.save();
             $juego.game.restart_game_unity();
@@ -150,6 +167,7 @@ var $juego = {
             $("#zona-obj").show();//aparecer zona del objetivo
             $juego.game.puntajeActual=0;
             $juego.cronometro.stop();
+            
             $("#game").trigger('exit');
         },
         setCombo:function(valorCombo){
@@ -514,8 +532,21 @@ $(".btnVideo").click(function(){
 /*$("#oculto").click(function(){
 	$("#btn-instrucciones").trigger("click");
 });*/
-
+/*window.onload = function(){
+    var iframe = document.querySelector("iframe[name='iframe_juego']");
+    if(iframe){
+       $juego.game.unity.iframe_src = iframe.getAttribute("src");
+       iframe.removeAttribute("src");    
+    }
+  // $juego.game.unity.iframe_src = 
+}*/
 $(document).ready(function(){
+ var iframe = document.querySelector("iframe[name='iframe_juego']");
+ if(iframe){
+   $juego.game.unity.iframe_src = iframe.getAttribute("src");
+   iframe.removeAttribute("src");    
+ }
+  // $juego.game.unity.iframe_src = 
  (function ($) {
     // Detect touch support
     $.support.touch = 'ontouchend' in document;

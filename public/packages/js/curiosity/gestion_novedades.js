@@ -464,7 +464,6 @@ $(document).on("ready",function(){
 			}).fail(function(){
 				$curiosity.noty('Error al intentar editar','error');
 			});
-			
 			$('.close').trigger('click');
 		};
 	});
