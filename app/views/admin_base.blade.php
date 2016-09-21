@@ -197,6 +197,16 @@
               </li>
             @endif
 
+            @if(Entrust::can('gestionar_actividades'))
+              <li id="videosInicio">
+                <a href="/videoInicio">
+                  <i class="fa fa-play-circle"></i>
+                  <span>Videos de Inicio</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            @endif
+
             @if(Entrust::can('gestionar_escuelas'))
               <li id="menuAdminEscuela">
                 <a href="/adminEscuela">

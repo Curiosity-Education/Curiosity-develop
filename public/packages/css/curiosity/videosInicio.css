@@ -1,0 +1,27 @@
+#tabla-videos > tbody{
+  background-color: #fff;
+}
+
+#tabla-head-videos{
+  background-color: #2262ae;
+  color: #fff;
+}
+
+#tabla-head-videos > tr > th{
+  font-weight: lighter;
+  text-align: center;
+}
+
+input[type='text']{
+  border: solid 1px #c9ccd0;
+}
+
+#playSelected{
+  background-color: #2262ae;
+  color: #fff;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 50px;
+  outline: none !important;
+}
