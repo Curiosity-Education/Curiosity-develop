@@ -54,6 +54,7 @@ Route::match((array('GET','POST')),'/regPadre','padreController@addPadre');
 // Facebook user
 Route::group(array('before' => 'unauth'), function(){
     Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
+    Route::match(array('GET','POST'),'/olvide-mi-contrasena/{token?}', 'loginController@recuperarCont');
     Route::match(array('GET','POST'),'/login-fb', 'loginController@loginFB');
     Route::post('/verificarUsuario', 'loginController@verificarUsuario');
 });

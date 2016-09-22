@@ -57,10 +57,12 @@
                 <span class='fa fa-share'></span> &nbsp;
                 Siguiente
               </button>
-              <button id='btn-fb' class='btn btn-block hide'scope='public_profile,email' >
-              <span class='fa fa-facebook-square'></span> &nbsp;
-              Iniciar sesión con Facebook
-              </button>
+              <div class='text-center forgot'>
+                <a href='/olvide-mi-contrasena'>
+                  Olvide mi usuario y/o contraseña
+                  <li class='fa fa-question-circle'></li>
+                </a>
+              </div>
 
               <div id='boxButtonsIn'>
                 <button type='button' name='login-int' class='btn btn-success btn-block' id='login-int'>
@@ -72,12 +74,7 @@
                   Regresar
                 </button>
               </div>
-              <div class='text-center login-forgot'>
-                <a href='javascript:void(0)'>
-                  Olvide mi usuario y/o contraseña
-                  <li class='fa fa-question-circle'></li>
-                </a>
-              </div>
+
             </div>
             <center><span class="fa fa-life-ring spanIcon"></span></center>
             <p class="frasePie">
