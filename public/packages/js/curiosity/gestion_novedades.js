@@ -27,14 +27,6 @@ $(document).on("ready",function(){
 	});
 
 
-	/* funciones para mostrar los formularios
-		según sea el de agregar o editar. */
-
-	$('.formularios').hide();
-
-
-
-
 	$('.panel-heading span.clickable').click();
     $('.panel div.clickable').click();
 
@@ -137,11 +129,11 @@ $(document).on("ready",function(){
 				contentType:false,
 				processData:false
 			}).done(function(response){
-				console.log(response);
+			
 				$curiosity.noty('Novedad guardada exitosamente','success');
 				window.location.href = "/vistaNovedades";
 			}).fail(function(e){
-				console.log(e);
+
 				$curiosity.noty('Error al intentar guardar','error');
 			});
 
@@ -194,32 +186,33 @@ $(document).on("ready",function(){
 
 		/* Vaciar datos en form de editar */
 
+	$('.editar_nov_papaClass').click(function(e){
+			e.preventDefault();
 
+			var id_novedad = $(this).data("yd");
+			var titulo = $(this).data("tit");
+			var pdf_edit = $(this).data("arc");
+			tituloEditar_papa = titulo;
+			pdf_edit = pdf_edit;
+
+			$("#id_novpapa").val(id_novedad);
+			$("#tituloEditar_papa").val(titulo);
+
+		});
 
 	/* funciones para mostrar los formularios
 		según sea el de agregar o editar. */
-
-	$('.formularios').hide();
 
 	$('#agregar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_papa').show();
 		$('#editarNovedad_papa').hide();
-
-	$('.editar_nov_papaClass').click(function(e){
-		e.preventDefault();
-
-		var id_novedad = $(this).data("yd");
-		var titulo = $(this).data("tit");
-		var pdf_edit = $(this).data("arc");
-		tituloEditar_papa = titulo;
-		pdf_edit = pdf_edit;
-
-		$("#id_novpapa").val(id_novedad);
-		$("#tituloEditar_papa").val(titulo);
-
-		console.log(titulo);
-
+	});
+	
+	$('.editar_nov_papaClass').click(function(event){
+		event.preventDefault();
+		$('#editarNovedad_papa').show();
+		$('#agregarNovedad_papa').hide();
 	});
 
 		/* Validación de extensión y peso del pdf */
@@ -268,50 +261,6 @@ $(document).on("ready",function(){
 			$('input').val("");
 		}
 	}); // validación para input de editar
-
-
-		/* funciones para mostrar los formularios
-			según sea el de agregar o editar. */
-
-	$("#agregar_nov_papa").click(function(){
-		$("#editarNovedad_papa").hide();
-		$("#agregarNovedad_papa").show();
-	});
-
-	$("#editar_nov_papa").click(function(){
-		$("#agregarNovedad_papa").hide();
-		$("#editarNovedad_papa").show();
-	});
-
-	$('#editar_nov_hijo').click(function(event){
-		event.preventDefault();
-		$('#editarNovedad_hijo').show();
-		$('#agregarNovedad_hijo').hide();
-	});
-
-
-	// MODULO DE NOVEDADES DEL HIJO
-
-	// Validaciones del formulario
-	// Validaciones remotas
-	// funciones necesarias
-
-	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
-
-	/******************************************************************/
-
-	// MODULO DE NOVEDADES DEL PAPÁ
-
-	// Validaciones del formulario
-	// Validaciones remotas
-	// funciones necesarias
-
-	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
-/*});
-
-	}); */
-
-
 
 
 		/* Mostrar el input de pdf, en
@@ -512,7 +461,7 @@ $(document).on("ready",function(){
 		$("#agregarNovedad_hijo").show();
 	});
 
-	$("#editar_nov_hijo").click(function(){
+	$(".editar_nov_hijoClass").click(function(){
 		$("#agregarNovedad_hijo").hide();
 		$("#editarNovedad_hijo").show();
 	});
@@ -523,4 +472,3 @@ $(document).on("ready",function(){
 
 });
 
-});

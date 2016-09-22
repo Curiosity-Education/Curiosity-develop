@@ -5,11 +5,6 @@
  */
 class novedadesController extends BaseController{
 
-	// function getViewNovedad(){
-	// 	return View::make('vista_gestion_novedades');
-  //   }
-
-
 	// Validaciones remotas
 
 	public function tituloNov_papa(){
@@ -84,6 +79,17 @@ class novedadesController extends BaseController{
 
 		$datos = Input::all();
 
+		$caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; // Caracteres que se pueden usar.
+		$cantidadLetras = 5; //numero de letras para generar el nombre random
+		$nombreRandom = ""; //variable para crear el nombre del pdf
+		for($i=0; $i < $cantidadLetras; $i++)
+		{
+			$nombreRandom .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
+				entre el rango 0 a Numero de letras que tiene la cadena */
+		}
+		
+		$nombreRandom = $nombreRandom.".";
+		
 		$id_admin = DB::table('users')
 			->select('administrativos.id')
 			->join('personas','personas.user_id', '=', 'users.id')
@@ -107,12 +113,12 @@ class novedadesController extends BaseController{
 
 			$nov_papa = new novedadesPapa($datos);
 			$nov_papa -> titulo = $datos['titulo_papa'];
-			$nov_papa -> pdf = $datos['pdf'] -> getClientOriginalName();
+			$nov_papa -> pdf = $nombreRandom.$datos['pdf'] -> getClientOriginalExtension();
 			$nov_papa -> status = (1);
 			$nov_papa -> administrativo_id = $id_admin;
 			$nov_papa -> save();
 
-			$datos['pdf']->move(public_path()."/packages/docs/novedades", $datos['pdf'] -> getClientOriginalName());
+			$datos['pdf']->move(public_path()."/packages/docs/novedades", $nombreRandom.$datos['pdf'] -> getClientOriginalExtension());
 
 		}
 	}
@@ -120,11 +126,12 @@ class novedadesController extends BaseController{
 	public function edit_papaNovedad($id){
 
 		$datos = Input::all();
-
+		
 		$id_admin = DB::table('users')
 			->select('administrativos.id')
 			->join('personas','personas.user_id', '=', 'users.id')
 			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->where('users.id', '=', Auth::user()->id)
 			->first()->id;
 
 		$rules = array(
@@ -140,7 +147,21 @@ class novedadesController extends BaseController{
 			$nov_papa = novedadesPapa::find($id);
 			$nov_papa -> titulo = $datos['tituloEditar_papa'];
 			if(Input::hasFile('pdf_edit')){
-				$nov_papa -> pdf = $datos['pdf_edit'] -> getClientOriginalName();
+				
+				$caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; // Caracteres que se pueden usar.
+				$cantidadLetras = 5; //numero de letras para generar el nombre random
+				$nombreRandom = ""; //variable para crear el nombre del pdf
+				for($i=0; $i < $cantidadLetras; $i++)
+				{
+					$nombreRandom .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
+						entre el rango 0 a Numero de letras que tiene la cadena */
+				}
+
+				$nombreRandom = $nombreRandom.".";
+				
+				$datos['pdf_edit']->move(public_path()."/packages/docs/novedades", $nombreRandom.$datos['pdf_edit'] -> getClientOriginalExtension());
+				
+				$nov_papa -> pdf = $nombreRandom.$datos['pdf_edit'] -> getClientOriginalExtension();
 			}
 			$nov_papa -> status = (1);
 			$nov_papa -> administrativo_id = $id_admin;
@@ -169,6 +190,7 @@ class novedadesController extends BaseController{
 			->select('administrativos.id')
 			->join('personas','personas.user_id', '=', 'users.id')
 			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->where('users.id', '=', Auth::user()->id)
 			->first()->id;
 
 
@@ -203,6 +225,7 @@ class novedadesController extends BaseController{
 			->select('administrativos.id')
 			->join('personas','personas.user_id', '=', 'users.id')
 			->join('administrativos','administrativos.persona_id', '=', 'personas.id')
+			->where('users.id', '=', Auth::user()->id)
 			->first()->id;
 
 		$rules = array(

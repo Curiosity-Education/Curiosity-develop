@@ -45,7 +45,6 @@ Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
 
-Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
@@ -128,7 +127,7 @@ Route::group(array('before' => 'auth'), function(){
 			// Validaciones remotas
 			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
 			Route::match(array('GET','POST'), '/tituloRemoto_hijo', 'novedadesController@tituloNov_hijo');
-      Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
+      		Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
 
 			// Gestión Novedades
 			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
