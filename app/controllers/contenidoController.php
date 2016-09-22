@@ -235,6 +235,32 @@ class contenidoController extends BaseController
     ));
   }
 
+  function adminVideos(){
+    return View::make('vista_videosInicio');
+  }
+
+  function myVideos(){
+    $videos = video::join('actividades', 'videos.actividad_id', '=', 'actividades.id')
+    ->join('temas', 'actividades.tema_id', '=', 'temas.id')
+    ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
+    ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
+    ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+    ->where('niveles.active', '=', '1')
+    ->where('inteligencias.active', '=', '1')
+    ->where('bloques.active', '=', '1')
+    ->where('temas.active', '=', '1')
+    ->where('actividades.active', '=', '1')
+    ->where('actividades.estatus', '=', 'unlock')
+    ->where('temas.estatus', '=', 'unlock')
+    ->where('bloques.estatus', '=', 'unlock')
+    ->where('inteligencias.estatus', '=', 'unlock')
+    ->where('niveles.estatus', '=', 'unlock')
+    ->select('videos.code_embed', 'niveles.nombre as nivel', 'bloques.nombre as bloque', 'inteligencias.nombre as inteligencia', 'temas.nombre as tema', 'actividades.nombre as actividad')
+    ->orderBy('videos.id', 'desc')
+    ->get();
+    return $videos;
+  }
+
 
 }
 

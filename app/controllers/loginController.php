@@ -43,27 +43,27 @@ class loginController extends BaseController
                   /*Vemos si las credenciales son correctas*/
                   if(Auth::attempt($validarAuth)){
                     /*Guarda la info de la session*/
-                    if(Auth::user()->sesion_info == null){
-                        $session = new sesionInfo(Input::get('data'));
-                        $session->users_id = Auth::user()->id;
-                        $session->device = str_replace(".local","",gethostname());
-                        $session->save();
-                    }
-                    else{
-                        $sessionCurrent = sesionInfo::find(Auth::user()->sesion_info->id);
-                        $sessionCurrent->device = str_replace(".local","",gethostname());
-                        $sessionCurrent->users_id = Auth::user()->id;
-                        $sessionCurrent->app_version = Input::get('data.app_version');
-                        $sessionCurrent->mobile = Input::get('data.mobile');
-                        $sessionCurrent->browser = Input::get('data.browser');
-                        $sessionCurrent->save();
-
-                    }
+                    // if(Auth::user()->sesion_info == null){
+                    //     $session = new sesionInfo(Input::get('data'));
+                    //     $session->users_id = Auth::user()->id;
+                    //     $session->device = str_replace(".local","",gethostname());
+                    //     $session->save();
+                    // }
+                    // else{
+                    //     $sessionCurrent = sesionInfo::find(Auth::user()->sesion_info->id);
+                    //     $sessionCurrent->device = str_replace(".local","",gethostname());
+                    //     $sessionCurrent->users_id = Auth::user()->id;
+                    //     $sessionCurrent->app_version = Input::get('data.app_version');
+                    //     $sessionCurrent->mobile = Input::get('data.mobile');
+                    //     $sessionCurrent->browser = Input::get('data.browser');
+                    //     $sessionCurrent->save();
+                    //
+                    // }
                     /*Fin de guardado de sesión*/
                     //Ingresamos un id de session
-                    $idSession = $this->generaidSession();
-                    User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
-                    Session::put('sessionId',$idSession);
+                    // $idSession = $this->generaidSession();
+                    // User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
+                    // Session::put('sessionId',$idSession);
                     if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('demo_hijo') || Auth::user()->hasRole('hijo_free')){
                       return Response::json(array(0=>'success', 1=>'h'));
                     }
@@ -89,7 +89,7 @@ class loginController extends BaseController
                     //Ingresamos un id de session
                     if(Auth::user()->hasRole('padre')){
                         try{
-                            
+
                             $idSession = $this->generaidSession();
                             User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                             Session::put('sessionId',$idSession);

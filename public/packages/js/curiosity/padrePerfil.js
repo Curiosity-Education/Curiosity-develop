@@ -196,11 +196,11 @@ $(document).ready(function(){
         $(".container-estadisticas").show('slow');
         $("html,body").animate({scrollTop:$(".container-estadisticas").offset().top});
     });
-    
+
     $(".back-misHijos").on('click',function(){
         $(".container-estadisticas").hide('slow');
     });
-    
+
     $(".info-progress-day").click(function(){
         var infoJSON = JSON.parse($(this).attr('data-info'));
         infoJSON.miMeta = JSON.parse(JSON.stringify(infoJSON.miMeta));
@@ -209,14 +209,14 @@ $(document).ready(function(){
             description_helper:'El progreso del cumplimiento de la meta diaria de cada hijo se muestra en una gráfica donde se puede observar el porcentaje de avance que lleva en el día',
             subtitle_1:'Meta',
             description_subtitle:'La meta se compone de los siguientes elementos <br> <b>Nombre: </b>'+infoJSON.miMeta.nombre+'<br> <b>Meta:</b> '+infoJSON.miMeta.meta+' actividades <br> <b>Actividades realizadas: </b>'+(infoJSON.porcAvanceMeta*infoJSON.miMeta.meta/100)+'/'+infoJSON.miMeta.meta,
-            note_helper:'El total de actividades a realizar depende de la meta seleccionada por el alumno'     
+            note_helper:'El total de actividades a realizar depende de la meta seleccionada por el alumno'
         };
         llenarHelper(data);
-        
-        
+
+
     });
     $(".info-uso-plataform").click(function(){
-    
+
         data = {
             tituloHelp:'Uso de la plataforma',
             description_helper:'En esta sección encontrarás las metas diarias de cada uno de tus hijos. La gráfica te indicará el cumplimiento de sus metas, recuerda que si la aguja está de color rojo, alguno de tus hijos no está cumpliendo su meta del día.',
@@ -225,12 +225,12 @@ $(document).ready(function(){
             note_helper:' El objetivo es que la aguja siempre marque verde. Recuerda que el secreto del éxito no es la suerte, sino la constancia.'
         };
         llenarHelper(data);
-        
-        
+
+
     });
-    
+
     $(".info-uso-misHijos").click(function(){
-    
+
         data = {
             tituloHelp:'Mis hijos',
             description_helper:'En esta sección se encuentra tus hijos registrados y su progreso en el día.',
@@ -239,13 +239,13 @@ $(document).ready(function(){
             note_helper:' Las estadísticas se generan con las actividades de tus hijos.'
         };
         llenarHelper(data);
-        
-        
+
+
     });
-    
+
     $(".info-progress-game").click(function(){
         var infoJSON = JSON.parse($(this).attr('data-info'));
-        
+
         var act_real = function(){
             var text='';
             var table = $('<table/>').addClass('table table-bordered table-hover col-md-12');
@@ -257,7 +257,7 @@ $(document).ready(function(){
                     var td = $('<td/>');
                     if(i == 'y' || i == 'promedio')
                         td.append(parseFloat(o).toFixed(2)+'%');
-                    else 
+                    else
                         td.append(o);
                     tr.append(td);
                 });
@@ -270,11 +270,11 @@ $(document).ready(function(){
             description_helper:'A continuación se muestra una gráfica de pastel donde se puede observar la actividad de su hijo en la plataforma Curiosity, los juegos, así como las veces que ha jugado. Ej. Supongamos que su hijo jugo 5 veces el mismo juego, entonces este representara el 100% de la gráfica. ',
             subtitle_1:'Actividades Realizadas',
             description_subtitle:act_real(),
-            note_helper:'Las actividades que se muestran son las que el alumno ha realizado durante el transcurso del día'     
+            note_helper:'Las actividades que se muestran son las que el alumno ha realizado durante el transcurso del día'
         };
         llenarHelper(data);
-        
-        
+
+
     });
     //Graficación juegos jugados!
     function crearGraficaJuegosJugados(idHijo){
@@ -314,8 +314,8 @@ $(document).ready(function(){
 
         });
     }
-    
-    //Crear grafica avance meta 
+
+    //Crear grafica avance meta
     function crearGraficaAvanceMeta(idHijo){
         $.ajax({
             url:'getMeta/hijo/'+idHijo,
@@ -338,10 +338,10 @@ $(document).ready(function(){
                 });
             }
         }).fail(function(error){
-            
+
         });
     }
-    
+
     function llenarHelper(data){
         $("#tituloHelp").text(data.tituloHelp);
         $(".description-helper").text(data.description_helper);
@@ -376,12 +376,25 @@ $(document).ready(function(){
                 }
             });
         }).fail(function(error){
-            
+
         });
-        
+
     }
-    
+
     //$curiosityCharts.column();
-    
+
+    // funcionalidad a novedades
+    $(".contentNew").click(function(event) {
+      $("#frameToFile").attr('src', $(this).data('file'));
+      $("#sectionGral").hide('slow');
+      $("#divFrameToFile").show('slow');
+    });
+
+    $("#btnPackProfile").click(function(event) {
+      $("#frameToFile").attr('src', '');
+      $("#divFrameToFile").hide('slow');
+      $("#sectionGral").show('slow');
+    });
+
 
 });

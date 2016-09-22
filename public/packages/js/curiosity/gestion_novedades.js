@@ -27,14 +27,6 @@ $(document).on("ready",function(){
 	});
 
 
-	/* funciones para mostrar los formularios
-		según sea el de agregar o editar. */
-
-	$('.formularios').hide();
-
-
-
-
 	$('.panel-heading span.clickable').click();
     $('.panel div.clickable').click();
 
@@ -50,16 +42,16 @@ $(document).on("ready",function(){
 		$('.close').trigger('click');
 	});
 
-	
+
 	// MODULO DE NOVEDADES DEL PAPÁ
-	
-	// Validaciones del formulario 
-	
+
+	// Validaciones del formulario
+
 	var form_nov_papa = $('#agregarNovedad_papa');
 	var form_nov_papaEdit = $('#editarNovedad_papa');
 	var tituloEditar_papa;
 	var pdf_edit;
-	
+
 	form_nov_papa.validate({
 		rules:{
 			titulo_papa:{
@@ -76,13 +68,13 @@ $(document).on("ready",function(){
 			},
 			pdf:{required:true}
 		},
-		
+
 		messages:{
 			titulo_papa:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
 			pdf:{required:'Selecciona el archivo PDF'}
 		}
 	});
-	
+
 	$("input[name='tituloEditar_papa'], input[name='pdf_edit']").keyup(function(e){
 		if($("input[name='tituloEditar_papa']").val() != tituloEditar_papa || $("input[name='pdf_edit']").val() != pdf_edit){
 
@@ -120,12 +112,12 @@ $(document).on("ready",function(){
 			});
 		}
 	});
-	
+
 	// Sumit de los formularios
 
 	$('#btn_add_papa').click(function(e){
 		e.preventDefault();
-		
+
 			var formdata_papa = new FormData(form_nov_papa[0]);
 
 		if(form_nov_papa.valid()){
@@ -137,10 +129,11 @@ $(document).on("ready",function(){
 				contentType:false,
 				processData:false
 			}).done(function(response){
-				console.log(response);
+			
 				$curiosity.noty('Novedad guardada exitosamente','success');
 				window.location.href = "/vistaNovedades";
-			}).fail(function(){
+			}).fail(function(e){
+
 				$curiosity.noty('Error al intentar guardar','error');
 			});
 
@@ -149,7 +142,7 @@ $(document).on("ready",function(){
 		};
 
 	});
-	
+
 	$('#btn_edit_papa').click(function(e){
 		e.preventDefault();
 
@@ -188,37 +181,38 @@ $(document).on("ready",function(){
 		$curiosity.notyConfirm(elimNov_papa);
 
 	});
-	
-	// Funciones extras
-	
-		/* Vaciar datos en form de editar */
-	
 
+	// Funciones extras
+
+		/* Vaciar datos en form de editar */
+
+	$('.editar_nov_papaClass').click(function(e){
+			e.preventDefault();
+
+			var id_novedad = $(this).data("yd");
+			var titulo = $(this).data("tit");
+			var pdf_edit = $(this).data("arc");
+			tituloEditar_papa = titulo;
+			pdf_edit = pdf_edit;
+
+			$("#id_novpapa").val(id_novedad);
+			$("#tituloEditar_papa").val(titulo);
+
+		});
 
 	/* funciones para mostrar los formularios
 		según sea el de agregar o editar. */
-
-	$('.formularios').hide();
 
 	$('#agregar_nov_papa').click(function(event){
 		event.preventDefault();
 		$('#agregarNovedad_papa').show();
 		$('#editarNovedad_papa').hide();
-
-	$('.editar_nov_papaClass').click(function(e){
-		e.preventDefault();
-
-		var id_novedad = $(this).data("yd");
-		var titulo = $(this).data("tit");
-		var pdf_edit = $(this).data("arc");
-		tituloEditar_papa = titulo;
-		pdf_edit = pdf_edit;
-
-		$("#id_novpapa").val(id_novedad);
-		$("#tituloEditar_papa").val(titulo);
-
-		console.log(titulo);
-
+	});
+	
+	$('.editar_nov_papaClass').click(function(event){
+		event.preventDefault();
+		$('#editarNovedad_papa').show();
+		$('#agregarNovedad_papa').hide();
 	});
 
 		/* Validación de extensión y peso del pdf */
@@ -269,50 +263,6 @@ $(document).on("ready",function(){
 	}); // validación para input de editar
 
 
-		/* funciones para mostrar los formularios
-			según sea el de agregar o editar. */
-
-	$("#agregar_nov_papa").click(function(){
-		$("#editarNovedad_papa").hide();
-		$("#agregarNovedad_papa").show();
-	});
-
-	$("#editar_nov_papa").click(function(){
-		$("#agregarNovedad_papa").hide();
-		$("#editarNovedad_papa").show();
-	});
-
-	$('#editar_nov_hijo').click(function(event){
-		event.preventDefault();
-		$('#editarNovedad_hijo').show();
-		$('#agregarNovedad_hijo').hide();
-	});
-
-
-	// MODULO DE NOVEDADES DEL HIJO
-
-	// Validaciones del formulario
-	// Validaciones remotas
-	// funciones necesarias
-
-	// CIERRE DEL MODULO DE NOVEDADES DEL HIJO
-
-	/******************************************************************/
-
-	// MODULO DE NOVEDADES DEL PAPÁ
-
-	// Validaciones del formulario
-	// Validaciones remotas
-	// funciones necesarias
-
-	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
-/*});
-
-	}); */
-
-
-	
-	
 		/* Mostrar el input de pdf, en
 			caso que quiera cambiar el pdf ya existente */
 
@@ -322,25 +272,25 @@ $(document).on("ready",function(){
 		$(this).hide();
 	});
 
-	
+
 	// CIERRE DEL MODULO DE NOVEDADES DEL PAPÁ
-	
+
 
 
 	/******************************************************************/
-	
+
 
 
 	// MODULO DE NOVEDADES DEL HIJO
-	
-	// Validaciones del formulario 
-	
+
+	// Validaciones del formulario
+
 	var form_nov_hijo = $("#agregarNovedad_hijo");
 	var form_nov_hijoEdit = $("#editarNovedad_hijo");
 	var tituloEditar_hijo;
 	var link_edit;
 
-	
+
 	form_nov_hijo.validate({
 		rules:{
 			tituloNov_hijo:{
@@ -357,13 +307,13 @@ $(document).on("ready",function(){
 			},
 			link:{required:true}
 		},
-		
+
 		messages:{
 			tituloNov_hijo:{required:'Ingresa un titulo', remote:'Este titulo ya existe'},
 			link:{required:'Ingresa el link'}
 		}
 	});
-	
+
 	$("input[name='tituloEditar_hijo'], input[name='link_edit']").keyup(function(e){
 		if($("input[name='tituloEditar_hijo']").val() != tituloEditar_hijo || $("input[name='link_edit']").val() != link_edit){
 			//alert("los campos han cambiado");
@@ -415,17 +365,17 @@ $(document).on("ready",function(){
 			});
 		}
 	});
-	
+
 
 	// Sumit de los formularios
-	
+
 	$('#btn_add_hijo').click(function(e){
 		e.preventDefault();
 
 		var formdata_hijo = new FormData(form_nov_hijo[0]);
 
 		if(form_nov_hijo.valid()){
-			
+
 			$.ajax({
 				url:'/add_hijoNovedad',
 				type:"POST",
@@ -443,7 +393,7 @@ $(document).on("ready",function(){
 			$('.close').trigger('click');
 		};
 	});
-	
+
 	$('#btn_edit_hijo').click(function(e){
 		e.preventDefault();
 
@@ -468,7 +418,7 @@ $(document).on("ready",function(){
 			$('.close').trigger('click');
 		};
 	});
-	
+
 	$('.eliminar_nov_hijoClass').click(function(e){
 		e.preventDefault();
 
@@ -484,7 +434,7 @@ $(document).on("ready",function(){
 	});
 
 	// Funciones extras
-	
+
 		/* Vaciar datos en form de editar */
 
 	$('.editar_nov_hijoClass').click(function(e){
@@ -511,7 +461,7 @@ $(document).on("ready",function(){
 		$("#agregarNovedad_hijo").show();
 	});
 
-	$("#editar_nov_hijo").click(function(){
+	$(".editar_nov_hijoClass").click(function(){
 		$("#agregarNovedad_hijo").hide();
 		$("#editarNovedad_hijo").show();
 	});

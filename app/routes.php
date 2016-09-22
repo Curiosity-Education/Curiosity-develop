@@ -14,7 +14,7 @@
 
 // Correccion de password de manera manual
 Route::get('/newpass', function(){
-  return "El pass es: batungabys276  - ( ".Hash::make('batungabys276')." )";
+  return "El pass es: nayzaa258  - ( ".Hash::make('nayzaa258')." )";
 });
 
 Route::get('/', 'principalController@verPagina');
@@ -45,7 +45,6 @@ Route::get('/registro-exitoso',function(){
     return View::make('registro_exitoso');
 });
 
-Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
 // registro
 Route::post('/remote-email','padreController@remoteEmail');
@@ -125,11 +124,11 @@ Route::group(array('before' => 'auth'), function(){
 
 		// NOVEDADES
 
-		Route::group(array('before' => 'ver_reportes'),function(){
+		Route::group(array('before' => 'gestionar_novedades'),function(){
 			// Validaciones remotas
 			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
 			Route::match(array('GET','POST'), '/tituloRemoto_hijo', 'novedadesController@tituloNov_hijo');
-      Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
+      		Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
 
 			// Gestión Novedades
 			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
@@ -219,6 +218,11 @@ Route::group(array('before' => 'auth'), function(){
         });
         //Monitoreo de Navegadores
         Route::match(array('GET','POST'),'/getBrowsers/{limit?}','sesionInfoController@getBrowsers');
+    });
+
+    Route::group(array('before' => 'gestionar_actividades'), function(){
+      Route::get('/videoInicio', 'contenidoController@adminVideos');
+      Route::post('/getAllVideosAdmin', 'contenidoController@myVideos');
     });
 
 

@@ -30,7 +30,7 @@
         #AddOutputFilterByType DEFLATE application/x-httpd-php
         #AddOutputFilterByType DEFLATE application/x-httpd-fastphp
         #AddOutputFilterByType DEFLATE image/svg+xml
-        
+
        # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 
 
@@ -46,10 +46,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    
+
 
 </IfModule>
 <FilesMatch "\.(html|htm|php|js|xml|txt|css|woff)$">
 Header set Cache-Control "max-age=804800, public, must-revalidate"
 </FilesMatch>
-
