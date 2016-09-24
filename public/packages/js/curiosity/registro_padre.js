@@ -52,8 +52,7 @@ $(document).on("ready",function(){
   });
 
   $form = $("#frm-registro");
-  // $(".input-group-addon").css({"maxHeight":"45px"});
-  // $("input[name='telefono']").mask('(000) 000-0000',{placeholder:"(999) 999-9999"});
+  $("input[name='telefono']").mask('(000) 000-0000',{placeholder:"(999) 999-9999"});
   // $("input[name='codigo_postal']").mask("00000");
   $("input[name='numero']").mask("ABCDE",{
     translation:{
@@ -111,7 +110,9 @@ $(document).on("ready",function(){
          apellido_paterno:{required:true,maxlength:30,alpha:true},
          apellido_materno:{required:true,maxlength:30,alpha:true},
          sexo:{required:true,maxlength:1},
-         fecha_nacimiento:{required:true,date:true}
+         fecha_nacimiento:{required:true,date:true},
+         telefono:{required:true},
+         pais:{required:true,exist_contry:true}
      },
      messages:{
          cpassword:{equalTo:"Las contraseñas no coinciden"},
@@ -129,7 +130,15 @@ $(document).on("ready",function(){
         return true;
     }else return false;
   }
-
+  function exist_contry(value,element,param){
+      var contry = $("#pais").val();
+      $element = $("#list_contry").find("option[value='"+contry+"']");
+      if($element != null && $element.length>0){
+          return true;
+      }else{
+          return false;
+      }
+  }
   function numero_casa(value, element, param){
     var er = /^([0-9])([0-9]{1,3})?([A-Za-z]{1})?$/;
     if(er.test(value)){
@@ -143,8 +152,12 @@ $(document).on("ready",function(){
       return true;
     }else return false;
   }
-
+ 
+  /*-----------------------------------------------------------------------------
+    Agregamos funciones extras para la validación de campos (telefono y nombre)
+  ------------------------------------------------------------------------------*/
   $.validator.addMethod("alpha",alpha,"Formato no valido");
+  $.validator.addMethod("exist_contry",exist_contry,"El pais que ingreso no existe");
 
   /*----------------------------------------------------
       function para limpiar el texto del formulario
@@ -178,7 +191,9 @@ $(document).on("ready",function(){
       apellido_paterno:$("input[name='apellido_paterno']").val(),
       apellido_materno:$("input[name='apellido_materno']").val(),
       sexo:$("select[name='sexo']").val(),
-      fecha_nacimiento:$("input[name='fecha_nacimiento']").val()
+      fecha_nacimiento:$("input[name='fecha_nacimiento']").val(),
+      telefono:$("#telefono").val(),
+      pais:$("#pais").val()
     };
     if($form.valid()){
       if(aceptedTerms){

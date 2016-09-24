@@ -4,7 +4,7 @@
 class padre extends Eloquent
 {
     protected $table ='padres';
-    protected $fillable =["email"];
+    protected $fillable =["email","telefono"];
 
   /*
   *

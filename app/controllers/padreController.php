@@ -28,8 +28,9 @@ class padreController extends BaseController
             "apellido_materno"  =>"required|letter|max:30",
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "email"             =>"required|email|unique:padres,email"
-
+            "email"             =>"required|email|unique:padres,email",
+            "telefono"          =>"required",
+            "pais"              =>"required|exists:ladas_paises,name"
         ];
         $messages = [
                "required"    =>  "El campo :attribute es requerido",
@@ -72,7 +73,17 @@ class padreController extends BaseController
                 // $membresia->active=1;
                 // $membresia->save();
                 $padre = new padre($datos);
+                /*-------------------------------
+                    Obtenemos la lada  según 
+                    El pais seleccionado por
+                    el usuario.
+                --------------------------------*/
+                $lada = ladaPais::where("name","=",$datos["pais"])->select("phone_code")->get()[0];
+                /*------------------------------*/
                 $padre->persona_id = $persona->id;
+                if($lada){// si se encontro la lada en la consulta, entonces la establecemos, si no dejamos sin lada
+                    $padre->telefono = "+".$lada->phone_code." ".$padre->telefono;
+                }
                 $padre->save();
                 $perfil = new perfil();
                 if ($datos['sexo'] == 'm'){
@@ -191,16 +202,16 @@ class padreController extends BaseController
         $now = date("Y-m-d");
         $idPadre = Auth::user()->persona()->first()->padre()->first()->id;
         return DB::select(
-             "SELECT hijos.id, metas_diarias.meta, count(hijo_realiza_actividades.hijo_id) as 'total_jugados'  
-             FROM hijos 
-             inner join hijos_metas_diarias 
-             on hijos_metas_diarias.hijo_id = hijos.id 
+             "SELECT hijos.id, metas_diarias.meta, count(hijo_realiza_actividades.hijo_id) as 'total_jugados'
+             FROM hijos
+             inner join hijos_metas_diarias
+             on hijos_metas_diarias.hijo_id = hijos.id
              inner join metas_diarias
-             on metas_diarias.id = hijos_metas_diarias.meta_diaria_id 
-             inner join hijo_realiza_actividades on hijo_realiza_actividades.hijo_id = hijos.id 
-             inner join padres on  hijos.padre_id = padres.id 
-             where hijos.padre_id = $idPadre and hijo_realiza_actividades.created_at 
-             between  '$now 00:00:00' and '$now 23:59:59' 
+             on metas_diarias.id = hijos_metas_diarias.meta_diaria_id
+             inner join hijo_realiza_actividades on hijo_realiza_actividades.hijo_id = hijos.id
+             inner join padres on  hijos.padre_id = padres.id
+             where hijos.padre_id = $idPadre and hijo_realiza_actividades.created_at
+             between  '$now 00:00:00' and '$now 23:59:59'
              group by(hijo_realiza_actividades.hijo_id)"
         );
     }
