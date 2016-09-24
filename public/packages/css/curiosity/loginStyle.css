@@ -88,6 +88,10 @@ button{
   font-size: 1.3em;
 }
 
+.login-forgot > a {
+  color: #f2f2f2;
+}
+
 .inputLogin{
   padding-left: 10px;
   color: #fff;

@@ -222,6 +222,72 @@ class loginController extends BaseController
                       }
                   }
     }
+    public function recuperarCont($token = null){
+        if($token == null){
+            if(Request::method() == "GET")
+                return View::make("vista_recuperacion_de_contrasena");
+            else{
+                $user = User::join('personas','personas.user_id','=','users.id')
+                        ->join('padres','padres.persona_id','=','personas.id')
+                        ->where('email','=',Input::get('email'))->select(DB::raw("personas.nombre,personas.apellido_paterno,users.id as 'id', padres.email as 'email'"))->get();
+
+
+                if(!empty($user[0])){
+                    $token = md5($user[0]->email);
+                    $usuario = User::find($user[0]->id);
+                    $usuario->token = $token;
+                    $usuario->save();
+                      $dataSend = [
+                          "name"     =>       "Equipo Curiosity",
+                          "client"   =>       $user[0]->nombre." ".$user[0]->apellido_paterno,
+                          "email"    =>       $user[0]->email,
+                          "subject"  =>       "Recuperar Contraseña",
+                          "token"    =>       $token
+                      ];
+                      $toEmail=$user[0]->email;
+                      $toName=$dataSend["email"];
+                      $subject =$dataSend["subject"];
+                      try {
+                          Mail::send('emails.recuperar_password',$dataSend,function($message) use($toEmail,$toName,$subject){
+                              $message->to($toEmail,$toName)->subject($subject);
+                          });
+
+                      } catch (Exception $e) {
+                          $code = $e->getCode();
+                          return $e;
+                      }
+                    return Response::json(array('status'=>'200','message'=>"Se ha enviado un link de recuperación a su correo",'data'=>$user));
+                }
+                else{
+                    return Response::json(array('status'=>'404','message'=>"El correo nunca se ha utilzado para una cuenta Curiosity. Porfavor ingresa el correo con el que te registraste"));
+                }
+            }
+        }
+        else{
+            if(Request::method() == "GET"){
+                if(User::where('token','=',$token)->get()){
+                    Session::put('token_change_curiosity',$token);
+                    return View::make('vista_cambiar_pass');
+                }
+                else{
+                    return View::make("view-error404");
+                }
+            }
+            else{
+                if($token == "d4t4p4r4c4mbi0d3p45word"){
+                   try{
+                       $user = User::where('token','=',Session::get('token_change_curiosity'))->get();
+                       User::find($user[0]->id)->update(array('password'=>Hash::make(Input::get('newPass'))));
+
+                       return Response::json(array('status'=>'200','message'=>'La contraseña ha sido cambiada'));
+                   }
+                   catch(Exception $e){
+                       return Response::json(array('status'=>$e->getCode(),'message'=>Response::json($e)));
+                   }
+                }
+            }
+        }
+    }
     private function generaidSession(){
 		$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
