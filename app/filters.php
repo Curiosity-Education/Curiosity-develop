@@ -56,12 +56,12 @@ Route::filter('auth', function()
 |-----------------------------------------------
 */
 Route::filter('only_session',function(){
-   $session_real=User::where('id','=',Auth::user()->id)->select('id_session')->get();
-   if(isset($session_real)){
-       if($session_real[0]->id_session != Session::get('sessionId') ){
-            return Redirect::guest('/missedSession');
-       }
-   }
+  //  $session_real=User::where('id','=',Auth::user()->id)->select('id_session')->get();
+  //  if(isset($session_real)){
+  //      if($session_real[0]->id_session != Session::get('sessionId') ){
+  //           return Redirect::guest('/missedSession');
+  //      }
+  //  }
 });
 /*
 |----------------------------------------------
@@ -194,8 +194,8 @@ Route::filter('utilizar_tienda',function(){
    }
 });
 
-Route::filter('ver_reportes',function(){
-   if(!Entrust::can('ver_reportes')){
+Route::filter('gestionar_novedades',function(){
+   if(!Entrust::can('gestionar_novedades')){
        return View::make('view-error404');
    }
 });

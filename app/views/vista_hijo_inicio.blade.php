@@ -1,5 +1,6 @@
 @extends('admin_base')
 @section('mi_css')
+ {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
  {{HTML::style('/packages/css/curiosity/perfil.css')}}
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/perfilHijoResp.css')}}
@@ -151,14 +152,14 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-md-8">
-                 {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm-change-image'])}}
-                  {{HTML::Image(User::get_imagen_perfil(Auth::user()->id),'Imagen de usuario',array('class'=>'img-responsive cropper-show','id'=>'image'))}}
-                  <input name="image" id="inImage" type="file">
-                  <a href="javascript:void(0)" for="image" class="btn" id="btnselectprofile">
-                    <span class="fa fa-folder-open"></span>&nbsp;
-                    Seleccionar Imagen desde Archivos
-                  </a>
-                 {{Form::close()}}
+                    <img src="{{User::get_imagen_perfil(Auth::user()->id)}}" alt="Imagen de usuario" class="img-responsive" id="imageH" style="max-width:100%;">
+                    {{Form::open(['method'=>'POST' ,'files'=>'true','url'=>'/foto','id'=>'frm_change_image_H'])}}
+                      <input name="inImageH" id="inImageH" type="file" style="display:none;">
+                    {{Form::close()}}
+                   <a href="javascript:void(0)" for="inImageH" class="btn" id="btnselectprofile">
+                     <span class="fa fa-folder-open"></span>&nbsp;
+                     Seleccionar Imagen desde Archivos
+                   </a>
                  </div>
                  <div class="col-md-4">
                    <center>
@@ -166,13 +167,13 @@
                    </center>
                    <div class="datainfo">
                      <label class="datalabel">Ancho (px)</label>
-                     <input type="text" class="input-prof" readonly='true' name="width"/>
+                     <input type="text" class="input-prof" readonly='true' name="width" id="datW"/>
                      <label class="datalabel">Alto (px)</label>
-                     <input type="text" class="input-prof" readonly='true' name="height"/>
+                     <input type="text" class="input-prof" readonly='true' name="height" id="datH"/>
                      <label class="datalabel">Posición (x)</label>
-                     <input type="text" class="input-prof" readonly='true' name="x"/>
+                     <input type="text" class="input-prof" readonly='true' name="x" id="datX"/>
                      <label class="datalabel">Posición (y)</label>
-                     <input type="text" class="input-prof" readonly='true' name="y"/>
+                     <input type="text" class="input-prof" readonly='true' name="y" id="datY"/>
                    </div>
                 </div>
               </div>
@@ -182,7 +183,7 @@
                   <div class="col-md-12">
                     <center>
                       <div class="actividadBotones text-right">
-                        <button type="button" class="btn btn-success btnRecortar">
+                        <button type="button" class="btn btn-success btnRecortar" id="btnRecortarH">
                           Guardar Cambios
                         </button>
                       </div>
@@ -423,8 +424,9 @@
       			<div class="box box-primary tarjetas color-top" id="imgPerfilChanger">
     			   <div class="box-body box-profile">
     				  <div class="image-portada">
+                <!-- <img class="profile-user-img img-profile img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
     					<img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
-    					 <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center>
+    					 <!-- <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center> -->
     				  </div>
     			   </div>
     			 </div>
@@ -438,8 +440,9 @@
 @section('mi_js')
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/chart/Chart.min.js')}}
-{{HTML::script('/packages/js/curiosity/updateDataHijo.js')}}
 {{HTML::script('/packages/js/curiosity/getspav.js')}}
+{{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
+{{HTML::script('/packages/js/curiosity/updateDataHijo.js')}}
 {{--{{HTML::script('/packages/js/curiosity/perfil.js')}}
 {{HTML::script('/packages/js/libs/mdb/tether.min.js')}}
 {{HTML::script('/packages/js/libs/mdb/mdb.min.js')}}--}}
@@ -447,7 +450,7 @@
   $(document).ready(function() {
 
     $curiosity.menu.setPaginaId("#menuPerfil");
-    $sprite.putSpriteSelected('esperar', $("#avatar"));
+    //$sprite.putSpriteSelected('esperar', $("#avatar"));
 
     var avanceMeta = {{$avanceMeta}};
     var faltanMeta = {{$faltanteMeta}};
@@ -532,7 +535,7 @@
     });
 
     $("#btnselectprofile").click(function(event) {
-      $("#inImage").trigger('click');
+      $("#inImageH").trigger('click');
     });
 
     $("#menuDatos").show();

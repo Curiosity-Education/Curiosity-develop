@@ -187,11 +187,11 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
     function desgloceJuegos($idHijo){
             $now = date("Y-m-d");
             return DB::select("SELECT
-            t_jugados.nombre as 'name',t_jugados.t_jugados_act as 'total' , (t_jugados.t_jugados_act * 100 /t_sum_juegos.total_jugados) as 'y'
+            t_jugados.nombre as 'name',t_jugados.t_jugados_act as 'total' , (t_jugados.t_jugados_act * 100 /t_sum_juegos.total_jugados) as 'y', t_jugados.promedio
             FROM
             (
                 SELECT
-                actividades.nombre,count(actividades.id) as 't_jugados_act'
+                actividades.nombre,count(actividades.id) as 't_jugados_act',AVG(hijo_realiza_actividades.promedio) as 'promedio'
                 FROM
                 hijo_realiza_actividades
                 inner join

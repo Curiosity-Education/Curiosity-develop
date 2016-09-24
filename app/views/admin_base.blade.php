@@ -16,7 +16,6 @@
     {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
     {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
     {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
-    {{HTML::style('/packages/css/libs/cropper/cropper.min.css')}}
     {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
     <link rel="stylesheet" href="/packages/css/skins/{{User::getSkin()->skin}}.css">
     @yield('mi_css')
@@ -198,6 +197,16 @@
               </li>
             @endif
 
+            @if(Entrust::can('gestionar_actividades'))
+              <li id="videosInicio">
+                <a href="/videoInicio">
+                  <i class="fa fa-play-circle"></i>
+                  <span>Videos de Inicio</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            @endif
+
             @if(Entrust::can('gestionar_escuelas'))
               <li id="menuAdminEscuela">
                 <a href="/adminEscuela">
@@ -228,11 +237,20 @@
               </li>
             @endif
 
-            @if(Entrust::can('ver_reportes'))
+            @if(Entrust::can('gestionar_novedades'))
               <li id="menuAdminNovedad">
                 <a href="/vistaNovedades">
                   <i class="fa fa-file-text"></i>
                   <span>Gestión Novedades</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            @endif
+            @if(Entrust::can('gestionar_avatar'))
+              <li id="menuAdminNavegadores">
+                <a href="/getBrowsers">
+                  <i class="fa fa-chrome"></i>
+                  <span>Navegadores mas usados</span>
                 </a>
                 <div class="arrowAsideActive"></div>
               </li>
@@ -435,7 +453,6 @@
   {{HTML::script('/packages/js/libs/tooltipster/jquery.tooltipster.min.js')}}
   {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
   {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
-  {{HTML::script('/packages/js/libs/cropper/cropper.min.js')}}
   {{HTML::script('/packages/js/libs/notificacion_toast/jquery.toast.js')}}
   {{HTML::script('/packages/js/libs/knob/jquery.knob.js')}}
   {{HTML::script('/packages/js/libs/highcharts/highcharts.js')}}
@@ -591,78 +608,78 @@ $(function ()
 
 
 
-    $('#image').cropper({
-    aspectRatio: 1/1,
-    responsive: true,
-    autoCropArea:1,
-    preview:".preview",
-    dragMode:'move',
-    crop: function(e) {
-      // Output the result data for cropping image.
-      $("input[name='x']").val(e.x);
-      $("input[name='y']").val(e.y);
-      $("input[name='width']").val(e.width);
-      $("input[name='height']").val(e.height);
-
-    }
-    });
-    $("img[data-target='#modalPrueba']").click(function(){
-
-
-    });
-     $(".btnRecortar").click(function(){
-         var formData = new FormData(document.getElementById('frm-change-image'));
-          $.ajax({
-            url:$("#frm-change-image").attr("action"),
-            type:$("#frm-change-image").attr("method"),
-            data:formData,
-            cache:false,
-            contentType:false,
-            processData:false,
-            beforeSend: function(){
-                message = "Espera.. La imagen se esta recortando...";
-                $curiosity.noty(message, 'info');
-                }
-
-         }).done(function(r){
-            console.log(r);
-            $(".img-profile").attr("src",r);
-            $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
-            $("button[data-dismiss='modal']").trigger("click");
-         }).fail(function(){
-
-         }).always(function(){
-
-       });
-     });
-        var $inputImage = $('#inImage');
-        var URL = window.URL || window.webkitURL;
-        var blobURL;
-        var $image = $('#image');
-
-            $inputImage.change(function () {
-              var files = this.files;
-              var file;
-
-              if (!$image.data('cropper')) {
-                return;
-              }
-
-              if (files && files.length) {
-                file = files[0];
-                if (/^image\/\w+$/.test(file.type)) {
-                    blobURL = URL.createObjectURL(file);
-                    $image.one('built.cropper', function () {
-
-
-                    URL.revokeObjectURL(blobURL);
-                  }).cropper('reset').cropper('replace', blobURL);
-
-                } else {
-                  window.alert('Please choose an image file.');
-                }
-              }
-      });
+    // $('#image').cropper({
+    // aspectRatio: 1/1,
+    // responsive: true,
+    // autoCropArea:1,
+    // preview:".preview",
+    // dragMode:'move',
+    // crop: function(e) {
+    //   // Output the result data for cropping image.
+    //   $("input[name='x']").val(e.x);
+    //   $("input[name='y']").val(e.y);
+    //   $("input[name='width']").val(e.width);
+    //   $("input[name='height']").val(e.height);
+    //
+    // }
+    // });
+    // $("img[data-target='#modalPrueba']").click(function(){
+    //
+    //
+    // });
+    //  $(".btnRecortar").click(function(){
+    //      var formData = new FormData(document.getElementById('frm-change-image'));
+    //       $.ajax({
+    //         url:$("#frm-change-image").attr("action"),
+    //         type:$("#frm-change-image").attr("method"),
+    //         data:formData,
+    //         cache:false,
+    //         contentType:false,
+    //         processData:false,
+    //         beforeSend: function(){
+    //             message = "Espera.. La imagen se esta recortando...";
+    //             $curiosity.noty(message, 'info');
+    //             }
+    //
+    //      }).done(function(r){
+    //         console.log(r);
+    //         $(".img-profile").attr("src",r);
+    //         $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
+    //         $("button[data-dismiss='modal']").trigger("click");
+    //      }).fail(function(){
+    //
+    //      }).always(function(){
+    //
+    //    });
+    //  });
+    //     var $inputImage = $('#inImage');
+    //     var URL = window.URL || window.webkitURL;
+    //     var blobURL;
+    //     var $image = $('#image');
+    //
+    //         $inputImage.change(function () {
+    //           var files = this.files;
+    //           var file;
+    //
+    //           if (!$image.data('cropper')) {
+    //             return;
+    //           }
+    //
+    //           if (files && files.length) {
+    //             file = files[0];
+    //             if (/^image\/\w+$/.test(file.type)) {
+    //                 blobURL = URL.createObjectURL(file);
+    //                 $image.one('built.cropper', function () {
+    //
+    //
+    //                 URL.revokeObjectURL(blobURL);
+    //               }).cropper('reset').cropper('replace', blobURL);
+    //
+    //             } else {
+    //               window.alert('Please choose an image file.');
+    //             }
+    //           }
+    //   });
 });
 	/*Fin de la sección de la gestion de actualización y modificación del perfil de usuario y registro de hijos*/
 

@@ -230,9 +230,10 @@
           <div id="secimgperf" class="secbox">
             <h1 id="tit-imgprofile" class="titsecs">Imagen de Perfil</h1>
             <center>
-            <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+              <img class="profileimg img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture" style="cursor:default;">
+            <!-- <img class="profileimg tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
             </center>
-            <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4>
+            <!-- <h4 id="subtit-imgprofile">Elige tu imagen favorita</h4> -->
           </div>
         </div>
         <div class="row">
@@ -258,8 +259,15 @@
       </div>
       <div class="col-sm-4">
         <div id="noticias" class="secbox">
-          <h1 id="tit-news">Bienvenido/a a Curiosity</h1>
-          <img src="/packages/images/familia-curiosity.png" id='img-msj'>
+          <h1 id="tit-news">Articulos y Novedades</h1>
+          @foreach ($novedades as $novedad)
+            <div class="contentNew" data-file='/packages/docs/novedades/{{$novedad->pdf}}'>
+              <h5>
+                <span class="fa fa-file-text styleNewIcon"></span>
+                {{$novedad->titulo}}
+              </h5>
+            </div>
+          @endforeach
         </div>
       </div>
         <div class="col-sm-5">
@@ -355,6 +363,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class='container-fluid' id="divFrameToFile">
+      <button type="button" id="btnPackProfile">
+        <span class="fa fa-left-arrow"></span>
+        Regresar al Perfil
+      </button>
+      <iframe id="frameToFile"></iframe>
     </div>
 @stop
 

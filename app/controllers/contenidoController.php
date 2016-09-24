@@ -210,16 +210,18 @@ class contenidoController extends BaseController
     //   'nuevos' => $nuevos,
     //   'populares' => $populares
     // );
-    $now = date("Y-m-d");
-    $meta = new metaController();
-    $metas = $meta->getAll();
-    $miMeta = $meta->getMetaHijo();
-    if (!$meta->hasMetaToday()){
-      DB::table('avances_metas')->insert(array(
-        'avance' => 0,
-        'fecha' => $now,
-        'avance_id' => $miMeta->metaAsignedId
-      ));
+    if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
+      $now = date("Y-m-d");
+      $meta = new metaController();
+      $metas = $meta->getAll();
+      $miMeta = $meta->getMetaHijo();
+      if (!$meta->hasMetaToday()){
+        DB::table('avances_metas')->insert(array(
+          'avance' => 0,
+          'fecha' => $now,
+          'avance_id' => $miMeta->metaAsignedId
+        ));
+      }
     }
 
     return View::make('vista_home_actividades')->with(array(
@@ -231,6 +233,32 @@ class contenidoController extends BaseController
       'recomendables' => $recomendables,
       'videos' => $videos
     ));
+  }
+
+  function adminVideos(){
+    return View::make('vista_videosInicio');
+  }
+
+  function myVideos(){
+    $videos = video::join('actividades', 'videos.actividad_id', '=', 'actividades.id')
+    ->join('temas', 'actividades.tema_id', '=', 'temas.id')
+    ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
+    ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
+    ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+    ->where('niveles.active', '=', '1')
+    ->where('inteligencias.active', '=', '1')
+    ->where('bloques.active', '=', '1')
+    ->where('temas.active', '=', '1')
+    ->where('actividades.active', '=', '1')
+    ->where('actividades.estatus', '=', 'unlock')
+    ->where('temas.estatus', '=', 'unlock')
+    ->where('bloques.estatus', '=', 'unlock')
+    ->where('inteligencias.estatus', '=', 'unlock')
+    ->where('niveles.estatus', '=', 'unlock')
+    ->select('videos.code_embed', 'niveles.nombre as nivel', 'bloques.nombre as bloque', 'inteligencias.nombre as inteligencia', 'temas.nombre as tema', 'actividades.nombre as actividad')
+    ->orderBy('videos.id', 'desc')
+    ->get();
+    return $videos;
   }
 
 
