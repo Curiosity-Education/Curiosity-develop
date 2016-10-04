@@ -160,7 +160,8 @@ $(document).on("ready",function(){
 			}).done(function(response){
 				$curiosity.noty('Novedad editada','success');
 				window.location.href = "/vistaNovedades";
-			}).fail(function(){
+			}).fail(function(e){
+				console.log(e);
 				$curiosity.noty('Error al intentar editar','error');
 			});
 		};
