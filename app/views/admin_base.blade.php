@@ -506,11 +506,11 @@
       }
 
 	/*Sección para la gestion de actualización y registro de hijo*/
-$(function ()
-  {
-    @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('padre_free') && !Auth::user()->hasRole('demo_padre') && !Auth::user()->hasRole('root'))
-      $("a[href='#reg-admins']").trigger("click");
-    @endif
+// $(function ()
+//   {
+//     @if(!Auth::user()->hasRole('padre') && !Auth::user()->hasRole('padre_free') && !Auth::user()->hasRole('demo_padre') && !Auth::user()->hasRole('root'))
+//       $("a[href='#reg-admins']").trigger("click");
+//     @endif
   //   $("#wizard-admin").steps({
   //     headerTag: "h4",
   //     bodyTag: "section",
@@ -683,7 +683,7 @@ $(function ()
 });
 	/*Fin de la sección de la gestion de actualización y modificación del perfil de usuario y registro de hijos*/
 
-    });
+//    });
   </script>
   @yield('mi_js')
   </body>

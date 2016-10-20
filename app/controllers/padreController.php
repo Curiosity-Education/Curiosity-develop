@@ -29,8 +29,8 @@ class padreController extends BaseController
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
             "email"             =>"required|email|unique:padres,email",
-            "telefono"          =>"required"
-
+            "telefono"          =>"required",
+            "pais"              =>"required|exists:ladas_paises,name"
         ];
         $messages = [
                "required"    =>  "El campo :attribute es requerido",
@@ -73,7 +73,17 @@ class padreController extends BaseController
                 // $membresia->active=1;
                 // $membresia->save();
                 $padre = new padre($datos);
+                /*-------------------------------
+                    Obtenemos la lada  según 
+                    El pais seleccionado por
+                    el usuario.
+                --------------------------------*/
+                $lada = ladaPais::where("name","=",$datos["pais"])->select("phone_code")->get()[0];
+                /*------------------------------*/
                 $padre->persona_id = $persona->id;
+                if($lada){// si se encontro la lada en la consulta, entonces la establecemos, si no dejamos sin lada
+                    $padre->telefono = "+".$lada->phone_code." ".$padre->telefono;
+                }
                 $padre->save();
                 $perfil = new perfil();
                 if ($datos['sexo'] == 'm'){

@@ -70,11 +70,20 @@
       								<input placeholder="Fecha de nacimiento" type="text" id="fecha_nacimiento" class="form-control datepicker2" name="fecha_nacimiento" readonly="true">
       							</div>
 
-                    <div class="md-form form-group">
-      							<i class="fa fa-mobile-phone prefix"></i>
-      								<input placeholder="" type="text" id="telefono" class="form-control" name="telefono" >
-      							</div>
-    							</div>
+                                <div class="md-form form-group">
+                                    <i class="fa fa-globe prefix"></i>
+                                    <input type="text" list="list_contry" id="pais" class="form-control" name="pais" placeholder="Ingrese su pais">
+                                    <datalist  id="list_contry">
+                                        @foreach($datos["paises"] as $pais)
+                                            <option value="{{$pais->name}}">+{{$pais->phone_code}}</option>
+                                        @endforeach
+                                    </datalist>
+                                </div>
+                                <div class="md-form form-group">
+                                    <i class="fa fa-mobile-phone prefix"></i>
+                                    <input placeholder="" type="text" id="telefono" class="form-control" name="telefono">
+                                </div>
+                    </div>
                   <div class="col-md-6">
                     <div class="md-form form-group">
       								<i class="fa fa-user prefix"></i>

@@ -6,7 +6,7 @@
 class persona extends Eloquent{
 
     protected $table = 'personas';
-    protected $fillable = ['nombre','apellido_paterno','apellido_materno','fecha_nacimiento','sexo','telefono'];
+    protected $fillable = ['nombre','apellido_paterno','apellido_materno','fecha_nacimiento','sexo'];
     /*
      *
      ## Una persona le pertenece un usuario

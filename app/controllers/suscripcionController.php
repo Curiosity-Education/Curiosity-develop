@@ -5,14 +5,14 @@ class suscripcionController extends BaseController{
         if(Request::method() == 'GET'){
           $datos=[
             "estados"     =>$estados = estado::all(),
-            "ciudades"    =>$ciudades = ciudad::where("estado_id","=",$estados->first()->id)->get()
+            "ciudades"    =>$ciudades = ciudad::where("estado_id","=",$estados->first()->id)->get(),
+            "paises"      =>ladaPais::all()
            ];
             return View::make('vista_registro_padre')->with("datos",$datos);
         }
         else{
             require_once(__DIR__.'/conekta-php/lib/Conekta.php');
             Conekta::setApiKey("key_vK8GrZTfhXuDp9GwnR14HQ");
-
             try{
               $customer = Conekta_Customer::create(array(
                 "name"=> "Lews ",

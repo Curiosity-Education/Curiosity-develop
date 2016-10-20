@@ -6,8 +6,7 @@ var $juego = {
       if(json.explanations === undefined){
           $(".contenedor-texto>div>div").append("<center><p>"+json.explanation1+"</p></center>");
           $(".contenedor-texto>div>div").append("<center><p>"+json.explanation2+"</p></center>");
-
-          alert("No se definieron muchas instrucciones");
+          
       }else{
           for(var i = 0; i< json.explanations.length;i++){
             $(".contenedor-texto>div>div").append("<center><p>"+json.explanations[i]+"</p></center>");
@@ -41,6 +40,10 @@ var $juego = {
               $("#zona-play").hide();//desaparecer zona juego
               $("#zona-obj").show();//aparecer zona del objetivo
               $juego.game.puntajeActual=0;
+              var iframe = document.querySelector("iframe[name='iframe_juego']");
+              if(iframe){
+                iframe.removeAttribute("src");
+              }
               $("#game").trigger('exit');
            }
         },
@@ -50,12 +53,14 @@ var $juego = {
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
             $juego.cronometro.start(duracion,inverso);
+            
         },
         _start:function(){
             $("#zona-play").show();
             $("#zona-obj").hide();
             $("#countPuntaje").text($juego.game.puntajeActual);
             $("#game").trigger('start');
+            document.querySelector("iframe[name='iframe_juego']").setAttribute("src",$juego.game.unity.iframe_src);
         },
         setMaxPuntuacion:function(puntuacion){
           $juego.game.puntajeMaximo=puntuacion;
@@ -90,16 +95,27 @@ var $juego = {
             $("#game").trigger("finish");
         },
         finish_game_unity:function(){
-           $juego.game.eficiencia = Math.round(($juego.game.aciertos * 100) / $juego.game.intentos);
+            //nivel=0;
+            // Guardamos el puntaje mayor actual en variable temporal para no perder la catidad de puntos maximos en caso de que este puntaje sea superado
+            //reiniciar puntuaje
+            // Verificamos si el puntaje obtenido es mayor que el puntaje mayor actual
+            if($juego.game.intentos > 0){
+              $juego.game.eficiencia = Math.round(($juego.game.aciertos * 100) / $juego.game.intentos);
+            }
+            else{
+              $juego.game.eficiencia = 0;
+            }
             if($juego.game.puntajeActual > $juego.game.puntajeMaximo){
-            // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-             $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+                // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
+                $juego.game.puntajeMaximo = $juego.game.puntajeActual;
+                // Cambiamos el puntaje maximo en pantalla
+                $("#num-max-pts").html($juego.game.puntajeMaximo + " pts");
             }
             $juego.game.save();
             $juego.game.restart_game_unity();
         },
         restart:function(){
-            $juego.game.aciertos=0;
+            $juego.aciertos=0;
             $juego.game.continuo=0;//reiniciar continuos
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
@@ -113,7 +129,7 @@ var $juego = {
         restart_game_unity:function(){
             $juego.game.aciertos=0;
             $juego.game.intentos = 0;
-            $juego.game.errores = 0;
+            $juego.game.errores = 0;  
             $juego.game.continuo=0;//reiniciar continuos
             $juego.game.puntajeActual=0;
         },
@@ -125,7 +141,7 @@ var $juego = {
                 incorrectos:$juego.game.errores,
                 promedio:($juego.game.aciertos*100)/$juego.game.intentos//El promedio se define diferente
               }
-
+             
               $.ajax({
                     url:'/actividad/setdata',
                     method:"POST",
@@ -143,7 +159,7 @@ var $juego = {
             $("#game").trigger('save');
         },
         salir:function(){
-            $juego.game.aciertos=0;
+            $juego.aciertos=0;
             $juego.game.intentos = 0;
             $juego.game.errores = 0;
             $juego.game.continuo=0;//reiniciar continuos
@@ -151,6 +167,7 @@ var $juego = {
             $("#zona-obj").show();//aparecer zona del objetivo
             $juego.game.puntajeActual=0;
             $juego.cronometro.stop();
+            
             $("#game").trigger('exit');
         },
         setCombo:function(valorCombo){
@@ -218,7 +235,7 @@ var $juego = {
                 if($juego.game.continuo == 20){
                     $juego.game.valorPuntos +=500;
                     $juego.game.setCombo(500);
-                    $juego.game.continuo=0;//Reiniciar la variable continuos para poder generar más combos
+                    $juego.game.contnuo=0;//Reiniciar la variable continuos para poder generar más combos
                 }
             }
         }
@@ -276,10 +293,12 @@ var $juego = {
           $juego.cronometro.interval_canvas = setInterval(drawCircle,1000);
           ctx.lineWidth=9;
           var circleTime = $('.temp').position();
-          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top});
+          var width_canv = (parseInt($(".temp").css("width")));
+          mycanvas1.css({'display':'block', 'left':circleTime.left, 'top':circleTime.top,'width':width_canv,'height':width_canv});
           ctx.lineCap="round";
           grados = 270;
           contadorGrados=0;
+          var diametro = (parseInt($(".temp").css("width"))/2)-4;
           var gradian1  = ctx.createLinearGradient(120,0,220,0);
           gradian1.addColorStop(0,'rgb(242,221,72)');
           gradian1.addColorStop(1,'rgb(54,142,184)'); // rojo
@@ -293,14 +312,14 @@ var $juego = {
                    ctx.beginPath();
                    ctx.strokeStyle=gradian1;
                    var radianes = (Math.PI/180)*grados;
-                   ctx.arc(65,65,61,(Math.PI/180)*270,radianes,false);
+                   ctx.arc(65,65,60,(Math.PI/180)*270,radianes,false);
                    ctx.stroke();
                    ctx.closePath();
                }else if(contadorGrados<=360){
                  ctx.beginPath();
                  ctx.strokeStyle=gradian2;
                  var radianes = (Math.PI/180)*grados;
-                 ctx.arc(65,65,61,(Math.PI/180)*180,radianes,false);
+                 ctx.arc(65,65,60,(Math.PI/180)*180,radianes,false);
                  ctx.stroke();
                  ctx.closePath();
                }else{
@@ -513,8 +532,21 @@ $(".btnVideo").click(function(){
 /*$("#oculto").click(function(){
 	$("#btn-instrucciones").trigger("click");
 });*/
-
+/*window.onload = function(){
+    var iframe = document.querySelector("iframe[name='iframe_juego']");
+    if(iframe){
+       $juego.game.unity.iframe_src = iframe.getAttribute("src");
+       iframe.removeAttribute("src");    
+    }
+  // $juego.game.unity.iframe_src = 
+}*/
 $(document).ready(function(){
+ var iframe = document.querySelector("iframe[name='iframe_juego']");
+ if(iframe){
+   $juego.game.unity.iframe_src = iframe.getAttribute("src");
+   iframe.removeAttribute("src");    
+ }
+  // $juego.game.unity.iframe_src = 
  (function ($) {
     // Detect touch support
     $.support.touch = 'ontouchend' in document;
