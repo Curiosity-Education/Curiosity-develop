@@ -3,6 +3,7 @@
  {{HTML::style('/packages/css/curiosity/helper.css')}}
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/mishijos.css')}}
+ {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
 @stop
 
 @section('title')
@@ -17,43 +18,9 @@
 @section('titulo_small')
 <div class='row'>
 	<div class='col-md-10 col-xs-12 col-sm-10'>
-    <button class='btn tooltipShowRight' type='button' style='background-color:#2d96ba; color:white;' id='showHelp'>
-		  <i class='fa fa-info-circle'></i>
+    <button class="btn" type="button" style="background-color:#2d96ba; color:white" id="start-tour-misHijos">
+    	 Iniciar Tour
     </button>
-    <div class="modal fade" id="helper" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" id="closehelp" aria-hidden="true">&times;</button>
-            <center>
-              <span class="fa fa-info-circle" id="iconhelp"></span>
-              <br><br>
-              <h4 id="tituloHelp">Mis hijos</h4>
-              <br>
-            </center>
-            <div id="cuerpoHelp">
-              <p class="text-justify">
-                En esta sección se encuentra tus hijos registrados y su progreso en el día. <br>
-                <b>Recuerda</b><br>
-                Puedes acceder a las estadísticas dando click en la imagen de tu hijo desde tu perfil.
-                <br>
-                <!-- <small><i><b>Nota: </b> Las estadísticas se generan con las actividades de tus hijos.</i></small> -->
-              </p>
-              <br>
-              <ul>
-                <li>
-                  <b>Registra a tus hijos</b>
-                  <br>
-                  Podrás registrar a tus hijos dando click al botón "Registrar hijo/hija" ubicado en la parte superior derecha.
-                  <br>
-                  <small><i><b>Nota: </b>Si cuentas con una cuenta gratuita únicamente es posible registrar un máximo de 1 (uno) hijo.</i></small>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 	</div>
 </div>
 @stop
@@ -237,13 +204,13 @@
     <div class="row">
       <div class="col-md-12" id="thisAppnd">
         @foreach ($datosHijos as $hijo)
-      	 	<div class='col-xs-6 col-sm-4 col-md-4'>
+      	 	<div class='col-xs-12 col-sm-4 col-md-4'>
       	 		<div class='hijo_avatar'>
       			<center>
               <img src='/packages/images/perfil/{{$hijo->foto_perfil}}' class='img-responsive img-rounded imgprfh'>
             </center>
-      			<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>
-              <p class='nombres'>{{$hijo->nombre}} <br> {{$hijo->apellido_paterno}} <br> {{$hijo->apellido_materno}}</p>
+      			<div style='margin-top: 15px;margin-bottom: 20px;'>
+              <p class='nombres'>{{$hijo->nombre}}  {{$hijo->apellido_paterno}}  {{$hijo->apellido_materno}}</p>
       				<p class='nombres' style='color:black;'>{{$hijo->username}}</p>
       			</div>
       	 		</div>
@@ -260,8 +227,10 @@
 {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
 {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
+{{HTML::script('/packages/js/libs/bootstrap-tour/bootstrap-tour.min.js')}}
 {{HTML::script('/packages/js/curiosity/freeValidationDad.js')}}
 {{HTML::script('/packages/js/curiosity/mishijos.js')}}
+{{HTML::script('/packages/js/curiosity/tour_padre.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
 @stop
