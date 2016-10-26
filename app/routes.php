@@ -17,6 +17,8 @@ Route::get('/newpass', function(){
   return "El pass es: nayzaa258  - ( ".Hash::make('nayzaa258')." )";
 });
 
+Route::get('/lista-vendedores', 'vendedorController@verPagina');
+
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){

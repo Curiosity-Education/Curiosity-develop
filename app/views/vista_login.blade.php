@@ -56,13 +56,7 @@
               <button type='button' name='login-next' class='btn btn-warning btn-block' id='login-next'>
                 <span class='fa fa-share'></span> &nbsp;
                 Siguiente
-              </button>
-              <div class='text-center forgot'>
-                <a href='/olvide-mi-contrasena'>
-                  Olvide mi usuario y/o contraseña
-                  <li class='fa fa-question-circle'></li>
-                </a>
-              </div>
+              </button>              
 
               <div id='boxButtonsIn'>
                 <button type='button' name='login-int' class='btn btn-success btn-block' id='login-int'>
@@ -73,6 +67,13 @@
                   <span class='fa fa-reply'></span> &nbsp;
                   Regresar
                 </button>
+              </div>
+
+              <div class='col-xs-12 text-center forgot' style="text-align: center;">
+                <a href='/olvide-mi-contrasena' style="color:#c5c5c5;font-size: 0.8em">
+                  Olvide mi usuario y/o contraseña &nbsp;
+                  <li class='fa fa-question-circle'></li>
+                </a>
               </div>
 
             </div>

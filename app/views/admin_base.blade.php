@@ -250,11 +250,20 @@
               <li id="menuAdminNavegadores">
                 <a href="/getBrowsers">
                   <i class="fa fa-chrome"></i>
-                  <span>Navegadores mas usados</span>
+                  <span>Navegadores</span>
                 </a>
                 <div class="arrowAsideActive"></div>
               </li>
             @endif
+            {{--@if(Entrust::can('gestionar_avatar'))--}}
+              <li id="linkVendedores">
+                <a href="/lista-vendedores">
+                  <i class="fa fa-address-book"></i>
+                  <span>Vendedores</span>
+                </a>
+                <div class="arrowAsideActive"></div>
+              </li>
+            {{--@endif--}}
 
             <li class="visible-xs">
               <a href="/logout" class="btn" id="logOut">
