@@ -19,6 +19,15 @@ Route::get('/newpass', function(){
 
 Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
 Route::get('/lista-vendedores', 'vendedorController@verPagina');
+
+Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+Route::post('/getByCiudades', 'direccionController@getCiudades');
+Route::post('/vendedorGuardar', 'vendedorController@guardar');
+Route::post('/vendedorActualizar', 'vendedorController@actualizar');
+Route::post('/vendedorEliminar', 'vendedorController@eliminar');
+Route::post('/vendedorGuardarFoto', 'vendedorController@guardarFoto');
+Route::post('/obtenerVendedores', 'vendedorController@obtenerActivos');
+
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){
