@@ -18,6 +18,13 @@ Route::get('/newpass', function(){
 });
 
 Route::get('/lista-vendedores', 'vendedorController@verPagina');
+Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+Route::post('/getByCiudades', 'direccionController@getCiudades');
+Route::post('/vendedorGuardar', 'vendedorController@guardar');
+Route::post('/vendedorActualizar', 'vendedorController@actualizar');
+Route::post('/vendedorEliminar', 'vendedorController@eliminar');
+Route::post('/vendedorGuardarFoto', 'vendedorController@guardarFoto');
+Route::post('/obtenerVendedores', 'vendedorController@obtenerActivos');
 
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
