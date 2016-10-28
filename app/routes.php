@@ -17,7 +17,9 @@ Route::get('/newpass', function(){
   return "El pass es: nayzaa258  - ( ".Hash::make('nayzaa258')." )";
 });
 
+Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
 Route::get('/lista-vendedores', 'vendedorController@verPagina');
+
 Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
 Route::post('/getByCiudades', 'direccionController@getCiudades');
 Route::post('/vendedorGuardar', 'vendedorController@guardar');
@@ -227,6 +229,16 @@ Route::group(array('before' => 'auth'), function(){
         });
         //Monitoreo de Navegadores
         Route::match(array('GET','POST'),'/getBrowsers/{limit?}','sesionInfoController@getBrowsers');
+            
+        //Gestión de módulo de pagos
+        //Route::group(['before' => 'gestionar_pagos'],function(){
+            /*Vista administrar planes*/
+            Route::get('/gestion-de-planes','planController@showView');
+            Route::post('/crear-plan','planController@createPlan');
+            Route::post('/actualizar-plan','planController@updatePlan');
+            Route::post('/eliminar-plan','planController@deletePlan');
+            Route::post('/leer-planes','planController@getPlanes');
+        //});
     });
 
     Route::group(array('before' => 'gestionar_actividades'), function(){

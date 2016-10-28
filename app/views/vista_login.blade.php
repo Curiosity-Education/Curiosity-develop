@@ -56,7 +56,7 @@
               <button type='button' name='login-next' class='btn btn-warning btn-block' id='login-next'>
                 <span class='fa fa-share'></span> &nbsp;
                 Siguiente
-              </button>              
+              </button>
 
               <div id='boxButtonsIn'>
                 <button type='button' name='login-int' class='btn btn-success btn-block' id='login-int'>

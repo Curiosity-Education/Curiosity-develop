@@ -1,5 +1,8 @@
 <?php
-
+/*
+    class created by Gerson Isaías
+    @dater --> Date for manipulate
+*/
 class dreamDate {
     private $dates, $dater, $month, $week, $semester, $day , $monthCurrent, $year;
     private static $_dreamDate;

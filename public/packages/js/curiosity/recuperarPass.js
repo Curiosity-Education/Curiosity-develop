@@ -66,7 +66,7 @@ function __init(){
                     }
                 }).fail(function(error){
                     console.log(error);
-                    $curiosity.noty("Oh! a ocurrido un error, te agradeceriamos que nos notifiques este error.","error");
+                    $curiosity.noty("Oh! a ocurrido un error, te agradeceriamos que nos notifiques este error. ERR-CU-RC-CP-01","error");
                 }).always(function(){
 
                 });
