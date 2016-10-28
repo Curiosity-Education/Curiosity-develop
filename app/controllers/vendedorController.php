@@ -7,7 +7,7 @@ class vendedorController extends BaseController
 {
 
   function verPagina(){
-    
+
   }
 
 }

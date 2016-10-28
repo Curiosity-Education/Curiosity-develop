@@ -37,6 +37,36 @@ class BufferTest extends TestCase
 
     /**
      * @covers React\Stream\Buffer::write
+     */
+    public function testWriteWithDataDoesAddResourceToLoop()
+    {
+        $stream = fopen('php://temp', 'r+');
+        $loop = $this->createLoopMock();
+        $loop->expects($this->once())->method('addWriteStream')->with($this->equalTo($stream));
+
+        $buffer = new Buffer($stream, $loop);
+
+        $buffer->write("foobar\n");
+    }
+
+    /**
+     * @covers React\Stream\Buffer::write
+     * @covers React\Stream\Buffer::handleWrite
+     */
+    public function testEmptyWriteDoesNotAddToLoop()
+    {
+        $stream = fopen('php://temp', 'r+');
+        $loop = $this->createLoopMock();
+        $loop->expects($this->never())->method('addWriteStream');
+
+        $buffer = new Buffer($stream, $loop);
+
+        $buffer->write("");
+        $buffer->write(null);
+    }
+
+    /**
+     * @covers React\Stream\Buffer::write
      * @covers React\Stream\Buffer::handleWrite
      */
     public function testWriteReturnsFalseWhenBufferIsFull()
@@ -52,6 +82,28 @@ class BufferTest extends TestCase
         $this->assertTrue($buffer->write("foo"));
         $loop->preventWrites = false;
         $this->assertFalse($buffer->write("bar\n"));
+    }
+
+    /**
+     * @covers React\Stream\Buffer::write
+     * @covers React\Stream\Buffer::handleWrite
+     */
+    public function testWriteEmitsErrorWhenResourceIsNotWritable()
+    {
+        if (defined('HHVM_VERSION')) {
+            // via https://github.com/reactphp/stream/pull/52/files#r75493076
+            $this->markTestSkipped('HHVM allows writing to read-only memory streams');
+        }
+
+        $stream = fopen('php://temp', 'r');
+        $loop = $this->createLoopMock();
+
+        $buffer = new Buffer($stream, $loop);
+        $buffer->on('error', $this->expectCallableOnce());
+        //$buffer->on('close', $this->expectCallableOnce());
+
+        $buffer->write('hello');
+        $buffer->handleWrite();
     }
 
     /**
@@ -238,7 +290,7 @@ class BufferTest extends TestCase
         $buffer->write('bar');
 
         $this->assertInstanceOf('Exception', $error);
-        $this->assertSame('Tried to write to closed stream.', $error->getMessage());
+        $this->assertSame('fwrite(): send of 3 bytes failed with errno=32 Broken pipe', $error->getMessage());
     }
 
     private function createWriteableLoopMock()
