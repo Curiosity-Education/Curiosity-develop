@@ -18,7 +18,7 @@ Route::get('/newpass', function(){
 });
 
 Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-Route::post('stripe/webhook', 'Laravel\Cashier\WebhookController@handleWebhook');
+Route::get('/lista-vendedores', 'vendedorController@verPagina');
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){

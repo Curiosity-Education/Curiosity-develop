@@ -457,6 +457,7 @@ li.slide-current{
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  cursor: pointer;
   -webkit-transform: 0px 0px 1;
   -moz-transform: 0px 0px 1;
   -o-transform: 0px 0px 1;
@@ -887,3 +888,20 @@ div.content-emocion{
 	margin: 0px 5px;
 }
 /*----------------------------------------------*/
+
+/* evitar que la popover del tour al scrollear sobre pase la navbar */
+.popover{
+	z-index: 0 !important;
+}
+
+@media (min-width: 698px){
+	.separacion{
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 480px){
+	.separacion{
+		margin-top: 5px;
+	}
+}

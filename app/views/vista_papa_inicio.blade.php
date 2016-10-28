@@ -4,6 +4,7 @@
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/dadProfile.css')}}
  {{HTML::style('/packages/css/curiosity/helper.css')}}
+ {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
 @stop
 
 @section('title')
@@ -16,7 +17,10 @@
 @stop
 
 @section('titulo_small')
-	Bienvenido {{Auth::user()->username}}
+	Bienvenido {{Auth::user()->username}} <br>
+	<button class="btn" type="button" style="background-color:#2d96ba; color:white; margin-top:7px;" id="start-tour-perfil">
+    	 Iniciar Tour
+    </button>
 @stop
 
 
@@ -273,7 +277,7 @@
         <div class="col-sm-5">
           <div class="row">
             <div id="sec1-uso" class="secbox">
-              <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección"></i></h1>
+              <h1 id="tit-sec1" class="titsecs">Uso de la plataforma <i class="fa fa-info-circle info-uso-plataform tooltipShow pull-right" aria-hidden="true" title="Información sobre esta sección" id="info-uso"></i></h1>
               <div class="col-md-1"></div>
               <div class="col-md-10">
                 <center>
@@ -294,7 +298,7 @@
    	  @foreach ($datosHijos as $hijo)
    	  <div class="col-md-2 col-xs-4 col-sm-3 contenedor">
     		<div class="div-img">
-    			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img img-hijo tooltipShow" title="Click para ver estadísticas del día" data-id="{{$hijo->idHijo}}">
+    			<img src="/packages/images/perfil/{{$hijo->foto_perfil}}" alt="" class="img-responsive img-thumbnail img img-hijo tooltipShow" title="Click para ver estadísticas del día" data-id="{{$hijo->idHijo}}" id="img-hijo-inicio">
     			<div class="text">
     				<center id="name_hijo_s_mis_hijos_{{$hijo->idHijo}}">{{$hijo->nombre}}</center>
     			</div>
@@ -391,10 +395,12 @@
 {{HTML::script("/packages/js/libs/validation/localization/messages_es.min.js")}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/Másk/jquery-Másk/jquery.Másk.js')}}
+{{HTML::script('/packages/js/libs/bootstrap-tour/bootstrap-tour.min.js')}}
 {{HTML::script('/packages/js/libs/date-picker/bootstrap-datepicker.min.js')}}
 {{HTML::script('/packages/js/curiosity/perfil.js')}}
 {{HTML::script('/packages/js/curiosity/CuriosityCharts.js')}}
 {{HTML::script('/packages/js/curiosity/padrePerfil.js')}}
+{{HTML::script('/packages/js/curiosity/tour_padre.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
 @stop
