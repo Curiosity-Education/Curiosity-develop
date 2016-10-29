@@ -19,7 +19,7 @@
 @stop
 
 @section('panel_opcion')
-  <section class="col-xs-12" id="tablaInicialV">
+  <section class="" id="tablaInicialV">
     <div id="zonaDataV">
       <div id="toolbarV" class="btn-group">
         <button type="button" class="btn btn-default tooltipShow" id="registrarV" title="Registrar nuevo vendedor">
@@ -60,7 +60,7 @@
 
   <section class="col-xs-12" id="gestionDatosV">
     <h4>Información del vendedor</h4>
-    <div class="col-sm-10">
+    <div class="col-xs-12 col-md-10">
       <form action="" id="formV">
 
         <div class="form-group">
@@ -108,7 +108,9 @@
         <div class="form-group">
           <div class="input-group inputGroupV">
             <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
-            <select class="form-control" name="ciudadV" id="ciudadV"></select>
+            <select class="form-control" name="ciudadV" id="ciudadV">
+              <option value="">Selecciona un estado para seleccionar una ciudad</option>
+            </select>
           </div>
         </div>
 
@@ -124,12 +126,14 @@
         </button>
       </div>
     </div>
-    <div class="col-sm-2">
-      <form action="" id="formImagenV"><input type="file" id="imagenV" name="imagenV"></form>
-      <img src="/packages/images/perfilVendedores/perfil-default.jpg" id="imgV" class="img-responsive img-thumbnail"><br>
-      <button class="btn btn-default" id="btnImgV">
-        Cambiar Imagen
-      </button>
+    <div class="col-md-2 hidden-xs hidden-sm">
+      <center>
+        <form action="" id="formImagenV"><input type="file" id="imagenV" name="imagenV"></form>
+        <img src="" id="imgV" class="img-responsive img-thumbnail"><br>
+        <button class="btn btn-default" id="btnImgV">
+          Cambiar Imagen
+        </button>
+      </center>
     </div>
   </section>
 @stop

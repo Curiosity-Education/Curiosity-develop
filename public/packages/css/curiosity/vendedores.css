@@ -1,4 +1,4 @@
-#formImagenV, #btnImgV, #gestionDatosV{
+#formImagenV, #btnImgV, #gestionDatosV, #idV{
   display: none;
 }
 
@@ -47,7 +47,8 @@
   width: 100%;
 }
 
-.inputGroupV > .form-control{
+.inputGroupV > .form-control,
+.search > input{
   height: 4rem;
   border-top: solid .1rem #d4d4d4;
   border-bottom: solid .1rem #d4d4d4;
@@ -108,4 +109,9 @@ label.error {
 
 label.error:before {
   display: none;
+}
+
+#imgV{
+  width: 17rem;
+  height: 17rem;
 }
