@@ -19,7 +19,7 @@
 <div class='row'>
 	<div class='col-md-10 col-xs-12 col-sm-10'>
     <button class="btn" type="button" style="background-color:#2d96ba; color:white" id="start-tour-misHijos">
-    	 Iniciar Tour
+    	 ¿Tienes alguna duda?
     </button>
 	</div>
 </div>

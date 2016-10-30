@@ -526,3 +526,8 @@
     height: 300px;
   }
 }
+
+.tourDark{
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
