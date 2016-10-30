@@ -174,5 +174,37 @@ class userController extends BaseController{
         }
 
     }
+    public function pay_card_suscription($user_id){
+        if(Request::method() == "GET")
+            return View::make('vista_payment_card');
+        else{
+            /*
+                Configuración con Stripe
+            */
+            \Stripe\Stripe::setApiKey("sk_test_HY3YuTn66MK18y6Xhmz1rJJx");
+            
+            $token = Input::get('stripeToken');
+            $amount = 5800;
+            
+            try{
+                /*
+                    Cobrar al cliente
+                */
+                $customer = \Stripe\Customer::create(array(
+                      "source" => $token,
+                      "plan" => "silver",
+                      "email" => Input::get('stripeEmail'),
+                      "coupon" => "soyCuriosity11"
+                    )
+                );
+            }
+            catch(Stripe_CardError $e){
+                dd($e);
+            }
+            
+            echo json_encode($customer);
+            
+        }
+    }
 
 }

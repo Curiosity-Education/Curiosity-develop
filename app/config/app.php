@@ -124,6 +124,7 @@ return array(
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
         'BrainSocket\BrainSocketServiceProvider',
+        'Cartalyst\Stripe\Laravel\StripeServiceProvider'
 
 	),
 
@@ -194,6 +195,7 @@ return array(
 		'Entrust'		  => 'Zizaco\Entrust\EntrustFacade',
 		'Image'           => 'Intervention\Image\Facades\Image',
         'BrainSocket'     => 'BrainSocket\BrainSocketFacade',
+        'Stripe'          => 'Cartalyst\Stripe\Laravel\Facades\Stripe',
 
 	),
 

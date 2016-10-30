@@ -1,0 +1,111 @@
+#formImagenV, #btnImgV, #gestionDatosV{
+  display: none;
+}
+
+#gestionDatosV{
+  background-color: #fff;
+  border-radius: .5rem;
+  padding: 2rem;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+#gestionDatosV > h4{
+  background-color: #2262ae;
+  color: #fff;
+  margin: -2rem;
+  padding: 1.5rem;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  margin-bottom: 2rem;
+}
+
+#btnImgV{
+  width: 100%;
+  font-size: 1.2rem;
+  background-color: #2262ae;
+  color: #fff;
+  border-radius: 50rem;
+  outline: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#btnImgV:hover{
+  transition: .5s;
+  background-color: #387fd4;
+}
+
+.estiloSpanV{
+  background-color: #2262ae;
+  color: #fff;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+}
+
+.inputGroupV{
+  width: 100%;
+}
+
+.inputGroupV > .form-control{
+  height: 4rem;
+  border-top: solid .1rem #d4d4d4;
+  border-bottom: solid .1rem #d4d4d4;
+  border-right: solid .1rem #d4d4d4;
+  outline: none;
+}
+
+#btnCancelarV{
+  background-color: #FF5722;
+  color: #fff;
+  width: 15rem;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+}
+
+#btnCancelarV:hover{
+  transition: .5s;
+  background-color: #fb3c00;
+}
+
+#btnGuardarV{
+  background-color: #00BCD4;
+  color: #fff;
+  width: 15rem;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+}
+
+#btnGuardarV:hover{
+  transition: .5s;
+  background-color: #0094d4;
+}
+
+#tabla-head-vendedores > tr > th{
+  background-color: #2262ae;
+  color: #fff;
+  font-weight: lighter;
+}
+
+#tabla-vendedores > tbody{
+  background-color: #fff;
+}
+
+label.error {
+  color: rgba(244, 67, 54, 0.75)!important;
+  display: inline-block;
+  margin-left: 0!important;
+  position: relative;
+  padding-left: 1rem;
+  font-size: 1rem;
+  background: none;
+  border-radius: 0;
+  top: 0;
+  border-top: none;
+}
+
+label.error:before {
+  display: none;
+}

@@ -44,7 +44,7 @@ $(document).ready(function(){
     var html =
     "<div class='row' id='rw"+id+"' style='margin-bottom:20px;'>"+
       "<div class='col-md-6 col-xs-12 col-sm-12 contgrafh' style='padding-bottom:35px;'>"+
-        "<h4 class='tit-nameh'>"+
+        "<h4 class='tit-nameh' id='tit-grafica'>"+
           "<i class='fa fa-line-chart'></i>&nbsp;&nbsp;"+
           ""+nombre+""+
         "</h4>"+
