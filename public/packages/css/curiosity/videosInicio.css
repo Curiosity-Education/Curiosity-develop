@@ -25,3 +25,6 @@ input[type='text']{
   border-radius: 50px;
   outline: none !important;
 }
+#tabla-videos>tbody>tr{
+    cursor: move;
+}

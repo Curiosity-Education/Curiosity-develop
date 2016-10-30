@@ -19,6 +19,7 @@
 @stop
 
 @section('panel_opcion')
+
   <div id="zonaData">
     <div id="toolbar" class="btn-group">
       <button type="button" class="btn btn-default tooltipShow" id="agregar" title="Registrar Nuevo">
