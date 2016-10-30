@@ -6,7 +6,9 @@ class padreController extends BaseController
             return "false";
         else return "true";
     }
-
+    public function tourFirst(){
+		return Response::json(["respuesta" => "true"]);
+	}
     public function addPadre(){
         $datos = Input::get('data');
         $dateNow = date("Y-m-d");
