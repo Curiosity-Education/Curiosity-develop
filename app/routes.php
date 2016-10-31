@@ -87,6 +87,7 @@ Route::group(array('before' => 'auth'), function(){
           Route::post('/regHijo','hijoController@addHijo');
           Route::post('/cotarhijos','padreController@getCountHijos');
           Route::post('/getsegs','padreController@seguimientoHijo');
+          Route::post('/tour_first','padreController@tourFirst');
         });
         // salir (cerrar sesion)
         Route::get('/logout', 'loginController@salir');

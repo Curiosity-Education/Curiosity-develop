@@ -18,7 +18,7 @@
 <div class='row'>
 	<div class='col-md-10 col-xs-12 col-sm-10'>
     <button class="btn" type="button" style="background-color:#2d96ba; color:white" id="start-tour-puntajes">
-    	 Iniciar Tour
+    	 ¿Tienes alguna duda?
     </button>
     <div class="modal fade" id="helper" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false">
       <div class="modal-dialog">

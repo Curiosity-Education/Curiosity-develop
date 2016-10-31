@@ -13,13 +13,13 @@
 
 
 @section('titulo_contenido')
-	Inicio
+	Mi perfil
 @stop
 
 @section('titulo_small')
 	Bienvenido {{Auth::user()->username}} <br>
 	<button class="btn" type="button" style="background-color:#2d96ba; color:white; margin-top:7px;" id="start-tour-perfil">
-    	 Iniciar Tour
+    	 ¿Tienes alguna duda?
     </button>
 @stop
 

@@ -891,7 +891,7 @@ div.content-emocion{
 
 /* evitar que la popover del tour al scrollear sobre pase la navbar */
 .popover{
-	z-index: 0 !important;
+	z-index: 811 !important;
 }
 
 @media (min-width: 698px){
