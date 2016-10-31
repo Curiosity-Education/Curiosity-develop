@@ -23,13 +23,13 @@
     <div id="zonaDataV">
       <div id="toolbarV" class="btn-group">
         <button type="button" class="btn btn-default tooltipShow" id="registrarV" title="Registrar nuevo vendedor">
-            <i class="fa fa-plus"></i>
+            <i class="fa fa-user-plus"></i>
         </button>
         <button type="button" class="btn btn-default tooltipShow" id="actualizarV" title="Modificar vendedor seleccionado">
             <i class="fa fa-refresh"></i>
         </button>
         <button type="button" class="btn btn-default tooltipShow" id="eliminarV" title="Eliminar vendedor seleccionado">
-            <i class="fa fa-trash"></i>
+            <i class="fa fa-user-times"></i>
         </button>
       </div>
 
@@ -65,31 +65,31 @@
 
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-address-card"></span></span>
             <input type="text" class="form-control" placeholder="Nombre" name="nombreV" id="nombreV">
           </div>
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-address-card"></span></span>
             <input type="text" class="form-control" placeholder="Apellidos" name="appellidosV" id="appellidosV">
           </div>
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-at"></span></span>
             <input type="email" class="form-control" placeholder="Correo Electrónico" name="correoV" id="correoV">
           </div>
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-phone"></span></span>
             <input type="text" class="form-control" placeholder="Teléfono" name="telV" id="telV">
           </div>
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-venus-mars"></span></span>
             <select name="sexoV" id="sexoV" class="form-control">
               <option value="">Selecciona el sexo</option>
               <option value="m">Masculino</option>
@@ -99,7 +99,7 @@
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-caret-right"></span></span>
             <select class="form-control" name="estadoV" id="estadoV">
               <option value="">Selecciona el estado donde vive</option>
             </select>
@@ -107,7 +107,7 @@
         </div>
         <div class="form-group">
           <div class="input-group inputGroupV">
-            <span class="input-group-addon estiloSpanV"><span class="fa fa-user"></span></span>
+            <span class="input-group-addon estiloSpanV"><span class="fa fa-caret-right"></span></span>
             <select class="form-control" name="ciudadV" id="ciudadV">
               <option value="">Selecciona un estado para seleccionar una ciudad</option>
             </select>
@@ -117,11 +117,11 @@
       </form>
       <div class="text-right">
         <button class="btn btn-default" id="btnCancelarV">
-          <span class="fa fa-user"></span>&nbsp;
+          <span class="fa fa-reply"></span>&nbsp;
           Cancelar
         </button>
         <button class="btn btn-default" id="btnGuardarV">
-          <span class="fa fa-user"></span>&nbsp;
+          <span class="fa fa-cloud-upload"></span>&nbsp;
           Guardar
         </button>
       </div>
@@ -130,8 +130,17 @@
       <center>
         <form action="" id="formImagenV"><input type="file" id="imagenV" name="imagenV"></form>
         <img src="" id="imgV" class="img-responsive img-thumbnail"><br>
-        <button class="btn btn-default" id="btnImgV">
-          Cambiar Imagen
+        <button class="btn btn-default btnimg btn-block" id="btnImgV">
+          <span class='fa fa-image'></span>&nbsp;
+          Seleccionar
+        </button>
+        <button class="btn btn-default btnimg btn-block" id="btnImgVCancelar">
+          <span class='fa fa-remove'></span>&nbsp;
+          Cancelar
+        </button>
+        <button class="btn btn-default btnimg btn-block" id="btnImgVGuardar">
+          <span class='fa fa-cloud-upload'></span>&nbsp;
+          Guardar
         </button>
       </center>
     </div>

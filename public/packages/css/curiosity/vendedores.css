@@ -1,4 +1,4 @@
-#formImagenV, #btnImgV, #gestionDatosV, #idV{
+#formImagenV, .btnimg, #gestionDatosV, #idV{
   display: none;
 }
 
@@ -19,20 +19,40 @@
   margin-bottom: 2rem;
 }
 
-#btnImgV{
+.btnimg{
   width: 100%;
   font-size: 1.2rem;
-  background-color: #2262ae;
-  color: #fff;
+  color: #fff !important;
   border-radius: 50rem;
-  outline: none;
+  outline: none !important;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+}
+
+#btnImgV{
+  background-color: #2262ae;
 }
 
 #btnImgV:hover{
   transition: .5s;
   background-color: #387fd4;
+}
+
+#btnImgVCancelar{
+  background-color: #FF5722;
+}
+
+#btnImgVCancelar:hover{
+  transition: .5s;
+  background-color: #f1683c;
+}
+
+#btnImgVGuardar{
+  background-color: #00BCD4;
+}
+
+#btnImgVGuardar{
+  transition: .5s;
+  background-color: #19d5ed;
 }
 
 .estiloSpanV{

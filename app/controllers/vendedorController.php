@@ -62,7 +62,7 @@ class vendedorController extends BaseController
        $vendedor->active = 1;
        $vendedor->foto = 'foto_default.jpg';
        $vendedor->ciudad_id = $datos['ciudad'];
-       $vendedor->codigo = "cue".$nombreRandom.$inicialN.$inicialAP.date("y").date("d").date("m");
+       $vendedor->codigo = "cue".$nombreRandom.$inicialN.rand().$inicialAP.date("y").date("d").date("m");
        $vendedor->save();
        return json_encode('success');
      }
@@ -117,7 +117,21 @@ class vendedorController extends BaseController
   }
 
   function guardarFoto(){
-
+    $foto = Input::file('imagenV');
+    $dato = Input::all();
+    $id = $dato['id'];
+    $vendedor = vendedor::where("id", '=', $id)->first();
+    if ($foto != null){
+      if ($vendedor->foto != "foto_default.jpg"){
+        unlink(public_path()."/packages/images/perfilVendedores/".$vendedor->foto);
+      }
+      $nf = rand().substr($vendedor->nombre, 0, 2).substr($vendedor->apellidos, 0, 2).date("m").date("d").date("y").".".$foto->getClientOriginalExtension();
+      $destinoPath = public_path()."/packages/images/perfilVendedores/";
+      $foto->move($destinoPath, $nf);
+      $vendedor->foto = $nf;
+      $vendedor->save();
+      return $vendedor->foto;
+    }
   }
 
 }
