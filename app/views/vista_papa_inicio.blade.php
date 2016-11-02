@@ -263,7 +263,7 @@
       </div>
       <div class="col-sm-4">
         <div id="noticias" class="secbox">
-          <h1 id="tit-news">Articulos y Novedades</h1>
+          <h1 id="tit-news">Novedades Curiosity</h1>
           @foreach ($novedades as $novedad)
             <div class="contentNew" data-file='/packages/docs/novedades/{{$novedad->pdf}}'>
               <h5>
@@ -303,7 +303,7 @@
     				<center id="name_hijo_s_mis_hijos_{{$hijo->idHijo}}">{{$hijo->nombre}}</center>
     			</div>
     		</div>
-    		 <h6>Adquirir Premium</h6>
+    		<h6>Adquirir Premium</h6>
                 <form action="/pay-suscription/{{$hijo->idHijo}}" method="POST">
                   <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
