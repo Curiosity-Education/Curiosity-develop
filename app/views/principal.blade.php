@@ -615,17 +615,20 @@
 		<div class="container">
 			<div class="col-md-12" id="content-elemento">
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp">
+					<img src="/packages/images/landing/SUM.png" alt="sum" class="img-fluid  hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/incubadora_laguna.png" alt="incubadora laguna" class="img-fluid hoverable z-depth-1 wow zoomInUp">
+					<img src="/packages/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail"><br><br>
+					<img src="/packages/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/logoFunBanorte.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp">
+					<img src="/packages/images/landing/penoles.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp"><br>
+					<img src="/packages/images/landing/logo-fs.jpg" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
+	
 			</div>
 		</div>
 	</section>
