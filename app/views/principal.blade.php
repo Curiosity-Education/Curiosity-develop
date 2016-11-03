@@ -555,7 +555,7 @@
 						<div class="card pricing-card proximamente hoverable">
 							<!--Price-->
 							<div class="price" style="background-color: #65499d;">
-								<h2>50</h2>
+								<h2>58</h2>
 								<div class="version">
 									<h5>Premium</h5>
 								</div>

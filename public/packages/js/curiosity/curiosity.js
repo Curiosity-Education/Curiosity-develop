@@ -33,7 +33,7 @@ var $curiosity = {
       }
   },
   noty:function(mensaje, tipo,titulo,image){
-
+        document.getElementById('notyAudio').play();
         if(notify.permissionLevel() == notify.PERMISSION_DEFAULT)
             notify.requestPermission();
         else if(notify.permissionLevel() == notify.PERMISSION_GRANTED){
@@ -151,8 +151,6 @@ var $curiosity = {
               break;
           }
         }
-
-     document.getElementById('notyAudio').play();
   },
   notyPremium : function(){
     $("#modalPremium").modal("show");
@@ -203,6 +201,7 @@ var $curiosity = {
     }
   },
   notyConfirm : function($funcion){
+    document.getElementById('notyAudio').play();
     swal({
       title: "¿Estas seguro que lo deseas eliminar?",
       type: "warning",
@@ -214,8 +213,15 @@ var $curiosity = {
     },
     function(){
       $funcion();
-      swal("Removido!", "Removido Correctamente", "success");
       document.getElementById('notyAudio').play();
+      swal({
+        title: "Removido!",
+        text: "Removido Correctamente",
+        type: "success",
+        showCancelButton: false,
+        showConfirmButton: false,
+        closeOnConfirm: false
+      });
     });
   },
   comprobarFile : function (archivo, tipos) {
@@ -248,6 +254,20 @@ var $curiosity = {
             return true;
         else
             return false;
+    },
+    alertaSistemaError : function(){
+      swal({
+        title: "Ha ocurrido un error :(",
+        type: "error",
+        text : "Se recargará la página e inténtalo nuevamente.\nSi el problema continúa por favor repórtalo enviando un correo electrónico detallado del problema a \n willy.ramirez@curiosity.com.mx",
+        showCancelButton: false,
+        confirmButtonColor: "#2284ad",
+        confirmButtonText: "Aceptar y Recargar",
+        closeOnConfirm: false
+      },
+      function(){
+        window.location.reload();
+      });
     }
 };
 //

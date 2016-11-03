@@ -255,7 +255,7 @@
                 <div class="arrowAsideActive"></div>
               </li>
             @endif
-            {{--@if(Entrust::can('gestionar_avatar'))--}}
+            @if(Entrust::can('gestionar_escuelas'))
               <li id="linkVendedores">
                 <a href="/lista-vendedores">
                   <i class="fa fa-address-book"></i>
@@ -263,7 +263,7 @@
                 </a>
                 <div class="arrowAsideActive"></div>
               </li>
-            {{--@endif--}}
+            @endif
 
             <li class="visible-xs">
               <a href="/logout" class="btn" id="logOut">

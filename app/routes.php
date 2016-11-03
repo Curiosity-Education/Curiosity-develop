@@ -18,15 +18,6 @@ Route::get('/newpass', function(){
 });
 
 Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-Route::get('/lista-vendedores', 'vendedorController@verPagina');
-
-Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
-Route::post('/getByCiudades', 'direccionController@getCiudades');
-Route::post('/vendedorGuardar', 'vendedorController@guardar');
-Route::post('/vendedorActualizar', 'vendedorController@actualizar');
-Route::post('/vendedorEliminar', 'vendedorController@eliminar');
-Route::post('/vendedorGuardarFoto', 'vendedorController@guardarFoto');
-Route::post('/obtenerVendedores', 'vendedorController@obtenerActivos');
 
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
@@ -73,6 +64,9 @@ Route::group(array('before' => 'unauth'), function(){
 Route::post('/remote-username','userController@remoteUsername');
 // Route::post('/sendMensaje','padreController@sendMensaje');
 Route::group(array('before' => 'auth'), function(){
+        /* Rutas para obtencion de datos de direccion por AJAX */
+        Route::post('/getByEstados-{pais}', 'direccionController@getEstados');
+        Route::post('/getByCiudades', 'direccionController@getCiudades');
         /*Rutas para subir y ver juego*/
         Route::post('/actividad/setdata','actividadController@setDataActivity');
         Route::match(array('GET','POST'),'/asignar/juego/{idActividad}', 'actividadController@subirJuego');
@@ -197,6 +191,13 @@ Route::group(array('before' => 'auth'), function(){
           Route::match(array('GET', 'POST'), '/adminEscuela', 'escuelaController@verPagina');
           Route::post('/updateEscuela', 'escuelaController@update');
           Route::post('/removeEscuela', 'escuelaController@remove');
+          /* SE COLOCAN LOS VENDEDORES EN ESTE APARTADO MIENTRAS SE REESTRUCTURAN LOS PERMISOS Y ROLES */
+          Route::get('/lista-vendedores', 'vendedorController@verPagina');
+          Route::post('/vendedorGuardar', 'vendedorController@guardar');
+          Route::post('/vendedorActualizar', 'vendedorController@actualizar');
+          Route::post('/vendedorEliminar', 'vendedorController@eliminar');
+          Route::post('/vendedorActualizarFoto', 'vendedorController@guardarFoto');
+          Route::post('/obtenerVendedores', 'vendedorController@obtenerActivos');
         });
         // profesores
         Route::match(array('GET', 'POST'), '/adminProfesor', 'profesorController@verPagina');
@@ -230,7 +231,7 @@ Route::group(array('before' => 'auth'), function(){
         });
         //Monitoreo de Navegadores
         Route::match(array('GET','POST'),'/getBrowsers/{limit?}','sesionInfoController@getBrowsers');
-            
+
         //Gestión de módulo de pagos
         //Route::group(['before' => 'gestionar_pagos'],function(){
             /*Vista administrar planes*/
