@@ -17,7 +17,7 @@
 
 		div#titulo{
 			height: 200px;
-			background: url("/packages/images/privacidad.jpg") repeat center center fixed;
+			background: url("/packages/images/privacidad-min.jpg") repeat center center fixed;
 			background-attachment: fixed;
 			background-size:cover;
 			background-repeat: no-repeat;
