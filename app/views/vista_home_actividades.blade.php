@@ -17,9 +17,9 @@ Bienvenido a Curiosity
 @stop
 
 @section('panel_opcion')
-  <section class="panelWelcome color-top">
+  <section class="panelWelcome">
     <div class="row">
-      <div class="col-sm-4">
+      {{--<div class="col-sm-4">
         <center><img src="/packages/images/curiosityGif.gif" id="avatarWelcome"></center>
       </div>
       <div class="col-sm-8 text-center">
@@ -31,7 +31,7 @@ Bienvenido a Curiosity
         </p>
         <br>
         <h6 class="pull-right"><i class="references">~ &nbsp;Equipo Curiosity&nbsp; ~</i></h6>
-      </div>
+      </div>--}}
     </div>
   </section>
 
@@ -47,10 +47,9 @@ Bienvenido a Curiosity
           <div class="imgSlideNew" style='background:url(/packages/images/actividades/wallpapers/{{$nuevo->wallpaper}});background-position: center;background-repeat: no-repeat;background-size: cover;'></div>
           <div class="carousel-caption">
             <h3>{{$nuevo->nombre}}</h3>
-            {{--<p class="hidden-xs">{{$nuevo->objetivo}}</p>--}}
             <button type="button" class="btn btn-warning btnPlay gotoplay" data-as='{{$nuevo}}' data-r='{{$rol}}'>
               <span class="fa fa-play"></span>&nbsp;
-              Comenzar a jugar
+              Jugar Ahora
             </button>
             <br><br>
           </div>
@@ -123,7 +122,6 @@ Bienvenido a Curiosity
       @else
        <div class="col-xs-12">
        @endif
-
         <div class="panelsLook panelParaTi">
           <center><h4 style="background-color: #44c6ee;">Juegos Recomendados para Tí</h4></center>
           @foreach($recomendables as $recomendable)
@@ -148,63 +146,34 @@ Bienvenido a Curiosity
     </div>
   </section>
 
-  <section class="row divisorGrados">
-    <div class="col-xs-12">
-      <center>
-        <h3 style="font-family: Kiddish !important; font-size:2.5em;">
-          <b><span class="tilde">~ </span>Nuevos Videos<span class="tilde"> ~</span></b>
-        </h3>
-        <br><br>
-      </center>
-    </div>
-  </section>
-
-  <div class="">
-    <div class="">
-      <section class="slickVideos">
+  <section id="nuevosVideos">
+    <h3> Nuevos Videos </h3>
+    <div class="row">
+      <div class="container-fluid">
         @foreach($videos as $video)
-        <div class='col-xs-6 col-md-3'>
+        <div class='col-xs-3 col-md-3'>
           <div class="frameVideo" style="border-top:solid 5px {{$video->color}};">
             <iframe width='100%' src='{{$video->code_embed}}' frameborder='0'></iframe>
           </div>
         </div>
         @endforeach
-        <!-- <div class="row">
-          <div class="col-xs-12">
-            <center>
-              <button type="button" class="videosArrow" id="gotoback">
-                <span class="fa fa-chevron-left"></span>
-              </button>
-              <button type="button" class="videosArrow" id="gotonext">
-                <span class="fa fa-chevron-right"></span>
-              </button>
-            </center>
-          </div>
-        </div> -->
-      </section>
-    </div>
-  </div>
-
-  <br><br>
-
-  <section class="row divisorGrados">
-    <div class="col-xs-12">
-      <center>
-        <h3 style="font-family: Kiddish !important; font-size:2.5em;">
-          <b><span class="tilde">~ </span>Grado Escolar<span class="tilde"> ~</span></b>
-        </h3>
-      </center>
+      </div>
     </div>
   </section>
 
-  <section class="row grades">
-    @foreach($grados as $grado)
-    <div class="col-xs-4 col-md-2 grade">
-      <img src="/packages/images/niveles/{{$grado->imagen}}" class="img-responsive imgGrade"
-      data-grade='{{$grado->id}}'
-      data-status="{{$grado->estatus}}">
+  <section id="gradosCuriosity">
+    <h3> Grado Escolar </h3>
+    <div class="row">
+      <div class="container-fluid">
+        @foreach($grados as $grado)
+        <div class="col-xs-4 col-md-2">
+          <img src="/packages/images/niveles/{{$grado->imagen}}" class="img-responsive imgGrade"
+          data-grade='{{$grado->id}}'
+          data-status="{{$grado->estatus}}">
+        </div>
+        @endforeach
+      </div>
     </div>
-    @endforeach
   </section>
 @stop
 
