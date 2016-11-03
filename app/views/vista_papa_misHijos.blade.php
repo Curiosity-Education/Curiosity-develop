@@ -204,7 +204,7 @@
     <div class="row">
       <div class="col-md-12" id="thisAppnd">
         @foreach ($datosHijos as $hijo)
-      	 	<div class='col-xs-12 col-sm-4 col-md-4'>
+      	 	<div class='col-xs-12 col-sm-4 col-md-3'>
       	 		<div class='hijo_avatar'>
       			<center>
               <img src='/packages/images/perfil/{{$hijo->foto_perfil}}' class='img-responsive img-rounded imgprfh'>

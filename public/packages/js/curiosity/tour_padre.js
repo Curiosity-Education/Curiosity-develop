@@ -44,9 +44,9 @@ function __init(){
 	  },
 
 	  {
-		element: "#img-hijo-inicio",
+		element: "#tit-mychild",
 		title: "Estadísticas de tu hijo",
-		content: "Al dar click en la imagen de perfil de tu hijo, se mostrará un panel con los datos del día, así como las actividades que realizó.",
+		content: "Al dar click en la imagen de perfil de tu hijo, se mostrará un panel con los datos del día, así como las actividades que realizó. Si aún no has registrado a tú hijo, no tardes y registralo ahora. <br><br> <a class='btn btn-warning pull-right' href='/misHijos'>Ir al registro</a><hr>",
 		placement: "top"
 	  }
 	],
@@ -154,14 +154,14 @@ function __init(){
 			if( i == el){
 
 				var clear = $(tour.getStep(el).reflexElement).parent();
-				var ultimo = $(tour.getStep(el).reflexElement).parent().parent().parent();
+				var ultimo = $(tour.getStep(el).reflexElement).parent();
 				clear.removeClass('tourDark');
 				ultimo.removeClass('tourDark');
 
 			}else{
 
 				var dark = $(tour.getStep(i).reflexElement).parent();
-				var ultimo = $(tour.getStep(3).reflexElement).parent().parent().parent();
+				var ultimo = $(tour.getStep(3).reflexElement).parent();
 				dark.addClass('tourDark');
 				ultimo.addClass('tourDark');
 
@@ -176,7 +176,7 @@ function __init(){
 
 		for(var i = 0; i < longitudPerfil; i++){
 				var clear = $(tour_perfil.getStep(i).reflexElement).parent();
-				var ultimo = $(tour_perfil.getStep(i).reflexElement).parent().parent().parent();
+				var ultimo = $(tour_perfil.getStep(i).reflexElement).parent();
 				clear.removeClass('tourDark');
 				ultimo.removeClass('tourDark');
 				$('#secimgperf').removeClass('tourDark');/* se obscurece el panel de foto de perfil harcodeado mientras se corrige el poder cambiar la foto */
