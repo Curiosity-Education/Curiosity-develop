@@ -291,7 +291,7 @@
       <!-- Zona de Contenido general -->
       <div class="content-wrapper" hidden="hidden"><br><br>
         <!-- Encabezado de la pagina -->
-        {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
+        @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
         <section class="content-header" id="img-portada">
         @elseif(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
         <section class="content-header" id="img-portada-dad">
@@ -380,7 +380,7 @@
             </ul>
           </div>
         </div>
-      </section>--}}
+      </section>
 
       <!-- Contenido principal -->
       <section class="content_body">
