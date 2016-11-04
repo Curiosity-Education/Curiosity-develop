@@ -1,3 +1,14 @@
+#img-portada,#img-portada-dad,#img-portada-admon{
+  display: none;
+}
+#navSearch{
+  position: fixed;
+  /*margin-top: -247px;*/
+  margin-top: -4.7rem !important;
+  z-index: 9999999;
+  width: 250px;
+  margin-left: 50px;
+}
 .panelWelcome{
   background-image: url(/packages/images/dashboards/BannerPrueba.png);
   background-position: center;
