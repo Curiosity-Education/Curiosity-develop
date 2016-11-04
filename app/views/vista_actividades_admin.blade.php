@@ -43,11 +43,11 @@
   <li class="fa fa-angle-right separatorBrand"></li>
   <li><a href="/adminInteligencia{{$obj_nivel[0]->id}}">{{$obj_nivel[0]->nombre}}</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
-  <li><a href="/adminBloque{{$obj_inteligencia[0]->id}}_{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_inteligencia[0]->nombre}}</a></li>
+  <li><a href="/admin-bloque-{{$obj_inteligencia[0]->id}}{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_inteligencia[0]->nombre}}</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
-  <li><a href="/adminTema{{$obj_bloque[0]->id}}_{{$obj_inteligencia[0]->id}}_{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_bloque[0]->nombre}}</a></li>
+  <li><a href="/admin-tema-{{$obj_bloque[0]->id}}{{$obj_inteligencia[0]->id}}{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_bloque[0]->nombre}}</a></li>
   <li class="fa fa-angle-right separatorBrand"></li>
-  <li><a href="/adminActividad{{$obj_tema[0]->id}}_{{$obj_bloque[0]->id}}_{{$obj_inteligencia[0]->id}}_{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_tema[0]->nombre}}</a></li>
+  <li><a href="/admin-actividad-{{$obj_tema[0]->id}}{{$obj_bloque[0]->id}}{{$obj_inteligencia[0]->id}}{{$obj_nivel[0]->id}}" class="brandActive">{{$obj_tema[0]->nombre}}</a></li>
 @stop
 
 @section('panel_opcion')

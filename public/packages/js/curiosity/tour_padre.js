@@ -238,7 +238,7 @@ function __init(){
 /*	function primeraVez(){
 
 		$.ajax({
-			url:'/tour_first',
+			url:'/tour-first',
 			type:'POST',
 		}).done(function(response){
 

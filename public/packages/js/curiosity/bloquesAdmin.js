@@ -254,7 +254,7 @@ $(document).ready(function() {
       case 'add':
       var id_inteligencia = $(this).data('inteligencia');
       var id_nivel = $(this).data('nivelid');
-      bloque.registro.guardarAdd($(this), "/adminBloque"+id_inteligencia+"_"+id_nivel, id_inteligencia);
+      bloque.registro.guardarAdd($(this), "/admin-bloque-"+id_inteligencia+""+id_nivel, id_inteligencia);
         break;
         case 'update':
         bloque.registro.guardarUpdate($(this), '/updateBloque', $(this).data('updateId'), estatus, $(this).data('inteligencia'));
@@ -361,7 +361,7 @@ $(document).ready(function() {
     var bloque = $(this).data('id-bloque');
     var inteligencia = $(this).data('id-inteligencia');
     var nivel = $(this).data('id-nivel');
-    window.location.href="/adminTema"+bloque+"_"+inteligencia+"_"+nivel;
+    window.location.href="/admin-tema-"+bloque+""+inteligencia+""+nivel;
     // bloque.registro.ingresar("/adminTema");
   });
 

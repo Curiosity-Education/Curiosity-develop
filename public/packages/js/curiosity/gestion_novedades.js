@@ -57,7 +57,7 @@ $(document).on("ready",function(){
 			titulo_papa:{
 				required:true,
 				remote:{
-					url:"/tituloRemoto_papa",
+					url:"/tituloRemoto-papa",
 					type:"POST",
 					data:{
 						function(){
@@ -122,7 +122,7 @@ $(document).on("ready",function(){
 
 		if(form_nov_papa.valid()){
 			$.ajax({
-				url:'/add_papaNovedad',
+				url:'/add-papaNovedad',
 				type:"POST",
 				data:formdata_papa,
 				cache:false,
@@ -151,7 +151,7 @@ $(document).on("ready",function(){
 
 		if(form_nov_papaEdit.valid()){
 			$.ajax({
-				url:'/edit_papaNovedad'+'/'+id,
+				url:'/edit-papaNovedad'+'/'+id,
 				type:"POST",
 				data:formdata_papaEdit,
 				cache:false,
@@ -173,7 +173,7 @@ $(document).on("ready",function(){
 		e.preventDefault();
 
 		var id_novedad = $(this).data("yd"); // obtenemos el id de la novedad
-		var uri = '/delete_papaNovedad'+'/'+id_novedad; // creamos una ruta y adjunto el id
+		var uri = '/delete-papaNovedad'+'/'+id_novedad; // creamos una ruta y adjunto el id
 
 		var elimNov_papa = function(){
 			window.location.href = uri;
@@ -297,7 +297,7 @@ $(document).on("ready",function(){
 			tituloNov_hijo:{
 				required:true,
 				remote:{
-					url:"/tituloRemoto_hijo",
+					url:"/tituloRemoto-hijo",
 					type:"POST",
 					data:{
 						function(){
@@ -323,7 +323,7 @@ $(document).on("ready",function(){
 					tituloEditar_hijo:{
 						required:true,
 						remote:{
-							url:"/tituloRemoto_hijo",
+							url:"/tituloRemoto-hijo",
 							type:"POST",
 							data:{
 								function(){
@@ -335,7 +335,7 @@ $(document).on("ready",function(){
 					link_edit:{
 						required:true,
 						remote:{
-							url:"/linkRemoto_hijo",
+							url:"/linkRemoto-hijo",
 							type:"POST",
 							data:{
 								function(){
@@ -378,7 +378,7 @@ $(document).on("ready",function(){
 		if(form_nov_hijo.valid()){
 
 			$.ajax({
-				url:'/add_hijoNovedad',
+				url:'/add-hijoNovedad',
 				type:"POST",
 				data:formdata_hijo,
 				cache:false,
@@ -403,7 +403,7 @@ $(document).on("ready",function(){
 
 		if(form_nov_hijoEdit.valid()){
 			$.ajax({
-				url:'/edit_hijoNovedad'+'/'+id,
+				url:'/edit-hijoNovedad'+'/'+id,
 				type:"POST",
 				data:formdata_hijo_edit,
 				cache:false,
@@ -424,7 +424,7 @@ $(document).on("ready",function(){
 		e.preventDefault();
 
 		var id_novedad = $(this).data("yd"); // obtenemos el id de la novedad
-		var uri = '/delete_hijoNovedad'+'/'+id_novedad; // creamos una ruta y adjunto el id
+		var uri = '/delete-hijoNovedad'+'/'+id_novedad; // creamos una ruta y adjunto el id
 
 		var elimNov_hijo = function(){
 			window.location.href = uri;

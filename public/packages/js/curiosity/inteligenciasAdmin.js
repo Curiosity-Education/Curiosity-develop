@@ -354,7 +354,7 @@ $(document).ready(function() {
   $("#viewSection").on('click', '.objeto > .box > .box-footer > .row > div > .btnIn',function(event) {
     var idSelected = $(this).data('id-enter');
     var nivelID = $(this).data('nivelid');
-    inteligencia.registro.ingresar("/adminBloque"+idSelected+"_"+nivelID);
+    inteligencia.registro.ingresar("/admin-bloque-"+idSelected+""+nivelID);
   });
 
 });
