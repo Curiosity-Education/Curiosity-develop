@@ -690,7 +690,7 @@
 			<div class="col-md-2 col-md-offset-1">
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul class="ul-content">
-					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
+					<li><a href="/nuestro-equipo">- Nuestro equipo</a></li>
 					<li class="separacion"><a href="/mentores">- Mentores</a></li>
 				</ul>
 			</div>
@@ -704,7 +704,7 @@
 				<ul class="ul-content">
 					<li><a href="#">- Preguntas frecuentes</a></li>
 					<li class="separacion"><a href="/terminos-y-condiciones">- Términos y Condiciones</a></li>
-					<li class="separacion"><a href="/aviso_privacidad">- Aviso de privacidad</a></li>
+					<li class="separacion"><a href="/aviso-privacidad">- Aviso de privacidad</a></li>
 				</ul>
 			</div>
 			<!--/.Third column-->
