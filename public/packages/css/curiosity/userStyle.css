@@ -296,6 +296,7 @@ a:focus {
 #navSearch{
   position: fixed;
   margin-top: -247px;
+  /*margin-top: -4.7rem;*/
   z-index: 9999999;
   width: 250px;
   margin-left: 50px;

@@ -188,137 +188,7 @@
 <!-- Fin Sección de Video -->
 
 <!-- Sección de Testimonial -->
-	<section id="testimonial" hidden="hidden" >
-		<div class="bg-color margen-dispositivo">
-			<div class="col-md-6 col-md-offset-3 divider-new z-depth-2 wow fadeInDownBig">
-				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/diploma.png" alt="" style="width:35px; height:35px;" class="">
-					Testimonial
-				</h2>
-			</div>
-			<div class="container">
-				<div class="col-md-12" id="carusel-testimonial">
-					<!--Carousel Wrapper-->
-					<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-						<!--Controls-->
-						<div class="controls-top">
-							<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-							<a class="btn-floating btn-small indicadores" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-						</div>
-						<!--/.Controls-->
-
-						<!--Indicators-->
-						<ol class="carousel-indicators">
-							<li data-target="#multi-item-example" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
-							<li data-target="#multi-item-example" data-slide-to="1" style="background-color:#65499d;"></li>
-						</ol>
-						<!--/.Indicators-->
-
-						<!--Slides-->
-						<div class="carousel-inner" role="listbox">
-
-							<!--First slide-->
-							<div class="carousel-item active">
-
-								<div class="col-md-3 col-sm-6">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Pequeñ@</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Curiosity es muy divertido y lo que me gusta mas es mi avatar.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6 hidden-xs-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Papás</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Mi hijo aprende bastante y lo hace jugando que eso es bueno para el.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 hidden-sm-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 hidden-sm-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<!--/.First slide-->
-
-							<!--Second slide-->
-							<div class="carousel-item">
-
-								<div class="col-md-3 col-sm-6">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6 hidden-xs-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 hidden-sm-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 hidden-sm-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/testinonio-img.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title">Card title</h4><hr>
-											<p class="card-text"><i class="fa fa-quote-left"></i> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<!--/.Second slide-->
-
-						</div>
-						<!--/.Slides-->
-
-					</div>
-					<!--/.Carousel Wrapper-->
-				</div>
-			</div>
-			</div>
-	</section>
 <!-- Fin Sección de Testimonial -->
 
 <!-- Sección de Colaboradores -->
@@ -745,6 +615,8 @@
 			<!-- <li><a href="" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li> -->
 			<li><a href="https://www.youtube.com/channel/UCucy9_laT18ac4DN8qosoEQ" class="btn-floating btn-small btn-gplus" target="_blank"><i class="fa fa-youtube"> </i></a></li>
 		</ul>
+		<!--- Boton Like fb desde la landing -->
+		<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcuriosity.mx%2F&width=214&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=847478262051734" width="214" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</div>
 	<!--/.Social buttons-->
 

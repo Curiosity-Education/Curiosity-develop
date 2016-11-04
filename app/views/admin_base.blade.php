@@ -296,111 +296,111 @@
         @elseif(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
         <section class="content-header" id="img-portada-dad">
         @else
-        <section class="content-header" id="img-portada-admon">
+        <section class="content-header" id="img-portada-admon" >
         @endif
           <div class="">
             @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
-           	<h1 id="titulo_hijo">
-                @yield('titulo_contenido')
-            		@yield('titulo_contenido_hijo')
-              	<!-- <button class="btn btn pull-right tooltipShow" id="portada-btn" data-toggle="tooltip" data-placement="bottom" title="Cambiar imagen"><i class="fa fa-picture-o"></i></button> -->
-  			   </h1>
+            <h1 id="titulo_hijo">
+              @yield('titulo_contenido')
+              @yield('titulo_contenido_hijo')
+              <!-- <button class="btn btn pull-right tooltipShow" id="portada-btn" data-toggle="tooltip" data-placement="bottom" title="Cambiar imagen"><i class="fa fa-picture-o"></i></button> -->
+            </h1>
             @else
           	<h1 id="titulo">
           		@yield('titulo_contenido')
           		<!-- <button class="btn btn pull-right tooltipShow" id="portada-btn" data-toggle="tooltip" data-placement="bottom" title="Cambiar imagen"><i class="fa fa-picture-o"></i></button> -->
 			      </h1>
             @endif
-          <div class="custom-brands">
-    				@if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
-    				<h4 id="msj_bienvenida">@yield('titulo_small')</h4>
-    				@endif
+            <div class="custom-brands">
+              @if(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
+              <h4 id="msj_bienvenida">@yield('titulo_small')</h4>
+              @endif
 
-				 {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
-					<h4 id="msj_bienvenida_hijo">@yield('titulo_small_hijo')
-						<a href="#estados_animo" class="pull-right tooltipShow" title="¿Cómo te sientes hoy {{Auth::user()->username}}?"
+              {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
+              <h4 id="msj_bienvenida_hijo">@yield('titulo_small_hijo')
+              <a href="#estados_animo" class="pull-right tooltipShow" title="¿Cómo te sientes hoy {{Auth::user()->username}}?"
 							data-toggle="collapse" aria-expanded="false" aria-controls="estados_animo">
 							<!-- Aqui aparece el emoji del estado del niño -->
-							<img src="/packages/icons/happiness.png" class="img-responsive" alt="" style="width:35px; height:35px;" id="estado_actual">
-						</a>
-						<div class="">
-							<div class="collapse" id="estados_animo" style="margin-top:5px;">
-							  <div class="well pull-right" style="color:black; z-index:1000; position:absolute;
-							  	background-color:white; border:5px solid #44c6ee;">
-							  	<h2 class="fontHijo" style="margin-top:0px;">¿Cómo te sientes?
-							  	<small>Da click en el emoji</small><hr class="hrHijo" style="background-color:#2d96ba; margin-bottom:15px; margin-top:0px; width:100%;"></h2>
-							  	<div class="content-emocion">
-							  		<a href="#" id="feliz" role="button">
-										<span><img src="/packages/icons/happy-1.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
-									</a>
-									<div class="nombres">
-										<p>Feliz</p>
-									</div>
-							  	</div>
-							  	<div class="content-emocion">
-							  		<a href="#" id="triste" role="button">
-							  			<span><img src="/packages/icons/sad-1.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
-							  		</a>
-							  		<div class="nombres">
-							  			<p>Triste</p>
-							  		</div>
-							  	</div>
-							  	<div class="content-emocion">
-							  		<a href="#" id="enojado" role="button">
-							  			<span><img src="/packages/icons/angry.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
-							  		</a>
-							  		<div class="nombres">
-							  			<p>Enojado</p>
-							  		</div>
-							  	</div>
-							  	<div class="content-emocion">
-							  		<a href="#" id="aburrido" role="button">
-							  			<span><img src="/packages/icons/indifferent.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
-							  		</a>
-							  		<div class="nombres">
-							  			<p>Aburrido</p>
-							  		</div>
-							  	</div>
-							  	<div class="content-emocion">
-							  		<a href="#" id="asombrado" role="button">
-							  			<span><img src="/packages/icons/amazed.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
-							  		</a>
-							  		<div class="nombres">
-							  			<p>Asombrado</p>
-							  		</div>
-							  	</div>
-
-							  </div>
-							</div>
-						</div>
-					</h4>
-				 @endif --}}
-              <ul id="migas">
-                @yield('migas')
-              </ul>
-            </div>
+                <img src="/packages/icons/happiness.png" class="img-responsive" alt="" style="width:35px; height:35px;" id="estado_actual">
+              </a>
+              <div class="">
+                <div class="collapse" id="estados_animo" style="margin-top:5px;">
+                  <div class="well pull-right" style="color:black; z-index:1000; position:absolute; background-color:white; border:5px solid #44c6ee;">
+                    <h2 class="fontHijo" style="margin-top:0px;">¿Cómo te sientes?
+                      <small>Da click en el emoji</small>
+                      <hr class="hrHijo" style="background-color:#2d96ba; margin-bottom:15px; margin-top:0px; width:100%;">
+                    </h2>
+                    <div class="content-emocion">
+                      <a href="#" id="feliz" role="button">
+                        <span><img src="/packages/icons/happy-1.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
+                      </a>
+                      <div class="nombres">
+                        <p>Feliz</p>
+                      </div>
+                    </div>
+                    <div class="content-emocion">
+                      <a href="#" id="triste" role="button">
+                        <span><img src="/packages/icons/sad-1.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
+                      </a>
+                      <div class="nombres">
+                        <p>Triste</p>
+                      </div>
+                    </div>
+                    <div class="content-emocion">
+                      <a href="#" id="enojado" role="button">
+                        <span><img src="/packages/icons/angry.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
+                      </a>
+                      <div class="nombres">
+                        <p>Enojado</p>
+                      </div>
+                    </div>
+                    <div class="content-emocion">
+                      <a href="#" id="aburrido" role="button">
+                        <span><img src="/packages/icons/indifferent.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
+                      </a>
+                      <div class="nombres">
+                        <p>Aburrido</p>
+                      </div>
+                    </div>
+                    <div class="content-emocion">
+                      <a href="#" id="asombrado" role="button">
+                        <span><img src="/packages/icons/amazed.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
+                      </a>
+                      <div class="nombres">
+                        <p>Asombrado</p>
+                      </div>
+                    </div>
+                  </div>
+  							</div>
+              </div>
+            </h4>
+            @endif--}}
+            <ul id="migas">
+              @yield('migas')
+            </ul>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Contenido principal -->
-        <section class="content_body">
-            <div class="container-fluid">
-              <div class="row" id="make-all">
-              @if (!Auth::user()->hasRole('padre') and !Auth::user()->hasRole('padre_free') and !Auth::user()->hasRole('demo_padre'))
-              <div class="form-group" id="navSearch">
-               <div class="input-group">
-                 <form action="/buscarTema" method="post" id="formFind">
-                   <input type="text" class="pull-left form-control" id="navbar-search-input" name="buscarTema" placeholder="Buscar Temas">
-                 </form>
-                 <span class="input-group-addon" id="btnfind">
-                   <spna class="fa fa-search"></spna>
-                 </span>
-               </div>
-             </div>
-             @endif
+      <!-- Contenido principal -->
+      <section class="content_body">
+        <div class="container-fluid">
+          <div class="row" id="make-all">
+            @if (!Auth::user()->hasRole('padre') and !Auth::user()->hasRole('padre_free') and !Auth::user()->hasRole('demo_padre'))
+            <div class="form-group" id="navSearch">
+              <div class="input-group">
+                <form action="/buscarTema" method="post" id="formFind">
+                  <input type="text" class="pull-left form-control" id="navbar-search-input" name="buscarTema" placeholder="Buscar Temas">
+                </form>
+                <span class="input-group-addon" id="btnfind">
+                  <spna class="fa fa-search"></spna>
+                </span>
+              </div>
+            </div>
+            @endif
             @yield('panel_opcion') <!-- panel para contenido en general -->
-            </div>
           </div>
+        </div>
       </section>
     </div>
 
