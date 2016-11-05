@@ -339,6 +339,7 @@
                       </div>
                     </div>
                     <div class="content-emocion">
+
                       <a href="#" id="triste" role="button">
                         <span><img src="/packages/icons/sad-1.png" class="img-responsive" alt="" style="width:35px; height:35px;"></span>
                       </a>
