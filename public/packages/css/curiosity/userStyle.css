@@ -399,6 +399,7 @@ a:focus {
 }
 .main-header .logo .logo-lg {
   display: block;
+  font-size: 1.8rem;
 }
 .main-header .logo .logo-mini {
   display: none;

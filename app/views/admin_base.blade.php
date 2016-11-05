@@ -27,12 +27,12 @@
          <header class="main-header" >
             <div class="logo">
                <span class="logo-mini">
-                  <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
+                  <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px; margin-top: 1rem;">
                </span>
                <span class="logo-lg">
                   <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
                   &nbsp;
-                  <b>Curiosity Edu<small></small></b>
+                  Curiosity Edu
                </span>
             </div>
 
