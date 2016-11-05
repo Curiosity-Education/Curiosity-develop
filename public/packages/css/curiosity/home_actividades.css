@@ -1,206 +1,233 @@
 .panelWelcome{
-  background-image: url(/packages/images/dashboards/BannerPrueba.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 35rem;
-  padding: 2.5rem;
-  box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
-  border-radius: 1rem;
-  margin-top: 1rem;
+   background-image: url(/packages/images/dashboards/BannerPrueba.png);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 27rem;
+   padding: 2.5rem;
+   box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
+   border-radius: 1rem;
+   margin-top: 1rem;
 }
 .carruselNews{
-  padding-top: 1.5rem;
-  font-family: Kiddish !important;
+   padding-top: 1.5rem;
+   font-family: Kiddish !important;
 }
 .carousel-caption > h3{
-  font-family: Kiddish !important;
-  font-size: 3rem;
-  margin-bottom: 2rem;
+   font-family: Kiddish !important;
+   font-size: 3rem;
+   margin-bottom: 2rem;
 }
 .carousel-caption > button{
-  padding: 1rem;
-  font-size: 1.5rem;
-  padding-left: 8rem;
-  padding-right: 8rem;
-  border-radius: 10rem;
-  outline: none !important;
-  background-color: #ed6922;
-  border: solid .5rem #f68e55;
+   padding: 1rem;
+   font-size: 1.5rem;
+   padding-left: 8rem;
+   padding-right: 8rem;
+   border-radius: 10rem;
+   outline: none !important;
+   background-color: #ed6922;
+   border: solid .5rem #f68e55;
 }
 .imgSlideNew{
-  width: 100%;
-  height: auto !important;
-  min-height: 35rem !important;
-  max-height: 35rem !important;
-  border-radius: 1rem !important;
+   width: 100%;
+   height: auto !important;
+   min-height: 35rem !important;
+   max-height: 35rem !important;
+   border-radius: 1rem !important;
 }
 .panels{
-  padding-top: 1.5rem;
+   padding-top: 1.5rem;
 }
 .panelsLook{
-  background-color: rgb(255, 255, 255);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 3.5rem;
-  padding-bottom: 1.5rem;
-  box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
-  border-radius: 1rem;
-  margin-bottom: 1.5rem;
-  font-family: Kiddish !important;
+   background-color: rgb(255, 255, 255);
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
+   padding-top: 3.5rem;
+   padding-bottom: 1.5rem;
+   box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
+   border-radius: 1rem;
+   margin-bottom: 1.5rem;
+   font-family: Kiddish !important;
 }
 .panelsLook > center > h4{
-  font-weight: bolder;;
-  font-size: 1.7rem;
-  font-family: Kiddish !important;
-  margin-top: -3.5rem;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  color: #fff;
+   font-weight: bolder;;
+   font-size: 1.7rem;
+   font-family: Kiddish !important;
+   margin-top: -3.5rem;
+   margin-left: -1.5rem;
+   margin-right: -1.5rem;
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+   padding-top: 1.5rem;
+   padding-bottom: 1.5rem;
+   color: #fff;
 }
 .nameGamePanels{
-  text-align: left;
+   text-align: left;
 }
 .nameGamePanels > h5{
-  font-size: 1.6rem;
-  font-family: Kiddish !important;
-  font-weight: bold;
+   font-size: 1.6rem;
+   font-family: Kiddish !important;
+   font-weight: bold;
 }
 .nameGamePanels > h6{
-  font-family: kiddish;
-  font-size: 1.3rem;
-  margin-bottom: 0;
+   font-family: kiddish;
+   font-size: 1.3rem;
+   margin-bottom: 0;
 }
 .elementObj{
-  margin-bottom: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 1rem;
-  background-color: white;
+   margin-bottom: 1.5rem;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+   border-radius: 1rem;
+   background-color: white;
 }
 .elementObj:hover{
-  transition: .4s;
-  cursor: pointer;
-  box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
-  transform: scale(1.01);
+   transition: .4s;
+   cursor: pointer;
+   box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
+   transform: scale(1.01);
 }
 .imgGrade{
-  border-radius: 1rem;
-  transition: width .4s, height .4s, transform .4s;
-  box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.1);
-  padding: 2rem;
+   border-radius: 1rem;
+   transition: width .4s, height .4s, transform .4s;
+   box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.1);
+   padding: 2rem;
 }
 .imgGrade:hover{
-  cursor: pointer;
-  transform: scale(1.1);
+   cursor: pointer;
+   transform: scale(1.1);
 }
 .isPremiumThis{
-  font-size: 0.5em;
-  background-color: #ed6922;
-  color: white;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  text-align: center;
-  padding-top: .5rem;
-  position: absolute;
-  margin-left: 89.5%;
-  margin-top: -4rem;
+   font-size: 0.5em;
+   background-color: #ed6922;
+   color: white;
+   width: 2rem;
+   height: 2rem;
+   border-radius: 50%;
+   text-align: center;
+   padding-top: .5rem;
+   position: absolute;
+   margin-left: 89.5%;
+   margin-top: -4rem;
 }
 .isLockThis{
-  font-size: 0.5em;
-  background-color: #2d96ba;
-  color: white;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  text-align: center;
-  padding-top: .5rem;
-  position: absolute;
-  margin-left: 85%;
-  margin-top: -4rem;
+   font-size: 0.5em;
+   background-color: #2d96ba;
+   color: white;
+   width: 2rem;
+   height: 2rem;
+   border-radius: 50%;
+   text-align: center;
+   padding-top: .5rem;
+   position: absolute;
+   margin-left: 85%;
+   margin-top: -4rem;
 }
 .frameVideo{
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.1);
-  border-radius: 1rem;
+   padding: 10px;
+   background-color: #fff;
+   box-shadow: .1rem .1rem .4rem .2rem rgba(0,0,0,.1);
+   border-radius: 1rem;
 }
 #nuevosVideos{
-  background-color: white;
-  border-radius: 1rem;
-  margin-top: -2rem;
-  padding-bottom: 5rem;
-  box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
+   background-color: white;
+   border-radius: 1rem;
+   margin-top: -2rem;
+   padding-bottom: 5rem;
+   box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
 }
 #nuevosVideos > h3{
-  font-family: kiddish;
-  font-weight: bolder;
-  font-size: 1.7rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  color: #fff;
-  background-color: #8a489b;
-  text-align: center;
-  margin-bottom: 4rem;
+   font-family: kiddish;
+   font-weight: bolder;
+   font-size: 1.7rem;
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+   padding-top: 1.5rem;
+   padding-bottom: 1.5rem;
+   color: #fff;
+   background-color: #8a489b;
+   text-align: center;
+   margin-bottom: 4rem;
 }
 #gradosCuriosity{
-  background-color: white;
-  border-radius: 1rem;
-  margin-top: -.5rem;
-  padding-bottom: 5rem;
-  box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
+   background-color: white;
+   border-radius: 1rem;
+   margin-top: -.5rem;
+   padding-bottom: 5rem;
+   box-shadow: .2rem .2rem .2rem rgba(0,0,0,.1);
 }
 #gradosCuriosity > h3{
-  font-family: kiddish;
-  font-weight: bolder;
-  font-size: 1.7rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  color: #fff;
-  background-color: #ec2726;
-  text-align: center;
-  margin-bottom: 4rem;
+   font-family: kiddish;
+   font-weight: bolder;
+   font-size: 1.7rem;
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+   padding-top: 1.5rem;
+   padding-bottom: 1.5rem;
+   color: #fff;
+   background-color: #ec2726;
+   text-align: center;
+   margin-bottom: 4rem;
 }
 
 @media (max-width: 1024px) {
-  .panelWelcome{
-    height: 25rem;
-  }
-  .imgSlideNew{
-    width: 100%;
-    height: auto !important;
-    min-height: 25rem !important;
-    max-height: 25rem !important;
-    border-radius: 1rem !important;
-  }
-  .carousel-caption > button{
-    margin-bottom: -1.5rem;
-  }
-  .carousel-caption > h3{
-    font-size: 2rem;
-  }
-  .nameGamePanels > h6{
-    font-size: 1rem;
-  }
-  .nameGamePanels > h5{
-    font-size: 1.3rem;
-  }
-  .panelsLook > center > h4{
-    font-size: 1.4rem;
-  }
-  #nuevosVideos > h3{
-    font-size: 1.4rem;
-  }
-  #gradosCuriosity > h3{
-    font-size: 1.4rem;
-  }
+   .panelWelcome{
+      height: 17rem;
+   }
+   .imgSlideNew{
+      width: 100%;
+      height: auto !important;
+      min-height: 25rem !important;
+      max-height: 25rem !important;
+      border-radius: 1rem !important;
+   }
+   .carousel-caption > button{
+      margin-bottom: -1.5rem;
+   }
+   .carousel-caption > h3{
+      font-size: 2rem;
+   }
+   .nameGamePanels > h6{
+      font-size: 1rem;
+   }
+   .nameGamePanels > h5{
+      font-size: 1.3rem;
+   }
+   .panelsLook > center > h4{
+      font-size: 1.4rem;
+   }
+   #nuevosVideos > h3{
+      font-size: 1.4rem;
+   }
+   #gradosCuriosity > h3{
+      font-size: 1.4rem;
+   }
+}
+@media (max-width: 1024px) {
+   .carousel-caption > button{
+      padding: .5rem;
+      font-size: 1rem;
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+      border-radius: 10rem;
+      outline: none !important;
+      background-color: #ed6922;
+      border: solid .3rem #f68e55;
+      margin-bottom: -3rem;
+   }
+   .carousel-caption > h3{
+      font-size: 1.2rem;
+      margin-bottom: -.7rem;
+   }
+   .panelWelcome{
+      height: 7rem;
+   }
+   .imgSlideNew{
+      width: 100%;
+      height: auto !important;
+      min-height: 15rem !important;
+      max-height: 15rem !important;
+      border-radius: 1rem !important;
+   }
 }
