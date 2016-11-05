@@ -13,7 +13,6 @@
       {{ HTML::style('/packages/css/curiosity/alert.css') }}
       {{ HTML::style('/packages/css/curiosity/userStyle.css') }}
       {{ HTML::style('/packages/css/curiosity/vistaEstandar.css') }}
-      {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
       {{ HTML::style('/packages/css/libs/tooltipster/tooltipster.css') }}
       {{ HTML::style('/packages/css/libs/sweetalert/sweetalert.css') }}
       {{HTML::style('/packages/css/libs/notificacion_toast/jquery.toast.css')}}
