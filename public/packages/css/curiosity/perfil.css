@@ -646,10 +646,6 @@ div img#logo{
 
 /* estilos para PERFIL HIJO */
 
-img#avatar{
-	margin-bottom: 50px;
-}
-
 div#sandbox-container div#data_picker div#alert-picker div.datepicker{
 	display: none !important;
 }

@@ -162,84 +162,84 @@ $(document).ready(function() {
 
   // utilización del cropper
 
-  var $imgCrop = $("#imageH");
-  var $imagenForCrop;
-  var $objNavigator;
-  var $objetoUrl;
-  var pesoMaximoInCrop = 2048000;
-  var extensionesInCrop = new Array(".png", ".jpg", ".jpeg");
-  var tempSRC;
-
-  $imgCrop.cropper({
-    aspectRatio : 1/1,
-    responsive: true,
-    autoCropArea : 0.8,
-    preview : ".preview",
-    dragMode :'crop',
-    crop: function(e) {
-      $("#datX").val(e.x + " px");
-      $("#datY").val(e.y + " px");
-      $("#datW").val(e.width + " px");
-      $("#datH").val(e.height + " px");
-    }
-  });
-
-  $("#inImageH").change(function() {
-    tempSRC = $imgCrop.attr('src');
-    var $archivo = $(this);
-    if($curiosity.comprobarFile($archivo.val(), extensionesInCrop)){
-      $imagenForCrop = document.getElementById("inImageH").files;
-      if($imagenForCrop[0].size <= pesoMaximoInCrop){
-        $objNavigator = window.URL || window.webkitURL;
-        $objetoUrl = $objNavigator.createObjectURL($imagenForCrop[0]);
-        cambiarContenidoCropper($objetoUrl);
-      }
-      else{
-        $archivo.val('');
-        cambiarContenidoCropper(tempSRC);
-        $curiosity.noty("La imagen seleccionada excede el peso máximo (2 MB)", 'warning');
-      }
-    }
-    else{
-      $archivo.val('');
-      cambiarContenidoCropper(tempSRC);
-    }
-  });
-
-  function cambiarContenidoCropper($src){
-    $imgCrop.one('built.cropper', function(){}).cropper('reset').cropper('replace', $src);
-    console.log("chanegCropperContent");
-  }
-
-  $("#btnRecortarH").click(function(event) {
-    var txtBtn = $(this).text();
-    $(this).text("Guardando");
-    var formData = new FormData($("#frm_change_image_H")[0]);
-    formData.append('x', $("#datX").val());
-    formData.append('y', $("#datY").val());
-    formData.append('w', $("#datW").val());
-    formData.append('h', $("#datH").val());
-    $.ajax({
-      url: '/foto',
-      type: 'POST',
-      data: formData,
-      cache:false,
-      contentType:false,
-      processData:false,
-    })
-    .done(function(r) {
-      console.log(r);
-      $(".img-profile").attr("src", r);
-      $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
-      $("button[data-dismiss='modal']").trigger("click");
-    })
-    .fail(function(e) {
-      console.log(e);
-    })
-    .always(function(){
-      $(this).text(txtBtn);
-    });
-
-  });
+  // var $imgCrop = $("#imageH");
+  // var $imagenForCrop;
+  // var $objNavigator;
+  // var $objetoUrl;
+  // var pesoMaximoInCrop = 2048000;
+  // var extensionesInCrop = new Array(".png", ".jpg", ".jpeg");
+  // var tempSRC;
+  //
+  // $imgCrop.cropper({
+  //   aspectRatio : 1/1,
+  //   responsive: true,
+  //   autoCropArea : 0.8,
+  //   preview : ".preview",
+  //   dragMode :'crop',
+  //   crop: function(e) {
+  //     $("#datX").val(e.x + " px");
+  //     $("#datY").val(e.y + " px");
+  //     $("#datW").val(e.width + " px");
+  //     $("#datH").val(e.height + " px");
+  //   }
+  // });
+  //
+  // $("#inImageH").change(function() {
+  //   tempSRC = $imgCrop.attr('src');
+  //   var $archivo = $(this);
+  //   if($curiosity.comprobarFile($archivo.val(), extensionesInCrop)){
+  //     $imagenForCrop = document.getElementById("inImageH").files;
+  //     if($imagenForCrop[0].size <= pesoMaximoInCrop){
+  //       $objNavigator = window.URL || window.webkitURL;
+  //       $objetoUrl = $objNavigator.createObjectURL($imagenForCrop[0]);
+  //       cambiarContenidoCropper($objetoUrl);
+  //     }
+  //     else{
+  //       $archivo.val('');
+  //       cambiarContenidoCropper(tempSRC);
+  //       $curiosity.noty("La imagen seleccionada excede el peso máximo (2 MB)", 'warning');
+  //     }
+  //   }
+  //   else{
+  //     $archivo.val('');
+  //     cambiarContenidoCropper(tempSRC);
+  //   }
+  // });
+  //
+  // function cambiarContenidoCropper($src){
+  //   $imgCrop.one('built.cropper', function(){}).cropper('reset').cropper('replace', $src);
+  //   console.log("chanegCropperContent");
+  // }
+  //
+  // $("#btnRecortarH").click(function(event) {
+  //   var txtBtn = $(this).text();
+  //   $(this).text("Guardando");
+  //   var formData = new FormData($("#frm_change_image_H")[0]);
+  //   formData.append('x', $("#datX").val());
+  //   formData.append('y', $("#datY").val());
+  //   formData.append('w', $("#datW").val());
+  //   formData.append('h', $("#datH").val());
+  //   $.ajax({
+  //     url: '/foto',
+  //     type: 'POST',
+  //     data: formData,
+  //     cache:false,
+  //     contentType:false,
+  //     processData:false,
+  //   })
+  //   .done(function(r) {
+  //     console.log(r);
+  //     $(".img-profile").attr("src", r);
+  //     $curiosity.noty("La imagen fue guardada y/o recortada exitosamente","success");
+  //     $("button[data-dismiss='modal']").trigger("click");
+  //   })
+  //   .fail(function(e) {
+  //     console.log(e);
+  //   })
+  //   .always(function(){
+  //     $(this).text(txtBtn);
+  //   });
+  //
+  // });
 
 });

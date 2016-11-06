@@ -284,6 +284,18 @@ ul#slider{
   border-top-right-radius: 5px;
   margin-bottom: 5px;
 }
+#nameAvatar{
+   margin: 0;
+   margin-left: -1.5rem;
+   margin-right: -1.5rem;
+   background-color: #2262ae;
+   color: #fff;
+   padding: 1.5rem;
+   text-align: center;
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+   margin-bottom: 4rem;
+}
 
 /*Fin Videos de estudio Modal*/
 
