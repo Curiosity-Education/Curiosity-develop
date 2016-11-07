@@ -291,7 +291,7 @@
       <!-- Zona de Contenido general -->
       <div class="content-wrapper" hidden="hidden"><br><br>
         <!-- Encabezado de la pagina -->
-        {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
+        @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
         <section class="content-header" id="img-portada">
         @elseif(Auth::user()->hasRole('padre') || Auth::user()->hasRole('padre_free') || Auth::user()->hasRole('demo_padre'))
         <section class="content-header" id="img-portada-dad">
@@ -316,7 +316,7 @@
               <h4 id="msj_bienvenida">@yield('titulo_small')</h4>
               @endif
 
-              @if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
+              {{--@if(Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo'))
               <h4 id="msj_bienvenida_hijo">@yield('titulo_small_hijo')
               <a href="#estados_animo" class="pull-right tooltipShow" title="¿Cómo te sientes hoy {{Auth::user()->username}}?"
 							data-toggle="collapse" aria-expanded="false" aria-controls="estados_animo">
@@ -374,13 +374,13 @@
   							</div>
               </div>
             </h4>
-            @endif
+            @endif--}}
             <ul id="migas">
               @yield('migas')
             </ul>
           </div>
         </div>
-      </section>--}}
+      </section>
 
       <!-- Contenido principal -->
       <section class="content_body">
