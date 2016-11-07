@@ -16,7 +16,7 @@ input[type='text']{
   border: solid 1px #c9ccd0;
 }
 
-#playSelected{
+#playSelected,#btnSave{
   background-color: #2262ae;
   color: #fff;
   padding: 10px;
@@ -27,4 +27,9 @@ input[type='text']{
 }
 #tabla-videos>tbody>tr{
     cursor: move;
+}
+.ifr-videos-table{
+    width: 20vw;
+    height: 20vh;
+    text-align: center;
 }

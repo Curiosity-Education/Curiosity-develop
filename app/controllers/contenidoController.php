@@ -5,7 +5,6 @@
  */
 class contenidoController extends BaseController
 {
-
   function getInicio(){
     if(!Auth::user()->hasRole('padre_free') && !Auth::user()->hasRole('demo_padre') && !Auth::user()->hasRole('padre')){
       if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('hijo_free') || Auth::user()->hasRole('demo_hijo')){
@@ -198,8 +197,18 @@ class contenidoController extends BaseController
     ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
     ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
     ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+    ->where('niveles.active', '=', '1')
+    ->where('inteligencias.active', '=', '1')
+    ->where('bloques.active', '=', '1')
+    ->where('temas.active', '=', '1')
+    ->where('actividades.active', '=', '1')
+    ->where('actividades.estatus', '=', 'unlock')
+    ->where('temas.estatus', '=', 'unlock')
+    ->where('bloques.estatus', '=', 'unlock')
+    ->where('inteligencias.estatus', '=', 'unlock')
+    ->where('niveles.estatus', '=', 'unlock')
     ->select('videos.code_embed', 'temas.bg_color as color')
-    ->orderBy('videos.id', 'desc')
+    ->orderBy('videos.index_order', 'asc')
     ->limit(4)
     ->get();
 
@@ -239,32 +248,90 @@ class contenidoController extends BaseController
     return View::make('vista_videosInicio');
   }
 
-  function myVideos(){
-    $videos = video::join('actividades', 'videos.actividad_id', '=', 'actividades.id')
-    ->join('temas', 'actividades.tema_id', '=', 'temas.id')
-    ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
-    ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
-    ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
-    ->where('niveles.active', '=', '1')
-    ->where('inteligencias.active', '=', '1')
-    ->where('bloques.active', '=', '1')
-    ->where('temas.active', '=', '1')
-    ->where('actividades.active', '=', '1')
-    ->where('actividades.estatus', '=', 'unlock')
-    ->where('temas.estatus', '=', 'unlock')
-    ->where('bloques.estatus', '=', 'unlock')
-    ->where('inteligencias.estatus', '=', 'unlock')
-    ->where('niveles.estatus', '=', 'unlock')
-    ->select('videos.code_embed', 'niveles.nombre as nivel', 'bloques.nombre as bloque', 'inteligencias.nombre as inteligencia', 'temas.nombre as tema', 'actividades.nombre as actividad')
-    ->orderBy('videos.id', 'desc')
-    ->get();
-    return $videos;
-  }
+    function myVideos(){
+        $videos = video::join('actividades', 'videos.actividad_id', '=', 'actividades.id')
+        ->join('temas', 'actividades.tema_id', '=', 'temas.id')
+        ->join('bloques', 'temas.bloque_id', '=', 'bloques.id')
+        ->join('inteligencias', 'bloques.inteligencia_id', '=', 'inteligencias.id')
+        ->join('niveles', 'inteligencias.nivel_id', '=', 'niveles.id')
+        ->where('niveles.active', '=', '1')
+        ->where('inteligencias.active', '=', '1')
+        ->where('bloques.active', '=', '1')
+        ->where('temas.active', '=', '1')
+        ->where('actividades.active', '=', '1')
+        ->where('actividades.estatus', '=', 'unlock')
+        ->where('temas.estatus', '=', 'unlock')
+        ->where('bloques.estatus', '=', 'unlock')
+        ->where('inteligencias.estatus', '=', 'unlock')
+        ->where('niveles.estatus', '=', 'unlock')
+        ->select('videos.code_embed', 'niveles.nombre as nivel', 'bloques.nombre as bloque', 'inteligencias.nombre as inteligencia','videos.id','videos.index_order', 'temas.nombre as tema', 'actividades.nombre as actividad')
+        ->orderBy('videos.index_order', 'asc')
+        ->get();
+        Session::put("videos",$videos);
+        return $this->indexar(Session::get("videos"));
+    }
 
-
+    private function indexar($videos){
+        $index = 1;
+        foreach($videos as $video){
+            $video->index_order = $index;
+            $index++;
+        }
+        return $videos;
+    }
+    
+    public function reindexar(){
+        $arrayVideos = Input::get("videos");
+        /*===========================================
+            Validamos que los objetos mand-
+            os al cliente sean la misma C-
+            cantidad de objetos que los r-
+            ecividos del lado del cliente
+        =============================================*/  
+        if(count($arrayVideos) == count(Session::get("videos"))){
+            $index = 1;
+            $this->ordenarArrayJson($arrayVideos,0,count($arrayVideos)-1);//ordenamos en orden ascendente 
+            foreach($arrayVideos as $video){
+                $video_ = video::find($video["id"]);
+                if($video_){
+                    $video_->index_order = $index;
+                    $video_->save();
+                    $index++;
+                }
+            }
+            return Response::json(["status"=>true]);
+        }else{
+            return Response::json(["status"=>false]);
+        } 
+    }
+    /*===================================================
+        función para ordenar ascendentemente el array
+        esto función en caso de que haya alguna inco-
+        sistencia en el orden del array como se envió
+        del lado del cliente, para esto volvemos a 
+        reordenarlo,(solo para verificar)- 
+    ====================================================*/
+    private function ordenarArrayJson($jsons,$izq,$der){
+      $pivote=$jsons[$izq]; 
+      $i=$izq; 
+      $j=$der; 
+      $aux;
+        while($i<$j){           
+           while(intval($jsons[$i]["index_order"])<=intval($pivote["index_order"]) && $i<$j) $i++; 
+           while(intval($jsons[$j]["index_order"])>intval($pivote["index_order"])) $j--;         
+           if ($i<$j) {                                         
+               $aux= $jsons[$i];                 
+               $jsons[$i]=$jsons[$j];
+               $jsons[$j] =$aux;
+           }
+         }
+         $jsons[$izq]=$jsons[$j];
+         $jsons[$j]=$pivote; 
+         if($izq<$j-1)
+            $this->ordenarArrayJson($jsons,$izq,$j-1); 
+         if($j+1 <$der)
+            $this->ordenarArrayJson($jsons,$j+1,$der); 
+    }
 }
-
-
-
-
- ?>
+    
+    
