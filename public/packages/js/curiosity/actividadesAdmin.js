@@ -343,7 +343,7 @@ $(document).ready(function() {
         $curiosity.noty("El archivo PDF es requerido", 'warning');
       }
       else{
-        actividad.registro.guardarAdd($(this), "/adminActividad"+id_tema+"_"+id_bloque+"_"+id_inteligencia+"_"+id_nivel, id_tema);
+        actividad.registro.guardarAdd($(this), "/admin-actividad-"+id_tema+""+id_bloque+""+id_inteligencia+""+id_nivel, id_tema);
       }
         break;
         case 'update':

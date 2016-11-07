@@ -6,13 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="keywords" content="Curiosity, Educación,equidad, divertida,juegos,pdf, documentos, videos,retroalimentación,aventura,limites,evaluado,resultados, profesores">
-	<meta name="description" content="Curiosity es una plataforma web educativa que permite aprender con videojuegos educativos y apoyo de videos animados hechos con explicaciones de  profesores reconocidos, materiales visuales y retroalimentación del desempeño desarrollando una comunidad de aprendizaje.">
+	<meta name="description" content="Curiosity es una plataforma educativa que permite aprender con videojuegos educativos y apoyo de videos animados.">
 	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
 	{{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
-	{{ HTML::style('/packages/css/curiosity/style-index.css') }}
+	{{ HTML::style('/packages/css/curiosity/style-index.min.css') }}
 	{{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css') }}
-	{{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
-  {{ HTML::style('/packages/css/curiosity/preloadSpinner.css') }}
+	{{ HTML::style('/packages/css/curiosity/preloadSpinner.min.css') }}
   @yield('css')
 	<title>@yield('title')</title>
 </head>
