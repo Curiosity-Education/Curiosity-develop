@@ -29,17 +29,17 @@ Route::post('/last-session','sesionInfoController@getLastSession');
 Route::get('/terminos-y-condiciones',function(){
     return View::make('terminos');
 });
-Route::get('/aviso_privacidad',function(){
+Route::get('/aviso-privacidad',function(){
     return View::make('aviso-privacidad');
 });
 
-Route::get('/nuestro_equipo',function(){
+Route::get('/nuestro-equipo',function(){
 	return View::make('nuestro-equipo');
 });
 Route::get('/mentores',function(){
 	return View::make('mentores');
 });
-Route::get('/preguntas_frecuentes',function(){
+Route::get('/preguntas-frecuentes',function(){
 	return View::make('preguntas-frecuentes');
 });
 
@@ -87,7 +87,7 @@ Route::group(array('before' => 'auth'), function(){
           Route::post('/regHijo','hijoController@addHijo');
           Route::post('/cotarhijos','padreController@getCountHijos');
           Route::post('/getsegs','padreController@seguimientoHijo');
-          Route::post('/tour_first','padreController@tourFirst');
+          Route::post('/tour-first','padreController@tourFirst');
         });
         // salir (cerrar sesion)
         Route::get('/logout', 'loginController@salir');
@@ -132,19 +132,19 @@ Route::group(array('before' => 'auth'), function(){
 
 		Route::group(array('before' => 'gestionar_novedades'),function(){
 			// Validaciones remotas
-			Route::match(array('GET','POST'), '/tituloRemoto_papa', 'novedadesController@tituloNov_papa');
-			Route::match(array('GET','POST'), '/tituloRemoto_hijo', 'novedadesController@tituloNov_hijo');
-      		Route::match(array('GET','POST'), '/linkRemoto_hijo', 'novedadesController@linkNov_hijo');
+			Route::match(array('GET','POST'), '/tituloRemoto-papa', 'novedadesController@tituloNov_papa');
+			Route::match(array('GET','POST'), '/tituloRemoto-hijo', 'novedadesController@tituloNov_hijo');
+      		Route::match(array('GET','POST'), '/linkRemoto-hijo', 'novedadesController@linkNov_hijo');
 
 			// Gestión Novedades
 			Route::match(array('GET','POST'), '/vistaNovedades', 'novedadesController@getViewNovedad');
 
-			Route::match(array('GET','POST'), '/add_papaNovedad', 'novedadesController@add_papaNovedad');
-			Route::match(array('GET','POST'), '/edit_papaNovedad/{id}', 'novedadesController@edit_papaNovedad');
-			Route::match(array('GET','POST'), '/delete_papaNovedad/{id}', 'novedadesController@delete_papaNovedad');
-			Route::match(array('GET','POST'), '/add_hijoNovedad', 'novedadesController@add_hijoNovedad');
-			Route::match(array('GET','POST'), '/edit_hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
-			Route::match(array('GET','POST'), '/delete_hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
+			Route::match(array('GET','POST'), '/add-papaNovedad', 'novedadesController@add_papaNovedad');
+			Route::match(array('GET','POST'), '/edit-papaNovedad/{id}', 'novedadesController@edit_papaNovedad');
+			Route::match(array('GET','POST'), '/delete-papaNovedad/{id}', 'novedadesController@delete_papaNovedad');
+			Route::match(array('GET','POST'), '/add-hijoNovedad', 'novedadesController@add_hijoNovedad');
+			Route::match(array('GET','POST'), '/edit-hijoNovedad/{id}', 'novedadesController@edit_hijoNovedad');
+			Route::match(array('GET','POST'), '/delete-hijoNovedad/{id}', 'novedadesController@delete_hijoNovedad');
 
 		});
 
@@ -165,21 +165,21 @@ Route::group(array('before' => 'auth'), function(){
         });
         Route::group(array('before' => 'gestionar_bloques'),function(){
           // Bloques
-          Route::match(array('GET', 'POST'), '/adminBloque{id}_{nivelID}', 'bloqueController@verPagina');
+          Route::match(array('GET', 'POST'), '/admin-bloque-{id}{nivelID}', 'bloqueController@verPagina');
           Route::post('/updateBloque', 'bloqueController@update');
           Route::post('/removeBloque', 'bloqueController@remove');
           Route::post('/changeImageBloque{id}', 'bloqueController@changeImage');
         });
         Route::group(array('before' => 'gestionar_temas'),function(){
           // Temas
-          Route::match(array('GET', 'POST'), '/adminTema{id}_{inteligencia}_{nivel}', 'temaController@verPagina');
+          Route::match(array('GET', 'POST'), '/admin-tema-{id}{inteligencia}{nivel}', 'temaController@verPagina');
           Route::post('/updateTema', 'temaController@update');
           Route::post('/removeTema', 'temaController@remove');
           Route::post('/changeImageTema{id}', 'temaController@changeImage');
         });
         Route::group(array('before' => 'gestionar_actividades'),function(){
           // Actividades
-          Route::match(array('GET', 'POST'), '/adminActividad{id}_{bloque}_{inteligencia}_{nivel}', 'actividadController@verPagina');
+          Route::match(array('GET', 'POST'), '/admin-actividad-{id}{bloque}{inteligencia}{nivel}', 'actividadController@verPagina');
           Route::post('/updateActividad', 'actividadController@update');
           Route::post('/removeActividad', 'actividadController@remove');
           Route::post('/changeImageActividad{id}', 'actividadController@changeImage');
@@ -246,6 +246,7 @@ Route::group(array('before' => 'auth'), function(){
     Route::group(array('before' => 'gestionar_actividades'), function(){
       Route::get('/videoInicio', 'contenidoController@adminVideos');
       Route::post('/getAllVideosAdmin', 'contenidoController@myVideos');
+      Route::post("/reindexarVideos",'contenidoController@reindexar');
     });
 
 

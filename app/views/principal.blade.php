@@ -57,7 +57,7 @@
 	<section id="nosotros" class="margen-dispositivo">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow zoomInUp">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/computing.png" alt="" style="width:35px; height:35px;" class="">
+				<img src="/packages/images/landing/iconos/computing.png" alt="Curiosity" style="width:35px; height:35px;" class="">
 				¿Qué es Curiosity?
 			</h2>
 		</div>
@@ -100,7 +100,7 @@
 	<section id="funcionamiento" class="margen-dispositivo">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceIn">
 				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/pencil.png" alt="" style="width:35px; height:35px;" class="">
+					<img src="/packages/images/landing/iconos/pencil.png" alt="como funciona curiosity" style="width:35px; height:35px;" class="">
 					¿Cómo funciona?
 				</h2>
 			</div>
@@ -166,7 +166,7 @@
 	<section id="video" class="">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow pulse">
 				<h2 class="section-header h2-responsive">
-					<img src="/packages/images/landing/iconos/mortarboard.png" alt="" style="width:35px; height:35px;" class="">
+					<img src="/packages/images/landing/iconos/mortarboard.png" alt="Conoce mejor a curiosity" style="width:35px; height:35px;" class="">
 					Conócenos mejor
 				</h2>
 			</div>
@@ -261,82 +261,6 @@
 					</div>
 					<!--/.Carousel Wrapper-->
 		</div>	<!-- Fin escuelas -->
-
-		<div class="col-md-6" hidden="hidden" id="content-elemento">
-			<!--Carousel Wrapper-->
-					<div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-						<!--Controls-->
-						<div class="controls-top">
-							<h3 class="h3-responsive">Personas <hr></h3><br>
-							<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-							<a class="btn-floating btn-small indicadores" href="#multi-item-example3" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-						</div>
-						<!--/.Controls-->
-
-						<!--Indicators-->
-						<ol class="carousel-indicators">
-							<li data-target="#multi-item-example3" data-slide-to="0" class="active" style="background-color:#65499d;"></li>
-							<li data-target="#multi-item-example3" data-slide-to="1" style="background-color:#65499d;"></li>
-						</ol>
-						<!--/.Indicators-->
-
-						<!--Slides-->
-						<div class="carousel-inner" role="listbox">
-
-							<!--First slide-->
-							<div class="carousel-item active">
-
-								<div class="col-md-6 col-sm-6">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title text-xs-center">Pequeñ@</h4>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 hidden-xs-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title text-xs-center">Pequeñ@</h4>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<!--/.First slide-->
-
-							<!--Second slide-->
-							<div class="carousel-item">
-
-								<div class="col-md-6 col-sm-6">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title text-xs-center">Pequeñ@</h4>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 hidden-xs-down">
-									<div class="card">
-										<img class="img-fluid" src="/packages/images/landing/papa.jpg" alt="Card image cap">
-										<div class="card-block">
-											<h4 class="card-title text-xs-center">Pequeñ@</h4>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/.Second slide-->
-
-						</div>
-						<!--/.Slides-->
-
-					</div>
-					<!--/.Carousel Wrapper-->
-			</div>	<!-- Fin colaboradores personas  -->
 		 </div>
 	  </div>
 	</section>
@@ -357,7 +281,7 @@
 	<section id="membresia" class="">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow rotateInUpLeft">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/attachment.png" alt="" style="width:35px; height:35px;" class="">
+				<img src="/packages/images/landing/iconos/attachment.png" alt="membresia" style="width:35px; height:35px;" class="">
 				Membresía
 			</h2>
 		</div>
@@ -478,7 +402,7 @@
 	<section id="apoyo" class="margen-dispositivo">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow fadeInUpBig">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/compass.png" alt="" style="width:35px; height:35px;" class="">
+				<img src="/packages/images/landing/iconos/compass.png" alt="Apoyo_icono" style="width:35px; height:35px;" class="">
 				Con el Apoyo:
 			</h2>
 		</div>
@@ -560,7 +484,7 @@
 			<div class="col-md-2 col-md-offset-1">
 				<h5 class="title"><i class="fa fa-users"></i> nosotros</h5>
 				<ul class="ul-content">
-					<li><a href="/nuestro_equipo">- Nuestro equipo</a></li>
+					<li><a href="/nuestro-equipo">- Nuestro equipo</a></li>
 					<li class="separacion"><a href="/mentores">- Mentores</a></li>
 				</ul>
 			</div>
@@ -574,7 +498,7 @@
 				<ul class="ul-content">
 					<li><a href="#">- Preguntas frecuentes</a></li>
 					<li class="separacion"><a href="/terminos-y-condiciones">- Términos y Condiciones</a></li>
-					<li class="separacion"><a href="/aviso_privacidad">- Aviso de privacidad</a></li>
+					<li class="separacion"><a href="/aviso-privacidad">- Aviso de privacidad</a></li>
 				</ul>
 			</div>
 			<!--/.Third column-->
