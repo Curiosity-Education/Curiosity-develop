@@ -81,6 +81,7 @@ padding-right:10px;!important}
 .button-sm-access{display:block;}
 .button-sm-access > a{padding-left:10px;!important
 padding-right:10px;!important}
+.button-sm-access > a.danger-rounded-outline{margin-top:15px;!important}
 .btn-block{height:50px;font-size:20px;}
 #logo_entrada{width:80% !important;}
 }
