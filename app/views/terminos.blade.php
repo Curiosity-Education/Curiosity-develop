@@ -153,7 +153,7 @@
 
 			<!-- Logo -->
 			<div class="logo-wrapper waves-light">
-				<center><a href="#"><img src="/packages/images/logo_png.png" class="img-fluid flex-center"></a></center>
+				<center><a href="#"><img src="/packages/images/logo_png.png" alt="logo-curiosity" class="img-fluid flex-center"></a></center>
 			</div>
 			<!--/. Logo -->
 
@@ -244,7 +244,7 @@
 							y Privacidad deberá abstenerse de acceder a la plataforma. </b><br>
 							La empresa Curiosity Educación, se reservan el derecho de modificar discrecionalmente el
 							contenido de la plataforma en cualquier momento, sin necesidad de previo aviso. </p>
-							<center><img src="/packages/images/landing/iconos/test.png" style="height:70px; width:70px;" alt=""></center>
+							<center><img src="/packages/images/landing/iconos/test.png" style="height:70px; width:70px;" alt="terminos-icon"></center>
 					</div>
 					<!-- Fin de Descripción -->
 
