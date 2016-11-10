@@ -334,10 +334,10 @@
          <div class="col-sm-4 col-md-3">
             <div class="card animated zoomIn tarjetas cardInfo getHigthCard" style="display:block;">
                <div class="header-bg">
-                  <a href="" class="pull-right tooltipShow" title="Selecciona tu nivel ideal"
+                  <!-- <a href="" class="pull-right tooltipShow" title="Selecciona tu nivel ideal"
                      data-toggle="modal" data-target="#myModal">
                      <i class="fa fa-bars"></i>
-                  </a>
+                  </a> -->
                </div>
                <div class="avatar">
                   <!-- GRÁFICA DE META DIARIA -->
@@ -366,6 +366,7 @@
          <div class="col-sm-12 col-md-3">
             <div class="color-top" id="imgPerfilChanger">
                <img class="profile-user-img img-profile img-responsive img-circle" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture">
+               <h5>{{Auth::user()->username}}</h5>
                <!-- <img style="cursor:pointer;" class="profile-user-img img-profile tooltipShow img-responsive img-circle"  data-toggle="modal" data-target="#modalPrueba" title="Cambiar foto de perfil" src='{{User::get_imagen_perfil(Auth::user()->id)}}' alt="User profile picture"> -->
                <!-- <center><h3 class="fontHijo description-block"><br>Elige tu imagen favorita</h3></center> -->
             </div>

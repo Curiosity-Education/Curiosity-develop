@@ -18,7 +18,8 @@
   	<div class="row">
   		<div class="col-sm-4">
   			<div class="ordenador miAvatar">
-  				<center><img id='miAvatar' class="img-responsive"></center>
+				<center><img src="/packages/images/avatars_curiosity/secuencias/Boy_0149.png" class="img-responsive"></center>
+  				{{--<center><img id='miAvatar' class="img-responsive"></center>--}}
   			</div>
   		</div>
 			<div class="col-sm-8">
@@ -54,7 +55,8 @@
 								<span class="fa fa-lock iconlock"></span>
 								@endif
 								<center>
-									<img src="/packages/images/avatars_curiosity/estilos/{{$estilo->preview}}" class="img-responsive">
+									<img src="/packages/images/avatars_curiosity/secuencias/Boy_0149.png" class="img-responsive">
+									{{--<img src="/packages/images/avatars_curiosity/estilos/{{$estilo->preview}}" class="img-responsive">--}}
 									<div class="captionInfo captionAvatar fuenteForChild">
 										@if ($estilo->id == $estiloAvatar->id)
 											En uso

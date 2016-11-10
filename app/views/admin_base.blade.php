@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="es">
    <head>
       <meta charset="utf-8">
@@ -27,7 +27,7 @@
          <header class="main-header" >
             <div class="logo">
                <span class="logo-mini">
-                  <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px; margin-top: 1rem;">
+                  <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
                </span>
                <span class="logo-lg">
                   <img src="/packages/images/Curiosity-mini.png" style="width:30px; height:30px;">
