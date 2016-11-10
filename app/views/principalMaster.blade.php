@@ -1,12 +1,13 @@
 <!DOCTYPE html5>
 <html lang="es">
-<head>
+<head name="theme-color">
 	<meta charset="UTF-8">
 	<link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="keywords" content="Curiosity, Educación,equidad, divertida,juegos,pdf, documentos, videos,retroalimentación,aventura,limites,evaluado,resultados, profesores">
 	<meta name="description" content="Curiosity educación  permite aprender con videojuegos educativos, apoyo de videos animados y documentos PDF con los temas vistos en clase">
+	<meta name="theme-color" content="#2262ae" >
 	{{ HTML::style('/packages/css/libs/css-mdb/bootstrap.min.css') }}
 	{{ HTML::style('/packages/css/libs/css-mdb/mdb.min.css') }}
 	{{ HTML::style('/packages/css/curiosity/style-index.min.css') }}

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
+   <head name="theme-color">
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <link rel="icon" type="image/png" href="/packages/images/landing/logo.png">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta name="theme-color" content="#2262ae" >
 
       {{ HTML::style('/packages/css/libs/bootstrap/bootstrap.min.css')}}
       {{ HTML::style('/packages/css/libs/awensome/css/font-awesome.min.css')}}
