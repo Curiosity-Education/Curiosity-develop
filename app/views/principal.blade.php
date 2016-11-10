@@ -1,7 +1,7 @@
 @extends('principalMaster')
 
 @section('title')
-	Curiosity Educación
+	Curiosity Educación | Videojuegos educativos
 @stop
 
 @section('menu')
