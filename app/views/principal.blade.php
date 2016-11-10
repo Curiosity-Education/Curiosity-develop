@@ -1,7 +1,7 @@
 @extends('principalMaster')
 
 @section('title')
-	Curiosity Educación
+	Curiosity Educación | Videojuegos educativos
 @stop
 
 @section('menu')
@@ -173,7 +173,7 @@
 			<div class="container">
 				<div class="col-md-12" id="">
 					<div class="col-md-6">
-						<img src="/packages/images/landing/video-img.jpg" alt="" class="img-fluid center-block animated zoomInRight" id="img-video">
+						<img src="/packages/images/landing/video-img.jpg" alt="construccion curiosity" class="img-fluid center-block animated zoomInRight" id="img-video">
 					</div>
 					<div class="col-md-6" id="content-iframe">
 						<iframe width="100%" height="300px" id="videoCU" src="https://www.youtube.com/embed/9Ixi5LyyMuw" frameborder="0" allowfullscreen=""></iframe><br><br>
@@ -187,15 +187,11 @@
 	</section>
 <!-- Fin Sección de Video -->
 
-<!-- Sección de Testimonial -->
-
-<!-- Fin Sección de Testimonial -->
-
 <!-- Sección de Colaboradores -->
 	<section id="colaboradores" class="margen-dispositivo">
 		<div class="col-md-6 col-md-offset-3 divider-new z-depth-1 wow bounceInRight">
 			<h2 class="section-header h2-responsive">
-				<img src="/packages/images/landing/iconos/school.png" alt="" style="width:35px; height:35px;" class="">
+				<img src="/packages/images/landing/iconos/school.png" alt="escuela" style="width:35px; height:35px;" class="">
 				Colaboradores
 			</h2>
 		</div>
@@ -260,9 +256,10 @@
 
 					</div>
 					<!--/.Carousel Wrapper-->
-		</div>	<!-- Fin escuelas -->
-		 </div>
-	  </div>
+					</div>	<!-- Fin escuelas -->
+		 		</div>
+	  		</div>
+		</div>
 	</section>
 <!-- Fin Sección de Colaboradores -->
 
@@ -417,10 +414,10 @@
 					<img src="/packages/images/landing/Work_St.jpg" alt="work st" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/penoles.png" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/images/landing/penoles.png" alt="peñoles" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<img src="/packages/images/landing/logo-fs.jpg" alt="fundacion banorte" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
+					<img src="/packages/images/landing/logo-fs.jpg" alt="facebook start" class="img-fluid hoverable z-depth-1 wow zoomInUp img-thumbnail">
 				</div>
 	
 			</div>
