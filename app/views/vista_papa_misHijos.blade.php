@@ -4,27 +4,22 @@
  {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
  {{HTML::style('/packages/css/curiosity/mishijos.css')}}
  {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
+ <style media="screen">
+    #start-tour-misHijos{
+       background-color: #2d96ba;
+       color: white;
+       margin-top: 1.5rem;
+       width: 100%;
+       margin-bottom: 1.5rem;
+       border-radius: 5rem;
+       outline: none !important;
+    }
+ </style>
 @stop
 
 @section('title')
 	Mis Hijos
 @stop
-
-
-@section('titulo_contenido')
-	Mis Hijos
-@stop
-
-@section('titulo_small')
-<div class='row'>
-	<div class='col-md-10 col-xs-12 col-sm-10'>
-    <button class="btn" type="button" style="background-color:#2d96ba; color:white" id="start-tour-misHijos">
-    	 ¿Tienes alguna duda?
-    </button>
-	</div>
-</div>
-@stop
-
 
 @section('panel_opcion')
 <!-- Denegar registro a padre free -->
@@ -185,6 +180,9 @@
 <!-- SECCION DONDE MOSTRAMOS HIJO Y AVATAR -->
 <div class='container-fluid'>
 	<div class='col-xs-12' id='hijosInfo'>
+   <button class="btn" type="button" id="start-tour-misHijos">
+      ¿Tienes alguna duda? Da click aquí
+   </button>
     <div class="row">
       <div class="col-md-12"  id="tit-mishijos">
         <div class="col-sm-6">

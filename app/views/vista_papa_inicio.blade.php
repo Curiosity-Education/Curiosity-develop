@@ -1,31 +1,29 @@
 @extends('admin_base')
+
 @section('mi_css')
- {{HTML::style('/packages/css/curiosity/perfil.css')}}
- {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
- {{HTML::style('/packages/css/curiosity/dadProfile.css')}}
- {{HTML::style('/packages/css/curiosity/helper.css')}}
- {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
+   {{HTML::style('/packages/css/curiosity/perfil.css')}}
+   {{HTML::style('/packages/css/curiosity/caledarFlat.css')}}
+   {{HTML::style('/packages/css/curiosity/dadProfile.css')}}
+   {{HTML::style('/packages/css/curiosity/helper.css')}}
+   {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
+   <style media="screen">
+      #start-tour-perfil{
+         background-color: #2d96ba;
+         color: white;
+         margin-top: 1.5rem;
+         width: 100%;
+         margin-bottom: 1.5rem;
+         border-radius: 5rem;
+         outline: none !important;
+      }
+   </style>
 @stop
 
 @section('title')
-	Perfil | {{Auth::user()->username}}
+   Perfil | {{Auth::user()->username}}
 @stop
-
-
-@section('titulo_contenido')
-	Mi perfil
-@stop
-
-@section('titulo_small')
-	Bienvenido {{Auth::user()->username}} <br>
-	<button class="btn" type="button" style="background-color:#2d96ba; color:white; margin-top:7px;" id="start-tour-perfil">
-    	 ¿Tienes alguna duda?
-    </button>
-@stop
-
 
 @section('panel_opcion')
-
 <!-- VENTANA MODAL PARA ELEGIR FOTO DE PERFIL -->
 <div class="container">
   <div class="row">
@@ -229,6 +227,9 @@
   <!-- Fin de modal para modificar datos del Papá -->
   <section id="sectionGral">
     <div class="container-fluid">
+      <button class="btn" type="button" id="start-tour-perfil">
+         ¿Tienes alguna duda? Da click aquí
+      </button>
       <div class="col-sm-3">
         <div class="row">
           <div id="secimgperf" class="secbox">
