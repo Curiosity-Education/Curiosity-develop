@@ -3,15 +3,21 @@
  {{HTML::style('/packages/css/curiosity/puntajesdad.css')}}
  {{HTML::style('/packages/css/curiosity/helper.css')}}
  {{HTML::style('/packages/css/libs/bootstrap-tour/bootstrap-tour.min.css')}}
+ <style media="screen">
+    #start-tour-puntajes{
+      background-color: #2d96ba;
+      color: white;
+      margin-top: 1.5rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      border-radius: 5rem;
+      outline: none !important;
+    }
+</style>
 @stop
 
 @section('title')
 	Puntajes | {{Auth::user()->username}}
-@stop
-
-
-@section('titulo_contenido')
-	Estadísticas de mis hijos
 @stop
 
 @section('titulo_small')
@@ -57,6 +63,9 @@
 
 
 @section('panel_opcion')
+<button class="btn" type="button" id="start-tour-puntajes">
+   ¿Tienes alguna duda? Da click aquí
+</button>
 <div class="container-fluid" id="seccionesHijos"></div>
 @stop
 
