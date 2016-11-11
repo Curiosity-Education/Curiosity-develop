@@ -179,10 +179,10 @@
 
 <!-- SECCION DONDE MOSTRAMOS HIJO Y AVATAR -->
 <div class='container-fluid'>
-	<div class='col-xs-12' id='hijosInfo'>
-   <button class="btn" type="button" id="start-tour-misHijos">
+	<button class="btn" type="button" id="start-tour-misHijos">
       ¿Tienes alguna duda? Da click aquí
    </button>
+	<div class='col-xs-12' id='hijosInfo'>
     <div class="row">
       <div class="col-md-12"  id="tit-mishijos">
         <div class="col-sm-6">
