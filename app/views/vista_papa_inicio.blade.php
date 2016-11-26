@@ -303,18 +303,6 @@
     				<center id="name_hijo_s_mis_hijos_{{$hijo->idHijo}}">{{$hijo->nombre}}</center>
     			</div>
     		</div>
-    		<h6>Adquirir Premium</h6>
-                <form action="/pay-suscription/{{$hijo->idHijo}}" method="POST">
-                  <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_90rdmk4vlV8tTle9CZNwXxHe"
-                    data-amount="5800"
-                    data-name="Curiosity Educación"
-                    data-description="Suscripción Mensual"
-                    data-image="/packages/images/Curiosity-mini.png"
-                    data-locale="auto">
-                  </script>
-                </form>
   	  </div>
   	  @endforeach
    	</div>
@@ -403,4 +391,5 @@
 {{HTML::script('/packages/js/curiosity/tour_padre.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
+<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
 @stop

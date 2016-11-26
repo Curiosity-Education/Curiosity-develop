@@ -163,7 +163,59 @@
                   <input type='password' name='cpassword' id='cpassword' value='' class='form-control form-custom-step' placeholder='Confirmar Contraseña'>
                 </div>
               </div>
-		      </section>
+		  </section>
+          <section class="box-regh">
+                <h4 class='title-input' id="tit-userh"><b>Datos de la tarjeta</b></h4>
+                <form aºction="/pay-suscription" method="POST" id="card-form" class="col-md-12">
+                    <span class="card-errors"></span>
+                    <div class="form-row">
+                          <label>Nombre del tarjetahabiente</label>
+                          <div class='form-group'>
+                            <div class='input-group'>
+                              <span class='input-group-addon addonStyle'>
+                                <span  class='fa fa-user'></span>
+                              </span>
+                              <input type='text'  name='name' id='name' data-conekta="card[name]" value='' class='form-control form-custom-step' placeholder='Nombre del tarjetahabiente'>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="form-row">
+                          <label>Número de tarjeta de crédito</label>
+                          <div class='form-group'>
+                            <div class='input-group'>
+                              <span class='input-group-addon addonStyle'>
+                                <i class="fa fa-address-card" aria-hidden="true"></i>
+                              </span>
+                              <input type='text'  name='number' id='number' data-conekta="card[number]" value='' class='form-control form-custom-step' placeholder='Número de tarjeta de crédito'>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="form-row">
+                          <label>CVC</label>
+                          <div class='form-group'>
+                            <div class='input-group'>
+                              <span class='input-group-addon addonStyle'>
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                              </span>
+                              <input type='text'  name='cvc' id='cvc' size="3" data-conekta="card[cvc]" value='' class='form-control form-custom-step' placeholder='CVC'>
+                            </div>
+                          </div>
+                    </div>
+                    <label>Fecha de expiración (MM/AAAA)</label>
+                    <div class="form-row">
+                          <div class='form-group col-md-4'>
+                            <div class='input-group'>
+                              <input type='text'  name='exp_month' id='exp_month' data-conekta="card[exp_month]" value='' class='form-control form-custom-step' placeholder='MM'>
+                              <span class='input-group-addon addonStyle'>
+                                <b>/</b>
+                              </span>
+                              <input type='text'  name='exp_year' id='exp_year' data-conekta="card[exp_year]" value='' class='form-control form-custom-step' placeholder='AAAA'>
+                            </div>
+                          </div>
+                    </div>
+                    <br>
+               </form>
+		  </section>
         </div>
       </form>
       <div class="row">
@@ -172,7 +224,7 @@
             <span class="fa fa-times"></span>&nbsp;
             Cancelar
           </button>
-          <button type="button" class="btn" id="btn-svh">
+          <button type="button" class="btn" id="btn-vh">
             <span class="fa fa-upload"></span>&nbsp;
             Guardar Registro
           </button>
@@ -225,6 +277,7 @@
 
 @section('mi_js')
 {{HTML::script('/packages/js/libs/validation/jquery.validate.min.js')}}
+<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
 {{HTML::script('/packages/js/libs/validation/localization/messages_es.min.js')}}
 {{HTML::script('/packages/js/libs/validation/additional-methods.min.js')}}
 {{HTML::script('/packages/js/libs/bootstrap-tour/bootstrap-tour.min.js')}}
@@ -233,4 +286,42 @@
 {{HTML::script('/packages/js/curiosity/tour_padre.js')}}
 <script type="text/javascript" src="/packages/js/libs/mdb/tether.min.js"></script>
 <script type="text/javascript" src="/packages/js/libs/mdb/mdb.min.js"></script>
+<script type="text/javascript">
+
+ // Conekta Public Key
+  //Conekta.setPublishableKey('key_KJysdbf6PotS2ut2'); //v3.2
+  Conekta.setPublicKey('key_CmADz585Gq19Aqt1xpLWppg'); //v5+
+  var errorResponseHandler, successResponseHandler, tokenParams;
+  var btnSendInfo = document.getElementById('btn-vh');
+    btnSendInfo.addEventListener('click',function(){
+        tokenParams = {
+          "card": {
+            "number": document.getElementById('number').value,
+            "name": document.getElementById('name').value,
+            "exp_year": document.getElementById('exp_year').value,
+            "exp_month": document.getElementById('exp_month').value,
+            "cvc": document.getElementById('cvc').value
+          }
+        };
+        console.log(tokenParams);
+         successResponseHandler = function(token) {
+            return  $.ajax({
+                     url:'/pay-suscription',
+                     method:'POST',
+                     dataType:'JSON',
+                     data:{conektaTokenId:token.id}
+                 }).done(function(response){
+                    console.log(response);
+                 }).fail(function(error){
+
+                 });
+        };
+
+        errorResponseHandler = function(error) {
+          return console.log(error.message);
+        };
+        Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+    },false);
+
+</script>
 @stop

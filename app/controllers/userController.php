@@ -174,14 +174,47 @@ class userController extends BaseController{
         }
 
     }
-    public function pay_card_suscription($user_id){
+    public function pay_card_suscription($user_id=0){
         if(Request::method() == "GET")
             return View::make('vista_payment_card');
         else{
+
+            /*
+                Configuración con Conekta
+
+            */
+            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
+            Conekta::setLocale('es');
+            //return Input::all();
+            try{
+                $customer = Conekta_Customer::create(array(
+                    "name" => Auth::user()->persona()->first()->nombre,
+                    "email" => Auth::user()->persona()->first()->padre()->first()->email,
+                    "cards"=> Input::get('conektaTokenId')
+                ));
+
+
+                $subscription = $customer->createSubscription(array(
+                  "plan_id"=> "curiosity-basico"
+                ));
+                if ($subscription->status == 'active') {
+                     //la suscripción inicializó exitosamente!
+                        return Response::json(array(0=>'success'));
+
+                }
+                elseif ($subscription->status == 'past_due') {
+                 //la suscripción falló a inicializarse
+                  return Response::json(array(0=>'error'));
+                }
+            }catch (Conekta_Error $e){
+              echo $e->getMessage();
+             //el cliente no pudo ser creado
+            }
+
             /*
                 Configuración con Stripe
             */
-            \Stripe\Stripe::setApiKey("sk_test_HY3YuTn66MK18y6Xhmz1rJJx");
+            /*\Stripe\Stripe::setApiKey("sk_test_HY3YuTn66MK18y6Xhmz1rJJx");
             
             $token = Input::get('stripeToken');
             $amount = 5800;
@@ -189,7 +222,7 @@ class userController extends BaseController{
             try{
                 /*
                     Cobrar al cliente
-                */
+
                 $customer = \Stripe\Customer::create(array(
                       "source" => $token,
                       "plan" => "silver",
@@ -202,7 +235,7 @@ class userController extends BaseController{
                 dd($e);
             }
             
-            echo json_encode($customer);
+            echo json_encode($customer);*/
             
         }
     }
