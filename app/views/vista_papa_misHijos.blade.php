@@ -224,7 +224,7 @@
             <span class="fa fa-times"></span>&nbsp;
             Cancelar
           </button>
-          <button type="button" class="btn" id="btn-vh">
+          <button type="button" class="btn" id="btn-svh">
             <span class="fa fa-upload"></span>&nbsp;
             Guardar Registro
           </button>
@@ -257,7 +257,7 @@
       <div class="col-md-12" id="thisAppnd">
         @foreach ($datosHijos as $hijo)
       	 	<div class='col-xs-12 col-sm-4 col-md-3'>
-      	 		<div class='hijo_avatar'>
+      	 		<div class='hijo_avatar' data-id="{{$hijo->id}}">
       			<center>
               <img src='/packages/images/perfil/{{$hijo->foto_perfil}}' class='img-responsive img-rounded imgprfh'>
             </center>
@@ -289,39 +289,7 @@
 <script type="text/javascript">
 
  // Conekta Public Key
-  //Conekta.setPublishableKey('key_KJysdbf6PotS2ut2'); //v3.2
-  Conekta.setPublicKey('key_CmADz585Gq19Aqt1xpLWppg'); //v5+
-  var errorResponseHandler, successResponseHandler, tokenParams;
-  var btnSendInfo = document.getElementById('btn-vh');
-    btnSendInfo.addEventListener('click',function(){
-        tokenParams = {
-          "card": {
-            "number": document.getElementById('number').value,
-            "name": document.getElementById('name').value,
-            "exp_year": document.getElementById('exp_year').value,
-            "exp_month": document.getElementById('exp_month').value,
-            "cvc": document.getElementById('cvc').value
-          }
-        };
-        console.log(tokenParams);
-         successResponseHandler = function(token) {
-            return  $.ajax({
-                     url:'/pay-suscription',
-                     method:'POST',
-                     dataType:'JSON',
-                     data:{conektaTokenId:token.id}
-                 }).done(function(response){
-                    console.log(response);
-                 }).fail(function(error){
 
-                 });
-        };
-
-        errorResponseHandler = function(error) {
-          return console.log(error.message);
-        };
-        Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
-    },false);
 
 </script>
 @stop

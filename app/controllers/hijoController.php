@@ -15,8 +15,8 @@ class hijoController extends BaseController{
             "apellido_materno"  =>"required|letter|max:30",
             "sexo"              =>"required|string|size:1",
             "fecha_nacimiento"  =>"required|date_format:Y-m-d|before:$date_min",
-            "promedio"					=>"required",
-						"grado_inicial"			=>"required"
+            "promedio"				=>"required",
+            "grado_inicial"			=>"required"
 		];
 		$messages = [
 					 "required"    =>  "Este campo :attribute es requerido",
@@ -38,64 +38,71 @@ class hijoController extends BaseController{
 	    return $validaciones->messages();
 		}else{
 			$padreRole = Auth::user()->roles[0]->name;
-	    $user = new User();
-	    $user->username=$datos["username_hijo"];
-	    $user->password=Hash::make($datos["password"]);
-	    $user->token=sha1($datos["username_hijo"]);
-	    $user->skin_id=skin::where('skin', '=', 'skin-blue')->pluck('id');
-	    $user->active=1;
-	    $user->save();
-			if($padreRole == "padre"){
-				$myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
-			}
-			else if ($padreRole == "padre_free"){
-				$myRole = DB::table('roles')->where('name', '=', 'hijo_free')->pluck('id');
-			}
-			else if ($padreRole == "demo_padre"){
-				$myRole = DB::table('roles')->where('name', '=', 'demo_hijo')->pluck('id');
-			}
-	    $user->attachRole($myRole);
-	    $perfil = new perfil();
-			if ($datos['sexo'] == 'm'){
-				$perfil->foto_perfil = "boy-def.png";
-			}
-			else{
-				$perfil->foto_perfil = "girl-def.png";
-			}
-	    $perfil->users_id = $user->id;
-	    $perfil->save();
-	    $persona = new persona($datos);
-	    $persona->user_id = $user->id;
-	    $persona->save();
-	    $hijo = new hijo();
-	    $hijo->persona_id = $persona->id;
-	    $padre_id = Auth::user()->persona()->first()->padre()->first()->id;
-	    $hijo->padre_id = $padre_id;
-	    $hijo->save();
-			DB::table('escolaridades')->insert(array(
-				'grado' => $datos['grado_inicial'],
-				'promedio' => $datos['promedio'],
-				'hijo_id' => $hijo->id
-			));
-			$avance = DB::table('hijos_metas_diarias')->insert(array(
-				'hijo_id' => $hijo->id,
-				'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
-			));
-			$exp = DB::table('hijo_experiencia')->insert(array(
-				'hijo_id' => $hijo->id,
-				'cantidad_exp' => 0,
-				'coins' => 0
-			));
-			if ($padreRole == "padre"){
-				// $membresia_plan = new membresiaPlan();
-				// $membresia = Auth::user()->persona()->first()->padre()->first()->membresia()->first();
-	      // $membresia_plan->membresia_id=$membresia->id;
-				// $plan = plan::where("name","=","1 Hijo")->first();
-				// $membresia_plan->plan_id=$plan->id;
-	      // $membresia_plan->hijo_id=$hijo->id;
-	      // $membresia_plan->save();
-			}
-			return Response::json(array("OK", $perfil->foto_perfil));
+            $user = new User();
+            $user->username=$datos["username_hijo"];
+            $user->password=Hash::make($datos["password"]);
+            $user->token=sha1($datos["username_hijo"]);
+            $user->skin_id=skin::where('skin', '=', 'skin-blue')->pluck('id');
+            $user->active=1;
+            $user->save();
+                if($padreRole == "padre"){
+                    $myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
+                }
+                else if ($padreRole == "padre_free"){
+                    $myRole = DB::table('roles')->where('name', '=', 'hijo')->pluck('id');
+                }
+                else if ($padreRole == "demo_padre"){
+                    $myRole = DB::table('roles')->where('name', '=', 'demo_hijo')->pluck('id');
+                }
+            $user->attachRole($myRole);
+            $perfil = new perfil();
+                if ($datos['sexo'] == 'm'){
+                    $perfil->foto_perfil = "boy-def.png";
+                }
+                else{
+                    $perfil->foto_perfil = "girl-def.png";
+                }
+            $perfil->users_id = $user->id;
+            $perfil->save();
+            $persona = new persona($datos);
+            $persona->user_id = $user->id;
+            $persona->save();
+            $hijo = new hijo();
+            $hijo->persona_id = $persona->id;
+            $padre_id = Auth::user()->persona()->first()->padre()->first()->id;
+            $hijo->padre_id = $padre_id;
+            $hijo->save();
+            DB::table('escolaridades')->insert(array(
+                'grado' => $datos['grado_inicial'],
+                'promedio' => $datos['promedio'],
+                'hijo_id' => $hijo->id
+            ));
+            $avance = DB::table('hijos_metas_diarias')->insert(array(
+                'hijo_id' => $hijo->id,
+                'meta_diaria_id' => DB::table('metas_diarias')->where('nombre', '=', 'Normal')->pluck('id')
+            ));
+            $exp = DB::table('hijo_experiencia')->insert(array(
+                'hijo_id' => $hijo->id,
+                'cantidad_exp' => 0,
+                'coins' => 0
+            ));
+            if ($padreRole == "padre" || $padreRole == "padre_free"){
+                $membresia_plan = new membresiaPlan();
+                $membresia = new membresia(array(
+                    "token_card" => Input::get('conektaTokenId'),
+                    "fecha_registro" => Date('Y-m-d'),
+                    "active"    => 1,
+                    "padre_id"  => $padre_id
+                ));
+                $membresia->save();
+                $membresia_plan->membresia_id=$membresia->id;
+                $plan = plan::where("name","=","1 Hijo")->first();
+                $membresia_plan->plan_id=$plan->id;
+                $membresia_plan->hijo_id=$hijo->id;
+                $membresia_plan->active=1;
+                $membresia_plan->save();
+            }
+            return Response::json(array("OK", $perfil->foto_perfil));
 		}
 	}
     public function recordatorio(){
@@ -167,7 +174,7 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
 			->join('perfiles', 'perfiles.users_id','=', 'users.id')
 			->where('users.active', '=', '1')
 			->where('hijos.padre_id', '=', $idPadre)
-			->select('hijos.*', 'personas.*', 'users.*', 'perfiles.*')->get();
+			->select('hijos.*', 'personas.*', 'users.id', 'perfiles.*')->get();
 			return View::make('vista_papa_misHijos')->with(array('rol' => $rol, 'datosHijos' => $datosHijos));
 		}
 

@@ -190,7 +190,8 @@ class userController extends BaseController{
                 $customer = Conekta_Customer::create(array(
                     "name" => Auth::user()->persona()->first()->nombre,
                     "email" => Auth::user()->persona()->first()->padre()->first()->email,
-                    "cards"=> Input::get('conektaTokenId')
+                    "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
+                    "cards"=> array(Input::get('conektaTokenId'))
                 ));
 
 
