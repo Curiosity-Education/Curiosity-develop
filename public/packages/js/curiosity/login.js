@@ -179,6 +179,15 @@ function __init(){
               window.location.href = '/perfil';
             }
           }
+          else if(response[0] == 'past_due'){
+            if(response[1] == 'h')
+                $curiosity.noty(response[2],"warning");
+
+            $password.val("");
+            $env.removeAttr('disabled');
+            $env.html("<span class='fa fa-share'></span> &nbsp;Entrar");
+            $canc.removeAttr('disabled');
+          }
           else{
             $curiosity.noty('La contraseña de usuario no es valida', 'warning');
             $password.val("");

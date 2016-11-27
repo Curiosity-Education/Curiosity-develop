@@ -174,11 +174,14 @@ class userController extends BaseController{
         }
 
     }
+    public function webhook_check_pay(){
+
+    }
     public function pay_card_suscription($user_id=0){
         if(Request::method() == "GET")
             return View::make('vista_payment_card');
         else{
-
+            $padreRole = Auth::user()->roles[0]->name;
             /*
                 Configuración con Conekta
 
@@ -187,25 +190,30 @@ class userController extends BaseController{
             Conekta::setLocale('es');
             //return Input::all();
             try{
-                $customer = Conekta_Customer::create(array(
-                    "name" => Auth::user()->persona()->first()->nombre,
-                    "email" => Auth::user()->persona()->first()->padre()->first()->email,
-                    "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
-                    "cards"=> array(Input::get('conektaTokenId'))
-                ));
+                if($padreRole != "demo_padre"){
+                    $customer = Conekta_Customer::create(array(
+                        "name" => Auth::user()->persona()->first()->nombre,
+                        "email" => Auth::user()->persona()->first()->padre()->first()->email,
+                        "phone" => Auth::user()->persona()->first()->padre()->first()->telefono,
+                        "cards"=> array(Input::get('conektaTokenId'))
+                    ));
 
 
-                $subscription = $customer->createSubscription(array(
-                  "plan_id"=> "curiosity-basico"
-                ));
-                if ($subscription->status == 'active') {
-                     //la suscripción inicializó exitosamente!
-                        return Response::json(array(0=>'success'));
+                    $subscription = $customer->createSubscription(array(
+                      "plan_id"=> "curiosity-basico"
+                    ));
+                    if ($subscription->status == 'active') {
+                         //la suscripción inicializó exitosamente!
+                            return Response::json(array(0=>'success'));
 
+                    }
+                    elseif ($subscription->status == 'past_due') {
+                     //la suscripción falló a inicializarse
+                      return Response::json(array(0=>'error'));
+                    }
                 }
-                elseif ($subscription->status == 'past_due') {
-                 //la suscripción falló a inicializarse
-                  return Response::json(array(0=>'error'));
+                else{
+                    return Response::json(array('success',"Como es Padre demo no se realiza el cobro"));
                 }
             }catch (Conekta_Error $e){
               echo $e->getMessage();

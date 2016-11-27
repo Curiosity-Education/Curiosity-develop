@@ -165,7 +165,7 @@ $(document).ready(function() {
                                 document.getElementById('frm-reg-hijos').reset();
                               }else if($.isPlainObject(r)){
                                 alerta.errorOnInputs(r);
-                                mensage= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
+                                message= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
                                 $curiosity.noty(message, 'warning');
                                 $btn.prop("disabled",false);
                                 return;
@@ -184,7 +184,9 @@ $(document).ready(function() {
         };
 
         errorResponseHandler = function(error) {
-          return console.log(error.error_code);
+
+          return $curiosity.noty(error.message_to_purchaser,"warning");
+
         };
         Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
       }

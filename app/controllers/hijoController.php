@@ -89,7 +89,7 @@ class hijoController extends BaseController{
             if ($padreRole == "padre" || $padreRole == "padre_free"){
                 $membresia_plan = new membresiaPlan();
                 $membresia = new membresia(array(
-                    "token_card" => Input::get('conektaTokenId'),
+                    "token_card" => $datos['conektaTokenId'],
                     "fecha_registro" => Date('Y-m-d'),
                     "active"    => 1,
                     "padre_id"  => $padre_id
