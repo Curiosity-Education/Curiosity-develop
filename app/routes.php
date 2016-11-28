@@ -173,14 +173,14 @@ Route::group(array('before' => 'auth'), function(){
         });
         Route::group(array('before' => 'gestionar_temas'),function(){
           // Temas
-          Route::match(array('GET', 'POST'), '/admin-tema-{id}{inteligencia}{nivel}', 'temaController@verPagina');
+          Route::match(array('GET', 'POST'), '/admin-tema-{id}-{inteligencia}-{nivel}', 'temaController@verPagina');
           Route::post('/updateTema', 'temaController@update');
           Route::post('/removeTema', 'temaController@remove');
           Route::post('/changeImageTema{id}', 'temaController@changeImage');
         });
         Route::group(array('before' => 'gestionar_actividades'),function(){
           // Actividades
-          Route::match(array('GET', 'POST'), '/admin-actividad-{id}{bloque}{inteligencia}{nivel}', 'actividadController@verPagina');
+          Route::match(array('GET', 'POST'), '/admin-actividad-{id}-{bloque}-{inteligencia}-{nivel}', 'actividadController@verPagina');
           Route::post('/updateActividad', 'actividadController@update');
           Route::post('/removeActividad', 'actividadController@remove');
           Route::post('/changeImageActividad{id}', 'actividadController@changeImage');
