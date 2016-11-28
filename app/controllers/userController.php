@@ -175,7 +175,21 @@ class userController extends BaseController{
 
     }
     public function webhook_check_pay(){
+        // Analizar la información del evento en forma de json
+        $body = @file_get_contents('php://input');
+        $event_json = json_decode($body);
+        http_response_code(200); // Return 200 OK
 
+        if ($event_json->type == 'subscription.paid'){
+
+         //Hacer algo con la información como actualizar los atributos de la orden en tu base de datos
+
+         //charge = $this->Charge->find('first', array(
+
+         //  'conditions' => array('Charge.id' => $event_json->object->id)
+
+         //))
+        }
     }
     public function pay_card_suscription($user_id=0){
         if(Request::method() == "GET")
@@ -190,7 +204,7 @@ class userController extends BaseController{
             Conekta::setLocale('es');
             //return Input::all();
             try{
-                if($padreRole != "demo_padre"){
+                if($padreRole == "demo_padre"){
                     $customer = Conekta_Customer::create(array(
                         "name" => Auth::user()->persona()->first()->nombre,
                         "email" => Auth::user()->persona()->first()->padre()->first()->email,
@@ -204,6 +218,7 @@ class userController extends BaseController{
                     ));
                     if ($subscription->status == 'active') {
                          //la suscripción inicializó exitosamente!
+                         Session::put('sub_id',$subscription->id);
                             return Response::json(array(0=>'success'));
 
                     }
