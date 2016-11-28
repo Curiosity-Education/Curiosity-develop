@@ -73,6 +73,9 @@ $(document).ready(function() {
       cpassword:{required:true,equalTo:function(){
         return $("input[name='password']");
       }},
+      name:{required:true,maxlength:50,alpha:true},
+      number:{required:true,maxlength:16,minlength:16,number:true},
+      cvc:{required:true,maxlength:3,minlength:3,number:true},
       username_hijo:{
         required:true,maxlength:50,
         remote:{
@@ -105,53 +108,87 @@ $(document).ready(function() {
       $(this).text("Registrando...");
       $(this).prop("disabled",true);
       $btnc.prop("disabled",true);
-      datos={
-        nombre:$("#nombre").val(),
-        apellido_paterno:$("#apellido_paterno").val(),
-        apellido_materno:$("#apellido_materno").val(),
-        sexo:$("#sexo").val(),
-        fecha_nacimiento:$("#fecha_nacimiento").val(),
-        username_hijo:$("#username_hijo").val(),
-        promedio:$("#promedio").val(),
-        grado_inicial:$("#grado").val(),
-        password:$("#password").val(),
-        cpassword:$("#cpassword").val()
-      }
-      $.ajax({
-        url:"/regHijo",
-        type:"post",
-        data:{data:datos}
-      }).done(function(r){
-        if(r[0]=="OK"){
-          $curiosity.noty("EL niño fue registrado exitosamente","success");
-          var codenew = "<div class='col-xs-6 col-sm-4 col-md-4'>"+
-            "<div class='hijo_avatar' style='margin-bottom:20px;'>"+
-            "<center>"+
-            "<img src='/packages/images/perfil/"+r[1]+"' class='img-responsive img-rounded imgprfh'>"+
-            "</center>"+
-            "<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>"+
-            "<p class='nombres'>"+ datos.nombre +" <br> "+ datos.apellido_paterno +" <br> "+ datos.apellido_materno +"</p>"+
-            "<p class='nombres' style='color:black;'>"+ datos.username_hijo +"</p>"+
-            "</div>"+
-            "</div>"+
-            "</div>";
-            $("#thisAppnd").append(codenew);
-            $("#secreghijo").hide('slow');
-            $("#hijosInfo").show('slow');
-            document.getElementById('frm-reg-hijos').reset();
-          }else if($.isPlainObject(r)){
-            alerta.errorOnInputs(r);
-            mensage= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
-            $curiosity.noty(message, 'warning');
-            $btn.prop("disabled",false);
-            return;
+      tokenParams = {
+          "card": {
+            "number": document.getElementById('number').value,
+            "name": document.getElementById('name').value,
+            "exp_year": document.getElementById('exp_year').value,
+            "exp_month": document.getElementById('exp_month').value,
+            "cvc": document.getElementById('cvc').value
           }
-        }).always(function(){
-          $btnc.prop("disabled",false);
-          $btn.text(text_temp);
-          $btn.removeClass("striped-alert");
-          $btn.prop("disabled",false);
-        });
+        };
+
+      console.log(tokenParams);
+
+        successResponseHandler = function(token) {
+            datos={
+                nombre:document.getElementById("nombre").value,
+                apellido_paterno:document.getElementById("apellido_paterno").value,
+                apellido_materno:document.getElementById("apellido_materno").value,
+                sexo:document.getElementById("sexo").value,
+                fecha_nacimiento:document.getElementById("fecha_nacimiento").value,
+                username_hijo:document.getElementById("username_hijo").value,
+                promedio:document.getElementById("promedio").value,
+                grado_inicial:document.getElementById("grado").value,
+                password:document.getElementById("password").value,
+                cpassword:document.getElementById("cpassword").value,
+                conektaTokenId:token.id
+            }
+            return $.ajax({
+                     url:'/pay-suscription',
+                     method:'POST',
+                     dataType:'JSON',
+                     data:{conektaTokenId:token.id}
+                 }).done(function(response){
+                    if(response[0] == "success"){
+                        $.ajax({
+                            url:"/regHijo",
+                            type:"post",
+                            data:{data:datos}
+                          }).done(function(r){
+                            if(r[0]=="OK"){
+                              $curiosity.noty("El niño fue registrado exitosamente","success");
+                              var codenew = "<div class='col-xs-6 col-sm-4 col-md-4'>"+
+                                "<div class='hijo_avatar' style='margin-bottom:20px;'>"+
+                                "<center>"+
+                                "<img src='/packages/images/perfil/"+r[1]+"' class='img-responsive img-rounded imgprfh'>"+
+                                "</center>"+
+                                "<div style='margin-top: 15px;margin-bottom: 20px;margin-left: 25px;'>"+
+                                "<p class='nombres'>"+ datos.nombre +" <br> "+ datos.apellido_paterno +" <br> "+ datos.apellido_materno +"</p>"+
+                                "<p class='nombres' style='color:black;'>"+ datos.username_hijo +"</p>"+
+                                "</div>"+
+                                "</div>"+
+                                "</div>";
+                                $("#thisAppnd").append(codenew);
+                                $("#secreghijo").hide('slow');
+                                $("#hijosInfo").show('slow');
+                                document.getElementById('frm-reg-hijos').reset();
+                              }else if($.isPlainObject(r)){
+                                alerta.errorOnInputs(r);
+                                message= "Algunos campos no fueron obtenido, porfavor verifique que todos los campos esten correctos";
+                                $curiosity.noty(message, 'warning');
+                                $btn.prop("disabled",false);
+                                return;
+                              }
+                            }).always(function(){
+                              $btnc.prop("disabled",false);
+                              $btn.text(text_temp);
+                              $btn.removeClass("striped-alert");
+                              $btn.prop("disabled",false);
+                            });
+                    }
+                 }).fail(function(error){
+
+                 });
+            return
+        };
+
+        errorResponseHandler = function(error) {
+
+          return $curiosity.noty(error.message_to_purchaser,"warning");
+
+        };
+        Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
       }
   });
 

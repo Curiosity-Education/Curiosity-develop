@@ -18,7 +18,8 @@ Route::get('/newpass', function(){
 });
 
 Route::match(['POST','GET'],'/pay-suscription/{user_id?}/{cupon?}','userController@pay_card_suscription');
-
+// ---./ Webhooks para saber quien ha pagado y quien no
+Route::post('/webhook/check-suscription','userController@webhook_check_pay');
 Route::get('/', 'principalController@verPagina');
 Route::get('/nosotros', 'principalController@verNosotros');
 Route::get('/proximamente',function(){

@@ -16,7 +16,8 @@ ClassLoader::addDirectories(array(
 	app_path().'/commands',
 	app_path().'/controllers',
 	app_path().'/models',
-	app_path().'/library',
+	app_path().'/library/stripe-php/',
+	app_path().'/library/conekta-php/lib/Conekta.php',
 	app_path().'/database/seeds',
 
 ));

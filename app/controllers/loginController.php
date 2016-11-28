@@ -65,7 +65,17 @@ class loginController extends BaseController
                     // User::where('id','=',Auth::user()->id)->update(array('id_session'=>$idSession));
                     // Session::put('sessionId',$idSession);
                     if (Auth::user()->hasRole('hijo') || Auth::user()->hasRole('demo_hijo') || Auth::user()->hasRole('hijo_free')){
-                      return Response::json(array(0=>'success', 1=>'h'));
+                      $idHijo = Auth::user()->persona()->first()->hijo()->first()->id;
+                      $membresiaPlan = membresiaPlan::where('hijo_id','=',$idHijo)->first();
+                        if($membresiaPlan  == null)
+                            return Response::json(array(0=>'success', 1=>'h'));
+                        else if($membresiaPlan->active == 1)
+                            return Response::json(array(0=>'success', 1=>'h'));
+                        else{
+                            Auth::logout();
+                            return Response::json(array(0=>'past_due', 1=>'h',2=>"La membresia no ha sido pagada y ha sido suspendida"));
+                        }
+
                     }
                     else{
                       return Response::json(array(0=>'success', 1=>'o'));

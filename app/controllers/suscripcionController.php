@@ -11,8 +11,8 @@ class suscripcionController extends BaseController{
             return View::make('vista_registro_padre')->with("datos",$datos);
         }
         else{
-            require_once(__DIR__.'/conekta-php/lib/Conekta.php');
-            Conekta::setApiKey("key_vK8GrZTfhXuDp9GwnR14HQ");
+            require_once(app_path().'/conekta-php/lib/Conekta.php');
+            Conekta::setApiKey("key_SGQHzgrE12weiDWjkJs1Ww");
             try{
               $customer = Conekta_Customer::create(array(
                 "name"=> "Lews ",
