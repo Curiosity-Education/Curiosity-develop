@@ -120,76 +120,76 @@ inner join perfiles on perfiles.users_id = users.id  where r_h.hijo_recuerda = "
         flush();
     }
 
-		public function changeMeta(){
-			$idMeta = Input::get('data');
-			$idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
+    public function changeMeta(){
+        $idMeta = Input::get('data');
+        $idHijo = Auth::User()->persona()->first()->hijo()->pluck('id');
 
-			DB::table('hijos_metas_diarias')
-			->where('hijo_id', '=', $idHijo)
-			->update(array(
-				'meta_diaria_id' => $idMeta
-			));
+        DB::table('hijos_metas_diarias')
+        ->where('hijo_id', '=', $idHijo)
+        ->update(array(
+            'meta_diaria_id' => $idMeta
+        ));
 
-			return $this->getMeta($idHijo);
-		}
+        return $this->getMeta($idHijo);
+    }
 
-        public function getMeta($idHijo){
-            $now = date("Y-m-d");
-            $miMeta = DB::table('metas_diarias')
-            ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
-            ->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
-            ->select('metas_diarias.*', 'hijos_metas_diarias.id as metaAsignedId')
-            ->first();
-            $idAvance = $miMeta->metaAsignedId;
-            $avanceMeta = DB::table('avances_metas')
-            ->where('fecha', '=', $now)
-            ->where('avance_id', '=', $idAvance)
-            ->pluck('avance');
+    public function getMeta($idHijo){
+        $now = date("Y-m-d");
+        $miMeta = DB::table('metas_diarias')
+        ->join('hijos_metas_diarias', 'hijos_metas_diarias.meta_diaria_id', '=', 'metas_diarias.id')
+        ->where('hijos_metas_diarias.hijo_id', '=', $idHijo)
+        ->select('metas_diarias.*', 'hijos_metas_diarias.id as metaAsignedId')
+        ->first();
+        $idAvance = $miMeta->metaAsignedId;
+        $avanceMeta = DB::table('avances_metas')
+        ->where('fecha', '=', $now)
+        ->where('avance_id', '=', $idAvance)
+        ->pluck('avance');
 
-              // --- Calculo del avance en porcenaje de la meta del hijo
-              $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
-              if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
+          // --- Calculo del avance en porcenaje de la meta del hijo
+          $porcAvanceMeta = round(($avanceMeta * 100) / $miMeta->meta);
+          if ($porcAvanceMeta > 100) { $porcAvanceMeta = 100; }
 
-              // --- Calculo de cuanto falta para cumplir la meta diaria
-              $faltanteMeta = $miMeta->meta - $avanceMeta;
-              if ($faltanteMeta < 0) { $faltanteMeta = 0; }
+          // --- Calculo de cuanto falta para cumplir la meta diaria
+          $faltanteMeta = $miMeta->meta - $avanceMeta;
+          if ($faltanteMeta < 0) { $faltanteMeta = 0; }
 
-			$row = array(
-				"miMeta" => $miMeta,
-				"porcAvanceMeta" => $porcAvanceMeta,
-				'avanceMeta' => $avanceMeta,
-				'faltanteMeta' => $faltanteMeta
-			);
+        $row = array(
+            "miMeta" => $miMeta,
+            "porcAvanceMeta" => $porcAvanceMeta,
+            'avanceMeta' => $avanceMeta,
+            'faltanteMeta' => $faltanteMeta
+        );
 
-			return $row;
-        }
+        return $row;
+    }
 
 
-		function info(){
-			$rol = Auth::user()->roles[0]->name;
-			$idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
-			$datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
-			->join('personas', 'personas.id', '=', 'hijos.persona_id')
-			->join('users', 'users.id', '=', 'personas.user_id')
-			->join('perfiles', 'perfiles.users_id','=', 'users.id')
-			->where('users.active', '=', '1')
-			->where('hijos.padre_id', '=', $idPadre)
-			->select('hijos.*', 'personas.*', 'users.id', 'perfiles.*')->get();
-			return View::make('vista_papa_misHijos')->with(array('rol' => $rol, 'datosHijos' => $datosHijos));
-		}
+    function info(){
+        $rol = Auth::user()->roles[0]->name;
+        $idPadre = Auth::user()->persona()->first()->padre()->pluck('id');
+        $datosHijos = Padre::join('hijos', 'hijos.padre_id', '=', 'padres.id')
+        ->join('personas', 'personas.id', '=', 'hijos.persona_id')
+        ->join('users', 'users.id', '=', 'personas.user_id')
+        ->join('perfiles', 'perfiles.users_id','=', 'users.id')
+        ->where('users.active', '=', '1')
+        ->where('hijos.padre_id', '=', $idPadre)
+        ->select('hijos.*', 'personas.*', 'users.id', 'perfiles.*')->get();
+        return View::make('vista_papa_misHijos')->with(array('rol' => $rol, 'datosHijos' => $datosHijos));
+    }
 
-		function asignAvatar(){
-			$av = Input::get('data');
-			$myId = Auth::User()->persona()->first()->hijo()->pluck('id');
-			DB::table('hijos_avatars')->insert(array(
-				'hijo_id' => $myId,
-				'avatar_id' => $av
-			));
-			$us = Auth::user();
-			$us->flag = 0;
-			$us->save();
-			return Response::json(array(0=>"success"));
-		}
+    function asignAvatar(){
+        $av = Input::get('data');
+        $myId = Auth::User()->persona()->first()->hijo()->pluck('id');
+        DB::table('hijos_avatars')->insert(array(
+            'hijo_id' => $myId,
+            'avatar_id' => $av
+        ));
+        $us = Auth::user();
+        $us->flag = 0;
+        $us->save();
+        return Response::json(array(0=>"success"));
+    }
 
     function desgloceJuegos($idHijo){
             $now = date("Y-m-d");
