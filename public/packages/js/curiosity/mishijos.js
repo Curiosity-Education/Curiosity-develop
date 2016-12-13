@@ -8,6 +8,7 @@ $(document).ready(function() {
 
   $.validator.addMethod("alpha",alpha,"Formato no valido");
   $.validator.addMethod("promedio",promedio,"Formato no valido Ej. (9,9.2,10)");
+  $.validator.addMethod("validCard",validCard,"El numero de tarjeta es invalido");
 
   function alpha(value, element, param){
     var er =/^[a-zA-Z_-ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöùúûüýøþÿÐdŒ\s]*$/;
@@ -15,6 +16,12 @@ $(document).ready(function() {
       return true;
     }else return false;
   }
+  function validCard(value, element, param){
+    if(Conekta.card.validateNumber(value)){
+      return true;
+    }else return false;
+  }
+
 
   function promedio(value,element,param){
     var er = /^([0-9]{1}(\.[0-9]{1})?|10{1})$/;
@@ -74,7 +81,7 @@ $(document).ready(function() {
         return $("input[name='password']");
       }},
       name:{required:true,maxlength:50,alpha:true},
-      number:{required:true,maxlength:16,minlength:16,number:true},
+      number:{required:true,maxlength:16,minlength:16,validCard:true},
       cvc:{required:true,maxlength:3,minlength:3,number:true},
       username_hijo:{
         required:true,maxlength:50,
@@ -108,6 +115,7 @@ $(document).ready(function() {
       $(this).text("Registrando...");
       $(this).prop("disabled",true);
       $btnc.prop("disabled",true);
+      Conekta.setPublicKey("key_CmADz585Gq19Aqt1xpLWppg");
       tokenParams = {
           "card": {
             "number": document.getElementById('number').value,
@@ -118,7 +126,6 @@ $(document).ready(function() {
           }
         };
 
-      console.log(tokenParams);
 
         successResponseHandler = function(token) {
             datos={

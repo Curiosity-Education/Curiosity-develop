@@ -176,7 +176,7 @@ function __init(){
               window.location.href = '/inicio';
             }
             else{
-              window.location.href = '/perfil';
+              window.location.href = '/misHijos';
             }
           }
           else if(response[0] == 'past_due'){
