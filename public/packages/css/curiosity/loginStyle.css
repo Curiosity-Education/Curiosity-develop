@@ -127,3 +127,17 @@ button{
   letter-spacing: 0.8px;
   margin-bottom: -10px;
 }
+
+@media (max-width: 480px){
+	.login-box{
+	  margin-top: 0px;
+	}
+}
+
+.forgot {
+	margin-top: -10px !important;
+}
+
+.forgot a:hover li.fa-question-circle{
+	color: #f80;
+}

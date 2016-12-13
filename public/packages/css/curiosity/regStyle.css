@@ -103,3 +103,15 @@ label.error{
 label.error.active{
   margin-top: 70px;
 }
+
+@media (max-width: 768px){
+	#wrapper-form{
+		margin-top: 65px !important;
+	}
+}
+
+@media (max-width: 480px){
+	#wrapper-form{
+		margin-top: 15px !important;
+	}
+}

@@ -68,7 +68,7 @@
                   Regresar
                 </button>
               </div>
-
+				<br>
               <div class='col-xs-12 text-center forgot' style="text-align: center;">
                 <a href='/olvide-mi-contrasena' style="color:#c5c5c5;font-size: 0.8em">
                   Olvide mi usuario y/o contraseña &nbsp;
